@@ -1,0 +1,734 @@
+@charset "UTF-8";
+body {
+  background: #E2E2E2;
+}
+
+a {
+  transition: 0.3s;
+}
+
+header .navbar {
+  box-shadow: 0 1px 3px #343A40;
+}
+
+.container .article-list {
+  margin-top: 30px;
+}
+.container .article-list .post {
+  border: 1px solid #DEDEDE;
+  background: #FFFFFF;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 3px #B7B7B7;
+}
+.container .article-list .post .header-img {
+  width: 100%;
+  background: #ffffff;
+}
+.container .article-list .post .header-img a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.container .article-list .post .header-img a img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 120%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container .article-list .post .entry-header {
+  border-bottom: 1px solid #EAEAEA;
+}
+.container .article-list .post .entry-header .entry-title {
+  font-size: 28px;
+  font-weight: 700;
+  padding: 20px 25px 12px 25px;
+}
+.container .article-list .post .entry-header .entry-title a {
+  color: #222222;
+}
+.container .article-list .post .entry-summary {
+  padding: 25px;
+}
+.container .article-list .post .entry-summary p {
+  font-size: 15px;
+  color: #444444;
+  line-height: 25px;
+}
+.container .article-list .post .read-more {
+  margin: 0;
+  font-size: 15px;
+}
+.container .article-list .post .read-more .read-more-btn {
+  width: 140px;
+  border: 1px solid #007ACC;
+  color: #007ACC;
+  padding: 10px 20px;
+}
+.container .article-list .post .read-more .read-more-btn span, .container .article-list .post .read-more .read-more-btn i {
+  transition: 0.4s;
+}
+.container .article-list .post .read-more .read-more-btn i {
+  margin-left: 5px;
+}
+.container .article-list .post .read-more .read-more-btn:hover {
+  border-color: #D13210;
+  color: #D13210;
+  padding: 10px 17px;
+}
+.container .article-list .post .read-more .read-more-btn:hover span {
+  margin: 0 3px;
+}
+.container .article-list .post .article-info {
+  background: #F9F9F9;
+  padding: 10px 25px;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+}
+.container .article-list .post .article-info .info {
+  float: left;
+  margin-right: 20px;
+  height: 29px;
+}
+.container .article-list .post .article-info a, .container .article-list .post .article-info span {
+  color: #707281;
+  font-size: 12px;
+  line-height: 29px;
+}
+.container .article-list .post .article-info a:hover {
+  color: #76839B;
+}
+.container .article-list .post .article-info .icon {
+  margin-right: 4px;
+  color: #707281;
+  font-size: 12px;
+  line-height: 29px;
+}
+
+.sidebar {
+  margin-top: 30px;
+}
+.sidebar section {
+  background: #FFFFFF;
+  box-shadow: 0 2px 3px #B7B7B7;
+  margin-bottom: 30px;
+}
+.sidebar section h4 {
+  line-height: 22px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-bottom: 1px solid #EAEAEA;
+  background: #F7F7F7;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.sidebar section ul {
+  list-style: none;
+  padding: 0 18px 18px 18px;
+}
+.sidebar section ul li {
+  padding: 8px 15px;
+  border-bottom: 1px solid #EEEEEE;
+  font-size: 13px;
+}
+.sidebar section ul li a {
+  font-size: 13px;
+  color: #007ACC;
+}
+.sidebar section ul li a:hover {
+  color: #D13210;
+}
+.sidebar section .ltags-list {
+  padding: 0 18px 18px 18px;
+}
+.sidebar section .ltags-list a {
+  color: #007ACC;
+  padding: 8px 10px;
+  margin: 2px;
+  border: 1px solid #007ACC;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 12px;
+  transition: 0.3s;
+}
+.sidebar section .ltags-list a:hover {
+  background: #007ACC;
+  color: #ffffff;
+}
+
+.pagination-nav {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.pagination-nav li {
+  border-radius: unset;
+}
+.pagination-nav li a {
+  border-radius: unset;
+}
+
+footer .container {
+  padding: 20px 20px;
+  text-align: center;
+}
+footer .container a, footer .container span {
+  margin: 0 5px;
+  color: #525252;
+}
+
+.article-page, .archive, .page {
+  margin-top: 30px;
+}
+.article-page main, .archive main, .page main {
+  border: 1px solid #DEDEDE;
+  background: #ffffff;
+  box-shadow: 0 2px 3px #B7B7B7;
+}
+.article-page main .entry-header, .archive main .entry-header, .page main .entry-header {
+  border-bottom: 1px solid #EAEAEA;
+}
+.article-page main .entry-header .entry-title, .archive main .entry-header .entry-title, .page main .entry-header .entry-title {
+  font-size: 28px;
+  font-weight: 700;
+  padding: 20px 25px 12px 25px;
+}
+.article-page main .entry-header .entry-title a, .archive main .entry-header .entry-title a, .page main .entry-header .entry-title a {
+  color: #222222;
+}
+.article-page main .header-img, .archive main .header-img, .page main .header-img {
+  width: 100%;
+  background: #ffffff;
+}
+.article-page main .header-img a, .archive main .header-img a, .page main .header-img a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.article-page main .header-img a img, .archive main .header-img a img, .page main .header-img a img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 120%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.article-page main .article-info, .archive main .article-info, .page main .article-info {
+  background: #F9F9F9;
+  padding: 10px 25px;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+}
+.article-page main .article-info .info, .archive main .article-info .info, .page main .article-info .info {
+  float: left;
+  margin-right: 20px;
+  height: 29px;
+}
+.article-page main .article-info a, .archive main .article-info a, .page main .article-info a, .article-page main .article-info span, .archive main .article-info span, .page main .article-info span {
+  color: #707281;
+  font-size: 12px;
+  line-height: 29px;
+}
+.article-page main .article-info a:hover, .archive main .article-info a:hover, .page main .article-info a:hover {
+  color: #76839B;
+}
+.article-page main .article-info .icon, .archive main .article-info .icon, .page main .article-info .icon {
+  margin-right: 4px;
+  color: #707281;
+  font-size: 12px;
+  line-height: 29px;
+}
+.article-page main article, .archive main article, .page main article {
+  padding: 25px;
+}
+.article-page main article .post-content, .archive main article .post-content, .page main article .post-content {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 15px;
+  word-break: break-all;
+}
+.article-page main article .post-content ul, .archive main article .post-content ul, .page main article .post-content ul, .article-page main article .post-content ol, .archive main article .post-content ol, .page main article .post-content ol, .article-page main article .post-content img, .archive main article .post-content img, .page main article .post-content img, .article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre, .article-page main article .post-content blockquote, .archive main article .post-content blockquote, .page main article .post-content blockquote, .article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1, .article-page main article .post-content h2, .archive main article .post-content h2, .page main article .post-content h2, .article-page main article .post-content h3, .archive main article .post-content h3, .page main article .post-content h3, .article-page main article .post-content h4, .archive main article .post-content h4, .page main article .post-content h4, .article-page main article .post-content h5, .archive main article .post-content h5, .page main article .post-content h5, .article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p {
+  margin: 0 0 20px 0;
+}
+.article-page main article .post-content img, .archive main article .post-content img, .page main article .post-content img {
+  max-width: 100%;
+}
+.article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1, .article-page main article .post-content h2, .archive main article .post-content h2, .page main article .post-content h2, .article-page main article .post-content h3, .archive main article .post-content h3, .page main article .post-content h3, .article-page main article .post-content h4, .archive main article .post-content h4, .page main article .post-content h4, .article-page main article .post-content h5, .archive main article .post-content h5, .page main article .post-content h5, .article-page main article .post-content h6, .archive main article .post-content h6, .page main article .post-content h6 {
+  font-weight: 700;
+  color: #444444;
+}
+.article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1 {
+  font-size: 30px;
+  margin: 50px 0 20px 0;
+}
+.article-page main article .post-content h2, .archive main article .post-content h2, .page main article .post-content h2 {
+  font-size: 25px;
+}
+.article-page main article .post-content h3, .archive main article .post-content h3, .page main article .post-content h3 {
+  font-size: 20px;
+}
+.article-page main article .post-content h4, .archive main article .post-content h4, .page main article .post-content h4 {
+  font-size: 15px;
+}
+.article-page main article .post-content h5, .archive main article .post-content h5, .page main article .post-content h5 {
+  font-size: 12.45px;
+}
+.article-page main article .post-content h6, .archive main article .post-content h6, .page main article .post-content h6 {
+  font-size: 12px;
+}
+.article-page main article .post-content blockquote, .archive main article .post-content blockquote, .page main article .post-content blockquote {
+  border-left: 4px solid #1A1A1A;
+  padding-left: 22.5px;
+  font-size: 17px;
+  color: #686868;
+  font-style: italic;
+}
+.article-page main article .post-content code, .archive main article .post-content code, .page main article .post-content code {
+  font-size: 15px;
+}
+.article-page main article .post-content pre code, .archive main article .post-content pre code, .page main article .post-content pre code {
+  padding: 10px;
+}
+.article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
+  min-width: 90px;
+}
+.article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p, .article-page main article .post-content li, .archive main article .post-content li, .page main article .post-content li {
+  color: #444444;
+}
+.article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p {
+  line-height: 25px;
+}
+.article-page main article .post-content a, .archive main article .post-content a, .page main article .post-content a {
+  color: #007ACC;
+}
+.article-page main article .post-content a:hover, .archive main article .post-content a:hover, .page main article .post-content a:hover {
+  color: #D13210;
+}
+.article-page .post-navigation, .archive .post-navigation, .page .post-navigation {
+  padding: 25px;
+  border-top: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
+}
+.article-page .post-navigation a, .archive .post-navigation a, .page .post-navigation a {
+  color: #007ACC;
+}
+.article-page .post-navigation a:hover, .archive .post-navigation a:hover, .page .post-navigation a:hover {
+  color: #D13210;
+}
+
+#max-img {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 1030;
+}
+#max-img img {
+  max-width: 90%;
+  max-height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#comments h2 {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+#comments .comments-off {
+  padding: 0 20px;
+}
+#comments .comments-lists {
+  padding: 40px 20px 0 20px;
+}
+#comments .comments-lists ol {
+  list-style: none;
+  padding: 0;
+}
+#comments .comments-lists ol li {
+  border-top: 1px solid #EBF2FC;
+  padding: 20px 0;
+}
+#comments .comments-lists ol li .comment-box {
+  width: 100%;
+}
+#comments .comments-lists ol li .comment-author {
+  width: 100%;
+}
+#comments .comments-lists ol li img {
+  width: 42px;
+  height: 42px;
+  margin-right: 20px;
+  float: left;
+}
+#comments .comments-lists ol li .comment-info a {
+  display: block;
+  line-height: 22px;
+  font-size: 15px;
+  color: #007ACC;
+}
+#comments .comments-lists ol li .comment-info a:hover {
+  color: #D13210;
+}
+#comments .comments-lists ol li .comment-info .comment-time {
+  color: #686868;
+  font-size: 12px;
+}
+#comments .comments-lists ol li .comment-reply a {
+  line-height: 30px;
+  color: #ffffff;
+  font-size: 12px;
+  width: 60px;
+  height: 32px;
+  background: #0F8BDA;
+  display: block;
+  text-align: center;
+}
+#comments .comments-lists ol li .comment-reply a:hover {
+  background: #38A4E8;
+}
+#comments .comments-lists ol li p {
+  margin-left: 62px;
+}
+#comments .comments-lists ol li .comment-children {
+  margin-left: 20px;
+}
+#comments .comments-lists ol li .comment-children li {
+  padding-bottom: 0;
+}
+#comments .comments-lists ol li .comment-children li .comment-children {
+  margin-left: 0;
+}
+#comments .comments-lists ol li .respond {
+  background: #EEEEEE;
+}
+#comments .respond {
+  padding: 20px;
+  border-top: 1px solid #DADADA;
+}
+#comments .respond #textarea {
+  width: 100%;
+  height: 82px;
+  display: block;
+}
+#comments .respond .comment-user {
+  margin-bottom: 20px;
+}
+#comments .respond .submit {
+  background: #0F8BDA;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 15px;
+}
+#comments .respond .submit:hover {
+  background: #38A4E8;
+}
+#comments .respond a {
+  color: #007ACC;
+}
+#comments .respond a:hover {
+  color: #D13210;
+}
+
+.container-404 h1 {
+  margin-top: 20px;
+  font-size: 150px;
+  text-align: center;
+  font-weight: 700;
+}
+.container-404 h2 {
+  text-align: center;
+  font-weight: 700;
+}
+.container-404 h5 {
+  text-align: center;
+}
+.container-404 .search-box {
+  margin: 20px 0;
+}
+
+.archives-list {
+  margin-top: 30px;
+}
+.archives-list .archives .page-header {
+  border: 1px solid #DEDEDE;
+  background: #FFFFFF;
+  margin-bottom: 30px;
+  padding: 20px;
+  box-shadow: 0 2px 3px #B7B7B7;
+}
+.archives-list .archives .page-header h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+.archives-list .archives .page-header span {
+  font-size: 13px;
+  color: #777777;
+}
+.archives-list .archives .post {
+  border: 1px solid #DEDEDE;
+  background: #FFFFFF;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 3px #B7B7B7;
+}
+.archives-list .archives .post .header-img {
+  width: 100%;
+  background: #ffffff;
+}
+.archives-list .archives .post .header-img a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.archives-list .archives .post .header-img a img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 120%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.archives-list .archives .post .entry-header {
+  border-bottom: 1px solid #EAEAEA;
+}
+.archives-list .archives .post .entry-header .entry-title {
+  font-size: 28px;
+  font-weight: 700;
+  padding: 20px 25px 12px 25px;
+}
+.archives-list .archives .post .entry-header .entry-title a {
+  color: #222222;
+}
+.archives-list .archives .post .entry-summary {
+  padding: 25px;
+}
+.archives-list .archives .post .entry-summary p {
+  font-size: 15px;
+  color: #444444;
+  line-height: 25px;
+}
+.archives-list .archives .post .read-more {
+  margin: 0;
+  font-size: 15px;
+}
+.archives-list .archives .post .read-more .read-more-btn {
+  width: 140px;
+  border: 1px solid #007ACC;
+  color: #007ACC;
+  padding: 10px 20px;
+}
+.archives-list .archives .post .read-more .read-more-btn span, .archives-list .archives .post .read-more .read-more-btn i {
+  transition: 0.4s;
+}
+.archives-list .archives .post .read-more .read-more-btn i {
+  margin-left: 5px;
+}
+.archives-list .archives .post .read-more .read-more-btn:hover {
+  border-color: #D13210;
+  color: #D13210;
+  padding: 10px 17px;
+}
+.archives-list .archives .post .read-more .read-more-btn:hover span {
+  margin: 0 3px;
+}
+.archives-list .archives .post .article-info {
+  background: #F9F9F9;
+  padding: 10px 25px;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+}
+.archives-list .archives .post .article-info .info {
+  float: left;
+  margin-right: 20px;
+  height: 29px;
+}
+.archives-list .archives .post .article-info a, .archives-list .archives .post .article-info span {
+  color: #707281;
+  font-size: 12px;
+  line-height: 29px;
+}
+.archives-list .archives .post .article-info a:hover {
+  color: #76839B;
+}
+.archives-list .archives .post .article-info .icon {
+  margin-right: 4px;
+  color: #707281;
+  font-size: 12px;
+  line-height: 29px;
+}
+.archives-list .archives .post > .post-title {
+  padding: 20px 25px;
+}
+
+/*独立页面-文章归档*/
+.link-box {
+  background: #F9F9F9;
+  margin: 0 0 20px 0;
+}
+.link-box .link-grid {
+  padding: 15px;
+}
+.link-box .link-grid .link {
+  background: #ffffff;
+  box-shadow: 0 2px 0 rgba(170, 170, 170, 0.1);
+  padding: 10px;
+  display: block;
+}
+.link-box .link-grid .link .link-logo {
+  width: 32px;
+  height: 32px;
+  margin: 0 10px 0 0;
+}
+.link-box .link-grid .link .icon-logo {
+  background: #0A73B3;
+  color: #ffffff;
+  text-align: center;
+  line-height: 32px;
+}
+.link-box .link-grid .link .link-name {
+  display: inline-block;
+  line-height: 32px;
+}
+.link-box .link-grid .link p {
+  font-size: 12px;
+  margin: 10px 0 0 0;
+  line-height: 18px;
+}
+.link-box .link-grid .link:hover {
+  box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
+}
+
+.archive-page, .post-page, .link-page {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1200px) {
+  .header-img {
+    height: 273px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .header-img {
+    height: 228px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .header-img {
+    height: 258px;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  /*文章头图*/
+  .header-img {
+    height: 194px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .container .article-list .post .header-img {
+    width: 100%;
+    background: #ffffff;
+  }
+  .container .article-list .post .header-img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .container .article-list .post .header-img a img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 120%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .container .article-list .post .entry-header .entry-title {
+    font-size: 20px;
+    padding: 20px 20px 12px 20px;
+  }
+  .container .article-list .post .entry-summary {
+    padding: 20px;
+  }
+  .container .article-list .post .article-info {
+    padding: 10px 20px;
+  }
+  .container .article-list .post .header-img {
+    height: 145px;
+  }
+
+  .article-page main, .page main, .archive main {
+    /*文章标题*/
+    /*文章页的文章信息*/
+    /*文章头图*/
+  }
+  .article-page main .entry-header .entry-title, .page main .entry-header .entry-title, .archive main .entry-header .entry-title {
+    font-size: 20px;
+    padding: 20px 20px 12px 20px;
+  }
+  .article-page main .article-info, .page main .article-info, .archive main .article-info {
+    padding: 10px 20px;
+  }
+  .article-page main article, .page main article, .archive main article {
+    padding: 20px;
+  }
+  .article-page main .header-img, .page main .header-img, .archive main .header-img {
+    height: 145px;
+  }
+
+  .container .col-md-12 {
+    padding: 0 10px;
+  }
+
+  .archives-list .archives .post .header-img {
+    width: 100%;
+    background: #ffffff;
+  }
+  .archives-list .archives .post .header-img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .archives-list .archives .post .header-img a img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 120%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .archives-list .archives .post .entry-header .entry-title {
+    font-size: 20px;
+    padding: 20px 20px 12px 20px;
+  }
+  .archives-list .archives .post .entry-summary {
+    padding: 20px;
+  }
+  .archives-list .archives .post .article-info {
+    padding: 10px 20px;
+  }
+  .archives-list .archives .post .header-img {
+    height: 145px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
