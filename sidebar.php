@@ -54,7 +54,7 @@
         <section aria-label="文章归档">
             <h4>文章归档</h4>
             <ul>
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li><a href="{permalink}">{date}</a> ({count})</li>');
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li><a href="{permalink}" title="{count}篇文章">{date}</a> ({count})</li>');
                 ?>
             </ul>
         </section>
