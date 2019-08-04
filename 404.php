@@ -3,7 +3,7 @@
 
 <div class="container container-404">
     <h1>404</h1>
-    <h2>您访问的页面不存在！</h2>
+    <h2 role="alert">您访问的页面不存在！</h2>
     <h5>您还是再找找吧！</h5>
     <div class="search-box row">
         <div class="col-lg-6 col-md-8 col-sm-10 col-12 offset-lg-3 offset-md-2 offset-sm-1">
@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 col-12">
             <h4>最新文章</h4>
-            <ul>
+            <ul aria-label="最新文章">
                 <?php
                 $this->widget('Widget_Contents_Post_Recent')->parse('<li><a href="{permalink}">{title}</a></li>');
                 ?>
@@ -28,15 +28,14 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-12">
             <h4>文章分类</h4>
-            <ul>
-                <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}">{name}</a> ({count})</li>');
-                ?>
+            <ul aria-label="文章分类">
+                <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}" title="{description}">{name}</a> ({count})</li>'); ?>
             </ul>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-12">
             <h4>文章归档</h4>
-            <ul>
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li><a href="{permalink}">{date}</a></li>');
+            <ul aria-label="文章归档">
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li><a href="{permalink}" title="{count}篇文章">{date}</a> ({count})</li>');
                 ?>
             </ul>
         </div>
