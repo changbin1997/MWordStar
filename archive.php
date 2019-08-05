@@ -34,8 +34,9 @@
                         <div class="entry-summary">
                             <p><?php $this->excerpt($this->options->summary?$this->options->summary:150, '...'); ?></p>
                             <p class="read-more">
-                                <a class="btn btn-outline-secondary" href="<?php $this->permalink() ?>">
-                                    <span>阅读全文</span>
+                                <a class="btn read-more-btn" href="<?php $this->permalink() ?>">
+                                    阅读全文
+                                    <span></span>
                                     <i class="icon-arrow-right"></i>
                                 </a>
                             </p>
