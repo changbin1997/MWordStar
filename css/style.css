@@ -8,7 +8,8 @@ a {
 }
 
 header .navbar {
-  box-shadow: 0 1px 3px #343A40;
+  background: #ffffff;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
 .container .article-list {
@@ -18,7 +19,7 @@ header .navbar {
   border: 1px solid #DEDEDE;
   background: #FFFFFF;
   margin-bottom: 30px;
-  box-shadow: 0 2px 3px #B7B7B7;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
 }
 .container .article-list .post .header-img {
   width: 100%;
@@ -114,7 +115,7 @@ header .navbar {
 }
 .sidebar section {
   background: #FFFFFF;
-  box-shadow: 0 2px 3px #B7B7B7;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
   margin-bottom: 30px;
 }
 .sidebar section h4 {
@@ -187,7 +188,7 @@ footer .container a, footer .container span {
 .article-page main, .archive main, .page main {
   border: 1px solid #DEDEDE;
   background: #ffffff;
-  box-shadow: 0 2px 3px #B7B7B7;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
 }
 .article-page main .entry-header, .archive main .entry-header, .page main .entry-header {
   border-bottom: 1px solid #EAEAEA;
@@ -467,7 +468,7 @@ footer .container a, footer .container span {
   background: #FFFFFF;
   margin-bottom: 30px;
   padding: 20px;
-  box-shadow: 0 2px 3px #B7B7B7;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
 }
 .archives-list .archives .page-header h1 {
   font-size: 30px;
@@ -481,7 +482,7 @@ footer .container a, footer .container span {
   border: 1px solid #DEDEDE;
   background: #FFFFFF;
   margin-bottom: 30px;
-  box-shadow: 0 2px 3px #B7B7B7;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
 }
 .archives-list .archives .post .header-img {
   width: 100%;
