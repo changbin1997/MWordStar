@@ -3,7 +3,7 @@
 //  文章的自定义字段
 function themeFields($layout)
 {
-    $image = new Typecho_Widget_Helper_Form_Element_Text('image', NULL, NULL, _t('文章头图'), _t('文章头图会显示在文章的顶部。'));
+    $image = new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('文章头图会显示在文章的顶部。'));
     $layout->addItem($image);
 }
 
