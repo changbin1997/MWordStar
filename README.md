@@ -1,6 +1,6 @@
 # MWordStar
 
-基于 Bootstrap4 开发的 Typecho 主题。
+基于 Bootstrap4 开发的响应式两栏 Typecho 主题。
 
 我之前使用的主题是 [handsome](https://www.ihewro.com/archives/489/) ，handsome 也是一款不错的 Typecho 主题。但是因为 handsome 使用的人太多，导致很多博客的外观都差不多，所以我准备开发一套自用的主题。
 
@@ -88,7 +88,7 @@
 
 ### 代码高亮
 
-代码高亮的主题使用的是 VS2015 的暗色主题，和 Visual Studio Code 的默认主题差不多。
+代码高亮的样式使用的是 VS2015 的暗色主题，和 Visual Studio Code 的默认主题差不多。
 
 下面是支持代码高亮的语言：
 
@@ -132,7 +132,7 @@
 - VB.NET
 - YAML
 
-如需更改代码高亮的主题可以上 [https://github.com/highlightjs/highlight.js/tree/master/src/styles](https://github.com/highlightjs/highlight.js/tree/master/src/styles) 下载 `css` 主题，下载完成后复制到主题的 `css` 文件夹，重命名为 `vs2015.css` 替换原来的文件。
+如需更改代码高亮的样式可以上 [https://github.com/highlightjs/highlight.js/tree/master/src/styles](https://github.com/highlightjs/highlight.js/tree/master/src/styles) 下载 `css` 样式，下载完成后复制到主题的 `css` 文件夹，重命名为 `vs2015.css` 替换原来的文件。
 
 ### 文章归档
 
@@ -154,7 +154,7 @@
 
 #### 设置全站链接
 
-全站链接需要使用 `JSON` 格式数据，如下：
+在主题外观设置中添加 `JSON` ，如下：
 
 ```json
 [
@@ -212,9 +212,13 @@
 
 ### 无障碍
 
-想要做好网站的用户体验，[无障碍](https://www.misterma.com/archives/264/) 适配肯定是少不了的。
+上网对于大多数人来说是一件再简单不过的事，但是对于一些身体有缺陷的残障人士来说却是一件非常困难的事。
+
+目前国内的很多网站都只注重外观，忽略了残障人士的可访问性。但是想要做好网站的用户体验，[无障碍](https://www.misterma.com/archives/264/) 适配肯定是少不了的。
 
 本主题已在 [NVDA](http://www.nvda-project.org/) 和 [VoiceOver](https://www.apple.com/cn/accessibility/iphone/vision/) 这两款屏幕阅读器上做过测试，无论是 PC 还是 移动设备 都能完美朗读。主题颜色对比度也符合标准。
+
+小提示：如果您是屏幕阅读器用户，为了您的浏览体验，不建议使用 IE 浏览器。
 
 ### 兼容性
 
