@@ -18,7 +18,7 @@
         <?php $this->options->title(); ?>
         <?php echo $this->is('index')?'- ' . $this->options->tagline:''; ?>
     </title>
-    <link rel="icon" href="<?php echo $this->options->logoUrl?$this->options->logoUrl:'favicon.ico'; ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo $this->options->logoUrl?$this->options->logoUrl:$this->options->siteUrl . 'favicon.ico'; ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/bootstrap.min.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/icon.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>" type="text/css">
