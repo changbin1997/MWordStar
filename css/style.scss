@@ -402,7 +402,6 @@ footer{
                 //  评论者名字和发表时间
                 .comment-info{
                     a{
-                        display: block;
                         line-height: 22px;
                         font-size: 15px;
                         color: #007ACC;
@@ -413,6 +412,7 @@ footer{
                     .comment-time{
                         color: #686868;
                         font-size: 12px;
+                        display: block;
                     }
                 }
                 //  回复评论的链接

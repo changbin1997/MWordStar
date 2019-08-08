@@ -375,7 +375,6 @@ footer .container a, footer .container span {
   float: left;
 }
 #comments .comments-lists ol li .comment-info a {
-  display: block;
   line-height: 22px;
   font-size: 15px;
   color: #007ACC;
@@ -386,6 +385,7 @@ footer .container a, footer .container span {
 #comments .comments-lists ol li .comment-info .comment-time {
   color: #686868;
   font-size: 12px;
+  display: block;
 }
 #comments .comments-lists ol li .comment-reply a {
   line-height: 30px;
