@@ -27,6 +27,9 @@
                 <?php $comments->gravatar('50', ''); ?>
                 <div class="comment-info float-left">
                     <b><?php $comments->author(); ?></b>
+                    <?php if ($comments->authorId == $comments->ownerId): ?>
+                    <span class="author badge badge-secondary">作者</span>
+                    <?php endif; ?>
                     <a class="comment-time" href="<?php $comments->permalink(); ?>"><?php $comments->date('Y年m月d日 H:i'); ?></a>
                 </div>
                 <span class="comment-reply float-right"><?php $comments->reply(); ?></span>
