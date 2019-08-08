@@ -56,6 +56,11 @@ $(function () {
         $('.tags a').attr('title', '标签');
     }
 
+    //  给评论区的链接添加 target
+    if ($('.comment-info b a').length > 0) {
+        $('.comment-info b a').attr('target', '_blank');  //  让评论区的链接在新标签页打开
+    }
+
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
