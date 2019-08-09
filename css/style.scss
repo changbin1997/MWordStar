@@ -214,6 +214,48 @@ header{
                 color: #ffffff;
             }
         }
+        //  社交小工具
+        .social{
+            padding: 0 18px 18px 18px;
+            a{
+                display: block;
+                width: 46px;
+                height: 43px;
+                float: left;
+                color: #ffffff;
+                font-size: 22px;
+                text-align: center;
+                line-height: 43px;
+                margin: 3px;
+            }
+            .icon-facebook{
+                background: #3B5998;
+            }
+            .icon-twitter{
+                background: #55ACEE;
+            }
+            .icon-sina-weibo{
+                background: #F4151E;
+            }
+            .icon-instagram{
+                background: #8A3AB9;
+            }
+            .icon-github{
+                background: #24292E;
+            }
+            .icon-telegram{
+                background: #39B1E2;
+            }
+            .icon-mail2{
+                background: #004A97;
+            }
+            .icon-linkedin2{
+                background: #007BB5;
+            }
+            .icon-steam{
+                background: #1A3348;
+            }
+        }
     }
 }
 

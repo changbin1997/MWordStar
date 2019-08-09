@@ -160,6 +160,47 @@ header .navbar {
   background: #007ACC;
   color: #ffffff;
 }
+.sidebar section .social {
+  padding: 0 18px 18px 18px;
+}
+.sidebar section .social a {
+  display: block;
+  width: 46px;
+  height: 43px;
+  float: left;
+  color: #ffffff;
+  font-size: 22px;
+  text-align: center;
+  line-height: 43px;
+  margin: 3px;
+}
+.sidebar section .social .icon-facebook {
+  background: #3B5998;
+}
+.sidebar section .social .icon-twitter {
+  background: #55ACEE;
+}
+.sidebar section .social .icon-sina-weibo {
+  background: #F4151E;
+}
+.sidebar section .social .icon-instagram {
+  background: #8A3AB9;
+}
+.sidebar section .social .icon-github {
+  background: #24292E;
+}
+.sidebar section .social .icon-telegram {
+  background: #39B1E2;
+}
+.sidebar section .social .icon-mail2 {
+  background: #004A97;
+}
+.sidebar section .social .icon-linkedin2 {
+  background: #007BB5;
+}
+.sidebar section .social .icon-steam {
+  background: #1A3348;
+}
 
 .pagination-nav {
   width: 100%;
