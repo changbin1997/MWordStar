@@ -1,15 +1,13 @@
 <?php
 
 //  文章的自定义字段
-function themeFields($layout)
-{
+function themeFields($layout) {
     $image = new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('文章头图会显示在文章的顶部。'));
     $layout->addItem($image);
 }
 
 //  外观设置
-function themeConfig($form)
-{
+function themeConfig($form) {
     //  站点Logo
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。'));
     $form->addInput($logoUrl);
@@ -18,24 +16,30 @@ function themeConfig($form)
     $form->addInput($tagline);
     //  侧边栏
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
-        array('ShowRecentPosts' => _t('显示最新文章'),
+        array(
+            'ShowSocialInfo' => _t('显示社交信息'),
+            'ShowRecentPosts' => _t('显示最新文章'),
             'ShowRecentComments' => _t('显示最近回复'),
             'ShowCategory' => _t('显示分类'),
             'ShowTag' => _t('显示标签云'),
             'ShowArchive' => _t('显示归档'),
             'ShowOther' => _t('显示其它杂项'),
-            'HideLoginLink' => _t('隐藏登录入口')),
-        array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'));
-
+            'HideLoginLink' => _t('隐藏登录入口')
+        ),
+        array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示')
+    );
     $form->addInput($sidebarBlock->multiMode());
+    //  社交信息
+    $socialInfo = new Typecho_Widget_Helper_Form_Element_Textarea('socialInfo', null, null, _t('社交信息'), _t('需要 JSON 格式，社交信息会显示在侧边栏。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $form->addInput($socialInfo);
     //  文章摘要字数
     $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, NULL, _t('文章摘要字数'), _t('文章摘要字数，默认为：150 个字'));
     $form->addInput($summary);
     //  首页友链
-    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('全站友情链接'), _t('全站友情链接会在每个页面的下方显示，格式为：JSON。'));
+    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('全站友情链接'), _t('全站友情链接会在每个页面的下方显示，格式为：JSON。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
     $form->addInput($homeLinks);
     //  独立页友链
-    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，要求格式为：JSON。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为：友情链接。'));
+    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，要求格式为：JSON。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为：友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
     $form->addInput($links);
     //  自定义CSS
     $cssCode = new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', NULL, NULL, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。'));
@@ -49,8 +53,7 @@ function themeConfig($form)
 }
 
 //  统计文章阅读量
-function getPostView($archive)
-{
+function getPostView($archive) {
     $cid = $archive->cid;
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
@@ -74,4 +77,47 @@ function getPostView($archive)
         }
     }
     return $row['views'];
+}
+
+//  输出社交信息
+function socialInfo($info) {
+    $icon = array(
+        'facebook' => array(
+            'icon' => 'icon-facebook',
+            'name' => 'Facebook'
+        ),
+        'twitter' => array(
+            'icon' => 'icon-twitter',
+            'name' => 'Twitter'
+        ),
+        'weibo' => array(
+            'icon' => 'icon-sina-weibo',
+            'name' => '微博'
+        ),
+        'instagram' => array(
+            'icon' => 'icon-instagram',
+            'name' => 'Instagram'
+        ),
+        'github' => array(
+            'icon' => 'icon-github',
+            'name' => 'Github'
+        ),
+        'telegram' => array(
+            'icon' => 'icon-telegram',
+            'name' => 'Telegram'
+        ),
+        'linkedin' => array(
+            'icon' => 'icon-linkedin2',
+            'name' => 'LinkedIn'
+        ),
+        'steam' => array(
+            'icon' => 'icon-steam',
+            'name' => 'Steam'
+        )
+    );
+
+    $info = json_decode($info);
+    foreach ($info as $val) {
+        echo '<a class="' . $icon[$val->name]['icon'] . '" href="' . $val->url . '" title="' . $icon[$val->name]['name'] . '" aria-label="' . $icon[$val->name]['name'] . '" target="_blank"></a>';
+    }
 }

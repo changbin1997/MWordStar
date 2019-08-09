@@ -1,4 +1,13 @@
 <div class="col-md-12 col-lg-4 col-sm-12 sidebar">
+    <!--社交小工具-->
+    <?php if ($this->options->sidebarBlock && in_array('ShowSocialInfo', $this->options->sidebarBlock) && $this->options->socialInfo): ?>
+    <section aria-label="社交信息">
+        <h4>社交信息</h4>
+        <div class="social clearfix">
+            <?php socialInfo($this->options->socialInfo); ?>
+        </div>
+    </section>
+    <?php endif; ?>
     <!--最新文章-->
     <?php if (!$this->is('page', 'archives')): ?>
         <?php if ($this->options->sidebarBlock && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
