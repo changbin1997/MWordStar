@@ -52,6 +52,14 @@
                 <article>
                     <div class="post-content">
                         <?php $this->content(); ?>
+                        <?php if ($this->fields->articleCopyright != 'hide'): ?>
+                            <hr>
+                            <div class="alert alert-secondary">
+                                版权声明：本文为原创文章，版权归 <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> 所有，转载请联系博主获得授权！
+                                <br>
+                                本文地址：<a href="<?php $this->permalink() ?>"><?php $this->permalink() ?></a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </article>
                 <nav class="post-navigation navbar">
