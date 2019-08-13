@@ -86,4 +86,24 @@
             </ul>
         </section>
     <?php endif; ?>
+    <!--友情链接-->
+    <?php if ($this->options->links or $this->options->homeLinks && $this->is('index')): ?>
+        <section aria-label="友情链接">
+            <h4>友情链接</h4>
+            <ul>
+                <?php if ($this->options->homeLinks && $this->is('index')): ?>
+                    <?php $homeLinks = json_decode($this->options->homeLinks); ?>
+                    <?php foreach ($homeLinks as $val): ?>
+                        <li><a href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <?php if ($this->options->links): ?>
+                    <?php $links = json_decode($this->options->links); ?>
+                    <?php foreach ($links as $val): ?>
+                        <li><a href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                    <?php endforeach;; ?>
+                <?php endif; ?>
+            </ul>
+        </section>
+    <?php endif; ?>
 </div>
