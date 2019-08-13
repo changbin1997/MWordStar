@@ -49,12 +49,16 @@ function themeConfig($form) {
     $form->addInput($summary);
 
     //  首页友链
-    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('全站友情链接'), _t('全站友情链接会在每个页面的下方显示，格式为：JSON。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，格式为：JSON。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
     $form->addInput($homeLinks);
 
-    //  独立页友链
-    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，要求格式为：JSON。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为：友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    //  全站友链
+    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，格式为：JSON。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
     $form->addInput($links);
+
+    //  独立页友链
+    $pageLinks = new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，要求格式为：JSON。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为：友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $form->addInput($pageLinks);
 
     //  自定义CSS
     $cssCode = new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', NULL, NULL, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。'));
