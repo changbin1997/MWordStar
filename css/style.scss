@@ -70,7 +70,7 @@
     border: 1px solid #DEDEDE;
     background: #FFFFFF;
     margin-bottom: 30px;
-    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
     //  文章头图
     .header-img{
         @include postThumbnail;
@@ -167,7 +167,7 @@ header{
     margin-top: 30px;
     section{
         background: #FFFFFF;
-        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
         margin-bottom: 30px;
         //  侧边栏个区域的标题
         h4{
@@ -290,7 +290,7 @@ footer{
     main{
         border: 1px solid #DEDEDE;
         background: #ffffff;
-        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
         .entry-header{
             @include entryHeader;
         }
@@ -422,7 +422,7 @@ footer{
     //  评论列表
     .comments-lists{
         padding: 40px 20px 0 20px;
-        ol{
+        .comment-list{
             list-style: none;
             padding: 0;
             li{
@@ -493,6 +493,11 @@ footer{
                 }
             }
         }
+        //  评论分页
+        .page-navigator .current a{
+            background: #007ACC;
+            color: #ffffff;
+        }
     }
     //  发表评论区
     .respond{
@@ -556,7 +561,7 @@ footer{
             background: #FFFFFF;
             margin-bottom: 30px;
             padding: 20px;
-            box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
             h1{
                 font-size: 30px;
                 font-weight: 700;

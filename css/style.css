@@ -19,7 +19,7 @@ header .navbar {
   border: 1px solid #DEDEDE;
   background: #FFFFFF;
   margin-bottom: 30px;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
 }
 .container .article-list .post .header-img {
   width: 100%;
@@ -115,7 +115,7 @@ header .navbar {
 }
 .sidebar section {
   background: #FFFFFF;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
   margin-bottom: 30px;
 }
 .sidebar section h4 {
@@ -229,7 +229,7 @@ footer .container a, footer .container span {
 .article-page main, .archive main, .page main {
   border: 1px solid #DEDEDE;
   background: #ffffff;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
 }
 .article-page main .entry-header, .archive main .entry-header, .page main .entry-header {
   border-bottom: 1px solid #EAEAEA;
@@ -395,40 +395,40 @@ footer .container a, footer .container span {
 #comments .comments-lists {
   padding: 40px 20px 0 20px;
 }
-#comments .comments-lists ol {
+#comments .comments-lists .comment-list {
   list-style: none;
   padding: 0;
 }
-#comments .comments-lists ol li {
+#comments .comments-lists .comment-list li {
   border-top: 1px solid #EBF2FC;
   padding: 20px 0;
 }
-#comments .comments-lists ol li .comment-box {
+#comments .comments-lists .comment-list li .comment-box {
   width: 100%;
 }
-#comments .comments-lists ol li .comment-author {
+#comments .comments-lists .comment-list li .comment-author {
   width: 100%;
 }
-#comments .comments-lists ol li img {
+#comments .comments-lists .comment-list li img {
   width: 42px;
   height: 42px;
   margin-right: 20px;
   float: left;
 }
-#comments .comments-lists ol li .comment-info a {
+#comments .comments-lists .comment-list li .comment-info a {
   line-height: 22px;
   font-size: 15px;
   color: #007ACC;
 }
-#comments .comments-lists ol li .comment-info a:hover {
+#comments .comments-lists .comment-list li .comment-info a:hover {
   color: #D13210;
 }
-#comments .comments-lists ol li .comment-info .comment-time {
+#comments .comments-lists .comment-list li .comment-info .comment-time {
   color: #686868;
   font-size: 12px;
   display: block;
 }
-#comments .comments-lists ol li .comment-reply a {
+#comments .comments-lists .comment-list li .comment-reply a {
   line-height: 30px;
   color: #ffffff;
   font-size: 12px;
@@ -438,23 +438,27 @@ footer .container a, footer .container span {
   display: block;
   text-align: center;
 }
-#comments .comments-lists ol li .comment-reply a:hover {
+#comments .comments-lists .comment-list li .comment-reply a:hover {
   background: #38A4E8;
 }
-#comments .comments-lists ol li p {
+#comments .comments-lists .comment-list li p {
   margin-left: 62px;
 }
-#comments .comments-lists ol li .comment-children {
+#comments .comments-lists .comment-list li .comment-children {
   margin-left: 20px;
 }
-#comments .comments-lists ol li .comment-children li {
+#comments .comments-lists .comment-list li .comment-children li {
   padding-bottom: 0;
 }
-#comments .comments-lists ol li .comment-children li .comment-children {
+#comments .comments-lists .comment-list li .comment-children li .comment-children {
   margin-left: 0;
 }
-#comments .comments-lists ol li .respond {
+#comments .comments-lists .comment-list li .respond {
   background: #EEEEEE;
+}
+#comments .comments-lists .page-navigator .current a {
+  background: #007ACC;
+  color: #ffffff;
 }
 #comments .respond {
   padding: 20px;
@@ -509,7 +513,7 @@ footer .container a, footer .container span {
   background: #FFFFFF;
   margin-bottom: 30px;
   padding: 20px;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
 }
 .archives-list .archives .page-header h1 {
   font-size: 30px;
@@ -523,7 +527,7 @@ footer .container a, footer .container span {
   border: 1px solid #DEDEDE;
   background: #FFFFFF;
   margin-bottom: 30px;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
 }
 .archives-list .archives .post .header-img {
   width: 100%;

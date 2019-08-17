@@ -61,6 +61,14 @@ $(function () {
         $('.comment-info b a').attr('target', '_blank');  //  让评论区的链接在新标签页打开
     }
 
+
+    //  给评论区的分页链接设置样式
+    if ($('.comments-lists .page-navigator').length > 0) {
+        $('.comments-lists .page-navigator li').addClass('pagination');
+        $('.comments-lists .page-navigator li a').addClass('page-link');
+        var pageNav = '<nav aria-label="分页导航区"><ol class="pagination justify-content-center page-navigator">' + $('.comments-lists .page-navigator').html() + '</ol></nav>';
+        $('.comments-lists .page-navigator').replaceWith(pageNav);
+    }
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化

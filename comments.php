@@ -60,7 +60,7 @@
     <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>" class="respond">
         <div class="cancel-comment-reply">
-        <?php $comments->cancelReply(); ?>
+            <?php $comments->cancelReply(); ?>
         </div>
     
     	<h2 id="response"><?php _e('发表评论'); ?></h2>
