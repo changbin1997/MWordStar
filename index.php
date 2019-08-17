@@ -58,7 +58,7 @@ $this->need('header.php');  //  头文件
                 <!--评论-->
                 <div class="info">
                     <i class="icon-bubbles2 icon" aria-label="评论图标"></i>
-                    <a title="评论" href="#comments"><?php $this->commentsNum('%d 评论'); ?></a>
+                    <a title="评论" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('%d 评论'); ?></a>
                 </div>
                 <!--分类-->
                 <div class="info">
