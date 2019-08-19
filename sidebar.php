@@ -11,12 +11,20 @@
     <!--最新文章-->
     <?php if (!$this->is('page', 'archives')): ?>
         <?php if ($this->options->sidebarBlock && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
-            <section aria-label="近期文章">
+            <section aria-label="近期文章" class="latest-articles">
                 <h4>近期文章</h4>
                 <ul>
-                    <?php
-                        $this->widget('Widget_Contents_Post_Recent')->parse('<li><a href="{permalink}">{title}</a></li>');
-                    ?>
+                    <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
+                    <?php while ($latestArticles->next()): ?>
+                    <li>
+                        <a href="<?php $latestArticles->permalink(); ?>">
+                            <?php if ($latestArticles->fields->thumb): ?>
+                                <img src="<?php $latestArticles->fields->thumb(); ?>" alt="<?php $latestArticles->title(); ?>的头图">
+                            <?php endif; ?>
+                            <p><?php $latestArticles->title(); ?></p>
+                        </a>
+                    </li>
+                    <?php endwhile; ?>
                 </ul>
             </section>
         <?php endif; ?>
@@ -25,12 +33,15 @@
     <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
         <section aria-label="最新回复">
             <h4>最新回复</h4>
-            <ul>
+            <ul class="list-unstyled">
                 <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
                 <?php while($comments->next()): ?>
-                    <li>
-                        <a href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>：
-                        <?php $comments->excerpt(20, '[...]'); ?>
+                    <li class="media">
+                        <?php $comments->gravatar('40', ''); ?>
+                        <div class="media-body ml-2">
+                            <a href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
+                            <div><?php $comments->excerpt(20, '[...]'); ?></div>
+                        </div>
                     </li>
                 <?php endwhile; ?>
             </ul>

@@ -123,7 +123,7 @@ header .navbar {
   padding: 12px 20px;
   font-size: 16px;
   border-bottom: 1px solid #EAEAEA;
-  background: #F7F7F7;
+  background: #F9F9F9;
   margin-bottom: 10px;
   font-weight: 700;
 }
@@ -200,6 +200,38 @@ header .navbar {
 }
 .sidebar section .social .icon-steam {
   background: #1A3348;
+}
+.sidebar .latest-articles li a {
+  transition: 0.4s;
+}
+.sidebar .latest-articles li a img {
+  display: none;
+  transition: 0.4s;
+}
+.sidebar .latest-articles li a p {
+  margin: 0;
+}
+.sidebar .latest-articles .latest-articles-active {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.sidebar .latest-articles .latest-articles-active img {
+  display: inline;
+  max-height: 110%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sidebar .latest-articles .latest-articles-active p {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 7px;
 }
 
 .pagination-nav {
@@ -667,21 +699,37 @@ footer .container a, footer .container span {
   .header-img {
     height: 273px;
   }
+
+  .latest-articles-active {
+    height: 142px;
+  }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .header-img {
     height: 228px;
+  }
+
+  .latest-articles-active {
+    height: 112px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .header-img {
     height: 258px;
   }
+
+  .latest-articles-active {
+    height: 312px;
+  }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
   /*文章头图*/
   .header-img {
     height: 194px;
+  }
+
+  .latest-articles-active {
+    height: 222px;
   }
 }
 @media screen and (max-width: 575px) {
@@ -774,6 +822,10 @@ footer .container a, footer .container span {
   }
   .archives-list .archives .post .header-img {
     height: 145px;
+  }
+
+  .latest-articles-active {
+    height: 144.5px;
   }
 }
 
