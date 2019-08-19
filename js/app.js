@@ -13,8 +13,8 @@ $(function () {
         $('#max-img').fadeIn(300);  //  显示大图
         //  设置大图的 src 和 alt
         $('#max-img img').attr({
-            src: $(this).attr('src'),
-            alt: $(this).attr('alt')
+            "src": $(this).attr('src'),
+            "alt": $(this).attr('alt')
         });
     });
 
@@ -23,8 +23,8 @@ $(function () {
         //  隐藏大图
         $(this).fadeOut(300, function () {
             $('#max-img img').attr({
-                src: '',
-                alt: ''
+                "src": "",
+                "alt": ""
             });
         });
     });
@@ -69,6 +69,25 @@ $(function () {
         var pageNav = '<nav aria-label="分页导航区"><ol class="pagination justify-content-center page-navigator">' + $('.comments-lists .page-navigator').html() + '</ol></nav>';
         $('.comments-lists .page-navigator').replaceWith(pageNav);
     }
+
+    //  给侧边栏近期文章的第一篇文章设置头图
+    if ($('.latest-articles a').eq(0).children('img').length > 0) {
+        $('.latest-articles a').eq(0).addClass('latest-articles-active');
+    }
+
+    //  近期文章列表鼠标移入
+    $('.latest-articles li').on('mouseover', function () {
+        $('.latest-articles a').removeClass('latest-articles-active');
+        if ($(this).children('a').children('img').length > 0) {
+            $(this).children('a').addClass('latest-articles-active');
+        }
+    });
+
+    //  近期文章区域鼠标移出
+    $('.latest-articles').on('mouseout', function () {
+        $('.latest-articles a').removeClass('latest-articles-active');
+        $('.latest-articles a').eq(0).addClass('latest-articles-active');
+    });
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
