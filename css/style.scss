@@ -277,7 +277,9 @@ header{
             width: 100%;
             img{
                 display: inline;
-                max-height: 110%;
+                max-width: 120%;
+                min-width: 100%;
+                min-height: 100%;
                 position: absolute;
                 top: 50%;
                 left: 50%;
