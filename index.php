@@ -4,7 +4,7 @@
  *
  * @package MWordStar
  * @author Mr Ma
- * @version 0.1
+ * @version 0.8
  * @link https://www.misterma.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
