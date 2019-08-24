@@ -86,7 +86,9 @@ $(function () {
     //  近期文章区域鼠标移出
     $('.latest-articles').on('mouseout', function () {
         $('.latest-articles a').removeClass('latest-articles-active');
-        $('.latest-articles a').eq(0).addClass('latest-articles-active');
+        if ($('.latest-articles a').eq(0).children('img').length > 0) {
+            $('.latest-articles a').eq(0).addClass('latest-articles-active');
+        }
     });
 });
 
