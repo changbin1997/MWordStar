@@ -71,14 +71,14 @@ $(function () {
     }
 
     //  给侧边栏近期文章的第一篇文章设置头图
-    if ($('.latest-articles a').eq(0).children('img').length > 0) {
+    if ($('.latest-articles a').eq(0).children('.article-img').length > 0) {
         $('.latest-articles a').eq(0).addClass('latest-articles-active');
     }
 
     //  近期文章列表鼠标移入
     $('.latest-articles li').on('mouseover', function () {
         $('.latest-articles a').removeClass('latest-articles-active');
-        if ($(this).children('a').children('img').length > 0) {
+        if ($(this).children('a').children('.article-img').length > 0) {
             $(this).children('a').addClass('latest-articles-active');
         }
     });
@@ -86,7 +86,7 @@ $(function () {
     //  近期文章区域鼠标移出
     $('.latest-articles').on('mouseout', function () {
         $('.latest-articles a').removeClass('latest-articles-active');
-        if ($('.latest-articles a').eq(0).children('img').length > 0) {
+        if ($('.latest-articles a').eq(0).children('.article-img').length > 0) {
             $('.latest-articles a').eq(0).addClass('latest-articles-active');
         }
     });

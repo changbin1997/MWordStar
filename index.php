@@ -19,9 +19,7 @@ $this->need('header.php');  //  头文件
                 <?php if ($this->fields->thumb): ?>
                 <div class="header-img"
                 ">
-                <a href="<?php $this->permalink() ?>">
-                    <img src="<?php $this->fields->thumb(); ?>" alt="<?php $this->title() ?>的头图">
-                </a>
+                <a href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
             </div>
         <?php endif; ?>
             <header class="entry-header">

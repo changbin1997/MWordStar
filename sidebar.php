@@ -19,7 +19,7 @@
                     <li>
                         <a href="<?php $latestArticles->permalink(); ?>">
                             <?php if ($latestArticles->fields->thumb): ?>
-                                <img src="<?php $latestArticles->fields->thumb(); ?>" alt="<?php $latestArticles->title(); ?>的头图">
+                                <div class="article-img" style="background-image: url(<?php $latestArticles->fields->thumb(); ?>);" aria-label="<?php $latestArticles->title(); ?>的头图"></div>
                             <?php endif; ?>
                             <p><?php $latestArticles->title(); ?></p>
                         </a>

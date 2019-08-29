@@ -31,15 +31,8 @@ header .navbar {
   height: 100%;
   position: relative;
   overflow: hidden;
-}
-.container .article-list .post .header-img a img {
-  min-width: 100%;
-  min-height: 100%;
-  max-width: 120%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-size: cover;
+  background-position: center;
 }
 .container .article-list .post .entry-header {
   border-bottom: 1px solid #EAEAEA;
@@ -108,6 +101,9 @@ header .navbar {
   color: #707281;
   font-size: 12px;
   line-height: 29px;
+}
+.container .article-list .post .article-info .tags a {
+  margin-right: 3px;
 }
 
 .sidebar {
@@ -204,7 +200,7 @@ header .navbar {
 .sidebar .latest-articles li a {
   transition: 0.4s;
 }
-.sidebar .latest-articles li a img {
+.sidebar .latest-articles li a .article-img {
   display: none;
   transition: 0.4s;
 }
@@ -217,15 +213,15 @@ header .navbar {
   display: block;
   width: 100%;
 }
-.sidebar .latest-articles .latest-articles-active img {
-  display: inline;
-  max-width: 120%;
-  min-width: 100%;
-  min-height: 100%;
+.sidebar .latest-articles .latest-articles-active .article-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
 }
 .sidebar .latest-articles .latest-articles-active p {
   width: 100%;
@@ -286,15 +282,8 @@ footer .container a, footer .container span {
   height: 100%;
   position: relative;
   overflow: hidden;
-}
-.article-page main .header-img a img, .archive main .header-img a img, .page main .header-img a img {
-  min-width: 100%;
-  min-height: 100%;
-  max-width: 120%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-size: cover;
+  background-position: center;
 }
 .article-page main .article-info, .archive main .article-info, .page main .article-info {
   background: #F9F9F9;
@@ -320,6 +309,9 @@ footer .container a, footer .container span {
   color: #707281;
   font-size: 12px;
   line-height: 29px;
+}
+.article-page main .article-info .tags a, .archive main .article-info .tags a, .page main .article-info .tags a {
+  margin-right: 3px;
 }
 .article-page main article, .archive main article, .page main article {
   padding: 25px;
@@ -375,10 +367,8 @@ footer .container a, footer .container span {
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
 }
-.article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p, .article-page main article .post-content li, .archive main article .post-content li, .page main article .post-content li {
-  color: #444444;
-}
 .article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p {
+  color: #444444;
   line-height: 25px;
 }
 .article-page main article .post-content a, .archive main article .post-content a, .page main article .post-content a {
@@ -386,6 +376,10 @@ footer .container a, footer .container span {
 }
 .article-page main article .post-content a:hover, .archive main article .post-content a:hover, .page main article .post-content a:hover {
   color: #D13210;
+}
+.article-page main article .post-content li, .archive main article .post-content li, .page main article .post-content li {
+  color: #444444;
+  padding: 2px 0;
 }
 .article-page .post-navigation, .archive .post-navigation, .page .post-navigation {
   padding: 25px;
@@ -573,15 +567,8 @@ footer .container a, footer .container span {
   height: 100%;
   position: relative;
   overflow: hidden;
-}
-.archives-list .archives .post .header-img a img {
-  min-width: 100%;
-  min-height: 100%;
-  max-width: 120%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-size: cover;
+  background-position: center;
 }
 .archives-list .archives .post .entry-header {
   border-bottom: 1px solid #EAEAEA;
@@ -650,6 +637,9 @@ footer .container a, footer .container span {
   color: #707281;
   font-size: 12px;
   line-height: 29px;
+}
+.archives-list .archives .post .article-info .tags a {
+  margin-right: 3px;
 }
 .archives-list .archives .post > .post-title {
   padding: 20px 25px;
@@ -745,15 +735,8 @@ footer .container a, footer .container span {
     height: 100%;
     position: relative;
     overflow: hidden;
-  }
-  .container .article-list .post .header-img a img {
-    min-width: 100%;
-    min-height: 100%;
-    max-width: 120%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    background-size: cover;
+    background-position: center;
   }
   .container .article-list .post .entry-header .entry-title {
     font-size: 20px;
@@ -802,15 +785,8 @@ footer .container a, footer .container span {
     height: 100%;
     position: relative;
     overflow: hidden;
-  }
-  .archives-list .archives .post .header-img a img {
-    min-width: 100%;
-    min-height: 100%;
-    max-width: 120%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    background-size: cover;
+    background-position: center;
   }
   .archives-list .archives .post .entry-header .entry-title {
     font-size: 20px;

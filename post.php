@@ -12,9 +12,7 @@
                 </header>
                 <?php if ($this->fields->thumb): ?>
                 <div class="header-img">
-                    <a href="">
-                        <img src="<?php $this->fields->thumb(); ?>" alt="<?php $this->title() ?>的头图">
-                    </a>
+                    <a href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                 </div>
                 <?php endif; ?>
                 <div class="article-info clearfix">
