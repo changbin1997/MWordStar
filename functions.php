@@ -21,13 +21,12 @@ function themeConfig($form) {
     $form->addInput($logoUrl);
 
     //  站点副标题
-    $tagline = new Typecho_Widget_Helper_Form_Element_Text('tagline', NULL, NULL, _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。'));
+    $tagline = new Typecho_Widget_Helper_Form_Element_Text('tagline', null, '生命不息，折腾不止', _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。'));
     $form->addInput($tagline);
 
     //  侧边栏
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array(
-            'ShowSocialInfo' => _t('显示社交信息'),
             'ShowRecentPosts' => _t('显示最新文章'),
             'ShowRecentComments' => _t('显示最近回复'),
             'ShowCategory' => _t('显示分类'),
@@ -40,12 +39,22 @@ function themeConfig($form) {
     );
     $form->addInput($sidebarBlock->multiMode());
 
+    //  巨幕
+    $Jumbotron = new Typecho_Widget_Helper_Form_Element_Checkbox('Jumbotron', array(
+        'showJumbotron' => _t('显示巨幕')
+    ), array('showJumbotron'), _t('巨幕'));
+    $form->addInput($Jumbotron->multiMode());
+
+    //  巨幕背景图片
+    $JumbotronBG = new Typecho_Widget_Helper_Form_Element_Text('JumbotronBG', null, null, _t('巨幕背景图片'), _t('如果为空会显示默认图片。'));
+    $form->addInput($JumbotronBG);
+
     //  社交信息
-    $socialInfo = new Typecho_Widget_Helper_Form_Element_Textarea('socialInfo', null, null, _t('社交信息'), _t('需要 JSON 格式，社交信息会显示在侧边栏。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $socialInfo = new Typecho_Widget_Helper_Form_Element_Textarea('socialInfo', null, null, _t('社交信息'), _t('需要 JSON 格式，社交信息会显示在巨幕的站点副标题下方。需要开启巨幕显示才能显示社交信息。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
     $form->addInput($socialInfo);
 
     //  文章摘要字数
-    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, NULL, _t('文章摘要字数'), _t('文章摘要字数，默认为：150 个字'));
+    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '150', _t('文章摘要字数'), _t('文章摘要字数，默认为：150 个字'));
     $form->addInput($summary);
 
     //  首页友链
