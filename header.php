@@ -64,11 +64,11 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
                         </li>
                     <?php endwhile; ?>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
+                <form class="form-inline my-2" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                     <div class="input-group">
                         <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit">搜索</button>
+                            <button class="btn btn-primary my-sm-0" type="submit">搜索</button>
                         </div>
                     </div>
                 </form>
