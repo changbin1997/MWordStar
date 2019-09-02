@@ -1,18 +1,9 @@
 <div class="col-md-12 col-lg-4 col-sm-12 sidebar">
-    <!--社交小工具-->
-    <?php if ($this->options->sidebarBlock && in_array('ShowSocialInfo', $this->options->sidebarBlock) && $this->options->socialInfo): ?>
-    <section aria-label="社交信息">
-        <h4>社交信息</h4>
-        <div class="social clearfix">
-            <?php socialInfo($this->options->socialInfo); ?>
-        </div>
-    </section>
-    <?php endif; ?>
     <!--最新文章-->
     <?php if (!$this->is('page', 'archives')): ?>
         <?php if ($this->options->sidebarBlock && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
             <section aria-label="近期文章" class="latest-articles">
-                <h4>近期文章</h4>
+                <h4>最新文章</h4>
                 <ul>
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
                     <?php while ($latestArticles->next()): ?>
@@ -51,8 +42,8 @@
     <?php if ($this->options->sidebarBlock && in_array('ShowCategory', $this->options->sidebarBlock)): ?>
         <section aria-label="文章分类">
             <h4>文章分类</h4>
-            <ul>
-                <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}" title="{description}">{name}</a> ({count})</li>'); ?>
+            <ul class="list-group list-group-flush">
+                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center"><a href="{permalink}" title="{description}">{name}</a><span class="badge badge-primary badge-pill">{count}</span></li>'); ?>
             </ul>
         </section>
     <?php endif; ?>
@@ -76,8 +67,8 @@
     <?php if ($this->options->sidebarBlock && in_array('ShowArchive', $this->options->sidebarBlock)): ?>
         <section aria-label="文章归档">
             <h4>文章归档</h4>
-            <ul>
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li><a href="{permalink}" title="{count}篇文章">{date}</a> ({count})</li>');
+            <ul class="list-group list-group-flush">
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center"><a href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-primary badge-pill">{count}</span></li>');
                 ?>
             </ul>
         </section>
