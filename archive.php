@@ -31,13 +31,6 @@
                         </header>
                         <div class="entry-summary">
                             <p><?php $this->excerpt($this->options->summary?$this->options->summary:150, '...'); ?></p>
-                            <p class="read-more">
-                                <a class="btn read-more-btn" href="<?php $this->permalink() ?>">
-                                    阅读全文
-                                    <span></span>
-                                    <i class="icon-arrow-right"></i>
-                                </a>
-                            </p>
                         </div>
                         <div class="article-info clearfix">
                             <!--时间-->
@@ -65,6 +58,7 @@
                                 <i class="icon-folder-open icon" aria-label="分类图标"></i>
                                 <?php $this->category(','); ?>
                             </div>
+                            <a href="<?php $this->permalink() ?>" class="float-right">阅读全文</a>
                         </div>
                     </article>
                 <?php endwhile; ?>
