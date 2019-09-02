@@ -77,7 +77,7 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
     </nav>
 </header>
 <?php if ($Jumbotron): ?>
-    <div class="jumbotron jumbotron-fluid" STYLE="background-image: url(<?php $this->options->themeUrl('img/bg.jpg') ?>)">
+    <div class="jumbotron jumbotron-fluid" STYLE="background-image: url(<?php $this->options->JumbotronBG?$this->options->JumbotronBG():$this->options->themeUrl('img/bg.jpg'); ?>)">
         <div class="container">
             <h1 class="text-center">
                 <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
