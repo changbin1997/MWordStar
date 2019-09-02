@@ -24,6 +24,7 @@ $this->need('header.php');  //  头文件
                     <?php endif; ?>
                     <header class="entry-header">
                         <h2 class="entry-title p-name">
+                            <?php if ($this->sticky) $this->sticky(); ?>
                             <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                         </h2>
                     </header>
