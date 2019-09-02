@@ -1,6 +1,5 @@
 //  通用的文章信息样式
 @mixin articleInfo{
-    background: #F9F9F9;
     padding: 10px 25px;
     border-top: 1px solid #EAEAEA;
     border-bottom: 1px solid #EAEAEA;
@@ -33,7 +32,7 @@
     .entry-title{
         font-size: 28px;
         font-weight: 700;
-        padding: 20px 25px 12px 25px;
+        padding: 20px 20px 12px 20px;
         a{
             color: #222222;
         }
@@ -67,6 +66,7 @@
     background: #FFFFFF;
     margin-bottom: 30px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 4px;
     //  文章头图
     .header-img{
         @include postThumbnail;
@@ -77,7 +77,7 @@
     }
     //  文章摘要
     .entry-summary{
-        padding: 25px;
+        padding: 20px;
         p{
             font-size: 15px;
             color: #444444;
@@ -135,17 +135,51 @@
 }
 
 body{
-    background: #E2E2E2;
+    background: #E3E3E3;
 }
 a{
-    transition: 0.3s;
+    color: #007ACC;
+    transition: 0.4s;
 }
 
 //  顶部导航条
 header{
+    width: 100%;
+    z-index: 999;
     .navbar{
-        background: #ffffff;
-        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
+    }
+}
+
+//  巨幕
+.jumbotron{
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    h1{
+        font-size: 50px;
+        font-weight: 700;
+        margin-top: 56px;
+    }
+    a:hover{
+        color: #ffffff;
+    }
+    *{
+        color: #ffffff;
+    }
+    //  社交信息
+    .social-info{
+        text-align: center;
+        a{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            font-size: 28px;
+            line-height: 30px;
+            text-align: center;
+            margin: 0 10px;
+        }
     }
 }
 
@@ -165,14 +199,14 @@ header{
         background: #FFFFFF;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
         margin-bottom: 30px;
+        border-radius: 4px;
         //  侧边栏个区域的标题
         h4{
             line-height: 22px;
-            padding: 12px 20px;
+            padding: 12px 0;
             font-size: 16px;
-            border-bottom: 1px solid #EAEAEA;
-            background: #F9F9F9;
-            margin-bottom: 10px;
+            border-bottom: 3px solid #EAEAEA;
+            margin: 0 20px 10px 20px;
             font-weight: 700;
         }
         //  侧边栏的列表
@@ -180,15 +214,18 @@ header{
             list-style: none;
             padding: 0 18px 18px 18px;
             li{
-                padding: 8px 15px;
+                padding: 8px 0;
                 border-bottom: 1px solid #EEEEEE;
                 font-size: 13px;
                 a{
-                    font-size: 13px;
+                    font-size: 14px;
                     color: #007ACC;
                 }
                 a:hover{
                     color: #D13210;
+                }
+                img{
+                    border-radius: 50%;
                 }
             }
         }
@@ -204,52 +241,11 @@ header{
                 font-size: 12px;
                 line-height: 12px;
                 transition: 0.3s;
+                border-radius: 4px;
             }
             a:hover{
                 background: #007ACC;
                 color: #ffffff;
-            }
-        }
-        //  社交小工具
-        .social{
-            padding: 0 18px 18px 18px;
-            a{
-                display: block;
-                width: 46px;
-                height: 43px;
-                float: left;
-                color: #ffffff;
-                font-size: 22px;
-                text-align: center;
-                line-height: 43px;
-                margin: 3px;
-            }
-            .icon-facebook{
-                background: #3B5998;
-            }
-            .icon-twitter{
-                background: #55ACEE;
-            }
-            .icon-sina-weibo{
-                background: #F4151E;
-            }
-            .icon-instagram{
-                background: #8A3AB9;
-            }
-            .icon-github{
-                background: #24292E;
-            }
-            .icon-telegram{
-                background: #39B1E2;
-            }
-            .icon-mail2{
-                background: #004A97;
-            }
-            .icon-linkedin2{
-                background: #007BB5;
-            }
-            .icon-steam{
-                background: #1A3348;
             }
         }
     }
@@ -325,6 +321,7 @@ footer{
         border: 1px solid #DEDEDE;
         background: #ffffff;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+        border-radius: 4px;
         .entry-header{
             @include entryHeader;
         }
@@ -337,7 +334,7 @@ footer{
             @include articleInfo;
         }
         article{
-            padding: 25px;
+            padding: 20px;
             //  文章页的文章内容
             .post-content{
                 width: 100%;
@@ -408,12 +405,17 @@ footer{
                     color: #444444;
                     padding: 2px 0;
                 }
+                p>code,li>code{
+                    background: #F6E3E3;
+                    color: #FF502C;
+                    padding: 0 4px;
+                }
             }
         }
     }
     //  上一篇文章和下一篇文章的导航
     .post-navigation{
-        padding: 25px;
+        padding: 20px;
         border-top: 1px solid #DEDEDE;
         border-bottom: 1px solid #DEDEDE;
         a{
@@ -476,6 +478,7 @@ footer{
                     height: 42px;
                     margin-right: 20px;
                     float: left;
+                    border-radius: 50%;
                 }
                 //  评论者名字和发表时间
                 .comment-info{
@@ -497,16 +500,18 @@ footer{
                 .comment-reply{
                     a{
                         line-height: 30px;
-                        color: #ffffff;
                         font-size: 12px;
                         width: 60px;
                         height: 32px;
-                        background: #0F8BDA;
+                        background: #ffffff;
                         display: block;
                         text-align: center;
+                        border: 1px solid #0F8BDA;
+                        border-radius: 4px;
                     }
                     a:hover{
                         background: #38A4E8;
+                        color: #ffffff;
                     }
                 }
                 //  评论内容

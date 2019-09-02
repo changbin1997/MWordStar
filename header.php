@@ -1,4 +1,10 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+//  获取巨幕的配置信息
+if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbotron)) {
+    $Jumbotron = true;
+}
+?>
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -38,8 +44,8 @@
     <?php endif; ?>
 </head>
 <body>
-<header class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<header class="<?php echo $Jumbotron?'position-fixed':'sticky-top'; ?>">
+    <nav class="navbar navbar-expand-lg navbar-dark <?php echo !$Jumbotron?'bg-dark':''; ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
@@ -59,12 +65,31 @@
                     <?php endwhile; ?>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
-                    <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit">搜索</button>
+                    <div class="input-group">
+                        <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit">搜索</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </nav>
 </header>
+<?php if ($Jumbotron): ?>
+    <div class="jumbotron jumbotron-fluid" STYLE="background-image: url(<?php $this->options->themeUrl('img/bg.jpg') ?>)">
+        <div class="container">
+            <h1 class="text-center">
+                <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
+            </h1>
+            <?PHP if ($this->options->tagline): ?>
+                <p class="text-center"><?php $this->options->tagline(); ?></p>
+            <?php endif; ?>
+            <?php if ($this->options->socialInfo): ?>
+                <nav class="social-info">
+                    <?php socialInfo($this->options->socialInfo); ?>
+                </nav>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

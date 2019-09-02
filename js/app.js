@@ -90,6 +90,18 @@ $(function () {
             $('.latest-articles a').eq(0).addClass('latest-articles-active');
         }
     });
+
+    //  监听滚动条
+    $(document).on('scroll', function (ev) {
+        if ($('.jumbotron').length > 0) {
+            //  根据滚动条的高度调整导航条的背景透明度
+            if ($(document).scrollTop() > $('.jumbotron').outerHeight() - 56) {
+                $('header .navbar').addClass('bg-dark');
+            }else {
+                $('header .navbar').removeClass('bg-dark');
+            }
+        }
+    });
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
