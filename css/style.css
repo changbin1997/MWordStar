@@ -20,6 +20,7 @@ header .navbar {
 .jumbotron {
   background-size: cover;
   background-position: center;
+  background-color: #343A40;
   margin-bottom: 20px;
 }
 .jumbotron h1 {
@@ -547,6 +548,7 @@ footer .container a, footer .container span {
   margin-bottom: 30px;
   padding: 20px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
 }
 .archives-list .archives .page-header h1 {
   font-size: 30px;
