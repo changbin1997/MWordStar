@@ -101,6 +101,24 @@ $(function () {
                 $('header .navbar').removeClass('bg-dark');
             }
         }
+
+        //  如果移动设备的导航菜单为展开状态
+        if ($('header .navbar-toggler').attr('aria-expanded') == 'true') {
+            $('header .navbar-toggler').click();  //  收起导航菜单
+        }
+    });
+    
+    //  导航菜单按钮点击
+    $('header .navbar-toggler').on('click', function () {
+        //  是否开启了巨幕显示和巨幕是否处于可见区域
+        if ($('.jumbotron').length > 0 && $(document).scrollTop() < $('.jumbotron').outerHeight() - 56) {
+            //  如果导航菜单为展开状态
+            if ($(this).attr('aria-expanded') == 'false') {
+                $('header .navbar').addClass('bg-dark');  //  设置导航区域的透明度为不透明
+            }else {
+                $('header .navbar').removeClass('bg-dark');  //  设置导航区域的透明度为透明
+            }
+        }
     });
 });
 
