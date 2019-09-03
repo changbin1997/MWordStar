@@ -250,6 +250,7 @@ footer .container {
 footer .container a, footer .container span {
   margin: 0 5px;
   color: #525252;
+  font-size: 15px;
 }
 
 .article-page, .archive, .page {

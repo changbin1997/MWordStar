@@ -24,6 +24,10 @@ function themeConfig($form) {
     $tagline = new Typecho_Widget_Helper_Form_Element_Text('tagline', null, '生命不息，折腾不止', _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。'));
     $form->addInput($tagline);
 
+    //  ICP信息
+    $icp = new Typecho_Widget_Helper_Form_Element_Text('icp', null, null, _t('ICP 备案号'), _t('ICP 备案号会显示在网站的底部。'));
+    $form->addInput($icp);
+
     //  侧边栏
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array(
@@ -50,23 +54,23 @@ function themeConfig($form) {
     $form->addInput($JumbotronBG);
 
     //  社交信息
-    $socialInfo = new Typecho_Widget_Helper_Form_Element_Textarea('socialInfo', null, null, _t('社交信息'), _t('需要 JSON 格式，社交信息会显示在巨幕的站点副标题下方。需要开启巨幕显示才能显示社交信息。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $socialInfo = new Typecho_Widget_Helper_Form_Element_Textarea('socialInfo', null, null, _t('社交信息'), _t('需要 JSON 格式，社交信息会显示在巨幕的站点副标题下方。需要开启巨幕显示才能显示社交信息。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
     $form->addInput($socialInfo);
 
     //  文章摘要字数
-    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '150', _t('文章摘要字数'), _t('文章摘要字数，默认为：150 个字'));
+    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('文章摘要字数，默认为：120 个字'));
     $form->addInput($summary);
 
     //  首页友链
-    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，格式为：JSON。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
     $form->addInput($homeLinks);
 
     //  全站友链
-    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，格式为：JSON。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
     $form->addInput($links);
 
     //  独立页友链
-    $pageLinks = new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，要求格式为：JSON。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为：友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/812/。'));
+    $pageLinks = new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
     $form->addInput($pageLinks);
 
     //  自定义CSS
