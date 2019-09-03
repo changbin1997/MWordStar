@@ -56,6 +56,7 @@ header .navbar {
   margin-bottom: 30px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
   border-radius: 4px;
+  overflow: hidden;
 }
 .container .article-list .post .header-img {
   width: 100%;
@@ -564,6 +565,7 @@ footer .container a, footer .container span {
   margin-bottom: 30px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
   border-radius: 4px;
+  overflow: hidden;
 }
 .archives-list .archives .post .header-img {
   width: 100%;
