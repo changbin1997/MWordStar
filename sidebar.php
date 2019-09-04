@@ -2,7 +2,7 @@
     <!--最新文章-->
     <?php if (!$this->is('page', 'archives')): ?>
         <?php if ($this->options->sidebarBlock && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
-            <section aria-label="近期文章" class="latest-articles">
+            <section aria-label="最新文章" class="latest-articles">
                 <h4>最新文章</h4>
                 <ul>
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
