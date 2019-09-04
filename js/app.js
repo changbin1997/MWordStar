@@ -75,36 +75,37 @@ $(function () {
         $('.latest-articles a').eq(0).addClass('latest-articles-active');
     }
 
-    //  近期文章列表鼠标移入
-    $('.latest-articles li').on('mouseover', function () {
-        $('.latest-articles a').removeClass('latest-articles-active');
+    //  最新文章列表鼠标移入
+    $('.latest-articles li').on('mouseover', function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
         if ($(this).children('a').children('.article-img').length > 0) {
+            $('.latest-articles a').removeClass('latest-articles-active');
             $(this).children('a').addClass('latest-articles-active');
         }
     });
 
-    //  近期文章区域鼠标移出
-    $('.latest-articles').on('mouseout', function () {
-        $('.latest-articles a').removeClass('latest-articles-active');
-        if ($('.latest-articles a').eq(0).children('.article-img').length > 0) {
-            $('.latest-articles a').eq(0).addClass('latest-articles-active');
+    //  最新文章区域鼠标移出
+    $('.latest-articles').on('mouseout', function (ev) {
+        var x = ev.clientX;
+        var y = ev.clientY + $(document).scrollTop();
+        if (x < $(this).offset().left || x >= $(this).offset().left + $(this).width() || y < $(this).offset().top || y >= $(this).offset().top + $(this).height()) {
+            $('.latest-articles a').removeClass('latest-articles-active');
+            if ($('.latest-articles a').eq(0).children('.article-img').length > 0) {
+                $('.latest-articles a').eq(0).addClass('latest-articles-active');
+            }
         }
     });
 
     //  监听滚动条
     $(document).on('scroll', function (ev) {
-        if ($('.jumbotron').length > 0) {
+        if ($('.jumbotron').length > 0 && $('header .navbar-toggler').attr('aria-expanded') == 'false') {
             //  根据滚动条的高度调整导航条的背景透明度
             if ($(document).scrollTop() > $('.jumbotron').outerHeight() - 56) {
                 $('header .navbar').addClass('bg-dark');
             }else {
                 $('header .navbar').removeClass('bg-dark');
             }
-        }
-
-        //  如果移动设备的导航菜单为展开状态
-        if ($('header .navbar-toggler').attr('aria-expanded') == 'true') {
-            $('header .navbar-toggler').click();  //  收起导航菜单
         }
     });
     
