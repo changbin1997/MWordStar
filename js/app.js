@@ -121,6 +121,13 @@ $(function () {
             }
         }
     });
+
+    //  文章是否有密码
+    if ($('.post-content .protected').length > 0) {
+        $('.protected .word').attr('role', 'alert');  //  让读屏软件朗读输入密码的提示
+        $('.protected .text').attr('placeholder', '请在此处输入文章密码');
+        $('.protected .text').get(0).select();  //  让密码输入表单获取交点
+    }
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
