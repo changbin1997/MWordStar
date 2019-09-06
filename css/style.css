@@ -361,8 +361,12 @@ footer .container a, footer .container span {
 .article-page main article .post-content code, .archive main article .post-content code, .page main article .post-content code {
   font-size: 15px;
 }
+.article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre {
+  border-radius: 4px;
+}
 .article-page main article .post-content pre code, .archive main article .post-content pre code, .page main article .post-content pre code {
   padding: 10px;
+  line-height: 20px;
 }
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
@@ -382,8 +386,8 @@ footer .container a, footer .container span {
   padding: 2px 0;
 }
 .article-page main article .post-content p > code, .archive main article .post-content p > code, .page main article .post-content p > code, .article-page main article .post-content li > code, .archive main article .post-content li > code, .page main article .post-content li > code {
-  background: #F6E3E3;
-  color: #FF502C;
+  background: #EDEDED;
+  color: #333333;
   padding: 0 4px;
 }
 .article-page .post-navigation, .archive .post-navigation, .page .post-navigation {

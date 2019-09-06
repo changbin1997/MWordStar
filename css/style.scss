@@ -387,8 +387,10 @@ footer{
                     font-size: 15px;
                 }
                 pre{
+                    border-radius: 4px;
                     code{
                         padding: 10px;
+                        line-height: 20px;
                     }
                 }
                 table td{
@@ -409,8 +411,8 @@ footer{
                     padding: 2px 0;
                 }
                 p>code,li>code{
-                    background: #F6E3E3;
-                    color: #FF502C;
+                    background: #EDEDED;
+                    color: #333333;
                     padding: 0 4px;
                 }
             }
