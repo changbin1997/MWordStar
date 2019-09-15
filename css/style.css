@@ -366,7 +366,6 @@ footer .container a, footer .container span {
 }
 .article-page main article .post-content pre code, .archive main article .post-content pre code, .page main article .post-content pre code {
   padding: 10px;
-  line-height: 20px;
 }
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
