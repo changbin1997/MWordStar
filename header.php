@@ -3,6 +3,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 //  获取巨幕的配置信息
 if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbotron)) {
     $Jumbotron = true;
+}else {
+    $Jumbotron = false;
 }
 ?>
 <!doctype html>

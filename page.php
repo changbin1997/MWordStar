@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 
-<div class="container">
+<div class="container main-content">
     <div class="row">
         <div class="col-md-12 col-lg-8 col-sm-12 page">
             <main>

@@ -11,7 +11,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');  //  头文件
 ?>
 
-<div class="container home">
+<div class="container home main-content">
     <div class="row">
         <div class="article-list col-md-12 col-lg-8 col-sm-12">
             <?php while ($this->next()):  //  开始循环  ?>

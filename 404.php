@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 
-<div class="container container-404">
+<div class="container container-404 main-content">
     <h1>404</h1>
     <h2 role="alert">您访问的页面不存在！</h2>
     <h5>您还是再找找吧！</h5>

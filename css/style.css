@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  background: #E3E3E3;
+  background: #EFEFEF;
 }
 
 a {
@@ -13,7 +13,7 @@ header {
   z-index: 999;
 }
 header .navbar {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   transition: 0.5s;
 }
 
@@ -142,10 +142,15 @@ header .navbar {
   margin-right: 3px;
 }
 
+.main-content {
+  margin-top: 15px;
+}
+
 .sidebar {
   margin-top: 30px;
 }
 .sidebar section {
+  margin-left: 15px;
   background: #FFFFFF;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
   margin-bottom: 30px;
@@ -736,6 +741,10 @@ footer .container a, footer .container span {
   .latest-articles-active {
     height: 222px;
   }
+
+  .sidebar section {
+    margin-left: 0;
+  }
 }
 @media screen and (max-width: 575px) {
   .container .article-list .post .header-img {
@@ -817,6 +826,10 @@ footer .container a, footer .container span {
 
   .latest-articles-active {
     height: 144.5px;
+  }
+
+  .sidebar section {
+    margin-left: 0;
   }
 }
 

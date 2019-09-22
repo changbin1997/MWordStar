@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');
 ?>
 
-    <div class="container archive-page">
+    <div class="container archive-page main-content">
         <div class="row">
             <div class="archive col-md-12 col-lg-8 col-sm-12">
                 <main>

@@ -1,3 +1,5 @@
+$articleFontSize: 15px;  //  文章字体大小
+
 //  通用的文章信息样式
 @mixin articleInfo{
     padding: 10px 25px;
@@ -80,7 +82,7 @@
     .entry-summary{
         padding: 20px;
         p{
-            font-size: 15px;
+            font-size: $articleFontSize;
             color: #444444;
             line-height: 25px;
         }
@@ -136,7 +138,7 @@
 }
 
 body{
-    background: #E3E3E3;
+    background: #EFEFEF;
 }
 a{
     color: #007ACC;
@@ -148,7 +150,7 @@ header{
     width: 100%;
     z-index: 999;
     .navbar{
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.4);
         transition: 0.5s;
     }
 }
@@ -193,11 +195,15 @@ header{
         @include post;
     }
 }
+.main-content{
+    margin-top: 15px;
+}
 
 //  侧边栏区域
 .sidebar{
     margin-top: 30px;
     section{
+        margin-left: 15px;
         background: #FFFFFF;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
         margin-bottom: 30px;
@@ -342,7 +348,7 @@ footer{
             .post-content{
                 width: 100%;
                 margin-top: 10px;
-                font-size: 15px;
+                font-size: $articleFontSize;
                 word-break: break-all;
                 ul,ol,img,pre,blockquote,h1,h2,h3,h4,h5,p{
                     margin: 0 0 20px 0;
@@ -384,7 +390,7 @@ footer{
                 }
                 //  代码高亮区域
                 code{
-                    font-size: 15px;
+                    font-size: $articleFontSize;
                 }
                 pre{
                     border-radius: 4px;
@@ -719,6 +725,10 @@ footer{
     .latest-articles-active{
         height: 222px;
     }
+    //  侧边栏
+    .sidebar section{
+        margin-left: 0;
+    }
 }
 //  < 575
 @media screen and (max-width: 575px) {
@@ -768,5 +778,9 @@ footer{
     //  侧边栏的文章头图
     .latest-articles-active{
         height: 144.5px;
+    }
+    //  侧边栏
+    .sidebar section{
+        margin-left: 0;
     }
 }

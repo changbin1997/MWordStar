@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');  //  头文件
 ?>
 
-<div class="container link-page">
+<div class="container link-page main-content">
     <div class="row">
         <div class="archive col-md-12 col-lg-8 col-sm-12">
             <main>
