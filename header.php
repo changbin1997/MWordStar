@@ -59,6 +59,16 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
                     <li class="nav-item <?php echo $this->is('index')?'active':''; ?>">
                         <a class="nav-link" <?php if($this->is('index')): ?> <?php endif; ?> href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
                     </li>
+                    <?php if ($this->options->navbar && in_array('showClassification', $this->options->navbar)): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                文章分类
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <?php $this->widget('Widget_Metas_Category_List')->parse('<a class="dropdown-item" href="{permalink}">{name}</a>'); ?>
+                            </div>
+                        </li>
+                    <?php endif; ?>
                     <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                     <?php while($pages->next()): ?>
                         <li class="nav-item <?php echo $this->is('page', $pages->slug)?'active':''; ?>">

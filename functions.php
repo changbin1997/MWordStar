@@ -43,6 +43,12 @@ function themeConfig($form) {
     );
     $form->addInput($sidebarBlock->multiMode());
 
+    //  导航栏
+    $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(
+        'showClassification' => _t('显示文章分类')
+    ), null, _t('导航栏'));
+    $form->addInput($navBar->multiMode());
+
     //  巨幕
     $Jumbotron = new Typecho_Widget_Helper_Form_Element_Checkbox('Jumbotron', array(
         'showJumbotron' => _t('显示巨幕')
