@@ -389,7 +389,7 @@ footer .container a, footer .container span {
   color: #444444;
   padding: 2px 0;
 }
-.article-page main article .post-content p > code, .archive main article .post-content p > code, .page main article .post-content p > code, .article-page main article .post-content li > code, .archive main article .post-content li > code, .page main article .post-content li > code {
+.article-page main article .post-content p > code, .archive main article .post-content p > code, .page main article .post-content p > code, .article-page main article .post-content li > code, .archive main article .post-content li > code, .page main article .post-content li > code, .article-page main article .post-content td > code, .archive main article .post-content td > code, .page main article .post-content td > code {
   background: #EDEDED;
   color: #333333;
   padding: 0 4px;
@@ -397,7 +397,6 @@ footer .container a, footer .container span {
 .article-page .post-navigation, .archive .post-navigation, .page .post-navigation {
   padding: 20px;
   border-top: 1px solid #DEDEDE;
-  border-bottom: 1px solid #DEDEDE;
 }
 .article-page .post-navigation a, .archive .post-navigation a, .page .post-navigation a {
   color: #007ACC;
@@ -425,6 +424,9 @@ footer .container a, footer .container span {
   transform: translate(-50%, -50%);
 }
 
+#comments {
+  border-top: 1px solid #DADADA;
+}
 #comments h2 {
   font-size: 25px;
   font-weight: 700;

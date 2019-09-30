@@ -100,6 +100,6 @@
     	</form>
     </div>
     <?php else: ?>
-    <h2 class="comments-off"><?php _e('评论已关闭'); ?></h2>
+    <h2 class="comments-off mt-5"><?php _e('评论已关闭'); ?></h2>
     <?php endif; ?>
 </div>

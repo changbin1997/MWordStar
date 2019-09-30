@@ -415,7 +415,7 @@ footer{
                     color: #444444;
                     padding: 2px 0;
                 }
-                p>code,li>code{
+                p>code,li>code,td>code{
                     background: #EDEDED;
                     color: #333333;
                     padding: 0 4px;
@@ -427,7 +427,6 @@ footer{
     .post-navigation{
         padding: 20px;
         border-top: 1px solid #DEDEDE;
-        border-bottom: 1px solid #DEDEDE;
         a{
             color: #007ACC;
         }
@@ -459,6 +458,7 @@ footer{
 
 //  评论区
 #comments{
+    border-top: 1px solid #DADADA;
     h2{
         font-size: 25px;
         font-weight: 700;
