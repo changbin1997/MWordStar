@@ -8,7 +8,7 @@
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
                     <?php while ($latestArticles->next()): ?>
                     <li>
-                        <a href="<?php $latestArticles->permalink(); ?>">
+                        <a class="text-secondary" href="<?php $latestArticles->permalink(); ?>">
                             <?php if ($latestArticles->fields->thumb): ?>
                                 <div class="article-img" style="background-image: url(<?php $latestArticles->fields->thumb(); ?>);" aria-label="<?php $latestArticles->title(); ?>的头图"></div>
                             <?php endif; ?>
@@ -30,7 +30,7 @@
                     <li class="media">
                         <?php $comments->gravatar('40', ''); ?>
                         <div class="media-body ml-2">
-                            <a href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
+                            <a class="text-secondary" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
                             <div><?php $comments->excerpt(20, '[...]'); ?></div>
                         </div>
                     </li>
@@ -43,7 +43,7 @@
         <section aria-label="文章分类">
             <h4>文章分类</h4>
             <ul class="list-group list-group-flush">
-                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center"><a href="{permalink}" title="{description}">{name}</a><span class="badge badge-primary badge-pill">{count}</span></li>'); ?>
+                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center"><a class="text-secondary" href="{permalink}" title="{description}">{name}</a><span class="badge badge-secondary badge-pill">{count}</span></li>'); ?>
             </ul>
         </section>
     <?php endif; ?>
@@ -68,7 +68,7 @@
         <section aria-label="文章归档">
             <h4>文章归档</h4>
             <ul class="list-group list-group-flush">
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center"><a href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-primary badge-pill">{count}</span></li>');
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center"><a class="text-secondary" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-secondary badge-pill">{count}</span></li>');
                 ?>
             </ul>
         </section>
@@ -80,14 +80,14 @@
             <ul>
                 <?php if (!in_array('HideLoginLink', $this->options->sidebarBlock)): ?>
                     <?php if($this->user->hasLogin()): ?>
-                        <li class="last"><a href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
-                        <li><a href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
+                        <li class="last"><a class="text-secondary" href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
+                        <li><a class="text-secondary" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
                     <?php else: ?>
-                        <li class="last"><a href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
+                        <li class="last"><a class="text-secondary" href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
                     <?php endif; ?>
                 <?php endif; ?>
-                <li><a target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
-                <li><a target="_blank" href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论 RSS'); ?></a></li>
+                <li><a class="text-secondary" target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
+                <li><a class="text-secondary" target="_blank" href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论 RSS'); ?></a></li>
             </ul>
         </section>
     <?php endif; ?>
@@ -99,13 +99,13 @@
                 <?php if ($this->options->homeLinks && $this->is('index')): ?>
                     <?php $homeLinks = json_decode($this->options->homeLinks); ?>
                     <?php foreach ($homeLinks as $val): ?>
-                        <li><a href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                        <li><a class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
                     <?php endforeach; ?>
                 <?php endif; ?>
                 <?php if ($this->options->links): ?>
                     <?php $links = json_decode($this->options->links); ?>
                     <?php foreach ($links as $val): ?>
-                        <li><a href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                        <li><a class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
                     <?php endforeach;; ?>
                 <?php endif; ?>
             </ul>
