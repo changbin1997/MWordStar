@@ -1,4 +1,5 @@
 $articleFontSize: 15px;  //  文章字体大小
+$shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);  //  区块阴影
 
 //  通用的文章信息样式
 @mixin articleInfo{
@@ -67,9 +68,9 @@ $articleFontSize: 15px;  //  文章字体大小
     border: 1px solid #DEDEDE;
     background: #FFFFFF;
     margin-bottom: 30px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
     border-radius: 4px;
     overflow: hidden;
+    box-shadow: $shadow;
     //  文章头图
     .header-img{
         @include postThumbnail;
@@ -104,8 +105,6 @@ $articleFontSize: 15px;  //  文章字体大小
             }
         }
         .read-more-btn:hover{
-            border-color: #D13210;
-            color: #D13210;
             padding: 10px 17px;
             span{
                 margin: 0 3px;
@@ -138,10 +137,9 @@ $articleFontSize: 15px;  //  文章字体大小
 }
 
 body{
-    background: #EFEFEF;
+    background: #E4E4E4;
 }
 a{
-    color: #007ACC;
     transition: 0.4s;
 }
 
@@ -189,7 +187,7 @@ header{
 
 //  内容区域
 .container .article-list{
-    margin-top: 30px;
+    margin-top: 15px;
     //  文章
     .post{
         @include post;
@@ -201,11 +199,11 @@ header{
 
 //  侧边栏区域
 .sidebar{
-    margin-top: 30px;
+    margin-top: 15px;
     section{
-        margin-left: 15px;
+        margin-left: 20px;
         background: #FFFFFF;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+        box-shadow: $shadow;
         margin-bottom: 30px;
         border-radius: 4px;
         //  侧边栏个区域的标题
@@ -213,7 +211,7 @@ header{
             line-height: 22px;
             padding: 12px 0;
             font-size: 16px;
-            border-bottom: 3px solid #EAEAEA;
+            border-bottom: 2px solid #6C757D;
             margin: 0 20px 10px 20px;
             font-weight: 700;
         }
@@ -227,10 +225,7 @@ header{
                 font-size: 13px;
                 a{
                     font-size: 14px;
-                    color: #007ACC;
-                }
-                a:hover{
-                    color: #D13210;
+                    font-weight: 500;
                 }
                 img{
                     border-radius: 50%;
@@ -241,18 +236,19 @@ header{
         .ltags-list{
             padding: 0 18px 18px 18px;
             a{
-                color: #007ACC;
+                color: #707281;
                 padding: 8px 10px;
                 margin: 2px;
-                border: 1px solid #007ACC;
+                border: 1px solid #707281;
                 display: inline-block;
                 font-size: 12px;
                 line-height: 12px;
                 transition: 0.3s;
                 border-radius: 4px;
+                font-weight: 500;
             }
             a:hover{
-                background: #007ACC;
+                background: #707281;
                 color: #ffffff;
             }
         }
@@ -306,7 +302,15 @@ header{
         border-radius: unset;
         a{
             border-radius: unset;
+            color: #6C757D !important;
         }
+    }
+    .active a{
+        background-color: #6C757D !important;
+        color: #ffffff !important;
+    }
+    .active a:hover{
+        background: #5A6268 !important;
     }
 }
 
@@ -325,11 +329,11 @@ footer{
 
 //  文章页
 .article-page{
-    margin-top: 30px;
+    margin-top: 15px;
     main{
         border: 1px solid #DEDEDE;
         background: #ffffff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+        box-shadow: $shadow;
         border-radius: 4px;
         .entry-header{
             @include entryHeader;
@@ -406,10 +410,7 @@ footer{
                     line-height: 25px;
                 }
                 a{
-                    color: #007ACC;
-                }
-                a:hover{
-                    color: #D13210;
+                    color: #6C757D;
                 }
                 li{
                     color: #444444;
@@ -428,10 +429,7 @@ footer{
         padding: 20px;
         border-top: 1px solid #DEDEDE;
         a{
-            color: #007ACC;
-        }
-        a:hover{
-            color: #D13210;
+            color: #6C757D;
         }
     }
 }
@@ -495,10 +493,7 @@ footer{
                     a{
                         line-height: 22px;
                         font-size: 15px;
-                        color: #007ACC;
-                    }
-                    a:hover{
-                        color: #D13210;
+                        color: #6C757D;
                     }
                     .comment-time{
                         color: #686868;
@@ -516,11 +511,12 @@ footer{
                         background: #ffffff;
                         display: block;
                         text-align: center;
-                        border: 1px solid #0F8BDA;
+                        border: 1px solid #6C757D;
                         border-radius: 4px;
+                        color: #6C757D;
                     }
                     a:hover{
-                        background: #38A4E8;
+                        background: #6C757D;
                         color: #ffffff;
                     }
                 }
@@ -546,8 +542,11 @@ footer{
         }
         //  评论分页
         .page-navigator .current a{
-            background: #007ACC;
+            background-color: #6C757D;
             color: #ffffff;
+        }
+        .page-navigator a{
+            color: #6c757d;
         }
     }
     //  发表评论区
@@ -566,19 +565,10 @@ footer{
         }
         //  发表评论的按钮
         .submit{
-            background: #0F8BDA;
-            color: #ffffff;
-            font-size: 13px;
             padding: 10px 15px;
         }
-        .submit:hover{
-            background: #38A4E8;
-        }
         a{
-            color: #007ACC;
-        }
-        a:hover{
-            color: #D13210;
+            color: #6C757D;
         }
     }
 }
@@ -605,14 +595,14 @@ footer{
 
 //  文章搜索和分类页
 .archives-list{
-    margin-top: 30px;
+    margin-top: 15px;
     .archives{
         .page-header{
             border: 1px solid #DEDEDE;
             background: #FFFFFF;
             margin-bottom: 30px;
             padding: 20px;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+            box-shadow: $shadow;
             border-radius: 4px;
             h1{
                 font-size: 30px;
