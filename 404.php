@@ -11,7 +11,9 @@
                 <div class="input-group">
                     <input type="search" class="form-control form-control-md" placeholder="搜索" aria-label="搜索" aria-describedby="button-addon2" required="required" name="s">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary btn-md">搜索</button>
+                        <button type="submit" class="btn btn-light btn-md" aria-label="搜索" title="搜索">
+                            <span class="icon-search"></span>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -22,20 +24,20 @@
             <h4>最新文章</h4>
             <ul aria-label="最新文章">
                 <?php
-                $this->widget('Widget_Contents_Post_Recent')->parse('<li><a href="{permalink}">{title}</a></li>');
+                $this->widget('Widget_Contents_Post_Recent')->parse('<li><a class="text-secondary" href="{permalink}">{title}</a></li>');
                 ?>
             </ul>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-12">
             <h4>文章分类</h4>
             <ul aria-label="文章分类">
-                <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}" title="{description}">{name}</a> ({count})</li>'); ?>
+                <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a class="text-secondary" href="{permalink}" title="{description}">{name}</a> ({count})</li>'); ?>
             </ul>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-12">
             <h4>文章归档</h4>
             <ul aria-label="文章归档">
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li><a href="{permalink}" title="{count}篇文章">{date}</a> ({count})</li>');
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li><a class="text-secondary" href="{permalink}" title="{count}篇文章">{date}</a> ({count})</li>');
                 ?>
             </ul>
         </div>
