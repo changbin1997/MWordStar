@@ -94,7 +94,7 @@
                 <?php endif; ?>
                 <!--提交按钮-->
                 <div class="col-lg-12 form-group">
-                    <button type="submit" class="submit btn"><?php _e('提交评论'); ?></button>
+                    <button type="submit" class="submit btn btn-secondary"><?php _e('提交评论'); ?></button>
                 </div>
             </div>
     	</form>
