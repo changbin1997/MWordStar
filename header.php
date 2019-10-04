@@ -80,7 +80,9 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
                     <div class="input-group">
                         <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn btn-primary my-sm-0" type="submit">搜索</button>
+                            <button class="btn btn-light my-sm-0" type="submit" aria-label="搜索" title="搜索">
+                                <i class="icon-search"></i>
+                            </button>
                         </div>
                     </div>
                 </form>
