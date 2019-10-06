@@ -308,6 +308,7 @@ header{
     .active a{
         background-color: #6C757D !important;
         color: #ffffff !important;
+        border-color: #6C757D !important;
     }
     .active a:hover{
         background: #5A6268 !important;
@@ -444,13 +445,16 @@ footer{
     background: rgba(0, 0, 0, 0.6);
     display: none;
     z-index: 1030;
+    opacity: 0;
+    transition: 0.3s;
     img{
-        max-width: 90%;
-        max-height: 90%;
+        max-width: 0;
+        max-height: 0;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        transition: 0.3s;
     }
 }
 
@@ -699,6 +703,10 @@ footer{
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .header-img{
         height: 258px;
+    }
+    //  侧边栏
+    .sidebar section{
+        margin-left: 0;
     }
     //  侧边栏的文章头图
     .latest-articles-active{

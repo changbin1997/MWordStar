@@ -246,6 +246,7 @@ header .navbar {
 .pagination-nav .active a {
   background-color: #6C757D !important;
   color: #ffffff !important;
+  border-color: #6C757D !important;
 }
 .pagination-nav .active a:hover {
   background: #5A6268 !important;
@@ -411,14 +412,17 @@ footer .container a, footer .container span {
   background: rgba(0, 0, 0, 0.6);
   display: none;
   z-index: 1030;
+  opacity: 0;
+  transition: 0.3s;
 }
 #max-img img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 0;
+  max-height: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: 0.3s;
 }
 
 #comments {
@@ -715,6 +719,10 @@ footer .container a, footer .container span {
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .header-img {
     height: 258px;
+  }
+
+  .sidebar section {
+    margin-left: 0;
   }
 
   .latest-articles-active {

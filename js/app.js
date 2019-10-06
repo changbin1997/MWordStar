@@ -10,7 +10,14 @@ $(function () {
 
     //  文章的图片点击
     $('.article-page article img').on('click', function () {
-        $('#max-img').fadeIn(300);  //  显示大图
+        $('#max-img').css('display', 'block');
+        setTimeout(function () {
+            $('#max-img').css('opacity', 1);
+            $('#max-img img').css({
+                "max-width": "90%",
+                "max-height": "90%"
+            });
+        });
         //  设置大图的 src 和 alt
         $('#max-img img').attr({
             "src": $(this).attr('src'),
@@ -21,12 +28,15 @@ $(function () {
     //  大图点击
     $('#max-img').on('click', function () {
         //  隐藏大图
-        $(this).fadeOut(300, function () {
-            $('#max-img img').attr({
-                "src": "",
-                "alt": ""
-            });
+        $('#max-img').css('opacity', 0);
+        $('#max-img img').css({
+            "max-width": 0,
+            "max-height": 0
         });
+        setTimeout(function () {
+            $('#max-img').css('display', 'none');
+            $('#max-img img').attr('src', '');
+        }, 300);
     });
 
     //  给链接设置在新标签页打开
