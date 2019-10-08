@@ -72,7 +72,7 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
                     <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                     <?php while($pages->next()): ?>
                         <li class="nav-item <?php echo $this->is('page', $pages->slug)?'active':''; ?>">
-                            <a class="nav-link" <?php if($this->is('page', $pages->slug)): ?> <?php endif; ?> href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+                            <a class="nav-link" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
                         </li>
                     <?php endwhile; ?>
                 </ul>
