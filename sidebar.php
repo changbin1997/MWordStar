@@ -9,7 +9,7 @@
                     <?php while ($latestArticles->next()): ?>
                     <li>
                         <a class="text-secondary" href="<?php $latestArticles->permalink(); ?>">
-                            <?php if ($latestArticles->fields->thumb): ?>
+                            <?php if ($latestArticles->fields->thumb && in_array('ShowRecentPostsImg', $this->options->sidebarBlock)): ?>
                                 <div class="article-img" style="background-image: url(<?php $latestArticles->fields->thumb(); ?>);" aria-label="<?php $latestArticles->title(); ?>的头图"></div>
                             <?php endif; ?>
                             <p><?php $latestArticles->title(); ?></p>
