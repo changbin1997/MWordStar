@@ -525,8 +525,9 @@ footer{
                     }
                 }
                 //  评论内容
-                p{
+                .comment-content{
                     margin-left: 62px;
+                    font-size: 15px;
                 }
                 //  评论的子内容，也就是回复的内容
                 .comment-children{

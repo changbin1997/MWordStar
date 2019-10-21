@@ -34,8 +34,7 @@
                 </div>
                 <span class="comment-reply float-right"><?php $comments->reply(); ?></span>
             </div>
-            <div class="comment-meta"></div>
-            <?php $comments->content(); ?>
+            <div class="comment-content"><?php $comments->content(); ?></div>
         </div>
         <?php if ($comments->children) { ?>
             <div class="comment-children clearfix">

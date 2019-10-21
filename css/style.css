@@ -486,8 +486,9 @@ footer .container a, footer .container span {
   background: #6C757D;
   color: #ffffff;
 }
-#comments .comments-lists .comment-list li p {
+#comments .comments-lists .comment-list li .comment-content {
   margin-left: 62px;
+  font-size: 15px;
 }
 #comments .comments-lists .comment-list li .comment-children {
   margin-left: 20px;
