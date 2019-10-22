@@ -7,12 +7,12 @@
             <main>
                 <header class="entry-header">
                     <h1 class="entry-title p-name" itemprop="name headline">
-                        <a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
+                        <a itemprop="url" href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title() ?></a>
                     </h1>
                 </header>
                 <?php if ($this->fields->thumb): ?>
                 <div class="header-img">
-                    <a href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
+                    <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                 </div>
                 <?php endif; ?>
                 <div class="article-info clearfix">

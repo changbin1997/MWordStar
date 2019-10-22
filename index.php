@@ -19,13 +19,13 @@ $this->need('header.php');  //  头文件
                     <?php if ($this->fields->thumb): ?>
                     <div class="header-img"
                     ">
-                        <a href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
+                        <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                     </div>
                     <?php endif; ?>
                     <header class="entry-header">
                         <h2 class="entry-title p-name">
                             <?php if ($this->sticky) $this->sticky(); ?>
-                            <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
+                            <a href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title() ?></a>
                         </h2>
                     </header>
                     <div class="entry-summary">

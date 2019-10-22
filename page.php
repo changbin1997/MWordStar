@@ -10,11 +10,11 @@
                         <a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                     </h1>
                 </header>
-                <div class="header-img <?php echo $this->fields->thumb?'':'d-none'; ?>"">
-                    <a href="">
-                        <img src="<?php $this->fields->thumb(); ?>" alt="<?php $this->title() ?>的头图">
-                    </a>
-                </div>
+                <?php if ($this->fields->thumb): ?>
+                    <div class="header-img">
+                        <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
+                    </div>
+                <?php endif; ?>
                 <div class="article-info clearfix">
                     <div class="info">
                         <i class="icon-calendar icon"></i>
