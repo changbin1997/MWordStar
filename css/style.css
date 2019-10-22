@@ -510,19 +510,16 @@ footer .container a, footer .container span {
   color: #6c757d;
 }
 #comments .respond {
-  padding: 20px;
   border-top: 1px solid #DADADA;
+  padding: 20px;
 }
 #comments .respond #textarea {
   width: 100%;
-  height: 82px;
+  height: 120px;
   display: block;
 }
 #comments .respond .comment-user {
   margin-bottom: 20px;
-}
-#comments .respond .submit {
-  padding: 10px 15px;
 }
 #comments .respond a {
   color: #6C757D;
