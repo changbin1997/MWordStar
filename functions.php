@@ -46,14 +46,22 @@ function themeConfig($form) {
 
     //  导航栏
     $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(
-        'showClassification' => _t('显示文章分类')
+        'showClassification' => _t('显示文章分类'),
+        'blurry' => _t('导航栏毛玻璃效果')
     ), null, _t('导航栏'));
     $form->addInput($navBar->multiMode());
+
+    //  导航栏颜色
+    $navColor = new Typecho_Widget_Helper_Form_Element_Radio('navColor', array(
+        'light' => '亮色',
+        'dark' => '暗色'
+    ), 'dark', _t('导航栏颜色'));
+    $form->addInput($navColor);
 
     //  巨幕
     $Jumbotron = new Typecho_Widget_Helper_Form_Element_Checkbox('Jumbotron', array(
         'showJumbotron' => _t('显示巨幕')
-    ), array('showJumbotron'), _t('巨幕'));
+    ), null, _t('巨幕'));
     $form->addInput($Jumbotron->multiMode());
 
     //  巨幕背景图片

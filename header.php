@@ -6,6 +6,21 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
 }else {
     $Jumbotron = false;
 }
+
+//  设置导航栏的背景
+if ($this->options->navColor == 'dark') {
+    if (in_array('blurry', $this->options->navbar)) {
+        $navbg = 'rgba(0, 0, 0, 0.7)';
+    }else {
+        $navbg = '#343A40';
+    }
+}else {
+    if (in_array('blurry', $this->options->navbar)) {
+        $navbg = 'rgba(255, 255, 255, 0.7)';
+    }else {
+        $navbg = '#F8F9FA';
+    }
+}
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -47,7 +62,7 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
 </head>
 <body>
 <header class="<?php echo $Jumbotron?'position-fixed':'sticky-top'; ?>">
-    <nav class="navbar navbar-expand-lg navbar-dark <?php echo !$Jumbotron?'bg-dark':''; ?>">
+    <nav class="navbar navbar-expand-lg <?php echo $this->options->navColor == 'dark'?'navbar-dark':'navbar-light'; ?>" style="background-color: <?php echo $navbg; ?>;<?php echo in_array('blurry', $this->options->navbar)?'-webkit-backdrop-filter: blur(10px);backdrop-filter: blur(10px);':''; ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
@@ -80,7 +95,7 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
                     <div class="input-group">
                         <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn btn-light my-sm-0" type="submit" aria-label="搜索" title="搜索">
+                            <button class="btn btn-info my-sm-0" type="submit" aria-label="搜索" title="搜索">
                                 <i class="icon-search"></i>
                             </button>
                         </div>

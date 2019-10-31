@@ -109,26 +109,11 @@ $(function () {
 
     //  监听滚动条
     $(document).on('scroll', function (ev) {
-        if ($('.jumbotron').length > 0 && $('header .navbar-toggler').attr('aria-expanded') == 'false') {
-            //  根据滚动条的高度调整导航条的背景透明度
-            if ($(document).scrollTop() > $('.jumbotron').outerHeight() - 56) {
-                $('header .navbar').addClass('bg-dark');
-            }else {
-                $('header .navbar').removeClass('bg-dark');
-            }
-        }
-    });
-    
-    //  导航菜单按钮点击
-    $('header .navbar-toggler').on('click', function () {
-        //  是否开启了巨幕显示和巨幕是否处于可见区域
-        if ($('.jumbotron').length > 0 && $(document).scrollTop() < $('.jumbotron').outerHeight() - 56) {
-            //  如果导航菜单为展开状态
-            if ($(this).attr('aria-expanded') == 'false') {
-                $('header .navbar').addClass('bg-dark');  //  设置导航区域的透明度为不透明
-            }else {
-                $('header .navbar').removeClass('bg-dark');  //  设置导航区域的透明度为透明
-            }
+        //  根据滚动条的高度调整导航条的背景透明度
+        if ($(document).scrollTop() > 0) {
+            $('header .navbar').css('box-shadow', '0 1px 3px rgba(0, 0, 0, 0.118)');
+        }else {
+            $('header .navbar').css('box-shadow', 'none');
         }
     });
 
