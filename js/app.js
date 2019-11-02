@@ -107,16 +107,6 @@ $(function () {
         }
     });
 
-    //  监听滚动条
-    $(document).on('scroll', function (ev) {
-        //  根据滚动条的高度调整导航条的背景透明度
-        if ($(document).scrollTop() > 0) {
-            $('header .navbar').css('box-shadow', '0 1px 3px rgba(0, 0, 0, 0.118)');
-        }else {
-            $('header .navbar').css('box-shadow', 'none');
-        }
-    });
-
     //  文章是否有密码
     if ($('.post-content .protected').length > 0) {
         $('.protected .word').attr('role', 'alert');  //  让读屏软件朗读输入密码的提示

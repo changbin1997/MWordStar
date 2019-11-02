@@ -13,6 +13,7 @@ header {
 }
 header .navbar {
   transition: 0.5s;
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 }
 
 .jumbotron {
@@ -54,7 +55,7 @@ header .navbar {
   margin-bottom: 30px;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 }
 .container .article-list .post .header-img {
   width: 100%;
@@ -148,7 +149,7 @@ header .navbar {
 .sidebar section {
   margin-left: 20px;
   background: #FFFFFF;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   margin-bottom: 30px;
   border-radius: 4px;
 }
@@ -267,7 +268,7 @@ footer .container a, footer .container span {
 .article-page main, .archive main, .page main {
   border: 1px solid #DEDEDE;
   background: #ffffff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   border-radius: 4px;
 }
 .article-page main .entry-header, .archive main .entry-header, .page main .entry-header {
@@ -549,7 +550,7 @@ footer .container a, footer .container span {
   background: #FFFFFF;
   margin-bottom: 30px;
   padding: 20px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   border-radius: 4px;
 }
 .archives-list .archives .page-header h1 {
@@ -566,7 +567,7 @@ footer .container a, footer .container span {
   margin-bottom: 30px;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 }
 .archives-list .archives .post .header-img {
   width: 100%;

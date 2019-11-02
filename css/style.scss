@@ -1,5 +1,5 @@
 $articleFontSize: 15px;  //  文章字体大小
-$shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);  //  区块阴影
+$shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 
 //  通用的文章信息样式
 @mixin articleInfo{
@@ -149,6 +149,7 @@ header{
     z-index: 999;
     .navbar{
         transition: 0.5s;
+        box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
     }
 }
 
