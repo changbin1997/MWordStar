@@ -9,13 +9,13 @@ if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbo
 
 //  设置导航栏的背景
 if ($this->options->navColor == 'dark') {
-    if (in_array('blurry', $this->options->navbar)) {
+    if ($this->options->navbar && in_array('blurry', $this->options->navbar)) {
         $navbg = 'rgba(0, 0, 0, 0.7)';
     }else {
         $navbg = '#343A40';
     }
 }else {
-    if (in_array('blurry', $this->options->navbar)) {
+    if ($this->options->navbar && in_array('blurry', $this->options->navbar)) {
         $navbg = 'rgba(255, 255, 255, 0.7)';
     }else {
         $navbg = '#F8F9FA';
