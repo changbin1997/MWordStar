@@ -95,7 +95,7 @@ if ($this->options->navColor == 'dark') {
                     <div class="input-group">
                         <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn btn-info my-sm-0" type="submit" aria-label="搜索" title="搜索">
+                            <button class="btn my-sm-0 search-btn" type="submit" aria-label="搜索" title="搜索">
                                 <i class="icon-search"></i>
                             </button>
                         </div>
