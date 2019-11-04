@@ -380,9 +380,6 @@ footer .container a, footer .container span {
 .article-page main article .post-content code, .archive main article .post-content code, .page main article .post-content code {
   font-size: 15px;
 }
-.article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre {
-  border-radius: 4px;
-}
 .article-page main article .post-content pre code, .archive main article .post-content pre code, .page main article .post-content pre code {
   padding: 10px;
 }
