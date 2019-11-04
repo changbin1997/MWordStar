@@ -28,9 +28,9 @@ $this->need('header.php');  //  头文件
                                         <div class="link">
                                             <a href="<?php echo $linkList[$i]->url; ?>" class="clearfix" target="_blank">
                                                 <?php if (!isset($linkList[$i]->logoUrl) or $linkList[$i]->logoUrl == ''): ?>
-                                                    <i class="link-logo float-left icon-link icon-logo" aria-label="站点Logo"></i>
+                                                    <i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo"></i>
                                                 <?php else: ?>
-                                                    <img src="<?php echo $linkList[$i]->logoUrl; ?>" alt="站点Logo" class="link-logo float-left">
+                                                    <img src="<?php echo $linkList[$i]->logoUrl; ?>" alt="站点Logo" class="link-logo float-left rounded-circle">
                                                 <?php endif; ?>
                                                 <span class="link-name float-left"><?php echo $linkList[$i]->name; ?></span>
                                             </a>
@@ -54,9 +54,9 @@ $this->need('header.php');  //  头文件
                                     <div class="link">
                                         <a href="<?php echo $linkList[$i]->url; ?>" class="clearfix" target="_blank">
                                             <?php if (!isset($linkList[$i]->logoUrl) or $linkList[$i]->logoUrl == ''): ?>
-                                                <i class="link-logo float-left icon-link icon-logo" aria-label="站点Logo"></i>
+                                                <i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo"></i>
                                             <?php else: ?>
-                                                <img src="<?php echo $linkList[$i]->logoUrl; ?>" alt="站点Logo" class="link-logo float-left">
+                                                <img src="<?php echo $linkList[$i]->logoUrl; ?>" alt="站点Logo" class="link-logo float-left rounded-circle">
                                             <?php endif; ?>
                                             <span class="link-name float-left"><?php echo $linkList[$i]->name; ?></span>
                                         </a>
@@ -79,7 +79,7 @@ $this->need('header.php');  //  头文件
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
                                     <div class="link">
                                         <a href="<?php echo $links[$i]->url; ?>" target="_blank" class="clearfix">
-                                            <i class="link-logo float-left icon-link icon-logo"></i>
+                                            <i class="link-logo float-left icon-link icon-logo rounded-circle"></i>
                                             <span class="link-name float-left"><?php echo $links[$i]->name; ?></span>
                                         </a>
                                         <?php if (!$links[$i]->title or $links[$i]->title == ''): ?>
