@@ -150,6 +150,16 @@ header{
     .navbar{
         transition: 0.5s;
         box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+        .search-btn{
+            background: #F8F8F8;
+            border: 1px solid #D3D3D3;
+        }
+        .search-btn:hover{
+            background: #F0F0F0;
+        }
+        .search-btn:focus{
+            background: #F0F0F0;
+        }
     }
 }
 
@@ -458,6 +468,25 @@ footer{
     }
 }
 
+//  emoji表情面板
+#emoji-box{
+    .emoji-classification{
+        padding: 8px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .emoji-select .emoji{
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .emoji-select .emoji:hover{
+        background: #6C757D;
+    }
+}
+
 //  评论区
 #comments{
     border-top: 1px solid #DADADA;
@@ -485,7 +514,7 @@ footer{
                     width: 100%;
                 }
                 //  头像
-                img{
+                .avatar{
                     width: 42px;
                     height: 42px;
                     margin-right: 20px;

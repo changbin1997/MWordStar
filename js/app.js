@@ -1,4 +1,6 @@
 $(function () {
+    var emoji = null;  //  emoji表情
+
     //  给文章表格添加样式
     if ($('.post-content table').length > 0) {
         for (var i = 0;i < $('.post-content table').length;i ++) {
@@ -113,6 +115,44 @@ $(function () {
         $('.protected .text').attr('placeholder', '请在此处输入文章密码');
         $('.protected .text').get(0).select();  //  让密码输入表单获取交点
     }
+
+    //  显示 emoji按钮点击
+    $('#show-emoji').on('click', function () {
+        //  是否是第一次点击
+       if ($(this).attr('aria-expanded') && emoji == null) {
+           //  通过 ajax 加载 emoji
+           $.post($(this).attr('url'), 'emoji=emoji', function (data) {
+               emoji = JSON.parse(data);
+               $('#emoji-box .emoji-classification button').eq(0).click();  //  设置 emoji分类
+           });
+       }
+    });
+
+    for (var i = 0;i < $('#emoji-box .emoji-classification button').length;i ++) {
+        //  emoji分类按钮点击
+        $('#emoji-box .emoji-classification button').eq(i).on('click', function () {
+            $('#emoji-box .emoji-classification button').removeClass('active');  //  取消所有分类按钮的选中状态
+            $(this).addClass('active');  //  设置当前按钮为选中状态
+            var emojiDOM = '';
+            emoji[$(this).attr('classification')].forEach(function (val) {
+                emojiDOM += '<div class="float-left emoji" tabindex="0" role="button">' + val + '</div>';
+            });
+            $('#emoji-box .emoji-select').html('');  //  清空其它的 emoji
+            $('#emoji-box .emoji-select').append(emojiDOM);  //  把 emoji 插入到页面
+        });
+    }
+
+    //  emoji表情点击
+    $('#emoji-box .emoji-select').on('click', '.emoji', function () {
+       $('#textarea').val($('#textarea').val() + $(this).html());  //  把表情加入评论框
+    });
+
+    //  emoji 键盘事件
+    $('#emoji-box .emoji-select').on('keypress', '.emoji', function (ev) {
+       if (ev.keyCode == 13) {
+           $(this).click();
+       }
+    });
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化

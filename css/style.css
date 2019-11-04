@@ -15,6 +15,16 @@ header .navbar {
   transition: 0.5s;
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 }
+header .navbar .search-btn {
+  background: #F8F8F8;
+  border: 1px solid #D3D3D3;
+}
+header .navbar .search-btn:hover {
+  background: #F0F0F0;
+}
+header .navbar .search-btn:focus {
+  background: #F0F0F0;
+}
 
 .jumbotron {
   background-size: cover;
@@ -425,6 +435,22 @@ footer .container a, footer .container span {
   transition: 0.3s;
 }
 
+#emoji-box .emoji-classification {
+  padding: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+#emoji-box .emoji-select .emoji {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+#emoji-box .emoji-select .emoji:hover {
+  background: #6C757D;
+}
+
 #comments {
   border-top: 1px solid #DADADA;
 }
@@ -453,7 +479,7 @@ footer .container a, footer .container span {
 #comments .comments-lists .comment-list li .comment-author {
   width: 100%;
 }
-#comments .comments-lists .comment-list li img {
+#comments .comments-lists .comment-list li .avatar {
   width: 42px;
   height: 42px;
   margin-right: 20px;

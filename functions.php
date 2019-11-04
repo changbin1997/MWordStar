@@ -44,6 +44,13 @@ function themeConfig($form) {
     );
     $form->addInput($sidebarBlock->multiMode());
 
+    //  Emoji面板
+    $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
+        'on' => '开启',
+        'off' => '关闭'
+    ), 'off', _t('评论区Emoji表情选择面板'));
+    $form->addInput($emojiPanel);
+
     //  导航栏
     $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(
         'showClassification' => _t('显示文章分类'),
