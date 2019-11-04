@@ -68,39 +68,39 @@
     	<form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
             <div class="row">
                 <!--评论内容输入-->
-                <div class="col-lg-12 form-group">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
                     <label for="textarea" class="required"><?php _e('评论内容'); ?></label>
                     <textarea name="text" id="textarea" class="textarea form-control" required placeholder="请在此处输入评论内容"><?php $this->remember('text'); ?></textarea>
                 </div>
                 <?php if ($this->options->emojiPanel == 'on'): ?>
-                <div class="col-lg-12 form-group">
-                    <button type="button" class="btn btn btn-outline-secondary btn-sm" data-target="#emoji-box" data-toggle="collapse" aria-expanded="false" aria-controls="emoji-box" id="show-emoji" url="<?php $this->options->themeUrl('emoji.php'); ?>">
-                        <span>😀</span>
-                        <span>Emoji表情</span>
-                    </button>
-                    <div id="emoji-box" class="collapse" aria-label="表情面板">
-                        <div class="mt-2 mb-2 border">
-                            <div class="emoji-classification border-bottom" aria-label="表情类型">
-                                <button title="表情" type="button" class="btn btn btn-outline-secondary btn-sm" classification="smileys">😀</button>
-                                <button title="人物/手势" type="button" class="btn btn btn-outline-secondary btn-sm" classification="character">👦</button>
-                                <button title="服装/配饰" type="button" class="btn btn btn-outline-secondary btn-sm" classification="clothing">👕</button>
-                                <button title="动物/自然" type="button" class="btn btn btn-outline-secondary btn-sm" classification="animal">🐶</button>
-                                <button title="食物" type="button" class="btn btn btn-outline-secondary btn-sm" classification="food">🍏</button>
-                                <button title="运动" type="button" class="btn btn btn-outline-secondary btn-sm" classification="motion">⚽</button>
-                                <button title="旅行/地点" type="button" class="btn btn btn-outline-secondary btn-sm" classification="tourism">🚚</button>
-                                <button title="物体" type="button" class="btn btn btn-outline-secondary btn-sm" classification="objects">⌚</button>
-                                <button title="符号" type="button" class="btn btn btn-outline-secondary btn-sm" classification="symbols">❤</button>
-                            </div>
-                            <div class="emoji-select ml-2 mr-2 clearfix" aria-label="表情选择">
-                                <div class="d-flex justify-content-center text-info m-3">
-                                    <div class="spinner-border" role="status">
-                                        <span class="sr-only">正在加载 Emoji</span>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
+                        <button type="button" class="btn btn btn-outline-secondary btn-sm" data-target="#emoji-box" data-toggle="collapse" aria-expanded="false" aria-controls="emoji-box" id="show-emoji" url="<?php $this->options->themeUrl('emoji.php'); ?>">
+                            <span>😀</span>
+                            <span>Emoji表情</span>
+                        </button>
+                        <div id="emoji-box" class="collapse" aria-label="表情面板">
+                            <div class="mt-2 mb-2 border">
+                                <div class="emoji-classification border-bottom" aria-label="表情类型">
+                                    <button aria-label="表情" title="表情" type="button" class="btn btn btn-outline-secondary btn-sm" classification="smileys">😀</button>
+                                    <button aria-label="人物/手势" title="人物/手势" type="button" class="btn btn btn-outline-secondary btn-sm" classification="character">👦</button>
+                                    <button aria-label="服装/配饰" title="服装/配饰" type="button" class="btn btn btn-outline-secondary btn-sm" classification="clothing">👕</button>
+                                    <button aria-label="动物/自然" title="动物/自然" type="button" class="btn btn btn-outline-secondary btn-sm" classification="animal">🐶</button>
+                                    <button aria-label="食物" title="食物" type="button" class="btn btn btn-outline-secondary btn-sm" classification="food">🍏</button>
+                                    <button aria-label="运动" title="运动" type="button" class="btn btn btn-outline-secondary btn-sm" classification="motion">⚽</button>
+                                    <button aria-label="旅行/地点" title="旅行/地点" type="button" class="btn btn btn-outline-secondary btn-sm" classification="tourism">🚚</button>
+                                    <button aria-label="物体" title="物体" type="button" class="btn btn btn-outline-secondary btn-sm" classification="objects">⌚</button>
+                                    <button aria-label="符号" title="符号" type="button" class="btn btn btn-outline-secondary btn-sm" classification="symbols">❤</button>
+                                </div>
+                                <div class="emoji-select ml-2 mr-2 clearfix" aria-label="表情选择">
+                                    <div class="d-flex justify-content-center text-info m-3">
+                                        <div class="spinner-border" role="status">
+                                            <span class="sr-only">正在加载 Emoji</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <?php  endif; ?>
                 <?php if($this->user->hasLogin()): ?>
                 <div class="col-lg-12 comment-user">
@@ -124,7 +124,7 @@
                     </div>
                 <?php endif; ?>
                 <!--提交按钮-->
-                <div class="col-lg-12 form-group">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
                     <button type="submit" class="submit btn btn-secondary"><?php _e('提交评论'); ?></button>
                 </div>
             </div>
