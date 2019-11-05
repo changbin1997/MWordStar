@@ -153,9 +153,6 @@ header .navbar .search-btn:focus {
   margin-top: 15px;
 }
 
-.sidebar {
-  margin-top: 15px;
-}
 .sidebar section {
   margin-left: 20px;
   background: #FFFFFF;
@@ -280,6 +277,7 @@ footer .container a, footer .container span {
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   border-radius: 4px;
+  margin-bottom: 30px;
 }
 .article-page main .entry-header, .archive main .entry-header, .page main .entry-header {
   border-bottom: 1px solid #EAEAEA;
@@ -724,6 +722,10 @@ footer .container a, footer .container span {
     height: 273px;
   }
 
+  .sidebar {
+    margin-top: 15px;
+  }
+
   .latest-articles-active {
     height: 142px;
   }
@@ -731,6 +733,10 @@ footer .container a, footer .container span {
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .header-img {
     height: 228px;
+  }
+
+  .sidebar {
+    margin-top: 15px;
   }
 
   .latest-articles-active {

@@ -209,7 +209,6 @@ header{
 
 //  侧边栏区域
 .sidebar{
-    margin-top: 15px;
     section{
         margin-left: 20px;
         background: #FFFFFF;
@@ -346,6 +345,7 @@ footer{
         background: #ffffff;
         box-shadow: $shadow;
         border-radius: 4px;
+        margin-bottom: 30px;
         .entry-header{
             @include entryHeader;
         }
@@ -708,6 +708,10 @@ footer{
     .header-img{
         height: 273px;
     }
+    //  侧边栏
+    .sidebar{
+        margin-top: 15px;
+    }
     //  侧边栏的文章头图
     .latest-articles-active{
         height: 142px;
@@ -718,6 +722,10 @@ footer{
     //  文章头图
     .header-img{
         height: 228px;
+    }
+    //  侧边栏
+    .sidebar{
+        margin-top: 15px;
     }
     //  侧边栏的文章头图
     .latest-articles-active{
