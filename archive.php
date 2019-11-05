@@ -18,11 +18,10 @@
                 <?php if ($this->have()): ?>
                 <?php while($this->next()): ?>
                     <article class="post">
-                        <?php if ($this->fields->thumb): ?>
-                        <div class="header-img"
-                        ">
-                            <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
-                        </div>
+                        <?php if ($this->fields->thumb && $this->options->headerImage && in_array('home', $this->options->headerImage)): ?>
+                            <div class="header-img">
+                                <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
+                            </div>
                         <?php endif; ?>
                         <header class="entry-header">
                             <h2 class="entry-title p-name">

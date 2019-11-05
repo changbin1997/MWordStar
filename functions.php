@@ -32,7 +32,6 @@ function themeConfig($form) {
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array(
             'ShowRecentPosts' => _t('显示最新文章'),
-            'ShowRecentPostsImg' => _t('最新文章显示文章头图'),
             'ShowRecentComments' => _t('显示最近回复'),
             'ShowCategory' => _t('显示分类'),
             'ShowTag' => _t('显示标签云'),
@@ -40,9 +39,17 @@ function themeConfig($form) {
             'ShowOther' => _t('显示其它杂项'),
             'HideLoginLink' => _t('隐藏登录入口')
         ),
-        array('ShowRecentPosts',  'ShowRecentPostsImg','ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示')
+        array('ShowRecentPosts','ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示')
     );
     $form->addInput($sidebarBlock->multiMode());
+
+    //  文章头图设置
+    $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
+        'home' => _t('在首页显示文章头图'),
+        'sidebarBlock' => _t('在侧边栏的最新文章区域显示文章头图'),
+        'post' => _t('在文章页显示文章头图')
+    ), array('home', 'sidebarBlock', 'post'), _t('文章头图设置'));
+    $form->addInput($headerImage->multiMode());
 
     //  Emoji面板
     $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(

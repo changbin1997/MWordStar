@@ -10,7 +10,7 @@
                         <a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                     </h1>
                 </header>
-                <?php if ($this->fields->thumb): ?>
+                <?php if ($this->fields->thumb && $this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
                     <div class="header-img">
                         <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                     </div>

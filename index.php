@@ -16,11 +16,10 @@ $this->need('header.php');  //  头文件
         <div class="article-list col-md-12 col-lg-8 col-sm-12">
             <?php while ($this->next()):  //  开始循环  ?>
                 <div class="post">
-                    <?php if ($this->fields->thumb): ?>
-                    <div class="header-img"
-                    ">
-                        <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
-                    </div>
+                    <?php if ($this->fields->thumb && $this->options->headerImage && in_array('home', $this->options->headerImage)): ?>
+                        <div class="header-img">
+                            <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
+                        </div>
                     <?php endif; ?>
                     <header class="entry-header">
                         <h2 class="entry-title p-name">
