@@ -4,6 +4,8 @@
 
 主题下载地址：[https://github.com/changbin1997/MWordStar/releases](https://github.com/changbin1997/MWordStar/releases)
 
+Releases 中打包的主题可能不是最新版本，如果您需要下载最新版本的主题可以直接克隆项目。
+
 下面是主题首页截图：
 
 ![MWordStar主题首页截图1](https://www.misterma.com/img/MWordStar%E4%B8%BB%E9%A2%98%E9%A6%96%E9%A1%B5%E6%88%AA%E5%9B%BE1.jpeg)
@@ -112,6 +114,16 @@
 
 小提示：如果您是屏幕阅读器用户，为了您的浏览体验，不建议使用 IE 浏览器。
 
+### Emoji 表情
+
+主题评论区包含一个 Emoji 表情面板，您可以在后台启用或禁用。Emoji 表情面板包含 1466 个表情，这些表情都是按照分类动态加载的，您不用担心性能问题。
+
+Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕阅读器朗读。
+
+下面是 Emoji 表情面板的截图：
+
+![emoji面板截图](https://www.misterma.com/img/emoji%E9%9D%A2%E6%9D%BF.jpeg)
+
 ### 兼容性
 
 因为本主题使用了 HTML5 和 CSS3，需要 IE10 及以上浏览器才能完美兼容。IE9 及以下浏览器显示可能会出现一些问题。
@@ -127,6 +139,8 @@
 ## 其它
 
 主题 Github：[https://github.com/changbin1997/MWordStar](https://github.com/changbin1997/MWordStar)
+
+码云仓库地址：[https://gitee.com/changbin1997/MWordStar](https://gitee.com/changbin1997/MWordStar)
 
 本主题使用 [MIT License](https://github.com/changbin1997/MWordStar/blob/master/LICENSE) 开源。
 
