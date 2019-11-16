@@ -682,6 +682,7 @@ footer .container a, footer .container span {
 }
 .link-box .link-grid {
   padding: 15px;
+  border-radius: 4px;
 }
 .link-box .link-grid .link {
   background: #ffffff;
@@ -844,8 +845,14 @@ footer .container a, footer .container span {
   .archives-list .archives .post .article-info {
     padding: 10px 20px;
   }
+  .archives-list .archives .post .post-title {
+    font-size: 20px;
+  }
   .archives-list .archives .post .header-img {
     height: 145px;
+  }
+  .archives-list .archives .page-header .archive-title {
+    font-size: 20px;
   }
 
   .latest-articles-active {

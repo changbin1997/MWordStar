@@ -666,6 +666,7 @@ footer{
     margin: 0 0 20px 0;
     .link-grid{
         padding: 15px;
+        border-radius: 4px;
         .link{
             background: #ffffff;
             box-shadow: 0 2px 0 rgba(170, 170, 170, 0.1);
@@ -800,8 +801,16 @@ footer{
         .archives{
             .post{
                 @include postM;
+                .post-title{
+                    font-size: 20px;
+                }
                 .header-img{
                     height: 145px;
+                }
+            }
+            .page-header{
+                .archive-title{
+                    font-size: 20px;
                 }
             }
         }
