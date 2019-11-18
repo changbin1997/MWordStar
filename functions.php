@@ -31,6 +31,7 @@ function themeConfig($form) {
     //  侧边栏
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array(
+            'ShowBlogInfo' => _t('显示博客信息'),
             'ShowRecentPosts' => _t('显示最新文章'),
             'ShowRecentComments' => _t('显示最近回复'),
             'ShowCategory' => _t('显示分类'),
@@ -39,9 +40,29 @@ function themeConfig($form) {
             'ShowOther' => _t('显示其它杂项'),
             'HideLoginLink' => _t('隐藏登录入口')
         ),
-        array('ShowRecentPosts','ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示')
+        array('ShowBlogInfo', 'ShowRecentPosts','ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示')
     );
     $form->addInput($sidebarBlock->multiMode());
+
+    //  侧边栏博客西信息博主头像地址
+    $avatarUrl = new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用默认头像。'));
+    $form->addInput($avatarUrl);
+
+    //  侧边栏博客信息区域博主昵称
+    $nickname = new Typecho_Widget_Helper_Form_Element_Text('nickname', null, null, _t('博主昵称'), _t('博主昵称会显示在侧边栏博客信息区域，如果省略会显示博客站点名称。'));
+    $form->addInput($nickname);
+
+    //  侧边栏博客信息博主昵称链接
+    $nicknameUrl = new Typecho_Widget_Helper_Form_Element_Text('nicknameUrl', null, null, _t('博主昵称链接调转地址'), _t('在侧边栏的博客信息区域会显示一个包含博主昵称的链接，在这里可以填写链接的跳转地址，如果省略会使用博客首页地址。'));
+    $form->addInput($nicknameUrl);
+
+    //  侧边栏博客信息博主简介
+    $Introduction = new Typecho_Widget_Helper_Form_Element_Text('Introduction', null, null, _t('博主简介'), _t('博主简介会显示在侧边栏博客信息区域的博主昵称下方，如果省略会使用设置中的站点描述信息。'));
+    $form->addInput($Introduction);
+
+    //  侧边栏博客信息的运行天数
+    $birthday = new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会显示为 0 天。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。'));
+    $form->addInput($birthday);
 
     //  文章头图设置
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(

@@ -218,10 +218,10 @@ header{
         //  侧边栏个区域的标题
         h4{
             line-height: 22px;
-            padding: 12px 0;
+            padding: 12px 2px;
             font-size: 16px;
             border-bottom: 2px solid #6C757D;
-            margin: 0 20px 10px 20px;
+            margin: 0 18px 10px 18px;
             font-weight: 700;
         }
         //  侧边栏的列表
@@ -230,7 +230,6 @@ header{
             padding: 0 18px 18px 18px;
             li{
                 padding: 8px 0;
-                border-bottom: 1px solid #EEEEEE;
                 font-size: 13px;
                 a{
                     font-size: 14px;
@@ -238,6 +237,46 @@ header{
                 }
                 img{
                     border-radius: 50%;
+                }
+            }
+        }
+        //  个人资料卡
+        .personal-information{
+            padding: 0 18px 18px 18px;
+            .user{
+                width: 100%;
+                .avatar{
+                    width: 72px;
+                    height: 72px;
+                    display: block;
+                    margin: 0 auto;
+                    transition: 0.4s;
+                }
+                .user-name{
+                    color: #6C757D;
+                    display: block;
+                    font-size: 16px;
+                }
+                .user-name,.introduction{
+                    margin: 0;
+                    text-align: center;
+                    line-height: 20px;
+                }
+                .introduction{
+                    font-size: 14px;
+                }
+            }
+            .website{
+                padding-top: 18px;
+                margin-top: 18px;
+                .info{
+                    width: 33.33%;
+                    text-align: center;
+                    font-size: 14px;
+                    .quantity{
+                        font-size: 20px;
+                        margin: 0;
+                    }
                 }
             }
         }

@@ -162,10 +162,10 @@ header .navbar .search-btn:focus {
 }
 .sidebar section h4 {
   line-height: 22px;
-  padding: 12px 0;
+  padding: 12px 2px;
   font-size: 16px;
   border-bottom: 2px solid #6C757D;
-  margin: 0 20px 10px 20px;
+  margin: 0 18px 10px 18px;
   font-weight: 700;
 }
 .sidebar section ul {
@@ -174,7 +174,6 @@ header .navbar .search-btn:focus {
 }
 .sidebar section ul li {
   padding: 8px 0;
-  border-bottom: 1px solid #EEEEEE;
   font-size: 13px;
 }
 .sidebar section ul li a {
@@ -183,6 +182,45 @@ header .navbar .search-btn:focus {
 }
 .sidebar section ul li img {
   border-radius: 50%;
+}
+.sidebar section .personal-information {
+  padding: 0 18px 18px 18px;
+}
+.sidebar section .personal-information .user {
+  width: 100%;
+}
+.sidebar section .personal-information .user .avatar {
+  width: 72px;
+  height: 72px;
+  display: block;
+  margin: 0 auto;
+  transition: 0.4s;
+}
+.sidebar section .personal-information .user .user-name {
+  color: #6C757D;
+  display: block;
+  font-size: 16px;
+}
+.sidebar section .personal-information .user .user-name, .sidebar section .personal-information .user .introduction {
+  margin: 0;
+  text-align: center;
+  line-height: 20px;
+}
+.sidebar section .personal-information .user .introduction {
+  font-size: 14px;
+}
+.sidebar section .personal-information .website {
+  padding-top: 18px;
+  margin-top: 18px;
+}
+.sidebar section .personal-information .website .info {
+  width: 33.33%;
+  text-align: center;
+  font-size: 14px;
+}
+.sidebar section .personal-information .website .info .quantity {
+  font-size: 20px;
+  margin: 0;
 }
 .sidebar section .ltags-list {
   padding: 0 18px 18px 18px;
