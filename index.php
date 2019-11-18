@@ -56,7 +56,7 @@ $this->need('header.php');  //  头文件
                             <i class="icon-folder-open icon" aria-label="分类图标"></i>
                             <?php $this->category(','); ?>
                         </div>
-                        <a href="<?php $this->permalink() ?>" class="float-right">阅读全文</a>
+                        <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">阅读全文</a>
                     </div>
                 </div>
             <?php endwhile; ?>
