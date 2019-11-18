@@ -7,7 +7,7 @@
                 <div class="user">
                     <img src="<?php $this->options->avatarUrl?$this->options->avatarUrl():$this->options->themeUrl('img/avatar.png'); ?>" alt="<?php echo $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像'; ?>" class="rounded-circle avatar">
                     <div class="p-2">
-                        <a class="user-name mt-2" target="_blank" href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>">冰是睡着的水</a>
+                        <a class="user-name mt-2" target="_blank" href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>"><?php echo $this->options->nickname?$this->options->nickname:$this->options->title; ?></a>
                         <p class="introduction mt-1"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="info float-left">
                         <p class="quantity"><?php echo $this->options->birthday?round((time() - strtotime($this->options->birthday)) / 86400, 0) . '天':'0天'; ?></p>
-                        运行时间
+                        运行天数
                     </div>
                 </div>
             </div>
