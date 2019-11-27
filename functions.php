@@ -6,6 +6,10 @@ function themeFields($layout) {
     $image = new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('文章头图会显示在文章的顶部。'));
     $layout->addItem($image);
 
+    //  自定义文章摘要内容
+    $summaryContent = new Typecho_Widget_Helper_Form_Element_Textarea('summaryContent', null, null, _t('自定义摘要内容'), _t('您可以在此处为文章定义摘要内容，此处定义的摘要内容不受字数限制。'));
+    $layout->addItem($summaryContent);
+
     //  显示版权声明
     $articleCopyright = new Typecho_Widget_Helper_Form_Element_Select('articleCopyright', array(
         'show' => '显示',

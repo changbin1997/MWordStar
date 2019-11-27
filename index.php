@@ -28,7 +28,7 @@ $this->need('header.php');  //  头文件
                         </h2>
                     </header>
                     <div class="entry-summary">
-                        <p><?php $this->excerpt($this->options->summary?$this->options->summary:150, '...'); ?></p>
+                        <p><?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?></p>
                     </div>
                     <div class="article-info clearfix border-top">
                         <!--时间-->
