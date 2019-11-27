@@ -1,12 +1,13 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?rh2q9h');
-  src:  url('../fonts/icomoon.eot?rh2q9h#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?rh2q9h') format('truetype'),
-    url('../fonts/icomoon.woff?rh2q9h') format('woff'),
-    url('../fonts/icomoon.svg?rh2q9h#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?pss4tm');
+  src:  url('../fonts/icomoon.eot?pss4tm#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?pss4tm') format('truetype'),
+    url('../fonts/icomoon.woff?pss4tm') format('woff'),
+    url('../fonts/icomoon.svg?pss4tm#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -24,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-pencil:before {
+  content: "\e905";
+}
 .icon-folder-open:before {
   content: "\e930";
 }
@@ -48,11 +52,11 @@
 .icon-eye:before {
   content: "\e9ce";
 }
-.icon-arrow-right:before {
-  content: "\ea34";
+.icon-cancel-circle:before {
+  content: "\ea0d";
 }
-.icon-mail2:before {
-  content: "\ea84";
+.icon-arrow-up:before {
+  content: "\ea32";
 }
 .icon-facebook:before {
   content: "\ea90";
