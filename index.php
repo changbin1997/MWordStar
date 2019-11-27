@@ -13,7 +13,7 @@ $this->need('header.php');  //  头文件
 
 <div class="container home main-content">
     <div class="row">
-        <div class="article-list col-md-12 col-lg-8 col-sm-12">
+        <div class="article-list col-md-12 col-lg-8 col-sm-12 content-area">
             <?php while ($this->next()):  //  开始循环  ?>
                 <div class="post">
                     <?php if ($this->fields->thumb && $this->options->headerImage && in_array('home', $this->options->headerImage)): ?>
@@ -21,7 +21,7 @@ $this->need('header.php');  //  头文件
                             <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                         </div>
                     <?php endif; ?>
-                    <header class="entry-header">
+                    <header class="entry-header border-bottom">
                         <h2 class="entry-title p-name">
                             <?php if ($this->sticky) $this->sticky(); ?>
                             <a href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title() ?></a>
@@ -30,7 +30,7 @@ $this->need('header.php');  //  头文件
                     <div class="entry-summary">
                         <p><?php $this->excerpt($this->options->summary?$this->options->summary:150, '...'); ?></p>
                     </div>
-                    <div class="article-info clearfix">
+                    <div class="article-info clearfix border-top">
                         <!--时间-->
                         <div class="info">
                             <i class="icon-calendar icon" aria-label="日期图标"></i>
@@ -57,6 +57,9 @@ $this->need('header.php');  //  头文件
                             <?php $this->category(','); ?>
                         </div>
                         <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">阅读全文</a>
+                        <?php if ($this->user->hasLogin()): ?>
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right mr-3 d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">编辑</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endwhile; ?>

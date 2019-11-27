@@ -3,7 +3,7 @@
 
 <div class="container post-page main-content">
     <div class="row">
-        <div class="col-md-12 col-lg-8 col-sm-12 article-page">
+        <div class="col-md-12 col-lg-8 col-sm-12 article-page content-area">
             <main>
                 <header class="entry-header">
                     <h1 class="entry-title p-name" itemprop="name headline">
@@ -11,11 +11,11 @@
                     </h1>
                 </header>
                 <?php if ($this->fields->thumb && $this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
-                    <div class="header-img">
+                    <div class="header-img border-top">
                         <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                     </div>
                 <?php endif; ?>
-                <div class="article-info clearfix">
+                <div class="article-info clearfix border-bottom border-top">
                     <!--时间-->
                     <div class="info">
                         <i class="icon-calendar icon" aria-label="日期图标"></i>
@@ -46,7 +46,14 @@
                         <i class="icon-price-tags icon" aria-label="标签图标"></i>
                         <?php $this->tags(' ', true, 'none'); ?>
                     </div>
+                    <?php if ($this->user->hasLogin()): ?>
+                        <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">
+                            <i class="icon icon-pencil"></i>
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" >编辑</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
+                <!--文章内容-->
                 <article>
                     <div class="post-content">
                         <?php $this->content(); ?>
@@ -60,7 +67,8 @@
                         <?php endif; ?>
                     </div>
                 </article>
-                <nav class="post-navigation navbar">
+                <!--上一篇和下一篇文章的导航-->
+                <nav class="post-navigation navbar border-top">
                     <div class="pagination pagination-sm">上一篇：<?php $this->thePrev('%s','没有了'); ?></div>
                     <div class="pagination justify-content-end">下一篇：<?php $this->theNext('%s','没有了'); ?></div>
                 </nav>
@@ -72,5 +80,6 @@
 </div>
 <div id="max-img">
     <img src="" alt="" title="再次点击可关闭" class="shadow-lg">
+    <div class="hide-img" role="button" aria-label="关闭大图" title="关闭大图" tabindex="0">×</div>
 </div>
 <?php $this->need('footer.php'); ?>
