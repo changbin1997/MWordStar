@@ -10,9 +10,9 @@ $this->need('header.php');
 
     <div class="container archive-page main-content">
         <div class="row">
-            <div class="archive col-md-12 col-lg-8 col-sm-12">
+            <div class="archive col-md-12 col-lg-8 col-sm-12 content-area">
                 <main>
-                    <header class="entry-header">
+                    <header class="entry-header border-bottom">
                         <h2 class="entry-title p-name">
                             <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                         </h2>

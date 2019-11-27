@@ -3,7 +3,7 @@
 
 <div class="container main-content">
     <div class="row">
-        <div class="col-md-12 col-lg-8 col-sm-12 page">
+        <div class="col-md-12 col-lg-8 col-sm-12 page content-area">
             <main>
                 <header class="entry-header">
                     <h1 class="entry-title p-name" itemprop="name headline">
@@ -11,11 +11,11 @@
                     </h1>
                 </header>
                 <?php if ($this->fields->thumb && $this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
-                    <div class="header-img">
+                    <div class="header-img border-top">
                         <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                     </div>
                 <?php endif; ?>
-                <div class="article-info clearfix">
+                <div class="article-info clearfix border-bottom border-top">
                     <!--时间-->
                     <div class="info">
                         <i class="icon-calendar icon" aria-label="日期图标"></i>

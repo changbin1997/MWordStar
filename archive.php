@@ -3,7 +3,7 @@
 
 <div class="container main-content">
     <div class="row">
-        <div class="col-md-12 col-lg-8 col-sm-12 archives-list">
+        <div class="col-md-12 col-lg-8 col-sm-12 archives-list content-area">
             <main id="main" class="archives">
                 <header class="page-header">
                     <h1 class="archive-title"><?php $this->archiveTitle(array(
@@ -23,7 +23,7 @@
                                 <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
                             </div>
                         <?php endif; ?>
-                        <header class="entry-header">
+                        <header class="entry-header border-bottom">
                             <h2 class="entry-title p-name">
                                 <a rel="bookmark" href="<?php $this->permalink(); ?>"><?php $this->title(); ?></a>
                             </h2>
@@ -31,7 +31,7 @@
                         <div class="entry-summary">
                             <p><?php $this->excerpt($this->options->summary?$this->options->summary:150, '...'); ?></p>
                         </div>
-                        <div class="article-info clearfix">
+                        <div class="article-info clearfix border-top">
                             <!--时间-->
                             <div class="info">
                                 <i class="icon-calendar icon" aria-label="日期图标"></i>
@@ -58,6 +58,9 @@
                                 <?php $this->category(','); ?>
                             </div>
                             <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">阅读全文</a>
+                            <?php if ($this->user->hasLogin()): ?>
+                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right mr-3 d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">编辑</a>
+                            <?php endif; ?>
                         </div>
                     </article>
                 <?php endwhile; ?>

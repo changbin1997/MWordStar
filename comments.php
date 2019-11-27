@@ -49,7 +49,7 @@
     <?php $this->comments()->to($comments); ?>
 
     <?php if ($comments->have()): ?>
-        <div class="comments-lists">
+        <div class="comments-lists border-top">
             <h2><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h2>
 
             <?php $comments->listComments(); ?>
@@ -59,7 +59,7 @@
     <?php endif; ?>
 
     <?php if($this->allow('comment')): ?>
-    <div id="<?php $this->respondId(); ?>" class="respond">
+    <div id="<?php $this->respondId(); ?>" class="respond border-top">
         <div class="cancel-comment-reply">
             <?php $comments->cancelReply(); ?>
         </div>
@@ -72,6 +72,7 @@
                     <label for="textarea" class="required"><?php _e('评论内容'); ?></label>
                     <textarea name="text" id="textarea" class="textarea form-control" required placeholder="请在此处输入评论内容"><?php $this->remember('text'); ?></textarea>
                 </div>
+                <!--Emoji表情面板-->
                 <?php if ($this->options->emojiPanel == 'on'): ?>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
                         <button type="button" class="btn btn btn-outline-secondary btn-sm" data-target="#emoji-box" data-toggle="collapse" aria-expanded="false" aria-controls="emoji-box" id="show-emoji" url="<?php $this->options->themeUrl('emoji.php'); ?>">
@@ -131,6 +132,6 @@
     	</form>
     </div>
     <?php else: ?>
-    <h2 class="comments-off mt-5"><?php _e('评论已关闭'); ?></h2>
+        <h2 class="comments-off pt-4 border-top"><?php _e('评论已关闭'); ?></h2>
     <?php endif; ?>
 </div>
