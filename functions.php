@@ -28,6 +28,13 @@ function themeConfig($form) {
     $icp = new Typecho_Widget_Helper_Form_Element_Text('icp', null, null, _t('ICP 备案号'), _t('ICP 备案号会显示在网站的底部。'));
     $form->addInput($icp);
 
+    //  返回顶部按钮
+    $toTop = new Typecho_Widget_Helper_Form_Element_Radio('toTop', array(
+        'show' => '显示',
+        'hide' => '不显示'
+    ), 'show', _t('在右下方显示返回顶部按钮'));
+    $form->addInput($toTop);
+
     //  侧边栏
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array(

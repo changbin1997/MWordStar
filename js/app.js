@@ -25,6 +25,7 @@ $(function () {
             "src": $(this).attr('src'),
             "alt": $(this).attr('alt')
         });
+        $('.hide-img').focus();  //  让关闭图片的按钮获取焦点
     });
 
     //  大图点击
@@ -152,6 +153,29 @@ $(function () {
        if (ev.keyCode == 13) {
            $(this).click();
        }
+    });
+
+    //  返回顶部按钮点击
+    $('.to-top').on('click', function () {
+        $(document).scrollTop(0);
+    });
+
+    //  监听滚动条
+    $(document).on('scroll', function () {
+        if ($('.to-top').length > 0) {
+            if ($(document).scrollTop() > window.innerHeight) {
+                $('.to-top').removeClass('d-none');  //  显示返回顶部按钮
+            }else {
+                $('.to-top').addClass('d-none');  //  隐藏返回顶部按钮
+            }
+        }
+    });
+
+    //  大图的关闭按钮按下回车
+    $('.hide-img').on('keypress', function (ev) {
+        if (ev.keyCode == 13) {
+            $('#max-img').click();
+        }
     });
 });
 
