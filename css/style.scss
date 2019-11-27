@@ -4,8 +4,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 //  通用的文章信息样式
 @mixin articleInfo{
     padding: 10px 25px;
-    border-top: 1px solid #EAEAEA;
-    border-bottom: 1px solid #EAEAEA;
     .info{
         float: left;
         margin-right: 20px;
@@ -31,7 +29,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 }
 //  通用文章标题样式
 @mixin entryHeader{
-    border-bottom: 1px solid #EAEAEA;
     .entry-title{
         font-size: 28px;
         font-weight: 700;
@@ -60,6 +57,11 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
         overflow: hidden;
         background-size: cover;
         background-position: center;
+    }
+    a:after{
+        content: '';
+        padding-bottom: 37.5%;
+        display: block;
     }
 }
 
@@ -299,6 +301,10 @@ header{
                 background: #707281;
                 color: #ffffff;
             }
+            a:focus{
+                background: #707281;
+                color: #ffffff;
+            }
         }
     }
     //  最新文章区域
@@ -337,6 +343,11 @@ header{
                 color: #ffffff;
                 padding: 7px;
             }
+        }
+        .latest-articles-active:after{
+            content: '';
+            display: block;
+            padding-bottom: 44%;
         }
     }
 }
@@ -385,12 +396,18 @@ footer{
         box-shadow: $shadow;
         border-radius: 4px;
         margin-bottom: 30px;
+        overflow: hidden;
         .entry-header{
             @include entryHeader;
         }
         //  文章头图
         .header-img{
             @include postThumbnail;
+            a:after{
+                content: '';
+                display: block;
+                padding-bottom: 44%;
+            }
         }
         //  文章页的文章信息
         .article-info{
@@ -476,7 +493,6 @@ footer{
     //  上一篇文章和下一篇文章的导航
     .post-navigation{
         padding: 20px;
-        border-top: 1px solid #DEDEDE;
         a{
             color: #6C757D;
         }
@@ -504,6 +520,19 @@ footer{
         transform: translate(-50%, -50%);
         transition: 0.3s;
     }
+    .hide-img{
+        width: 40px;
+        height: 40px;
+        color: #F7F7F7;
+        line-height: 40px;
+        text-align: center;
+        font-size: 40px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        opacity: 0.7;
+        cursor: pointer;
+    }
 }
 
 //  emoji表情面板
@@ -523,11 +552,19 @@ footer{
     .emoji-select .emoji:hover{
         background: #6C757D;
     }
+    .emoji-select::-webkit-scrollbar{
+        width: 4px;
+    }
+    .emoji-select::-webkit-scrollbar-thumb{
+        background: #6C757D;
+    }
+    .emoji-select::-webkit-scrollbar-track-piece{
+        background: #E2E3E5;
+    }
 }
 
 //  评论区
 #comments{
-    border-top: 1px solid #DADADA;
     h2{
         font-size: 25px;
         font-weight: 700;
@@ -623,7 +660,6 @@ footer{
     }
     //  发表评论区
     .respond{
-        border-top: 1px solid #DADADA;
         padding: 20px;
         //  评论内容输入框
         #textarea{
@@ -742,63 +778,45 @@ footer{
     margin-bottom: 20px;
 }
 
+//  返回顶部的按钮
+.to-top{
+    width: 40px;
+    height: 40px;
+    background: #FFFFFF;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: #6C757D;
+    border: 1px solid #D3D3D3;
+    opacity: 0.7;
+}
+
 //  >= 1200
 @media screen and (min-width: 1200px) {
-    //  文章头图
-    .header-img{
-        height: 273px;
-    }
     //  侧边栏
     .sidebar{
         margin-top: 15px;
-    }
-    //  侧边栏的文章头图
-    .latest-articles-active{
-        height: 142px;
     }
 }
 //  >= 992 且 <= 1199
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-    //  文章头图
-    .header-img{
-        height: 228px;
-    }
     //  侧边栏
     .sidebar{
         margin-top: 15px;
     }
-    //  侧边栏的文章头图
-    .latest-articles-active{
-        height: 112px;
-    }
 }
 //  >= 768 且 <=991
 @media screen and (min-width: 768px) and (max-width: 991px) {
-    .header-img{
-        height: 258px;
-    }
     //  侧边栏
     .sidebar section{
         margin-left: 0;
-    }
-    //  侧边栏的文章头图
-    .latest-articles-active{
-        height: 312px;
     }
 }
 //  >= 576 且 <= 767
 @media screen and (min-width: 576px) and (max-width: 767px) {
-    /*文章头图*/
-    .header-img{
-        height: 194px;
-    }
     //  侧边栏的文章头图
     .latest-articles-active{
         height: 222px;
-    }
-    //  侧边栏
-    .sidebar section{
-        margin-left: 0;
     }
 }
 //  < 575
@@ -807,9 +825,6 @@ footer{
     .container .article-list{
         .post{
             @include postM;
-            .header-img{
-                height: 145px;
-            }
         }
     }
     //  文章页
@@ -825,10 +840,6 @@ footer{
             }
             article{
                 padding: 20px;
-            }
-            /*文章头图*/
-            .header-img{
-                height: 145px;
             }
         }
     }
@@ -854,12 +865,20 @@ footer{
             }
         }
     }
-    //  侧边栏的文章头图
-    .latest-articles-active{
-        height: 144.5px;
-    }
     //  侧边栏
     .sidebar section{
         margin-left: 0;
+    }
+    //  表情面板
+    #emoji-box{
+        .emoji-select{
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    }
+    //  返回顶部的按钮
+    .to-top{
+        right: 10px;
+        bottom: 30px;
     }
 }
