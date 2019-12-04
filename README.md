@@ -147,3 +147,5 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 如果您在使用本主题时遇到 Bug 或有任何问题和建议都可以在 [博客评论区](https://www.misterma.com/archives/812/#comments) 留言，也可以在 Github 的 [issues](https://github.com/changbin1997/MWordStar/issues) 反馈。
 
 一般情况下在博客留言可以很快得到回复。
+
+本项目需要感谢 [JetBrains](https://www.jetbrains.com/?from=MWordStar) 提供的免费开发工具。
