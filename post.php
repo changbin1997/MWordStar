@@ -69,8 +69,8 @@
                 </article>
                 <!--上一篇和下一篇文章的导航-->
                 <nav class="post-navigation navbar border-top">
-                    <div class="pagination pagination-sm">上一篇：<?php $this->thePrev('%s','没有了'); ?></div>
-                    <div class="pagination justify-content-end">下一篇：<?php $this->theNext('%s','没有了'); ?></div>
+                    <div><div>上一篇</div><?php $this->thePrev('%s','没有了'); ?></div>
+                    <div><div class="text-lg-right text-xl-right text-md-right">下一篇</div><?php $this->theNext('%s','没有了'); ?></div>
                 </nav>
                 <?php $this->need('comments.php'); ?>
             </main>
