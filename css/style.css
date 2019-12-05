@@ -387,8 +387,8 @@ footer .container a, footer .container span {
   padding: 20px;
 }
 .article-page main article .post-content, .archive main article .post-content, .page main article .post-content {
-  width: 100%;
   margin-top: 10px;
+  width: 100%;
   font-size: 15px;
   word-break: break-all;
 }
@@ -452,6 +452,9 @@ footer .container a, footer .container span {
   background: #EDEDED;
   color: #333333;
   padding: 0 4px;
+}
+.article-page main article .post-content .protected p, .archive main article .post-content .protected p, .page main article .post-content .protected p {
+  text-align: center;
 }
 .article-page .post-navigation, .archive .post-navigation, .page .post-navigation {
   padding: 20px;
@@ -535,34 +538,34 @@ footer .container a, footer .container span {
   list-style: none;
   padding: 0;
 }
-#comments .comments-lists .comment-list li {
+#comments .comments-lists .comment-list .comment-body {
   border-top: 1px solid #EBF2FC;
   padding: 20px 0;
 }
-#comments .comments-lists .comment-list li .comment-box {
+#comments .comments-lists .comment-list .comment-body .comment-box {
   width: 100%;
 }
-#comments .comments-lists .comment-list li .comment-author {
+#comments .comments-lists .comment-list .comment-body .comment-author {
   width: 100%;
 }
-#comments .comments-lists .comment-list li .avatar {
+#comments .comments-lists .comment-list .comment-body .avatar {
   width: 42px;
   height: 42px;
   margin-right: 20px;
   float: left;
   border-radius: 50%;
 }
-#comments .comments-lists .comment-list li .comment-info a {
+#comments .comments-lists .comment-list .comment-body .comment-info a {
   line-height: 22px;
   font-size: 15px;
   color: #6C757D;
 }
-#comments .comments-lists .comment-list li .comment-info .comment-time {
+#comments .comments-lists .comment-list .comment-body .comment-info .comment-time {
   color: #686868;
   font-size: 12px;
   display: block;
 }
-#comments .comments-lists .comment-list li .comment-reply a {
+#comments .comments-lists .comment-list .comment-body .comment-reply a {
   line-height: 30px;
   font-size: 12px;
   width: 60px;
@@ -574,24 +577,86 @@ footer .container a, footer .container span {
   border-radius: 4px;
   color: #6C757D;
 }
-#comments .comments-lists .comment-list li .comment-reply a:hover {
+#comments .comments-lists .comment-list .comment-body .comment-reply a:hover {
   background: #6C757D;
   color: #ffffff;
 }
-#comments .comments-lists .comment-list li .comment-content {
+#comments .comments-lists .comment-list .comment-body .comment-content {
   margin-left: 62px;
   font-size: 15px;
+  word-break: break-all;
 }
-#comments .comments-lists .comment-list li .comment-children {
+#comments .comments-lists .comment-list .comment-body .comment-content ul, #comments .comments-lists .comment-list .comment-body .comment-content ol, #comments .comments-lists .comment-list .comment-body .comment-content img, #comments .comments-lists .comment-list .comment-body .comment-content pre, #comments .comments-lists .comment-list .comment-body .comment-content blockquote, #comments .comments-lists .comment-list .comment-body .comment-content h1, #comments .comments-lists .comment-list .comment-body .comment-content h2, #comments .comments-lists .comment-list .comment-body .comment-content h3, #comments .comments-lists .comment-list .comment-body .comment-content h4, #comments .comments-lists .comment-list .comment-body .comment-content h5, #comments .comments-lists .comment-list .comment-body .comment-content p {
+  margin: 0 0 20px 0;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content img {
+  max-width: 100%;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content h1, #comments .comments-lists .comment-list .comment-body .comment-content h2, #comments .comments-lists .comment-list .comment-body .comment-content h3, #comments .comments-lists .comment-list .comment-body .comment-content h4, #comments .comments-lists .comment-list .comment-body .comment-content h5, #comments .comments-lists .comment-list .comment-body .comment-content h6 {
+  font-weight: 700;
+  color: #444444;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content h1 {
+  font-size: 30px;
+  margin: 50px 0 20px 0;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content h2 {
+  font-size: 25px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content h3 {
+  font-size: 20px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content h4 {
+  font-size: 15px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content h5 {
+  font-size: 12.45px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content h6 {
+  font-size: 12px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content blockquote {
+  border-left: 4px solid #1A1A1A;
+  padding-left: 22.5px;
+  font-size: 17px;
+  color: #686868;
+  font-style: italic;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content code {
+  font-size: 15px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre code {
+  padding: 10px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content table td {
+  min-width: 90px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content p {
+  color: #444444;
+  line-height: 25px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content a {
+  color: #6C757D;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content li {
+  color: #444444;
+  padding: 2px 0;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content p > code, #comments .comments-lists .comment-list .comment-body .comment-content li > code, #comments .comments-lists .comment-list .comment-body .comment-content td > code {
+  background: #EDEDED;
+  color: #333333;
+  padding: 0 4px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-children {
   margin-left: 20px;
 }
-#comments .comments-lists .comment-list li .comment-children li {
+#comments .comments-lists .comment-list .comment-body .comment-children li {
   padding-bottom: 0;
 }
-#comments .comments-lists .comment-list li .comment-children li .comment-children {
+#comments .comments-lists .comment-list .comment-body .comment-children li .comment-children {
   margin-left: 0;
 }
-#comments .comments-lists .comment-list li .respond {
+#comments .comments-lists .comment-list .comment-body .respond {
   background: #EEEEEE;
 }
 #comments .comments-lists .page-navigator .current a {

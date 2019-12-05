@@ -138,6 +138,78 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
     }
 }
 
+//  通用的文章内容样式
+@mixin postContent{
+    font-size: $articleFontSize;
+    word-break: break-all;
+    ul,ol,img,pre,blockquote,h1,h2,h3,h4,h5,p{
+        margin: 0 0 20px 0;
+    }
+    img{
+        max-width: 100%;
+    }
+    //  文章标题
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        color: #444444;
+    }
+    h1{
+        font-size: 30px;
+        margin: 50px 0 20px 0;
+    }
+    h2{
+        font-size: 25px;
+    }
+    h3{
+        font-size: 20px;
+    }
+    h4{
+        font-size: 15px;
+    }
+    h5{
+        font-size: 12.45px;
+    }
+    h6{
+        font-size: 12px;
+    }
+    //  文章引用
+    blockquote{
+        border-left: 4px solid #1A1A1A;
+        padding-left: 22.5px;
+        font-size: 17px;
+        color: #686868;
+        font-style: italic;
+    }
+    //  代码高亮区域
+    code{
+        font-size: $articleFontSize;
+    }
+    pre{
+        code{
+            padding: 10px;
+        }
+    }
+    table td{
+        min-width: 90px;
+    }
+    p{
+        color: #444444;
+        line-height: 25px;
+    }
+    a{
+        color: #6C757D;
+    }
+    li{
+        color: #444444;
+        padding: 2px 0;
+    }
+    p>code,li>code,td>code{
+        background: #EDEDED;
+        color: #333333;
+        padding: 0 4px;
+    }
+}
+
 body{
     background: #E4E4E4;
 }
@@ -417,75 +489,13 @@ footer{
             padding: 20px;
             //  文章页的文章内容
             .post-content{
-                width: 100%;
                 margin-top: 10px;
-                font-size: $articleFontSize;
-                word-break: break-all;
-                ul,ol,img,pre,blockquote,h1,h2,h3,h4,h5,p{
-                    margin: 0 0 20px 0;
-                }
-                img{
-                    max-width: 100%;
-                }
-                //  文章标题
-                h1,h2,h3,h4,h5,h6{
-                    font-weight: 700;
-                    color: #444444;
-                }
-                h1{
-                    font-size: 30px;
-                    margin: 50px 0 20px 0;
-                }
-                h2{
-                    font-size: 25px;
-                }
-                h3{
-                    font-size: 20px;
-                }
-                h4{
-                    font-size: 15px;
-                }
-                h5{
-                    font-size: 12.45px;
-                }
-                h6{
-                    font-size: 12px;
-                }
-                //  文章引用
-                blockquote{
-                    border-left: 4px solid #1A1A1A;
-                    padding-left: 22.5px;
-                    font-size: 17px;
-                    color: #686868;
-                    font-style: italic;
-                }
-                //  代码高亮区域
-                code{
-                    font-size: $articleFontSize;
-                }
-                pre{
-                    code{
-                        padding: 10px;
+                width: 100%;
+                @include postContent;
+                .protected{
+                    p{
+                        text-align: center;
                     }
-                }
-                table td{
-                    min-width: 90px;
-                }
-                p{
-                    color: #444444;
-                    line-height: 25px;
-                }
-                a{
-                    color: #6C757D;
-                }
-                li{
-                    color: #444444;
-                    padding: 2px 0;
-                }
-                p>code,li>code,td>code{
-                    background: #EDEDED;
-                    color: #333333;
-                    padding: 0 4px;
                 }
             }
         }
@@ -579,7 +589,7 @@ footer{
         .comment-list{
             list-style: none;
             padding: 0;
-            li{
+            .comment-body{
                 border-top: 1px solid #EBF2FC;
                 padding: 20px 0;
                 .comment-box{
@@ -631,7 +641,7 @@ footer{
                 //  评论内容
                 .comment-content{
                     margin-left: 62px;
-                    font-size: 15px;
+                    @include postContent;
                 }
                 //  评论的子内容，也就是回复的内容
                 .comment-children{
