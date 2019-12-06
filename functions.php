@@ -2,8 +2,16 @@
 
 //  文章的自定义字段
 function themeFields($layout) {
+    //  文章头图来源
+    $imageSource = new Typecho_Widget_Helper_Form_Element_Select('imageSource', array(
+        'article' => '使用文章中的第一张图片作为文章头图',
+        'url' => '在文章头图输入框手动输入图片URL',
+        'hide' => '不显示文章头图'
+    ), 'article', _t('文章头图来源'), _t('如果文章头图 URL 为空或文章内容中没有图片将不会显示文章头图。'));
+    $layout->addItem($imageSource);
+
     //  文章头图
-    $image = new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('文章头图会显示在文章的顶部。'));
+    $image = new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('如果您在文章头图来源中设置了手动输入图片 URL 的话，请在这里输入图片 URL。'));
     $layout->addItem($image);
 
     //  自定义文章摘要内容
@@ -80,7 +88,7 @@ function themeConfig($form) {
         'home' => _t('在首页显示文章头图'),
         'sidebarBlock' => _t('在侧边栏的最新文章区域显示文章头图'),
         'post' => _t('在文章页显示文章头图')
-    ), array('home', 'sidebarBlock', 'post'), _t('文章头图设置'));
+    ), array('home', 'post'), _t('文章头图设置'));
     $form->addInput($headerImage->multiMode());
 
     //  Emoji面板
@@ -215,5 +223,53 @@ function socialInfo($info) {
     $info = json_decode($info);
     foreach ($info as $val) {
         echo '<a class="' . $icon[$val->name]['icon'] . '" href="' . $val->url . '" title="' . $icon[$val->name]['name'] . '" aria-label="' . $icon[$val->name]['name'] . '" target="_blank"></a>';
+    }
+}
+
+//  根据设置获取文章头图
+function postImg($a) {
+    if (!$a->fields->imageSource) {
+        $img = getPostImg($a);
+        return $img == 'none'?false:$img;
+    }
+    switch ($a->fields->imageSource) {
+        case 'url':
+            return $a->fields->thumb?$a->fields->thumb:false;
+            break;
+        case 'article':
+            $img = getPostImg($a);
+            return $img == 'none'?false:$img;
+            break;
+        default:
+            return false;
+            break;
+    }
+}
+
+//  获取文章的第一张图片
+function getPostImg($archive) {
+    $cid = $archive->cid;
+    $db = Typecho_Db::get();
+    $rs = $db->fetchRow($db->select('table.contents.text')
+        ->from('table.contents')
+        ->where('cid=?', $cid));
+    $text = $rs['text'];
+    if (0 === strpos($text, '<!--markdown-->')) {
+        preg_match('/!\[[^\]]*]\([^\)]*\.(png|jpeg|jpg|gif|bmp)\)/i', $text, $img);
+        if (empty($img)) {
+            return 'none';
+        } else {
+            preg_match("/(?:\()(.*)(?:\))/i", $img[0], $result);
+            $img_url = $result[1];
+            return $img_url;
+        }
+    } else {
+        preg_match_all("/\<img.*?src\=\"(.*?)\"[^>]*>/i", $text, $img);
+        if (empty($img)) {
+            return 'none';
+        } else {
+            $img_url = $img[1][0];
+            return $img_url;
+        }
     }
 }

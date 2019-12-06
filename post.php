@@ -10,10 +10,13 @@
                         <a itemprop="url" href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title() ?></a>
                     </h1>
                 </header>
-                <?php if ($this->fields->thumb && $this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
-                    <div class="header-img border-top">
-                        <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php $this->fields->thumb(); ?>);"></a>
-                    </div>
+                <?php if ($this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
+                    <?php $img = postImg($this); ?>
+                    <?php if ($img): ?>
+                        <div class="header-img border-top">
+                            <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $img; ?>);"></a>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
                 <div class="article-info clearfix border-bottom border-top">
                     <!--时间-->

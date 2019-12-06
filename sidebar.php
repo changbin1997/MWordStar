@@ -39,8 +39,11 @@
                     <?php while ($latestArticles->next()): ?>
                     <li class="border-bottom">
                         <a class="text-secondary" href="<?php $latestArticles->permalink(); ?>">
-                            <?php if ($latestArticles->fields->thumb && $this->options->headerImage && in_array('sidebarBlock', $this->options->headerImage)): ?>
-                                <div class="article-img" style="background-image: url(<?php $latestArticles->fields->thumb(); ?>);" aria-label="<?php $latestArticles->title(); ?>的头图"></div>
+                            <?php if ($this->options->headerImage && in_array('sidebarBlock', $this->options->headerImage)): ?>
+                                <?php $img = postImg($latestArticles); ?>
+                                <?php if ($img): ?>
+                                    <div class="article-img" style="background-image: url(<?php echo $img; ?>);" aria-label="<?php $latestArticles->title(); ?>的头图"></div>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <p><?php $latestArticles->title(); ?></p>
                         </a>
