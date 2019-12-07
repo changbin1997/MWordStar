@@ -1,5 +1,6 @@
 $(function () {
     var emoji = null;  //  emoji表情
+    var maxImg = false;  //  大图的状态
 
     //  给文章表格添加样式
     if ($('.post-content table').length > 0) {
@@ -26,6 +27,7 @@ $(function () {
             "alt": $(this).attr('alt')
         });
         $('.hide-img').focus();  //  让关闭图片的按钮获取焦点
+        maxImg = true;
     });
 
     //  大图点击
@@ -40,6 +42,7 @@ $(function () {
             $('#max-img').css('display', 'none');
             $('#max-img img').attr('src', '');
         }, 300);
+        maxImg = false;
     });
 
     //  给链接设置在新标签页打开
@@ -175,6 +178,13 @@ $(function () {
     $('.hide-img').on('keypress', function (ev) {
         if (ev.keyCode == 13) {
             $('#max-img').click();
+        }
+    });
+
+    //  ESC键按下
+    $(document).on('keyup', function (ev) {
+        if (ev.keyCode == 27 && maxImg) {
+            $('#max-img').click();  //  关闭大图
         }
     });
 });
