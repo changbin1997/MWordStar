@@ -1,7 +1,15 @@
+<?php
+$sidebarM = $this->options->sidebarBlockM;  //  获取侧边栏的移动设备显示设置
+if (!is_array($sidebarM)) {
+    $sidebarM = array();
+}
+$hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在移动设备上隐藏区块的class
+?>
+
 <div class="col-md-12 col-lg-4 col-sm-12 sidebar">
     <!--博客信息-->
     <?php if ($this->options->sidebarBlock && in_array('ShowBlogInfo', $this->options->sidebarBlock)): ?>
-        <section>
+        <section class="<?php echo in_array('HideBlogInfo', $sidebarM)?$hideClass:''; ?>">
             <h4>博客信息</h4>
             <div class="personal-information pt-2">
                 <div class="user">
@@ -32,7 +40,7 @@
     <!--最新文章-->
     <?php if (!$this->is('page', 'archives')): ?>
         <?php if ($this->options->sidebarBlock && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
-            <section class="latest-articles">
+            <section class="latest-articles<?php echo in_array('HideRecentPosts', $sidebarM)?' ' . $hideClass:''; ?>">
                 <h4>最新文章</h4>
                 <ul aria-label="最新文章">
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
@@ -55,7 +63,7 @@
     <?php endif; ?>
     <!--最新回复-->
     <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
-        <section>
+        <section class="<?php echo in_array('HideRecentComments', $sidebarM)?$hideClass:''; ?>">
             <h4>最新回复</h4>
             <ul class="list-unstyled" aria-label="最新回复">
                 <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
@@ -73,7 +81,7 @@
     <?php endif; ?>
     <!--文章分类-->
     <?php if ($this->options->sidebarBlock && in_array('ShowCategory', $this->options->sidebarBlock)): ?>
-        <section>
+        <section class="<?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?>">
             <h4>文章分类</h4>
             <ul class="list-group list-group-flush" aria-label="文章分类">
                 <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a class="text-secondary" href="{permalink}" title="{description}">{name}</a><span class="badge badge-secondary badge-pill">{count}</span></li>'); ?>
@@ -82,7 +90,7 @@
     <?php endif; ?>
     <!--标签云-->
     <?php if ($this->options->sidebarBlock && in_array('ShowTag', $this->options->sidebarBlock)): ?>
-        <section>
+        <section class="<?php echo in_array('HideTag', $sidebarM)?$hideClass:''; ?>">
             <h4>标签云</h4>
             <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
             <?php if($tags->have()): ?>
@@ -98,7 +106,7 @@
     <?php endif; ?>
     <!--文章归档-->
     <?php if ($this->options->sidebarBlock && in_array('ShowArchive', $this->options->sidebarBlock)): ?>
-        <section>
+        <section class="<?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?>">
             <h4>文章归档</h4>
             <ul class="list-group list-group-flush" aria-label="文章归档">
                 <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a class="text-secondary" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-secondary badge-pill">{count}</span></li>');
@@ -108,7 +116,7 @@
     <?php endif; ?>
     <!-- 其它功能-->
     <?php if ($this->options->sidebarBlock && in_array('ShowOther', $this->options->sidebarBlock)): ?>
-        <section>
+        <section class="<?php echo in_array('HideOther', $sidebarM)?$hideClass:''; ?>">
             <h4>其它功能</h4>
             <ul aria-label="其它功能">
                 <?php if (!in_array('HideLoginLink', $this->options->sidebarBlock)): ?>
@@ -126,7 +134,7 @@
     <?php endif; ?>
     <!--友情链接-->
     <?php if ($this->options->links or $this->options->homeLinks && $this->is('index')): ?>
-        <section>
+        <section class="<?php echo in_array('HideLinks', $sidebarM)?$hideClass:''; ?>">
             <h4>友情链接</h4>
             <ul aria-label="友情链接">
                 <?php if ($this->options->homeLinks && $this->is('index')): ?>

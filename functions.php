@@ -59,11 +59,26 @@ function themeConfig($form) {
             'ShowOther' => _t('显示其它杂项'),
             'HideLoginLink' => _t('隐藏登录入口')
         ),
-        array('ShowBlogInfo', 'ShowRecentPosts','ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示')
+        array('ShowBlogInfo', 'ShowRecentPosts','ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'), _t('您可以在这里设置需要显示在侧边栏上的内容，这里的设置会影响到移动设备的侧边栏显示。如果设置为不显示将不会出现 HTML。')
     );
     $form->addInput($sidebarBlock->multiMode());
 
-    //  侧边栏博客西信息博主头像地址
+    //  侧边栏（移动端）
+    $sidebarBlockM = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlockM',
+        array(
+            'HideBlogInfo' => _t('在移动设备上隐藏博客信息'),
+            'HideRecentPosts' => _t('在移动设备上隐藏最新文章'),
+            'HideRecentComments' => _t('在移动设备上隐藏最新回复'),
+            'HideCategory' => _t('在移动设备上隐藏分类'),
+            'HideTag' => _t('在移动设备上隐藏标签云'),
+            'HideArchive' => _t('在移动设备上隐藏文章归档'),
+            'HideOther' => _t('在移动设备上隐藏其它功能区域'),
+            'HideLinks' => _t('隐藏首页和全站友情链接')
+        ), null, _t('侧边栏显示（移动设备）'), _t('在移动设备上，侧边栏会显示在文章的下方。您可以在这里设置需要在移动设备上隐藏的侧边栏内容，这里设置的内容不会影响到 PC版 的显示。这里的移动设备包括平板电脑和手机。这里的隐藏只是看不到内容，HTML代码还是在的。')
+    );
+    $form->addInput($sidebarBlockM->multiMode());
+
+    //  侧边栏博客信息博主头像地址
     $avatarUrl = new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用默认头像。'));
     $form->addInput($avatarUrl);
 
@@ -95,7 +110,7 @@ function themeConfig($form) {
     $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
         'off' => '关闭'
-    ), 'off', _t('评论区Emoji表情选择面板'));
+    ), 'off', _t('评论区Emoji表情选择面板'), _t('开启后会在评论区的评论内容输入框下方显示一个 Emoji表情按钮，点击后会显示一个 Emoji表情面板。'));
     $form->addInput($emojiPanel);
 
     //  导航栏
@@ -127,7 +142,7 @@ function themeConfig($form) {
     $form->addInput($socialInfo);
 
     //  文章摘要字数
-    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('文章摘要字数，默认为：120 个字'));
+    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。'));
     $form->addInput($summary);
 
     //  首页友链
