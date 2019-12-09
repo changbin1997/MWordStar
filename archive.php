@@ -37,27 +37,27 @@
                         <div class="article-info clearfix border-top">
                             <!--时间-->
                             <div class="info">
-                                <i class="icon-calendar icon" aria-label="日期图标"></i>
+                                <i class="icon-calendar icon" aria-hidden="true"></i>
                                 <span tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
                             </div>
                             <!--作者-->
                             <div class="info">
-                                <i class="icon-user icon" aria-label="作者图标"></i>
+                                <i class="icon-user icon" aria-hidden="true"></i>
                                 <a href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
                             </div>
                             <!--阅读量-->
                             <div class="info">
-                                <i class="icon-eye icon" aria-label="阅读量图标"></i>
+                                <i class="icon-eye icon" aria-hidden="true"></i>
                                 <span tabindex="0" title="阅读量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
                             </div>
                             <!--评论-->
                             <div class="info">
-                                <i class="icon-bubbles2 icon" aria-label="评论图标"></i>
+                                <i class="icon-bubbles2 icon" aria-hidden="true"></i>
                                 <a title="评论" href="#comments"><?php $this->commentsNum('%d 评论'); ?></a>
                             </div>
                             <!--分类-->
                             <div class="info">
-                                <i class="icon-folder-open icon" aria-label="分类图标"></i>
+                                <i class="icon-folder-open icon" aria-hidden="true"></i>
                                 <?php $this->category(','); ?>
                             </div>
                             <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">阅读全文</a>
