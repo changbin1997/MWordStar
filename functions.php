@@ -115,9 +115,8 @@ function themeConfig($form) {
 
     //  导航栏
     $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(
-        'showClassification' => _t('显示文章分类'),
-        'blurry' => _t('导航栏毛玻璃效果')
-    ), array('blurry'), _t('导航栏'));
+        'showClassification' => _t('显示文章分类')
+    ), null, _t('导航栏'));
     $form->addInput($navBar->multiMode());
 
     //  导航栏颜色
@@ -126,20 +125,6 @@ function themeConfig($form) {
         'dark' => '暗色'
     ), 'light', _t('导航栏颜色'));
     $form->addInput($navColor);
-
-    //  巨幕
-    $Jumbotron = new Typecho_Widget_Helper_Form_Element_Checkbox('Jumbotron', array(
-        'showJumbotron' => _t('显示巨幕')
-    ), null, _t('巨幕'));
-    $form->addInput($Jumbotron->multiMode());
-
-    //  巨幕背景图片
-    $JumbotronBG = new Typecho_Widget_Helper_Form_Element_Text('JumbotronBG', null, null, _t('巨幕背景图片'), _t('如果为空会显示默认图片。'));
-    $form->addInput($JumbotronBG);
-
-    //  社交信息
-    $socialInfo = new Typecho_Widget_Helper_Form_Element_Textarea('socialInfo', null, null, _t('社交信息'), _t('需要 JSON 格式，社交信息会显示在巨幕的站点副标题下方。需要开启巨幕显示才能显示社交信息。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
-    $form->addInput($socialInfo);
 
     //  文章摘要字数
     $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。'));

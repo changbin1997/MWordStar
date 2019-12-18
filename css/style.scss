@@ -776,6 +776,9 @@ footer{
                 font-size: 12px;
                 margin: 10px 0 0 0;
                 line-height: 18px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
         .link:hover{

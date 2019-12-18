@@ -844,6 +844,9 @@ footer .container a, footer .container span {
   font-size: 12px;
   margin: 10px 0 0 0;
   line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .link-box .link-grid .link:hover {
   box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);

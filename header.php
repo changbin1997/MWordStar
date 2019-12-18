@@ -1,26 +1,5 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-//  获取巨幕的配置信息
-if ($this->options->Jumbotron && in_array('showJumbotron', $this->options->Jumbotron)) {
-    $Jumbotron = true;
-}else {
-    $Jumbotron = false;
-}
-
-//  设置导航栏的背景
-if ($this->options->navColor == 'dark') {
-    if ($this->options->navbar && in_array('blurry', $this->options->navbar)) {
-        $navbg = 'rgba(0, 0, 0, 0.7)';
-    }else {
-        $navbg = '#343A40';
-    }
-}else {
-    if ($this->options->navbar && in_array('blurry', $this->options->navbar)) {
-        $navbg = 'rgba(255, 255, 255, 0.7)';
-    }else {
-        $navbg = '#F8F9FA';
-    }
-}
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -61,8 +40,8 @@ if ($this->options->navColor == 'dark') {
     <?php endif; ?>
 </head>
 <body>
-<header class="<?php echo $Jumbotron?'position-fixed':'sticky-top'; ?>">
-    <nav class="navbar navbar-expand-lg <?php echo $this->options->navColor == 'dark'?'navbar-dark':'navbar-light'; ?>" style="background-color: <?php echo $navbg; ?>;<?php echo in_array('blurry', $this->options->navbar)?'-webkit-backdrop-filter: blur(10px);backdrop-filter: blur(10px);':''; ?>">
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg <?php echo $this->options->navColor == 'dark'?'navbar-dark':'navbar-light'; ?>" style="background-color: <?php echo $this->options->navColor == 'dark'?'#343A40':'rgba(248, 249, 250, 0.97)'; ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
@@ -105,20 +84,3 @@ if ($this->options->navColor == 'dark') {
         </div>
     </nav>
 </header>
-<?php if ($Jumbotron): ?>
-    <div class="jumbotron jumbotron-fluid" STYLE="background-image: url(<?php $this->options->JumbotronBG?$this->options->JumbotronBG():$this->options->themeUrl('img/bg.jpg'); ?>)">
-        <div class="container">
-            <h1 class="text-center">
-                <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
-            </h1>
-            <?PHP if ($this->options->tagline): ?>
-                <p class="text-center"><?php $this->options->tagline(); ?></p>
-            <?php endif; ?>
-            <?php if ($this->options->socialInfo): ?>
-                <nav class="social-info">
-                    <?php socialInfo($this->options->socialInfo); ?>
-                </nav>
-            <?php endif; ?>
-        </div>
-    </div>
-<?php endif; ?>
