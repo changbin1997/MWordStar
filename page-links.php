@@ -37,7 +37,7 @@ $this->need('header.php');  //  头文件
                                             <?php if (!isset($linkList[$i]->title) or $linkList[$i]->title == ''): ?>
                                                 <p>暂无简介</p>
                                             <?php else: ?>
-                                                <p><?php echo $linkList[$i]->title; ?></p>
+                                                <p title="<?php echo $linkList[$i]->title; ?>"><?php echo $linkList[$i]->title; ?></p>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@ $this->need('header.php');  //  头文件
                                         <?php if (!isset($linkList[$i]->title) or $linkList[$i]->title == ''): ?>
                                             <p>暂无简介</p>
                                         <?php else: ?>
-                                            <p><?php echo $linkList[$i]->title; ?></p>
+                                            <p title="<?php echo $linkList[$i]->title; ?>"><?php echo $linkList[$i]->title; ?></p>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@ $this->need('header.php');  //  头文件
                                         <?php if (!$links[$i]->title or $links[$i]->title == ''): ?>
                                             <p>暂无简介</p>
                                         <?php else: ?>
-                                            <p><?php echo $links[$i]->title; ?></p>
+                                            <p title="<?php echo $links[$i]->title; ?>"><?php echo $links[$i]->title; ?></p>
                                         <?php endif; ?>
                                     </div>
                                 </div>
