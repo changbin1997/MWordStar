@@ -11,7 +11,7 @@
                 <div class="input-group">
                     <input type="search" class="form-control form-control-md" placeholder="搜索" aria-label="搜索" aria-describedby="button-addon2" required="required" name="s">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-light btn-md" aria-label="搜索" title="搜索">
+                        <button type="submit" class="btn btn-secondary btn-md" aria-label="搜索" title="搜索">
                             <span class="icon-search"></span>
                         </button>
                     </div>
