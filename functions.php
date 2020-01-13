@@ -183,49 +183,6 @@ function getPostView($archive) {
     return $row['views'];
 }
 
-//  输出社交信息
-function socialInfo($info) {
-    $icon = array(
-        'facebook' => array(
-            'icon' => 'icon-facebook',
-            'name' => 'Facebook'
-        ),
-        'twitter' => array(
-            'icon' => 'icon-twitter',
-            'name' => 'Twitter'
-        ),
-        'weibo' => array(
-            'icon' => 'icon-sina-weibo',
-            'name' => '微博'
-        ),
-        'instagram' => array(
-            'icon' => 'icon-instagram',
-            'name' => 'Instagram'
-        ),
-        'github' => array(
-            'icon' => 'icon-github',
-            'name' => 'Github'
-        ),
-        'telegram' => array(
-            'icon' => 'icon-telegram',
-            'name' => 'Telegram'
-        ),
-        'linkedin' => array(
-            'icon' => 'icon-linkedin2',
-            'name' => 'LinkedIn'
-        ),
-        'steam' => array(
-            'icon' => 'icon-steam',
-            'name' => 'Steam'
-        )
-    );
-
-    $info = json_decode($info);
-    foreach ($info as $val) {
-        echo '<a class="' . $icon[$val->name]['icon'] . '" href="' . $val->url . '" title="' . $icon[$val->name]['name'] . '" aria-label="' . $icon[$val->name]['name'] . '" target="_blank"></a>';
-    }
-}
-
 //  根据设置获取文章头图
 function postImg($a) {
     if (!$a->fields->imageSource) {
