@@ -98,10 +98,10 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
                 <?php while ($tags->next()): ?>
                     <a href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                 <?php endwhile; ?>
-                <?php else: ?>
-                    <li><?php _e('没有任何标签'); ?></li>
-                <?php endif; ?>
             </div>
+            <?php else: ?>
+                <p class="text-center pb-2"><?php _e('没有任何标签'); ?></p>
+            <?php endif; ?>
         </section>
     <?php endif; ?>
     <!--文章归档-->
