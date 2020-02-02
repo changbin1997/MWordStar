@@ -237,38 +237,6 @@ header{
     }
 }
 
-//  巨幕
-.jumbotron{
-    background-size: cover;
-    background-position: center;
-    background-color: #343A40;
-    margin-bottom: 2px;
-    h1{
-        font-size: 50px;
-        font-weight: 700;
-        margin-top: 56px;
-    }
-    a:hover{
-        color: #ffffff;
-    }
-    *{
-        color: #ffffff;
-    }
-    //  社交信息
-    .social-info{
-        text-align: center;
-        a{
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            font-size: 28px;
-            line-height: 30px;
-            text-align: center;
-            margin: 0 10px;
-        }
-    }
-}
-
 //  内容区域
 .container .article-list{
     margin-top: 15px;
