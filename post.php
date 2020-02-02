@@ -14,7 +14,7 @@
                     <?php $img = postImg($this); ?>
                     <?php if ($img): ?>
                         <div class="header-img border-top">
-                            <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $img; ?>);"></a>
+                            <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $img; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;"></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>

@@ -106,6 +106,14 @@ function themeConfig($form) {
     ), array('home', 'post'), _t('文章头图设置'));
     $form->addInput($headerImage->multiMode());
 
+    //  文章头图背景颜色
+    $headerImageBg = new Typecho_Widget_Helper_Form_Element_Radio('headerImageBg', array(
+        'random' => '随机颜色',
+        'gray' => '灰色',
+        'white' => '白色'
+    ), 'gray', _t('文章头图背景颜色'), _t('文章头图背景颜色是在图片加载完成之前或图片无法加载时显示的颜色，如果图片使用了透明背景是可以看到背景颜色的。'));
+    $form->addInput($headerImageBg);
+
     //  Emoji面板
     $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
@@ -181,6 +189,20 @@ function getPostView($archive) {
         }
     }
     return $row['views'];
+}
+
+//  生成文章头图背景颜色
+function headerImageBgColor($color) {
+    if ($color == null or $color == '') {
+        return '#CCCCCC';
+    }
+
+    $bgColor = array(
+        'random' => 'rgb(' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')',
+        'gray' => '#CCCCCC',
+        'white' => '#FFFFFF'
+    );
+    return $bgColor[$color];
 }
 
 //  根据设置获取文章头图
