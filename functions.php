@@ -234,7 +234,7 @@ function getPostImg($archive) {
         ->where('cid=?', $cid));
     $text = $rs['text'];
     if (0 === strpos($text, '<!--markdown-->')) {
-        preg_match('/!\[[^\]]*]\([^\)]*\.(png|jpeg|jpg|gif|bmp)\)/i', $text, $img);
+        preg_match('/!\[[^\]]*]\([^\)]*\)/i', $text, $img);
         if (empty($img)) {
             return 'none';
         } else {
