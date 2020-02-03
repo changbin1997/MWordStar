@@ -26,36 +26,6 @@ header .navbar .search-btn:focus {
   background: #F0F0F0;
 }
 
-.jumbotron {
-  background-size: cover;
-  background-position: center;
-  background-color: #343A40;
-  margin-bottom: 2px;
-}
-.jumbotron h1 {
-  font-size: 50px;
-  font-weight: 700;
-  margin-top: 56px;
-}
-.jumbotron a:hover {
-  color: #ffffff;
-}
-.jumbotron * {
-  color: #ffffff;
-}
-.jumbotron .social-info {
-  text-align: center;
-}
-.jumbotron .social-info a {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  font-size: 28px;
-  line-height: 30px;
-  text-align: center;
-  margin: 0 10px;
-}
-
 .container .article-list {
   margin-top: 15px;
 }
