@@ -118,7 +118,7 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 ### 兼容性
 
-因为本主题使用了 HTML5 和 CSS3，需要 IE10 及以上浏览器才能完美兼容。IE9 及以下浏览器显示可能会出现一些问题。
+因为本主题使用了 HTML5 和 CSS3，需要 IE10 及以上浏览器才能完美兼容。IE8 及以下浏览器显示可能会出现一些问题。
 
 ### 插件适配
 
@@ -127,6 +127,30 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 下面是已适配的插件：
 
 * [Sticky](https://plugins.typecho.me/plugins/sticky.html) 文章置顶插件
+
+## 使用 Webpack 构建
+
+在 [MWordStar](https://github.com/changbin1997/MWordStar) 仓库和 [Releases](https://github.com/changbin1997/MWordStar/releases) 中的主题是直接通过 `link` 和 `script` 引入 CSS 和 JS 文件，没有使用任何构建工具。
+
+下面是用到的 CSS 和 JS 文件说明：
+
+* `bootstrap.min.css`：Bootstrap 的 CSS 文件，这个 CSS 是被我修改过的。
+* `icon.css`：字体图标的 CSS 文件。
+* `style.css`：主题的样式文件。
+* `style.scss`：主题的 SASS 样式文件，在 [Releases](https://github.com/changbin1997/MWordStar/releases) 中下载的主题不包含 SASS 文件。
+* `vs2015.css`：highlight.js 的样式文件。
+* `jquery-3.4.1.min.js`：jQuery。
+* `bootstrap.min.js`：Bootstrap 的 JS 文件。
+* `highlight.pack.js`：highlight.js 的 JS 文件。
+* `app.js`：主题的 JS 文件。
+
+除了上面的 CSS 和 JS 外 `icon.css` 还需要加载 4 个字体文件。虽然这些文件都不大，但是需要发送很多次 HTTP 请求。Webpack 可以把上面的 CSS、JS、字体 打包成一个 CSS 文件和一个 JS 文件，只需要发送两次 HTTP 请求就可以加载上面的文件。
+
+如果您对前端和 Webpack 有一定了解的话，您可以使用 Webpack 构建。您可以在 [https://github.com/changbin1997/MWordstar-Web](https://github.com/changbin1997/MWordstar-Web) 中找到使用 Webpack 构建的版本。
+
+在仓库的 `README.md` 中有详细的打包说明。
+
+如果您对 Webpack 感兴趣的话，可以看一下 [Webpack 简易使用指南](https://www.misterma.com/archives/850/)
 
 ## 其它
 
