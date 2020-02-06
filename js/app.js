@@ -64,12 +64,20 @@ $(function () {
 
     //  给文章信息的分类链接添加 title
     if ($('.icon-folder-open').length > 0) {
-        $('.icon-folder-open').nextAll().attr('title', '分类');
+        $('.icon-folder-open').nextAll().attr({
+            'title': '分类',
+            'data-toggle': 'tooltip',
+            'data-placement': 'top'
+        });
     }
 
     //  给文章信息的标签链接添加 title
     if ($('.tags a').length > 0) {
-        $('.tags a').attr('title', '标签');
+        $('.tags a').attr({
+            'title': '标签',
+            'data-toggle': 'tooltip',
+            'data-placement': 'top'
+        });
     }
 
     //  给评论区的链接添加 target
@@ -187,6 +195,8 @@ $(function () {
             $('#max-img').click();  //  关闭大图
         }
     });
+
+    $('[data-toggle="tooltip"]').tooltip();  //  初始化工具提示
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化

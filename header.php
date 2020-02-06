@@ -26,7 +26,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/vs2015.css'); ?>" type="text/css">
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/jquery-3.4.1.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/bootstrap.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('js/bootstrap.bundle.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/highlight.pack.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/app.js'); ?>"></script>
     <?php $this->header(); ?>
@@ -74,7 +74,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <div class="input-group">
                         <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn my-sm-0 search-btn" type="submit" aria-label="搜索" title="搜索">
+                            <button class="btn my-sm-0 search-btn" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
                                 <i class="icon-search"></i>
                             </button>
                         </div>

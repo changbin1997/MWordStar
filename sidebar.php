@@ -84,7 +84,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
         <section class="<?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?>">
             <h4>文章分类</h4>
             <ul class="list-group list-group-flush" aria-label="文章分类">
-                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a class="text-secondary" href="{permalink}" title="{description}">{name}</a><span class="badge badge-secondary badge-pill">{count}</span></li>'); ?>
+                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="{permalink}" title="{description}">{name}</a><span class="badge badge-secondary badge-pill">{count}</span></li>'); ?>
             </ul>
         </section>
     <?php endif; ?>
@@ -96,7 +96,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
             <?php if($tags->have()): ?>
             <div class="ltags-list pt-2" aria-label="标签云">
                 <?php while ($tags->next()): ?>
-                    <a href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
+                    <a data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                 <?php endwhile; ?>
             </div>
             <?php else: ?>
@@ -109,7 +109,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
         <section class="<?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?>">
             <h4>文章归档</h4>
             <ul class="list-group list-group-flush" aria-label="文章归档">
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a class="text-secondary" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-secondary badge-pill">{count}</span></li>');
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-secondary badge-pill">{count}</span></li>');
                 ?>
             </ul>
         </section>
@@ -140,13 +140,13 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
                 <?php if ($this->options->homeLinks && $this->is('index')): ?>
                     <?php $homeLinks = json_decode($this->options->homeLinks); ?>
                     <?php foreach ($homeLinks as $val): ?>
-                        <li class="border-bottom"><a class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                        <li class="border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
                     <?php endforeach; ?>
                 <?php endif; ?>
                 <?php if ($this->options->links): ?>
                     <?php $links = json_decode($this->options->links); ?>
                     <?php foreach ($links as $val): ?>
-                        <li class="border-bottom"><a class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                        <li class="border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
                     <?php endforeach;; ?>
                 <?php endif; ?>
             </ul>
