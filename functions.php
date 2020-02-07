@@ -114,6 +114,13 @@ function themeConfig($form) {
     ), 'gray', _t('文章头图背景颜色'), _t('文章头图背景颜色是在图片加载完成之前或图片无法加载时显示的颜色，如果图片使用了透明背景是可以看到背景颜色的。'));
     $form->addInput($headerImageBg);
 
+    //  显示最后编辑时间
+    $modified = new Typecho_Widget_Helper_Form_Element_Radio('modified', array(
+        'show' => '显示',
+        'hide' => '不显示'
+    ), 'show', _t('在文章下方显示最后修改时间'));
+    $form->addInput($modified);
+
     //  Emoji面板
     $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
@@ -131,7 +138,7 @@ function themeConfig($form) {
     $navColor = new Typecho_Widget_Helper_Form_Element_Radio('navColor', array(
         'light' => '亮色',
         'dark' => '暗色'
-    ), 'light', _t('导航栏颜色'));
+    ), 'light', _t('导航栏配色'));
     $form->addInput($navColor);
 
     //  文章摘要字数
@@ -227,28 +234,13 @@ function postImg($a) {
 
 //  获取文章的第一张图片
 function getPostImg($archive) {
-    $cid = $archive->cid;
-    $db = Typecho_Db::get();
-    $rs = $db->fetchRow($db->select('table.contents.text')
-        ->from('table.contents')
-        ->where('cid=?', $cid));
-    $text = $rs['text'];
-    if (0 === strpos($text, '<!--markdown-->')) {
-        preg_match('/!\[[^\]]*]\([^\)]*\)/i', $text, $img);
-        if (empty($img)) {
-            return 'none';
-        } else {
-            preg_match("/(?:\()(.*)(?:\))/i", $img[0], $result);
-            $img_url = $result[1];
-            return $img_url;
-        }
+
+    $img = array();
+    preg_match_all("/<img.*?src=\"(.*?)\".*?\/?>/i", $archive->content, $img);
+    if (count($img) > 0 && count($img[0]) > 0) {
+        $img_url = $img[1][0];
+        return $img_url;
     } else {
-        preg_match_all("/\<img.*?src\=\"(.*?)\"[^>]*>/i", $text, $img);
-        if (empty($img)) {
-            return 'none';
-        } else {
-            $img_url = $img[1][0];
-            return $img_url;
-        }
+        return 'none';
     }
 }
