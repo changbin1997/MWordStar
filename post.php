@@ -69,7 +69,9 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                    <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
+                    <?php if ($this->options->modified): ?>
+                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
+                    <?php endif; ?>
                 </article>
                 <!--上一篇和下一篇文章的导航-->
                 <nav class="post-navigation navbar border-top">
