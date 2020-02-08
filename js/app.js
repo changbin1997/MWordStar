@@ -196,6 +196,25 @@ $(function () {
         }
     });
 
+    //  是否是文章页
+    if ($('#qrcode').length > 0) {
+        //  生成文章二维码
+        new QRCode($('#qrcode').get(0), {
+            text: $('#share-btn').attr('data-url'),
+            width: 230,
+            height: 230,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        //  给二维码图片添加 alt 属性
+        if ($('#qrcode img').length > 0) {
+            $('#qrcode img').attr('alt', '文章二维码');
+        }
+    }
+
+
     $('[data-toggle="tooltip"]').tooltip();  //  初始化工具提示
 });
 

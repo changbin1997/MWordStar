@@ -7,7 +7,7 @@
             <main>
                 <header class="entry-header">
                     <h1 class="entry-title p-name" itemprop="name headline">
-                        <a itemprop="url" href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title() ?></a>
+                        <a itemprop="url" href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title(); ?></a>
                     </h1>
                 </header>
                 <?php if ($this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
@@ -62,16 +62,30 @@
                         <?php $this->content(); ?>
                         <?php if ($this->fields->articleCopyright != 'hide'): ?>
                             <hr>
-                            <div class="alert alert-secondary">
+                            <blockquote>
                                 版权声明：本文为原创文章，版权归 <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> 所有，转载请联系博主获得授权！
                                 <br>
-                                本文地址：<a href="<?php $this->permalink() ?>"><?php $this->permalink() ?></a>
-                            </div>
+                                本文地址：<a href="<?php $this->permalink(); ?>"><?php $this->permalink(); ?></a>
+                            </blockquote>
                         <?php endif; ?>
                     </div>
-                    <?php if ($this->options->modified): ?>
-                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
-                    <?php endif; ?>
+                    <div class="clearfix">
+                        <?php if ($this->options->modified): ?>
+                            <span class="float-xl-left float-lg-left float-md-left d-block" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
+                        <?php endif; ?>
+                        <span class="float-xl-right float-lg-right float-md-right d-block">著作权归作者所有</span>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <button type="button" class="btn btn-outline-secondary mr-2">
+                            <i class="icon-thumbs-up"></i>
+                            <span>赞</span>
+                            <span>12</span>
+                        </button>
+                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#share-box">
+                            <i class="icon-share2"></i>
+                            <span>分享</span>
+                        </button>
+                    </div>
                 </article>
                 <!--上一篇和下一篇文章的导航-->
                 <nav class="post-navigation navbar border-top">
@@ -87,5 +101,31 @@
 <div id="max-img">
     <img src="" alt="" title="再次点击可关闭" class="shadow-lg">
     <div class="hide-img" role="button" aria-label="关闭大图" title="关闭大图" tabindex="0">×</div>
+</div>
+<div class="modal fade bd-example-modal-sm" id="share-box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">分享</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div id="qrcode" class="mb-2"></div>
+                <p>用微信扫一扫点击右上角分享</p>
+                <div>
+                    <a target="_blank" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-danger btn-block">
+                        <i class="icon-sina-weibo"></i>
+                        <span>分享到新浪微博</span>
+                    </a>
+                    <a target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php echo $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-primary btn-block">
+                        <i class="icon-qzone"></i>
+                        <span>分享到QQ空间</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?php $this->need('footer.php'); ?>
