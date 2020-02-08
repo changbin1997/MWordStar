@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?pss4tm');
-  src:  url('../fonts/icomoon.eot?pss4tm#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?pss4tm') format('truetype'),
-    url('../fonts/icomoon.woff?pss4tm') format('woff'),
-    url('../fonts/icomoon.svg?pss4tm#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?n4lnkm');
+  src:  url('../fonts/icomoon.eot?n4lnkm#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?n4lnkm') format('truetype'),
+    url('../fonts/icomoon.woff?n4lnkm') format('woff'),
+    url('../fonts/icomoon.svg?n4lnkm#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-qzone:before {
+  content: "\e902";
+}
+.icon-thumbs-up:before {
+  content: "\e900";
+}
+.icon-weixin:before {
+  content: "\e901";
+}
 .icon-pencil:before {
   content: "\e905";
 }
@@ -52,33 +61,12 @@
 .icon-eye:before {
   content: "\e9ce";
 }
-.icon-cancel-circle:before {
-  content: "\ea0d";
-}
 .icon-arrow-up:before {
   content: "\ea32";
 }
-.icon-facebook:before {
-  content: "\ea90";
-}
-.icon-instagram:before {
-  content: "\ea92";
-}
-.icon-telegram:before {
-  content: "\ea95";
-}
-.icon-twitter:before {
-  content: "\ea96";
+.icon-share2:before {
+  content: "\ea82";
 }
 .icon-sina-weibo:before {
   content: "\ea9a";
-}
-.icon-steam:before {
-  content: "\eaac";
-}
-.icon-github:before {
-  content: "\eab0";
-}
-.icon-linkedin2:before {
-  content: "\eaca";
 }

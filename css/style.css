@@ -468,6 +468,10 @@ footer .container a, footer .container span {
   cursor: pointer;
 }
 
+#share-box #qrcode img {
+  margin: 0 auto;
+}
+
 #emoji-box .emoji-classification {
   padding: 8px;
   overflow-x: auto;

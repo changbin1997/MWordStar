@@ -513,6 +513,15 @@ footer{
     }
 }
 
+//  分享二维码区域
+#share-box{
+    #qrcode{
+        img{
+            margin: 0 auto;
+        }
+    }
+}
+
 //  emoji表情面板
 #emoji-box{
     .emoji-classification{
