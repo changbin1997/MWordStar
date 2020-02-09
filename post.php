@@ -72,7 +72,7 @@ if (isset($_POST['agree'])) {
                         <?php $this->content(); ?>
                     </div>
                     <div class="clearfix">
-                        <?php if ($this->options->modified): ?>
+                        <?php if ($this->options->modified == 'show'): ?>
                             <span class="float-xl-left float-lg-left float-md-left d-block" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
                         <?php endif; ?>
                         <?php if ($this->fields->articleCopyright != 'hide'): ?>
@@ -117,7 +117,7 @@ if (isset($_POST['agree'])) {
                 </button>
             </div>
             <div class="modal-body text-center">
-                <div id="qrcode" class="mb-2"></div>
+                <div id="qrcode"></div>
                 <p>用微信扫一扫点击右上角分享</p>
                 <div>
                     <a target="_blank" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-danger btn-block">

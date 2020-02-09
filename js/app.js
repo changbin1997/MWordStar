@@ -176,12 +176,18 @@ $(function () {
 
     //  监听滚动条
     $(document).on('scroll', function () {
+        //  返回顶部的按钮是否存在
         if ($('.to-top').length > 0) {
+            //  如果滚动条高度 > 屏幕高度
             if ($(document).scrollTop() > window.innerHeight) {
                 $('.to-top').removeClass('d-none');  //  显示返回顶部按钮
             }else {
                 $('.to-top').addClass('d-none');  //  隐藏返回顶部按钮
             }
+        }
+
+        if (maxImg) {
+            $('#max-img').click();
         }
     });
 
@@ -202,13 +208,10 @@ $(function () {
     //  是否是文章页
     if ($('#qrcode').length > 0) {
         //  生成文章二维码
-        new QRCode($('#qrcode').get(0), {
-            text: $('#share-btn').attr('data-url'),
-            width: 230,
-            height: 230,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
+        $('#qrcode').qrcode({
+            width: 235,
+            height: 235,
+            text: $('#share-btn').attr('data-url')
         });
 
         //  给二维码图片添加 alt 属性
@@ -231,10 +234,10 @@ $(function () {
                 var re = /\d/;
                 if (re.test(data)) {
                     $('#agree-btn .agree-num').html(data);
-                    $('.post-page').append('<span id="agree-p">+1</span>');
+                    $('.post-page').append('<span id="agree-p">赞 + 1</span>');
                     $('#agree-p').css({
                         top: $('#agree-btn').offset().top - 25,
-                        left: $('#agree-btn').offset().left + $('#agree-btn').width() / 2 + $('#agree-p').width() / 2
+                        left: $('#agree-btn').offset().left + $('#agree-btn').outerWidth() / 2 - $('#agree-p').outerWidth() / 2
                     });
 
                     $('#agree-p').animate({
