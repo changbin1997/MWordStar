@@ -133,7 +133,7 @@ $(function () {
         //  是否是第一次点击
        if ($(this).attr('aria-expanded') && emoji == null) {
            //  通过 ajax 加载 emoji
-           $.post($(this).attr('url'), 'emoji=emoji', function (data) {
+           $.post($('#show-emoji').attr('url'), 'emoji=emoji', function (data) {
                emoji = JSON.parse(data);
                $('#emoji-box .emoji-classification button').eq(0).click();  //  设置 emoji分类
            });
@@ -143,6 +143,9 @@ $(function () {
     for (var i = 0;i < $('#emoji-box .emoji-classification button').length;i ++) {
         //  emoji分类按钮点击
         $('#emoji-box .emoji-classification button').eq(i).on('click', function () {
+            if (emoji == null) {
+                return false;
+            }
             $('#emoji-box .emoji-classification button').removeClass('active');  //  取消所有分类按钮的选中状态
             $(this).addClass('active');  //  设置当前按钮为选中状态
             var emojiDOM = '';
@@ -214,6 +217,39 @@ $(function () {
         }
     }
 
+    //  点赞
+    $('#agree-btn').on('click', function () {
+        $('#agree-btn').get(0).disabled = true;
+        $.ajax({
+            type: 'post',
+            url: $('#agree-btn').attr('data-url'),
+            data: 'agree=' + $('#agree-btn').attr('data-cid'),
+            async: true,
+            timeout: 30000,
+            cache: false,
+            success: function (data) {
+                var re = /\d/;
+                if (re.test(data)) {
+                    $('#agree-btn .agree-num').html(data);
+                    $('.post-page').append('<span id="agree-p">+1</span>');
+                    $('#agree-p').css({
+                        top: $('#agree-btn').offset().top - 25,
+                        left: $('#agree-btn').offset().left + $('#agree-btn').width() / 2 + $('#agree-p').width() / 2
+                    });
+
+                    $('#agree-p').animate({
+                        top: $('#agree-btn').offset().top - 70,
+                        opacity: 0
+                    }, 400, function () {
+                        $('#agree-p').remove();
+                    });
+                }
+            },
+            error: function () {
+                $('#agree-btn').get(0).disabled = false;
+            }
+        });
+    });
 
     $('[data-toggle="tooltip"]').tooltip();  //  初始化工具提示
 });
