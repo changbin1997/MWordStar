@@ -198,6 +198,49 @@ function getPostView($archive) {
     return $row['views'];
 }
 
+//  获取点赞数量
+function agreeNum($cid) {
+    $db = Typecho_Db::get();
+    $prefix = $db->getPrefix();
+    if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
+    }
+
+    $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
+    $AgreeRecording = Typecho_Cookie::get('typechoAgreeRecording');
+    if (empty($AgreeRecording)) {
+        Typecho_Cookie::set('typechoAgreeRecording', json_encode(array(0)));
+    }
+
+    return array(
+        'agree' => $agree['agree'],
+        'recording' => in_array($cid, json_decode(Typecho_Cookie::get('typechoAgreeRecording')))?true:false
+    );
+}
+
+//  点赞
+function agree($cid) {
+    $db = Typecho_Db::get();
+    $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
+
+    $agreeRecording = Typecho_Cookie::get('typechoAgreeRecording');
+    if (empty($agreeRecording)) {
+        //  如果 cookie 不存在就创建 cookie
+        Typecho_Cookie::set('typechoAgreeRecording', json_encode(array($cid)));
+    }else {
+        $agreeRecording = json_decode($agreeRecording);
+        if (in_array($cid, $agreeRecording)) {
+            return $agree['agree'];  //  如果当前文章的 cid 在 cookie 中就不再往下执行
+        }
+        array_push($agreeRecording, $cid);  //  添加点赞文章的 cid
+        Typecho_Cookie::set('typechoAgreeRecording', json_encode($agreeRecording));
+    }
+
+    $db->query($db->update('table.contents')->rows(array('agree' => (int)$agree['agree'] + 1))->where('cid = ?', $cid));
+    $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
+    return $agree['agree'];
+}
+
 //  生成文章头图背景颜色
 function headerImageBgColor($color) {
     if ($color == null or $color == '') {

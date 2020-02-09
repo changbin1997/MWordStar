@@ -1,4 +1,14 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php
+//  点赞
+if (isset($_POST['agree'])) {
+    if ($_POST['agree'] == $this->cid) {
+        exit(agree($this->cid));
+    }
+    exit('error');
+}
+?>
+
 <?php $this->need('header.php'); ?>
 
 <div class="container post-page main-content">
@@ -7,7 +17,7 @@
             <main>
                 <header class="entry-header">
                     <h1 class="entry-title p-name" itemprop="name headline">
-                        <a itemprop="url" href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title(); ?></a>
+                        <a itemprop="url" href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
                     </h1>
                 </header>
                 <?php if ($this->options->headerImage && in_array('post', $this->options->headerImage)): ?>
@@ -60,26 +70,21 @@
                 <article>
                     <div class="post-content">
                         <?php $this->content(); ?>
-                        <?php if ($this->fields->articleCopyright != 'hide'): ?>
-                            <hr>
-                            <blockquote>
-                                版权声明：本文为原创文章，版权归 <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> 所有，转载请联系博主获得授权！
-                                <br>
-                                本文地址：<a href="<?php $this->permalink(); ?>"><?php $this->permalink(); ?></a>
-                            </blockquote>
-                        <?php endif; ?>
                     </div>
                     <div class="clearfix">
                         <?php if ($this->options->modified): ?>
                             <span class="float-xl-left float-lg-left float-md-left d-block" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
                         <?php endif; ?>
-                        <span class="float-xl-right float-lg-right float-md-right d-block">著作权归作者所有</span>
+                        <?php if ($this->fields->articleCopyright != 'hide'): ?>
+                            <span tabindex="0" data-toggle="tooltip" data-placement="top" title="本文为原创文章，版权归 <?php $this->options->title(); ?> 所有，转载请联系博主获得授权。" class="float-xl-right float-lg-right float-md-right d-block">©著作权归作者所有</span>
+                        <?php endif; ?>
                     </div>
                     <div class="pt-3 text-center">
-                        <button type="button" class="btn btn-outline-secondary mr-2">
+                        <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
+                        <button <?php echo $agree['recording']?'disabled':''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn btn-outline-secondary mr-2">
                             <i class="icon-thumbs-up"></i>
                             <span>赞</span>
-                            <span>12</span>
+                            <span class="agree-num"><?php echo $agree['agree']; ?></span>
                         </button>
                         <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#share-box">
                             <i class="icon-share2"></i>
