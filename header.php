@@ -28,7 +28,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/jquery-3.4.1.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/bootstrap.bundle.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/highlight.pack.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/qrcode.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('js/jquery.qrcode.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/app.js'); ?>"></script>
     <?php $this->header(); ?>
     <?php if ($this->options->cssCode): ?>
