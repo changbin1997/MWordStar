@@ -522,6 +522,14 @@ footer{
     }
 }
 
+//  点赞的效果样式
+#agree-p{
+    font-weight: 700;
+    font-size: 18px;
+    color: red;
+    position: absolute;
+}
+
 //  emoji表情面板
 #emoji-box{
     .emoji-classification{

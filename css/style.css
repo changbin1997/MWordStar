@@ -472,6 +472,13 @@ footer .container a, footer .container span {
   margin: 0 auto;
 }
 
+#agree-p {
+  font-weight: 700;
+  font-size: 18px;
+  color: red;
+  position: absolute;
+}
+
 #emoji-box .emoji-classification {
   padding: 8px;
   overflow-x: auto;
