@@ -171,6 +171,7 @@ $(function () {
 
     //  返回顶部按钮点击
     $('.to-top').on('click', function () {
+        $('header .navbar-brand').get(0).focus();
         $(document).scrollTop(0);
     });
 
