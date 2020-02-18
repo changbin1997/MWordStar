@@ -256,6 +256,64 @@ $(function () {
     });
 
     $('[data-toggle="tooltip"]').tooltip();  //  初始化工具提示
+
+    if ($('.post-content').length > 0 && $('.post-content').attr('data-atalog')) {
+        if ($('.post-content h2').length < 1 && $('.post-content h3').length < 1 && $('.post-content h4').length < 1 && $('.post-content h5').length < 1) {
+            return false;
+        }
+
+        $('.post-content h2').addClass('content-title');
+        $('.post-content h3').addClass('content-title');
+        $('.post-content h4').addClass('content-title');
+        $('.post-content h5').addClass('content-title');
+        $('.post-content h2').attr('data-index', 2);
+        $('.post-content h3').attr('data-index', 3);
+        $('.post-content h4').attr('data-index', 4);
+        $('.post-content h5').attr('data-index', 5);
+
+        var el = atalog(2, 0);
+        $('.post-content').prepend('<div class="pt-2 pb-2 atalog"><h2>目录</h2>' + el.el + '</div>');
+        $('.post-content .atalog').children('ul').attr('aria-label', '目录');
+    }
+
+    $('.post-content .atalog a').on('click', function () {
+        $(document).scrollTop(Number($('.content-title').eq($(this).attr('data-index')).offset().top) - 60);
+    });
 });
+
+function atalog(titleIndex, start) {
+    var el = {
+        el: '',
+        index: start
+    };
+    var current = 0;
+    for (var i = start;i < $('.content-title').length;i ++) {
+        if (i < current) {
+            continue;
+        }
+        if ($('.content-title').eq(i).attr('data-index') > titleIndex) {
+            var result = atalog($('.content-title').eq(i).attr('data-index'), i);
+            if (result.el != '') {
+                el.el += '<li> ' + result.el + '</li>';
+            }
+            current = result.index + 1;
+            el.index = result.index;
+            continue;
+        }
+        if ($('.content-title').eq(i).attr('data-index') < titleIndex) {
+            if (el.el != '') {
+                el.el = '<ul class="mb-2">' + el.el + '</ul>';
+            }
+            return el;
+        }
+        el.el += '<li><a data-index="' + i + '" href="javascript:;">' + $('.content-title').eq(i).text() + '</a></li>';
+        el.index = i;
+    }
+
+    if (el.el != '') {
+        el.el = '<ul class="mb-2"> ' + el.el + '</ul>';
+    }
+    return el;
+}
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化

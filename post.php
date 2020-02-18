@@ -68,7 +68,7 @@ if (isset($_POST['agree'])) {
                 </div>
                 <!--文章内容-->
                 <article>
-                    <div class="post-content">
+                    <div class="post-content" <?php echo $this->options->atalog == 'show'?'data-atalog="true"':''; ?>>
                         <?php $this->content(); ?>
                     </div>
                     <div class="clearfix">

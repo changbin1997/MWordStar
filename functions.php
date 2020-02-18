@@ -114,6 +114,13 @@ function themeConfig($form) {
     ), 'gray', _t('文章头图背景颜色'), _t('文章头图背景颜色是在图片加载完成之前或图片无法加载时显示的颜色，如果图片使用了透明背景是可以看到背景颜色的。'));
     $form->addInput($headerImageBg);
 
+    //  显示目录
+    $atalog = new Typecho_Widget_Helper_Form_Element_Radio('atalog', array(
+        'show' => '显示',
+        'hide' => '不显示'
+    ), 'hide', _t('在文章开头显示章节目录'), _t('章节目录会根据文章中的标题生成，如果文章中没有用到标题就不会生成目录。'));
+    $form->addInput($atalog);
+
     //  显示最后编辑时间
     $modified = new Typecho_Widget_Helper_Form_Element_Radio('modified', array(
         'show' => '显示',
