@@ -12,6 +12,10 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 
 ![MWordStar主题首页截图2](https://www.misterma.com/img/MWordStar%E4%B8%BB%E9%A2%98%E9%A6%96%E9%A1%B5%E6%88%AA%E5%9B%BE2.png)
 
+扫描下面的二维码可在手机上预览
+
+![博客二维码](https://i.loli.net/2020/02/11/tBgUvqE1CcNHFLe.png)
+
 ## 主题特点
 
 * 响应式设计
