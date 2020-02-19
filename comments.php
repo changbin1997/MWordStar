@@ -29,13 +29,19 @@
                 <div class="comment-info float-left">
                     <b><?php $comments->author(); ?></b>
                     <?php if ($comments->authorId == $comments->ownerId): ?>
-                    <span class="author badge badge-secondary">作者</span>
+                        <span class="author badge badge-secondary">作者</span>
+                    <?php endif; ?>
+                    <?php if ($comments->status != 'approved'): ?>
+                        <span class="author badge badge-secondary">评论审核中</span>
                     <?php endif; ?>
                     <a class="comment-time" href="<?php $comments->permalink(); ?>"><?php $comments->date('Y年m月d日 H:i'); ?></a>
                 </div>
                 <span class="comment-reply float-right"><?php $comments->reply(); ?></span>
             </div>
-            <div class="comment-content"><?php $comments->content(); ?></div>
+            <div class="comment-content">
+                <?php echo reply($comments->parent); ?>
+                <?php $comments->content(); ?>
+            </div>
         </div>
         <?php if ($comments->children) { ?>
             <div class="comment-children clearfix">

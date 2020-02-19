@@ -257,6 +257,16 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip();  //  初始化工具提示
 
+    //  把父评论的姓名加入到子评论中
+    if ($('#comments .parent').length > 0) {
+        for (var i = 0; i < $('#comments .parent').length; i ++) {
+            var parentLink = '<a class="mr-1" href="' + $('#comments .parent').eq(i).attr('href') + '">' + $('#comments .parent').eq(i).html() + '</a>';
+            $('#comments .parent').eq(i).next().prepend(parentLink);
+        }
+        $('#comments .parent').remove();
+    }
+
+    //  生成目录
     if ($('.post-content').length > 0 && $('.post-content').attr('data-atalog')) {
         if ($('.post-content h2').length < 1 && $('.post-content h3').length < 1 && $('.post-content h4').length < 1 && $('.post-content h5').length < 1) {
             return false;
@@ -281,6 +291,7 @@ $(function () {
     });
 });
 
+//  生成目录
 function atalog(titleIndex, start) {
     var el = {
         el: '',

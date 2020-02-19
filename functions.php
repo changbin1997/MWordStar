@@ -205,6 +205,18 @@ function getPostView($archive) {
     return $row['views'];
 }
 
+//  获取父评论的姓名
+function reply($parent) {
+    if ($parent == 0) {
+        return '';
+    }
+
+    $db = Typecho_Db::get();
+    $commentInfo = $db->fetchRow($db->select('author,status,mail')->from('table.comments')->where('coid = ?', $parent));
+    $link = '<a class="parent" href="#comment-' . $parent . '">@' . $commentInfo['author'] .  '</a>';
+    return $link;
+}
+
 //  获取点赞数量
 function agreeNum($cid) {
     $db = Typecho_Db::get();
