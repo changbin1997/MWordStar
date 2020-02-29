@@ -45,35 +45,40 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 
 ### 主题文件结构
 
-```shell
+```bash
 .
 ├── 404.php
 ├── archive.php
 ├── comments.php
 ├── css
-│   ├── bootstrap.min.css
-│   ├── icon.css
-│   ├── style.css
-│   └── vs2015.css
+│   ├── bootstrap.min.css
+│   ├── icon.css
+│   ├── style.css
+│   └── vs2015.css
+├── emoji.php
 ├── fonts
-│   ├── icomoon.eot
-│   ├── icomoon.svg
-│   ├── icomoon.ttf
-│   └── icomoon.woff
+│   ├── icomoon.eot
+│   ├── icomoon.svg
+│   ├── icomoon.ttf
+│   └── icomoon.woff
 ├── footer.php
 ├── functions.php
 ├── header.php
+├── img
+│   └── avatar.png
 ├── index.php
 ├── js
-│   ├── app.js
-│   ├── bootstrap.min.js
-│   ├── highlight.pack.js
-│   └── jquery-3.4.1.min.js
+│   ├── app.js
+│   ├── bootstrap.bundle.min.js
+│   ├── highlight.pack.js
+│   ├── jquery-3.4.1.min.js
+│   └── jquery.qrcode.min.js
 ├── LICENSE
 ├── page-archive.php
 ├── page-links.php
 ├── page.php
 ├── post.php
+├── README.md
 ├── screenshot.jpg
 └── sidebar.php
 ```
