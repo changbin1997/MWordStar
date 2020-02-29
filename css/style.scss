@@ -222,16 +222,16 @@ header{
     width: 100%;
     z-index: 999;
     .navbar{
-        transition: 0.5s;
         box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-        .search-btn{
+        //  亮色的搜索按钮
+        .search-btn-light{
             background: #F8F8F8;
             border: 1px solid #D3D3D3;
         }
-        .search-btn:hover{
+        .search-btn-light:hover{
             background: #F0F0F0;
         }
-        .search-btn:focus{
+        .search-btn-light:focus{
             background: #F0F0F0;
         }
     }

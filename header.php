@@ -71,11 +71,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         </li>
                     <?php endwhile; ?>
                 </ul>
-                <form class="form-inline" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
+                <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                     <div class="input-group">
-                        <input class="form-control form-control-md" type="search" placeholder="搜索" aria-label="搜索" required="required" name="s">
+                        <input data-url="<?php $this->options->siteUrl(); ?>" class="form-control form-control-md search-input" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn my-sm-0 search-btn" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
+                            <button class="btn my-sm-0 <?php echo $this->options->navColor == 'dark'?'btn-secondary':'search-btn-light'; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
                                 <i class="icon-search"></i>
                             </button>
                         </div>
