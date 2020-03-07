@@ -38,6 +38,7 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 
 - [Bootstrap](https://getbootstrap.com/)  外观和布局
 - [jQuery](https://jquery.com/)  DOM 操作
+- [jquery-qrcode](https://github.com/jeromeetienne/jquery-qrcode) 一个生成二维码的 jQuery 插件
 - [highlight.js](https://highlightjs.org/)  代码高亮
 - [IcoMoon](https://icomoon.io/)  字体图标
 
@@ -149,6 +150,7 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 * `style.scss`：主题的 SASS 样式文件，在 [Releases](https://github.com/changbin1997/MWordStar/releases) 中下载的主题不包含 SASS 文件。
 * `vs2015.css`：highlight.js 的样式文件。
 * `jquery-3.4.1.min.js`：jQuery。
+* `jquery.qrcode.min.js`：生成二维码的 jQuery 插件
 * `bootstrap.min.js`：Bootstrap 的 JS 文件。
 * `highlight.pack.js`：highlight.js 的 JS 文件。
 * `app.js`：主题的 JS 文件。
