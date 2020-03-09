@@ -4,7 +4,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="<?php $this->options->charset(); ?>">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
