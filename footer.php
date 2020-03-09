@@ -16,5 +16,6 @@
 <?php if ($this->options->bodyHTML): ?>
     <?php $this->options->bodyHTML(); ?>
 <?php endif; ?>
+<?php $this->footer(); ?>
 </body>
 </html>
