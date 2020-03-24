@@ -133,4 +133,48 @@ if (isset($_POST['agree'])) {
         </div>
     </div>
 </div>
+<style>
+    article pre {
+        position: relative;
+    }
+
+    article pre > span {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 2px;
+        padding: 0 10px;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        cursor: pointer;
+    }
+
+    article pre > .copyed {
+        background: #67c23a;
+    }
+</style>
+<script src="https://cdn.staticfile.org/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script>
+    $(function () {
+        var pres = $("pre");
+        if (pres.length) {
+            pres.each(function () {
+                var t = $(this).children("code").text();
+                var btn = $('<span class="copy">复制</span>').attr("data-clipboard-text", t);
+                $(this).prepend(btn);
+                var c = new ClipboardJS(btn[0]);
+                c.on("success", function () {
+                    btn.addClass("copyed").text("复制成功");
+                });
+                c.on("error", function () {
+                    btn.text("复制失败");
+                });
+                btn.mouseleave(function () {
+                    btn.text("复制").removeClass("copyed");
+                });
+            });
+        }
+    });
+</script>
 <?php $this->need('footer.php'); ?>
