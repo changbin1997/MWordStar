@@ -128,6 +128,13 @@ function themeConfig($form) {
     ), 'show', _t('在文章下方显示最后修改时间'));
     $form->addInput($modified);
 
+    //  评论框位置
+    $commentInput = new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
+        'top' => '评论框在评论列表上方',
+        'bottom' => '评论框在评论列表下方'
+    ), 'bottom', _t('评论框位置'), _t('评论框就是发表评论的区域，评论列表就是已发表的评论区域'));
+    $form->addInput($commentInput);
+
     //  Emoji面板
     $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
