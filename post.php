@@ -9,7 +9,7 @@ if (isset($_POST['agree'])) {
 }
 ?>
 
-<?php $this->need('header.php'); ?>
+<?php $this->need('components/header.php'); ?>
 
 <div class="container post-page main-content">
     <div class="row">
@@ -97,10 +97,10 @@ if (isset($_POST['agree'])) {
                     <div><div>上一篇</div><?php $this->thePrev('%s','没有了'); ?></div>
                     <div><div class="text-lg-right text-xl-right text-md-right">下一篇</div><?php $this->theNext('%s','没有了'); ?></div>
                 </nav>
-                <?php $this->need('comments.php'); ?>
+                <?php $this->need('components/comments.php'); ?>
             </main>
         </div>
-        <?php $this->need('sidebar.php'); ?>
+        <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
 <div id="max-img">
@@ -133,4 +133,4 @@ if (isset($_POST['agree'])) {
         </div>
     </div>
 </div>
-<?php $this->need('footer.php'); ?>
+<?php $this->need('components/footer.php'); ?>

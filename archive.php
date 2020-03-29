@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('header.php'); ?>
+<?php $this->need('components/header.php'); ?>
 
 <div class="container main-content">
     <div class="row">
@@ -77,7 +77,7 @@
                 <?php $this->pageNav('&laquo;', '&raquo;', 2, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination', 'itemTag' => 'li', 'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>
-        <?php $this->need('sidebar.php'); ?>
+        <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
-<?php $this->need('footer.php'); ?>
+<?php $this->need('components/footer.php'); ?>

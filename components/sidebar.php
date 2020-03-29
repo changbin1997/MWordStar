@@ -13,7 +13,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
             <h4>博客信息</h4>
             <div class="personal-information pt-2">
                 <div class="user">
-                    <img src="<?php $this->options->avatarUrl?$this->options->avatarUrl():$this->options->themeUrl('img/avatar.png'); ?>" alt="<?php echo $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像'; ?>" class="rounded-circle avatar">
+                    <img src="<?php $this->options->avatarUrl?$this->options->avatarUrl():$this->options->themeUrl('assets/img/avatar.png'); ?>" alt="<?php echo $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像'; ?>" class="rounded-circle avatar">
                     <div class="p-2">
                         <a class="user-name mt-2" target="_blank" href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>"><?php echo $this->options->nickname?$this->options->nickname:$this->options->title; ?></a>
                         <p class="introduction mt-1"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>

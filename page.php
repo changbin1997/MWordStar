@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('header.php'); ?>
+<?php $this->need('components/header.php'); ?>
 
 <div class="container main-content">
     <div class="row">
@@ -35,10 +35,10 @@
                         <?php $this->content(); ?>
                     </div>
                 </article>
-                <?php $this->need('comments.php'); ?>
+                <?php $this->need('components/comments.php'); ?>
             </main>
         </div>
-        <?php $this->need('sidebar.php'); ?>
+        <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
-<?php $this->need('footer.php'); ?>
+<?php $this->need('components/footer.php'); ?>

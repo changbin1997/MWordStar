@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('header.php'); ?>
+<?php $this->need('components/header.php'); ?>
 
 <div class="container container-404 main-content">
     <h1>404</h1>
@@ -23,4 +23,4 @@
         <a href="<?php $this->options->siteUrl(); ?>" class="btn btn-secondary">回到首页</a>
     </div>
 </div>
-<?php $this->need('footer.php'); ?>
+<?php $this->need('components/footer.php'); ?>

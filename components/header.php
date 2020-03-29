@@ -21,15 +21,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php echo $this->is('index')?'- ' . $this->options->tagline:''; ?>
     </title>
     <link rel="icon" href="<?php echo $this->options->logoUrl?$this->options->logoUrl:$this->options->siteUrl . 'favicon.ico'; ?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/bootstrap.min.css'); ?>" type="text/css">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/icon.css'); ?>" type="text/css">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>" type="text/css">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/vs2015.css'); ?>" type="text/css">
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/jquery-3.4.1.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/bootstrap.bundle.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/highlight.pack.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/jquery.qrcode.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/app.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.min.css'); ?>" type="text/css">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/vs2015.css'); ?>" type="text/css">
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery-3.4.1.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.qrcode.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
     <?php $this->header(); ?>
     <?php if ($this->options->cssCode): ?>
         <style type="text/css">

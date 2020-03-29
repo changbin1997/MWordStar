@@ -8,7 +8,7 @@
  * @link https://www.misterma.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$this->need('header.php');  //  头文件
+$this->need('components/header.php');  //  头文件
 ?>
 
 <div class="container home main-content">
@@ -70,7 +70,7 @@ $this->need('header.php');  //  头文件
                 <?php $this->pageNav('&laquo;', '&raquo;', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination', 'itemTag' => 'li', 'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>
-    <?php $this->need('sidebar.php'); ?>
+    <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
-<?php $this->need('footer.php'); ?>
+<?php $this->need('components/footer.php'); ?>

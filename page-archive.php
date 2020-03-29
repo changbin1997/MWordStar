@@ -5,7 +5,7 @@
  * @package custom
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$this->need('header.php');
+$this->need('components/header.php');
 ?>
 
     <div class="container archive-page main-content">
@@ -49,7 +49,7 @@ $this->need('header.php');
                     </article>
                 </main>
             </div>
-            <?php $this->need('sidebar.php'); ?>
+            <?php $this->need('components/sidebar.php'); ?>
         </div>
     </div>
-<?php $this->need('footer.php'); ?>
+<?php $this->need('components/footer.php'); ?>

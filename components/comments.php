@@ -1,5 +1,4 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php require_once 'emoji.php'; ?>
 <?php function threadedComments($comments, $options) {
     $commentClass = '';
     if ($comments->authorId) {
