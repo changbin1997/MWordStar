@@ -38,7 +38,7 @@
                             <!--时间-->
                             <div class="info">
                                 <i class="icon-calendar icon" aria-hidden="true"></i>
-                                <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
+                                <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
                             </div>
                             <!--作者-->
                             <div class="info">
