@@ -295,7 +295,6 @@ header{
                     transition: 0.4s;
                 }
                 .user-name{
-                    color: #6C757D;
                     display: block;
                     font-size: 16px;
                 }
@@ -323,13 +322,11 @@ header{
             }
         }
         //  标签云
-        .ltags-list{
+        .tag-list{
             padding: 0 18px 18px 18px;
             a{
-                color: #707281;
                 padding: 8px 10px;
                 margin: 2px;
-                border: 1px solid #707281;
                 display: inline-block;
                 font-size: 12px;
                 line-height: 12px;
@@ -337,12 +334,56 @@ header{
                 border-radius: 4px;
                 font-weight: 500;
             }
-            a:hover{
+            //  dark
+            .tag-dark{
+                border: 1px solid #707281;
+                color: #707281;
+            }
+            .tag-dark:hover{
                 background: #707281;
                 color: #ffffff;
             }
-            a:focus{
+            .tag-dark:focus{
                 background: #707281;
+                color: #ffffff;
+            }
+            //  primary
+            .tag-primary{
+                border: 1px solid #007BFF;
+                color: #007BFF;
+            }
+            .tag-primary:hover{
+                background: #007BFF;
+                color: #ffffff;
+            }
+            .tag-primary:focus{
+                background: #007BFF;
+                color: #ffffff;
+            }
+            //  info
+            .tag-info{
+                border: 1px solid #17A2B8;
+                color: #17A2B8;
+            }
+            .tag-info:hover{
+                background: #17A2B8;
+                color: #ffffff;
+            }
+            .tag-info:focus{
+                background: #17A2B8;
+                color: #ffffff;
+            }
+            //  success
+            .tag-success{
+                border: 1px solid #28A745;
+                color: #28A745;
+            }
+            .tag-success:hover{
+                background: #28A745;
+                color: #ffffff;
+            }
+            .tag-success:focus{
+                background: #28A745;
                 color: #ffffff;
             }
         }
