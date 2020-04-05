@@ -31,7 +31,7 @@
                         <span class="author badge badge-secondary">作者</span>
                     <?php endif; ?>
                     <?php if ($comments->status != 'approved'): ?>
-                        <span class="author badge badge-secondary">评论审核中</span>
+                        <span class="author badge badge-secondary" title="您的评论目前只有您自己能看到，审核通过后才会公开显示。" data-toggle="tooltip" data-placement="top">评论审核中</span>
                     <?php endif; ?>
                     <a class="comment-time" href="<?php $comments->permalink(); ?>"><?php $comments->date('Y年m月d日 H:i'); ?></a>
                 </div>
