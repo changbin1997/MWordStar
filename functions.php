@@ -28,6 +28,16 @@ function themeFields($layout) {
 
 //  外观设置
 function themeConfig($form) {
+    //  主题配色
+    $color = new Typecho_Widget_Helper_Form_Element_Radio('color', array(
+        'dark' => 'dark',
+        'primary' => 'primary',
+        'info' => 'info',
+        'success' => 'success',
+        'light' => 'light'
+    ), 'light', _t('主题配色'));
+    $form->addInput($color);
+
     //  站点Logo
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。'));
     $form->addInput($logoUrl);
@@ -147,13 +157,6 @@ function themeConfig($form) {
         'showClassification' => _t('显示文章分类')
     ), null, _t('导航栏'));
     $form->addInput($navBar->multiMode());
-
-    //  导航栏颜色
-    $navColor = new Typecho_Widget_Helper_Form_Element_Radio('navColor', array(
-        'light' => '亮色',
-        'dark' => '暗色'
-    ), 'light', _t('导航栏配色'));
-    $form->addInput($navColor);
 
     //  文章摘要字数
     $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。'));
@@ -312,4 +315,60 @@ function getPostImg($archive) {
     } else {
         return 'none';
     }
+}
+
+//  获取颜色配置
+function color($cfg) {
+    $color = array(
+        'dark' => array(
+            'bar' => 'navbar-dark bg-dark',
+            'btn' => 'btn-secondary',
+            'link' => 'text-secondary',
+            'listTag' => 'badge-secondary',
+            'tag' => 'tag-dark',
+            'name' => 'dark',
+            'btnOutline' => 'btn-outline-secondary'
+        ),
+        'primary' => array(
+            'bar' => 'navbar-dark bg-primary',
+            'btn' => 'btn-primary',
+            'link' => 'text-primary',
+            'listTag' => 'badge-primary',
+            'tag' => 'tag-primary',
+            'name' => 'primary',
+            'btnOutline' => 'btn-outline-primary'
+        ),
+        'info' => array(
+            'bar' => 'navbar-dark bg-info',
+            'btn' => 'btn-info',
+            'link' => 'text-info',
+            'listTag' => 'badge-info',
+            'tag' => 'tag-info',
+            'name' => 'info',
+            'btnOutline' => 'btn-outline-info'
+        ),
+        'success' => array(
+            'bar' => 'navbar-dark bg-success',
+            'btn' => 'btn-success',
+            'link' => 'text-success',
+            'listTag' => 'badge-success',
+            'tag' => 'tag-success',
+            'name' => 'success',
+            'btnOutline' => 'btn-outline-success'
+        ),
+        'light' => array(
+            'bar' => 'navbar-light bg-light',
+            'btn' => 'btn-secondary',
+            'link' => 'text-secondary',
+            'listTag' => 'badge-secondary',
+            'tag' => 'tag-dark',
+            'name' => 'light',
+            'btnOutline' => 'btn-outline-secondary'
+        )
+    );
+
+    if ($cfg == null) {
+        return $color['light'];
+    }
+    return $color[$cfg];
 }
