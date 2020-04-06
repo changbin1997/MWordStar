@@ -1,5 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$color = color($this->options->color);
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -42,7 +43,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 </head>
 <body>
 <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg <?php echo $this->options->navColor == 'dark'?'navbar-dark':'navbar-light'; ?>" style="background-color: <?php echo $this->options->navColor == 'dark'?'#343A40':'rgba(248, 249, 250, 0.97)'; ?>">
+    <nav class="navbar navbar-expand-lg <?php echo $color['bar'] ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
@@ -75,7 +76,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <div class="input-group">
                         <input data-url="<?php $this->options->siteUrl(); ?>" class="form-control form-control-md search-input" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn my-sm-0 <?php echo $this->options->navColor == 'dark'?'btn-secondary':'search-btn-light'; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
+                            <button class="btn my-sm-0 search-btn-light" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
                                 <i class="icon-search"></i>
                             </button>
                         </div>

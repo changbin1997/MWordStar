@@ -1,5 +1,8 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('components/header.php'); ?>
+<?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$this->need('components/header.php');
+$color = color($this->options->color);
+?>
 
 <div class="container main-content">
     <div class="row">
@@ -21,17 +24,17 @@
                 <div class="article-info clearfix border-bottom border-top">
                     <!--时间-->
                     <div class="info">
-                        <i class="icon-calendar icon" aria-hidden="true"></i>
-                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
+                        <i class="icon-calendar icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
+                        <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
                     </div>
                     <!--作者-->
                     <div class="info">
-                        <i class="icon-user icon" aria-hidden="true"></i>
-                        <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
+                        <i class="icon-user icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
+                        <a class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
                     </div>
                 </div>
                 <article>
-                    <div class="post-content">
+                    <div class="post-content" data-color="<?php echo $color['link']; ?>">
                         <?php $this->content(); ?>
                     </div>
                 </article>

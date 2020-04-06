@@ -4,6 +4,7 @@
  * @package custom
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$color = color($this->options->color);
 $this->need('components/header.php');  //  头文件
 ?>
 
@@ -17,7 +18,7 @@ $this->need('components/header.php');  //  头文件
                     </h2>
                 </header>
                 <article>
-                    <div class="post-content">
+                    <div class="post-content" data-color="<?php echo $color['link']; ?>">
                         <!--内页链接区域-->
                         <?php if ($this->options->pageLinks): ?>
                             <h3>内页链接</h3>
@@ -82,7 +83,7 @@ $this->need('components/header.php');  //  头文件
                                             <i class="link-logo float-left icon-link icon-logo rounded-circle"></i>
                                             <span class="link-name float-left"><?php echo $links[$i]->name; ?></span>
                                         </a>
-                                        <?php if (!$links[$i]->title or $links[$i]->title == ''): ?>
+                                        <?php if (!isset($links[$i]->title) or $links[$i]->title == ''): ?>
                                             <p>暂无简介</p>
                                         <?php else: ?>
                                             <p title="<?php echo $links[$i]->title; ?>"><?php echo $links[$i]->title; ?></p>

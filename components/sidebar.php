@@ -4,6 +4,7 @@ if (!is_array($sidebarM)) {
     $sidebarM = array();
 }
 $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在移动设备上隐藏区块的class
+$color = color($this->options->color);
 ?>
 
 <div class="col-md-12 col-lg-4 col-sm-12 sidebar">
@@ -15,7 +16,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
                 <div class="user">
                     <img src="<?php $this->options->avatarUrl?$this->options->avatarUrl():$this->options->themeUrl('assets/img/avatar.png'); ?>" alt="<?php echo $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像'; ?>" class="rounded-circle avatar">
                     <div class="p-2">
-                        <a class="user-name mt-2" target="_blank" href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>"><?php echo $this->options->nickname?$this->options->nickname:$this->options->title; ?></a>
+                        <a class="user-name mt-2 <?php echo $color['link']; ?>" target="_blank" href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>"><?php echo $this->options->nickname?$this->options->nickname:$this->options->title; ?></a>
                         <p class="introduction mt-1"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>
                     </div>
                 </div>
@@ -46,7 +47,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
                     <?php while ($latestArticles->next()): ?>
                     <li class="border-bottom">
-                        <a class="text-secondary" href="<?php $latestArticles->permalink(); ?>">
+                        <a class="<?php echo $color['link']; ?>" href="<?php $latestArticles->permalink(); ?>">
                             <?php if ($this->options->headerImage && in_array('sidebarBlock', $this->options->headerImage)): ?>
                                 <?php $img = postImg($latestArticles); ?>
                                 <?php if ($img): ?>
@@ -71,7 +72,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
                     <li class="media border-bottom">
                         <?php $comments->gravatar('40', ''); ?>
                         <div class="media-body ml-2">
-                            <a class="text-secondary" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
+                            <a class="<?php echo $color['link']; ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
                             <div><?php $comments->excerpt(20, '[...]'); ?></div>
                         </div>
                     </li>
@@ -84,7 +85,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
         <section class="<?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?>">
             <h4>文章分类</h4>
             <ul class="list-group list-group-flush" aria-label="文章分类">
-                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="{permalink}" title="{description}">{name}</a><span class="badge badge-secondary badge-pill">{count}</span></li>'); ?>
+                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{description}">{name}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>'); ?>
             </ul>
         </section>
     <?php endif; ?>
@@ -94,9 +95,9 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
             <h4>标签云</h4>
             <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
             <?php if($tags->have()): ?>
-            <div class="ltags-list pt-2" aria-label="标签云">
+            <div class="tag-list pt-2" aria-label="标签云">
                 <?php while ($tags->next()): ?>
-                    <a data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
+                    <a data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                 <?php endwhile; ?>
             </div>
             <?php else: ?>
@@ -109,7 +110,7 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
         <section class="<?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?>">
             <h4>文章归档</h4>
             <ul class="list-group list-group-flush" aria-label="文章归档">
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-secondary badge-pill">{count}</span></li>');
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>');
                 ?>
             </ul>
         </section>
@@ -121,14 +122,14 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
             <ul aria-label="其它功能">
                 <?php if (!in_array('HideLoginLink', $this->options->sidebarBlock)): ?>
                     <?php if($this->user->hasLogin()): ?>
-                        <li class="last border-bottom"><a class="text-secondary" href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
-                        <li><a class="text-secondary border-bottom" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
+                        <li class="last border-bottom"><a class="<?php echo $color['link']; ?>" href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
+                        <li><a class="<?php echo $color['link']; ?> border-bottom" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
                     <?php else: ?>
-                        <li class="last"><a class="text-secondary" href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
+                        <li class="last"><a class="<?php echo $color['link']; ?>" href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
                     <?php endif; ?>
                 <?php endif; ?>
-                <li class="border-bottom"><a class="text-secondary" target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
-                <li class="border-bottom"><a class="text-secondary" target="_blank" href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论 RSS'); ?></a></li>
+                <li class="border-bottom"><a class="<?php echo $color['link']; ?>" target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
+                <li class="border-bottom"><a class="<?php echo $color['link']; ?>" target="_blank" href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论 RSS'); ?></a></li>
             </ul>
         </section>
     <?php endif; ?>
@@ -140,13 +141,13 @@ $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在�
                 <?php if ($this->options->homeLinks && $this->is('index')): ?>
                     <?php $homeLinks = json_decode($this->options->homeLinks); ?>
                     <?php foreach ($homeLinks as $val): ?>
-                        <li class="border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                        <li class="border-bottom"><a data-toggle="tooltip" data-placement="top" class="<?php echo $color['link']; ?>" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
                     <?php endforeach; ?>
                 <?php endif; ?>
                 <?php if ($this->options->links): ?>
                     <?php $links = json_decode($this->options->links); ?>
                     <?php foreach ($links as $val): ?>
-                        <li class="border-bottom"><a data-toggle="tooltip" data-placement="top" class="text-secondary" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
+                        <li class="border-bottom"><a data-toggle="tooltip" data-placement="top" class="<?php echo $color['link']; ?>" href="<?php echo $val->url; ?>" title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>" target="_blank"><?php echo $val->name; ?></a></li>
                     <?php endforeach;; ?>
                 <?php endif; ?>
             </ul>

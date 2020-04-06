@@ -5,6 +5,7 @@
  * @package custom
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$color = color($this->options->color);
 $this->need('components/header.php');
 ?>
 
@@ -18,7 +19,7 @@ $this->need('components/header.php');
                         </h2>
                     </header>
                     <article>
-                        <div class="post-content" itemprop="articleBody">
+                        <div class="post-content" itemprop="articleBody" data-color="<?php echo $color['link']; ?>">
                             <?php
                             $stat = Typecho_Widget::widget('Widget_Stat');
                             Typecho_Widget::widget('Widget_Contents_Post_Recent', 'pageSize=' . $stat->publishedPostsNum)->to($archives);

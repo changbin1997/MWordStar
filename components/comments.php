@@ -1,5 +1,8 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php function threadedComments($comments, $options) {
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$GLOBALS['color'] = color($this->options->color)
+?>
+<?php
+function threadedComments($comments, $options) {
     $commentClass = '';
     if ($comments->authorId) {
         if ($comments->authorId == $comments->ownerId) {
@@ -26,16 +29,22 @@
             <div class="comment-author clearfix">
                 <?php $comments->gravatar('50', ''); ?>
                 <div class="comment-info float-left">
-                    <b><?php $comments->author(); ?></b>
+                    <b class="author"><?php $comments->author(); ?></b>
                     <?php if ($comments->authorId == $comments->ownerId): ?>
                         <span class="author badge badge-secondary">作者</span>
                     <?php endif; ?>
                     <?php if ($comments->status != 'approved'): ?>
                         <span class="author badge badge-secondary" title="您的评论目前只有您自己能看到，审核通过后才会公开显示。" data-toggle="tooltip" data-placement="top">评论审核中</span>
                     <?php endif; ?>
-                    <a class="comment-time" href="<?php $comments->permalink(); ?>"><?php $comments->date('Y年m月d日 H:i'); ?></a>
+                    <a class="comment-time" href="<?php $comments->permalink(); ?>">
+                        <?php $comments->date('Y年m月d日 H:i'); ?>
+                    </a>
                 </div>
-                <span class="comment-reply float-right"><?php $comments->reply(); ?></span>
+                <span class="comment-reply float-right">
+                    <span class="<?php echo $GLOBALS['color']['name']; ?>">
+                        <?php $comments->reply(); ?>
+                    </span>
+                </span>
             </div>
             <div class="comment-content">
                 <?php echo reply($comments->parent); ?>

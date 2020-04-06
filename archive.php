@@ -1,5 +1,7 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('components/header.php'); ?>
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$color = color($this->options->color);
+$this->need('components/header.php');
+?>
 
 <div class="container main-content">
     <div class="row">
@@ -37,32 +39,32 @@
                         <div class="article-info clearfix border-top">
                             <!--时间-->
                             <div class="info">
-                                <i class="icon-calendar icon" aria-hidden="true"></i>
-                                <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
+                                <i class="icon-calendar icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
+                                <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
                             </div>
                             <!--作者-->
                             <div class="info">
-                                <i class="icon-user icon" aria-hidden="true"></i>
-                                <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
+                                <i class="icon-user icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
+                                <a class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
                             </div>
                             <!--阅读量-->
                             <div class="info">
-                                <i data-toggle="tooltip" data-placement="top" class="icon-eye icon" aria-hidden="true"></i>
-                                <span data-toggle="tooltip" data-placement="top" tabindex="0" title="阅读量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
+                                <i class="icon-eye icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
+                                <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="阅读量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
                             </div>
                             <!--评论-->
                             <div class="info">
-                                <i class="icon-bubbles2 icon" aria-hidden="true"></i>
-                                <a data-toggle="tooltip" data-placement="top" title="评论" href="#comments"><?php $this->commentsNum('%d 评论'); ?></a>
+                                <i class="icon-bubbles2 icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
+                                <a class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" title="评论" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('%d 评论'); ?></a>
                             </div>
                             <!--分类-->
                             <div class="info">
-                                <i class="icon-folder-open icon" aria-hidden="true"></i>
+                                <i class="icon-folder-open icon <?php echo $color['link']; ?>" aria-hidden="true" data-color="<?php echo $color['link']; ?>"></i>
                                 <?php $this->category(','); ?>
                             </div>
-                            <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">阅读全文</a>
+                            <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">阅读全文</a>
                             <?php if ($this->user->hasLogin()): ?>
-                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right mr-3 d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">编辑</a>
+                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right mr-3 d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">编辑</a>
                             <?php endif; ?>
                         </div>
                     </article>
@@ -74,7 +76,7 @@
                 <?php endif; ?>
             </main>
             <nav aria-label="分页导航区" class="pagination-nav">
-                <?php $this->pageNav('&laquo;', '&raquo;', 2, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination', 'itemTag' => 'li', 'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+                <?php $this->pageNav('&laquo;', '&raquo;', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' . $color['name'], 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>
         <?php $this->need('components/sidebar.php'); ?>

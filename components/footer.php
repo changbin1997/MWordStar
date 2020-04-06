@@ -1,3 +1,4 @@
+<?php $color = color($this->options->color); ?>
 <footer>
     <div class="container">
         <?php if ($this->options->icp): ?>
@@ -9,7 +10,7 @@
     </div>
 </footer>
 <?php if ($this->options->toTop == 'show'): ?>
-    <button type="button" class="btn to-top rounded-circle d-none" title="返回顶部" aria-label="返回顶部">
+    <button type="button" class="btn to-top rounded-circle d-none <?php echo $color['link']; ?>" title="返回顶部" aria-label="返回顶部">
         <i class="icon-arrow-up"></i>
     </button>
 <?php endif; ?>
