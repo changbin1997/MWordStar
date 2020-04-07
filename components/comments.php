@@ -68,7 +68,9 @@ function threadedComments($comments, $options) {
 
             <?php $comments->listComments(); ?>
 
-            <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
+            <nav aria-label="评论分页导航区" class="pagination-nav">
+                <?php $comments->pageNav('&laquo;', '&raquo;', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' . $color['name'], 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+            </nav>
         </div>
     <?php endif; ?>
     <?php if ($this->options->commentInput == 'bottom' or $this->options->commentInput == null) require_once 'comment-input.php'; ?>
