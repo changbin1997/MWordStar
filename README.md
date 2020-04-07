@@ -4,7 +4,7 @@
 
 主题下载地址：[https://github.com/changbin1997/MWordStar/releases](https://github.com/changbin1997/MWordStar/releases)
 
-Releases 中打包的主题可能不是最新版本，如果您需要下载最新版本的主题可以直接克隆项目。
+Releases 中打包的主题可能不是最新版本，如果您需要下载最新版本的主题可以直接克隆项目。如果您没有二次开发的需求建议可以在 [Releases](https://github.com/changbin1997/MWordStar/releases) 中下载主题，Releases 中的主题是经过测试后才打包上传的，相比开发板来说 BUG 要更少一些。建议您下载使用 Webpack 打包过的版本，也就是 `MWordStar-bundle.zip`。
 
 下面是主题首页截图：
 
@@ -12,7 +12,9 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 
 ![MWordStar主题首页截图2](https://www.misterma.com/img/MWordStar%E4%B8%BB%E9%A2%98%E9%A6%96%E9%A1%B5%E6%88%AA%E5%9B%BE2.png)
 
-![MWordStar主题首页不包含文章头图](https://www.misterma.com/img/MWordStar%E6%97%A0%E5%9B%BE%E6%A8%A1%E5%BC%8F.png)
+主题包含了几种配色，您可以根据喜好在主题外观设置中切换。
+
+![MWordStar不同配色的截图](https://www.misterma.com/img/MWordStar%E4%B8%8D%E5%90%8C%E9%85%8D%E8%89%B2%E7%9A%84%E6%88%AA%E5%9B%BE.jpg)
 
 扫描下面的二维码可在手机上预览
 
@@ -139,31 +141,6 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 下面是已适配的插件：
 
 * [Sticky](https://plugins.typecho.me/plugins/sticky.html) 文章置顶插件
-
-## 使用 Webpack 构建
-
-在 [MWordStar](https://github.com/changbin1997/MWordStar) 仓库和 [Releases](https://github.com/changbin1997/MWordStar/releases) 中的主题是直接通过 `link` 和 `script` 引入 CSS 和 JS 文件，没有使用任何构建工具。
-
-下面是用到的 CSS 和 JS 文件说明：
-
-* `bootstrap.min.css`：Bootstrap 的 CSS 文件，这个 CSS 是被我修改过的。
-* `icon.css`：字体图标的 CSS 文件。
-* `style.css`：主题的样式文件。
-* `style.scss`：主题的 SASS 样式文件，在 [Releases](https://github.com/changbin1997/MWordStar/releases) 中下载的主题不包含 SASS 文件。
-* `vs2015.css`：highlight.js 的样式文件。
-* `jquery-3.4.1.min.js`：jQuery。
-* `jquery.qrcode.min.js`：生成二维码的 jQuery 插件
-* `bootstrap.min.js`：Bootstrap 的 JS 文件。
-* `highlight.pack.js`：highlight.js 的 JS 文件。
-* `app.js`：主题的 JS 文件。
-
-除了上面的 CSS 和 JS 外 `icon.css` 还需要加载 4 个字体文件。虽然这些文件都不大，但是需要发送很多次 HTTP 请求。Webpack 可以把上面的 CSS、JS、字体 打包成一个 CSS 文件和一个 JS 文件，只需要发送两次 HTTP 请求就可以加载上面的文件。
-
-如果您对前端和 Webpack 有一定了解的话，您可以使用 Webpack 构建。您可以在 [https://github.com/changbin1997/MWordstar-Web](https://github.com/changbin1997/MWordstar-Web) 中找到使用 Webpack 构建的版本。
-
-在仓库的 `README.md` 中有详细的打包说明。
-
-如果您对 Webpack 感兴趣的话，可以看一下 [Webpack 简易使用指南](https://www.misterma.com/archives/850/)
 
 ## 其它
 
