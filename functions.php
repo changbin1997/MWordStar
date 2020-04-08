@@ -30,13 +30,20 @@ function themeFields($layout) {
 function themeConfig($form) {
     //  主题配色
     $color = new Typecho_Widget_Helper_Form_Element_Radio('color', array(
-        'dark' => 'dark',
-        'primary' => 'primary',
-        'info' => 'info',
-        'success' => 'success',
-        'light' => 'light'
-    ), 'light', _t('主题配色'));
+        'dark' => 'Dark',
+        'primary' => 'Primary',
+        'info' => 'Info',
+        'success' => 'Success',
+        'light' => 'Light'
+    ), 'light', _t('主题配色'), _t('主题配色包含了 导航栏、链接、按钮、标签 的颜色。'));
     $form->addInput($color);
+
+    //  主题元素风格设置
+    $rounded = new Typecho_Widget_Helper_Form_Element_Radio('rounded', array(
+       'fillet' => '圆角',
+        'rightAngle' => '直角'
+    ), 'fillet', _t('主题元素风格'), _t('这里的元素风格包括了 区块、按钮、输入表单、标签'));
+    $form->addInput($rounded);
 
     //  站点Logo
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。'));
