@@ -48,7 +48,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 //  通用文章头图样式
 @mixin postThumbnail{
     width: 100%;
-    background: #ffffff;
     a{
         display: block;
         width: 100%;
@@ -88,29 +87,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
             font-size: $articleFontSize;
             color: #444444;
             line-height: 25px;
-        }
-    }
-    //  阅读更多
-    .read-more{
-        margin: 0;
-        font-size: 15px;
-        .read-more-btn{
-            width: 140px;
-            border: 1px solid #007ACC;
-            color: #007ACC;
-            padding: 10px 20px;
-            span,i{
-                transition: 0.4s;
-            }
-            i{
-                margin-left: 5px;
-            }
-        }
-        .read-more-btn:hover{
-            padding: 10px 17px;
-            span{
-                margin: 0 3px;
-            }
         }
     }
     //  文章信息
@@ -565,9 +541,6 @@ footer{
     //  上一篇文章和下一篇文章的导航
     .post-navigation{
         padding: 20px;
-        a{
-            color: #6C757D;
-        }
     }
 }
 
@@ -690,7 +663,6 @@ footer{
                     a{
                         line-height: 22px;
                         font-size: 15px;
-                        color: #6C757D;
                     }
                     .comment-time{
                         color: #686868;
@@ -763,14 +735,6 @@ footer{
                 }
             }
         }
-        //  评论分页
-        .page-navigator .current a{
-            background-color: #6C757D;
-            color: #ffffff;
-        }
-        .page-navigator a{
-            color: #6c757d;
-        }
     }
     //  发表评论区
     .respond{
@@ -784,9 +748,6 @@ footer{
         //  发表评论的用户
         .comment-user{
             margin-bottom: 20px;
-        }
-        a{
-            color: #6C757D;
         }
     }
 }
@@ -903,7 +864,6 @@ footer{
     position: fixed;
     right: 20px;
     bottom: 20px;
-    color: #6C757D;
     border: 1px solid #D3D3D3;
     opacity: 0.7;
 }
