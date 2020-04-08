@@ -38,7 +38,6 @@ header .navbar .search-btn-light:focus {
 }
 .container .article-list .post .header-img {
   width: 100%;
-  background: #ffffff;
 }
 .container .article-list .post .header-img a {
   display: block;
@@ -69,28 +68,6 @@ header .navbar .search-btn-light:focus {
   font-size: 15px;
   color: #444444;
   line-height: 25px;
-}
-.container .article-list .post .read-more {
-  margin: 0;
-  font-size: 15px;
-}
-.container .article-list .post .read-more .read-more-btn {
-  width: 140px;
-  border: 1px solid #007ACC;
-  color: #007ACC;
-  padding: 10px 20px;
-}
-.container .article-list .post .read-more .read-more-btn span, .container .article-list .post .read-more .read-more-btn i {
-  transition: 0.4s;
-}
-.container .article-list .post .read-more .read-more-btn i {
-  margin-left: 5px;
-}
-.container .article-list .post .read-more .read-more-btn:hover {
-  padding: 10px 17px;
-}
-.container .article-list .post .read-more .read-more-btn:hover span {
-  margin: 0 3px;
 }
 .container .article-list .post .article-info {
   padding: 10px 25px;
@@ -365,7 +342,6 @@ footer .container a, footer .container span {
 }
 .article-page main .header-img, .archive main .header-img, .page main .header-img {
   width: 100%;
-  background: #ffffff;
 }
 .article-page main .header-img a, .archive main .header-img a, .page main .header-img a {
   display: block;
@@ -487,9 +463,6 @@ footer .container a, footer .container span {
 .article-page .post-navigation, .archive .post-navigation, .page .post-navigation {
   padding: 20px;
 }
-.article-page .post-navigation a, .archive .post-navigation a, .page .post-navigation a {
-  color: #6C757D;
-}
 
 #max-img {
   width: 100%;
@@ -597,7 +570,6 @@ footer .container a, footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-info a {
   line-height: 22px;
   font-size: 15px;
-  color: #6C757D;
 }
 #comments .comments-lists .comment-list .comment-body .comment-info .comment-time {
   color: #686868;
@@ -727,13 +699,6 @@ footer .container a, footer .container span {
 #comments .comments-lists .comment-list .comment-body .respond {
   background: #EEEEEE;
 }
-#comments .comments-lists .page-navigator .current a {
-  background-color: #6C757D;
-  color: #ffffff;
-}
-#comments .comments-lists .page-navigator a {
-  color: #6c757d;
-}
 #comments .respond {
   padding: 20px;
 }
@@ -744,9 +709,6 @@ footer .container a, footer .container span {
 }
 #comments .respond .comment-user {
   margin-bottom: 20px;
-}
-#comments .respond a {
-  color: #6C757D;
 }
 
 .container-404 h1 {
@@ -795,7 +757,6 @@ footer .container a, footer .container span {
 }
 .archives-list .archives .post .header-img {
   width: 100%;
-  background: #ffffff;
 }
 .archives-list .archives .post .header-img a {
   display: block;
@@ -826,28 +787,6 @@ footer .container a, footer .container span {
   font-size: 15px;
   color: #444444;
   line-height: 25px;
-}
-.archives-list .archives .post .read-more {
-  margin: 0;
-  font-size: 15px;
-}
-.archives-list .archives .post .read-more .read-more-btn {
-  width: 140px;
-  border: 1px solid #007ACC;
-  color: #007ACC;
-  padding: 10px 20px;
-}
-.archives-list .archives .post .read-more .read-more-btn span, .archives-list .archives .post .read-more .read-more-btn i {
-  transition: 0.4s;
-}
-.archives-list .archives .post .read-more .read-more-btn i {
-  margin-left: 5px;
-}
-.archives-list .archives .post .read-more .read-more-btn:hover {
-  padding: 10px 17px;
-}
-.archives-list .archives .post .read-more .read-more-btn:hover span {
-  margin: 0 3px;
 }
 .archives-list .archives .post .article-info {
   padding: 10px 25px;
@@ -931,7 +870,6 @@ footer .container a, footer .container span {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  color: #6C757D;
   border: 1px solid #D3D3D3;
   opacity: 0.7;
 }
@@ -959,7 +897,6 @@ footer .container a, footer .container span {
 @media screen and (max-width: 575px) {
   .container .article-list .post .header-img {
     width: 100%;
-    background: #ffffff;
   }
   .container .article-list .post .header-img a {
     display: block;
@@ -1007,7 +944,6 @@ footer .container a, footer .container span {
 
   .archives-list .archives .post .header-img {
     width: 100%;
-    background: #ffffff;
   }
   .archives-list .archives .post .header-img a {
     display: block;
