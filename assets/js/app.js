@@ -313,6 +313,16 @@ $(function () {
     if ($('#cancel-comment-reply-link').length) {
         $('#cancel-comment-reply-link').addClass($('.post-content').attr('data-color'));
     }
+
+    //  给翻页链接和评论区的回复按钮添加元素风格设置
+    if ($('body').attr('data-rounded') === 'rounded-0') {
+        if ($('.pagination-nav .pagination a').length) {
+            $('.pagination-nav .pagination a').addClass($('body').attr('data-rounded'));
+        }
+        if ($('.comment-author .comment-reply a').length) {
+            $('.comment-author .comment-reply a').addClass($('body').attr('data-rounded'));
+        }
+    }
 });
 
 //  生成目录
