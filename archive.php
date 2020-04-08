@@ -1,5 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $color = color($this->options->color);
+$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $this->need('components/header.php');
 ?>
 
@@ -7,7 +8,7 @@ $this->need('components/header.php');
     <div class="row">
         <div class="col-md-12 col-lg-8 col-sm-12 archives-list content-area">
             <main id="main" class="archives">
-                <header class="page-header">
+                <header class="page-header <?php echo $rounded; ?>">
                     <h1 class="archive-title"><?php $this->archiveTitle(array(
                             'category' => _t('分类 %s 下的文章'),
                             'search' => _t('包含关键字 %s 的文章'),
@@ -19,7 +20,7 @@ $this->need('components/header.php');
                 </header>
                 <?php if ($this->have()): ?>
                 <?php while($this->next()): ?>
-                    <article class="post">
+                    <article class="post <?php echo $rounded; ?>">
                         <?php if ($this->options->headerImage && in_array('home', $this->options->headerImage)): ?>
                             <?php $img = postImg($this); ?>
                             <?php if ($img): ?>

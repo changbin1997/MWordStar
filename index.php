@@ -9,13 +9,14 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $color = color($this->options->color);
+$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $this->need('components/header.php');  //  头文件
 ?>
 <div class="container home main-content">
     <div class="row">
         <div class="article-list col-md-12 col-lg-8 col-sm-12 content-area">
             <?php while ($this->next()):  //  开始循环  ?>
-                <div class="post">
+                <div class="post <?php echo $rounded; ?>">
                     <?php if ($this->options->headerImage && in_array('home', $this->options->headerImage)): ?>
                         <?php $img = postImg($this); ?>
                         <?php if ($img): ?>

@@ -1,6 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$color = color($this->options->color);
+$color = color($this->options->color);  //  获取颜色设置
+$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -41,12 +42,12 @@ $color = color($this->options->color);
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body>
+<body data-rounded="<?php echo $rounded; ?>">
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg <?php echo $color['bar'] ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -74,9 +75,9 @@ $color = color($this->options->color);
                 </ul>
                 <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                     <div class="input-group">
-                        <input data-url="<?php $this->options->siteUrl(); ?>" class="form-control form-control-md search-input" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
+                        <input data-url="<?php $this->options->siteUrl(); ?>" class="border-right-0 form-control form-control-md search-input <?php echo $rounded; ?>" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
                         <div class="input-group-append">
-                            <button class="btn my-sm-0 search-btn-light" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
+                            <button class="btn my-sm-0 search-btn-light <?php echo $rounded; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
                                 <i class="icon-search"></i>
                             </button>
                         </div>

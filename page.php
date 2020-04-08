@@ -2,12 +2,13 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('components/header.php');
 $color = color($this->options->color);
+$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 ?>
 
 <div class="container main-content">
     <div class="row">
         <div class="col-md-12 col-lg-8 col-sm-12 page content-area">
-            <main>
+            <main class="<?php echo $rounded; ?>">
                 <header class="entry-header">
                     <h1 class="entry-title p-name" itemprop="name headline">
                         <a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>

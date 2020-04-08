@@ -1,5 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $color = color($this->options->color);
+$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 
 //  点赞
 if (isset($_POST['agree'])) {
@@ -15,7 +16,7 @@ $this->need('components/header.php');
 <div class="container post-page main-content">
     <div class="row">
         <div class="col-md-12 col-lg-8 col-sm-12 article-page content-area">
-            <main>
+            <main class="<?php echo $rounded; ?>">
                 <header class="entry-header">
                     <h1 class="entry-title p-name" itemprop="name headline">
                         <a itemprop="url" href="<?php $this->permalink(); ?>" rel="bookmark"><?php $this->title(); ?></a>
@@ -82,12 +83,12 @@ $this->need('components/header.php');
                     </div>
                     <div class="pt-3 text-center">
                         <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
-                        <button <?php echo $agree['recording']?'disabled':''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn mr-2 <?php echo $color['btnOutline']; ?>">
+                        <button <?php echo $agree['recording']?'disabled':''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn mr-2 <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>">
                             <i class="icon-thumbs-up"></i>
                             <span>赞</span>
                             <span class="agree-num"><?php echo $agree['agree']; ?></span>
                         </button>
-                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn <?php echo $color['btnOutline']; ?>" data-toggle="modal" data-target="#share-box">
+                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" data-toggle="modal" data-target="#share-box">
                             <i class="icon-share2"></i>
                             <span>分享</span>
                         </button>
@@ -110,7 +111,7 @@ $this->need('components/header.php');
 </div>
 <div class="modal fade bd-example-modal-sm" id="share-box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
+        <div class="modal-content <?php echo $rounded; ?>">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">分享</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
@@ -121,11 +122,11 @@ $this->need('components/header.php');
                 <div id="qrcode"></div>
                 <p>用微信扫一扫点击右上角分享</p>
                 <div>
-                    <a target="_blank" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-danger btn-block">
+                    <a target="_blank" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-danger btn-block <?php echo $rounded; ?>">
                         <i class="icon-sina-weibo"></i>
                         <span>分享到新浪微博</span>
                     </a>
-                    <a target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php echo $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-primary btn-block">
+                    <a target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php echo $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-primary btn-block <?php echo $rounded; ?>">
                         <i class="icon-qzone"></i>
                         <span>分享到QQ空间</span>
                     </a>
