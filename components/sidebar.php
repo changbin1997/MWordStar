@@ -44,7 +44,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
         <?php if ($this->options->sidebarBlock && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
             <section class="border latest-articles<?php echo in_array('HideRecentPosts', $sidebarM)?' ' . $hideClass:''; ?> <?php echo $rounded; ?>">
                 <h4>最新文章</h4>
-                <ul aria-label="最新文章">
+                <ul class="list-group" aria-label="最新文章">
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
                     <?php while ($latestArticles->next()): ?>
                     <li class="border-bottom">
@@ -67,7 +67,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
     <?php if ($this->options->sidebarBlock && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
         <section class="border <?php echo in_array('HideRecentComments', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
             <h4>最新回复</h4>
-            <ul class="list-unstyled" aria-label="最新回复">
+            <ul class="list-unstyled list-group" aria-label="最新回复">
                 <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
                 <?php while($comments->next()): ?>
                     <li class="media border-bottom">
@@ -120,7 +120,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
     <?php if ($this->options->sidebarBlock && in_array('ShowOther', $this->options->sidebarBlock)): ?>
         <section class="border <?php echo in_array('HideOther', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
             <h4>其它功能</h4>
-            <ul aria-label="其它功能">
+            <ul class="list-group" aria-label="其它功能">
                 <?php if (!in_array('HideLoginLink', $this->options->sidebarBlock)): ?>
                     <?php if($this->user->hasLogin()): ?>
                         <li class="last border-bottom"><a class="<?php echo $color['link']; ?>" href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
@@ -138,7 +138,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
     <?php if ($this->options->links or $this->options->homeLinks && $this->is('index')): ?>
         <section class="border <?php echo in_array('HideLinks', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
             <h4>友情链接</h4>
-            <ul aria-label="友情链接">
+            <ul class="list-group" aria-label="友情链接">
                 <?php if ($this->options->homeLinks && $this->is('index')): ?>
                     <?php $homeLinks = json_decode($this->options->homeLinks); ?>
                     <?php foreach ($homeLinks as $val): ?>
