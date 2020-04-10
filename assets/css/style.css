@@ -893,6 +893,10 @@ footer .container a, footer .container span {
   .latest-articles-active {
     height: 222px;
   }
+
+  .sidebar section {
+    margin-left: 0;
+  }
 }
 @media screen and (max-width: 575px) {
   .container .article-list .post .header-img {

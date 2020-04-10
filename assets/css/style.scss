@@ -895,6 +895,10 @@ footer{
     .latest-articles-active{
         height: 222px;
     }
+    //  侧边栏
+    .sidebar section{
+        margin-left: 0;
+    }
 }
 //  < 575
 @media screen and (max-width: 575px) {
