@@ -28,6 +28,15 @@ function themeFields($layout) {
 
 //  外观设置
 function themeConfig($form) {
+    echo <<<EOT
+    主题使用帮助 <a href="https://www.misterma.com/archives/819/" target="_blank">点击访问</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。
+EOT;
+
+
+    echo '<script type="text/javascript">';
+    require_once 'assets/js/options-panel.js';
+    echo '</script>';
+
     //  主题配色
     $color = new Typecho_Widget_Helper_Form_Element_Radio('color', array(
         'dark' => 'Dark',
@@ -145,6 +154,10 @@ function themeConfig($form) {
     ), 'show', _t('在文章下方显示最后修改时间'));
     $form->addInput($modified);
 
+    //  文章摘要字数
+    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。'));
+    $form->addInput($summary);
+
     //  评论框位置
     $commentInput = new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
         'top' => '评论框在评论列表上方',
@@ -164,10 +177,6 @@ function themeConfig($form) {
         'showClassification' => _t('显示文章分类')
     ), null, _t('导航栏'));
     $form->addInput($navBar->multiMode());
-
-    //  文章摘要字数
-    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。'));
-    $form->addInput($summary);
 
     //  首页友链
     $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
