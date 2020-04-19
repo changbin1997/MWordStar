@@ -91,7 +91,7 @@ header .navbar .search-btn-light:focus {
   font-size: 12px;
   line-height: 29px;
 }
-.container .article-list .post .article-info .tags a {
+.container .article-list .post .article-info .tags a, .container .article-list .post .article-info .category a {
   margin-right: 3px;
 }
 
@@ -384,7 +384,7 @@ footer .container a, footer .container span {
   font-size: 12px;
   line-height: 29px;
 }
-.article-page main .article-info .tags a, .archive main .article-info .tags a, .page main .article-info .tags a {
+.article-page main .article-info .tags a, .archive main .article-info .tags a, .page main .article-info .tags a, .article-page main .article-info .category a, .archive main .article-info .category a, .page main .article-info .category a {
   margin-right: 3px;
 }
 .article-page main article, .archive main article, .page main article {
@@ -810,7 +810,7 @@ footer .container a, footer .container span {
   font-size: 12px;
   line-height: 29px;
 }
-.archives-list .archives .post .article-info .tags a {
+.archives-list .archives .post .article-info .tags a, .archives-list .archives .post .article-info .category a {
   margin-right: 3px;
 }
 .archives-list .archives .post > .post-title {

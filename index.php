@@ -56,9 +56,9 @@ $this->need('components/header.php');  //  头文件
                             <a class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" title="评论" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('%d 评论'); ?></a>
                         </div>
                         <!--分类-->
-                        <div class="info">
+                        <div class="info category">
                             <i class="icon-folder-open icon <?php echo $color['link']; ?>" aria-hidden="true" data-color="<?php echo $color['link']; ?>"></i>
-                            <?php $this->category(','); ?>
+                            <?php $this->category(''); ?>
                         </div>
                         <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">阅读全文</a>
                         <?php if ($this->user->hasLogin()): ?>
