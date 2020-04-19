@@ -19,4 +19,111 @@ window.onload = function (ev) {
     form.insertBefore(titleEl[7], ul[20]);  //  导航栏
     form.insertBefore(titleEl[8], ul[21]);  //  友情链接
     form.insertBefore(titleEl[9], ul[24]);  //  开发者
+
+    //  导出按钮点击
+    document.querySelector('#export-btn').onclick = function () {
+        var input = document.querySelectorAll('form input');  //  获取所有 input
+        var textarea = document.querySelectorAll('form textarea');  //  获取所有 textarea
+        var backup = [];  //  主题配置内容
+        input.forEach(function (val) {
+            //  text 输入框
+            if (val.getAttribute('type') === 'text') {
+                backup.push({
+                    name: val.name,
+                    value: encodeURIComponent(val.value),
+                    type: val.getAttribute('type')
+                });
+            }
+
+            //  radio 单选框和
+            if (val.getAttribute('type') === 'radio') {
+                if (val.checked) {
+                    backup.push({
+                        name: val.name,
+                        value: val.value,
+                        type: val.getAttribute('type')
+                    });
+                }
+            }
+
+            //  checkbox 复选框
+            if (val.getAttribute('type') === 'checkbox') {
+                backup.push({
+                    name: val.name,
+                    value: val.value,
+                    type: val.getAttribute('type'),
+                    checked: val.checked
+                });
+            }
+        });
+
+        textarea.forEach(function (val) {
+            backup.push({
+                name: val.name,
+                value: encodeURIComponent(val.value),
+                type: val.tagName
+            });
+        });
+
+        backup = JSON.stringify(backup);
+        var blob = new Blob([backup]);
+        document.querySelector('#download-file').href = URL.createObjectURL(blob);
+        document.querySelector('#download-file').download = 'MWordStar-config.json';
+        document.querySelector('#download-file').click();
+    };
+
+    //  导入按钮点击
+    document.querySelector('#import-btn').onclick = function () {
+        document.querySelector('#file-select').click();
+    };
+
+    //  文件选择完成
+    document.querySelector('#file-select').onchange = function () {
+        if (this.value === '') {
+            return false;
+        }
+
+        var reader = new FileReader();
+        reader.readAsText(this.files[0]);
+        //  读取完成
+        reader.onload = function (ev) {
+            var config = JSON.parse(ev.target.result);
+            var input = document.querySelectorAll('form input');  //  获取所有 input
+            var textarea = document.querySelectorAll('form textarea');  //  获取所有 textarea
+            config.forEach(function (val) {
+                input.forEach(function (el) {
+                    //  设置 text 输入框的 value
+                    if (el.getAttribute('type') === 'text' && el.name === val.name) {
+                        el.value = decodeURIComponent(val.value);
+                    }
+                    //  设置单选框的选中状态
+                    if (el.getAttribute('type') === 'radio') {
+                        if (el.name === val.name && el.value === val.value) {
+                            el.checked = true;
+                        }
+                    }
+                    //  设置复选框的选中状态
+                    if (el.getAttribute('type') === 'checkbox') {
+                        if (el.name === val.name && el.value === val.value) {
+                            el.checked = val.checked;
+                        }
+                    }
+                });
+
+                textarea.forEach(function (el) {
+                    if (el.name === val.name && el.tagName === val.type) {
+                        el.value = decodeURIComponent(val.value);
+                    }
+                });
+            });
+            if (confirm('主题配置信息已成功导入，您确定要保存设置吗？')) {
+                document.querySelector('.typecho-page-main form').submit();
+            }
+        };
+
+        //  读取文件出错
+        reader.onerror = function () {
+            alert('读取配置文件时发生错误！');
+        };
+    };
 };

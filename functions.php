@@ -29,9 +29,14 @@ function themeFields($layout) {
 //  外观设置
 function themeConfig($form) {
     echo <<<EOT
-    主题使用帮助 <a href="https://www.misterma.com/archives/819/" target="_blank">点击访问</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。
+    <p>主题使用帮助 <a href="https://www.misterma.com/archives/819/" target="_blank">点击查看帮助文档</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。</p>
+    <button id="export-btn" type="button" class="btn">导出主题配置文件</button>
+    <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
+    <a href="javascript:;" id="download-file" style="display: none;">下载</a>
+    <input type="file" id="file-select" style="display: none;">
+    <br/>
+    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，<b>导入主题配置文件</b> 可以导入 <b>MWordStar</b> 主题的 JSON 配置文件。</p>
 EOT;
-
 
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';
