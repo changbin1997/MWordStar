@@ -693,9 +693,6 @@ footer .container a, footer .container span {
   color: #333333;
   padding: 0 4px;
 }
-#comments .comments-lists .comment-list .comment-body .comment-children {
-  margin-left: 20px;
-}
 #comments .comments-lists .comment-list .comment-body .comment-children li {
   padding-bottom: 0;
 }
@@ -884,15 +881,27 @@ footer .container a, footer .container span {
   .sidebar {
     margin-top: 15px;
   }
+
+  #comments .comment-list .comment-children {
+    margin-left: 42px;
+  }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .sidebar {
     margin-top: 15px;
   }
+
+  #comments .comment-list .comment-children {
+    margin-left: 42px;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .sidebar section {
     margin-left: 0;
+  }
+
+  #comments .comment-list .comment-children {
+    margin-left: 42px;
   }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
@@ -902,6 +911,10 @@ footer .container a, footer .container span {
 
   .sidebar section {
     margin-left: 0;
+  }
+
+  #comments .comment-list .comment-children {
+    margin-left: 22px;
   }
 }
 @media screen and (max-width: 575px) {
@@ -1001,6 +1014,17 @@ footer .container a, footer .container span {
   .to-top {
     right: 10px;
     bottom: 30px;
+  }
+
+  #comments .comment-list .comment-children {
+    margin-left: 22px;
+  }
+}
+@media screen and (max-width: 374px) {
+  #comments .comment-list .comment-reply a {
+    display: inline !important;
+    border: none !important;
+    font-size: 14px !important;
   }
 }
 

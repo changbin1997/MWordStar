@@ -729,7 +729,6 @@ footer{
                 }
                 //  评论的子内容，也就是回复的内容
                 .comment-children{
-                    margin-left: 20px;
                     li{
                         padding-bottom: 0;
                         .comment-children{
@@ -882,6 +881,14 @@ footer{
     .sidebar{
         margin-top: 15px;
     }
+    //  评论区
+    #comments{
+        .comment-list{
+            .comment-children{
+                margin-left: 42px;
+            }
+        }
+    }
 }
 //  >= 992 且 <= 1199
 @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -889,12 +896,28 @@ footer{
     .sidebar{
         margin-top: 15px;
     }
+    //  评论区
+    #comments{
+        .comment-list{
+            .comment-children{
+                margin-left: 42px;
+            }
+        }
+    }
 }
 //  >= 768 且 <=991
 @media screen and (min-width: 768px) and (max-width: 991px) {
     //  侧边栏
     .sidebar section{
         margin-left: 0;
+    }
+    //  评论区
+    #comments{
+        .comment-list{
+            .comment-children{
+                margin-left: 42px;
+            }
+        }
     }
 }
 //  >= 576 且 <= 767
@@ -906,6 +929,14 @@ footer{
     //  侧边栏
     .sidebar section{
         margin-left: 0;
+    }
+    //  评论区
+    #comments{
+        .comment-list{
+            .comment-children{
+                margin-left: 22px;
+            }
+        }
     }
 }
 //  < 575
@@ -969,5 +1000,28 @@ footer{
     .to-top{
         right: 10px;
         bottom: 30px;
+    }
+    //  评论区
+    #comments{
+        .comment-list{
+            .comment-children{
+                margin-left: 22px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 374px) {
+    //  评论区
+    #comments{
+        .comment-list{
+            .comment-reply{
+                a{
+                    display: inline !important;
+                    border: none !important;
+                    font-size: 14px !important;
+                }
+            }
+        }
     }
 }
