@@ -9,6 +9,15 @@ window.onload = function (ev) {
         titleEl.push(el);
     });
 
+    ul.forEach(function (el) {
+        //  让屏幕阅读器能够读取复选框和单选框的选项名称
+        if (el.children[0].children[1] !== undefined && el.children[0].children[1].tagName === 'SPAN') {
+            if (el.children[0].children[0].tagName === 'LABEL') {
+                el.setAttribute('aria-label', el.children[0].children[0].innerHTML);
+            }
+        }
+    });
+
     form.insertBefore(titleEl[0], ul[0]);  //  外观
     form.insertBefore(titleEl[1], ul[2]);  //  站点信息
     form.insertBefore(titleEl[2], ul[5]);  //  辅助功能
