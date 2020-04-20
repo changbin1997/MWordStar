@@ -267,6 +267,12 @@ header .navbar .search-btn-light:focus {
   display: block;
   padding-bottom: 44%;
 }
+.sidebar .category li {
+  padding-left: 24px;
+}
+.sidebar .category .indentation-0 {
+  padding-left: 0;
+}
 
 .pagination-nav {
   width: 100%;
