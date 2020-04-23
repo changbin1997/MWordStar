@@ -37,7 +37,6 @@ function themeConfig($form) {
     <br/>
     <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，<b>导入主题配置文件</b> 可以导入 <b>MWordStar</b> 主题的 JSON 配置文件。</p>
 EOT;
-
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';
     echo '</script>';
@@ -170,6 +169,15 @@ EOT;
     ), 'bottom', _t('评论框位置'), _t('评论框就是发表评论的区域，评论列表就是已发表的评论区域'));
     $form->addInput($commentInput);
 
+    //  评论日期时间格式
+    $commentDateFormat = new Typecho_Widget_Helper_Form_Element_Radio('commentDateFormat', array(
+        'format1' => '2020年04月23日 13:09',
+        'format2' => '2020-04-23 13:09',
+        'format3' => 'April 23rd, 2020 at 01:09 pm',
+        'format4' => '时间间隔（3天前）'
+    ), 'format1', _t('评论日期时间格式'), _t('时间间隔的单位会根据间隔长短变化，不到一分钟的单位为 秒，一分钟以上、一小时以下的单位为 分钟，一小时以上、一天以下的单位为 小时，一天以上的单位为 天，'));
+    $form->addInput($commentDateFormat);
+
     //  Emoji面板
     $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
@@ -234,6 +242,31 @@ function getPostView($archive) {
         }
     }
     return $row['views'];
+}
+
+//  日期格式化
+function dateFormat($date, $options = 'format1') {
+    if ($options == 'format1') {
+        return date('Y年m月d日 H:i', $date);
+    }
+    if ($options == 'format2') {
+        return date('Y-m-d H:i', $date);
+    }
+    if ($options == 'format3') {
+        return date('F jS, Y \a\t h:i a', $date);
+    }
+    if ($options == 'format4') {
+        $time = time() - $date;
+        if ($time < 60) {
+            return $time . '秒前';
+        }else if ($time > 60 && $time < 3600) {
+            return round($time / 60, 0) . '分钟前';
+        }else if ($time > 3600 && $time < 86400) {
+            return round($time / 3600, 0) . '小时前';
+        }else {
+            return round($time / 86400, 0) . '天前';
+        }
+    }
 }
 
 //  获取父评论的姓名

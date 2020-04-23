@@ -1,5 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$GLOBALS['color'] = color($this->options->color)
+$GLOBALS['color'] = color($this->options->color);
+$GLOBALS['commentDateFormat'] = $this->options->commentDateFormat;
 ?>
 <?php
 function threadedComments($comments, $options) {
@@ -37,7 +38,7 @@ function threadedComments($comments, $options) {
                         <span class="author badge badge-secondary" title="您的评论目前只有您自己能看到，审核通过后才会公开显示。" data-toggle="tooltip" data-placement="top">评论审核中</span>
                     <?php endif; ?>
                     <a class="comment-time" href="<?php $comments->permalink(); ?>">
-                        <?php $comments->date('Y年m月d日 H:i'); ?>
+                        <?php echo dateFormat($comments->date->timeStamp, $GLOBALS['commentDateFormat']); ?>
                     </a>
                 </div>
                 <span class="comment-reply float-right">

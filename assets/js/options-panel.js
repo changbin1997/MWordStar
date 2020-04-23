@@ -25,9 +25,15 @@ window.onload = function (ev) {
     form.insertBefore(titleEl[4], ul[13]);  //  文章头图
     form.insertBefore(titleEl[5], ul[15]);  //  文章内容相关
     form.insertBefore(titleEl[6], ul[18]);  //  评论区
-    form.insertBefore(titleEl[7], ul[20]);  //  导航栏
-    form.insertBefore(titleEl[8], ul[21]);  //  友情链接
-    form.insertBefore(titleEl[9], ul[24]);  //  开发者
+    form.insertBefore(titleEl[7], ul[21]);  //  导航栏
+    form.insertBefore(titleEl[8], ul[22]);  //  友情链接
+    form.insertBefore(titleEl[9], ul[25]);  //  开发者
+
+    var h2Title = document.querySelectorAll('form h2');
+    h2Title.forEach(function (el) {
+        var hrEl = document.createElement('hr');
+        form.insertBefore(hrEl, el);
+    });
 
     //  导出按钮点击
     document.querySelector('#export-btn').onclick = function () {
