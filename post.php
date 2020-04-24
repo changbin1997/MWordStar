@@ -106,8 +106,24 @@ $this->need('components/header.php');
     </div>
 </div>
 <div id="max-img">
-    <img src="" alt="" title="再次点击可关闭" class="shadow-lg">
-    <div class="hide-img" role="button" aria-label="关闭大图" title="关闭大图" tabindex="0">×</div>
+    <img src="" alt="" class="shadow-lg">
+    <div class="btn-group" role="group" aria-label="图片大小和方向调整" id="img-control">
+        <button type="button" class="btn btn-dark big" title="放大" aria-label="放大">
+            <i class="icon-zoom-in"></i>
+        </button>
+        <button type="button" class="btn btn-dark small" title="缩小" aria-label="缩小">
+            <i class="icon-zoom-out"></i>
+        </button>
+        <button type="button" class="btn btn-dark spin-left" title="左旋转90度" aria-label="左旋转90度">
+            <i class="icon-undo"></i>
+        </button>
+        <button type="button" class="btn btn-dark spin-right" title="右旋转90度" aria-label="右旋转90度">
+            <i class="icon-redo"></i>
+        </button>
+        <button type="button" class="btn btn-dark hide-img" title="关闭大图" aria-label="关闭大图">
+            <i class="icon-cancel-circle"></i>
+        </button>
+    </div>
 </div>
 <div class="modal fade bd-example-modal-sm" id="share-box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">

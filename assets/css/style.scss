@@ -559,32 +559,18 @@ footer{
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     display: none;
     z-index: 1030;
-    opacity: 0;
-    transition: 0.3s;
     img{
-        max-width: 0;
-        max-height: 0;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: 0.3s;
+        cursor: move;
     }
-    .hide-img{
-        width: 40px;
-        height: 40px;
-        color: #F7F7F7;
-        line-height: 40px;
-        text-align: center;
-        font-size: 40px;
+    #img-control{
         position: absolute;
         top: 10px;
         right: 10px;
-        opacity: 0.7;
-        cursor: pointer;
+        opacity: 0.8;
     }
 }
 

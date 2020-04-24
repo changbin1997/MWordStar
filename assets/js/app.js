@@ -1,9 +1,11 @@
 $(function () {
     var emoji = null;  //  emoji表情
     var maxImg = false;  //  大图的状态
+    var imgDirection = 0;  //  图片方向
+    var imgWH = '';  //  记录图片的宽高
 
     //  给文章表格添加样式
-    if ($('.post-content table').length > 0) {
+    if ($('.post-content table').length) {
         for (var i = 0;i < $('.post-content table').length;i ++) {
             //  生成 Bootstrap 的响应式表格
             var table = '<div class="table-responsive"><table class="table table-striped table-bordered table-hover">' + $('.post-content table').eq(i).html() +  '</table></div>';
@@ -11,37 +13,159 @@ $(function () {
         }
     }
 
+    var tops = $(document).scrollTop();
+
     //  文章的图片点击
     $('.article-page article img').on('click', function () {
-        $('#max-img').css('display', 'block');
-        setTimeout(function () {
-            $('#max-img').css('opacity', 1);
-            $('#max-img img').css({
-                "max-width": "90%",
-                "max-height": "90%"
-            });
-        });
+        //  获取图片的真实尺寸
+        var imgSize = {
+            w: $(this).get(0).naturalWidth,
+            h: $(this).get(0).naturalHeight
+        };
+        //  根据图片真是尺寸设置大图的尺寸
+        if (imgSize.w > imgSize.h) {
+            if (imgSize.w >= $(window).width()) {
+                $('#max-img img').css('width', '90%');
+            }else {
+                $('#max-img img').css('width', imgSize.w);
+            }
+            $('#max-img img').css('height', 'auto');
+            imgWH = 'width';
+        }else {
+            if (imgSize.h >= $(window).height()) {
+                $('#max-img img').css('height', '90%');
+            }else {
+                $('#max-img img').css('height', imgSize.h);
+            }
+            $('#max-img img').css('width', 'auto');
+            imgWH = 'height';
+        }
+
+        $('#max-img').fadeIn(250);  //  显示大图
         //  设置大图的 src 和 alt
         $('#max-img img').attr({
             "src": $(this).attr('src'),
             "alt": $(this).attr('alt')
         });
+
+        //  调整图片方向
+        if (imgDirection !== 0) {
+            imgDirection = 0;
+            $('#max-img img').css('transform', 'rotate(' + imgDirection + 'deg)');
+        }
+
+        //  让图片居中
+        $('#max-img img').css({
+            left: $(window).width() / 2 - $('#max-img img').width() / 2,
+            top: $(window).height() / 2 - $('#max-img img').height() / 2
+        });
+
         $('.hide-img').focus();  //  让关闭图片的按钮获取焦点
-        maxImg = true;
+        maxImg = true;  //  大图状态设置为 true
+        tops = $(document).scrollTop();  //  获取当前的滚动条高度
+        return false;
     });
 
-    //  大图点击
-    $('#max-img').on('click', function () {
-        //  隐藏大图
-        $('#max-img').css('opacity', 0);
-        $('#max-img img').css({
-            "max-width": 0,
-            "max-height": 0
+    //  大图显示时阻止滚动
+    $(document).bind('scroll', function () {
+        if (maxImg) {
+            $(document).scrollTop(tops);
+        }
+    });
+
+    //  大图显示时阻止滚动
+    $(document).on('touchmove', function () {
+        if (maxImg) {
+            $(document).scrollTop(tops);
+        }
+    });
+
+    //  大图手指拖拽
+    $('#max-img img').on('touchstart', function (ev) {
+        console.log(ev);
+        var X = ev.touches[0].pageX - $(this).offset().left;
+        var Y = ev.touches[0].pageY - $(this).offset().top;
+
+        $(document).on('touchmove', function (ev) {
+            $('#max-img img').css({
+                left: ev.touches[0].pageX - X,
+                top: ev.touches[0].pageY - Y - $(document).scrollTop()
+            });
         });
+
+        $(document).on('touchend', function () {
+            $(document).off('touchmove');
+        });
+        return false;
+    });
+
+    //  大图拖拽
+   $('#max-img img').on('mousedown', function (ev) {
+        var X = ev.clientX - $(this).offset().left;
+        var Y = ev.clientY - $(this).offset().top;
+
+        $(document).on('mousemove', function (ev) {
+            $('#max-img img').css({
+                left: ev.clientX - X,
+                top: ev.clientY - Y - $(document).scrollTop()
+            });
+        });
+
+        $(document).on('mouseup', function (ev) {
+            $(document).off('mousemove');
+        });
+        return false;
+   });
+
+   //  图片左旋转
+    $('#img-control .spin-left').on('click', function () {
+        imgDirection -= 90;
+        $('#max-img img').css('transition', '0.3s');
+        $('#max-img img').css('transform', 'rotate(' + imgDirection + 'deg)');
         setTimeout(function () {
-            $('#max-img').css('display', 'none');
-            $('#max-img img').attr('src', '');
+            $('#max-img img').css('transition', '0s');
         }, 300);
+    });
+
+    //  图片右旋转
+    $('#img-control .spin-right').on('click', function () {
+        imgDirection += 90;
+        $('#max-img img').css('transition', '0.3s');
+        $('#max-img img').css('transform', 'rotate(' + imgDirection + 'deg)');
+        setTimeout(function () {
+            $('#max-img img').css('transition', '0s');
+        }, 300);
+    });
+
+    //  图片放大
+    $('#img-control .big').on('click', function () {
+        var size = imgWH === 'width'?$('#max-img img').width() + 40:$('#max-img img').height() + 40;
+        $('#max-img img').css('transition', '0.2s');
+        $('#max-img img').css(imgWH, size + 'px');
+        setTimeout(function () {
+            $('#max-img img').css('transition', '0s');
+        }, 300);
+    });
+
+    //  图片缩小
+    $('#img-control .small').on('click', function () {
+        var size = imgWH === 'width'?$('#max-img img').width() - 40:$('#max-img img').height() - 40;
+        //  如果图片的宽度或高度 < 40px 将不再缩小
+        if ($('#max-img img').width() <= 40 || $('#max-img img').height() <= 40) {
+            return false;
+        }
+        $('#max-img img').css('transition', '0.2s');
+        $('#max-img img').css(imgWH, size + 'px');
+        setTimeout(function () {
+            $('#max-img img').css('transition', '0s');
+        }, 300);
+    });
+
+    //  大图的关闭按钮点击
+    $('#max-img .hide-img').on('click', function () {
+        $('#max-img').fadeOut(250, function () {
+            $('#max-img img').attr('src', '');
+        });
         maxImg = false;
     });
 
@@ -188,23 +312,19 @@ $(function () {
                 $('.to-top').addClass('d-none');  //  隐藏返回顶部按钮
             }
         }
-
-        if (maxImg) {
-            $('#max-img').click();
-        }
     });
 
     //  大图的关闭按钮按下回车
     $('.hide-img').on('keypress', function (ev) {
         if (ev.keyCode == 13) {
-            $('#max-img').click();
+            $('#max-img .hide-img').click();
         }
     });
 
     //  ESC键按下
     $(document).on('keyup', function (ev) {
         if (ev.keyCode == 27 && maxImg) {
-            $('#max-img').click();  //  关闭大图
+            $('#max-img .hide-img').click();  //  关闭大图
         }
     });
 
