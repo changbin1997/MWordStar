@@ -20,7 +20,7 @@ $this->need('components/header.php');
                         </h2>
                     </header>
                     <article>
-                        <div class="post-content" itemprop="articleBody" data-color="<?php echo $color['link']; ?>">
+                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" itemprop="articleBody" data-color="<?php echo $color['link']; ?>">
                             <?php
                             $stat = Typecho_Widget::widget('Widget_Stat');
                             Typecho_Widget::widget('Widget_Contents_Post_Recent', 'pageSize=' . $stat->publishedPostsNum)->to($archives);

@@ -170,11 +170,12 @@ $(function () {
     });
 
     //  给链接设置在新标签页打开
-    if ($('.post-content a').length) {
+    if ($('.post-content').attr('data-target') === '_blank' && $('.post-content a').length) {
         //  给文章中的所有链接添加 target 属性，让文章中的链接在新标签页打开
         $('.post-content a').attr('target', '_blank');
-        $('.post-content a').addClass($('.post-content').attr('data-color'));
     }
+
+    $('.post-content a').addClass($('.post-content').attr('data-color'));  //  给文章中的链接添加颜色类
 
     //  给分页链接设置样式
     if ($('.pagination-nav ul li').length > 0) {

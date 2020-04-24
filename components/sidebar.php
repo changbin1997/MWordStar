@@ -48,7 +48,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
                     <?php while ($latestArticles->next()): ?>
                     <li class="border-bottom">
-                        <a class="<?php echo $color['link']; ?>" href="<?php $latestArticles->permalink(); ?>">
+                        <a target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $latestArticles->permalink(); ?>">
                             <?php if ($this->options->headerImage && in_array('sidebarBlock', $this->options->headerImage)): ?>
                                 <?php $img = postImg($latestArticles); ?>
                                 <?php if ($img): ?>
@@ -73,7 +73,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                     <li class="media border-bottom">
                         <?php $comments->gravatar('40', ''); ?>
                         <div class="media-body ml-2">
-                            <a class="<?php echo $color['link']; ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
+                            <a target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
                             <div><?php $comments->excerpt(20, '[...]'); ?></div>
                         </div>
                     </li>
@@ -86,7 +86,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
         <section class="category border <?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
             <h4>文章分类</h4>
             <ul class="list-group list-group-flush" aria-label="文章分类">
-                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom indentation-{parent}"><a data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{description}">{name}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>'); ?>
+                <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom indentation-{parent}"><a target="' . $this->options->sidebarLinkOpen . '" data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{description}">{name}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>'); ?>
             </ul>
         </section>
     <?php endif; ?>
@@ -98,7 +98,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
             <?php if($tags->have()): ?>
             <div class="tag-list pt-2" aria-label="标签云">
                 <?php while ($tags->next()): ?>
-                    <a data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
+                    <a target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                 <?php endwhile; ?>
             </div>
             <?php else: ?>
@@ -111,7 +111,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
         <section class="border <?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
             <h4>文章归档</h4>
             <ul class="list-group list-group-flush" aria-label="文章归档">
-                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>');
+                <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a target="' . $this->options->sidebarLinkOpen . '" data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>');
                 ?>
             </ul>
         </section>

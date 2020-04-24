@@ -19,7 +19,7 @@ $this->need('components/header.php');  //  头文件
                     </h2>
                 </header>
                 <article>
-                    <div class="post-content" data-color="<?php echo $color['link']; ?>">
+                    <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-color="<?php echo $color['link']; ?>">
                         <!--内页链接区域-->
                         <?php if ($this->options->pageLinks): ?>
                             <h3>内页链接</h3>

@@ -29,6 +29,7 @@ function themeFields($layout) {
 //  外观设置
 function themeConfig($form) {
     echo <<<EOT
+    <p>您现在使用的是 MWordStar 的开发版，开发板暂无版本号。<a href="https://github.com/changbin1997/MWordStar/releases" target="_blank">点击查看发行版</a></p>
     <p>主题使用帮助 <a href="https://www.misterma.com/archives/819/" target="_blank">点击查看帮助文档</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。</p>
     <button id="export-btn" type="button" class="btn">导出主题配置文件</button>
     <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
@@ -76,6 +77,27 @@ EOT;
         'hide' => '不显示'
     ), 'show', _t('在右下方显示返回顶部按钮'));
     $form->addInput($toTop);
+
+    //  文章列表链接跳转
+    $listLinkOpen = new Typecho_Widget_Helper_Form_Element_Radio('listLinkOpen', array(
+        '_self' => '直接从当前页面跳转',
+        '_blank' => '在新标签页中打开'
+    ), '_self', _t('文章列表的文章链接跳转方式'), _t('这里的文章列表包括 首页、分类页、标签页、搜索页 左侧的文章链接。'));
+    $form->addInput($listLinkOpen);
+
+    //  侧边栏链接跳转
+    $sidebarLinkOpen = new Typecho_Widget_Helper_Form_Element_Radio('sidebarLinkOpen', array(
+        '_self' => '直接从当前页面跳转',
+        '_blank' => '在新标签页中打开'
+    ), '_self', _t('侧边栏链接跳转方式'), _t('侧边栏链接包括了 最新文章区域、最新评论区域、文章分类区域、标签云区域、文章归档区域。'));
+    $form->addInput($sidebarLinkOpen);
+
+    //  文章内容链接
+    $postLinkOpen = new Typecho_Widget_Helper_Form_Element_Radio('postLinkOpen', array(
+        '_self' => '直接从当前页面跳转',
+        '_blank' => '在新标签页中打开'
+    ), '_blank', _t('文章内的链接跳转方式'), _t('文章内的链接包括了普通文章中插入的链接和独立页面中插入的链接。'));
+    $form->addInput($postLinkOpen);
 
     //  侧边栏
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',

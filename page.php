@@ -35,7 +35,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                     </div>
                 </div>
                 <article>
-                    <div class="post-content" data-color="<?php echo $color['link']; ?>">
+                    <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-color="<?php echo $color['link']; ?>">
                         <?php $this->content(); ?>
                     </div>
                 </article>

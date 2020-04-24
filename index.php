@@ -4,7 +4,7 @@
  *
  * @package MWordStar
  * @author Mr. Ma
- * @version 0.8
+ * @version 开发板（暂无版本号）
  * @link https://www.misterma.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
@@ -21,14 +21,14 @@ $this->need('components/header.php');  //  头文件
                         <?php $img = postImg($this); ?>
                         <?php if ($img): ?>
                             <div class="header-img">
-                                <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $img; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;"></a>
+                                <a target="<?php $this->options->listLinkOpen(); ?>" tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $img; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;"></a>
                             </div>
                         <?php endif; ?>
                     <?php endif; ?>
                     <header class="entry-header border-bottom">
                         <h2 class="entry-title p-name">
                             <?php if ($this->sticky) $this->sticky(); ?>
-                            <a href="<?php $this->permalink() ?>" rel="bookmark"><?php $this->title() ?></a>
+                            <a href="<?php $this->permalink() ?>" rel="bookmark" target="<?php $this->options->listLinkOpen(); ?>"><?php $this->title() ?></a>
                         </h2>
                     </header>
                     <div class="entry-summary">
@@ -60,7 +60,7 @@ $this->need('components/header.php');  //  头文件
                             <i class="icon-folder-open icon <?php echo $color['link']; ?>" aria-hidden="true" data-color="<?php echo $color['link']; ?>"></i>
                             <?php $this->category(''); ?>
                         </div>
-                        <a href="<?php $this->permalink() ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">阅读全文</a>
+                        <a href="<?php $this->permalink() ?>" target="<?php $this->options->listLinkOpen(); ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">阅读全文</a>
                         <?php if ($this->user->hasLogin()): ?>
                             <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right mr-3 d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">编辑</a>
                         <?php endif; ?>
