@@ -24,7 +24,7 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 
 ![博客二维码](https://i.loli.net/2020/02/11/tBgUvqE1CcNHFLe.png)
 
-## 主题特点
+## 特点和功能
 
 * 响应式设计
 * 无障碍适配（Accessibility）
