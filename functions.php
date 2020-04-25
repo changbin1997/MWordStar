@@ -279,7 +279,9 @@ function dateFormat($date, $options = 'format1') {
     }
     if ($options == 'format4') {
         $time = time() - $date;
-        if ($time < 60) {
+        if ($time < 1) {
+            return '1秒前';
+        }else if ($time < 60) {
             return $time . '秒前';
         }else if ($time > 60 && $time < 3600) {
             return round($time / 60, 0) . '分钟前';
