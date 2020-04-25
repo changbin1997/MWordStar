@@ -169,6 +169,15 @@ $(function () {
         maxImg = false;
     });
 
+    //  关闭大图按钮按下 tab
+    $('#max-img .hide-img').on('keydown', function (ev) {
+        if (ev.keyCode === 9) {
+            setTimeout(function () {
+                $('#img-control .big').focus();  //  让放大图片按钮获取焦点
+            }, 10);
+        }
+    });
+
     //  给链接设置在新标签页打开
     if ($('.post-content').attr('data-target') === '_blank' && $('.post-content a').length) {
         //  给文章中的所有链接添加 target 属性，让文章中的链接在新标签页打开
@@ -178,7 +187,7 @@ $(function () {
     $('.post-content a').addClass($('.post-content').attr('data-color'));  //  给文章中的链接添加颜色类
 
     //  给分页链接设置样式
-    if ($('.pagination-nav ul li').length > 0) {
+    if ($('.pagination-nav ul li').length) {
         //  给分页链接添加符合 Bootstrap 样式标准的 class
         $('.pagination-nav ul li').addClass('page-item');
         $('.pagination-nav ul li a').addClass('page-link');
@@ -208,21 +217,39 @@ $(function () {
     }
 
     //  给评论区的链接添加 target
-    if ($('.comment-info b a').length > 0) {
+    if ($('.comment-info b a').length) {
         $('.comment-info b a').attr('target', '_blank');  //  让评论区的链接在新标签页打开
     }
 
 
     //  给评论区的分页链接设置样式
-    if ($('.comments-lists .page-navigator').length > 0) {
+    if ($('.comments-lists .page-navigator').length) {
         $('.comments-lists .page-navigator li').addClass('pagination');
         $('.comments-lists .page-navigator li a').addClass('page-link');
         var pageNav = '<nav aria-label="分页导航区"><ol class="pagination justify-content-center page-navigator">' + $('.comments-lists .page-navigator').html() + '</ol></nav>';
         $('.comments-lists .page-navigator').replaceWith(pageNav);
     }
 
+    //  回复按钮按下 tab
+    $(document).on('keydown', '.comments-lists .respond .submit', function (ev) {
+        if (ev.keyCode === 9) {
+            setTimeout(function () {
+                $('#cancel-comment-reply-link').focus();  //  让取消回复的链接获取焦点
+            }, 10);
+        }
+    });
+
+    //  评论区的回复链接鼠标移入和移出
+    $('#comments .comment-reply a').hover(function (t) {
+        var cid = $(this).parent().attr('data-id');
+        $('#c-' + cid).css('background-color', '#EBF2FC');
+    }, function (t) {
+        var cid = $(this).parent().attr('data-id');
+        $('#c-' + cid).css('background-color', '#FFFFFF');
+    });
+
     //  给侧边栏近期文章的第一篇文章设置头图
-    if ($('.latest-articles a').eq(0).children('.article-img').length > 0) {
+    if ($('.latest-articles a').eq(0).children('.article-img').length) {
         $('.latest-articles a').eq(0).addClass('latest-articles-active');
     }
 
@@ -249,7 +276,7 @@ $(function () {
     });
 
     //  文章是否有密码
-    if ($('.post-content .protected').length > 0) {
+    if ($('.post-content .protected').length) {
         $('.protected .word').attr('role', 'alert');  //  让读屏软件朗读输入密码的提示
         $('.protected .text').attr('placeholder', '请在此处输入文章密码');
         $('.protected .text').get(0).select();  //  让密码输入表单获取交点
@@ -275,12 +302,15 @@ $(function () {
             }
             $('#emoji-box .emoji-classification button').removeClass('active');  //  取消所有分类按钮的选中状态
             $(this).addClass('active');  //  设置当前按钮为选中状态
+            $('#emoji-box .emoji-classification button').attr('aria-checked', false);  //  取消所有分类按钮的选中状态（读屏专用）
+            $(this).attr('aria-checked', true);  //  设置当前按钮为选中状态（读屏专用）
             var emojiDOM = '';
             emoji[$(this).attr('classification')].forEach(function (val) {
-                emojiDOM += '<div class="float-left emoji" tabindex="0" role="button">' + val + '</div>';
+                emojiDOM += '<div role="listitem" class="float-left emoji" tabindex="0" role="button">' + val + '</div>';
             });
             $('#emoji-box .emoji-select').html('');  //  清空其它的 emoji
             $('#emoji-box .emoji-select').append(emojiDOM);  //  把 emoji 插入到页面
+            $('#emoji-box .emoji-select').attr('aria-label', $(this).attr('title'));
         });
     }
 
@@ -330,7 +360,7 @@ $(function () {
     });
 
     //  是否是文章页
-    if ($('#qrcode').length > 0) {
+    if ($('#qrcode').length) {
         //  生成文章二维码
         $('#qrcode').qrcode({
             width: 235,
@@ -358,7 +388,7 @@ $(function () {
                 var re = /\d/;
                 if (re.test(data)) {
                     $('#agree-btn .agree-num').html(data);
-                    $('.post-page').append('<span id="agree-p">赞 + 1</span>');
+                    $('.post-page').append('<span id="agree-p" role="alert">赞 + 1</span>');
                     $('#agree-p').css({
                         top: $('#agree-btn').offset().top - 25,
                         left: $('#agree-btn').offset().left + $('#agree-btn').outerWidth() / 2 - $('#agree-p').outerWidth() / 2
@@ -391,7 +421,7 @@ $(function () {
     }
 
     //  生成目录
-    if ($('.post-content').length > 0 && $('.post-content').attr('data-atalog')) {
+    if ($('.post-content').length && $('.post-content').attr('data-atalog')) {
         if ($('.post-content h2').length < 1 && $('.post-content h3').length < 1 && $('.post-content h4').length < 1 && $('.post-content h5').length < 1) {
             return false;
         }
@@ -415,13 +445,13 @@ $(function () {
         $(document).scrollTop(Number($('.content-title').eq($(this).attr('data-index')).offset().top) - 60);
     });
 
+    //  给文章中的链接添加颜色类
     if ($('.post-content a').length) {
-        //  给文章中的链接添加颜色类
         $('.post-content a').addClass($('.post-content').attr('data-color'));
     }
 
+    //  给上一篇和下一篇文章的导航链接添加颜色类
     if ($('.post-navigation a').length) {
-        //  给上一篇和下一篇文章的导航链接添加颜色类
         $('.post-navigation a').addClass($('.post-content').attr('data-color'));
     }
 
@@ -435,7 +465,7 @@ $(function () {
         $('#cancel-comment-reply-link').addClass($('.post-content').attr('data-color'));
     }
 
-    //  给翻页链接和评论区的回复按钮添加元素风格设置
+    //  给翻页链接和评论区的回复按钮添加元素风格类
     if ($('body').attr('data-rounded') === 'rounded-0') {
         if ($('.pagination-nav .pagination a').length) {
             $('.pagination-nav .pagination a').addClass($('body').attr('data-rounded'));
