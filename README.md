@@ -1,10 +1,12 @@
-这是一套 [Typecho](https://typecho.org/) 的双栏博客主题，
+这是一套简洁的 [Typecho](https://typecho.org/) 双栏博客主题，也是 [我的博客](https://www.misterma.com/) 正在使用的主题。
 
 主题演示地址：[https://www.misterma.com](https://www.misterma.com) 
 
 主题下载地址：[https://github.com/changbin1997/MWordStar/releases](https://github.com/changbin1997/MWordStar/releases)
 
 Releases 中打包的主题可能不是最新版本，如果您需要下载最新版本的主题可以直接克隆项目。如果您没有二次开发的需求建议可以在 [Releases](https://github.com/changbin1997/MWordStar/releases) 中下载主题，Releases 中的主题是经过测试后才打包上传的，相比开发板来说 BUG 要更少一些。建议您下载使用 Webpack 打包过的版本，也就是 `MWordStar-bundle.zip`。
+
+通过克隆项目的方式下载的主题是没有正确的版本号的。
 
 下面是主题首页截图：
 
@@ -25,10 +27,16 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 ## 主题特点
 
 * 响应式设计
-* 无障碍适配
+* 无障碍适配（Accessibility）
+* 5 种不同风格的配色
+* 两种不同风格的元素
 * 代码高亮
 * 丰富的设置选项
 * 良好的 SEO 优化
+* 自带点赞功能
+* 文章可快速分享到社交网站
+* 评论区自带 Emoji 表情面板
+* 自动根据文章中的标题生成章节目录
 * 长期维护
 * 详细的 [使用说明](https://www.misterma.com/archives/819/)（必看）
 
@@ -36,19 +44,23 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 
 ### 外观设计
 
-因为本人不擅长设计，所以外观还是传统的两栏布局。
+因为我个人比较喜欢两栏布局，所以这个主题也使用了两栏布局的设计。
 
 ### 主题依赖
 
 主题主要用到了一下几个库和框架：
 
 - [Bootstrap](https://getbootstrap.com/)  外观和布局
-- [jQuery](https://jquery.com/)  DOM 操作
+- [jQuery](https://jquery.com/)  Bootstrap 依赖
 - [jquery-qrcode](https://github.com/jeromeetienne/jquery-qrcode) 一个生成二维码的 jQuery 插件
 - [highlight.js](https://highlightjs.org/)  代码高亮
 - [IcoMoon](https://icomoon.io/)  字体图标
 
-其中 IcoMoon 的字体图标是可定制的，所以只包含了主题中出现的图标。
+其中 IcoMoon 的字体图标是可定制的，所以只包含了主题中出现的图标，字体图标的文件体积也很小。
+
+主题的静态文件没有使用任何 CDN 地址，所有文件都放在主题的 `assets` 目录中。主题的生成目录、点赞、快速分享 之类的功能都是自己手动编写的，所以用到的 JS 库也比较少。
+
+使用 Webpack 打包的版本前台只需要加载一个 CSS 和 一个 JS 文件，所有 JS 库都打包到了 JS 中，所有 CSS 和字体图标都打包到了 CSS 中。因为用到的库比较少，而且字体图标和部分组件都是按需引入的，所以打包后的 CSS 和 JS 也比较小。
 
 ### 主题安装
 
@@ -68,13 +80,19 @@ Releases 中打包的主题可能不是最新版本，如果您需要下载最�
 
 如需查看友情链接的设置说明可以访问：[使用说明](https://www.misterma.com/archives/819/) 。
 
-### 无障碍
+### 文章头图
+
+文章头图可以在 首页、文章页、侧边栏 显示，您可以根据需求在主题外观设置中设置。文章头图来源支持自动获取文章的第一张图片和手动输入图片 URL。
+
+### 无障碍（Accessibility）
 
 上网对于大多数人来说是一件再简单不过的事，但是对于一些身体有缺陷的残障人士来说却是一件非常困难的事。
 
 目前国内的很多网站都只注重外观，忽略了残障人士的可访问性。但是想要做好网站的用户体验，[无障碍](https://www.misterma.com/archives/264/) 适配肯定是少不了的。
 
-本主题专门为 屏幕阅读器 做了特别优化，并 在 [NVDA](http://www.nvda-project.org/) 和 [VoiceOver](https://www.apple.com/cn/accessibility/iphone/vision/) 这两款屏幕阅读器上做过测试，无论是 PC 还是 移动设备 都能完美朗读。主题颜色对比度也符合标准。
+主题针对屏幕阅读器做了大量优化，并 在 [NVDA](http://www.nvda-project.org/) 和 [VoiceOver](https://www.apple.com/cn/accessibility/iphone/vision/) 这两款屏幕阅读器上做过测试，无论是 PC 还是移动设备都能完美朗读。主题能准确传达需要朗读的内容和信息，对于盲人来说，使用标准的屏幕阅读器基本可以无障碍操作。
+
+主题可完美支持键盘访问，颜色对比度也符合标准。
 
 小提示：如果您是屏幕阅读器用户，为了您的浏览体验，不建议使用 IE 浏览器。
 
@@ -106,9 +124,9 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 码云仓库地址：[https://gitee.com/changbin1997/MWordStar](https://gitee.com/changbin1997/MWordStar)
 
-本主题使用 [MIT License](https://github.com/changbin1997/MWordStar/blob/master/LICENSE) 开源。
+主题使用 [MIT License](https://github.com/changbin1997/MWordStar/blob/master/LICENSE) 开源。
 
-如果您在使用本主题时遇到 Bug 或有任何问题和建议都可以在 [博客评论区](https://www.misterma.com/archives/812/#comments) 留言，也可以在 Github 的 [issues](https://github.com/changbin1997/MWordStar/issues) 反馈。
+如果您在使用这个主题时遇到 Bug 或有任何问题和建议都可以在 [博客评论区](https://www.misterma.com/archives/812/#comments) 留言，也可以在 Github 的 [issues](https://github.com/changbin1997/MWordStar/issues) 反馈。
 
 一般情况下在博客留言可以很快得到回复。
 
