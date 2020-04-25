@@ -648,7 +648,7 @@ footer{
                 .avatar{
                     width: 42px;
                     height: 42px;
-                    margin-right: 20px;
+                    margin-right: 10px;
                     float: left;
                     border-radius: 50%;
                 }
@@ -710,7 +710,7 @@ footer{
                 }
                 //  评论内容
                 .comment-content{
-                    margin-left: 62px;
+                    margin-left: 52px;
                     @include postContent;
                 }
                 //  评论的子内容，也就是回复的内容
@@ -871,7 +871,7 @@ footer{
     #comments{
         .comment-list{
             .comment-children{
-                margin-left: 42px;
+                margin-left: 52px;
             }
         }
     }
@@ -886,7 +886,7 @@ footer{
     #comments{
         .comment-list{
             .comment-children{
-                margin-left: 42px;
+                margin-left: 52px;
             }
         }
     }
@@ -901,7 +901,7 @@ footer{
     #comments{
         .comment-list{
             .comment-children{
-                margin-left: 42px;
+                margin-left: 52px;
             }
         }
     }

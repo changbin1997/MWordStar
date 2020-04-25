@@ -555,7 +555,7 @@ footer .container a, footer .container span {
 #comments .comments-lists .comment-list .comment-body .avatar {
   width: 42px;
   height: 42px;
-  margin-right: 20px;
+  margin-right: 10px;
   float: left;
   border-radius: 50%;
 }
@@ -614,7 +614,7 @@ footer .container a, footer .container span {
   color: #FFFFFF;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content {
-  margin-left: 62px;
+  margin-left: 52px;
   font-size: 15px;
   word-break: break-all;
 }
@@ -869,7 +869,7 @@ footer .container a, footer .container span {
   }
 
   #comments .comment-list .comment-children {
-    margin-left: 42px;
+    margin-left: 52px;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -878,7 +878,7 @@ footer .container a, footer .container span {
   }
 
   #comments .comment-list .comment-children {
-    margin-left: 42px;
+    margin-left: 52px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -887,7 +887,7 @@ footer .container a, footer .container span {
   }
 
   #comments .comment-list .comment-children {
-    margin-left: 42px;
+    margin-left: 52px;
   }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
