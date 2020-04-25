@@ -25,18 +25,18 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                         </button>
                         <div id="emoji-box" class="collapse" aria-label="表情面板">
                             <div class="mt-2 mb-2 border">
-                                <div class="emoji-classification border-bottom" aria-label="表情类型">
-                                    <button aria-label="表情" title="表情" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="smileys">😀</button>
-                                    <button aria-label="人物/手势" title="人物/手势" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="character">👦</button>
-                                    <button aria-label="服装/配饰" title="服装/配饰" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="clothing">👕</button>
-                                    <button aria-label="动物/自然" title="动物/自然" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="animal">🐶</button>
-                                    <button aria-label="食物" title="食物" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="food">🍏</button>
-                                    <button aria-label="运动" title="运动" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="motion">⚽</button>
-                                    <button aria-label="旅行/地点" title="旅行/地点" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="tourism">🚚</button>
-                                    <button aria-label="物体" title="物体" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="objects">⌚</button>
-                                    <button aria-label="符号" title="符号" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="symbols">❤</button>
+                                <div class="emoji-classification border-bottom" aria-label="表情类型" role="group">
+                                    <button role="radio" aria-checked="true" aria-label="面部表情" title="面部表情" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="smileys">😀</button>
+                                    <button role="radio" aria-checked="false" aria-label="人物/手势" title="人物/手势" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="character">👦</button>
+                                    <button role="radio" aria-checked="false" aria-label="服装/配饰" title="服装/配饰" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="clothing">👕</button>
+                                    <button role="radio" aria-checked="false" aria-label="动物/自然" title="动物/自然" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="animal">🐶</button>
+                                    <button role="radio" aria-checked="false" aria-label="食物" title="食物" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="food">🍏</button>
+                                    <button role="radio" aria-checked="false" aria-label="运动" title="运动" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="motion">⚽</button>
+                                    <button role="radio" aria-checked="false" aria-label="旅行/地点" title="旅行/地点" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="tourism">🚚</button>
+                                    <button role="radio" aria-checked="false" aria-label="物体" title="物体" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="objects">⌚</button>
+                                    <button role="radio" aria-checked="false" aria-label="符号" title="符号" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="symbols">❤</button>
                                 </div>
-                                <div class="emoji-select ml-2 mr-2 clearfix" aria-label="表情选择">
+                                <div class="emoji-select ml-2 mr-2 clearfix" aria-label="表情选择" role="list">
                                     <div class="d-flex justify-content-center text-info m-3">
                                         <div class="spinner-border" role="status">
                                             <span class="sr-only">正在加载 Emoji</span>

@@ -105,9 +105,9 @@ $this->need('components/header.php');
         <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
-<div id="max-img">
+<div id="max-img" role="dialog">
     <img src="" alt="" class="shadow-lg">
-    <div class="btn-group" role="group" aria-label="图片大小和方向调整" id="img-control">
+    <div class="btn-group" role="group" aria-label="图片工具栏" id="img-control">
         <button type="button" class="btn btn-dark big" title="放大" aria-label="放大">
             <i class="icon-zoom-in"></i>
         </button>
@@ -120,7 +120,7 @@ $this->need('components/header.php');
         <button type="button" class="btn btn-dark spin-right" title="右旋转90度" aria-label="右旋转90度">
             <i class="icon-redo"></i>
         </button>
-        <button type="button" class="btn btn-dark hide-img" title="关闭大图" aria-label="关闭大图">
+        <button type="button" class="btn btn-dark hide-img" title="关闭大图（ESC）" aria-label="关闭大图（ESC）">
             <i class="icon-cancel-circle"></i>
         </button>
     </div>

@@ -24,7 +24,7 @@ $this->need('components/header.php');  //  头文件
                         <?php if ($this->options->pageLinks): ?>
                             <h3>内页链接</h3>
                             <?php $linkList = json_decode($this->options->pageLinks); ?>
-                            <div class="row link-box">
+                            <div class="row link-box" role="group" aria-label="内页链接">
                                 <?php for ($i = 0;$i < count($linkList);$i ++): ?>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
                                         <div class="link">
@@ -50,7 +50,7 @@ $this->need('components/header.php');  //  头文件
                         <?php if ($this->options->links): ?>
                         <h3>全站链接</h3>
                         <?php $linkList = json_decode($this->options->links); ?>
-                        <div class="row link-box">
+                        <div class="row link-box" role="group" aria-label="全站链接">
                             <?php for ($i = 0;$i < count($linkList);$i ++): ?>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
                                     <div class="link">
@@ -76,7 +76,7 @@ $this->need('components/header.php');  //  头文件
                         <?php if ($this->options->homeLinks): ?>
                         <h3>首页链接</h3>
                         <?php $links = json_decode($this->options->homeLinks); ?>
-                        <div class="row link-box">
+                        <div class="row link-box" role="group" aria-label="首页链接">
                             <?php for ($i = 0;$i < count($links);$i ++): ?>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
                                     <div class="link">

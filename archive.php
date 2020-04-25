@@ -72,7 +72,7 @@ $this->need('components/header.php');
                 <?php endwhile; ?>
                 <?php else: ?>
                     <article class="post">
-                        <h2 class="post-title"><?php _e('没有找到内容'); ?></h2>
+                        <h2 class="post-title" role="alert"><?php _e('没有搜索到您需要的文章'); ?></h2>
                     </article>
                 <?php endif; ?>
             </main>

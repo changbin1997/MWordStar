@@ -42,12 +42,12 @@ function threadedComments($comments, $options) {
                     </a>
                 </div>
                 <span class="comment-reply float-right">
-                    <span class="<?php echo $GLOBALS['color']['name']; ?>">
+                    <span class="<?php echo $GLOBALS['color']['name']; ?>" data-id="<?php $comments->theId(); ?>">
                         <?php $comments->reply(); ?>
                     </span>
                 </span>
             </div>
-            <div class="comment-content">
+            <div class="comment-content" id="c-<?php $comments->theId(); ?>">
                 <?php echo reply($comments->parent); ?>
                 <?php $comments->content(); ?>
             </div>
