@@ -1,4 +1,9 @@
 @charset "UTF-8";
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background: #E4E4E4;
 }

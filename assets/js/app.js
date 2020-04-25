@@ -13,8 +13,6 @@ $(function () {
         }
     }
 
-    var tops = $(document).scrollTop();
-
     //  文章的图片点击
     $('.article-page article img').on('click', function () {
         //  获取图片的真实尺寸
@@ -62,22 +60,8 @@ $(function () {
 
         $('.hide-img').focus();  //  让关闭图片的按钮获取焦点
         maxImg = true;  //  大图状态设置为 true
-        tops = $(document).scrollTop();  //  获取当前的滚动条高度
+        $('html').addClass('stop-scrolling');  //  禁止滚动
         return false;
-    });
-
-    //  大图显示时阻止滚动
-    $(document).bind('scroll', function () {
-        if (maxImg) {
-            $(document).scrollTop(tops);
-        }
-    });
-
-    //  大图显示时阻止滚动
-    $(document).on('touchmove', function () {
-        if (maxImg) {
-            $(document).scrollTop(tops);
-        }
     });
 
     //  大图手指拖拽
@@ -167,6 +151,7 @@ $(function () {
             $('#max-img img').attr('src', '');
         });
         maxImg = false;
+        $('html').removeClass('stop-scrolling');
     });
 
     //  关闭大图按钮按下 tab
