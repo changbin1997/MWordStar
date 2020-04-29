@@ -24,6 +24,10 @@ function themeFields($layout) {
         'hide' => '不显示'
     ), 'show', _t('显示原创声明'), _t('开启后会在本篇文章底部显示版权声明。'));
     $layout->addItem($articleCopyright);
+
+    //  自定义关键词
+    $keywords = new Typecho_Widget_Helper_Form_Element_Text('keywords', NULL, NULL, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。'));
+    $layout->addItem($keywords);
 }
 
 //  外观设置

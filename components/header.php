@@ -32,7 +32,11 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.qrcode.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
-    <?php $this->header(); ?>
+    <?php if ($this->is('post') && $this->fields->keywords): ?>
+        <?php $this->header('keywords=' . $this->fields->keywords); ?>
+    <?php else: ?>
+        <?php $this->header(); ?>
+    <?php endif; ?>
     <?php if ($this->options->cssCode): ?>
         <style type="text/css">
             <?php $this->options->cssCode(); ?>
