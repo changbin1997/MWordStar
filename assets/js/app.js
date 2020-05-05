@@ -171,6 +171,36 @@ $(function () {
 
     $('.post-content a').addClass($('.post-content').attr('data-color'));  //  给文章中的链接添加颜色类
 
+    //  给文章中的链接添加颜色类
+    if ($('.post-content a').length) {
+        $('.post-content a').addClass($('.post-content').attr('data-color'));
+    }
+
+    //  给上一篇和下一篇文章的导航链接添加颜色类
+    if ($('.post-navigation a').length) {
+        $('.post-navigation a').addClass($('.post-content').attr('data-color'));
+    }
+
+    //  给评论区的评论者昵称添加颜色类
+    if ($('.comment-info .author a').length) {
+        $('.comment-info .author a').addClass($('.post-content').attr('data-color'));
+    }
+
+    //  给评论区的取消回复链接添加颜色类
+    if ($('#cancel-comment-reply-link').length) {
+        $('#cancel-comment-reply-link').addClass($('.post-content').attr('data-color'));
+    }
+
+    //  给翻页链接和评论区的回复按钮添加元素风格类
+    if ($('body').attr('data-rounded') === 'rounded-0') {
+        if ($('.pagination-nav .pagination a').length) {
+            $('.pagination-nav .pagination a').addClass($('body').attr('data-rounded'));
+        }
+        if ($('.comment-author .comment-reply a').length) {
+            $('.comment-author .comment-reply a').addClass($('body').attr('data-rounded'));
+        }
+    }
+
     //  给分页链接设置样式
     if ($('.pagination-nav ul li').length) {
         //  给分页链接添加符合 Bootstrap 样式标准的 class
@@ -407,58 +437,26 @@ $(function () {
 
     //  生成目录
     if ($('.post-content').length && $('.post-content').attr('data-atalog')) {
-        if ($('.post-content h2').length < 1 && $('.post-content h3').length < 1 && $('.post-content h4').length < 1 && $('.post-content h5').length < 1) {
-            return false;
+        if ($('.post-content h2').length || $('.post-content h3').length || $('.post-content h4').length || $('.post-content h5').length) {
+            $('.post-content h2').addClass('content-title');
+            $('.post-content h3').addClass('content-title');
+            $('.post-content h4').addClass('content-title');
+            $('.post-content h5').addClass('content-title');
+            $('.post-content h2').attr('data-index', 2);
+            $('.post-content h3').attr('data-index', 3);
+            $('.post-content h4').attr('data-index', 4);
+            $('.post-content h5').attr('data-index', 5);
+
+            var el = atalog(2, 0);
+            $('.post-content').prepend('<div class="pt-2 pb-2 atalog"><h2>目录</h2>' + el.el + '</div>');
+            $('.post-content .atalog').children('ul').attr('aria-label', '目录');
         }
-
-        $('.post-content h2').addClass('content-title');
-        $('.post-content h3').addClass('content-title');
-        $('.post-content h4').addClass('content-title');
-        $('.post-content h5').addClass('content-title');
-        $('.post-content h2').attr('data-index', 2);
-        $('.post-content h3').attr('data-index', 3);
-        $('.post-content h4').attr('data-index', 4);
-        $('.post-content h5').attr('data-index', 5);
-
-        var el = atalog(2, 0);
-        $('.post-content').prepend('<div class="pt-2 pb-2 atalog"><h2>目录</h2>' + el.el + '</div>');
-        $('.post-content .atalog').children('ul').attr('aria-label', '目录');
     }
 
     //  目录点击跳转
     $('.post-content .atalog a').on('click', function () {
         $(document).scrollTop(Number($('.content-title').eq($(this).attr('data-index')).offset().top) - 60);
     });
-
-    //  给文章中的链接添加颜色类
-    if ($('.post-content a').length) {
-        $('.post-content a').addClass($('.post-content').attr('data-color'));
-    }
-
-    //  给上一篇和下一篇文章的导航链接添加颜色类
-    if ($('.post-navigation a').length) {
-        $('.post-navigation a').addClass($('.post-content').attr('data-color'));
-    }
-
-    //  给评论区的评论者昵称添加颜色类
-    if ($('.comment-info .author a').length) {
-        $('.comment-info .author a').addClass($('.post-content').attr('data-color'));
-    }
-
-    //  给评论区的取消回复链接添加颜色类
-    if ($('#cancel-comment-reply-link').length) {
-        $('#cancel-comment-reply-link').addClass($('.post-content').attr('data-color'));
-    }
-
-    //  给翻页链接和评论区的回复按钮添加元素风格类
-    if ($('body').attr('data-rounded') === 'rounded-0') {
-        if ($('.pagination-nav .pagination a').length) {
-            $('.pagination-nav .pagination a').addClass($('body').attr('data-rounded'));
-        }
-        if ($('.comment-author .comment-reply a').length) {
-            $('.comment-author .comment-reply a').addClass($('body').attr('data-rounded'));
-        }
-    }
 });
 
 //  生成目录
@@ -487,7 +485,7 @@ function atalog(titleIndex, start) {
             }
             return el;
         }
-        el.el += '<li><a data-index="' + i + '" href="javascript:;">' + $('.content-title').eq(i).text() + '</a></li>';
+        el.el += '<li><a class="' + $('.post-content').attr('data-color') + '" data-index="' + i + '" href="javascript:;">' + $('.content-title').eq(i).text() + '</a></li>';
         el.index = i;
     }
 
