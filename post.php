@@ -30,7 +30,7 @@ $this->need('components/header.php');
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
-                <div class="article-info clearfix border-bottom border-top">
+                <div class="article-info clearfix border-bottom border-top" role="group" aria-label="文章信息">
                     <!--时间-->
                     <div class="info">
                         <i class="icon-calendar icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
@@ -59,7 +59,7 @@ $this->need('components/header.php');
                     <!--标签-->
                     <div class="info tags" data-color="<?php echo $color['link']; ?>">
                         <i class="icon-price-tags icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <?php $this->tags(' ', true, 'none'); ?>
+                        <?php $this->tags(' ', true, '暂无标签'); ?>
                     </div>
                     <?php if ($this->user->hasLogin()): ?>
                         <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">

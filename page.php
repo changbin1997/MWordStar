@@ -22,7 +22,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
-                <div class="article-info clearfix border-bottom border-top">
+                <div class="article-info clearfix border-bottom border-top" role="group" aria-label="页面信息">
                     <!--时间-->
                     <div class="info">
                         <i class="icon-calendar icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
@@ -36,7 +36,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                     <!--阅读量-->
                     <div class="info">
                         <i class="icon-eye icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="阅读量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
+                        <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="访问量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
                     </div>
                 </div>
                 <article>

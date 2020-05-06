@@ -37,7 +37,7 @@ $this->need('components/header.php');
                         <div class="entry-summary">
                             <p><?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?></p>
                         </div>
-                        <div class="article-info clearfix border-top">
+                        <div class="article-info clearfix border-top" role="group" aria-label="文章信息">
                             <!--时间-->
                             <div class="info">
                                 <i class="icon-calendar icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
