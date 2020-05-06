@@ -107,6 +107,7 @@ EOT;
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array(
             'ShowBlogInfo' => _t('显示博客信息'),
+            'ShowCalendar' => _t('显示日历'),
             'ShowRecentPosts' => _t('显示最新文章'),
             'ShowRecentComments' => _t('显示最近回复'),
             'ShowCategory' => _t('显示分类'),
@@ -123,6 +124,7 @@ EOT;
     $sidebarBlockM = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlockM',
         array(
             'HideBlogInfo' => _t('在移动设备上隐藏博客信息'),
+            'HideCalendar' => _t('在移动设备上隐藏日历'),
             'HideRecentPosts' => _t('在移动设备上隐藏最新文章'),
             'HideRecentComments' => _t('在移动设备上隐藏最新回复'),
             'HideCategory' => _t('在移动设备上隐藏分类'),
@@ -453,4 +455,145 @@ function color($cfg) {
         return $color['light'];
     }
     return $color[$cfg];
+}
+
+//  获取月份
+function getMonth() {
+    $path = $_SERVER['PHP_SELF'];  //  获取路劲
+    preg_match('/\d{4}\/\d{2}\/\d{2}|\d{4}\/\d{2}/', $path, $date);  //  匹配路劲中的日期
+    if (is_array($date) && count($date)) {
+        $date = explode('/', $date[0]);  //  如果匹配到就分割日期
+    }else {
+        $date = date('Y/m/d', time());  //  如果没有匹配到就获取当前月
+        $date = explode('/', $date);  //  分割日期
+    }
+    return $date;
+}
+
+//  获取指定月份的文章
+function getMonthPost() {
+    $date = getMonth();  //  获取要查询文章的月份
+
+    $start = $date[0] . '-' . $date[1] . '-01 00:00:00';  //  月的第一天
+    $end = date('Y-m-t', strtotime($date[0] . '-' . $date[1] . '-' . '1 23:59:59'));  //  月最后一天
+    $start = strtotime($start);  //  把月的第一天转换为时间戳
+    $end = strtotime($end . ' 23:59:59');  //  把月的最后一天转换为时间戳
+    $db = Typecho_Db::get();
+    //  按照提供的月份查询出文件的时间
+    $post = $db->fetchAll($db->select('table.contents.created')->from('table.contents')->where('created >= ?', $start)->where('created <= ?', $end)->where('type = ?', 'post')->where('status = ?', 'publish'));
+    //  按照提供的月份查询前一个月的文章
+    $previous = $db->fetchAll($db->select('table.contents.created')->from('table.contents')->where('created < ?', $start)->where('type = ?', 'post')->where('status = ?', 'publish')->offset(0)->limit(1)->order('created', Typecho_Db::SORT_DESC));
+    //  按照提供的月份查询后一个月的文章
+    $next = $db->fetchAll($db->select('table.contents.created')->from('table.contents')->where('created > ?', $end)->where('type = ?', 'post')->where('status = ?', 'publish')->offset(0)->limit(1)->order('created', Typecho_Db::SORT_ASC));
+
+    if (count($next)) {
+        $next = date('Y/m/', $next[0]['created']);  //  格式化前一个月的文章时间
+    }
+
+    if (count($previous)) {
+        $previous = date('Y/m/', $previous[0]['created']);  //  格式化后一个月的文章时间
+    }
+
+    $day = array();
+    foreach ($post as $val) {
+        array_push($day, date('j', $val['created']));  //  把查询出的文章日加入数组
+    }
+    return array(
+        'post'=> $day,
+        'previous' => $previous,
+        'next' => $next
+    );
+}
+
+//  生成日历
+function calendar($month, $url, $rewrite, $linkColor) {
+    $monthArr = getMonth();  //  获取月份
+    $post = getMonthPost();  //  获取文章日期
+
+    //  判断是否启用了地址重写功能
+    if ($rewrite) {
+        $monthUrl = $url . $monthArr[0] . '/' . $monthArr[1] . '/';  //  生成日期链接前缀
+        $previousUrl = is_array($post['previous'])?'':$url . $post['previous'];  //  生成前一个月的跳转链接地址
+        $nextUrl = is_array($post['next'])?'':$url . $post['next'];  //  生成后一个月的跳转链接地址
+    }else {
+        $monthUrl = $url . 'index.php/' . $monthArr[0] . '/' . $monthArr[1] . '/';  //  生成日期链接前缀
+        $previousUrl = is_array($post['previous'])?'':$url . 'index.php/' . $post['previous'];  //  生成前一个月的跳转链接地址
+        $nextUrl = is_array($post['next'])?'':$url . 'index.php/' . $post['next'];  //  生成后一个月的跳转链接地址
+    }
+
+    $calendar = '';  //  初始化
+    $week_arr = ['日', '一', '二', '三', '四', '五', '六'];  //  表头
+    $this_month_days = (int)date('t',strtotime($month));  //  本月共多少天
+    $this_month_one_n = (int)date('w', strtotime($month));  //  本月1号星期几
+    $calendar .= '<table class="table table-bordered table-sm m-0"><thead><tr>';  //  表头
+
+    foreach ($week_arr as $k => $v){
+        if($k == 0){
+            $class = ' class="sunday"';
+        }elseif ($k == 6){
+            $class = ' class="saturday"';
+        }else{
+            $class = '';
+        }
+        $calendar .= '<th class="text-center py-2">'.$v.'</th>';
+    }
+    $calendar .= '</tr></thead><tbody>';
+    //  表身
+    //  计算本月共几行数据
+    $total_rows = ceil(($this_month_days - (7 - $this_month_one_n)) / 7) + 1;
+    $number = 1;
+    $flag = 0;
+    for ($row = 1;$row <= $total_rows;$row++){
+        $calendar .= '<tr>';
+        for ($week = 0;$week <= 6;$week ++){
+            if($number < 10){
+                $numbera = '0'.$number;
+            }else{
+                $numbera = $number;
+            }
+
+            if($number <= $this_month_days){
+                if ($number < 10) {
+                    $zero = '0';
+                }else {
+                    $zero = '';
+                }
+
+                if($row == 1){
+                    if($week >= $this_month_one_n){
+                        if (in_array($number, $post['post'])) {
+                            $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '">' . $number . '</a>' . '</td>';
+                        }else {
+                            $calendar .= '<td class="text-center py-2">'.$number.'</td>';
+                        }
+                        $flag = 1;
+                    }else{
+                        $calendar .= '<td></td>';
+                    }
+                }else{
+                    if (in_array($number, $post['post'])) {
+                        $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '">' . $number . '</a>' . '</td>';
+                    }else {
+                        $calendar .= '<td class="text-center py-2">'.$number.'</td>';
+                    }
+                }
+                if($flag){
+                    $number ++;
+                }
+            }else{
+                $calendar .= '<td></td>';
+            }
+        }
+        $calendar .= '</tr>';
+    }
+
+    $calendar .= '</tbody></table>';
+
+    return array(
+        'calendar' => $calendar,
+        'previous' => is_array($post['previous'])?false:$post['previous'],
+        'next' => is_array($post['next'])?false:$post['next'],
+        'previousUrl' => $previousUrl,
+        'nextUrl' => $nextUrl
+    );
 }

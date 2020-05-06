@@ -233,6 +233,12 @@ header .navbar .search-btn-light:focus {
   background: #28A745;
   color: #FFFFFF;
 }
+.sidebar .calendar table {
+  width: 100%;
+}
+.sidebar .calendar table td a {
+  font-size: 16px;
+}
 .sidebar .latest-articles li a {
   transition: 0.4s;
 }

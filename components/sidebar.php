@@ -39,6 +39,23 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
             </div>
         </section>
     <?php endif; ?>
+    <!--日历-->
+    <section class="border calendar">
+        <?php $date = getMonth(); ?>
+        <h4><?php echo $date[0] . '年' . $date[1] . '月'; ?></h4>
+        <div class="tag-list pt-2">
+            <?php $calendar = calendar($date[0] . '-' . $date[1] . '-01', $this->options->siteUrl, $this->options->rewrite, $color['link']); ?>
+            <?php echo $calendar['calendar']; ?>
+            <div class="pt-2 clearfix">
+                <?php if ($calendar['previous']): ?>
+                    <a class="p-0 float-left <?php echo $color['link']; ?>" href="<?php echo $calendar['previousUrl']; ?>"><?php echo date('Y年m月', strtotime($calendar['previous'] . '01')); ?></a>
+                <?php endif; ?>
+                <?php if ($calendar['next']): ?>
+                    <a class="p-0 float-right <?php echo $color['link']; ?>"  href="<?php echo $calendar['nextUrl']; ?>"><?php echo date('Y年m月', strtotime($calendar['next'] . '01')); ?></a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
     <!--最新文章-->
     <?php if (!$this->is('page', 'archives')): ?>
         <?php if ($this->options->sidebarBlock && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
