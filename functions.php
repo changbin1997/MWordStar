@@ -103,22 +103,16 @@ EOT;
     ), '_blank', _t('文章内的链接跳转方式'), _t('文章内的链接包括了普通文章中插入的链接和独立页面中插入的链接。'));
     $form->addInput($postLinkOpen);
 
-    //  侧边栏
-    $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
-        array(
-            'ShowBlogInfo' => _t('显示博客信息'),
-            'ShowCalendar' => _t('显示日历'),
-            'ShowRecentPosts' => _t('显示最新文章'),
-            'ShowRecentComments' => _t('显示最近回复'),
-            'ShowCategory' => _t('显示分类'),
-            'ShowTag' => _t('显示标签云'),
-            'ShowArchive' => _t('显示归档'),
-            'ShowOther' => _t('显示其它杂项'),
-            'HideLoginLink' => _t('隐藏登录入口')
-        ),
-        array('ShowBlogInfo', 'ShowRecentPosts','ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'), _t('您可以在这里设置需要显示在侧边栏上的内容，这里的设置会影响到移动设备的侧边栏显示。如果设置为不显示将不会出现 HTML。')
-    );
-    $form->addInput($sidebarBlock->multiMode());
+    //  侧边栏组件顺序
+    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '博客信息,日历,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 博客信息,日历,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
+    $form->addInput($sidebarComponent);
+
+    //  隐藏登录入口
+    $loginLink = new Typecho_Widget_Helper_Form_Element_Radio('loginLink', array(
+        'show' => '显示',
+        'hide' => '隐藏'
+    ), 'show', _t('登录入口'), _t('隐藏登录入口后在前台就不会显示登录入口，只能通过 域名/admin/login.php 进入登录页面'));
+    $form->addInput($loginLink);
 
     //  侧边栏（移动端）
     $sidebarBlockM = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlockM',
@@ -521,11 +515,13 @@ function calendar($month, $url, $rewrite, $linkColor) {
         $nextUrl = is_array($post['next'])?'':$url . 'index.php/' . $post['next'];  //  生成后一个月的跳转链接地址
     }
 
+    $postCount = array_count_values($post['post']);  //  统计每天的文章数量
+
     $calendar = '';  //  初始化
     $week_arr = ['日', '一', '二', '三', '四', '五', '六'];  //  表头
-    $this_month_days = (int)date('t',strtotime($month));  //  本月共多少天
+    $this_month_days = (int)date('t', strtotime($month));  //  本月共多少天
     $this_month_one_n = (int)date('w', strtotime($month));  //  本月1号星期几
-    $calendar .= '<table class="table table-bordered table-sm m-0"><thead><tr>';  //  表头
+    $calendar .= '<table aria-label="' . $monthArr[0] . '年' . $monthArr[1] . '月日历" class="table table-bordered table-sm m-0"><thead><tr>';  //  表头
 
     foreach ($week_arr as $k => $v){
         if($k == 0){
@@ -535,7 +531,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
         }else{
             $class = '';
         }
-        $calendar .= '<th class="text-center py-2">'.$v.'</th>';
+        $calendar .= '<th class="text-center py-2">' . $v . '</th>';
     }
     $calendar .= '</tr></thead><tbody>';
     //  表身
@@ -547,7 +543,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
         $calendar .= '<tr>';
         for ($week = 0;$week <= 6;$week ++){
             if($number < 10){
-                $numbera = '0'.$number;
+                $numbera = '0' . $number;
             }else{
                 $numbera = $number;
             }
@@ -562,9 +558,9 @@ function calendar($month, $url, $rewrite, $linkColor) {
                 if($row == 1){
                     if($week >= $this_month_one_n){
                         if (in_array($number, $post['post'])) {
-                            $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '">' . $number . '</a>' . '</td>';
+                            $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top">' . $number . '</a>' . '</td>';
                         }else {
-                            $calendar .= '<td class="text-center py-2">'.$number.'</td>';
+                            $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                         }
                         $flag = 1;
                     }else{
@@ -572,9 +568,9 @@ function calendar($month, $url, $rewrite, $linkColor) {
                     }
                 }else{
                     if (in_array($number, $post['post'])) {
-                        $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '">' . $number . '</a>' . '</td>';
+                        $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top">' . $number . '</a>' . '</td>';
                     }else {
-                        $calendar .= '<td class="text-center py-2">'.$number.'</td>';
+                        $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                     }
                 }
                 if($flag){
