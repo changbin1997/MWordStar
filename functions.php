@@ -558,7 +558,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
                 if($row == 1){
                     if($week >= $this_month_one_n){
                         if (in_array($number, $post['post'])) {
-                            $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top">' . $number . '</a>' . '</td>';
+                            $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                         }else {
                             $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                         }
@@ -568,7 +568,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
                     }
                 }else{
                     if (in_array($number, $post['post'])) {
-                        $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top">' . $number . '</a>' . '</td>';
+                        $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                     }else {
                         $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                     }

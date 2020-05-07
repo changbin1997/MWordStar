@@ -53,14 +53,14 @@ $components = explode(',', $components);
                 <div class="tag-list pt-2">
                     <?php $calendar = calendar($date[0] . '-' . $date[1] . '-01', $this->options->siteUrl, $this->options->rewrite, $color['link']); ?>
                     <?php echo $calendar['calendar']; ?>
-                    <div class="pt-2 clearfix">
+                    <nav class="pt-2 clearfix">
                         <?php if ($calendar['previous']): ?>
                             <a class="p-0 float-left <?php echo $color['link']; ?>" href="<?php echo $calendar['previousUrl']; ?>"><?php echo date('Y年m月', strtotime($calendar['previous'] . '01')); ?></a>
                         <?php endif; ?>
                         <?php if ($calendar['next']): ?>
                             <a class="p-0 float-right <?php echo $color['link']; ?>"  href="<?php echo $calendar['nextUrl']; ?>"><?php echo date('Y年m月', strtotime($calendar['next'] . '01')); ?></a>
                         <?php endif; ?>
-                    </div>
+                    </nav>
                 </div>
             </section>
         <?php endif; ?>
