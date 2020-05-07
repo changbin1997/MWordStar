@@ -176,8 +176,8 @@ header .navbar .search-btn-light:focus {
   padding: 0 18px 18px 18px;
 }
 .sidebar section .tag-list a {
-  padding: 8px 10px;
-  margin: 2px;
+  padding: 6px 10px;
+  margin: 3px;
   display: inline-block;
   font-size: 12px;
   line-height: 12px;
@@ -186,7 +186,7 @@ header .navbar .search-btn-light:focus {
   font-weight: 500;
 }
 .sidebar section .tag-list .tag-dark {
-  border: 1px solid #6C757D;
+  border: 0.5px solid #6C757D;
   color: #6C757D;
 }
 .sidebar section .tag-list .tag-dark:hover {
@@ -198,7 +198,7 @@ header .navbar .search-btn-light:focus {
   color: #FFFFFF;
 }
 .sidebar section .tag-list .tag-primary {
-  border: 1px solid #007BFF;
+  border: 0.5px solid #007BFF;
   color: #007BFF;
 }
 .sidebar section .tag-list .tag-primary:hover {
@@ -210,7 +210,7 @@ header .navbar .search-btn-light:focus {
   color: #FFFFFF;
 }
 .sidebar section .tag-list .tag-info {
-  border: 1px solid #17A2B8;
+  border: 0.5px solid #17A2B8;
   color: #17A2B8;
 }
 .sidebar section .tag-list .tag-info:hover {
@@ -222,7 +222,7 @@ header .navbar .search-btn-light:focus {
   color: #FFFFFF;
 }
 .sidebar section .tag-list .tag-success {
-  border: 1px solid #28A745;
+  border: 0.5px solid #28A745;
   color: #28A745;
 }
 .sidebar section .tag-list .tag-success:hover {
@@ -238,6 +238,9 @@ header .navbar .search-btn-light:focus {
 }
 .sidebar .calendar table td a {
   font-size: 16px;
+}
+.sidebar .calendar nav a {
+  font-size: 14px;
 }
 .sidebar .latest-articles li a {
   transition: 0.4s;
@@ -593,7 +596,7 @@ footer .container a, footer .container span {
   color: #ffffff;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .dark a, #comments .comments-lists .comment-list .comment-body .comment-reply .light a {
-  border: 1px solid #6C757D;
+  border: 0.5px solid #6C757D;
   color: #6C757D;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .dark a:hover, #comments .comments-lists .comment-list .comment-body .comment-reply .light a:hover {
@@ -601,7 +604,7 @@ footer .container a, footer .container span {
   color: #FFFFFF;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .primary a {
-  border: 1px solid #007BFF;
+  border: 0.5px solid #007BFF;
   color: #007BFF;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .primary a:hover {
@@ -609,7 +612,7 @@ footer .container a, footer .container span {
   color: #FFFFFF;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .info a {
-  border: 1px solid #17A2B8;
+  border: 0.5px solid #17A2B8;
   color: #17A2B8;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .info a:hover {
@@ -617,7 +620,7 @@ footer .container a, footer .container span {
   color: #FFFFFF;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .success a {
-  border: 1px solid #28A745;
+  border: 0.5px solid #28A745;
   color: #28A745;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .success a:hover {
