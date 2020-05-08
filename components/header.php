@@ -77,16 +77,18 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                         </li>
                     <?php endwhile; ?>
                 </ul>
-                <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
-                    <div class="input-group">
-                        <input data-url="<?php $this->options->siteUrl(); ?>" class="border-right-0 form-control form-control-md search-input <?php echo $rounded; ?>" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
-                        <div class="input-group-append">
-                            <button class="btn my-sm-0 search-btn-light <?php echo $rounded; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
-                                <i class="icon-search"></i>
-                            </button>
+                <?php if (is_array($this->options->navbar) && in_array('showSearch', $this->options->navbar)): ?>
+                    <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
+                        <div class="input-group">
+                            <input data-url="<?php $this->options->siteUrl(); ?>" class="border-right-0 form-control form-control-md search-input <?php echo $rounded; ?>" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
+                            <div class="input-group-append">
+                                <button class="btn my-sm-0 search-btn-light <?php echo $rounded; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
+                                    <i class="icon-search"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
