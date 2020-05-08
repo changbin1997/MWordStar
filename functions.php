@@ -119,6 +119,7 @@ EOT;
         array(
             'HideBlogInfo' => _t('在移动设备上隐藏博客信息'),
             'HideCalendar' => _t('在移动设备上隐藏日历'),
+            'HideSearch' => _t('在移动设备上隐藏搜索'),
             'HideRecentPosts' => _t('在移动设备上隐藏最新文章'),
             'HideRecentComments' => _t('在移动设备上隐藏最新回复'),
             'HideCategory' => _t('在移动设备上隐藏分类'),
@@ -209,8 +210,9 @@ EOT;
 
     //  导航栏
     $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(
-        'showClassification' => _t('显示文章分类')
-    ), null, _t('导航栏'));
+        'showClassification' => _t('显示文章分类'),
+        'showSearch' => _t('显示搜索'),
+    ), array('showSearch'), _t('导航栏'));
     $form->addInput($navBar->multiMode());
 
     //  首页友链
