@@ -46,8 +46,25 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
+        <?php if ($component == '搜索'): ?>
+            <section class="<?php echo $rounded; ?> <?php echo in_array('HideSearch', $sidebarM)?$hideClass:''; ?>">
+                <h4>搜索</h4>
+                <div class="tag-list pt-2">
+                    <form action="<?php $this->options->siteUrl(); ?>" method="post" role="form">
+                        <div class="input-group">
+                            <input type="search" class="form-control form-control-md <?php echo $rounded; ?>" placeholder="搜索" aria-label="搜索" aria-describedby="button-addon2" required="required" name="s">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-md <?php echo $color['btn']; ?> <?php echo $rounded; ?>" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="top">
+                                    <span class="icon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        <?php endif; ?>
         <?php if ($component == '日历'): ?>
-            <section class="border calendar">
+            <section class="border calendar <?php echo $rounded; ?> <?php echo in_array('HideCalendar', $sidebarM)?$hideClass:''; ?>">
                 <?php $date = getMonth(); ?>
                 <h4><?php echo $date[0] . '年' . $date[1] . '月'; ?></h4>
                 <div class="tag-list pt-2">
@@ -64,11 +81,12 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
-        <?php if ($component == '最新文章' && !$this->is('page', 'archives')): ?>
+        <?php if ($component == '最新文章'): ?>
             <section class="border latest-articles<?php echo in_array('HideRecentPosts', $sidebarM)?' ' . $hideClass:''; ?> <?php echo $rounded; ?>">
                 <h4>最新文章</h4>
                 <ul class="list-group" aria-label="最新文章">
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
+                    <?php $postSize = 0; ?>
                     <?php while ($latestArticles->next()): ?>
                         <li class="border-bottom">
                             <a target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $latestArticles->permalink(); ?>">
@@ -81,6 +99,12 @@ $components = explode(',', $components);
                                 <p><?php $latestArticles->title(); ?></p>
                             </a>
                         </li>
+                        <?php
+                            $postSize ++;
+                            if ($postSize == $this->options->postsListSize) {
+                                break;
+                            }
+                        ?>
                     <?php endwhile; ?>
                 </ul>
             </section>
@@ -117,7 +141,7 @@ $components = explode(',', $components);
                 <?php if($tags->have()): ?>
                     <div class="tag-list pt-2" aria-label="标签云" role="list">
                         <?php while ($tags->next()): ?>
-                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
+                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="border size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                         <?php endwhile; ?>
                     </div>
                 <?php else: ?>
