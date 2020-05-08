@@ -195,7 +195,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 //  标签云和平路回复链接的配色
 //  dark
 @mixin dark{
-    border: 0.5px solid #6C757D;
+    border: 1px solid #6C757D;
     color: #6C757D;
 }
 @mixin darkHover{
@@ -204,7 +204,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 }
 //  success
 @mixin success{
-    border: 0.5px solid #28A745;
+    border: 1px solid #28A745;
     color: #28A745;
 }
 @mixin successHover{
@@ -213,7 +213,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 }
 //  primary
 @mixin primary{
-    border: 0.5px solid #007BFF;
+    border: 1px solid #007BFF;
     color: #007BFF;
 }
 @mixin primaryHover{
@@ -222,7 +222,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
 }
 //  info
 @mixin info{
-    border: 0.5px solid #17A2B8;
+    border: 1px solid #17A2B8;
     color: #17A2B8;
 }
 @mixin infoHover{
@@ -346,8 +346,8 @@ header{
         .tag-list{
             padding: 0 18px 18px 18px;
             a{
-                //background: #F3F6F3;
-                padding: 6px 10px;
+                background: #F3F6F3;
+                padding: 7px 10px;
                 margin: 3px;
                 display: inline-block;
                 font-size: 12px;
