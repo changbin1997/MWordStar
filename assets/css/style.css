@@ -176,7 +176,6 @@ header .navbar .search-btn-light:focus {
   padding: 0 18px 18px 18px;
 }
 .sidebar section .tag-list a {
-  background: #F3F6F3;
   padding: 7px 10px;
   margin: 3px;
   display: inline-block;
@@ -239,6 +238,9 @@ header .navbar .search-btn-light:focus {
 }
 .sidebar .calendar table td a {
   font-size: 16px;
+}
+.sidebar .calendar table .active {
+  background: #F5F5F5;
 }
 .sidebar .calendar nav a {
   font-size: 14px;

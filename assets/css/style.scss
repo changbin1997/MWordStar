@@ -346,7 +346,6 @@ header{
         .tag-list{
             padding: 0 18px 18px 18px;
             a{
-                background: #F3F6F3;
                 padding: 7px 10px;
                 margin: 3px;
                 display: inline-block;
@@ -404,6 +403,9 @@ header{
             width: 100%;
             td a{
                 font-size: 16px;
+            }
+            .active{
+                background: #F5F5F5;
             }
         }
         nav a{
