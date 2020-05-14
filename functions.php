@@ -34,7 +34,7 @@ function themeFields($layout) {
 function themeConfig($form) {
     echo <<<EOT
     <p>您现在使用的是 MWordStar 的开发版，开发板暂无版本号。<a href="https://github.com/changbin1997/MWordStar/releases" target="_blank">点击查看发行版</a></p>
-    <p>主题使用帮助 <a href="https://www.misterma.com/archives/819/" target="_blank">点击查看帮助文档</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。</p>
+    <p>主题使用帮助 <a href="https://mwordstar.misterma.com/" target="_blank">点击查看帮助文档</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。</p>
     <button id="export-btn" type="button" class="btn">导出主题配置文件</button>
     <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
     <a href="javascript:;" id="download-file" style="display: none;">下载</a>
@@ -104,7 +104,7 @@ EOT;
     $form->addInput($postLinkOpen);
 
     //  侧边栏组件顺序
-    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '博客信息,日历,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 博客信息,日历,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
+    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
     $form->addInput($sidebarComponent);
 
     //  隐藏登录入口
@@ -150,6 +150,14 @@ EOT;
     //  侧边栏博客信息的运行天数
     $birthday = new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会显示为 0 天。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。'));
     $form->addInput($birthday);
+
+    //  侧边栏文章归档月份数量
+    $postArchiveCount = new Typecho_Widget_Helper_Form_Element_Text('postArchiveCount', null, '0', _t('侧边栏文章归档月份数量'), _t('您可以设置侧边栏文章归档要显示的月份数量，对于归档月份较多的博客来说，限制显示的月份数量可以避免侧边栏的文章归档过长。0 为不限制。'));
+    $form->addInput($postArchiveCount);
+
+    //  文章归档页面地址
+    $archivePageUrl = new Typecho_Widget_Helper_Form_Element_Text('archivePageUrl', null, null, _t('文章归档页面地址'), _t('如果您启用了独立页文章归档并且限制了侧边栏的文章归档数量的话，可以在这里输入独立页文章归档的地址。填写独立页文章归档地址后在侧边栏的文章归档会显示 查看更多 的链接，点击就可以跳转到文章归档页。如果为空将不会显示显示 查看更多 链接。'));
+    $form->addInput($archivePageUrl);
 
     //  文章头图设置
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
@@ -560,7 +568,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
                 if($row == 1){
                     if($week >= $this_month_one_n){
                         if (in_array($number, $post['post'])) {
-                            $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                            $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                         }else {
                             $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                         }
@@ -570,7 +578,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
                     }
                 }else{
                     if (in_array($number, $post['post'])) {
-                        $calendar .= '<td class="text-center py-2 bg-light">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                        $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                     }else {
                         $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                     }
