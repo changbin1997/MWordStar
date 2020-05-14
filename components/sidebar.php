@@ -9,7 +9,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
 $components = $this->options->sidebarComponent;  //  读取侧边栏组件
 //  如果侧边栏组件为空就使用默认设置
 if ($components == null or $components == '') {
-    $components = '博客信息,日历,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接';
+    $components = '博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接';
 }
 $components = str_replace(' ', '', $components);  //  去除空格
 $components = explode(',', $components);
@@ -70,7 +70,7 @@ $components = explode(',', $components);
                 <div class="tag-list pt-2">
                     <?php $calendar = calendar($date[0] . '-' . $date[1] . '-01', $this->options->siteUrl, $this->options->rewrite, $color['link']); ?>
                     <?php echo $calendar['calendar']; ?>
-                    <nav class="pt-2 clearfix">
+                    <nav class="pt-2 clearfix" aria-label="上个月及下个月">
                         <?php if ($calendar['previous']): ?>
                             <a class="p-0 float-left <?php echo $color['link']; ?>" href="<?php echo $calendar['previousUrl']; ?>"><?php echo date('Y年m月', strtotime($calendar['previous'] . '01')); ?></a>
                         <?php endif; ?>
@@ -141,7 +141,7 @@ $components = explode(',', $components);
                 <?php if($tags->have()): ?>
                     <div class="tag-list pt-2" aria-label="标签云" role="list">
                         <?php while ($tags->next()): ?>
-                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="border size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
+                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                         <?php endwhile; ?>
                     </div>
                 <?php else: ?>
@@ -153,8 +153,26 @@ $components = explode(',', $components);
             <section class="border <?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
                 <h4>文章归档</h4>
                 <ul class="list-group list-group-flush" aria-label="文章归档">
-                    <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<li class="d-flex justify-content-between align-items-center border-bottom"><a target="' . $this->options->sidebarLinkOpen . '" data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{count}篇文章">{date}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>');
+                    <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
+                    <?php $archiveCount = 0; ?>
+                    <?php while ($postArchive->next()): ?>
+                    <li class="d-flex justify-content-between align-items-center border-bottom">
+                        <a target="<?php echo $this->options->sidebarLinkOpen; ?>" data-toggle="tooltip" data-placement="top" class="<?php echo $color['link']; ?>" href="<?php $postArchive->permalink(); ?>" title="<?php $postArchive->count(); ?>篇文章"><?php $postArchive->date(); ?></a>
+                        <span class="badge badge-pill <?php echo $color['listTag']; ?>"><?php $postArchive->count(); ?></span>
+                    </li>
+                    <?php
+                    $archiveCount ++;
+                    //  判断是否启用了文章归档数量限制
+                    if ($this->options->postArchiveCount != 0 && $this->options->postArchiveCount == $archiveCount) {
+                        break;
+                    }
                     ?>
+                    <?php endwhile; ?>
+                    <?php if ($this->options->archivePageUrl && $this->options->postArchiveCount != 0 && $this->options->postArchiveCount == $archiveCount): ?>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <a href="<?php $this->options->archivePageUrl(); ?>" class="<?php echo $color['link']; ?>">查看更多</a>
+                    </li>
+                    <?php endif; ?>
                 </ul>
             </section>
         <?php endif; ?>
