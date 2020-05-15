@@ -156,7 +156,7 @@ EOT;
     $form->addInput($postArchiveCount);
 
     //  文章归档页面地址
-    $archivePageUrl = new Typecho_Widget_Helper_Form_Element_Text('archivePageUrl', null, null, _t('文章归档页面地址'), _t('如果您启用了独立页文章归档并且限制了侧边栏的文章归档数量的话，可以在这里输入独立页文章归档的地址。填写独立页文章归档地址后在侧边栏的文章归档会显示 查看更多 的链接，点击就可以跳转到文章归档页。如果为空将不会显示显示 查看更多 链接。'));
+    $archivePageUrl = new Typecho_Widget_Helper_Form_Element_Text('archivePageUrl', null, null, _t('文章归档页面地址'), _t('如果您启用了独立页文章归档并且限制了侧边栏的文章归档数量的话，可以在这里输入独立页文章归档的地址。填写独立页文章归档地址后在侧边栏的文章归档会显示 查看更多 的链接，点击就可以跳转到文章归档页。如果为空将不会显示 查看更多 链接。'));
     $form->addInput($archivePageUrl);
 
     //  文章头图设置
@@ -222,6 +222,13 @@ EOT;
         'showSearch' => _t('显示搜索'),
     ), array('showSearch'), _t('导航栏'));
     $form->addInput($navBar->multiMode());
+
+    //  面包屑导航
+    $breadcrumb = new Typecho_Widget_Helper_Form_Element_Radio('breadcrumb', array(
+        'on' => '开启',
+        'off' => '关闭'
+    ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。'));
+    $form->addInput($breadcrumb);
 
     //  首页友链
     $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
