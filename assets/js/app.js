@@ -14,7 +14,7 @@ $(function () {
     }
 
     //  文章的图片点击
-    $('.article-page article img').on('click', function () {
+    $('article .post-content img').on('click', function () {
         //  获取图片的真实尺寸
         var imgSize = {
             w: $(this).get(0).naturalWidth,
