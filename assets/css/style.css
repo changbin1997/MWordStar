@@ -30,6 +30,22 @@ header .navbar .search-btn-light:focus {
   background: #F0F0F0;
 }
 
+.breadcrumb {
+  background: none;
+}
+.breadcrumb .text-primary a {
+  color: #007BFF;
+}
+.breadcrumb .text-secondary a {
+  color: #6C757D;
+}
+.breadcrumb .text-success a {
+  color: #28A745;
+}
+.breadcrumb .text-info a {
+  color: #17A2B8;
+}
+
 .container .article-list {
   margin-top: 15px;
 }

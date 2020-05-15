@@ -258,6 +258,24 @@ header{
     }
 }
 
+//  面包屑导航
+.breadcrumb{
+    background: none;
+    //  面包屑导航的链接配色
+    .text-primary a{
+        color: #007BFF;
+    }
+    .text-secondary a{
+        color: #6C757D;
+    }
+    .text-success a{
+        color: #28A745;
+    }
+    .text-info a{
+        color: #17A2B8;
+    }
+}
+
 //  内容区域
 .container .article-list{
     margin-top: 15px;

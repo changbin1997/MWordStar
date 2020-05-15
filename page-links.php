@@ -10,6 +10,16 @@ $this->need('components/header.php');  //  头文件
 ?>
 
 <div class="container link-page main-content">
+    <?php if ($this->options->breadcrumb == 'on'): ?>
+        <nav aria-label="路径" class="breadcrumb-nav">
+            <ol class="breadcrumb m-0 p-0">
+                <li class="breadcrumb-item">
+                    <a href="<?php $this->options->siteUrl(); ?>" class="<?php echo $color['link']; ?>">首页</a>
+                </li>
+                <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
+            </ol>
+        </nav>
+    <?php endif; ?>
     <div class="row">
         <div class="archive col-md-12 col-lg-8 col-sm-12 content-area">
             <main class="<?php echo $rounded; ?>">
