@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #E4E4E4;
+  background: #e4e4e4;
 }
 
 a {
@@ -20,38 +20,38 @@ header .navbar {
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 }
 header .navbar .search-btn-light {
-  background: #F8F8F8;
-  border: 1px solid #D3D3D3;
+  background: #f8f8f8;
+  border: 1px solid #d3d3d3;
 }
 header .navbar .search-btn-light:hover {
-  background: #F0F0F0;
+  background: #f0f0f0;
 }
 header .navbar .search-btn-light:focus {
-  background: #F0F0F0;
+  background: #f0f0f0;
 }
 
 .breadcrumb {
   background: none;
 }
 .breadcrumb .text-primary a {
-  color: #007BFF;
+  color: #007bff;
 }
 .breadcrumb .text-secondary a {
-  color: #6C757D;
+  color: #6c757d;
 }
 .breadcrumb .text-success a {
-  color: #28A745;
+  color: #28a745;
 }
 .breadcrumb .text-info a {
-  color: #17A2B8;
+  color: #17a2b8;
 }
 
 .container .article-list {
   margin-top: 15px;
 }
 .container .article-list .post {
-  border: 1px solid #DEDEDE;
-  background: #FFFFFF;
+  border: 1px solid #dedede;
+  background: #ffffff;
   margin-bottom: 30px;
   border-radius: 4px;
   overflow: hidden;
@@ -98,13 +98,14 @@ header .navbar .search-btn-light:focus {
   margin-right: 20px;
   height: 29px;
 }
-.container .article-list .post .article-info a, .container .article-list .post .article-info span {
+.container .article-list .post .article-info a,
+.container .article-list .post .article-info span {
   color: #707281;
   font-size: 12px;
   line-height: 29px;
 }
 .container .article-list .post .article-info a:hover {
-  color: #76839B;
+  color: #76839b;
 }
 .container .article-list .post .article-info .icon {
   margin-right: 4px;
@@ -112,7 +113,8 @@ header .navbar .search-btn-light:focus {
   font-size: 12px;
   line-height: 29px;
 }
-.container .article-list .post .article-info .tags a, .container .article-list .post .article-info .category a {
+.container .article-list .post .article-info .tags a,
+.container .article-list .post .article-info .category a {
   margin-right: 3px;
 }
 
@@ -122,7 +124,7 @@ header .navbar .search-btn-light:focus {
 
 .sidebar section {
   margin-left: 20px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   margin-bottom: 30px;
   border-radius: 4px;
@@ -131,7 +133,7 @@ header .navbar .search-btn-light:focus {
   line-height: 22px;
   padding: 12px 2px;
   font-size: 16px;
-  border-bottom: 2px solid #6C757D;
+  border-bottom: 2px solid #6c757d;
   margin: 0 18px 10px 18px;
   font-weight: 700;
 }
@@ -167,7 +169,8 @@ header .navbar .search-btn-light:focus {
   display: block;
   font-size: 16px;
 }
-.sidebar section .personal-information .user .user-name, .sidebar section .personal-information .user .introduction {
+.sidebar section .personal-information .user .user-name,
+.sidebar section .personal-information .user .introduction {
   margin: 0;
   text-align: center;
   line-height: 20px;
@@ -202,52 +205,52 @@ header .navbar .search-btn-light:focus {
   font-weight: 500;
 }
 .sidebar section .tag-list .tag-dark {
-  border: 1px solid #6C757D;
-  color: #6C757D;
+  border: 1px solid #6c757d;
+  color: #6c757d;
 }
 .sidebar section .tag-list .tag-dark:hover {
-  background: #6C757D;
-  color: #FFFFFF;
+  background: #6c757d;
+  color: #ffffff;
 }
 .sidebar section .tag-list .tag-dark:focus {
-  background: #6C757D;
-  color: #FFFFFF;
+  background: #6c757d;
+  color: #ffffff;
 }
 .sidebar section .tag-list .tag-primary {
-  border: 1px solid #007BFF;
-  color: #007BFF;
+  border: 1px solid #007bff;
+  color: #007bff;
 }
 .sidebar section .tag-list .tag-primary:hover {
-  background: #007BFF;
-  color: #FFFFFF;
+  background: #007bff;
+  color: #ffffff;
 }
 .sidebar section .tag-list .tag-primary:focus {
-  background: #007BFF;
-  color: #FFFFFF;
+  background: #007bff;
+  color: #ffffff;
 }
 .sidebar section .tag-list .tag-info {
-  border: 1px solid #17A2B8;
-  color: #17A2B8;
+  border: 1px solid #17a2b8;
+  color: #17a2b8;
 }
 .sidebar section .tag-list .tag-info:hover {
-  background: #17A2B8;
-  color: #FFFFFF;
+  background: #17a2b8;
+  color: #ffffff;
 }
 .sidebar section .tag-list .tag-info:focus {
-  background: #17A2B8;
-  color: #FFFFFF;
+  background: #17a2b8;
+  color: #ffffff;
 }
 .sidebar section .tag-list .tag-success {
-  border: 1px solid #28A745;
-  color: #28A745;
+  border: 1px solid #28a745;
+  color: #28a745;
 }
 .sidebar section .tag-list .tag-success:hover {
-  background: #28A745;
-  color: #FFFFFF;
+  background: #28a745;
+  color: #ffffff;
 }
 .sidebar section .tag-list .tag-success:focus {
-  background: #28A745;
-  color: #FFFFFF;
+  background: #28a745;
+  color: #ffffff;
 }
 .sidebar .calendar table {
   width: 100%;
@@ -256,7 +259,7 @@ header .navbar .search-btn-light:focus {
   font-size: 16px;
 }
 .sidebar .calendar table .active {
-  background: #F5F5F5;
+  background: #F2F2F2;
 }
 .sidebar .calendar nav a {
   font-size: 14px;
@@ -318,35 +321,38 @@ header .navbar .search-btn-light:focus {
 .pagination-nav li a {
   border-radius: unset;
 }
-.pagination-nav .dark a, .pagination-nav .light a {
-  color: #6C757D !important;
+.pagination-nav .dark a,
+.pagination-nav .light a {
+  color: #6c757d !important;
 }
-.pagination-nav .dark .active a:hover, .pagination-nav .light .active a:hover {
-  background: #5A6268;
+.pagination-nav .dark .active a:hover,
+.pagination-nav .light .active a:hover {
+  background: #5a6268;
 }
-.pagination-nav .dark .active a, .pagination-nav .light .active a {
-  background: #6C757D;
+.pagination-nav .dark .active a,
+.pagination-nav .light .active a {
+  background: #6c757d;
 }
 .pagination-nav .info a {
-  color: #17A2B8 !important;
+  color: #17a2b8 !important;
 }
 .pagination-nav .info .active a {
-  background: #17A2B8;
+  background: #17a2b8;
 }
 .pagination-nav .info .active a:hover {
   background: #138496;
 }
 .pagination-nav .success a {
-  color: #28A745 !important;
+  color: #28a745 !important;
 }
 .pagination-nav .success .active a {
-  background: #28A745;
+  background: #28a745;
 }
 .pagination-nav .success .active a:hover {
   background: #218838;
 }
 .pagination-nav .active a {
-  color: #FFFFFF !important;
+  color: #ffffff !important;
   border: 0 !important;
 }
 
@@ -354,7 +360,8 @@ footer .container {
   padding: 20px 20px;
   text-align: center;
 }
-footer .container a, footer .container span {
+footer .container a,
+footer .container span {
   margin: 0 5px;
   color: #525252;
   font-size: 15px;
@@ -364,7 +371,7 @@ footer .container a, footer .container span {
   margin-top: 15px;
 }
 .article-page main, .archive main, .page main {
-  border: 1px solid #DEDEDE;
+  border: 1px solid #dedede;
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   border-radius: 4px;
@@ -409,13 +416,16 @@ footer .container a, footer .container span {
   margin-right: 20px;
   height: 29px;
 }
-.article-page main .article-info a, .archive main .article-info a, .page main .article-info a, .article-page main .article-info span, .archive main .article-info span, .page main .article-info span {
+.article-page main .article-info a, .archive main .article-info a, .page main .article-info a,
+.article-page main .article-info span,
+.archive main .article-info span,
+.page main .article-info span {
   color: #707281;
   font-size: 12px;
   line-height: 29px;
 }
 .article-page main .article-info a:hover, .archive main .article-info a:hover, .page main .article-info a:hover {
-  color: #76839B;
+  color: #76839b;
 }
 .article-page main .article-info .icon, .archive main .article-info .icon, .page main .article-info .icon {
   margin-right: 4px;
@@ -423,7 +433,10 @@ footer .container a, footer .container span {
   font-size: 12px;
   line-height: 29px;
 }
-.article-page main .article-info .tags a, .archive main .article-info .tags a, .page main .article-info .tags a, .article-page main .article-info .category a, .archive main .article-info .category a, .page main .article-info .category a {
+.article-page main .article-info .tags a, .archive main .article-info .tags a, .page main .article-info .tags a,
+.article-page main .article-info .category a,
+.archive main .article-info .category a,
+.page main .article-info .category a {
   margin-right: 3px;
 }
 .article-page main article, .archive main article, .page main article {
@@ -435,13 +448,58 @@ footer .container a, footer .container span {
   font-size: 15px;
   word-break: break-all;
 }
-.article-page main article .post-content ul, .archive main article .post-content ul, .page main article .post-content ul, .article-page main article .post-content ol, .archive main article .post-content ol, .page main article .post-content ol, .article-page main article .post-content img, .archive main article .post-content img, .page main article .post-content img, .article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre, .article-page main article .post-content blockquote, .archive main article .post-content blockquote, .page main article .post-content blockquote, .article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1, .article-page main article .post-content h2, .archive main article .post-content h2, .page main article .post-content h2, .article-page main article .post-content h3, .archive main article .post-content h3, .page main article .post-content h3, .article-page main article .post-content h4, .archive main article .post-content h4, .page main article .post-content h4, .article-page main article .post-content h5, .archive main article .post-content h5, .page main article .post-content h5, .article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p {
+.article-page main article .post-content ul, .archive main article .post-content ul, .page main article .post-content ul,
+.article-page main article .post-content ol,
+.archive main article .post-content ol,
+.page main article .post-content ol,
+.article-page main article .post-content img,
+.archive main article .post-content img,
+.page main article .post-content img,
+.article-page main article .post-content pre,
+.archive main article .post-content pre,
+.page main article .post-content pre,
+.article-page main article .post-content blockquote,
+.archive main article .post-content blockquote,
+.page main article .post-content blockquote,
+.article-page main article .post-content h1,
+.archive main article .post-content h1,
+.page main article .post-content h1,
+.article-page main article .post-content h2,
+.archive main article .post-content h2,
+.page main article .post-content h2,
+.article-page main article .post-content h3,
+.archive main article .post-content h3,
+.page main article .post-content h3,
+.article-page main article .post-content h4,
+.archive main article .post-content h4,
+.page main article .post-content h4,
+.article-page main article .post-content h5,
+.archive main article .post-content h5,
+.page main article .post-content h5,
+.article-page main article .post-content p,
+.archive main article .post-content p,
+.page main article .post-content p {
   margin: 0 0 20px 0;
 }
 .article-page main article .post-content img, .archive main article .post-content img, .page main article .post-content img {
   max-width: 100%;
 }
-.article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1, .article-page main article .post-content h2, .archive main article .post-content h2, .page main article .post-content h2, .article-page main article .post-content h3, .archive main article .post-content h3, .page main article .post-content h3, .article-page main article .post-content h4, .archive main article .post-content h4, .page main article .post-content h4, .article-page main article .post-content h5, .archive main article .post-content h5, .page main article .post-content h5, .article-page main article .post-content h6, .archive main article .post-content h6, .page main article .post-content h6 {
+.article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1,
+.article-page main article .post-content h2,
+.archive main article .post-content h2,
+.page main article .post-content h2,
+.article-page main article .post-content h3,
+.archive main article .post-content h3,
+.page main article .post-content h3,
+.article-page main article .post-content h4,
+.archive main article .post-content h4,
+.page main article .post-content h4,
+.article-page main article .post-content h5,
+.archive main article .post-content h5,
+.page main article .post-content h5,
+.article-page main article .post-content h6,
+.archive main article .post-content h6,
+.page main article .post-content h6 {
   font-weight: 700;
   color: #444444;
 }
@@ -465,7 +523,7 @@ footer .container a, footer .container span {
   font-size: 12px;
 }
 .article-page main article .post-content blockquote, .archive main article .post-content blockquote, .page main article .post-content blockquote {
-  border-left: 4px solid #1A1A1A;
+  border-left: 4px solid #1a1a1a;
   padding-left: 22.5px;
   font-size: 17px;
   color: #686868;
@@ -485,14 +543,20 @@ footer .container a, footer .container span {
   line-height: 25px;
 }
 .article-page main article .post-content a, .archive main article .post-content a, .page main article .post-content a {
-  color: #6C757D;
+  color: #6c757d;
 }
 .article-page main article .post-content li, .archive main article .post-content li, .page main article .post-content li {
   color: #444444;
   padding: 2px 0;
 }
-.article-page main article .post-content p > code, .archive main article .post-content p > code, .page main article .post-content p > code, .article-page main article .post-content li > code, .archive main article .post-content li > code, .page main article .post-content li > code, .article-page main article .post-content td > code, .archive main article .post-content td > code, .page main article .post-content td > code {
-  background: #EDEDED;
+.article-page main article .post-content p > code, .archive main article .post-content p > code, .page main article .post-content p > code,
+.article-page main article .post-content li > code,
+.archive main article .post-content li > code,
+.page main article .post-content li > code,
+.article-page main article .post-content td > code,
+.archive main article .post-content td > code,
+.page main article .post-content td > code {
+  background: #ededed;
   color: #333333;
   padding: 0 4px;
 }
@@ -548,16 +612,16 @@ footer .container a, footer .container span {
   cursor: pointer;
 }
 #emoji-box .emoji-select .emoji:hover {
-  background: #6C757D;
+  background: #6c757d;
 }
 #emoji-box .emoji-select::-webkit-scrollbar {
   width: 4px;
 }
 #emoji-box .emoji-select::-webkit-scrollbar-thumb {
-  background: #6C757D;
+  background: #6c757d;
 }
 #emoji-box .emoji-select::-webkit-scrollbar-track-piece {
-  background: #E2E3E5;
+  background: #e2e3e5;
 }
 
 #comments h2 {
@@ -576,7 +640,7 @@ footer .container a, footer .container span {
   padding: 0;
 }
 #comments .comments-lists .comment-list .comment-body {
-  border-top: 1px solid #EBF2FC;
+  border-top: 1px solid #ebf2fc;
   padding: 20px 0;
 }
 #comments .comments-lists .comment-list .comment-body .comment-box {
@@ -614,50 +678,67 @@ footer .container a, footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-reply a:hover {
   color: #ffffff;
 }
-#comments .comments-lists .comment-list .comment-body .comment-reply .dark a, #comments .comments-lists .comment-list .comment-body .comment-reply .light a {
-  border: 1px solid #6C757D;
-  color: #6C757D;
+#comments .comments-lists .comment-list .comment-body .comment-reply .dark a,
+#comments .comments-lists .comment-list .comment-body .comment-reply .light a {
+  border: 1px solid #6c757d;
+  color: #6c757d;
 }
-#comments .comments-lists .comment-list .comment-body .comment-reply .dark a:hover, #comments .comments-lists .comment-list .comment-body .comment-reply .light a:hover {
-  background: #6C757D;
-  color: #FFFFFF;
+#comments .comments-lists .comment-list .comment-body .comment-reply .dark a:hover,
+#comments .comments-lists .comment-list .comment-body .comment-reply .light a:hover {
+  background: #6c757d;
+  color: #ffffff;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .primary a {
-  border: 1px solid #007BFF;
-  color: #007BFF;
+  border: 1px solid #007bff;
+  color: #007bff;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .primary a:hover {
-  background: #007BFF;
-  color: #FFFFFF;
+  background: #007bff;
+  color: #ffffff;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .info a {
-  border: 1px solid #17A2B8;
-  color: #17A2B8;
+  border: 1px solid #17a2b8;
+  color: #17a2b8;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .info a:hover {
-  background: #17A2B8;
-  color: #FFFFFF;
+  background: #17a2b8;
+  color: #ffffff;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .success a {
-  border: 1px solid #28A745;
-  color: #28A745;
+  border: 1px solid #28a745;
+  color: #28a745;
 }
 #comments .comments-lists .comment-list .comment-body .comment-reply .success a:hover {
-  background: #28A745;
-  color: #FFFFFF;
+  background: #28a745;
+  color: #ffffff;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content {
   margin-left: 52px;
   font-size: 15px;
   word-break: break-all;
 }
-#comments .comments-lists .comment-list .comment-body .comment-content ul, #comments .comments-lists .comment-list .comment-body .comment-content ol, #comments .comments-lists .comment-list .comment-body .comment-content img, #comments .comments-lists .comment-list .comment-body .comment-content pre, #comments .comments-lists .comment-list .comment-body .comment-content blockquote, #comments .comments-lists .comment-list .comment-body .comment-content h1, #comments .comments-lists .comment-list .comment-body .comment-content h2, #comments .comments-lists .comment-list .comment-body .comment-content h3, #comments .comments-lists .comment-list .comment-body .comment-content h4, #comments .comments-lists .comment-list .comment-body .comment-content h5, #comments .comments-lists .comment-list .comment-body .comment-content p {
+#comments .comments-lists .comment-list .comment-body .comment-content ul,
+#comments .comments-lists .comment-list .comment-body .comment-content ol,
+#comments .comments-lists .comment-list .comment-body .comment-content img,
+#comments .comments-lists .comment-list .comment-body .comment-content pre,
+#comments .comments-lists .comment-list .comment-body .comment-content blockquote,
+#comments .comments-lists .comment-list .comment-body .comment-content h1,
+#comments .comments-lists .comment-list .comment-body .comment-content h2,
+#comments .comments-lists .comment-list .comment-body .comment-content h3,
+#comments .comments-lists .comment-list .comment-body .comment-content h4,
+#comments .comments-lists .comment-list .comment-body .comment-content h5,
+#comments .comments-lists .comment-list .comment-body .comment-content p {
   margin: 0 0 20px 0;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content img {
   max-width: 100%;
 }
-#comments .comments-lists .comment-list .comment-body .comment-content h1, #comments .comments-lists .comment-list .comment-body .comment-content h2, #comments .comments-lists .comment-list .comment-body .comment-content h3, #comments .comments-lists .comment-list .comment-body .comment-content h4, #comments .comments-lists .comment-list .comment-body .comment-content h5, #comments .comments-lists .comment-list .comment-body .comment-content h6 {
+#comments .comments-lists .comment-list .comment-body .comment-content h1,
+#comments .comments-lists .comment-list .comment-body .comment-content h2,
+#comments .comments-lists .comment-list .comment-body .comment-content h3,
+#comments .comments-lists .comment-list .comment-body .comment-content h4,
+#comments .comments-lists .comment-list .comment-body .comment-content h5,
+#comments .comments-lists .comment-list .comment-body .comment-content h6 {
   font-weight: 700;
   color: #444444;
 }
@@ -681,7 +762,7 @@ footer .container a, footer .container span {
   font-size: 12px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content blockquote {
-  border-left: 4px solid #1A1A1A;
+  border-left: 4px solid #1a1a1a;
   padding-left: 22.5px;
   font-size: 17px;
   color: #686868;
@@ -701,14 +782,16 @@ footer .container a, footer .container span {
   line-height: 25px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content a {
-  color: #6C757D;
+  color: #6c757d;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content li {
   color: #444444;
   padding: 2px 0;
 }
-#comments .comments-lists .comment-list .comment-body .comment-content p > code, #comments .comments-lists .comment-list .comment-body .comment-content li > code, #comments .comments-lists .comment-list .comment-body .comment-content td > code {
-  background: #EDEDED;
+#comments .comments-lists .comment-list .comment-body .comment-content p > code,
+#comments .comments-lists .comment-list .comment-body .comment-content li > code,
+#comments .comments-lists .comment-list .comment-body .comment-content td > code {
+  background: #ededed;
   color: #333333;
   padding: 0 4px;
 }
@@ -719,7 +802,7 @@ footer .container a, footer .container span {
   margin-left: 0;
 }
 #comments .comments-lists .comment-list .comment-body .respond {
-  background: #EEEEEE;
+  background: #eeeeee;
 }
 #comments .respond {
   padding: 20px;
@@ -754,8 +837,8 @@ footer .container a, footer .container span {
   margin-top: 15px;
 }
 .archives-list .archives .page-header {
-  border: 1px solid #DEDEDE;
-  background: #FFFFFF;
+  border: 1px solid #dedede;
+  background: #ffffff;
   margin-bottom: 30px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
@@ -770,8 +853,8 @@ footer .container a, footer .container span {
   color: #777777;
 }
 .archives-list .archives .post {
-  border: 1px solid #DEDEDE;
-  background: #FFFFFF;
+  border: 1px solid #dedede;
+  background: #ffffff;
   margin-bottom: 30px;
   border-radius: 4px;
   overflow: hidden;
@@ -818,13 +901,14 @@ footer .container a, footer .container span {
   margin-right: 20px;
   height: 29px;
 }
-.archives-list .archives .post .article-info a, .archives-list .archives .post .article-info span {
+.archives-list .archives .post .article-info a,
+.archives-list .archives .post .article-info span {
   color: #707281;
   font-size: 12px;
   line-height: 29px;
 }
 .archives-list .archives .post .article-info a:hover {
-  color: #76839B;
+  color: #76839b;
 }
 .archives-list .archives .post .article-info .icon {
   margin-right: 4px;
@@ -832,7 +916,8 @@ footer .container a, footer .container span {
   font-size: 12px;
   line-height: 29px;
 }
-.archives-list .archives .post .article-info .tags a, .archives-list .archives .post .article-info .category a {
+.archives-list .archives .post .article-info .tags a,
+.archives-list .archives .post .article-info .category a {
   margin-right: 3px;
 }
 .archives-list .archives .post > .post-title {
@@ -841,7 +926,7 @@ footer .container a, footer .container span {
 
 /*独立页面-文章归档*/
 .link-box {
-  background: #F9F9F9;
+  background: #f9f9f9;
   margin: 0 0 20px 0;
 }
 .link-box .link-grid {
@@ -860,7 +945,7 @@ footer .container a, footer .container span {
   margin: 0 10px 0 0;
 }
 .link-box .link-grid .link .icon-logo {
-  background: #0A73B3;
+  background: #0a73b3;
   color: #ffffff;
   text-align: center;
   line-height: 32px;
@@ -881,18 +966,20 @@ footer .container a, footer .container span {
   box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
 }
 
-.archive-page, .post-page, .link-page {
+.archive-page,
+.post-page,
+.link-page {
   margin-bottom: 20px;
 }
 
 .to-top {
   width: 40px;
   height: 40px;
-  background: #FFFFFF;
+  background: #ffffff;
   position: fixed;
   right: 20px;
   bottom: 20px;
-  border: 1px solid #D3D3D3;
+  border: 1px solid #d3d3d3;
   opacity: 0.7;
 }
 

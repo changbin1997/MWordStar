@@ -1,1052 +1,1078 @@
-$articleFontSize: 15px;  //  文章字体大小
-$shadow: 0 1px 3px rgba(26, 26, 26, 0.1);  //  区块阴影
+$articleFontSize: 15px; //  文章字体大小
+$shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
 
 //  禁止滚动
-.stop-scrolling{
-    height: 100%;
-    overflow: hidden;
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 //  通用的文章信息样式
-@mixin articleInfo{
-    padding: 10px 25px;
-    .info{
-        float: left;
-        margin-right: 20px;
-        height: 29px;
-    }
-    a,span{
-        color: #707281;
-        font-size: 12px;
-        line-height: 29px;
-    }
-    a:hover{
-        color: #76839B;
-    }
-    .icon{
-        margin-right: 4px;
-        color: #707281;
-        font-size: 12px;
-        line-height: 29px;
-    }
-    .tags a,.category a{
-        margin-right: 3px;
-    }
+@mixin articleInfo {
+  padding: 10px 25px;
+  .info {
+    float: left;
+    margin-right: 20px;
+    height: 29px;
+  }
+  a,
+  span {
+    color: #707281;
+    font-size: 12px;
+    line-height: 29px;
+  }
+  a:hover {
+    color: #76839b;
+  }
+  .icon {
+    margin-right: 4px;
+    color: #707281;
+    font-size: 12px;
+    line-height: 29px;
+  }
+  .tags a,
+  .category a {
+    margin-right: 3px;
+  }
 }
 //  通用文章标题样式
-@mixin entryHeader{
-    .entry-title{
-        font-size: 28px;
-        font-weight: 700;
-        padding: 20px 20px 12px 20px;
-        a{
-            color: #222222;
-        }
+@mixin entryHeader {
+  .entry-title {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px 20px 12px 20px;
+    a {
+      color: #222222;
     }
+  }
 }
 //  通用文章标题样式手机版
-@mixin entryHeaderM{
-    .entry-title{
-        font-size: 20px;
-        padding: 20px 20px 12px 20px;
-    }
+@mixin entryHeaderM {
+  .entry-title {
+    font-size: 20px;
+    padding: 20px 20px 12px 20px;
+  }
 }
 //  通用文章头图样式
-@mixin postThumbnail{
+@mixin postThumbnail {
+  width: 100%;
+  a {
+    display: block;
     width: 100%;
-    a{
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-        background-size: cover;
-        background-position: center;
-    }
-    a:after{
-        content: '';
-        padding-bottom: 37.5%;
-        display: block;
-    }
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  a:after {
+    content: '';
+    padding-bottom: 37.5%;
+    display: block;
+  }
 }
 
 //  通用的文章列表样式
-@mixin post{
-    border: 1px solid #DEDEDE;
-    background: #FFFFFF;
-    margin-bottom: 30px;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: $shadow;
-    //  文章头图
-    .header-img{
-        @include postThumbnail;
+@mixin post {
+  border: 1px solid #dedede;
+  background: #ffffff;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: $shadow;
+  //  文章头图
+  .header-img {
+    @include postThumbnail;
+  }
+  //  文章标题
+  .entry-header {
+    @include entryHeader;
+  }
+  //  文章摘要
+  .entry-summary {
+    padding: 20px;
+    p {
+      font-size: $articleFontSize;
+      color: #444444;
+      line-height: 25px;
     }
-    //  文章标题
-    .entry-header{
-        @include entryHeader;
-    }
-    //  文章摘要
-    .entry-summary{
-        padding: 20px;
-        p{
-            font-size: $articleFontSize;
-            color: #444444;
-            line-height: 25px;
-        }
-    }
-    //  文章信息
-    .article-info{
-        @include articleInfo;
-    }
+  }
+  //  文章信息
+  .article-info {
+    @include articleInfo;
+  }
 }
 //  通用的文章列表样式手机版
-@mixin postM{
-    //  文章头图
-    .header-img{
-        @include postThumbnail;
-    }
-    //  文章标题
-    .entry-header{
-        @include entryHeaderM;
-    }
-    //  文章摘要
-    .entry-summary{
-        padding: 20px;
-    }
-    //  文章信息
-    .article-info{
-        padding: 10px 20px;
-    }
+@mixin postM {
+  //  文章头图
+  .header-img {
+    @include postThumbnail;
+  }
+  //  文章标题
+  .entry-header {
+    @include entryHeaderM;
+  }
+  //  文章摘要
+  .entry-summary {
+    padding: 20px;
+  }
+  //  文章信息
+  .article-info {
+    padding: 10px 20px;
+  }
 }
 
 //  通用的文章内容样式
-@mixin postContent{
+@mixin postContent {
+  font-size: $articleFontSize;
+  word-break: break-all;
+  ul,
+  ol,
+  img,
+  pre,
+  blockquote,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    margin: 0 0 20px 0;
+  }
+  img {
+    max-width: 100%;
+  }
+  //  文章标题
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    color: #444444;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 50px 0 20px 0;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 15px;
+  }
+  h5 {
+    font-size: 12.45px;
+  }
+  h6 {
+    font-size: 12px;
+  }
+  //  文章引用
+  blockquote {
+    border-left: 4px solid #1a1a1a;
+    padding-left: 22.5px;
+    font-size: 17px;
+    color: #686868;
+    font-style: italic;
+  }
+  //  代码高亮区域
+  code {
     font-size: $articleFontSize;
-    word-break: break-all;
-    ul,ol,img,pre,blockquote,h1,h2,h3,h4,h5,p{
-        margin: 0 0 20px 0;
+  }
+  pre {
+    code {
+      padding: 10px;
     }
-    img{
-        max-width: 100%;
-    }
-    //  文章标题
-    h1,h2,h3,h4,h5,h6{
-        font-weight: 700;
-        color: #444444;
-    }
-    h1{
-        font-size: 30px;
-        margin: 50px 0 20px 0;
-    }
-    h2{
-        font-size: 25px;
-    }
-    h3{
-        font-size: 20px;
-    }
-    h4{
-        font-size: 15px;
-    }
-    h5{
-        font-size: 12.45px;
-    }
-    h6{
-        font-size: 12px;
-    }
-    //  文章引用
-    blockquote{
-        border-left: 4px solid #1A1A1A;
-        padding-left: 22.5px;
-        font-size: 17px;
-        color: #686868;
-        font-style: italic;
-    }
-    //  代码高亮区域
-    code{
-        font-size: $articleFontSize;
-    }
-    pre{
-        code{
-            padding: 10px;
-        }
-    }
-    table td{
-        min-width: 90px;
-    }
-    p{
-        color: #444444;
-        line-height: 25px;
-    }
-    a{
-        color: #6C757D;
-    }
-    li{
-        color: #444444;
-        padding: 2px 0;
-    }
-    p>code,li>code,td>code{
-        background: #EDEDED;
-        color: #333333;
-        padding: 0 4px;
-    }
+  }
+  table td {
+    min-width: 90px;
+  }
+  p {
+    color: #444444;
+    line-height: 25px;
+  }
+  a {
+    color: #6c757d;
+  }
+  li {
+    color: #444444;
+    padding: 2px 0;
+  }
+  p > code,
+  li > code,
+  td > code {
+    background: #ededed;
+    color: #333333;
+    padding: 0 4px;
+  }
 }
 
 //  标签云和平路回复链接的配色
 //  dark
-@mixin dark{
-    border: 1px solid #6C757D;
-    color: #6C757D;
+@mixin dark {
+  border: 1px solid #6c757d;
+  color: #6c757d;
 }
-@mixin darkHover{
-    background: #6C757D;
-    color: #FFFFFF;
+@mixin darkHover {
+  background: #6c757d;
+  color: #ffffff;
 }
 //  success
-@mixin success{
-    border: 1px solid #28A745;
-    color: #28A745;
+@mixin success {
+  border: 1px solid #28a745;
+  color: #28a745;
 }
-@mixin successHover{
-    background: #28A745;
-    color: #FFFFFF;
+@mixin successHover {
+  background: #28a745;
+  color: #ffffff;
 }
 //  primary
-@mixin primary{
-    border: 1px solid #007BFF;
-    color: #007BFF;
+@mixin primary {
+  border: 1px solid #007bff;
+  color: #007bff;
 }
-@mixin primaryHover{
-    background: #007BFF;
-    color: #FFFFFF;
+@mixin primaryHover {
+  background: #007bff;
+  color: #ffffff;
 }
 //  info
-@mixin info{
-    border: 1px solid #17A2B8;
-    color: #17A2B8;
+@mixin info {
+  border: 1px solid #17a2b8;
+  color: #17a2b8;
 }
-@mixin infoHover{
-    background: #17A2B8;
-    color: #FFFFFF;
+@mixin infoHover {
+  background: #17a2b8;
+  color: #ffffff;
 }
 
-
-body{
-    background: #E4E4E4;
+body {
+  background: #e4e4e4;
 }
-a{
-    transition: 0.4s;
+a {
+  transition: 0.4s;
 }
 
 //  顶部导航条
-header{
-    width: 100%;
-    z-index: 999;
-    .navbar{
-        box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-        //  亮色的搜索按钮
-        .search-btn-light{
-            background: #F8F8F8;
-            border: 1px solid #D3D3D3;
-        }
-        .search-btn-light:hover{
-            background: #F0F0F0;
-        }
-        .search-btn-light:focus{
-            background: #F0F0F0;
-        }
+header {
+  width: 100%;
+  z-index: 999;
+  .navbar {
+    box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+    //  亮色的搜索按钮
+    .search-btn-light {
+      background: #f8f8f8;
+      border: 1px solid #d3d3d3;
     }
+    .search-btn-light:hover {
+      background: #f0f0f0;
+    }
+    .search-btn-light:focus {
+      background: #f0f0f0;
+    }
+  }
 }
 
 //  面包屑导航
-.breadcrumb{
-    background: none;
-    //  面包屑导航的链接配色
-    .text-primary a{
-        color: #007BFF;
-    }
-    .text-secondary a{
-        color: #6C757D;
-    }
-    .text-success a{
-        color: #28A745;
-    }
-    .text-info a{
-        color: #17A2B8;
-    }
+.breadcrumb {
+  background: none;
+  //  面包屑导航的链接配色
+  .text-primary a {
+    color: #007bff;
+  }
+  .text-secondary a {
+    color: #6c757d;
+  }
+  .text-success a {
+    color: #28a745;
+  }
+  .text-info a {
+    color: #17a2b8;
+  }
 }
 
 //  内容区域
-.container .article-list{
-    margin-top: 15px;
-    //  文章列表
-    .post{
-        @include post;
-    }
+.container .article-list {
+  margin-top: 15px;
+  //  文章列表
+  .post {
+    @include post;
+  }
 }
-.main-content{
-    margin-top: 15px;
+.main-content {
+  margin-top: 15px;
 }
 
 //  侧边栏区域
-.sidebar{
-    section{
-        margin-left: 20px;
-        background: #FFFFFF;
-        box-shadow: $shadow;
-        margin-bottom: 30px;
+.sidebar {
+  section {
+    margin-left: 20px;
+    background: #ffffff;
+    box-shadow: $shadow;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    //  侧边栏个区域的标题
+    h4 {
+      line-height: 22px;
+      padding: 12px 2px;
+      font-size: 16px;
+      border-bottom: 2px solid #6c757d;
+      margin: 0 18px 10px 18px;
+      font-weight: 700;
+    }
+    //  侧边栏的列表
+    ul {
+      list-style: none;
+      padding: 0 18px 18px 18px;
+      li {
+        padding: 8px 0;
+        font-size: 13px;
+        a {
+          font-size: 14px;
+          font-weight: 500;
+        }
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
+    //  个人资料卡
+    .personal-information {
+      padding: 0 18px 18px 18px;
+      .user {
+        width: 100%;
+        .avatar {
+          width: 72px;
+          height: 72px;
+          display: block;
+          margin: 0 auto;
+          transition: 0.4s;
+        }
+        .user-name {
+          display: block;
+          font-size: 16px;
+        }
+        .user-name,
+        .introduction {
+          margin: 0;
+          text-align: center;
+          line-height: 20px;
+        }
+        .introduction {
+          font-size: 14px;
+        }
+      }
+      .website {
+        padding-top: 18px;
+        margin-top: 18px;
+        .info {
+          width: 33.33%;
+          text-align: center;
+          font-size: 14px;
+          .quantity {
+            font-size: 20px;
+            margin: 0;
+          }
+        }
+      }
+    }
+    //  标签云
+    .tag-list {
+      padding: 0 18px 18px 18px;
+      a {
+        padding: 7px 10px;
+        margin: 3px;
+        display: inline-block;
+        font-size: 12px;
+        line-height: 12px;
+        transition: 0.3s;
         border-radius: 4px;
-        //  侧边栏个区域的标题
-        h4{
-            line-height: 22px;
-            padding: 12px 2px;
-            font-size: 16px;
-            border-bottom: 2px solid #6C757D;
-            margin: 0 18px 10px 18px;
-            font-weight: 700;
-        }
-        //  侧边栏的列表
-        ul{
-            list-style: none;
-            padding: 0 18px 18px 18px;
-            li{
-                padding: 8px 0;
-                font-size: 13px;
-                a{
-                    font-size: 14px;
-                    font-weight: 500;
-                }
-                img{
-                    border-radius: 50%;
-                }
-            }
-        }
-        //  个人资料卡
-        .personal-information{
-            padding: 0 18px 18px 18px;
-            .user{
-                width: 100%;
-                .avatar{
-                    width: 72px;
-                    height: 72px;
-                    display: block;
-                    margin: 0 auto;
-                    transition: 0.4s;
-                }
-                .user-name{
-                    display: block;
-                    font-size: 16px;
-                }
-                .user-name,.introduction{
-                    margin: 0;
-                    text-align: center;
-                    line-height: 20px;
-                }
-                .introduction{
-                    font-size: 14px;
-                }
-            }
-            .website{
-                padding-top: 18px;
-                margin-top: 18px;
-                .info{
-                    width: 33.33%;
-                    text-align: center;
-                    font-size: 14px;
-                    .quantity{
-                        font-size: 20px;
-                        margin: 0;
-                    }
-                }
-            }
-        }
-        //  标签云
-        .tag-list{
-            padding: 0 18px 18px 18px;
-            a{
-                padding: 7px 10px;
-                margin: 3px;
-                display: inline-block;
-                font-size: 12px;
-                line-height: 12px;
-                transition: 0.3s;
-                border-radius: 4px;
-                font-weight: 500;
-            }
-            //  dark
-            .tag-dark{
-                @include dark;
-            }
-            .tag-dark:hover{
-                @include darkHover;
-            }
-            .tag-dark:focus{
-                @include darkHover;
-            }
-            //  primary
-            .tag-primary{
-                @include primary;
-            }
-            .tag-primary:hover{
-                @include primaryHover;
-            }
-            .tag-primary:focus{
-                @include primaryHover;
-            }
-            //  info
-            .tag-info{
-                @include info;
-            }
-            .tag-info:hover{
-                @include infoHover;
-            }
-            .tag-info:focus{
-                @include infoHover;
-            }
-            //  success
-            .tag-success{
-                @include success;
-            }
-            .tag-success:hover{
-                @include successHover;
-            }
-            .tag-success:focus{
-                @include successHover;
-            }
-        }
+        font-weight: 500;
+      }
+      //  dark
+      .tag-dark {
+        @include dark;
+      }
+      .tag-dark:hover {
+        @include darkHover;
+      }
+      .tag-dark:focus {
+        @include darkHover;
+      }
+      //  primary
+      .tag-primary {
+        @include primary;
+      }
+      .tag-primary:hover {
+        @include primaryHover;
+      }
+      .tag-primary:focus {
+        @include primaryHover;
+      }
+      //  info
+      .tag-info {
+        @include info;
+      }
+      .tag-info:hover {
+        @include infoHover;
+      }
+      .tag-info:focus {
+        @include infoHover;
+      }
+      //  success
+      .tag-success {
+        @include success;
+      }
+      .tag-success:hover {
+        @include successHover;
+      }
+      .tag-success:focus {
+        @include successHover;
+      }
     }
-    //  日历
-    .calendar{
-        table{
-            width: 100%;
-            td a{
-                font-size: 16px;
-            }
-            .active{
-                background: #F5F5F5;
-            }
-        }
-        nav a{
-            font-size: 14px;
-        }
+  }
+  //  日历
+  .calendar {
+    table {
+      width: 100%;
+      td a {
+        font-size: 16px;
+      }
+      .active {
+        background: #F2F2F2;
+      }
     }
-    //  最新文章区域
-    .latest-articles{
-        li a{
-            transition: 0.4s;
-            .article-img{
-                display: none;
-                transition: 0.4s;
-
-            }
-            p{
-                margin: 0;
-            }
-        }
-        .latest-articles-active{
-            overflow: hidden;
-            position: relative;
-            display: block;
-            width: 100%;
-            .article-img{
-                display: block;
-                width: 100%;
-                height: 100%;
-                background-size: cover;
-                background-position: center;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-            p{
-                width: 100%;
-                position: absolute;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.6);
-                color: #ffffff;
-                padding: 7px;
-            }
-        }
-        .latest-articles-active:after{
-            content: '';
-            display: block;
-            padding-bottom: 44%;
-        }
+    nav a {
+      font-size: 14px;
     }
-    .category{
-        li{
-            padding-left: 24px;
-        }
-        .indentation-0{
-            padding-left: 0;
-        }
+  }
+  //  最新文章区域
+  .latest-articles {
+    li a {
+      transition: 0.4s;
+      .article-img {
+        display: none;
+        transition: 0.4s;
+      }
+      p {
+        margin: 0;
+      }
     }
+    .latest-articles-active {
+      overflow: hidden;
+      position: relative;
+      display: block;
+      width: 100%;
+      .article-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      p {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: #ffffff;
+        padding: 7px;
+      }
+    }
+    .latest-articles-active:after {
+      content: '';
+      display: block;
+      padding-bottom: 44%;
+    }
+  }
+  .category {
+    li {
+      padding-left: 24px;
+    }
+    .indentation-0 {
+      padding-left: 0;
+    }
+  }
 }
 
 //  文章分页区域
-.pagination-nav{
-    width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
-    li{
-        border-radius: unset;
-        a{
-            border-radius: unset;
-        }
+.pagination-nav {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  li {
+    border-radius: unset;
+    a {
+      border-radius: unset;
     }
-    //  dark 和 light 配色
-    .dark a,.light a{
-        color: #6C757D !important;
-    }
-    .dark .active a:hover,.light .active a:hover{
-        background: #5A6268;
-    }
-    .dark .active a,.light .active a{
-        background: #6C757D;
-    }
-    //  info 配色
-    .info a{
-        color: #17A2B8 !important;
-    }
-    .info .active a{
-        background: #17A2B8;
-    }
-    .info .active a:hover{
-        background: #138496;
-    }
-    //  success 配色
-    .success a{
-        color: #28A745 !important;
-    }
-    .success .active a{
-        background: #28A745;
-    }
-    .success .active a:hover{
-        background: #218838;
-    }
-    //  当前页的文字颜色
-    .active a{
-        color: #FFFFFF !important;
-        border: 0 !important;
-    }
+  }
+  //  dark 和 light 配色
+  .dark a,
+  .light a {
+    color: #6c757d !important;
+  }
+  .dark .active a:hover,
+  .light .active a:hover {
+    background: #5a6268;
+  }
+  .dark .active a,
+  .light .active a {
+    background: #6c757d;
+  }
+  //  info 配色
+  .info a {
+    color: #17a2b8 !important;
+  }
+  .info .active a {
+    background: #17a2b8;
+  }
+  .info .active a:hover {
+    background: #138496;
+  }
+  //  success 配色
+  .success a {
+    color: #28a745 !important;
+  }
+  .success .active a {
+    background: #28a745;
+  }
+  .success .active a:hover {
+    background: #218838;
+  }
+  //  当前页的文字颜色
+  .active a {
+    color: #ffffff !important;
+    border: 0 !important;
+  }
 }
 
 //  底部
-footer{
-    .container{
-        padding: 20px 20px;
-        text-align: center;
-        a,span{
-            margin: 0 5px;
-            color: #525252;
-            font-size: 15px;
-        }
+footer {
+  .container {
+    padding: 20px 20px;
+    text-align: center;
+    a,
+    span {
+      margin: 0 5px;
+      color: #525252;
+      font-size: 15px;
     }
+  }
 }
 
 //  文章页
-.article-page{
-    margin-top: 15px;
-    main{
-        border: 1px solid #DEDEDE;
-        background: #ffffff;
-        box-shadow: $shadow;
-        border-radius: 4px;
-        margin-bottom: 30px;
-        overflow: hidden;
-        .entry-header{
-            @include entryHeader;
-        }
-        //  文章头图
-        .header-img{
-            @include postThumbnail;
-            a:after{
-                content: '';
-                display: block;
-                padding-bottom: 44%;
-            }
-        }
-        //  文章页的文章信息
-        .article-info{
-            @include articleInfo;
-        }
-        article{
-            padding: 20px;
-            //  文章页的文章内容
-            .post-content{
-                margin-top: 10px;
-                width: 100%;
-                @include postContent;
-                .protected{
-                    p{
-                        text-align: center;
-                    }
-                }
-            }
-        }
+.article-page {
+  margin-top: 15px;
+  main {
+    border: 1px solid #dedede;
+    background: #ffffff;
+    box-shadow: $shadow;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    .entry-header {
+      @include entryHeader;
     }
-    //  上一篇文章和下一篇文章的导航
-    .post-navigation{
-        padding: 20px;
+    //  文章头图
+    .header-img {
+      @include postThumbnail;
+      a:after {
+        content: '';
+        display: block;
+        padding-bottom: 44%;
+      }
     }
+    //  文章页的文章信息
+    .article-info {
+      @include articleInfo;
+    }
+    article {
+      padding: 20px;
+      //  文章页的文章内容
+      .post-content {
+        margin-top: 10px;
+        width: 100%;
+        @include postContent;
+        .protected {
+          p {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  //  上一篇文章和下一篇文章的导航
+  .post-navigation {
+    padding: 20px;
+  }
 }
 
 //  文章图片点击后放大的效果
-#max-img{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    z-index: 1030;
-    img{
-        position: absolute;
-        cursor: move;
-    }
-    #img-control{
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        opacity: 0.8;
-    }
+#max-img {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 1030;
+  img {
+    position: absolute;
+    cursor: move;
+  }
+  #img-control {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.8;
+  }
 }
 
 //  分享二维码区域
-#share-box{
-    #qrcode{
-        img{
-            margin: 0 auto;
-        }
+#share-box {
+  #qrcode {
+    img {
+      margin: 0 auto;
     }
+  }
 }
 
 //  点赞的效果样式
-#agree-p{
-    font-weight: 700;
-    font-size: 18px;
-    color: red;
-    position: absolute;
+#agree-p {
+  font-weight: 700;
+  font-size: 18px;
+  color: red;
+  position: absolute;
 }
 
 //  emoji表情面板
-#emoji-box{
-    .emoji-classification{
-        padding: 8px;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    .emoji-select .emoji{
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        cursor: pointer;
-    }
-    .emoji-select .emoji:hover{
-        background: #6C757D;
-    }
-    .emoji-select::-webkit-scrollbar{
-        width: 4px;
-    }
-    .emoji-select::-webkit-scrollbar-thumb{
-        background: #6C757D;
-    }
-    .emoji-select::-webkit-scrollbar-track-piece{
-        background: #E2E3E5;
-    }
+#emoji-box {
+  .emoji-classification {
+    padding: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .emoji-select .emoji {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .emoji-select .emoji:hover {
+    background: #6c757d;
+  }
+  .emoji-select::-webkit-scrollbar {
+    width: 4px;
+  }
+  .emoji-select::-webkit-scrollbar-thumb {
+    background: #6c757d;
+  }
+  .emoji-select::-webkit-scrollbar-track-piece {
+    background: #e2e3e5;
+  }
 }
 
 //  评论区
-#comments{
-    h2{
-        font-size: 25px;
-        font-weight: 700;
-        margin-bottom: 30px;
-    }
-    .comments-off{
-        padding: 0 20px;
-    }
-    //  评论列表
-    .comments-lists{
-        padding: 40px 20px 0 20px;
-        .comment-list{
-            list-style: none;
-            padding: 0;
-            .comment-body{
-                border-top: 1px solid #EBF2FC;
-                padding: 20px 0;
-                .comment-box{
-                    width: 100%;
-                }
-                .comment-author{
-                    width: 100%;
-                }
-                //  头像
-                .avatar{
-                    width: 42px;
-                    height: 42px;
-                    margin-right: 10px;
-                    float: left;
-                    border-radius: 50%;
-                }
-                //  评论者名字和发表时间
-                .comment-info{
-                    a{
-                        line-height: 22px;
-                        font-size: 15px;
-                    }
-                    .comment-time{
-                        color: #686868;
-                        font-size: 12px;
-                        display: block;
-                    }
-                }
-                //  回复评论的链接
-                .comment-reply{
-                    a{
-                        line-height: 30px;
-                        font-size: 12px;
-                        width: 60px;
-                        height: 32px;
-                        background: #ffffff;
-                        display: block;
-                        text-align: center;
-                        border-radius: 4px;
-                    }
-                    a:hover{
-                        color: #ffffff;
-                    }
-                    //  dark 和 light
-                    .dark a,.light a{
-                        @include dark;
-                    }
-                    .dark a:hover,.light a:hover{
-                        @include darkHover;
-                    }
-                    //  primary
-                    .primary a{
-                        @include primary;
-                    }
-                    .primary a:hover{
-                        @include primaryHover;
-                    }
-                    //  info
-                    .info a{
-                        @include info;
-                    }
-                    .info a:hover{
-                        @include infoHover;
-                    }
-                    //  success
-                    .success a{
-                        @include success;
-                    }
-                    .success a:hover{
-                        @include successHover;
-                    }
-                }
-                //  评论内容
-                .comment-content{
-                    margin-left: 52px;
-                    @include postContent;
-                }
-                //  评论的子内容，也就是回复的内容
-                .comment-children{
-                    li{
-                        padding-bottom: 0;
-                        .comment-children{
-                            margin-left: 0;
-                        }
-                    }
-                }
-                //  回复表单区域
-                .respond{
-                    background: #EEEEEE;
-                }
-            }
+#comments {
+  h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  .comments-off {
+    padding: 0 20px;
+  }
+  //  评论列表
+  .comments-lists {
+    padding: 40px 20px 0 20px;
+    .comment-list {
+      list-style: none;
+      padding: 0;
+      .comment-body {
+        border-top: 1px solid #ebf2fc;
+        padding: 20px 0;
+        .comment-box {
+          width: 100%;
         }
-    }
-    //  发表评论区
-    .respond{
-        padding: 20px;
-        //  评论内容输入框
-        #textarea{
-            width: 100%;
-            height: 120px;
+        .comment-author {
+          width: 100%;
+        }
+        //  头像
+        .avatar {
+          width: 42px;
+          height: 42px;
+          margin-right: 10px;
+          float: left;
+          border-radius: 50%;
+        }
+        //  评论者名字和发表时间
+        .comment-info {
+          a {
+            line-height: 22px;
+            font-size: 15px;
+          }
+          .comment-time {
+            color: #686868;
+            font-size: 12px;
             display: block;
+          }
         }
-        //  发表评论的用户
-        .comment-user{
-            margin-bottom: 20px;
+        //  回复评论的链接
+        .comment-reply {
+          a {
+            line-height: 30px;
+            font-size: 12px;
+            width: 60px;
+            height: 32px;
+            background: #ffffff;
+            display: block;
+            text-align: center;
+            border-radius: 4px;
+          }
+          a:hover {
+            color: #ffffff;
+          }
+          //  dark 和 light
+          .dark a,
+          .light a {
+            @include dark;
+          }
+          .dark a:hover,
+          .light a:hover {
+            @include darkHover;
+          }
+          //  primary
+          .primary a {
+            @include primary;
+          }
+          .primary a:hover {
+            @include primaryHover;
+          }
+          //  info
+          .info a {
+            @include info;
+          }
+          .info a:hover {
+            @include infoHover;
+          }
+          //  success
+          .success a {
+            @include success;
+          }
+          .success a:hover {
+            @include successHover;
+          }
         }
+        //  评论内容
+        .comment-content {
+          margin-left: 52px;
+          @include postContent;
+        }
+        //  评论的子内容，也就是回复的内容
+        .comment-children {
+          li {
+            padding-bottom: 0;
+            .comment-children {
+              margin-left: 0;
+            }
+          }
+        }
+        //  回复表单区域
+        .respond {
+          background: #eeeeee;
+        }
+      }
     }
+  }
+  //  发表评论区
+  .respond {
+    padding: 20px;
+    //  评论内容输入框
+    #textarea {
+      width: 100%;
+      height: 120px;
+      display: block;
+    }
+    //  发表评论的用户
+    .comment-user {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 //  404页
-.container-404{
-    h1{
-        margin-top: 20px;
-        font-size: 150px;
-        text-align: center;
-        font-weight: 700;
-    }
-    h2{
-        text-align: center;
-        font-weight: 700;
-    }
-    h5{
-        text-align: center;
-    }
-    .search-box{
-        margin: 20px 0;
-    }
+.container-404 {
+  h1 {
+    margin-top: 20px;
+    font-size: 150px;
+    text-align: center;
+    font-weight: 700;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 700;
+  }
+  h5 {
+    text-align: center;
+  }
+  .search-box {
+    margin: 20px 0;
+  }
 }
 
 //  文章搜索和分类页
-.archives-list{
-    margin-top: 15px;
-    .archives{
-        .page-header{
-            border: 1px solid #DEDEDE;
-            background: #FFFFFF;
-            margin-bottom: 30px;
-            padding: 20px;
-            box-shadow: $shadow;
-            border-radius: 4px;
-            h1{
-                font-size: 30px;
-                font-weight: 700;
-            }
-            span{
-                font-size: 13px;
-                color: #777777;
-            }
-        }
-        .post{
-            @include post;
-        }
-        .post>.post-title{
-            padding: 20px 25px;
-        }
+.archives-list {
+  margin-top: 15px;
+  .archives {
+    .page-header {
+      border: 1px solid #dedede;
+      background: #ffffff;
+      margin-bottom: 30px;
+      padding: 20px;
+      box-shadow: $shadow;
+      border-radius: 4px;
+      h1 {
+        font-size: 30px;
+        font-weight: 700;
+      }
+      span {
+        font-size: 13px;
+        color: #777777;
+      }
     }
+    .post {
+      @include post;
+    }
+    .post > .post-title {
+      padding: 20px 25px;
+    }
+  }
 }
 
 //  独立页面
-.page{
-    @extend .article-page;
+.page {
+  @extend .article-page;
 }
 /*独立页面-文章归档*/
-.archive{
-    @extend .article-page;
+.archive {
+  @extend .article-page;
 }
 
 //  独立页面-友情链接
-.link-box{
-    background: #F9F9F9;
-    margin: 0 0 20px 0;
-    .link-grid{
-        padding: 15px;
-        border-radius: 4px;
-        .link{
-            background: #ffffff;
-            box-shadow: 0 2px 0 rgba(170, 170, 170, 0.1);
-            padding: 10px;
-            display: block;
-            .link-logo{
-                width: 32px;
-                height: 32px;
-                margin: 0 10px 0 0;
-            }
-            .icon-logo{
-                background: #0A73B3;
-                color: #ffffff;
-                text-align: center;
-                line-height: 32px;
-            }
-            .link-name{
-                display: inline-block;
-                line-height: 32px;
-            }
-            p{
-                font-size: 12px;
-                margin: 10px 0 0 0;
-                line-height: 18px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
-        }
-        .link:hover{
-            box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
-        }
+.link-box {
+  background: #f9f9f9;
+  margin: 0 0 20px 0;
+  .link-grid {
+    padding: 15px;
+    border-radius: 4px;
+    .link {
+      background: #ffffff;
+      box-shadow: 0 2px 0 rgba(170, 170, 170, 0.1);
+      padding: 10px;
+      display: block;
+      .link-logo {
+        width: 32px;
+        height: 32px;
+        margin: 0 10px 0 0;
+      }
+      .icon-logo {
+        background: #0a73b3;
+        color: #ffffff;
+        text-align: center;
+        line-height: 32px;
+      }
+      .link-name {
+        display: inline-block;
+        line-height: 32px;
+      }
+      p {
+        font-size: 12px;
+        margin: 10px 0 0 0;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
+    .link:hover {
+      box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
+    }
+  }
 }
 
-.archive-page,.post-page,.link-page{
-    margin-bottom: 20px;
+.archive-page,
+.post-page,
+.link-page {
+  margin-bottom: 20px;
 }
 
 //  返回顶部的按钮
-.to-top{
-    width: 40px;
-    height: 40px;
-    background: #FFFFFF;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    border: 1px solid #D3D3D3;
-    opacity: 0.7;
+.to-top {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid #d3d3d3;
+  opacity: 0.7;
 }
 
 //  >= 1200
 @media screen and (min-width: 1200px) {
-    //  侧边栏
-    .sidebar{
-        margin-top: 15px;
+  //  侧边栏
+  .sidebar {
+    margin-top: 15px;
+  }
+  //  评论区
+  #comments {
+    .comment-list {
+      .comment-children {
+        margin-left: 52px;
+      }
     }
-    //  评论区
-    #comments{
-        .comment-list{
-            .comment-children{
-                margin-left: 52px;
-            }
-        }
-    }
+  }
 }
 //  >= 992 且 <= 1199
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-    //  侧边栏
-    .sidebar{
-        margin-top: 15px;
+  //  侧边栏
+  .sidebar {
+    margin-top: 15px;
+  }
+  //  评论区
+  #comments {
+    .comment-list {
+      .comment-children {
+        margin-left: 52px;
+      }
     }
-    //  评论区
-    #comments{
-        .comment-list{
-            .comment-children{
-                margin-left: 52px;
-            }
-        }
-    }
+  }
 }
 //  >= 768 且 <=991
 @media screen and (min-width: 768px) and (max-width: 991px) {
-    //  侧边栏
-    .sidebar section{
-        margin-left: 0;
+  //  侧边栏
+  .sidebar section {
+    margin-left: 0;
+  }
+  //  评论区
+  #comments {
+    .comment-list {
+      .comment-children {
+        margin-left: 52px;
+      }
     }
-    //  评论区
-    #comments{
-        .comment-list{
-            .comment-children{
-                margin-left: 52px;
-            }
-        }
-    }
+  }
 }
 //  >= 576 且 <= 767
 @media screen and (min-width: 576px) and (max-width: 767px) {
-    //  侧边栏的文章头图
-    .latest-articles-active{
-        height: 222px;
+  //  侧边栏的文章头图
+  .latest-articles-active {
+    height: 222px;
+  }
+  //  侧边栏
+  .sidebar section {
+    margin-left: 0;
+  }
+  //  评论区
+  #comments {
+    .comment-list {
+      .comment-children {
+        margin-left: 22px;
+      }
     }
-    //  侧边栏
-    .sidebar section{
-        margin-left: 0;
-    }
-    //  评论区
-    #comments{
-        .comment-list{
-            .comment-children{
-                margin-left: 22px;
-            }
-        }
-    }
+  }
 }
 //  < 575
 @media screen and (max-width: 575px) {
-    //  文章列表
-    .container .article-list{
-        .post{
-            @include postM;
+  //  文章列表
+  .container .article-list {
+    .post {
+      @include postM;
+    }
+  }
+  //  文章页
+  .article-page {
+    main {
+      /*文章标题*/
+      .entry-header {
+        @include entryHeaderM;
+      }
+      /*文章页的文章信息*/
+      .article-info {
+        padding: 10px 20px;
+      }
+      article {
+        padding: 20px;
+      }
+    }
+  }
+  .container .col-md-12 {
+    padding: 0 10px;
+  }
+  //  文章搜索和分类页
+  .archives-list {
+    .archives {
+      .post {
+        @include postM;
+        .post-title {
+          font-size: 20px;
         }
-    }
-    //  文章页
-    .article-page{
-        main{
-            /*文章标题*/
-            .entry-header{
-                @include entryHeaderM;
-            }
-            /*文章页的文章信息*/
-            .article-info{
-                padding: 10px 20px;
-            }
-            article{
-                padding: 20px;
-            }
+        .header-img {
+          height: 145px;
         }
-    }
-    .container .col-md-12{
-        padding: 0 10px;
-    }
-    //  文章搜索和分类页
-    .archives-list{
-        .archives{
-            .post{
-                @include postM;
-                .post-title{
-                    font-size: 20px;
-                }
-                .header-img{
-                    height: 145px;
-                }
-            }
-            .page-header{
-                .archive-title{
-                    font-size: 20px;
-                }
-            }
+      }
+      .page-header {
+        .archive-title {
+          font-size: 20px;
         }
+      }
     }
-    //  侧边栏
-    .sidebar section{
-        margin-left: 0;
+  }
+  //  侧边栏
+  .sidebar section {
+    margin-left: 0;
+  }
+  //  表情面板
+  #emoji-box {
+    .emoji-select {
+      max-height: 200px;
+      overflow-y: auto;
     }
-    //  表情面板
-    #emoji-box{
-        .emoji-select{
-            max-height: 200px;
-            overflow-y: auto;
-        }
+  }
+  //  返回顶部的按钮
+  .to-top {
+    right: 10px;
+    bottom: 30px;
+  }
+  //  评论区
+  #comments {
+    .comment-list {
+      .comment-children {
+        margin-left: 22px;
+      }
     }
-    //  返回顶部的按钮
-    .to-top{
-        right: 10px;
-        bottom: 30px;
-    }
-    //  评论区
-    #comments{
-        .comment-list{
-            .comment-children{
-                margin-left: 22px;
-            }
-        }
-    }
+  }
 }
 
 @media screen and (max-width: 374px) {
-    //  评论区
-    #comments{
-        .comment-list{
-            .comment-reply{
-                a{
-                    display: inline !important;
-                    border: none !important;
-                    font-size: 14px !important;
-                }
-            }
+  //  评论区
+  #comments {
+    .comment-list {
+      .comment-reply {
+        a {
+          display: inline !important;
+          border: none !important;
+          font-size: 14px !important;
         }
+      }
     }
+  }
 }
