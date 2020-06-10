@@ -83,15 +83,15 @@ $this->need('components/header.php');
                 </div>
                 <!--文章内容-->
                 <article>
-                    <div data-target="<?php $this->options->postLinkOpen(); ?>" data-color="<?php echo $color['link']; ?>" class="post-content" <?php echo $this->options->atalog == 'show'?'data-atalog="true"':''; ?>>
-                        <?php $this->content(); ?>
+                    <div data-target="<?php $this->options->postLinkOpen(); ?>" data-color="<?php echo $color['link']; ?>" class="post-content">
+                        <?php $this->options->atalog == 'show'?catalog($this->content):$this->content(); ?>
                     </div>
                     <div class="clearfix">
                         <?php if ($this->options->modified == 'show'): ?>
                             <span class="float-xl-left float-lg-left float-md-left d-block" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
                         <?php endif; ?>
                         <?php if ($this->fields->articleCopyright != 'hide'): ?>
-                            <span tabindex="0" data-toggle="tooltip" data-placement="top" title="本文为原创文章，版权归 <?php $this->options->title(); ?> 所有，转载请联系博主获得授权。" class="float-xl-right float-lg-right float-md-right d-block">©著作权归作者所有</span>
+                            <span tabindex="0" data-toggle="tooltip" data-placement="top" title="本文为原创文章，版权归 <?php $this->options->title(); ?> 所有，转载请联系博主获得授权。" class="mt-1 mt-sm-1 mt-md-0 mt-lg-0 mt-lg-0 mt-xl-0 float-xl-right float-lg-right float-md-right d-block">©著作权归作者所有</span>
                         <?php endif; ?>
                     </div>
                     <div class="pt-3 text-center">
@@ -108,9 +108,15 @@ $this->need('components/header.php');
                     </div>
                 </article>
                 <!--上一篇和下一篇文章的导航-->
-                <nav class="post-navigation navbar border-top">
-                    <div><div>上一篇</div><?php $this->thePrev('%s','没有了'); ?></div>
-                    <div><div class="text-lg-right text-xl-right text-md-right">下一篇</div><?php $this->theNext('%s','没有了'); ?></div>
+                <nav class="post-navigation navbar border-top row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div>上一篇</div>
+                        <?php $this->thePrev('%s','没有了'); ?>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="text-lg-right text-xl-right text-md-right">下一篇</div>
+                        <div class="text-lg-right text-xl-right text-md-right"><?php $this->theNext('%s','没有了'); ?></div>
+                    </div>
                 </nav>
                 <?php $this->need('components/comments.php'); ?>
             </main>

@@ -412,6 +412,82 @@ function getPostImg($archive) {
     }
 }
 
+//  根据文章内的标题生成目录
+function catalog($content) {
+    $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
+    preg_match_all($re, $content, $result);
+    if (!is_array($result) or count($result) < 1) {
+        return '';
+    }
+    $treeList = array();
+    $id = 1;
+    foreach ($result[1] as $i => $level) {
+        $treeList[$id] = array(
+            'id' => $id,
+            'parent_id' => 0,
+            'level' => $level,
+            'name' => trim(strip_tags($result[3][$i])),
+            'title_id' => 't-' . $id
+        );
+        $id ++;
+    }
+
+    for ($i = 2;$i <= count($treeList);$i ++) {
+        $item = $treeList[$i];
+        $prevItem = $treeList[$i - 1];
+        if ($item['level'] == $prevItem['level']) {
+            $treeList[$i]['parent_id'] = $prevItem['parent_id'];
+            continue;
+        }
+        if ($item['level'] > $prevItem['level']) {
+            $treeList[$i]['parent_id'] = $prevItem['id'];
+            continue;
+        }
+        $parentId = 0;
+        while ($item['level'] <= $prevItem['level']) {
+            $parentId = $prevItem['parent_id'];
+            if (!isset($treeList[($prevItem['id'] - 1)])) {
+                break;
+            }
+            $prevItem = $treeList[($prevItem['id'] - 1)];
+        }
+        $treeList[$i]['parent_id'] = $parentId;
+    }
+
+    $tree = array();
+    foreach ($treeList as $item) {
+        if ($item[ 'parent_id' ] != 0 && !isset($treeList[$item['parent_id']])) {
+            continue;
+        }
+        if (isset($treeList[$item['parent_id']])) {
+            $treeList[$item['parent_id']]['children'][] = &$treeList[$item['id']];
+        } else {
+            $tree[] = &$treeList[$item['id']];
+        }
+    }
+
+    $htmlStr = '<h2>目录</h2>' . renderArticleDirectory($tree);
+    echo $htmlStr;
+    $content = preg_replace_callback($re, function ($matches) {
+        $name = urlencode(strip_tags($matches[3]));
+        return '<span data-title="' . $name . '" id="' . $name . '"></span>' . $matches[0];
+    }, $content);
+    echo $content;
+}
+
+//  生成目录 HTML
+function renderArticleDirectory($tree) {
+    $htmlStr = '<ul class="article-directory mb-2">';
+    foreach ($tree as $item) {
+        $htmlStr .= sprintf('<li><a data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']), urlencode($item['name']), $item['name']);
+        if (isset($item['children']) && count($item['children']) > 0) {
+            $htmlStr .= renderArticleDirectory($item['children']);
+        }
+    }
+    $htmlStr .= '</ul>';
+    return $htmlStr;
+}
+
 //  获取颜色配置
 function color($cfg) {
     $color = array(
