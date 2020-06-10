@@ -166,8 +166,21 @@ $(function () {
     //  给链接设置在新标签页打开
     if ($('.post-content').attr('data-target') === '_blank' && $('.post-content a').length) {
         //  给文章中的所有链接添加 target 属性，让文章中的链接在新标签页打开
-        $('.post-content a').attr('target', '_blank');
+        for (var i = 0;i < $('.post-content a').length;i ++) {
+            if ($('.post-content a').eq(i).attr('data-directory') === undefined) {
+                $('.post-content a').eq(i).attr('target', '_blank');
+            }
+        }
     }
+
+    //  章节目录跳转
+    $('.directory-link').on('click', function () {
+        var titleSelect = '[data-title="' + $(this).attr('data-directory') + '"]';
+        $('html').animate({
+            scrollTop: $(titleSelect).offset().top - 60
+        }, 400);
+        return false;
+    });
 
     $('.post-content a').addClass($('.post-content').attr('data-color'));  //  给文章中的链接添加颜色类
 
@@ -343,8 +356,11 @@ $(function () {
 
     //  返回顶部按钮点击
     $('.to-top').on('click', function () {
+        $('html').animate({
+            scrollTop: 0
+        }, 400);
         $('header .navbar-brand').get(0).focus();
-        $(document).scrollTop(0);
+        return false;
     });
 
     //  监听滚动条
@@ -434,65 +450,6 @@ $(function () {
         }
         $('#comments .parent').remove();
     }
-
-    //  生成目录
-    if ($('.post-content').length && $('.post-content').attr('data-atalog')) {
-        if ($('.post-content h2').length || $('.post-content h3').length || $('.post-content h4').length || $('.post-content h5').length) {
-            $('.post-content h2').addClass('content-title');
-            $('.post-content h3').addClass('content-title');
-            $('.post-content h4').addClass('content-title');
-            $('.post-content h5').addClass('content-title');
-            $('.post-content h2').attr('data-index', 2);
-            $('.post-content h3').attr('data-index', 3);
-            $('.post-content h4').attr('data-index', 4);
-            $('.post-content h5').attr('data-index', 5);
-
-            var el = atalog(2, 0);
-            $('.post-content').prepend('<div class="pt-2 pb-2 atalog"><h2>目录</h2>' + el.el + '</div>');
-            $('.post-content .atalog').children('ul').attr('aria-label', '目录');
-        }
-    }
-
-    //  目录点击跳转
-    $('.post-content .atalog a').on('click', function () {
-        $(document).scrollTop(Number($('.content-title').eq($(this).attr('data-index')).offset().top) - 60);
-    });
 });
-
-//  生成目录
-function atalog(titleIndex, start) {
-    var el = {
-        el: '',
-        index: start
-    };
-    var current = 0;
-    for (var i = start;i < $('.content-title').length;i ++) {
-        if (i < current) {
-            continue;
-        }
-        if ($('.content-title').eq(i).attr('data-index') > titleIndex) {
-            var result = atalog($('.content-title').eq(i).attr('data-index'), i);
-            if (result.el != '') {
-                el.el += '<li> ' + result.el + '</li>';
-            }
-            current = result.index + 1;
-            el.index = result.index;
-            continue;
-        }
-        if ($('.content-title').eq(i).attr('data-index') < titleIndex) {
-            if (el.el != '') {
-                el.el = '<ul class="mb-2">' + el.el + '</ul>';
-            }
-            return el;
-        }
-        el.el += '<li><a class="' + $('.post-content').attr('data-color') + '" data-index="' + i + '" href="javascript:;">' + $('.content-title').eq(i).text() + '</a></li>';
-        el.index = i;
-    }
-
-    if (el.el != '') {
-        el.el = '<ul class="mb-2"> ' + el.el + '</ul>';
-    }
-    return el;
-}
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
