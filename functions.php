@@ -485,7 +485,7 @@ function catalog($content) {
 function renderArticleDirectory($tree) {
     $htmlStr = '<ul class="article-directory mb-2">';
     foreach ($tree as $item) {
-        $htmlStr .= sprintf('<li><a data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']), $item['name']);
+        $htmlStr .= sprintf('<li><a data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], $item['name']);
         if (isset($item['children']) && count($item['children']) > 0) {
             $htmlStr .= renderArticleDirectory($item['children']);
         }
