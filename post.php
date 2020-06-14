@@ -13,7 +13,7 @@ if (isset($_POST['agree'])) {
 $this->need('components/header.php');
 ?>
 
-<div class="container post-page main-content">
+<div class="container post-page main-content mb-0">
     <?php if ($this->options->breadcrumb == 'on'): ?>
         <nav aria-label="路径" class="breadcrumb-nav">
             <ol class="breadcrumb m-0 p-0">

@@ -9,7 +9,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
 $this->need('components/header.php');  //  头文件
 ?>
 
-<div class="container link-page main-content">
+<div class="container link-page main-content mb-0">
     <?php if ($this->options->breadcrumb == 'on'): ?>
         <nav aria-label="路径" class="breadcrumb-nav">
             <ol class="breadcrumb m-0 p-0">
