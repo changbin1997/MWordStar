@@ -416,9 +416,11 @@ function getPostImg($archive) {
 function catalog($content) {
     $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
     preg_match_all($re, $content, $result);
-    if (!is_array($result) or count($result) < 1) {
-        return '';
+    if (!is_array($result) or count($result[0]) < 1) {
+        echo $content;
+        return false;
     }
+
     $treeList = array();
     $id = 1;
     foreach ($result[1] as $i => $level) {
@@ -427,7 +429,7 @@ function catalog($content) {
             'parent_id' => 0,
             'level' => $level,
             'name' => trim(strip_tags($result[3][$i])),
-            'title_id' => 't-' . $id
+            'rand' => mt_rand(1000, 9999)
         );
         $id ++;
     }
@@ -468,9 +470,13 @@ function catalog($content) {
 
     $htmlStr = '<h2>目录</h2>' . renderArticleDirectory($tree);
     echo $htmlStr;
+    $GLOBALS['directory'] = $treeList;
+    $GLOBALS['directoryIndex'] = 1;
     $content = preg_replace_callback($re, function ($matches) {
         $name = urlencode(strip_tags($matches[3]));
-        return '<span data-title="' . $name . '" id="' . $name . '"></span>' . $matches[0];
+        $span = '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
+        $GLOBALS['directoryIndex'] ++;
+        return $span;
     }, $content);
     echo $content;
 }
@@ -479,7 +485,7 @@ function catalog($content) {
 function renderArticleDirectory($tree) {
     $htmlStr = '<ul class="article-directory mb-2">';
     foreach ($tree as $item) {
-        $htmlStr .= sprintf('<li><a data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']), urlencode($item['name']), $item['name']);
+        $htmlStr .= sprintf('<li><a data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']), $item['name']);
         if (isset($item['children']) && count($item['children']) > 0) {
             $htmlStr .= renderArticleDirectory($item['children']);
         }
