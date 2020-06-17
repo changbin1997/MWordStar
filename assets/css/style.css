@@ -565,6 +565,18 @@ footer .container span {
 }
 .article-page .post-navigation, .archive .post-navigation, .page .post-navigation {
   padding: 20px;
+  overflow: hidden;
+}
+.article-page .post-navigation .previous, .archive .post-navigation .previous, .page .post-navigation .previous,
+.article-page .post-navigation .next,
+.archive .post-navigation .next,
+.page .post-navigation .next,
+.article-page .post-navigation .next-box,
+.archive .post-navigation .next-box,
+.page .post-navigation .next-box {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #max-img {

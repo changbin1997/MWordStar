@@ -610,6 +610,14 @@ footer {
   //  上一篇文章和下一篇文章的导航
   .post-navigation {
     padding: 20px;
+    overflow: hidden;
+    .previous,
+    .next,
+    .next-box {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
 
