@@ -56,7 +56,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
 //  通用文章头图样式
 @mixin postThumbnail {
   width: 100%;
-  a {
+  .fixed {
     display: block;
     width: 100%;
     height: 100%;
@@ -65,10 +65,13 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     background-size: cover;
     background-position: center;
   }
-  a:after {
+  .fixed:after {
     content: '';
     padding-bottom: 37.5%;
     display: block;
+  }
+  img {
+    width: 100%;
   }
 }
 
@@ -340,7 +343,7 @@ header {
           font-size: 14px;
           font-weight: 500;
         }
-        img {
+        .avatar {
           border-radius: 50%;
         }
       }
@@ -490,6 +493,10 @@ header {
         color: #ffffff;
         padding: 7px;
       }
+      img {
+        display: inline;
+        width: 100%;
+      }
     }
     .latest-articles-active:after {
       content: '';
@@ -597,7 +604,7 @@ footer {
     //  文章头图
     .header-img {
       @include postThumbnail;
-      a:after {
+      .fixed:after {
         content: '';
         display: block;
         padding-bottom: 44%;

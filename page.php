@@ -28,7 +28,13 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                     <?php $img = postImg($this); ?>
                     <?php if ($img): ?>
                         <div class="header-img border-top">
-                            <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $img; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;"></a>
+                            <?php if ($this->options->headerImageProportion == 'not-fixed' or $this->options->headerImageProportion == 'post-page-fixed'): ?>
+                                <a target="<?php $this->options->listLinkOpen(); ?>" href="<?php $this->permalink(); ?>">
+                                    <img src="<?php echo $img; ?>" alt="<?php $this->title(); ?>的头图" style="background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;">
+                                </a>
+                            <?php else: ?>
+                                <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $img; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>
+                            <?php endif; ?>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>

@@ -175,6 +175,14 @@ EOT;
     ), 'gray', _t('文章头图背景颜色'), _t('文章头图背景颜色是在图片加载完成之前或图片无法加载时显示的颜色，如果图片使用了透明背景是可以看到背景颜色的。'));
     $form->addInput($headerImageBg);
 
+    //  文章头图比例
+    $headerImageProportion = new Typecho_Widget_Helper_Form_Element_Radio('headerImageProportion', array(
+        'fixed' => '固定宽高比 8 比 3',
+        'not-fixed' => '不固定',
+        'post-page-fixed' => '文章列表宽高比 8 比 3，文章内容页不固定'
+    ), 'fixed', _t('文章头图宽高比'), _t('使用固定宽高比，如果图片宽高比不符合，图片会自动裁剪来适配固定宽高比。使用不固定，图片宽度和文章区域一样，高度不固定。'));
+    $form->addInput($headerImageProportion);
+
     //  显示目录
     $atalog = new Typecho_Widget_Helper_Form_Element_Radio('atalog', array(
         'show' => '显示',

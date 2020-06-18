@@ -60,7 +60,7 @@ header .navbar .search-btn-light:focus {
 .container .article-list .post .header-img {
   width: 100%;
 }
-.container .article-list .post .header-img a {
+.container .article-list .post .header-img .fixed {
   display: block;
   width: 100%;
   height: 100%;
@@ -69,10 +69,13 @@ header .navbar .search-btn-light:focus {
   background-size: cover;
   background-position: center;
 }
-.container .article-list .post .header-img a:after {
+.container .article-list .post .header-img .fixed:after {
   content: "";
   padding-bottom: 37.5%;
   display: block;
+}
+.container .article-list .post .header-img img {
+  width: 100%;
 }
 .container .article-list .post .entry-header {
   overflow: hidden;
@@ -157,7 +160,7 @@ header .navbar .search-btn-light:focus {
   font-size: 14px;
   font-weight: 500;
 }
-.sidebar section ul li img {
+.sidebar section ul li .avatar {
   border-radius: 50%;
 }
 .sidebar section .personal-information {
@@ -306,6 +309,10 @@ header .navbar .search-btn-light:focus {
   color: #ffffff;
   padding: 7px;
 }
+.sidebar .latest-articles .latest-articles-active img {
+  display: inline;
+  width: 100%;
+}
 .sidebar .latest-articles .latest-articles-active:after {
   content: "";
   display: block;
@@ -403,7 +410,7 @@ footer .container span {
 .article-page main .header-img, .archive main .header-img, .page main .header-img {
   width: 100%;
 }
-.article-page main .header-img a, .archive main .header-img a, .page main .header-img a {
+.article-page main .header-img .fixed, .archive main .header-img .fixed, .page main .header-img .fixed {
   display: block;
   width: 100%;
   height: 100%;
@@ -412,12 +419,15 @@ footer .container span {
   background-size: cover;
   background-position: center;
 }
-.article-page main .header-img a:after, .archive main .header-img a:after, .page main .header-img a:after {
+.article-page main .header-img .fixed:after, .archive main .header-img .fixed:after, .page main .header-img .fixed:after {
   content: "";
   padding-bottom: 37.5%;
   display: block;
 }
-.article-page main .header-img a:after, .archive main .header-img a:after, .page main .header-img a:after {
+.article-page main .header-img img, .archive main .header-img img, .page main .header-img img {
+  width: 100%;
+}
+.article-page main .header-img .fixed:after, .archive main .header-img .fixed:after, .page main .header-img .fixed:after {
   content: "";
   display: block;
   padding-bottom: 44%;
@@ -889,7 +899,7 @@ footer .container span {
 .archives-list .archives .post .header-img {
   width: 100%;
 }
-.archives-list .archives .post .header-img a {
+.archives-list .archives .post .header-img .fixed {
   display: block;
   width: 100%;
   height: 100%;
@@ -898,10 +908,13 @@ footer .container span {
   background-size: cover;
   background-position: center;
 }
-.archives-list .archives .post .header-img a:after {
+.archives-list .archives .post .header-img .fixed:after {
   content: "";
   padding-bottom: 37.5%;
   display: block;
+}
+.archives-list .archives .post .header-img img {
+  width: 100%;
 }
 .archives-list .archives .post .entry-header {
   overflow: hidden;
@@ -1061,7 +1074,7 @@ footer .container span {
   .container .article-list .post .header-img {
     width: 100%;
   }
-  .container .article-list .post .header-img a {
+  .container .article-list .post .header-img .fixed {
     display: block;
     width: 100%;
     height: 100%;
@@ -1070,10 +1083,13 @@ footer .container span {
     background-size: cover;
     background-position: center;
   }
-  .container .article-list .post .header-img a:after {
+  .container .article-list .post .header-img .fixed:after {
     content: "";
     padding-bottom: 37.5%;
     display: block;
+  }
+  .container .article-list .post .header-img img {
+    width: 100%;
   }
   .container .article-list .post .entry-header .entry-title {
     font-size: 20px;
@@ -1108,7 +1124,7 @@ footer .container span {
   .archives-list .archives .post .header-img {
     width: 100%;
   }
-  .archives-list .archives .post .header-img a {
+  .archives-list .archives .post .header-img .fixed {
     display: block;
     width: 100%;
     height: 100%;
@@ -1117,10 +1133,13 @@ footer .container span {
     background-size: cover;
     background-position: center;
   }
-  .archives-list .archives .post .header-img a:after {
+  .archives-list .archives .post .header-img .fixed:after {
     content: "";
     padding-bottom: 37.5%;
     display: block;
+  }
+  .archives-list .archives .post .header-img img {
+    width: 100%;
   }
   .archives-list .archives .post .entry-header .entry-title {
     font-size: 20px;
