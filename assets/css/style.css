@@ -74,6 +74,9 @@ header .navbar .search-btn-light:focus {
   padding-bottom: 37.5%;
   display: block;
 }
+.container .article-list .post .entry-header {
+  overflow: hidden;
+}
 .container .article-list .post .entry-header .entry-title {
   font-size: 28px;
   font-weight: 700;
@@ -81,6 +84,11 @@ header .navbar .search-btn-light:focus {
 }
 .container .article-list .post .entry-header .entry-title a {
   color: #222222;
+}
+.container .article-list .post .entry-header .entry-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .container .article-list .post .entry-summary {
   padding: 20px;
@@ -308,6 +316,12 @@ header .navbar .search-btn-light:focus {
 }
 .sidebar .category .indentation-0 {
   padding-left: 0;
+}
+.sidebar .latest-comment .media-body,
+.sidebar .latest-comment .comment-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .pagination-nav {
@@ -889,6 +903,9 @@ footer .container span {
   padding-bottom: 37.5%;
   display: block;
 }
+.archives-list .archives .post .entry-header {
+  overflow: hidden;
+}
 .archives-list .archives .post .entry-header .entry-title {
   font-size: 28px;
   font-weight: 700;
@@ -896,6 +913,11 @@ footer .container span {
 }
 .archives-list .archives .post .entry-header .entry-title a {
   color: #222222;
+}
+.archives-list .archives .post .entry-header .entry-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .archives-list .archives .post .entry-summary {
   padding: 20px;

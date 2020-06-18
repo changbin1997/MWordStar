@@ -110,7 +110,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '最新回复'): ?>
-            <section class="border <?php echo in_array('HideRecentComments', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="latest-comment border <?php echo in_array('HideRecentComments', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
                 <h4>最新回复</h4>
                 <ul class="list-unstyled list-group" aria-label="最新回复">
                     <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
@@ -118,8 +118,8 @@ $components = explode(',', $components);
                         <li class="media border-bottom">
                             <?php $comments->gravatar('40', ''); ?>
                             <div class="media-body ml-2">
-                                <a target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
-                                <div><?php $comments->excerpt(20, '[...]'); ?></div>
+                                <a data-toggle="tooltip" data-placement="top" title="发表在 <?php $comments->title(); ?> 的评论" target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
+                                <div class="comment-content"><?php $comments->excerpt(50, '...'); ?></div>
                             </div>
                         </li>
                     <?php endwhile; ?>

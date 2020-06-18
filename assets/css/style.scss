@@ -86,7 +86,13 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   //  文章标题
   .entry-header {
+    overflow: hidden;
     @include entryHeader;
+    .entry-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
   //  文章摘要
   .entry-summary {
@@ -497,6 +503,15 @@ header {
     }
     .indentation-0 {
       padding-left: 0;
+    }
+  }
+  //  最新回复
+  .latest-comment {
+    .media-body,
+    .comment-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
