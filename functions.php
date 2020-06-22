@@ -159,6 +159,14 @@ EOT;
     $archivePageUrl = new Typecho_Widget_Helper_Form_Element_Text('archivePageUrl', null, null, _t('文章归档页面地址'), _t('如果您启用了独立页文章归档并且限制了侧边栏的文章归档数量的话，可以在这里输入独立页文章归档的地址。填写独立页文章归档地址后在侧边栏的文章归档会显示 查看更多 的链接，点击就可以跳转到文章归档页。如果为空将不会显示 查看更多 链接。'));
     $form->addInput($archivePageUrl);
 
+    //  侧边栏标签数量
+    $tagCount = new Typecho_Widget_Helper_Form_Element_Text('tagCount', null, '0', _t('侧边栏标签云标签数量'), _t('对于标签较多的博客，可以设置侧边栏显示的标签数量，0 为不限制。'));
+    $form->addInput($tagCount);
+
+    //  标签云页面地址
+    $tagPage = new Typecho_Widget_Helper_Form_Element_Text('tagPage', null, null, _t('标签云页面地址'), _t('如果您启用了独立的标签云页面并且限制了侧边栏的标签数量的话，可以在这里输入标签云页面的地址。填写后在侧边栏的标签云区域会显示查看更多的链接，点击就可以跳转到独立的标签云页面。如果为空将不会显示 查看更多 的链接。'));
+    $form->addInput($tagPage);
+
     //  文章头图设置
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
         'home' => _t('在首页显示文章头图'),

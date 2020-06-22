@@ -23,12 +23,12 @@ window.onload = function (ev) {
     form.insertBefore(titleEl[2], ul[5]);  //  辅助功能
     form.insertBefore(titleEl[3], ul[6]);  //  链接跳转
     form.insertBefore(titleEl[4], ul[9]);  //  侧边栏
-    form.insertBefore(titleEl[5], ul[19]);  //  文章头图
-    form.insertBefore(titleEl[6], ul[22]);  //  文章内容相关
-    form.insertBefore(titleEl[7], ul[25]);  //  评论区
-    form.insertBefore(titleEl[8], ul[28]);  //  导航栏
-    form.insertBefore(titleEl[9], ul[30]);  //  友情链接
-    form.insertBefore(titleEl[10], ul[33]);  //  开发者
+    form.insertBefore(titleEl[5], ul[21]);  //  文章头图
+    form.insertBefore(titleEl[6], ul[24]);  //  文章内容相关
+    form.insertBefore(titleEl[7], ul[27]);  //  评论区
+    form.insertBefore(titleEl[8], ul[30]);  //  导航栏
+    form.insertBefore(titleEl[9], ul[32]);  //  友情链接
+    form.insertBefore(titleEl[10], ul[35]);  //  开发者
 
     var h2Title = document.querySelectorAll('form h2');
     h2Title.forEach(function (el) {
