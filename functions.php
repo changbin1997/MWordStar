@@ -225,6 +225,13 @@ EOT;
     ), 'format1', _t('评论日期时间格式'), _t('时间间隔的单位会根据间隔长短变化，不到一分钟的单位为 秒，一分钟以上、一小时以下的单位为 分钟，一小时以上、一天以下的单位为 小时，一天以上的单位为 天，'));
     $form->addInput($commentDateFormat);
 
+    //  QQ头像
+    $QQAvatar = new Typecho_Widget_Helper_Form_Element_Radio('QQAvatar', array(
+        'on' => '开启',
+        'off' => '关闭'
+    ), 'off', _t('使用QQ头像'), _t('开启后如果检测到评论者的邮箱为QQ邮箱就会显示对应的QQ头像，即便QQ邮箱注册了Gravatar也会显示QQ头像，QQ邮箱以外的邮箱会显示Gravatar头像。'));
+    $form->addInput($QQAvatar);
+
     //  Emoji面板
     $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
@@ -269,6 +276,23 @@ EOT;
     //  自定义 body 底部的 HTML
     $bodyHTML = new Typecho_Widget_Helper_Form_Element_Textarea('bodyHTML', null, null, _t('自定义 body 底部输出的 HTML'), _t('body 底部的 HTML 会在 footer 之后 body 尾部之前输出。'));
     $form->addInput($bodyHTML);
+}
+
+//  检测是否是QQ邮箱
+function isQQEmail($email) {
+    $re = '/^\d{6,11}\@qq\.com$/';
+    preg_match($re, $email, $result);
+    if (count($result)) {
+        return true;
+    }
+    return false;
+}
+
+//  获取QQ头像
+function QQAvatar($email, $name, $size) {
+    $qq = str_replace('@qq.com', '', $email);  //  获取QQ号
+    $imgUrl = 'https://q2.qlogo.cn/headimg_dl?dst_uin=' . $qq . '&spec=' . $size;
+    echo '<img src="' . $imgUrl . '" alt="' . $name . '" class="avatar">';
 }
 
 //  统计文章阅读量

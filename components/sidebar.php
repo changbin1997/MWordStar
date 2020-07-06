@@ -116,7 +116,13 @@ $components = explode(',', $components);
                     <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
                     <?php while($comments->next()): ?>
                         <li class="media border-bottom">
-                            <?php $comments->gravatar('40', ''); ?>
+                            <?php
+                            if ($this->options->QQAvatar == 'on' && isQQEmail($comments->mail)) {
+                                QQAvatar($comments->mail, $comments->author, 40);
+                            }else {
+                                $comments->gravatar('50', '');
+                            }
+                            ?>
                             <div class="media-body ml-2">
                                 <a data-toggle="tooltip" data-placement="top" title="发表在 <?php $comments->title(); ?> 的评论" target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
                                 <div class="comment-content"><?php $comments->excerpt(50, '...'); ?></div>

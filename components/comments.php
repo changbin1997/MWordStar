@@ -1,6 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $GLOBALS['color'] = color($this->options->color);
 $GLOBALS['commentDateFormat'] = $this->options->commentDateFormat;
+$GLOBALS['QQAvatar'] = $this->options->QQAvatar;
 ?>
 <?php
 function threadedComments($comments, $options) {
@@ -28,7 +29,13 @@ function threadedComments($comments, $options) {
     ?>">
         <div id="<?php $comments->theId(); ?>" class="comment-box clearfix">
             <div class="comment-author clearfix">
-                <?php $comments->gravatar('50', ''); ?>
+                <?php
+                if ($GLOBALS['QQAvatar'] == 'on' && isQQEmail($comments->mail)) {
+                    QQAvatar($comments->mail, $comments->author, 40);
+                }else {
+                    $comments->gravatar('50', '');
+                }
+                ?>
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>
                     <?php if ($comments->authorId == $comments->ownerId): ?>
