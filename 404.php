@@ -6,8 +6,8 @@ $this->need('components/header.php');
 
 <div class="container container-404 main-content">
     <h1>404</h1>
-    <h2 role="alert">您訪問的頁面不存在！</h2>
-    <h5>您還是再找找吧！</h5>
+    <h2 role="alert">您访问的页面不存在！</h2>
+    <h5>您还是再找找吧！</h5>
     <div class="search-box row">
         <div class="col-lg-6 col-md-8 col-sm-10 col-12 offset-lg-3 offset-md-2 offset-sm-1">
             <form action="<?php $this->options->siteUrl(); ?>" method="post">
@@ -23,7 +23,7 @@ $this->need('components/header.php');
         </div>
     </div>
     <div class="text-center">
-        <a href="<?php $this->options->siteUrl(); ?>" class="btn <?php echo $color['btn']; ?> <?php echo $rounded; ?>">回到首頁</a>
+        <a href="<?php $this->options->siteUrl(); ?>" class="btn <?php echo $color['btn']; ?> <?php echo $rounded; ?>">回到首页</a>
     </div>
 </div>
 <?php $this->need('components/footer.php'); ?>
