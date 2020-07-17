@@ -330,10 +330,6 @@ header .navbar .search-btn-light:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.sidebar .latest-comment .avatar {
-  width: 40px;
-  height: 40px;
-}
 
 .pagination-nav {
   width: 100%;
