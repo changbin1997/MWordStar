@@ -42,7 +42,7 @@ function threadedComments($comments, $options) {
                         <span class="author badge badge-secondary">作者</span>
                     <?php endif; ?>
                     <?php if ($comments->status != 'approved'): ?>
-                        <span class="author badge badge-secondary" title="您的評論目前只有您自己能看到，審覈通過後才會公開顯示。" data-toggle="tooltip" data-placement="top">评论审核中</span>
+                        <span class="author badge badge-secondary" title="您的评论目前只有您自己能看到，审核通过后才会公开显示。" data-toggle="tooltip" data-placement="top">评论审核中</span>
                     <?php endif; ?>
                     <a class="comment-time" href="<?php $comments->permalink(); ?>">
                         <?php echo dateFormat($comments->date->timeStamp, $GLOBALS['commentDateFormat']); ?>
@@ -67,16 +67,16 @@ function threadedComments($comments, $options) {
     </li>
 <?php } ?>
 
-<div id="comments" aria-label="評論區">
+<div id="comments" aria-label="评论区">
     <?php $this->comments()->to($comments); ?>
     <?php if ($this->options->commentInput == 'top') require_once 'comment-input.php'; ?>
     <?php if ($comments->have()): ?>
         <div class="comments-lists border-top">
-            <h2><?php $this->commentsNum(_t('暫無評論'), _t('僅有一條評論'), _t('已有 %d 條評論')); ?></h2>
+            <h2><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h2>
 
             <?php $comments->listComments(); ?>
 
-            <nav aria-label="評論分頁導航區" class="pagination-nav">
+            <nav aria-label="评论分页导航区" class="pagination-nav">
                 <?php $comments->pageNav('&laquo;', '&raquo;', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' . $GLOBALS['color']['name'], 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>

@@ -13,10 +13,10 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
     <title>
         <?php
             $this->archiveTitle(array(
-                'category'  =>  _t('分類 %s 下的文章'),
-                'search'    =>  _t('包含關鍵字 %s 的文章'),
-                'tag'       =>  _t('標籤 %s 下的文章'),
-                'author'    =>  _t('%s 發佈的文章')
+                'category'  =>  _t('分类 %s 下的文章'),
+                'search'    =>  _t('包含关键字 %s 的文章'),
+                'tag'       =>  _t('标签 %s 下的文章'),
+                'author'    =>  _t('%s 发布的文章')
             ), '', ' - ');
         ?>
         <?php $this->options->title(); ?>
@@ -50,20 +50,20 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg <?php echo $color['bar'] ?>">
         <div class="container">
-            <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首頁"><?php $this->options->title(); ?></a>
-            <button class="navbar-toggler border-0 px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="導航菜單">
+            <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
+            <button class="navbar-toggler border-0 px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item <?php echo $this->is('index')?'active':''; ?>">
-                        <a class="nav-link" <?php if($this->is('index')): ?> <?php endif; ?> href="<?php $this->options->siteUrl(); ?>"><?php _e('首頁'); ?></a>
+                        <a class="nav-link" <?php if($this->is('index')): ?> <?php endif; ?> href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
                     </li>
                     <?php if ($this->options->navbar && in_array('showClassification', $this->options->navbar)): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                文章分類
+                                文章分类
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <?php $this->widget('Widget_Metas_Category_List')->parse('<a class="dropdown-item" href="{permalink}">{name}</a>'); ?>
