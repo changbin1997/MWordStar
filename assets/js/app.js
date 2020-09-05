@@ -66,7 +66,6 @@ $(function () {
 
     //  大图手指拖拽
     $('#max-img img').on('touchstart', function (ev) {
-        console.log(ev);
         var X = ev.touches[0].pageX - $(this).offset().left;
         var Y = ev.touches[0].pageY - $(this).offset().top;
 
