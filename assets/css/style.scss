@@ -524,6 +524,9 @@ header {
       width: 40px;
       height: 40px;
     }
+    .pingback {
+      line-height: 40px;
+    }
   }
 }
 
@@ -714,6 +717,15 @@ footer {
   }
 }
 
+//  评论区引用头像
+.pingback {
+  background: #488CB8;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
 //  评论区
 #comments {
   h2 {
@@ -746,6 +758,10 @@ footer {
           margin-right: 10px;
           float: left;
           border-radius: 50%;
+        }
+        //  引用的头像
+        .pingback {
+          line-height: 42px;
         }
         //  评论者名字和发表时间
         .comment-info {

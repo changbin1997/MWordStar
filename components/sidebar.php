@@ -122,6 +122,9 @@ $components = explode(',', $components);
                             }else {
                                 $comments->gravatar('50', '');
                             }
+                            if ($comments->type == 'pingback') {
+                                echo '<div class="pingback avatar">引用</div>';
+                            }
                             ?>
                             <div class="media-body ml-2">
                                 <a data-toggle="tooltip" data-placement="top" title="发表在 <?php $comments->title(); ?> 的评论" target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>

@@ -334,6 +334,9 @@ header .navbar .search-btn-light:focus {
   width: 40px;
   height: 40px;
 }
+.sidebar .latest-comment .pingback {
+  line-height: 40px;
+}
 
 .pagination-nav {
   width: 100%;
@@ -664,6 +667,14 @@ footer .container span {
   background: #e2e3e5;
 }
 
+.pingback {
+  background: #488CB8;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
 #comments h2 {
   font-size: 25px;
   font-weight: 700;
@@ -695,6 +706,9 @@ footer .container span {
   margin-right: 10px;
   float: left;
   border-radius: 50%;
+}
+#comments .comments-lists .comment-list .comment-body .pingback {
+  line-height: 42px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-info a {
   line-height: 22px;

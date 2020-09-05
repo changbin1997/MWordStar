@@ -35,6 +35,9 @@ function threadedComments($comments, $options) {
                 }else {
                     $comments->gravatar('50', '');
                 }
+                if ($comments->type == 'pingback') {
+                    echo '<div class="pingback avatar">引用</div>';
+                }
                 ?>
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>
