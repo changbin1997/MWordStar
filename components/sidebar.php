@@ -151,7 +151,7 @@ $components = explode(',', $components);
                     <?php $tagCount = 0; ?>
                     <div class="tag-list pt-2" aria-label="标签云" role="list">
                         <?php while ($tags->next()): ?>
-                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="size-<?php $tags->split(5, 10, 20, 30); ?> <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
+                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="p-1 d-inline-block tag-link <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?> (<?php $tags->count(); ?>)</a>
                             <?php
                             $tagCount ++;
                             if ($this->options->tagCount != 0 && $this->options->tagCount == $tagCount) {

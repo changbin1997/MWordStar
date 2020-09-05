@@ -391,13 +391,10 @@ header {
     //  标签云
     .tag-list {
       padding: 0 18px 18px 18px;
-      a {
-        padding: 7px 10px;
-        margin: 3px;
-        display: inline-block;
+      .tag-link {
+        color: #333333;
+        margin: 0 4px 4px 0;
         font-size: 12px;
-        line-height: 12px;
-        transition: 0.3s;
         border-radius: 4px;
         font-weight: 500;
       }
