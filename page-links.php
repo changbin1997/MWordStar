@@ -6,6 +6,29 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
+
+$linkArr = array();
+//  是否包含内页链接
+if ($this->options->pageLinks) {
+    array_push($linkArr, array(
+        'title' => '内页链接',
+        'links' => json_decode($this->options->pageLinks)
+    ));
+}
+//  是否包含首页链接
+if ($this->options->homeLinks) {
+    array_push($linkArr, array(
+        'title' => '首页链接',
+        'links' => json_decode($this->options->homeLinks)
+    ));
+}
+//  是否包含全站链接
+if ($this->options->links) {
+    array_push($linkArr, array(
+        'title' => '全站链接',
+        'links' => json_decode($this->options->links)
+    ));
+}
 $this->need('components/header.php');  //  头文件
 ?>
 
@@ -30,79 +53,31 @@ $this->need('components/header.php');  //  头文件
                 </header>
                 <article>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-color="<?php echo $color['link']; ?>">
-                        <!--内页链接区域-->
-                        <?php if ($this->options->pageLinks): ?>
-                            <h3>内页链接</h3>
-                            <?php $linkList = json_decode($this->options->pageLinks); ?>
-                            <div class="row link-box" role="group" aria-label="内页链接">
-                                <?php for ($i = 0;$i < count($linkList);$i ++): ?>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
-                                        <div class="link">
-                                            <a href="<?php echo $linkList[$i]->url; ?>" class="clearfix" target="_blank">
-                                                <?php if (!isset($linkList[$i]->logoUrl) or $linkList[$i]->logoUrl == ''): ?>
-                                                    <i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo"></i>
-                                                <?php else: ?>
-                                                    <img src="<?php echo $linkList[$i]->logoUrl; ?>" alt="站点Logo" class="link-logo float-left rounded-circle">
-                                                <?php endif; ?>
-                                                <span class="link-name float-left"><?php echo $linkList[$i]->name; ?></span>
-                                            </a>
-                                            <?php if (!isset($linkList[$i]->title) or $linkList[$i]->title == ''): ?>
-                                                <p>暂无简介</p>
-                                            <?php else: ?>
-                                                <p title="<?php echo $linkList[$i]->title; ?>"><?php echo $linkList[$i]->title; ?></p>
-                                            <?php endif; ?>
+                        <?php if (count($linkArr)): ?>
+                            <?php foreach ($linkArr as $link): ?>
+                                <h3><?php echo $link['title']; ?></h3>
+                                <div class="row link-box" role="group" aria-label="<?php echo $link['title']; ?>">
+                                    <?php foreach ($link['links'] as $val): ?>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
+                                            <div class="link">
+                                                <a href="<?php echo $val->url; ?>" class="clearfix" target="_blank">
+                                                    <?php if (isset($val->logoUrl)): ?>
+                                                        <img src="<?php echo $val->logoUrl; ?>" alt="站点Logo" class="link-logo float-left rounded-circle">
+                                                    <?php else: ?>
+                                                        <i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo"></i>
+                                                    <?php endif; ?>
+                                                    <span class="link-name float-left">
+                                                        <?php echo $val->name; ?>
+                                                    </span>
+                                                </a>
+                                                <p title="<?php echo isset($val->title)?$val->title:'暂无简介'; ?>">
+                                                    <?php echo isset($val->title)?$val->title:'暂无简介'; ?>
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                <?php endfor; ?>
-                            </div>
-                        <?php endif; ?>
-                        <!--全站链接区域-->
-                        <?php if ($this->options->links): ?>
-                        <h3>全站链接</h3>
-                        <?php $linkList = json_decode($this->options->links); ?>
-                        <div class="row link-box" role="group" aria-label="全站链接">
-                            <?php for ($i = 0;$i < count($linkList);$i ++): ?>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
-                                    <div class="link">
-                                        <a href="<?php echo $linkList[$i]->url; ?>" class="clearfix" target="_blank">
-                                            <?php if (!isset($linkList[$i]->logoUrl) or $linkList[$i]->logoUrl == ''): ?>
-                                                <i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo"></i>
-                                            <?php else: ?>
-                                                <img src="<?php echo $linkList[$i]->logoUrl; ?>" alt="站点Logo" class="link-logo float-left rounded-circle">
-                                            <?php endif; ?>
-                                            <span class="link-name float-left"><?php echo $linkList[$i]->name; ?></span>
-                                        </a>
-                                        <?php if (!isset($linkList[$i]->title) or $linkList[$i]->title == ''): ?>
-                                            <p>暂无简介</p>
-                                        <?php else: ?>
-                                            <p title="<?php echo $linkList[$i]->title; ?>"><?php echo $linkList[$i]->title; ?></p>
-                                        <?php endif; ?>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
-                            <?php endfor; ?>
-                        </div>
-                        <?php endif; ?>
-                        <!--首页链接区域-->
-                        <?php if ($this->options->homeLinks): ?>
-                        <h3>首页链接</h3>
-                        <?php $links = json_decode($this->options->homeLinks); ?>
-                        <div class="row link-box" role="group" aria-label="首页链接">
-                            <?php for ($i = 0;$i < count($links);$i ++): ?>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 link-grid">
-                                    <div class="link">
-                                        <a href="<?php echo $links[$i]->url; ?>" target="_blank" class="clearfix">
-                                            <i class="link-logo float-left icon-link icon-logo rounded-circle"></i>
-                                            <span class="link-name float-left"><?php echo $links[$i]->name; ?></span>
-                                        </a>
-                                        <?php if (!isset($links[$i]->title) or $links[$i]->title == ''): ?>
-                                            <p>暂无简介</p>
-                                        <?php else: ?>
-                                            <p title="<?php echo $links[$i]->title; ?>"><?php echo $links[$i]->title; ?></p>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                            <?php endfor; ?>
-                        </div>
+                            <?php endforeach; ?>
                         <?php endif; ?>
                         <?php $this->content(); ?>
                     </div>
