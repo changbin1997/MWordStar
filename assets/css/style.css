@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+.avatar {
+  background: #E0E0E0;
+}
+
 body {
   background: #e4e4e4;
 }

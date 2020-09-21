@@ -7,6 +7,11 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   overflow: hidden;
 }
 
+//  通用的头像样式
+.avatar {
+  background: #E0E0E0;
+}
+
 //  通用的文章信息样式
 @mixin articleInfo {
   padding: 10px 25px;
