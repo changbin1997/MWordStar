@@ -450,6 +450,11 @@ $(function () {
         }
         $('#comments .parent').remove();
     }
+
+    //  头像图片加载完成后删除图片背景
+    $('.avatar').on('load', function () {
+        $(this).css('background', 'none');
+    });
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
