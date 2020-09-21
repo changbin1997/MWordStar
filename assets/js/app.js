@@ -155,10 +155,12 @@ $(function () {
 
     //  关闭大图按钮按下 tab
     $('#max-img .hide-img').on('keydown', function (ev) {
+        ev.preventDefault();
         if (ev.keyCode === 9) {
-            setTimeout(function () {
-                $('#img-control .big').focus();  //  让放大图片按钮获取焦点
-            }, 10);
+            $('#img-control .big').focus();  //  让放大图片按钮获取焦点
+        }
+        if (ev.keyCode === 13) {
+            $('#max-img .hide-img').click();
         }
     });
 
