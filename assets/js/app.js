@@ -261,10 +261,9 @@ $(function () {
 
     //  回复按钮按下 tab
     $(document).on('keydown', '.comments-lists .respond .submit', function (ev) {
+        ev.preventDefault();
         if (ev.keyCode === 9) {
-            setTimeout(function () {
-                $('#cancel-comment-reply-link').focus();  //  让取消回复的链接获取焦点
-            }, 10);
+            $('#cancel-comment-reply-link').focus();  //  让取消回复的链接获取焦点
         }
     });
 
