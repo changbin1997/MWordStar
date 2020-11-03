@@ -12,15 +12,15 @@
 
 下面是主题首页截图：
 
-![MWordStar主题首页截图1](https://www.misterma.com/img/MWordStar%E4%B8%BB%E9%A2%98%E9%A6%96%E9%A1%B5%E6%88%AA%E5%9B%BE1.png)
+![MWordStar主题首页截图1](https://www.misterma.com/img-admin/uploads/16043686604695.png)
 
 主题元素包含圆角和直角两种风格，您可以根据喜好在主题外观设置中切换，下面是直角风格的首页截图：
 
-![MWordStar直角风格首页截图](https://www.misterma.com/img/MWordStar%E7%9B%B4%E8%A7%92%E9%A3%8E%E6%A0%BC%E9%A6%96%E9%A1%B5%E6%88%AA%E5%9B%BE.jpg)
+![MWordStar直角风格首页截图](https://www.misterma.com/img-admin/uploads/16043686924621.jpg)
 
 主题还包含了几套不同风格的配色，您可以根据喜好在主题外观设置中切换。
 
-![MWordStar不同配色的截图](https://www.misterma.com/img/MWordStar%E4%B8%8D%E5%90%8C%E9%85%8D%E8%89%B2%E7%9A%84%E6%88%AA%E5%9B%BE.jpg)
+![MWordStar不同配色的截图](https://www.misterma.com/img-admin/uploads/16043687256363.jpg)
 
 扫描下面的二维码可在手机上预览
 
@@ -123,7 +123,7 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 下面是 Emoji 表情面板的截图：
 
-![emoji面板截图](https://www.misterma.com/img/emoji%E9%9D%A2%E6%9D%BF.jpeg)
+![emoji面板截图](https://www.misterma.com/img-admin/uploads/16043688114310.jpeg)
 
 ### 兼容性
 
