@@ -397,6 +397,14 @@ $(function () {
     if (ev.keyCode === 109 && maxImg) {
       $('#img-control .small').click();
     }
+    //  如果按下的是右方向键就跳转到下一页
+    if (ev.keyCode === 39 && $('.next .page-link').length) {
+      location.href = $('.next .page-link').attr('href');
+    }
+    //  如果按下的是左方向键就跳转到上一页
+    if (ev.keyCode === 37 && $('.prev .page-link').length) {
+      location.href = $('.prev .page-link').attr('href');
+    }
   });
 
   //  是否是文章页
