@@ -151,7 +151,7 @@ $components = explode(',', $components);
                     <?php $tagCount = 0; ?>
                     <div class="tag-list pt-2" aria-label="标签云" role="list">
                         <?php while ($tags->next()): ?>
-                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="p-1 d-inline-block tag-link <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?> (<?php $tags->count(); ?>)</a>
+                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                             <?php
                             $tagCount ++;
                             if ($this->options->tagCount != 0 && $this->options->tagCount == $tagCount) {
@@ -160,7 +160,7 @@ $components = explode(',', $components);
                             ?>
                         <?php endwhile; ?>
                         <?php if ($this->options->tagPage && $this->options->tagCount != 0 && $this->options->tagCount == $tagCount): ?>
-                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->options->tagPage(); ?>" rel="tag" class="<?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="点击查看更多标签">查看更多</a>
+                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->options->tagPage(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link <?php echo $color['tag']; ?> <?php echo $rounded; ?>" title="点击查看更多标签">查看更多</a>
                         <?php endif; ?>
                     </div>
                 <?php else: ?>
