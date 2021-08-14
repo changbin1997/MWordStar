@@ -1032,6 +1032,10 @@ footer .container span {
   box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
 }
 
+.data-page .statistics-card {
+  background: #B3D8FF;
+}
+
 .archive-page,
 .post-page,
 .link-page {

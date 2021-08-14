@@ -14,6 +14,12 @@
         <i class="icon-arrow-up"></i>
     </button>
 <?php endif; ?>
+
+<!--统计数据的图表js-->
+<?php if (isset($GLOBALS['page']) && $GLOBALS['page'] == 'page-data'): ?>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/chart.js'); ?>"></script>
+<?php endif; ?>
+
 <?php if ($this->options->bodyHTML): ?>
     <?php $this->options->bodyHTML(); ?>
 <?php endif; ?>
