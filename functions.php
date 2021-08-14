@@ -732,3 +732,123 @@ function calendar($month, $url, $rewrite, $linkColor) {
         'nextUrl' => $nextUrl
     );
 }
+
+//  获取分类数量
+function categoryCount() {
+    $db = Typecho_Db::get();
+    $count = $db->fetchRow($db->select('COUNT(*)')->from('table.metas')->where('type = ?', 'category'));
+    return $count['COUNT(*)'];
+}
+
+//  获取标签数量
+function tagCount() {
+    $db = Typecho_Db::get();
+    $count = $db->fetchRow($db->select('COUNT(*)')->from('table.metas')->where('type = ?', 'tag'));
+    return $count['COUNT(*)'];
+}
+
+//  获取总阅读量
+function viewsCount() {
+    $db = Typecho_Db::get();
+    $count = $db->fetchRow($db->select('SUM(views) AS viewsCount')->from('table.contents'));
+    return $count['viewsCount'];
+}
+
+//  获取总点赞数
+function agreeCount() {
+    $db = Typecho_Db::get();
+    $count = $db->fetchRow($db->select('SUM(agree) AS agreeCount')->from('table.contents'));
+    return $count['agreeCount'];
+}
+
+//  获取阅读量排名前 5 的 5 篇文章的信息
+function top5post() {
+    $db = Typecho_Db::get();
+    $top5Post = $db->fetchAll($db->select()->from('table.contents')->where('type = ?', 'post')->where('status = ?', 'publish')->order('views', Typecho_Db::SORT_DESC)->offset(0)->limit(5));
+    $postList =array();
+    foreach ($top5Post as $post) {
+        $post = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($post);
+        array_push($postList, array(
+            'title' => $post['title'],
+            'link' => $post['permalink'],
+            'views' => $post['views']
+        ));
+    }
+    return $postList;
+}
+
+//  获取评论数排名前 5 的 5 篇文章的信息
+function top5CommentPost() {
+    $db = Typecho_Db::get();
+    $top5Post = $db->fetchAll($db->select()->from('table.contents')->where('type = ?', 'post')->where('status = ?', 'publish')->order('commentsNum', Typecho_Db::SORT_DESC)->offset(0)->limit(5));
+    $postList = array();
+    foreach ($top5Post as $post) {
+        $post = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($post);
+        array_push($postList, array(
+            'title' => $post['title'],
+            'link' => $post['permalink'],
+            'commentsNum' => $post['commentsNum']
+        ));
+    }
+    return $postList;
+}
+
+//  获取 ECharts 格式要求的文章更新日历
+function postCalendar($start, $end) {
+    $db = Typecho_Db::get();
+    $dateList = $db->fetchAll($db->select('created')->from('table.contents')->where('created > ?', $start)->where('created < ?', $end));
+    if (count($dateList) < 1) {
+        return array();
+    }
+    $dateList2 = array();
+    foreach ($dateList as $val) {
+        array_push($dateList2, date('Y-m-d', $val['created']));
+    }
+    $dateList2 = array_count_values($dateList2);
+    $key = array_keys($dateList2);
+    $dateList = array();
+
+    for ($i = 0;$i < count($dateList2);$i ++) {
+        array_push($dateList, array(
+            $key[$i],
+            $dateList2[$key[$i]]
+        ));
+    }
+
+    return $dateList;
+}
+
+//  获取 ECharts 格式要求的评论更新日历
+function commentCalendar($start, $end) {
+    $db = Typecho_Db::get();
+    $dateList = $db->fetchAll($db->select('created')->from('table.comments')->where('created > ?', $start)->where('created < ?', $end));
+    if (count($dateList) < 1) {
+        return array();
+    }
+    $dateList2 = array();
+    foreach ($dateList as $val) {
+        array_push($dateList2, date('Y-m-d', $val['created']));
+    }
+    $dateList2 = array_count_values($dateList2);
+    $key = array_keys($dateList2);
+    $dateList = array();
+
+    for ($i = 0;$i < count($dateList2);$i ++) {
+        array_push($dateList, array(
+            $key[$i],
+            $dateList2[$key[$i]]
+        ));
+    }
+
+    return $dateList;
+}
+
+//  获取个分类的文章数量
+function categoryPostCount() {
+    $db = Typecho_Db::get();
+    $count = $db->fetchAll($db->select('name', 'count AS value')->from('table.metas')->where('type = ?', 'category'));
+    if (count($count) < 1) {
+        return array();
+    }
+    return $count;
+}
