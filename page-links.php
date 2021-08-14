@@ -7,6 +7,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 
+$GLOBALS['page'] = 'page-links';
+
 $linkArr = array();
 //  是否包含内页链接
 if ($this->options->pageLinks) {

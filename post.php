@@ -1,6 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
+$GLOBALS['page'] = 'post';
 
 //  点赞
 if (isset($_POST['agree'])) {

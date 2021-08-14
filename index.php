@@ -10,6 +10,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
+$GLOBALS['page'] = 'index';
 $this->need('components/header.php');  //  头文件
 ?>
 <div class="container home main-content">

@@ -1,8 +1,9 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$this->need('components/header.php');
+$GLOBALS['page'] = 'page';
 $color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
+$this->need('components/header.php');
 ?>
 
 <div class="container main-content">
