@@ -183,8 +183,6 @@ $(function () {
     return false;
   });
 
-  $('.post-content a').addClass($('.post-content').attr('data-color'));  //  给文章中的链接添加颜色类
-
   //  给文章中的链接添加颜色类
   if ($('.post-content a').length) {
     $('.post-content a').addClass($('.post-content').attr('data-color'));
@@ -247,7 +245,8 @@ $(function () {
 
   //  给评论区的链接添加 target
   if ($('.comment-info b a').length) {
-    $('.comment-info b a').attr('target', '_blank');  //  让评论区的链接在新标签页打开
+    //  让评论区的链接在新标签页打开
+    $('.comment-info b a').attr('target', '_blank');
   }
 
 
@@ -456,7 +455,8 @@ $(function () {
     });
   });
 
-  $('[data-toggle="tooltip"]').tooltip();  //  初始化工具提示
+  //  初始化工具提示
+  $('[data-toggle="tooltip"]').tooltip();
 
   //  把父评论的姓名加入到子评论中
   if ($('#comments .parent').length) {
@@ -470,6 +470,12 @@ $(function () {
 
   //  头像图片加载完成后删除图片背景
   $('.avatar').on('load', function () {
+    $(this).css('background', 'none');
+  });
+
+  //  独立页友链 Logo 加载完成
+  $('.link-box .link img').on('load', function() {
+    //  去除背景颜色
     $(this).css('background', 'none');
   });
 });

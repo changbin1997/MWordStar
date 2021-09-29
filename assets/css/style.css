@@ -1028,6 +1028,9 @@ footer .container span {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.link-box .link-grid .link img {
+  background: #E0E0E0;
+}
 .link-box .link-grid .link:hover {
   box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
 }

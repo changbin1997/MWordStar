@@ -953,6 +953,9 @@ footer {
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+      img {
+        background: #E0E0E0;
+      }
     }
     .link:hover {
       box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
