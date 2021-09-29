@@ -478,6 +478,16 @@ $(function () {
     //  去除背景颜色
     $(this).css('background', 'none');
   });
+
+  //  独立页 Logo 加载出错
+  $('.link-box .link img').on('error', function () {
+    //  默认站点 Logo
+    var logoEl = '<i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo" role="img"></i>';
+    //  把默认 Logo 插入到页面
+    $(this).before(logoEl);
+    //  移除加载失败的 Logo
+    $(this).remove();
+  });
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
