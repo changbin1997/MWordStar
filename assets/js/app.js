@@ -3,6 +3,8 @@ $(function () {
   var maxImg = false;  //  大图的状态
   var imgDirection = 0;  //  图片方向
   var imgWH = '';  //  记录图片的宽高
+  var avatarColor = [];  //  存储文字头像颜色
+  var avatarName = [];  //  存储文字头像名称
 
   //  给文章表格添加样式
   if ($('.post-content table').length) {
@@ -488,6 +490,51 @@ $(function () {
     //  移除加载失败的 Logo
     $(this).remove();
   });
+
+  //  给评论者头像添加错误事件
+  for (var i = 0;i < $('.avatar').length;i ++) {
+    // 检测是否是图片
+    if ($('.avatar').eq(i)[0].tagName === 'IMG') {
+      $('.avatar').eq(i).on('error', function(ev) {
+        // 获取头像昵称
+        var name = $(ev.target).attr('alt');
+        // 创建文字头像元素
+        var avatarEl = document.createElement('div');
+        avatarEl.setAttribute('role', 'img');
+        avatarEl.setAttribute('aria-label', name);
+        // 设置文字头像的 class
+        avatarEl.className = 'pingback avatar';
+        // 把文字头像的内容设置为评论者昵称的第一个字
+        avatarEl.innerHTML = name.substring(0, 1);
+
+        // 检测是否重复出现
+        var nameIndex = avatarName.indexOf(name);
+        if (nameIndex === -1) {
+          avatarName.push(name);
+          // 生成随机颜色
+          var bgColor = {r: rand(250, 1), g: rand(250, 1), b: rand(250, 1)};
+          // 把颜色添加到数组，遇到同名的头像可以使用同一组颜色
+          avatarColor.push(bgColor);
+          // 设置文字头像的背景颜色
+          avatarEl.style.background = 'rgb(' + bgColor.r + ',' + bgColor.g + ',' + bgColor.b + ')';
+        }else {
+          // 设置文字头像的背景颜色
+          avatarEl.style.background = 'rgb(' + avatarColor[nameIndex].r + ',' + avatarColor[nameIndex].g + ',' + avatarColor[nameIndex].b + ')';
+        }
+
+        // 把文字头像插入到页面
+        $(ev.target).before(avatarEl);
+        // 移除加载失败的头像
+        $(ev.target).remove();
+      });
+    }
+  }
+
+  //  生成随机数的函数
+  function rand(max, min) {
+    var num = max - min;
+    return Math.round(Math.random() * num + min);
+  }
 });
 
 hljs.initHighlightingOnLoad();  //  代码高亮初始化
