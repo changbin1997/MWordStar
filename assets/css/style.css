@@ -405,7 +405,6 @@ footer .container span {
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   border-radius: 4px;
   margin-bottom: 30px;
-  overflow: hidden;
 }
 .article-page main .entry-header .entry-title, .archive main .entry-header .entry-title, .page main .entry-header .entry-title {
   font-size: 28px;
@@ -643,29 +642,37 @@ footer .container span {
   position: absolute;
 }
 
-#emoji-box .emoji-classification {
-  padding: 8px;
-  overflow-x: auto;
-  white-space: nowrap;
+#emoji-panel {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  z-index: 100;
+  display: none;
 }
-#emoji-box .emoji-select .emoji {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
+#emoji-panel #emoji-classification {
+  overflow-x: auto;
+}
+#emoji-panel #emoji-classification button {
+  font-size: 16px;
+}
+#emoji-panel #emoji-classification button:hover {
+  background: #E4E4E4;
+}
+#emoji-panel #emoji-list {
+  max-height: 222px;
+  overflow-y: auto;
+}
+#emoji-panel #emoji-list .emoji {
+  float: left;
+  font-size: 16px;
+  margin: 0;
   cursor: pointer;
 }
-#emoji-box .emoji-select .emoji:hover {
-  background: #6c757d;
+#emoji-panel #emoji-list .emoji:hover {
+  background: #E4E4E4;
 }
-#emoji-box .emoji-select::-webkit-scrollbar {
-  width: 4px;
-}
-#emoji-box .emoji-select::-webkit-scrollbar-thumb {
-  background: #6c757d;
-}
-#emoji-box .emoji-select::-webkit-scrollbar-track-piece {
-  background: #e2e3e5;
+#emoji-panel #emoji-list .emoji:focus {
+  background: #E4E4E4;
 }
 
 .pingback {
@@ -1191,9 +1198,8 @@ footer .container span {
     margin-left: 0;
   }
 
-  #emoji-box .emoji-select {
-    max-height: 200px;
-    overflow-y: auto;
+  #emoji-panel {
+    width: 93% !important;
   }
 
   .to-top {

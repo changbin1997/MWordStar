@@ -606,7 +606,6 @@ footer {
     box-shadow: $shadow;
     border-radius: 4px;
     margin-bottom: 30px;
-    overflow: hidden;
     .entry-header {
       @include entryHeader;
     }
@@ -691,31 +690,40 @@ footer {
   position: absolute;
 }
 
-//  emoji表情面板
-#emoji-box {
-  .emoji-classification {
-    padding: 8px;
+//  Emoji表情区域
+#emoji-panel {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  z-index: 100;
+  display: none;
+  //  表情选择区
+  #emoji-classification {
     overflow-x: auto;
-    white-space: nowrap;
+    button {
+      font-size: 16px;
+    }
+    button:hover {
+      background: #E4E4E4;
+    }
   }
-  .emoji-select .emoji {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    cursor: pointer;
-  }
-  .emoji-select .emoji:hover {
-    background: #6c757d;
-  }
-  .emoji-select::-webkit-scrollbar {
-    width: 4px;
-  }
-  .emoji-select::-webkit-scrollbar-thumb {
-    background: #6c757d;
-  }
-  .emoji-select::-webkit-scrollbar-track-piece {
-    background: #e2e3e5;
+  //  表情列表
+  #emoji-list {
+    max-height: 222px;
+    overflow-y: auto;
+    //  表情
+    .emoji {
+      float: left;
+      font-size: 16px;
+      margin: 0;
+      cursor: pointer;
+      &:hover {
+        background: #E4E4E4;
+      }
+      &:focus {
+        background: #E4E4E4;
+      }
+    }
   }
 }
 
@@ -1103,12 +1111,9 @@ footer {
   .sidebar section {
     margin-left: 0;
   }
-  //  表情面板
-  #emoji-box {
-    .emoji-select {
-      max-height: 200px;
-      overflow-y: auto;
-    }
+  //  Emoji面板
+  #emoji-panel {
+    width: 93% !important;
   }
   //  返回顶部的按钮
   .to-top {

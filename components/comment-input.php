@@ -19,31 +19,23 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                 <!--Emoji表情面板-->
                 <?php if ($this->options->emojiPanel == 'on'): ?>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
-                        <button type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" data-target="#emoji-box" data-toggle="collapse" aria-expanded="false" aria-controls="emoji-box" id="show-emoji" url="<?php $this->options->themeUrl('emoji.php'); ?>">
-                            <span>😀</span>
-                            <span>Emoji表情</span>
-                        </button>
-                        <div id="emoji-box" class="collapse" aria-label="表情面板">
-                            <div class="mt-2 mb-2 border">
-                                <div class="emoji-classification border-bottom" aria-label="表情类型" role="group">
-                                    <button role="radio" aria-checked="true" aria-label="面部表情" title="面部表情" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="smileys">😀</button>
-                                    <button role="radio" aria-checked="false" aria-label="人物/手势" title="人物/手势" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="character">👦</button>
-                                    <button role="radio" aria-checked="false" aria-label="服装/配饰" title="服装/配饰" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="clothing">👕</button>
-                                    <button role="radio" aria-checked="false" aria-label="动物/自然" title="动物/自然" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="animal">🐶</button>
-                                    <button role="radio" aria-checked="false" aria-label="食物" title="食物" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="food">🍏</button>
-                                    <button role="radio" aria-checked="false" aria-label="运动" title="运动" type="button" class="btn btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="motion">⚽</button>
-                                    <button role="radio" aria-checked="false" aria-label="旅行/地点" title="旅行/地点" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="tourism">🚚</button>
-                                    <button role="radio" aria-checked="false" aria-label="物体" title="物体" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="objects">⌚</button>
-                                    <button role="radio" aria-checked="false" aria-label="符号" title="符号" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" classification="symbols">❤</button>
-                                </div>
-                                <div class="emoji-select ml-2 mr-2 clearfix" aria-label="表情选择" role="list">
-                                    <div class="d-flex justify-content-center text-info m-3">
-                                        <div class="spinner-border" role="status">
-                                            <span class="sr-only">正在加载 Emoji</span>
-                                        </div>
-                                    </div>
+                        <button aria-expanded="false" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?>" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 Emoji表情</button>
+                        <div id="emoji-panel" class="bg-white border shadow rounded" role="dialog" aria-label="Emoji表情面板（按 ESC 可关闭表情面板并转到评论内容输入框。）">
+                            <div class="card card-body p-0 m-0 border-bottom">
+                                <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="表情类型" data-color="<?php echo $color['btn']; ?>">
+                                    <button role="radio" aria-checked="true" aria-label="面部表情" title="面部表情" type="button" class="btn btn btn-sm selected" data-classification="smileys">😀</button>
+                                    <button role="radio" aria-checked="false" aria-label="人物/手势" title="人物/手势" type="button" class="btn btn btn-sm" data-classification="character">👦</button>
+                                    <button role="radio" aria-checked="false" aria-label="服装/配饰" title="服装/配饰" type="button" class="btn btn btn-sm" data-classification="clothing">👕</button>
+                                    <button role="radio" aria-checked="false" aria-label="动物/自然" title="动物/自然" type="button" class="btn btn btn-sm" data-classification="animal">🐶</button>
+                                    <button role="radio" aria-checked="false" aria-label="食物" title="食物" type="button" class="btn btn btn-sm" data-classification="food">🍏</button>
+                                    <button role="radio" aria-checked="false" aria-label="运动" title="运动" type="button" class="btn btn btn-sm" data-classification="motion">⚽</button>
+                                    <button role="radio" aria-checked="false" aria-label="旅行/地点" title="旅行/地点" type="button" class="btn btn-sm>" data-classification="tourism">🚚</button>
+                                    <button role="radio" aria-checked="false" aria-label="物体" title="物体" type="button" class="btn btn-sm>" data-classification="objects">⌚</button>
+                                    <button role="radio" aria-checked="false" aria-label="符号" title="符号" type="button" class="btn btn-sm>" data-classification="symbols">❤</button>
                                 </div>
                             </div>
+                            <h5 class="text-center py-2 m-0 border-bottom" id="emoji-title">表情类型</h5>
+                            <div id="emoji-list" class="clearfix" role="list" aria-label="表情列表（按回车可以把表情添加到评论内容输入框）"></div>
                         </div>
                     </div>
                 <?php  endif; ?>
