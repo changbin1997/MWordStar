@@ -659,7 +659,7 @@ footer .container span {
   background: #E4E4E4;
 }
 #emoji-panel #emoji-list {
-  max-height: 222px;
+  max-height: 217px;
   overflow-y: auto;
 }
 #emoji-panel #emoji-list .emoji {
