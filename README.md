@@ -1,4 +1,6 @@
-这是一套简洁的 [Typecho](https://typecho.org/) 双栏博客主题，也是 [我的博客](https://www.misterma.com/) 正在使用的主题。
+![MWordStar主题在各种设备的截图](screenshot/home-page.jpeg)
+
+这是一套简洁的 [Typecho](https://typecho.org/) 双栏博客主题，也是 [我的博客](https://www.misterma.com/) 之前使用的主题。
 
 主题演示地址：[https://changbin1997.github.io/MWordStar-Light/web/](https://changbin1997.github.io/MWordStar-Light/web/)
 
@@ -21,19 +23,15 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 
 下面是主题首页截图：
 
-![MWordStar主题首页截图1](https://www.misterma.com/img-admin/uploads/16043686604695.png)
+![MWordStar主题首页截图1](screenshot/16043686604695.png)
 
 主题元素包含圆角和直角两种风格，您可以根据喜好在主题外观设置中切换，下面是直角风格的首页截图：
 
-![MWordStar直角风格首页截图](https://www.misterma.com/img-admin/uploads/16043686924621.jpg)
+![MWordStar直角风格首页截图](screenshot/16043686924621.jpg)
 
 不同配色的截图：
 
-![MWordStar不同配色的截图](https://www.misterma.com/img-admin/uploads/16043687256363.jpg)
-
-扫描下面的二维码可在手机上预览
-
-![博客二维码](https://i.loli.net/2020/02/11/tBgUvqE1CcNHFLe.png)
+![MWordStar不同配色的截图](screenshot/16043687256363.jpg)
 
 ## 特点和功能
 
@@ -41,6 +39,7 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 * 无障碍适配（Accessibility）
 * 5 种不同风格的配色
 * 两种不同风格的元素
+* 多套自定义页面模板
 * 代码高亮
 * 丰富的设置选项
 * 良好的 SEO 优化
@@ -73,9 +72,11 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 
 使用 Webpack 打包的版本前台只需要加载一个 CSS 和 一个 JS 文件，所有 JS 库都打包到了 JS 中，所有 CSS 和字体图标都打包到了 CSS 中。因为用到的库比较少，而且字体图标和部分组件都是按需引入的，所以打包后的 CSS 和 JS 也比较小。
 
+本项目还需要感谢 [![点击访问JetBrains官网](screenshot/JetBrains-logo.png)](https://www.jetbrains.com/?from=MWordStar) 免费提供的开发工具。
+
 ### 主题安装
 
-把主题上传到 Typecho 的 `usr/themes/` 目录，然后解压，你也可以先解压在上传。
+把主题上传到 Typecho 的 `usr/themes/` 目录，然后解压，您也可以先解压在上传。
 
 解压后需要保证 `themes` 目录下 有一个 `MWordStar` 目录。
 
@@ -132,7 +133,35 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 下面是 Emoji 表情面板的截图：
 
-![emoji面板截图](https://www.misterma.com/img-admin/uploads/16043688114310.jpeg)
+![emoji面板截图](screenshot/emoji.jpeg)
+
+### 统计页
+
+主题包含一个统计页模板，您可以在后台创建页面，页面的自定义模板选择 `网站数据`，标题可以随便写，创建完成后就可以在顶部导航栏访问了。
+
+统计页包含基本的数据统计、分类文章占比图、文章更新日历图、评论动态日历图、阅读量排名前 5 的文章、评论量排名前 5 的文章。
+
+基本数据统计如下：
+
+![MWordStar 基本统计截图](screenshot/statistics.jpeg)
+
+分类占比统计图如下：
+
+![MWordStar 分类统计图](screenshot/category-statistics.jpeg)
+
+下面是评论动态日历图：
+
+![MWordStar 评论动态日历图](screenshot/comment-calendar.jpeg)
+
+文章动态日历图和评论动态的日历图是差不多的，屏幕尺寸不同显示的月份数量也不同。
+
+下面是文章评论排名表格：
+
+![MWordStar 文章评论排名表格](screenshot/comment-statistics.jpeg)
+
+文章阅读量排名表格和评论量排名的表格也是差不多的。
+
+统计页面效果可以参考 [https://www.misterma.com/data.html](https://www.misterma.com/data.html) ，也可以直接访问 MWordStar 的静态演示站。
 
 ### 兼容性
 
@@ -157,5 +186,3 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 主题使用 [MIT License](https://github.com/changbin1997/MWordStar/blob/master/LICENSE) 开源。
 
 如果您在使用这个主题时遇到 Bug 或有任何问题和建议都可以在 [博客评论区](https://www.misterma.com/archives/812/#comments) 留言，也可以在 Github 的 [issues](https://github.com/changbin1997/MWordStar/issues) 反馈。
-
-本项目需要感谢 [JetBrains](https://www.jetbrains.com/?from=MWordStar) 提供的免费开发工具。
