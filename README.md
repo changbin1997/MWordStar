@@ -72,7 +72,9 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 
 使用 Webpack 打包的版本前台只需要加载一个 CSS 和 一个 JS 文件，所有 JS 库都打包到了 JS 中，所有 CSS 和字体图标都打包到了 CSS 中。因为用到的库比较少，而且字体图标和部分组件都是按需引入的，所以打包后的 CSS 和 JS 也比较小。
 
-本项目还需要感谢 [![点击访问JetBrains官网](screenshot/JetBrains-logo.png)](https://www.jetbrains.com/?from=MWordStar) 免费提供的开发工具。
+本项目还需要感谢 [JetBrains](https://www.jetbrains.com/?from=MWordStar) 免费提供的开发工具。
+
+[![点击访问JetBrains官网](screenshot/JetBrains-logo.png)](https://www.jetbrains.com/?from=MWordStar)
 
 ### 主题安装
 
