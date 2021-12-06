@@ -53,7 +53,7 @@
             </div>
             <a href="<?php $this->permalink() ?>" target="<?php $this->options->listLinkOpen(); ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">阅读全文</a>
             <?php if ($this->user->hasLogin()): ?>
-                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" class="float-right mr-3 d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">编辑</a>
+                <a href="<?php $this->options->adminUrl('write-post.php?cid=' . $this->cid); ?>" class="float-right mr-3 d-sm-none d-none d-md-inline d-lg-inline d-xl-inline <?php echo $color['link']; ?>">编辑</a>
             <?php endif; ?>
         </div>
     </div>

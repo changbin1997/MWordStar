@@ -84,7 +84,7 @@ $this->need('components/header.php');
                     <?php if ($this->user->hasLogin()): ?>
                         <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">
                             <i class="icon icon-pencil <?php echo $color['link']; ?>"></i>
-                            <a class="<?php echo $color['link']; ?>" href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" >编辑</a>
+                            <a class="<?php echo $color['link']; ?>" href="<?php $this->options->adminUrl('write-post.php?cid=' . $this->cid); ?>" >编辑</a>
                         </div>
                     <?php endif; ?>
                 </div>
