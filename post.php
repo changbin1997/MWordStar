@@ -115,14 +115,16 @@ $this->need('components/header.php');
                     </div>
                 </article>
                 <!--上一篇和下一篇文章的导航-->
-                <nav class="post-navigation navbar border-top row">
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 previous">
-                        <div>上一篇</div>
-                        <?php $this->thePrev('%s','没有了'); ?>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 next">
-                        <div class="text-lg-right text-xl-right text-md-right">下一篇</div class="text-lg-right text-xl-right text-md-right">
-                        <div class="text-lg-right text-xl-right text-md-right next-box"><?php $this->theNext('%s','没有了'); ?></div>
+                <nav class="post-navigation border-top">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 previous">
+                            <div>上一篇</div>
+                            <?php $this->thePrev('%s','没有了'); ?>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 next">
+                            <div class="text-lg-right text-xl-right text-md-right">下一篇</div class="text-lg-right text-xl-right text-md-right">
+                            <div class="text-lg-right text-xl-right text-md-right next-box"><?php $this->theNext('%s','没有了'); ?></div>
+                        </div>
                     </div>
                 </nav>
                 <?php $this->need('components/comments.php'); ?>

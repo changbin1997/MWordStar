@@ -595,16 +595,18 @@ footer .container span {
   text-align: center;
 }
 .article-page .post-navigation, .archive .post-navigation, .page .post-navigation {
-  padding: 20px;
-  overflow: hidden;
+  overflow-x: hidden;
 }
-.article-page .post-navigation .previous, .archive .post-navigation .previous, .page .post-navigation .previous,
-.article-page .post-navigation .next,
-.archive .post-navigation .next,
-.page .post-navigation .next,
-.article-page .post-navigation .next-box,
-.archive .post-navigation .next-box,
-.page .post-navigation .next-box {
+.article-page .post-navigation > div, .archive .post-navigation > div, .page .post-navigation > div {
+  padding: 20px;
+}
+.article-page .post-navigation > div .previous, .archive .post-navigation > div .previous, .page .post-navigation > div .previous,
+.article-page .post-navigation > div .next,
+.archive .post-navigation > div .next,
+.page .post-navigation > div .next,
+.article-page .post-navigation > div .next-box,
+.archive .post-navigation > div .next-box,
+.page .post-navigation > div .next-box {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
