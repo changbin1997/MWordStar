@@ -533,7 +533,6 @@ $(function () {
   $('body').on('click', function () {
     // 如果表情面板处于开启状态就关闭表情面板
     if (showEmoji) $('#show-emoji-btn').click();
-    return false;
   });
 
   // Emoji 表情面板的空白区域点击
