@@ -69,13 +69,13 @@ $(function () {
 
   //  大图手指拖拽
   $('#max-img img').on('touchstart', function (ev) {
-    var X = ev.touches[0].pageX - $(this).offset().left;
-    var Y = ev.touches[0].pageY - $(this).offset().top;
+    var X = ev.touches[0].pageX - $(ev.target).get(0).offsetLeft;
+    var Y = ev.touches[0].pageY - $(ev.target).get(0).offsetTop;
 
     $(document).on('touchmove', function (ev) {
       $('#max-img img').css({
         left: ev.touches[0].pageX - X,
-        top: ev.touches[0].pageY - Y - $(document).scrollTop()
+        top: ev.touches[0].pageY - Y
       });
     });
 
@@ -87,13 +87,13 @@ $(function () {
 
   //  大图拖拽
   $('#max-img img').on('mousedown', function (ev) {
-    var X = ev.clientX - $(this).offset().left;
-    var Y = ev.clientY - $(this).offset().top;
+    var X = ev.clientX - $(ev.target).get(0).offsetLeft;
+    var Y = ev.clientY - $(ev.target).get(0).offsetTop;
 
     $(document).on('mousemove', function (ev) {
       $('#max-img img').css({
         left: ev.clientX - X,
-        top: ev.clientY - Y - $(document).scrollTop()
+        top: ev.clientY - Y
       });
     });
 
