@@ -618,7 +618,7 @@ footer .container span {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   display: none;
   z-index: 1030;
 }
@@ -631,6 +631,15 @@ footer .container span {
   top: 10px;
   right: 10px;
   opacity: 0.8;
+}
+#max-img #img-info {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 16px;
+  /*text-shadow: 0 -1px #F8F9FA, 1px 0 #333333;*/
+  text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
 }
 
 #share-box #qrcode img {

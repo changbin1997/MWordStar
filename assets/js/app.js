@@ -61,9 +61,14 @@ $(function () {
       top: $(window).height() / 2 - $('#max-img img').height() / 2
     });
 
-    $('.hide-img').focus();  //  让关闭图片的按钮获取焦点
-    maxImg = true;  //  大图状态设置为 true
-    $('html').addClass('stop-scrolling');  //  禁止滚动
+    //  设置图片标题
+    $('#img-info').html($(this).attr('alt'));
+    //  让关闭图片的按钮获取焦点
+    $('.hide-img').focus();
+    //  大图状态设置为 true
+    maxImg = true;
+    //  禁止滚动
+    $('html').addClass('stop-scrolling');
     return false;
   });
 
