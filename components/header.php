@@ -27,11 +27,6 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/vs2015.css'); ?>" type="text/css">
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery-3.4.1.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/bootstrap.bundle.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.qrcode.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
     <?php if ($this->is('post') && $this->fields->keywords): ?>
         <?php $this->header('keywords=' . $this->fields->keywords); ?>
     <?php else: ?>

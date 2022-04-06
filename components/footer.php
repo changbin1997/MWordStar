@@ -15,6 +15,11 @@
     </button>
 <?php endif; ?>
 
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery-3.4.1.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>"></script>
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.qrcode.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
 <!--统计数据的图表js-->
 <?php if (isset($GLOBALS['page']) && $GLOBALS['page'] == 'page-data'): ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/chart.js'); ?>"></script>
