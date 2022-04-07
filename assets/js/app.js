@@ -16,6 +16,54 @@ $(function () {
     }
   }
 
+  // 给文章中的代码块添加拷贝按钮和拷贝事件
+  if ($('pre').length) {
+    for (let i = 0;i < $('pre').length;i ++) {
+      // 是否是代码块
+      if ($('pre').eq(i).children('code').length) {
+        // 创建和添加拷贝按钮
+        var btnEl = document.createElement('button');
+        btnEl.className = 'copy-code-btn btn btn-outline-light btn-sm';
+        btnEl.setAttribute('type', 'button');
+        btnEl.innerHTML = 'Copy';
+        btnEl.setAttribute('data-clipboard-target', '#code-' + i);
+        btnEl.setAttribute('title', '拷贝代码');
+        btnEl.setAttribute('data-toggle', 'tooltip');
+        btnEl.setAttribute('data-placement', 'left');
+        btnEl.setAttribute('id', 'copy-btn-' + i);
+        $('pre').eq(i).prepend(btnEl);
+        // 给代码块添加一个 id 方便拷贝
+        $('pre code').eq(i).attr('id', 'code-' + i);
+      }
+      // 初始化拷贝模块
+      var clipboard = new ClipboardJS('.copy-code-btn');
+      // 拷贝成功
+      clipboard.on('success', function(ev) {
+        // 把工具提示更改为拷贝成功
+        $(ev.trigger).attr('title', '拷贝成功');
+        $(ev.trigger).attr('data-original-title', '拷贝成功');
+        $(ev.trigger).tooltip('update');
+        $(ev.trigger).tooltip('show');
+        // 延迟 1 秒后把工具提示更改为拷贝代码
+        setTimeout(function() {
+          $(ev.trigger).attr('title', '拷贝代码');
+          $(ev.trigger).attr('data-original-title', '拷贝代码');
+        }, 1000);
+      });
+      // 拷贝出错
+      clipboard.on('error', function(ev) {
+        $(ev.trigger).attr('title', '拷贝失败');
+        $(ev.trigger).attr('data-original-title', '拷贝失败');
+        $(ev.trigger).tooltip('hide');
+        $(ev.trigger).tooltip('show');
+        setTimeout(function() {
+          $(ev.trigger).attr('title', '拷贝代码');
+          $(ev.trigger).attr('data-original-title', '拷贝代码');
+        }, 1000);
+      });
+    }
+  }
+
   //  文章的图片点击
   $('article .post-content img').on('click', function () {
     //  获取图片的真实尺寸

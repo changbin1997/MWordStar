@@ -198,8 +198,12 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     font-size: $articleFontSize;
   }
   pre {
+    position: relative;
+    &:hover .copy-code-btn {
+      display: block;
+    }
     code {
-      padding: 10px;
+      padding: 12px 10px;
     }
   }
   table td {
@@ -288,6 +292,14 @@ header {
       background: #f0f0f0;
     }
   }
+}
+
+// 代码拷贝按钮
+.copy-code-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
 }
 
 //  面包屑导航

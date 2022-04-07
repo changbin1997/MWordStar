@@ -34,6 +34,13 @@ header .navbar .search-btn-light:focus {
   background: #f0f0f0;
 }
 
+.copy-code-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
+}
+
 .breadcrumb {
   background: none;
 }
@@ -563,8 +570,14 @@ footer .container span {
 .article-page main article .post-content code, .archive main article .post-content code, .page main article .post-content code {
   font-size: 15px;
 }
+.article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre {
+  position: relative;
+}
+.article-page main article .post-content pre:hover .copy-code-btn, .archive main article .post-content pre:hover .copy-code-btn, .page main article .post-content pre:hover .copy-code-btn {
+  display: block;
+}
 .article-page main article .post-content pre code, .archive main article .post-content pre code, .page main article .post-content pre code {
-  padding: 10px;
+  padding: 12px 10px;
 }
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
@@ -844,8 +857,14 @@ footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-content code {
   font-size: 15px;
 }
+#comments .comments-lists .comment-list .comment-body .comment-content pre {
+  position: relative;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre:hover .copy-code-btn {
+  display: block;
+}
 #comments .comments-lists .comment-list .comment-body .comment-content pre code {
-  padding: 10px;
+  padding: 12px 10px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content table td {
   min-width: 90px;
