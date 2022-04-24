@@ -572,9 +572,30 @@ footer .container span {
 }
 .article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre {
   position: relative;
+  background: #1E1E1E;
 }
 .article-page main article .post-content pre:hover .copy-code-btn, .archive main article .post-content pre:hover .copy-code-btn, .page main article .post-content pre:hover .copy-code-btn {
   display: block;
+}
+.article-page main article .post-content pre .line-box, .archive main article .post-content pre .line-box, .page main article .post-content pre .line-box {
+  width: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #1E1E1E;
+  padding-top: 12px;
+}
+.article-page main article .post-content pre .line-box div, .archive main article .post-content pre .line-box div, .page main article .post-content pre .line-box div {
+  color: #9B9B9B;
+  border-right: 1px solid #9B9B9B;
+  line-height: 22.5px;
+  height: 22.5px;
+  padding-right: 9px;
+  font-size: 14px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .article-page main article .post-content pre code, .archive main article .post-content pre code, .page main article .post-content pre code {
   padding: 12px 10px;
@@ -859,9 +880,30 @@ footer .container span {
 }
 #comments .comments-lists .comment-list .comment-body .comment-content pre {
   position: relative;
+  background: #1E1E1E;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content pre:hover .copy-code-btn {
   display: block;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre .line-box {
+  width: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #1E1E1E;
+  padding-top: 12px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre .line-box div {
+  color: #9B9B9B;
+  border-right: 1px solid #9B9B9B;
+  line-height: 22.5px;
+  height: 22.5px;
+  padding-right: 9px;
+  font-size: 14px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content pre code {
   padding: 12px 10px;

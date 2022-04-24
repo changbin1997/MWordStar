@@ -199,8 +199,29 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   pre {
     position: relative;
+    background: #1E1E1E;
     &:hover .copy-code-btn {
       display: block;
+    }
+    .line-box {
+      width: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #1E1E1E;
+      padding-top: 12px;
+      div {
+        color: #9B9B9B;
+        border-right: 1px solid #9B9B9B;
+        line-height: 22.5px;
+        height: 22.5px;
+        padding-right: 9px;
+        font-size: 14px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
     }
     code {
       padding: 12px 10px;

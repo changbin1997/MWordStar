@@ -6,6 +6,7 @@ $(function () {
   var avatarName = [];  //  存储文字头像名称
   var emojiList = null;  //  Emoji 列表
   var showEmoji = false;  //  Emoji 面板状态
+  var codeLineNum = $('.post-content').attr('data-code-line-num');
 
   //  给文章表格添加样式
   if ($('.post-content table').length) {
@@ -18,9 +19,20 @@ $(function () {
 
   // 给文章中的代码块添加拷贝按钮和拷贝事件
   if ($('pre').length) {
-    for (let i = 0;i < $('pre').length;i ++) {
+    for (var i = 0;i < $('pre').length;i ++) {
       // 是否是代码块
       if ($('pre').eq(i).children('code').length) {
+        // 生成代码行号
+        if (codeLineNum === 'show') {
+          $('pre code').eq(i).css('padding-left', '54px');
+          var lineNumbers = Math.floor($('pre code').eq(i).height() / 22.5);
+          var lineNumbersEl = '';
+          for (var j = 0;j < lineNumbers;j ++) {
+            lineNumbersEl += '<div class="text-right">' + Number(j + 1) + '</div>';
+          }
+          $('pre').eq(i).prepend('<div class="line-box">' + lineNumbersEl + '</div>');
+        }
+
         // 创建和添加拷贝按钮
         var btnEl = document.createElement('button');
         btnEl.className = 'copy-code-btn btn btn-outline-light btn-sm';

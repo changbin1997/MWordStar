@@ -57,7 +57,7 @@ $this->need('components/header.php');
                     </div>
                 </div>
                 <article>
-                    <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-color="<?php echo $color['link']; ?>">
+                    <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-color="<?php echo $color['link']; ?>" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $this->content(); ?>
                     </div>
                 </article>

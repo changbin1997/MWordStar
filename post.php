@@ -90,7 +90,7 @@ $this->need('components/header.php');
                 </div>
                 <!--文章内容-->
                 <article>
-                    <div data-target="<?php $this->options->postLinkOpen(); ?>" data-color="<?php echo $color['link']; ?>" class="post-content">
+                    <div data-target="<?php $this->options->postLinkOpen(); ?>" data-color="<?php echo $color['link']; ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $this->options->atalog == 'show'?catalog($this->content):$this->content(); ?>
                     </div>
                     <div class="clearfix">
