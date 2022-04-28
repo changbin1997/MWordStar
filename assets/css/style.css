@@ -726,6 +726,10 @@ footer .container span {
   font-size: 14px;
   color: #ffffff;
   font-weight: 700;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #comments h2 {
