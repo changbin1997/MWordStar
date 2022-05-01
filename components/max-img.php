@@ -1,4 +1,5 @@
 <div id="max-img" role="dialog">
+    <div class="mask-layer"></div>
     <img src="" alt="" class="shadow-lg">
     <p id="img-info" class="text-light text-center"></p>
     <div class="btn-group" role="group" aria-label="图片工具栏" id="img-control">
