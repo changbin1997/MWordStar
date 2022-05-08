@@ -521,6 +521,7 @@ footer .container span {
 }
 .article-page main article .post-content img, .archive main article .post-content img, .page main article .post-content img {
   max-width: 100%;
+  cursor: zoom-in;
 }
 .article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1,
 .article-page main article .post-content h2,
@@ -848,6 +849,7 @@ footer .container span {
 }
 #comments .comments-lists .comment-list .comment-body .comment-content img {
   max-width: 100%;
+  cursor: zoom-in;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content h1,
 #comments .comments-lists .comment-list .comment-body .comment-content h2,
