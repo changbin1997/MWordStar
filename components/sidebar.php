@@ -139,7 +139,17 @@ $components = explode(',', $components);
             <section class="category border <?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
                 <h4>文章分类</h4>
                 <ul class="list-group list-group-flush" aria-label="文章分类">
-                    <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="d-flex justify-content-between align-items-center border-bottom indentation-{parent}"><a target="' . $this->options->sidebarLinkOpen . '" data-toggle="tooltip" data-placement="top" class="' . $color['link'] . '" href="{permalink}" title="{description}">{name}</a><span class="badge badge-pill ' . $color['listTag'] . '">{count}</span></li>'); ?>
+                    <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+                    <?php while ($category->next()): ?>
+                        <li class="d-flex justify-content-between align-items-center border-bottom indentation-<?php $category->parent(); ?>">
+                            <a target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $category->permalink(); ?>" class="<?php echo $color['link']; ?>" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>">
+                                <?php echo $category->name(); ?>
+                            </a>
+                            <span class="badge badge-pill <?php echo $color['listTag']; ?>">
+                                <?php $category->count(); ?>
+                            </span>
+                        </li>
+                    <?php endwhile; ?>
                 </ul>
             </section>
         <?php endif; ?>

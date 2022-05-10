@@ -859,3 +859,10 @@ function categoryPostCount() {
     }
     return $count;
 }
+
+// 获取父分类的名称
+function getParentCategory($categoryId) {
+    $db = Typecho_Db::get();
+    $category = $db->fetchRow($db->select()->from('table.metas')->where('mid = ?', $categoryId));
+    return $category['name'];
+}
