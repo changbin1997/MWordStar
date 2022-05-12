@@ -1,4 +1,184 @@
 @charset "UTF-8";
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Mr. Ma
+* Licensed under MIT
+*/
+.stackoverflow-light pre {
+  background: #F6F6F6;
+}
+.stackoverflow-light pre .line-box {
+  background: #F6F6F6;
+}
+.stackoverflow-light pre .line-box div {
+  color: #777777;
+  border-right: 1px solid #777777;
+}
+.stackoverflow-light pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+.stackoverflow-light code.hljs {
+  padding: 3px 5px;
+}
+.stackoverflow-light .hljs {
+  color: #2f3337;
+  background: #f6f6f6;
+}
+.stackoverflow-light .hljs-subst {
+  color: #2f3337;
+}
+.stackoverflow-light .hljs-comment {
+  color: #656e77;
+}
+.stackoverflow-light .hljs-attr, .stackoverflow-light .hljs-doctag, .stackoverflow-light .hljs-keyword, .stackoverflow-light .hljs-meta .hljs-keyword, .stackoverflow-light .hljs-section, .stackoverflow-light .hljs-selector-tag {
+  color: #015692;
+}
+.stackoverflow-light .hljs-attribute {
+  color: #803378;
+}
+.stackoverflow-light .hljs-name, .stackoverflow-light .hljs-number, .stackoverflow-light .hljs-quote, .stackoverflow-light .hljs-selector-id, .stackoverflow-light .hljs-template-tag, .stackoverflow-light .hljs-type {
+  color: #b75501;
+}
+.stackoverflow-light .hljs-selector-class {
+  color: #015692;
+}
+.stackoverflow-light .hljs-link, .stackoverflow-light .hljs-regexp, .stackoverflow-light .hljs-selector-attr, .stackoverflow-light .hljs-string, .stackoverflow-light .hljs-symbol, .stackoverflow-light .hljs-template-variable, .stackoverflow-light .hljs-variable {
+  color: #54790d;
+}
+.stackoverflow-light .hljs-meta, .stackoverflow-light .hljs-selector-pseudo {
+  color: #015692;
+}
+.stackoverflow-light .hljs-built_in, .stackoverflow-light .hljs-literal, .stackoverflow-light .hljs-title {
+  color: #b75501;
+}
+.stackoverflow-light .hljs-bullet, .stackoverflow-light .hljs-code {
+  color: #535a60;
+}
+.stackoverflow-light .hljs-meta .hljs-string {
+  color: #54790d;
+}
+.stackoverflow-light .hljs-deletion {
+  color: #c02d2e;
+}
+.stackoverflow-light .hljs-addition {
+  color: #2f6f44;
+}
+.stackoverflow-light .hljs-emphasis {
+  font-style: italic;
+}
+.stackoverflow-light .hljs-strong {
+  font-weight: 700;
+}
+
+.vs2015 {
+  /*.hljs-code {
+    font-family:'Monospace';
+  }*/
+}
+.vs2015 pre {
+  background: #1E1E1E;
+}
+.vs2015 pre .line-box {
+  background: #1E1E1E;
+}
+.vs2015 pre .line-box div {
+  color: #9B9B9B;
+  border-right: 1px solid #9B9B9B;
+}
+.vs2015 .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #1E1E1E;
+  color: #DCDCDC;
+}
+.vs2015 .hljs-keyword,
+.vs2015 .hljs-literal,
+.vs2015 .hljs-symbol,
+.vs2015 .hljs-name {
+  color: #569CD6;
+}
+.vs2015 .hljs-link {
+  color: #569CD6;
+  text-decoration: underline;
+}
+.vs2015 .hljs-built_in,
+.vs2015 .hljs-type {
+  color: #4EC9B0;
+}
+.vs2015 .hljs-number,
+.vs2015 .hljs-class {
+  color: #B8D7A3;
+}
+.vs2015 .hljs-string,
+.vs2015 .hljs-meta-string {
+  color: #D69D85;
+}
+.vs2015 .hljs-regexp,
+.vs2015 .hljs-template-tag {
+  color: #9A5334;
+}
+.vs2015 .hljs-subst,
+.vs2015 .hljs-function,
+.vs2015 .hljs-title,
+.vs2015 .hljs-params,
+.vs2015 .hljs-formula {
+  color: #DCDCDC;
+}
+.vs2015 .hljs-comment,
+.vs2015 .hljs-quote {
+  color: #57A64A;
+  font-style: italic;
+}
+.vs2015 .hljs-doctag {
+  color: #608B4E;
+}
+.vs2015 .hljs-meta,
+.vs2015 .hljs-meta-keyword,
+.vs2015 .hljs-tag {
+  color: #9B9B9B;
+}
+.vs2015 .hljs-variable,
+.vs2015 .hljs-template-variable {
+  color: #BD63C5;
+}
+.vs2015 .hljs-attr,
+.vs2015 .hljs-attribute,
+.vs2015 .hljs-builtin-name {
+  color: #9CDCFE;
+}
+.vs2015 .hljs-section {
+  color: gold;
+}
+.vs2015 .hljs-emphasis {
+  font-style: italic;
+}
+.vs2015 .hljs-strong {
+  font-weight: bold;
+}
+.vs2015 .hljs-bullet,
+.vs2015 .hljs-selector-tag,
+.vs2015 .hljs-selector-id,
+.vs2015 .hljs-selector-class,
+.vs2015 .hljs-selector-attr,
+.vs2015 .hljs-selector-pseudo {
+  color: #D7BA7D;
+}
+.vs2015 .hljs-addition {
+  background-color: #144212;
+  display: inline-block;
+  width: 100%;
+}
+.vs2015 .hljs-deletion {
+  background-color: #600;
+  display: inline-block;
+  width: 100%;
+}
+
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
@@ -573,7 +753,6 @@ footer .container span {
 }
 .article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre {
   position: relative;
-  background: #1E1E1E;
 }
 .article-page main article .post-content pre:hover .copy-code-btn, .archive main article .post-content pre:hover .copy-code-btn, .page main article .post-content pre:hover .copy-code-btn {
   display: block;
@@ -583,12 +762,9 @@ footer .container span {
   position: absolute;
   top: 0;
   left: 0;
-  background: #1E1E1E;
   padding-top: 12px;
 }
 .article-page main article .post-content pre .line-box div, .archive main article .post-content pre .line-box div, .page main article .post-content pre .line-box div {
-  color: #9B9B9B;
-  border-right: 1px solid #9B9B9B;
   line-height: 22.5px;
   height: 22.5px;
   padding-right: 9px;
@@ -891,7 +1067,6 @@ footer .container span {
 }
 #comments .comments-lists .comment-list .comment-body .comment-content pre {
   position: relative;
-  background: #1E1E1E;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content pre:hover .copy-code-btn {
   display: block;
@@ -901,12 +1076,9 @@ footer .container span {
   position: absolute;
   top: 0;
   left: 0;
-  background: #1E1E1E;
   padding-top: 12px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content pre .line-box div {
-  color: #9B9B9B;
-  border-right: 1px solid #9B9B9B;
   line-height: 22.5px;
   height: 22.5px;
   padding-right: 9px;

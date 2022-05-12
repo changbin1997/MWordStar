@@ -1,3 +1,13 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Mr. Ma
+* Licensed under MIT
+*/
+
+@import "highlight";
+
 $articleFontSize: 15px; //  文章字体大小
 $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
 
@@ -200,7 +210,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   pre {
     position: relative;
-    background: #1E1E1E;
     &:hover .copy-code-btn {
       display: block;
     }
@@ -209,11 +218,8 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
       position: absolute;
       top: 0;
       left: 0;
-      background: #1E1E1E;
       padding-top: 12px;
       div {
-        color: #9B9B9B;
-        border-right: 1px solid #9B9B9B;
         line-height: 22.5px;
         height: 22.5px;
         padding-right: 9px;

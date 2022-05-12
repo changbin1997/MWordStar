@@ -1,3 +1,11 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Mr. Ma
+* Licensed under MIT
+*/
+
 $(function () {
   var maxImg = false;  //  大图的状态
   var imgDirection = 0;  //  图片方向
@@ -36,7 +44,9 @@ $(function () {
 
         // 创建和添加拷贝按钮
         var btnEl = document.createElement('button');
-        btnEl.className = 'copy-code-btn btn btn-outline-light btn-sm';
+        btnEl.className = 'copy-code-btn btn btn-sm';
+        // 根据代码块的配色设置拷贝按钮的颜色
+        btnEl.className += $('.vs2015').length?' btn-outline-light':' btn-outline-secondary';
         btnEl.setAttribute('type', 'button');
         btnEl.innerHTML = 'Copy';
         btnEl.setAttribute('data-clipboard-target', '#code-' + i);

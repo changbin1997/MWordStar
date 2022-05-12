@@ -216,6 +216,13 @@ EOT;
     ), 'show', _t('代码块显示行号'), _t('开启后文章的代码块会显示行号'));
     $form->addInput($codeLineNum);
 
+    //  代码块配色
+    $codeThemeColor = new Typecho_Widget_Helper_Form_Element_Radio('codeThemeColor', array(
+        'stackoverflow-light' => 'Stack Overflow（浅色）',
+        'vs2015' => 'VS2015（深色）'
+    ), 'vs2015', _t('代码块颜色主题'));
+    $form->addInput($codeThemeColor);
+
     //  评论框位置
     $commentInput = new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
         'top' => '评论框在评论列表上方',

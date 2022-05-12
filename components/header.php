@@ -26,7 +26,6 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.min.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/vs2015.css'); ?>" type="text/css">
     <?php if ($this->is('post') && $this->fields->keywords): ?>
         <?php $this->header('keywords=' . $this->fields->keywords); ?>
     <?php else: ?>
@@ -41,7 +40,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body data-rounded="<?php echo $rounded; ?>">
+<body data-rounded="<?php echo $rounded; ?>" class="<?php $this->options->codeThemeColor(); ?>">
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg <?php echo $color['bar'] ?>">
         <div class="container">
