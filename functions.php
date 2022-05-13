@@ -3,31 +3,26 @@
 //  文章的自定义字段
 function themeFields($layout) {
     //  文章头图来源
-    $imageSource = new Typecho_Widget_Helper_Form_Element_Select('imageSource', array(
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('imageSource', array(
         'article' => '使用文章中的第一张图片作为文章头图',
         'url' => '在文章头图输入框手动输入图片URL',
         'hide' => '不显示文章头图'
-    ), 'article', _t('文章头图来源'), _t('如果文章头图 URL 为空或文章内容中没有图片将不会显示文章头图。'));
-    $layout->addItem($imageSource);
+    ), 'article', _t('文章头图来源'), _t('如果文章头图 URL 为空或文章内容中没有图片将不会显示文章头图。')));
 
     //  文章头图
-    $image = new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('如果您在文章头图来源中设置了手动输入图片 URL 的话，请在这里输入图片 URL。'));
-    $layout->addItem($image);
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('如果您在文章头图来源中设置了手动输入图片 URL 的话，请在这里输入图片 URL。')));
 
     //  自定义文章摘要内容
-    $summaryContent = new Typecho_Widget_Helper_Form_Element_Textarea('summaryContent', null, null, _t('自定义摘要内容'), _t('您可以在此处为文章定义摘要内容，此处定义的摘要内容不受字数限制。'));
-    $layout->addItem($summaryContent);
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Textarea('summaryContent', null, null, _t('自定义摘要内容'), _t('您可以在此处为文章定义摘要内容，此处定义的摘要内容不受字数限制。')));
 
     //  显示版权声明
-    $articleCopyright = new Typecho_Widget_Helper_Form_Element_Select('articleCopyright', array(
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('articleCopyright', array(
         'show' => '显示',
         'hide' => '不显示'
-    ), 'show', _t('显示原创声明'), _t('开启后会在本篇文章底部显示版权声明。'));
-    $layout->addItem($articleCopyright);
+    ), 'show', _t('显示原创声明'), _t('开启后会在本篇文章底部显示版权声明。')));
 
     //  自定义关键词
-    $keywords = new Typecho_Widget_Helper_Form_Element_Text('keywords', NULL, NULL, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。'));
-    $layout->addItem($keywords);
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('keywords', NULL, NULL, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。')));
 }
 
 //  外观设置
@@ -47,72 +42,61 @@ EOT;
     echo '</script>';
 
     //  主题配色
-    $color = new Typecho_Widget_Helper_Form_Element_Radio('color', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('color', array(
         'dark' => 'Dark',
         'primary' => 'Primary',
         'info' => 'Info',
         'success' => 'Success',
         'light' => 'Light'
-    ), 'light', _t('主题配色'), _t('主题配色包含了 导航栏、链接、按钮、标签 的颜色。'));
-    $form->addInput($color);
+    ), 'light', _t('主题配色'), _t('主题配色包含了 导航栏、链接、按钮、标签 的颜色。')));
 
     //  主题元素风格设置
-    $rounded = new Typecho_Widget_Helper_Form_Element_Radio('rounded', array(
-       'fillet' => '圆角',
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('rounded', array(
+        'fillet' => '圆角',
         'rightAngle' => '直角'
-    ), 'fillet', _t('主题元素风格'), _t('这里的元素风格包括了 区块、按钮、输入表单、标签'));
-    $form->addInput($rounded);
+    ), 'fillet', _t('主题元素风格'), _t('这里的元素风格包括了 区块、按钮、输入表单、标签')));
 
     //  站点Logo
-    $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。'));
-    $form->addInput($logoUrl);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。')));
 
     //  站点副标题
-    $tagline = new Typecho_Widget_Helper_Form_Element_Text('tagline', null, '生命不息，折腾不止', _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。'));
-    $form->addInput($tagline);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('tagline', null, '生命不息，折腾不止', _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。')));
 
     //  ICP信息
-    $icp = new Typecho_Widget_Helper_Form_Element_Text('icp', null, null, _t('ICP 备案号'), _t('ICP 备案号会显示在网站的底部。'));
-    $form->addInput($icp);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('icp', null, null, _t('ICP 备案号'), _t('ICP 备案号会显示在网站的底部。')));
 
     //  返回顶部按钮
-    $toTop = new Typecho_Widget_Helper_Form_Element_Radio('toTop', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('toTop', array(
         'show' => '显示',
         'hide' => '不显示'
-    ), 'show', _t('在右下方显示返回顶部按钮'));
-    $form->addInput($toTop);
+    ), 'show', _t('在右下方显示返回顶部按钮')));
 
     //  文章列表链接跳转
-    $listLinkOpen = new Typecho_Widget_Helper_Form_Element_Radio('listLinkOpen', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('listLinkOpen', array(
         '_self' => '直接从当前页面跳转',
         '_blank' => '在新标签页中打开'
-    ), '_self', _t('文章列表的文章链接跳转方式'), _t('这里的文章列表包括 首页、分类页、标签页、搜索页 左侧的文章链接。'));
-    $form->addInput($listLinkOpen);
+    ), '_self', _t('文章列表的文章链接跳转方式'), _t('这里的文章列表包括 首页、分类页、标签页、搜索页 左侧的文章链接。')));
 
     //  侧边栏链接跳转
-    $sidebarLinkOpen = new Typecho_Widget_Helper_Form_Element_Radio('sidebarLinkOpen', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('sidebarLinkOpen', array(
         '_self' => '直接从当前页面跳转',
         '_blank' => '在新标签页中打开'
-    ), '_self', _t('侧边栏链接跳转方式'), _t('侧边栏链接包括了 最新文章区域、最新评论区域、文章分类区域、标签云区域、文章归档区域。'));
-    $form->addInput($sidebarLinkOpen);
+    ), '_self', _t('侧边栏链接跳转方式'), _t('侧边栏链接包括了 最新文章区域、最新评论区域、文章分类区域、标签云区域、文章归档区域。')));
 
     //  文章内容链接
-    $postLinkOpen = new Typecho_Widget_Helper_Form_Element_Radio('postLinkOpen', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('postLinkOpen', array(
         '_self' => '直接从当前页面跳转',
         '_blank' => '在新标签页中打开'
-    ), '_blank', _t('文章内的链接跳转方式'), _t('文章内的链接包括了普通文章中插入的链接和独立页面中插入的链接。'));
-    $form->addInput($postLinkOpen);
+    ), '_blank', _t('文章内的链接跳转方式'), _t('文章内的链接包括了普通文章中插入的链接和独立页面中插入的链接。')));
 
     //  侧边栏组件顺序
-    $sidebarComponent = new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。'));
-    $form->addInput($sidebarComponent);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('sidebarComponent', null, '博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接', _t('侧边栏组件'), _t('您可以设置需要显示在侧边栏的组件，组件会根据这里的组件名称排序。组件名称之间用英文逗号分隔，逗号和名称之间不需要空格，结尾不需要逗号。例如 博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接 。')));
 
     //  隐藏登录入口
-    $loginLink = new Typecho_Widget_Helper_Form_Element_Radio('loginLink', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('loginLink', array(
         'show' => '显示',
         'hide' => '隐藏'
-    ), 'show', _t('登录入口'), _t('隐藏登录入口后在前台就不会显示登录入口，只能通过 域名/admin/login.php 进入登录页面'));
-    $form->addInput($loginLink);
+    ), 'show', _t('登录入口'), _t('隐藏登录入口后在前台就不会显示登录入口，只能通过 域名/admin/login.php 进入登录页面')));
 
     //  侧边栏（移动端）
     $sidebarBlockM = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlockM',
@@ -132,40 +116,31 @@ EOT;
     $form->addInput($sidebarBlockM->multiMode());
 
     //  侧边栏博客信息博主头像地址
-    $avatarUrl = new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用默认头像。'));
-    $form->addInput($avatarUrl);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用默认头像。')));
 
     //  侧边栏博客信息区域博主昵称
-    $nickname = new Typecho_Widget_Helper_Form_Element_Text('nickname', null, null, _t('博主昵称'), _t('博主昵称会显示在侧边栏博客信息区域，如果省略会显示博客站点名称。'));
-    $form->addInput($nickname);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('nickname', null, null, _t('博主昵称'), _t('博主昵称会显示在侧边栏博客信息区域，如果省略会显示博客站点名称。')));
 
     //  侧边栏博客信息博主昵称链接
-    $nicknameUrl = new Typecho_Widget_Helper_Form_Element_Text('nicknameUrl', null, null, _t('博主昵称链接调转地址'), _t('在侧边栏的博客信息区域会显示一个包含博主昵称的链接，在这里可以填写链接的跳转地址，如果省略会使用博客首页地址。'));
-    $form->addInput($nicknameUrl);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('nicknameUrl', null, null, _t('博主昵称链接调转地址'), _t('在侧边栏的博客信息区域会显示一个包含博主昵称的链接，在这里可以填写链接的跳转地址，如果省略会使用博客首页地址。')));
 
     //  侧边栏博客信息博主简介
-    $Introduction = new Typecho_Widget_Helper_Form_Element_Text('Introduction', null, null, _t('博主简介'), _t('博主简介会显示在侧边栏博客信息区域的博主昵称下方，如果省略会使用设置中的站点描述信息。'));
-    $form->addInput($Introduction);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('Introduction', null, null, _t('博主简介'), _t('博主简介会显示在侧边栏博客信息区域的博主昵称下方，如果省略会使用设置中的站点描述信息。')));
 
     //  侧边栏博客信息的运行天数
-    $birthday = new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会显示为 0 天。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。'));
-    $form->addInput($birthday);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会显示为 0 天。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。')));
 
     //  侧边栏文章归档月份数量
-    $postArchiveCount = new Typecho_Widget_Helper_Form_Element_Text('postArchiveCount', null, '0', _t('侧边栏文章归档月份数量'), _t('您可以设置侧边栏文章归档要显示的月份数量，对于归档月份较多的博客来说，限制显示的月份数量可以避免侧边栏的文章归档过长。0 为不限制。'));
-    $form->addInput($postArchiveCount);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('postArchiveCount', null, '0', _t('侧边栏文章归档月份数量'), _t('您可以设置侧边栏文章归档要显示的月份数量，对于归档月份较多的博客来说，限制显示的月份数量可以避免侧边栏的文章归档过长。0 为不限制。')));
 
     //  文章归档页面地址
-    $archivePageUrl = new Typecho_Widget_Helper_Form_Element_Text('archivePageUrl', null, null, _t('文章归档页面地址'), _t('如果您启用了独立页文章归档并且限制了侧边栏的文章归档数量的话，可以在这里输入独立页文章归档的地址。填写独立页文章归档地址后在侧边栏的文章归档会显示 查看更多 的链接，点击就可以跳转到文章归档页。如果为空将不会显示 查看更多 链接。'));
-    $form->addInput($archivePageUrl);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('archivePageUrl', null, null, _t('文章归档页面地址'), _t('如果您启用了独立页文章归档并且限制了侧边栏的文章归档数量的话，可以在这里输入独立页文章归档的地址。填写独立页文章归档地址后在侧边栏的文章归档会显示 查看更多 的链接，点击就可以跳转到文章归档页。如果为空将不会显示 查看更多 链接。')));
 
     //  侧边栏标签数量
-    $tagCount = new Typecho_Widget_Helper_Form_Element_Text('tagCount', null, '0', _t('侧边栏标签云标签数量'), _t('对于标签较多的博客，可以设置侧边栏显示的标签数量，0 为不限制。'));
-    $form->addInput($tagCount);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('tagCount', null, '0', _t('侧边栏标签云标签数量'), _t('对于标签较多的博客，可以设置侧边栏显示的标签数量，0 为不限制。')));
 
     //  标签云页面地址
-    $tagPage = new Typecho_Widget_Helper_Form_Element_Text('tagPage', null, null, _t('标签云页面地址'), _t('如果您启用了独立的标签云页面并且限制了侧边栏的标签数量的话，可以在这里输入标签云页面的地址。填写后在侧边栏的标签云区域会显示查看更多的链接，点击就可以跳转到独立的标签云页面。如果为空将不会显示 查看更多 的链接。'));
-    $form->addInput($tagPage);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('tagPage', null, null, _t('标签云页面地址'), _t('如果您启用了独立的标签云页面并且限制了侧边栏的标签数量的话，可以在这里输入标签云页面的地址。填写后在侧边栏的标签云区域会显示查看更多的链接，点击就可以跳转到独立的标签云页面。如果为空将不会显示 查看更多 的链接。')));
 
     //  文章头图设置
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
@@ -176,82 +151,71 @@ EOT;
     $form->addInput($headerImage->multiMode());
 
     //  文章头图背景颜色
-    $headerImageBg = new Typecho_Widget_Helper_Form_Element_Radio('headerImageBg', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('headerImageBg', array(
         'random' => '随机颜色',
         'gray' => '灰色',
         'white' => '白色'
-    ), 'gray', _t('文章头图背景颜色'), _t('文章头图背景颜色是在图片加载完成之前或图片无法加载时显示的颜色，如果图片使用了透明背景是可以看到背景颜色的。'));
-    $form->addInput($headerImageBg);
+    ), 'gray', _t('文章头图背景颜色'), _t('文章头图背景颜色是在图片加载完成之前或图片无法加载时显示的颜色，如果图片使用了透明背景是可以看到背景颜色的。')));
 
     //  文章头图比例
-    $headerImageProportion = new Typecho_Widget_Helper_Form_Element_Radio('headerImageProportion', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('headerImageProportion', array(
         'fixed' => '固定宽高比 8 比 3',
         'not-fixed' => '不固定',
         'post-page-fixed' => '文章列表宽高比 8 比 3，文章内容页不固定'
-    ), 'fixed', _t('文章头图宽高比'), _t('使用固定宽高比，如果图片宽高比不符合，图片会自动裁剪来适配固定宽高比。使用不固定，图片宽度和文章区域一样，高度不固定。'));
-    $form->addInput($headerImageProportion);
+    ), 'fixed', _t('文章头图宽高比'), _t('使用固定宽高比，如果图片宽高比不符合，图片会自动裁剪来适配固定宽高比。使用不固定，图片宽度和文章区域一样，高度不固定。')));
 
     //  显示目录
-    $atalog = new Typecho_Widget_Helper_Form_Element_Radio('atalog', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('atalog', array(
         'show' => '显示',
         'hide' => '不显示'
-    ), 'hide', _t('在文章开头显示章节目录'), _t('章节目录会根据文章中的标题生成，如果文章中没有用到标题就不会生成目录。'));
-    $form->addInput($atalog);
+    ), 'hide', _t('在文章开头显示章节目录'), _t('章节目录会根据文章中的标题生成，如果文章中没有用到标题就不会生成目录。')));
 
     //  显示最后编辑时间
-    $modified = new Typecho_Widget_Helper_Form_Element_Radio('modified', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('modified', array(
         'show' => '显示',
         'hide' => '不显示'
-    ), 'show', _t('在文章下方显示最后修改时间'));
-    $form->addInput($modified);
+    ), 'show', _t('在文章下方显示最后修改时间')));
 
     //  文章摘要字数
-    $summary = new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。'));
-    $form->addInput($summary);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。')));
 
     //  显示代码行号
-    $codeLineNum = new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
         'show' => '显示',
         'hide' => '不显示'
-    ), 'show', _t('代码块显示行号'), _t('开启后文章的代码块会显示行号'));
-    $form->addInput($codeLineNum);
+    ), 'show', _t('代码块显示行号'), _t('开启后文章的代码块会显示行号')));
 
     //  代码块配色
-    $codeThemeColor = new Typecho_Widget_Helper_Form_Element_Radio('codeThemeColor', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeThemeColor', array(
         'stackoverflow-light' => 'Stack Overflow（浅色）',
         'vs2015' => 'VS2015（深色）'
-    ), 'vs2015', _t('代码块颜色主题'));
-    $form->addInput($codeThemeColor);
+    ), 'vs2015', _t('代码块颜色主题')));
 
     //  评论框位置
-    $commentInput = new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
         'top' => '评论框在评论列表上方',
         'bottom' => '评论框在评论列表下方'
-    ), 'bottom', _t('评论框位置'), _t('评论框就是发表评论的区域，评论列表就是已发表的评论区域'));
-    $form->addInput($commentInput);
+    ), 'bottom', _t('评论框位置'), _t('评论框就是发表评论的区域，评论列表就是已发表的评论区域')));
 
     //  评论日期时间格式
-    $commentDateFormat = new Typecho_Widget_Helper_Form_Element_Radio('commentDateFormat', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentDateFormat', array(
         'format1' => '2020年04月23日 13:09',
         'format2' => '2020-04-23 13:09',
         'format3' => 'April 23rd, 2020 at 01:09 pm',
         'format4' => '时间间隔（3天前）'
-    ), 'format1', _t('评论日期时间格式'), _t('时间间隔的单位会根据间隔长短变化，不到一分钟的单位为 秒，一分钟以上、一小时以下的单位为 分钟，一小时以上、一天以下的单位为 小时，一天以上的单位为 天，'));
-    $form->addInput($commentDateFormat);
+    ), 'format1', _t('评论日期时间格式'), _t('时间间隔的单位会根据间隔长短变化，不到一分钟的单位为 秒，一分钟以上、一小时以下的单位为 分钟，一小时以上、一天以下的单位为 小时，一天以上的单位为 天，')));
 
     //  QQ头像
-    $QQAvatar = new Typecho_Widget_Helper_Form_Element_Radio('QQAvatar', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('QQAvatar', array(
         'on' => '开启',
         'off' => '关闭'
-    ), 'off', _t('使用QQ头像'), _t('开启后如果检测到评论者的邮箱为QQ邮箱就会显示对应的QQ头像，即便QQ邮箱注册了Gravatar也会显示QQ头像，QQ邮箱以外的邮箱会显示Gravatar头像。'));
-    $form->addInput($QQAvatar);
+    ), 'off', _t('使用QQ头像'), _t('开启后如果检测到评论者的邮箱为QQ邮箱就会显示对应的QQ头像，即便QQ邮箱注册了Gravatar也会显示QQ头像，QQ邮箱以外的邮箱会显示Gravatar头像。')));
 
     //  Emoji面板
-    $emojiPanel = new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
         'off' => '关闭'
-    ), 'off', _t('评论区Emoji表情选择面板'), _t('开启后会在评论区的评论内容输入框下方显示一个 Emoji表情按钮，点击后会显示一个 Emoji表情面板。'));
-    $form->addInput($emojiPanel);
+    ), 'off', _t('评论区Emoji表情选择面板'), _t('开启后会在评论区的评论内容输入框下方显示一个 Emoji表情按钮，点击后会显示一个 Emoji表情面板。')));
 
     //  导航栏
     $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(
@@ -261,35 +225,28 @@ EOT;
     $form->addInput($navBar->multiMode());
 
     //  面包屑导航
-    $breadcrumb = new Typecho_Widget_Helper_Form_Element_Radio('breadcrumb', array(
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('breadcrumb', array(
         'on' => '开启',
         'off' => '关闭'
-    ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。'));
-    $form->addInput($breadcrumb);
+    ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。')));
 
     //  首页友链
-    $homeLinks = new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', NULL, NULL, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
-    $form->addInput($homeLinks);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。')));
 
     //  全站友链
-    $links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, NULL, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
-    $form->addInput($links);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。')));
 
     //  独立页友链
-    $pageLinks = new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。'));
-    $form->addInput($pageLinks);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。')));
 
     //  自定义CSS
-    $cssCode = new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', NULL, NULL, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。'));
-    $form->addInput($cssCode);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', null, null, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。')));
 
     //  自定义 head 输出的 HTML
-    $headHTML = new Typecho_Widget_Helper_Form_Element_Textarea('headHTML', null, null, _t('自定义 head 区域输出的 HTML'), _t('head 区域的 HTML 会在 head 内输出，可以用来定义一些网站统计的 JS 之类的。'));
-    $form->addInput($headHTML);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('headHTML', null, null, _t('自定义 head 区域输出的 HTML'), _t('head 区域的 HTML 会在 head 内输出，可以用来定义一些网站统计的 JS 之类的。')));
 
     //  自定义 body 底部的 HTML
-    $bodyHTML = new Typecho_Widget_Helper_Form_Element_Textarea('bodyHTML', null, null, _t('自定义 body 底部输出的 HTML'), _t('body 底部的 HTML 会在 footer 之后 body 尾部之前输出。'));
-    $form->addInput($bodyHTML);
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('bodyHTML', null, null, _t('自定义 body 底部输出的 HTML'), _t('body 底部的 HTML 会在 footer 之后 body 尾部之前输出。')));
 }
 
 //  检测是否是QQ邮箱
