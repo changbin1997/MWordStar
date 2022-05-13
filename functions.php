@@ -7,10 +7,10 @@ function themeFields($layout) {
         'article' => '使用文章中的第一张图片作为文章头图',
         'url' => '在文章头图输入框手动输入图片URL',
         'hide' => '不显示文章头图'
-    ), 'article', _t('文章头图来源'), _t('如果文章头图 URL 为空或文章内容中没有图片将不会显示文章头图。')));
+    ), 'article', _t('文章头图来源'), _t('如果选择了使用文章中的第一张图片作为文章头图，在文章不包含图片的情况下将不会显示文章头图。')));
 
     //  文章头图
-    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('文章头图'), _t('如果您在文章头图来源中设置了手动输入图片 URL 的话，请在这里输入图片 URL。')));
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('thumb', null, null, _t('文章头图'), _t('如果您在文章头图来源中设置了手动输入图片 URL 的话，请在这里输入图片 URL。')));
 
     //  自定义文章摘要内容
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Textarea('summaryContent', null, null, _t('自定义摘要内容'), _t('您可以在此处为文章定义摘要内容，此处定义的摘要内容不受字数限制。')));
@@ -22,20 +22,20 @@ function themeFields($layout) {
     ), 'show', _t('显示原创声明'), _t('开启后会在本篇文章底部显示版权声明。')));
 
     //  自定义关键词
-    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('keywords', NULL, NULL, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。')));
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('keywords', null, null, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。')));
 }
 
 //  外观设置
 function themeConfig($form) {
     echo <<<EOT
     <p>您现在使用的是 MWordStar 的开发版，开发板暂无版本号。<a href="https://github.com/changbin1997/MWordStar/releases" target="_blank">点击查看发行版</a></p>
-    <p>主题使用帮助 <a href="https://mwordstar.misterma.com/" target="_blank">点击查看帮助文档</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 留言。</p>
+    <p>主题使用帮助 <a href="https://mwordstar.misterma.com/" target="_blank">点击查看帮助文档</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 或 <a target="_blank" href="https://www.misterma.com/archives/812/">主题介绍页</a> 留言，因为我有两个主题，为了更高效的解决问题，建议到 <a target="_blank" href="https://www.misterma.com/archives/812/">主题介绍页</a> 留言，</p>
     <button id="export-btn" type="button" class="btn">导出主题配置文件</button>
     <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
     <a href="javascript:;" id="download-file" style="display: none;">下载</a>
     <input type="file" id="file-select" style="display: none;">
     <br/>
-    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，<b>导入主题配置文件</b> 可以导入 <b>MWordStar</b> 主题的 JSON 配置文件。</p>
+    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，主要用来备份主题设置，<b>导入主题配置文件</b> 可以导入 <b>MWordStar</b> 主题的 JSON 配置文件。Typecho 切换主题的时候会清空主题设置，为了避免重复设置，在切换主题之前可以先导出主题设置配置。</p>
 EOT;
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';
@@ -57,13 +57,13 @@ EOT;
     ), 'fillet', _t('主题元素风格'), _t('这里的元素风格包括了 区块、按钮、输入表单、标签')));
 
     //  站点Logo
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 Logo 地址'), _t('Logo 会显示在标签页的标题前面。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('logoUrl', null, null, _t('站点 Logo 地址'), _t('Logo 是一个 ico 格式的 icon 图标，会显示在标签页的标题前面。')));
 
     //  站点副标题
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('tagline', null, '生命不息，折腾不止', _t('站点副标题'), _t('站点副标题会显示在标签页标题的后面。')));
 
     //  ICP信息
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('icp', null, null, _t('ICP 备案号'), _t('ICP 备案号会显示在网站的底部。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('icp', null, null, _t('ICP 备案号'), _t('ICP 备案号会显示在网站的底部，可支持链接。')));
 
     //  返回顶部按钮
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('toTop', array(
@@ -73,19 +73,19 @@ EOT;
 
     //  文章列表链接跳转
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('listLinkOpen', array(
-        '_self' => '直接从当前页面跳转',
+        '_self' => '直接从当前标签页跳转',
         '_blank' => '在新标签页中打开'
     ), '_self', _t('文章列表的文章链接跳转方式'), _t('这里的文章列表包括 首页、分类页、标签页、搜索页 左侧的文章链接。')));
 
     //  侧边栏链接跳转
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('sidebarLinkOpen', array(
-        '_self' => '直接从当前页面跳转',
+        '_self' => '直接从当前标签页跳转',
         '_blank' => '在新标签页中打开'
     ), '_self', _t('侧边栏链接跳转方式'), _t('侧边栏链接包括了 最新文章区域、最新评论区域、文章分类区域、标签云区域、文章归档区域。')));
 
     //  文章内容链接
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('postLinkOpen', array(
-        '_self' => '直接从当前页面跳转',
+        '_self' => '直接从当前标签页跳转',
         '_blank' => '在新标签页中打开'
     ), '_blank', _t('文章内的链接跳转方式'), _t('文章内的链接包括了普通文章中插入的链接和独立页面中插入的链接。')));
 
@@ -177,7 +177,7 @@ EOT;
     ), 'show', _t('在文章下方显示最后修改时间')));
 
     //  文章摘要字数
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', NULL, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。')));
 
     //  显示代码行号
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(
@@ -231,13 +231,13 @@ EOT;
     ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。')));
 
     //  首页友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据。如需查看详细说明可以访问：https://mwordstar.misterma.com/docs/doc10。')));
 
     //  全站友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据。如需查看详细说明可以访问：https://mwordstar.misterma.com/docs/doc10。')));
 
     //  独立页友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 友情链接。如需查看详细说明可以访问：https://www.misterma.com/archives/819/。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式 数据。如果要使用独立页友情链接需要创建一个独立页面，把 自定义模板设置为 友情链接。如需查看详细说明可以访问：https://mwordstar.misterma.com/docs/doc10。')));
 
     //  自定义CSS
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', null, null, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。')));
