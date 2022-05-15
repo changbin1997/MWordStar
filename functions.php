@@ -116,10 +116,10 @@ EOT;
     $form->addInput($sidebarBlockM->multiMode());
 
     //  侧边栏博客信息博主头像地址
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用默认头像。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用管理员的 Gravatar 头像。')));
 
     //  侧边栏博客信息区域博主昵称
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('nickname', null, null, _t('博主昵称'), _t('博主昵称会显示在侧边栏博客信息区域，如果省略会显示博客站点名称。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('nickname', null, null, _t('博主昵称'), _t('博主昵称会显示在侧边栏博客信息区域，如果省略会显示管理员昵称。')));
 
     //  侧边栏博客信息博主昵称链接
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('nicknameUrl', null, null, _t('博主昵称链接调转地址'), _t('在侧边栏的博客信息区域会显示一个包含博主昵称的链接，在这里可以填写链接的跳转地址，如果省略会使用博客首页地址。')));
@@ -128,7 +128,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('Introduction', null, null, _t('博主简介'), _t('博主简介会显示在侧边栏博客信息区域的博主昵称下方，如果省略会使用设置中的站点描述信息。')));
 
     //  侧边栏博客信息的运行天数
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会显示为 0 天。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('birthday', null, null, _t('站点创建时间'), _t('在这里填写站点创建时间后，在侧边栏的博客信息区域就会显示网站运行天数。如果省略 网站运行天数会从管理员账号创建的时间开始计算天数。站点创建时间的格式为：yyyy-mm-dd，例如：2019-11-11。')));
 
     //  侧边栏文章归档月份数量
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('postArchiveCount', null, '0', _t('侧边栏文章归档月份数量'), _t('您可以设置侧边栏文章归档要显示的月份数量，对于归档月份较多的博客来说，限制显示的月份数量可以避免侧边栏的文章归档过长。0 为不限制。')));
@@ -829,4 +829,16 @@ function getParentCategory($categoryId) {
     $db = Typecho_Db::get();
     $category = $db->fetchRow($db->select()->from('table.metas')->where('mid = ?', $categoryId));
     return $category['name'];
+}
+
+// 获取管理员信息
+function getAdminInfo() {
+    $db = Typecho_Db::get();
+    $userInfo = $db->fetchRow($db->select('mail', 'url', 'screenName', 'created')->from('table.users')->where('group = ?', 'administrator'));
+    return $userInfo;
+}
+
+// 获取 Gravatar 头像
+function gravatarUrl($email, $size) {
+    echo 'https://sdn.geekzu.org/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
 }

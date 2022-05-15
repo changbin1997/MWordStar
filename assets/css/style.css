@@ -367,6 +367,13 @@ header .navbar .search-btn-light:focus {
   margin: 0 auto;
   transition: 0.4s;
 }
+.sidebar section .personal-information .user .pingback {
+  width: 72px;
+  height: 72px;
+  line-height: 72px;
+  border-radius: 50%;
+  font-size: 24px;
+}
 .sidebar section .personal-information .user .user-name {
   display: block;
   font-size: 16px;

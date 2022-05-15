@@ -405,6 +405,13 @@ header {
           margin: 0 auto;
           transition: 0.4s;
         }
+        .pingback {
+          width: 72px;
+          height: 72px;
+          line-height: 72px;
+          border-radius: 50%;
+          font-size: 24px;
+        }
         .user-name {
           display: block;
           font-size: 16px;
