@@ -6,8 +6,6 @@
 * Licensed under MIT
 */
 
-@import "highlight";
-
 $articleFontSize: 15px; //  文章字体大小
 $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
 
@@ -294,6 +292,52 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   background: #17a2b8;
   color: #ffffff;
 }
+
+
+//  代码高亮的主题样式
+//  stackoverflow-light 样式
+.stackoverflow-light {
+  pre {
+    background: #F6F6F6;
+    .line-box {
+      background: #F6F6F6;
+      div {
+        color: #777777;
+        border-right: 1px solid #777777;
+      }
+    }
+  }
+  @import "stackoverflow-light.min";
+}
+//  vs2015样式
+.vs2015 {
+  pre {
+    background: #1E1E1E;
+    .line-box {
+      background: #1E1E1E;
+      div {
+        color: #9B9B9B;
+        border-right: 1px solid #9B9B9B;
+      }
+    }
+  }
+  @import "vs2015.min";
+}
+//  Sunburst高对比度样式
+.sunburst {
+  pre {
+    background: #000000;
+    .line-box {
+      background: #000000;
+      div {
+        color: #AEAEAE;
+        border-right: 1px solid #AEAEAE;
+      }
+    }
+  }
+  @import "sunburst.min";
+}
+
 
 body {
   background: #e4e4e4;

@@ -188,7 +188,8 @@ EOT;
     //  代码块配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeThemeColor', array(
         'stackoverflow-light' => 'Stack Overflow（浅色）',
-        'vs2015' => 'VS2015（深色）'
+        'vs2015' => 'VS2015（深色）',
+        'sunburst' => 'Sunburst（高对比度）'
     ), 'vs2015', _t('代码块颜色主题')));
 
     //  评论框位置
