@@ -1335,36 +1335,93 @@ footer .container span {
 }
 
 /*独立页面-文章归档*/
-.link-box {
+.archive .archives {
+  position: relative;
+}
+.archive .archives::before {
+  width: 2px;
+  height: 100%;
+  background: #BBBBBB;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 49px;
+}
+.archive .archives .archives-item {
+  position: relative;
+}
+.archive .archives .archives-item h2 {
+  font-size: 12px !important;
+  background: #FCFCFC;
+  width: 84px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 4px;
+  position: relative;
+  z-index: 10;
+  left: 8px;
+  cursor: pointer;
+  border: 1px solid #BBBBBB;
+}
+.archive .archives .archives-item ul {
+  padding-left: 0;
+  list-style: none;
+}
+.archive .archives .archives-item ul li {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+}
+.archive .archives .archives-item ul li:hover .timeline {
+  background: #6C757D;
+}
+.archive .archives .archives-item ul li .day {
+  display: block;
+  width: 36px;
+  text-align: center;
+  flex: none;
+}
+.archive .archives .archives-item ul li .timeline {
+  width: 8px;
+  height: 8px;
+  background: #BBBBBB;
+  border-radius: 50%;
+  margin: 0 10px;
+  flex: none;
+}
+
+.link-page .link-box {
   background: #f9f9f9;
   margin: 0 0 20px 0;
 }
-.link-box .link-grid {
+.link-page .link-box .link-grid {
   padding: 15px;
   border-radius: 4px;
 }
-.link-box .link-grid .link {
+.link-page .link-box .link-grid .link {
   background: #ffffff;
   box-shadow: 0 2px 0 rgba(170, 170, 170, 0.1);
   padding: 10px;
   display: block;
 }
-.link-box .link-grid .link .link-logo {
+.link-page .link-box .link-grid .link .link-logo {
   width: 32px;
   height: 32px;
   margin: 0 10px 0 0;
 }
-.link-box .link-grid .link .icon-logo {
+.link-page .link-box .link-grid .link .icon-logo {
   background: #0a73b3;
   color: #ffffff;
   text-align: center;
   line-height: 32px;
 }
-.link-box .link-grid .link .link-name {
+.link-page .link-box .link-grid .link .link-name {
   display: inline-block;
   line-height: 32px;
 }
-.link-box .link-grid .link p {
+.link-page .link-box .link-grid .link p {
   font-size: 12px;
   margin: 10px 0 0 0;
   line-height: 18px;
@@ -1372,10 +1429,10 @@ footer .container span {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.link-box .link-grid .link img {
+.link-page .link-box .link-grid .link img {
   background: #E0E0E0;
 }
-.link-box .link-grid .link:hover {
+.link-page .link-box .link-grid .link:hover {
   box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
 }
 
