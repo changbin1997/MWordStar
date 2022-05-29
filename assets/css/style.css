@@ -263,6 +263,14 @@
   font-weight: 700;
 }
 
+.post-content[data-code-line-num=show] pre code {
+  padding: 12px 10px;
+}
+
+.post-content[data-code-line-num=hide] pre code {
+  padding: 12px 16px;
+}
+
 body {
   background: #e4e4e4;
 }
@@ -856,9 +864,6 @@ footer .container span {
   -ms-user-select: none;
   user-select: none;
 }
-.article-page main article .post-content pre code, .archive main article .post-content pre code, .page main article .post-content pre code {
-  padding: 12px 10px;
-}
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
 }
@@ -1169,9 +1174,6 @@ footer .container span {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre code {
-  padding: 12px 10px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content table td {
   min-width: 90px;

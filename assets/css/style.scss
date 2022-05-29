@@ -228,9 +228,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
         user-select: none;
       }
     }
-    code {
-      padding: 12px 10px;
-    }
   }
   table td {
     min-width: 90px;
@@ -336,6 +333,22 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     }
   }
   @import "sunburst.min";
+}
+//  包含行号的样式
+.post-content[data-code-line-num="show"] {
+  pre {
+    code {
+      padding: 12px 10px;
+    }
+  }
+}
+//  不包含行号的样式
+.post-content[data-code-line-num="hide"] {
+  pre {
+    code {
+      padding: 12px 16px;
+    }
+  }
 }
 
 
