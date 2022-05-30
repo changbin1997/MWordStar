@@ -2,6 +2,8 @@
 
 这是一套简洁的 [Typecho](https://typecho.org/) 双栏博客主题，也是 [我的博客](https://www.misterma.com/) 之前使用的主题。
 
+我现在使用的主题是 [Facile](https://github.com/changbin1997/Facile) ，有兴趣的话也可以访问 [我的博客](https://www.misterma.com/) 或 [Github](https://github.com/changbin1997/Facile) 查看。
+
 主题演示地址：[https://changbin1997.github.io/MWordStar-Light/web/](https://changbin1997.github.io/MWordStar-Light/web/)
 
 主题包含几套不同风格的配色，您可以在主题设置中切换，下面是各种配色的演示地址：
@@ -86,7 +88,7 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 
 ### 代码高亮
 
-代码高亮的样式使用的是 VS2015 的暗色主题，和 Visual Studio Code 的默认主题差不多。主题支持 30 多种语言的代码高亮。详细的说明可以查看 [使用说明](https://www.misterma.com/archives/819/) 。
+代码高亮目前包含三套主题配色，分别是 Stack Overflow（浅色）、VS2015（深色）、Sunburst（高对比度）。主题支持 30 多种语言的代码高亮，详细的语言支持列表和说明可以查看 [使用说明](https://mwordstar.misterma.com/docs/doc13) 。
 
 ### 友情链接
 
@@ -167,7 +169,7 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 ### 兼容性
 
-因为本主题使用了 HTML5 和 CSS3，需要 IE10 及以上浏览器才能完美兼容。IE8 及以下浏览器显示可能会出现一些问题。
+主题使用了少量的 CSS3，浏览器需要达到 IE10 才能完美兼容，IE8 和 9 也能使用，但是有些页面的显示 例如代码高亮和时间线显示可能会出现稍微偏移的情况。
 
 ### 插件适配
 
@@ -182,8 +184,6 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 ## 其它
 
 主题 Github：[https://github.com/changbin1997/MWordStar](https://github.com/changbin1997/MWordStar)
-
-码云仓库地址：[https://gitee.com/changbin1997/MWordStar](https://gitee.com/changbin1997/MWordStar)
 
 主题使用 [MIT License](https://github.com/changbin1997/MWordStar/blob/master/LICENSE) 开源。
 
