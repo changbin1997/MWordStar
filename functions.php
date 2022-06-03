@@ -23,6 +23,9 @@ function themeFields($layout) {
 
     //  自定义关键词
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('keywords', null, null, _t('自定义关键词'), _t('您可以输入这篇文章的关键词，多个关键词之间用英文逗号分隔，如果为空 会使用这篇文章的标签作为关键词。')));
+
+    //  文章有效期
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('expired', null, '0', _t('文章有效期'), _t('有的文章可能只是在某个时间段内有用，发布后如果长时间不更新的话，可能会给读者带去错误的信息。文章有效期可以设置一个天数，过了指定天数后，在文章开头会显示一条警示信息。0 或留空不显示。')));
 }
 
 //  外观设置
@@ -842,4 +845,9 @@ function getAdminInfo() {
 // 获取 Gravatar 头像
 function gravatarUrl($email, $size) {
     echo 'https://sdn.geekzu.org/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+}
+
+// 计算两个时间之间相差的天数
+function getDays($time1, $time2) {
+    return floor(($time2 - $time1) / 86400);
 }

@@ -90,6 +90,9 @@ $this->need('components/header.php');
                 </div>
                 <!--文章内容-->
                 <article>
+                    <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
+                        <div class="alert alert-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
+                    <?php endif; ?>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" data-color="<?php echo $color['link']; ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $this->options->atalog == 'show'?catalog($this->content):$this->content(); ?>
                     </div>
