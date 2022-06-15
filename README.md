@@ -188,3 +188,9 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 主题使用 [MIT License](https://github.com/changbin1997/MWordStar/blob/master/LICENSE) 开源。
 
 如果您在使用这个主题时遇到 Bug 或有任何问题和建议都可以在 [博客评论区](https://www.misterma.com/archives/812/#comments) 留言，也可以在 Github 的 [issues](https://github.com/changbin1997/MWordStar/issues) 反馈。
+
+## 赞助
+
+如果感觉主题用着还可以的话，也可以扫描下方的二维码来赞助本项目，金额随意：
+
+![支付宝和微信的收款码](screenshot/qr-code.jpeg)
