@@ -48,9 +48,10 @@ $(function () {
         // 根据代码块的配色设置拷贝按钮的颜色
         btnEl.className += $('.stackoverflow-light').length?' btn-outline-secondary':' btn-outline-light';
         btnEl.setAttribute('type', 'button');
-        btnEl.innerHTML = 'Copy';
+        btnEl.innerHTML = '<i class="icon-copy"></i>';
         btnEl.setAttribute('data-clipboard-target', '#code-' + i);
         btnEl.setAttribute('title', '拷贝代码');
+        btnEl.setAttribute('aria-label', '拷贝代码');
         btnEl.setAttribute('data-toggle', 'tooltip');
         btnEl.setAttribute('data-placement', 'left');
         btnEl.setAttribute('id', 'copy-btn-' + i);

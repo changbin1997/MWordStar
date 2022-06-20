@@ -154,7 +154,7 @@ $this->need('components/header.php');
                         <span>分享到新浪微博</span>
                     </a>
                     <a target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php echo $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-primary btn-block <?php echo $rounded; ?>">
-                        <i class="icon-qzone"></i>
+                        <i class="icon-qzone-logo"></i>
                         <span>分享到QQ空间</span>
                     </a>
                 </div>
