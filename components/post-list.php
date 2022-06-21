@@ -6,13 +6,7 @@
             <?php $img = postImg($this); ?>
             <?php if ($img): ?>
                 <div class="header-img">
-                    <?php if ($this->options->headerImageProportion == 'not-fixed'): ?>
-                    <a target="<?php $this->options->listLinkOpen(); ?>" href="<?php $this->permalink(); ?>">
-                        <img src="<?php echo $img; ?>" alt="<?php $this->title(); ?>的头图" style="background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;">
-                    </a>
-                    <?php else: ?>
                     <a target="<?php $this->options->listLinkOpen(); ?>" tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title(); ?>的头图" style="background-image: url(<?php echo $img; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>
-                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         <?php endif; ?>
