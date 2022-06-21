@@ -2,11 +2,19 @@
 
 //  文章的自定义字段
 function themeFields($layout) {
+    // 文章头图显示设置
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('headerImgDisplay', array(
+        'default' => '使用系统设置',
+        'post-page-list' => '在文章列表和文章页显示文章头图',
+        'post-list' => '只在文章列表显示文章头图',
+        'post-page' => '只在文章页显示文章头图',
+        'hide' => '不显示文章头图'
+    ), 'default', _t('文章头图显示设置'), _t('您可以单独给文章设置文章头图显示。')));
+
     //  文章头图来源
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('imageSource', array(
         'article' => '使用文章中的第一张图片作为文章头图',
-        'url' => '在文章头图输入框手动输入图片URL',
-        'hide' => '不显示文章头图'
+        'url' => '在文章头图输入框手动输入图片URL'
     ), 'article', _t('文章头图来源'), _t('如果选择了使用文章中的第一张图片作为文章头图，在文章不包含图片的情况下将不会显示文章头图。')));
 
     //  文章头图
@@ -387,24 +395,43 @@ function headerImageBgColor($color) {
     return $bgColor[$color];
 }
 
+// 获取文章头图显示设置
+function headerImageDisplay($t, $options) {
+    // 在文章列表和文章页显示文章头图
+    if ($t->fields->headerImgDisplay == 'post-page-list') {
+        return postImg($t);
+    }
+    // 在文章列表显示文章头图
+    if ($t->fields->headerImgDisplay == 'post-list' && $t->is('index') or $t->is('archive')) {
+        return postImg($t);
+    }
+    // 在文章页显示文章头图
+    if ($t->fields->headerImgDisplay == 'post-page' && $t->is('post')) {
+        return postImg($t);
+    }
+    // 使用系统文章头图设置
+    if ($t->fields->headerImgDisplay == 'default' or $t->fields->headerImgDisplay == null) {
+        if (is_array($options) && in_array('home', $options) && $t->is('index')) {
+            return postImg($t);
+        }
+        if (is_array($options) && in_array('post', $options) && $t->is('post') or $t->is('page')) {
+            return postImg($t);
+        }
+    }
+    // 不显示文章头图
+    if ($t->fields->headerImgDisplay == 'hide') return false;
+    return false;
+}
+
 //  根据设置获取文章头图
 function postImg($a) {
-    if (!$a->fields->imageSource) {
-        $img = getPostImg($a);
-        return $img == 'none'?false:$img;
+    // 手动输入文章头图
+    if ($a->fields->imageSource == 'url' && $a->fields->thumb != '') {
+        return $a->fields->thumb;
     }
-    switch ($a->fields->imageSource) {
-        case 'url':
-            return $a->fields->thumb?$a->fields->thumb:false;
-            break;
-        case 'article':
-            $img = getPostImg($a);
-            return $img == 'none'?false:$img;
-            break;
-        default:
-            return false;
-            break;
-    }
+    // 默认使用第一张图片作为文章头图
+    $img = getPostImg($a);
+    return $img == 'none'?false:$img;
 }
 
 //  获取文章的第一张图片

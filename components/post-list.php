@@ -2,13 +2,11 @@
 
 <?php while ($this->next()):  //  开始循环  ?>
     <div class="post <?php echo $rounded; ?>">
-        <?php if ($this->options->headerImage && in_array('home', $this->options->headerImage)): ?>
-            <?php $img = postImg($this); ?>
-            <?php if ($img): ?>
-                <div class="header-img">
-                    <a target="<?php $this->options->listLinkOpen(); ?>" tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title(); ?>的头图" style="background-image: url(<?php echo $img; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>
-                </div>
-            <?php endif; ?>
+        <?php $headerImg = headerImageDisplay($this, $this->options->headerImage); ?>
+        <?php if ($headerImg): ?>
+            <div class="header-img border-top">
+                <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $headerImg; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>
+            </div>
         <?php endif; ?>
         <header class="entry-header border-bottom">
             <h2 class="entry-title p-name">
