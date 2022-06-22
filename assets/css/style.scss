@@ -123,6 +123,31 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   .article-info {
     @include articleInfo;
   }
+  //  小头图模式
+  .entry-summary[data-header-image-type="mini"] {
+    //  图片区域
+    .mini-header-image a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-color: #E0E0E0;
+      &:after {
+        content: '';
+        padding-bottom: 66.66%;
+        display: block;
+      }
+    }
+    //  文字区域
+    .content-box p {
+      max-height: 120px;
+      overflow-y: hidden;
+      margin-bottom: 0;
+    }
+  }
 }
 //  通用的文章列表样式手机版
 @mixin postM {
@@ -1201,6 +1226,13 @@ footer {
 }
 //  >= 992 且 <= 1199
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+  //  小头图模式的文章列表
+  .entry-summary[data-header-image-type="mini"] {
+    .content-box p {
+      overflow-y: hidden;
+      max-height: 100px !important;
+    }
+  }
   //  侧边栏
   .sidebar {
     margin-top: 15px;
@@ -1216,6 +1248,13 @@ footer {
 }
 //  >= 768 且 <=991
 @media screen and (min-width: 768px) and (max-width: 991px) {
+  //  小头图模式的文章列表
+  .entry-summary[data-header-image-type="mini"] {
+    .content-box p {
+      overflow-y: hidden;
+      max-height: 120px !important;
+    }
+  }
   //  侧边栏
   .sidebar section {
     margin-left: 0;
@@ -1231,6 +1270,13 @@ footer {
 }
 //  >= 576 且 <= 767
 @media screen and (min-width: 576px) and (max-width: 767px) {
+  //  小头图模式的文章列表
+  .entry-summary[data-header-image-type="mini"] {
+    .content-box p {
+      overflow-y: hidden;
+      max-height: 100px !important;
+    }
+  }
   //  侧边栏的文章头图
   .latest-articles-active {
     height: 222px;
@@ -1254,6 +1300,13 @@ footer {
   .container .article-list {
     .post {
       @include postM;
+    }
+  }
+  //  小头图模式的文章列表
+  .entry-summary[data-header-image-type="mini"] {
+    .content-box p {
+      overflow-y: hidden;
+      max-height: 70px !important;
     }
   }
   //  文章页

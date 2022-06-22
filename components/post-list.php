@@ -3,7 +3,7 @@
 <?php while ($this->next()):  //  开始循环  ?>
     <div class="post <?php echo $rounded; ?>">
         <?php $headerImg = headerImageDisplay($this, $this->options->headerImage); ?>
-        <?php if ($headerImg): ?>
+        <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'max' && $headerImg): ?>
             <div class="header-img border-top">
                 <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $headerImg; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>
             </div>
@@ -14,8 +14,19 @@
                 <a href="<?php $this->permalink() ?>" rel="bookmark" target="<?php $this->options->listLinkOpen(); ?>"><?php $this->title() ?></a>
             </h2>
         </header>
-        <div class="entry-summary">
-            <p><?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?></p>
+        <div class="entry-summary" data-header-image-type="<?php echo getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle); ?>">
+            <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'mini' && $headerImg): ?>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-5 mini-header-image">
+                        <a href="<?php $this->permalink(); ?>" aria-hidden="true" aria-label="文章头图" style="background-image: url(<?php echo $headerImg; ?>);" tabindex="-1"></a>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-7 col-7 content-box">
+                        <p><?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?></p>
+                    </div>
+                </div>
+            <?php else: ?>
+                <p><?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?></p>
+            <?php endif; ?>
         </div>
         <div class="article-info clearfix border-top" role="group" aria-label="文章信息">
             <!--时间-->

@@ -402,6 +402,26 @@ header .navbar .search-btn-light:focus {
 .container .article-list .post .article-info .category a {
   margin-right: 3px;
 }
+.container .article-list .post .entry-summary[data-header-image-type=mini] .mini-header-image a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-color: #E0E0E0;
+}
+.container .article-list .post .entry-summary[data-header-image-type=mini] .mini-header-image a:after {
+  content: "";
+  padding-bottom: 66.66%;
+  display: block;
+}
+.container .article-list .post .entry-summary[data-header-image-type=mini] .content-box p {
+  max-height: 120px;
+  overflow-y: hidden;
+  margin-bottom: 0;
+}
 
 .main-content {
   margin-top: 15px;
@@ -1332,6 +1352,26 @@ footer .container span {
 .archives-list .archives .post .article-info .category a {
   margin-right: 3px;
 }
+.archives-list .archives .post .entry-summary[data-header-image-type=mini] .mini-header-image a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-color: #E0E0E0;
+}
+.archives-list .archives .post .entry-summary[data-header-image-type=mini] .mini-header-image a:after {
+  content: "";
+  padding-bottom: 66.66%;
+  display: block;
+}
+.archives-list .archives .post .entry-summary[data-header-image-type=mini] .content-box p {
+  max-height: 120px;
+  overflow-y: hidden;
+  margin-bottom: 0;
+}
 .archives-list .archives .post > .post-title {
   padding: 20px 25px;
 }
@@ -1469,6 +1509,11 @@ footer .container span {
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+  .entry-summary[data-header-image-type=mini] .content-box p {
+    overflow-y: hidden;
+    max-height: 100px !important;
+  }
+
   .sidebar {
     margin-top: 15px;
   }
@@ -1478,6 +1523,11 @@ footer .container span {
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
+  .entry-summary[data-header-image-type=mini] .content-box p {
+    overflow-y: hidden;
+    max-height: 120px !important;
+  }
+
   .sidebar section {
     margin-left: 0;
   }
@@ -1487,6 +1537,11 @@ footer .container span {
   }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
+  .entry-summary[data-header-image-type=mini] .content-box p {
+    overflow-y: hidden;
+    max-height: 100px !important;
+  }
+
   .latest-articles-active {
     height: 222px;
   }
@@ -1529,6 +1584,11 @@ footer .container span {
   }
   .container .article-list .post .article-info {
     padding: 10px 20px;
+  }
+
+  .entry-summary[data-header-image-type=mini] .content-box p {
+    overflow-y: hidden;
+    max-height: 70px !important;
   }
 
   .article-page main, .page main, .archive main {
