@@ -31,6 +31,14 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 
 ![MWordStar直角风格首页截图](screenshot/16043686924621.jpg)
 
+小头图模式：
+
+![MWordStar小头图模式截图](screenshot/mini-header-image.png)
+
+也可以给文章设置单独的头图样式：
+
+![MWordStar大头图和小头图搭配使用的截图](screenshot/mini-header-image2.png)
+
 不同配色的截图：
 
 ![MWordStar不同配色的截图](screenshot/16043687256363.jpg)
