@@ -24,11 +24,11 @@ window.onload = function (ev) {
     form.insertBefore(titleEl[3], ul[6]);  //  链接跳转
     form.insertBefore(titleEl[4], ul[9]);  //  侧边栏
     form.insertBefore(titleEl[5], ul[21]);  //  文章头图
-    form.insertBefore(titleEl[6], ul[24]);  //  文章内容相关
-    form.insertBefore(titleEl[7], ul[29]);  //  评论区
-    form.insertBefore(titleEl[8], ul[33]);  //  导航栏
-    form.insertBefore(titleEl[9], ul[35]);  //  友情链接
-    form.insertBefore(titleEl[10], ul[38]);  //  开发者
+    form.insertBefore(titleEl[6], ul[25]);  //  文章内容相关
+    form.insertBefore(titleEl[7], ul[30]);  //  评论区
+    form.insertBefore(titleEl[8], ul[34]);  //  导航栏
+    form.insertBefore(titleEl[9], ul[36]);  //  友情链接
+    form.insertBefore(titleEl[10], ul[39]);  //  开发者
 
     var h2Title = document.querySelectorAll('form h2');
     h2Title.forEach(function (el) {

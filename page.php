@@ -25,7 +25,7 @@ $this->need('components/header.php');
                         <a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                     </h1>
                 </header>
-                <?php $headerImg = headerImageDisplay($this, $this->options->headerImage); ?>
+                <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
                 <?php if ($headerImg): ?>
                     <div class="header-img border-top">
                         <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $headerImg; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>

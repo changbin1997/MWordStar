@@ -91,8 +91,8 @@ $components = explode(',', $components);
                     <?php while ($latestArticles->next()): ?>
                         <li class="border-bottom">
                             <a target="<?php $this->options->sidebarLinkOpen(); ?>" class="<?php echo $color['link']; ?>" href="<?php $latestArticles->permalink(); ?>">
-                                <?php if ($this->options->headerImage && in_array('sidebarBlock', $this->options->headerImage)): ?>
-                                    <?php $img = postImg($latestArticles); ?>
+                                <?php if (is_array($this->options->headerImage) && in_array('sidebarBlock', $this->options->headerImage)): ?>
+                                    <?php $img = postImg($latestArticles, $this->options->headerImageUrl); ?>
                                     <?php if ($img): ?>
                                         <div class="article-img" style="background-image: url(<?php echo $img; ?>);" aria-label="<?php $latestArticles->title(); ?>的头图"></div>
                                     <?php endif; ?>

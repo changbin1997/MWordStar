@@ -2,7 +2,7 @@
 
 <?php while ($this->next()):  //  开始循环  ?>
     <div class="post <?php echo $rounded; ?>">
-        <?php $headerImg = headerImageDisplay($this, $this->options->headerImage); ?>
+        <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
         <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'max' && $headerImg): ?>
             <div class="header-img border-top">
                 <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php $this->title() ?>的头图" style="background-image: url(<?php echo $headerImg; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>

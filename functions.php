@@ -21,8 +21,9 @@ function themeFields($layout) {
     //  文章头图来源
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('imageSource', array(
         'article' => '使用文章中的第一张图片作为文章头图',
-        'url' => '在文章头图输入框手动输入图片URL'
-    ), 'article', _t('文章头图来源'), _t('如果选择了使用文章中的第一张图片作为文章头图，在文章不包含图片的情况下将不会显示文章头图。')));
+        'url' => '在文章头图输入框手动输入图片URL',
+        'default' => '使用系统设置'
+    ), 'article', _t('文章头图来源'), _t('如果选择了使用文章中的第一张图片作为文章头图，在文章不包含图片的情况下将不会显示文章头图。如果选择了使用系统设置，需要在主题设置的默认文章头图输入框填写图片 URL，系统会在默认文章头图中随机选择一个 URL 加载。')));
 
     //  文章头图
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('thumb', null, null, _t('文章头图'), _t('如果您在文章头图来源中设置了手动输入图片 URL 的话，请在这里输入图片 URL。')));
@@ -180,6 +181,9 @@ EOT;
         'gray' => '灰色',
         'white' => '白色'
     ), 'gray', _t('文章头图背景颜色'), _t('文章头图背景颜色是在图片加载完成之前或图片无法加载时显示的颜色，如果图片使用了透明背景是可以看到背景颜色的。')));
+
+    //  默认文章头图
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('headerImageUrl', null, null, _t('默认文章头图'), _t('这里可以填写默认的文章头图 URL，一行一个，系统会在默认文章头图地址中随机选择一个来加载文章头图。要使用默认文章头图，文章编辑页的文章头图来源需要设置为 使用系统设置。')));
 
     //  显示目录
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('atalog', array(
@@ -409,26 +413,26 @@ function headerImageBgColor($color) {
 }
 
 // 获取文章头图显示设置
-function headerImageDisplay($t, $options) {
+function headerImageDisplay($t, $options, $defaultImageUrl) {
     // 在文章列表和文章页显示文章头图
     if ($t->fields->headerImgDisplay == 'post-page-list') {
-        return postImg($t);
+        return postImg($t, $defaultImageUrl);
     }
     // 在文章列表显示文章头图
     if ($t->fields->headerImgDisplay == 'post-list' && $t->is('index') or $t->is('archive')) {
-        return postImg($t);
+        return postImg($t, $defaultImageUrl);
     }
     // 在文章页显示文章头图
     if ($t->fields->headerImgDisplay == 'post-page' && $t->is('post')) {
-        return postImg($t);
+        return postImg($t, $defaultImageUrl);
     }
     // 使用系统文章头图设置
     if ($t->fields->headerImgDisplay == 'default' or $t->fields->headerImgDisplay == null) {
         if (is_array($options) && in_array('home', $options) && $t->is('index')) {
-            return postImg($t);
+            return postImg($t, $defaultImageUrl);
         }
         if (is_array($options) && in_array('post', $options) && $t->is('post') or $t->is('page')) {
-            return postImg($t);
+            return postImg($t, $defaultImageUrl);
         }
     }
     // 不显示文章头图
@@ -437,10 +441,13 @@ function headerImageDisplay($t, $options) {
 }
 
 //  根据设置获取文章头图
-function postImg($a) {
+function postImg($a, $defaultUrl) {
     // 手动输入文章头图
     if ($a->fields->imageSource == 'url' && $a->fields->thumb != '') {
         return $a->fields->thumb;
+    }
+    if ($a->fields->imageSource == 'default') {
+        return randomHeaderImage($defaultUrl);
     }
     // 默认使用第一张图片作为文章头图
     $img = getPostImg($a);
@@ -456,8 +463,21 @@ function getPostImg($archive) {
         $img_url = $img[1][0];
         return $img_url;
     } else {
-        return 'none';
+        return false;
     }
+}
+
+//  获取随机文章头图
+function randomHeaderImage($imgUrl) {
+    if ($imgUrl == null or $imgUrl == '') return false;
+    // 把 URL 按行拆分为数组
+    $imgUrl = explode(PHP_EOL, $imgUrl);
+    // 删除因为空行生成的数组空值
+    $imgUrl = array_filter($imgUrl);
+    // 如果只有一个 URL 就直接返回 URL
+    if (count($imgUrl) < 2) return $imgUrl[0];
+    // 随机返回一个 URL
+    return $imgUrl[mt_rand(0, count($imgUrl) - 1)];
 }
 
 // 获取文章列表的文章头图样式
