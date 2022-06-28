@@ -31,6 +31,14 @@ function themeFields($layout) {
     //  自定义文章摘要内容
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Textarea('summaryContent', null, null, _t('自定义摘要内容'), _t('您可以在此处为文章定义摘要内容，此处定义的摘要内容不受字数限制。')));
 
+    // 章节目录
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('directory', array(
+        'default' => '使用系统设置',
+        'first' => '在文章开头显示章节目录',
+        'first-title' => '在第一个章节标题前显示章节目录',
+        'hide' => '不显示章节目录'
+    ), 'default', _t('章节目录'), _t('您可以单独给文章设置章节目录的显示和位置。章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
+
     //  显示版权声明
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Select('articleCopyright', array(
         'show' => '显示',
@@ -185,11 +193,12 @@ EOT;
     //  默认文章头图
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('headerImageUrl', null, null, _t('默认文章头图'), _t('这里可以填写默认的文章头图 URL，一行一个，系统会在默认文章头图地址中随机选择一个来加载文章头图。要使用默认文章头图，文章编辑页的文章头图来源需要设置为 使用系统设置。')));
 
-    //  显示目录
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('atalog', array(
-        'show' => '显示',
-        'hide' => '不显示'
-    ), 'hide', _t('在文章开头显示章节目录'), _t('章节目录会根据文章中的标题生成，如果文章中没有用到标题就不会生成目录。')));
+    // 章节目录
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('directory', array(
+        'first' => '在文章开头显示章节目录',
+        'first-title' => '在第一个章节标题前显示章节目录',
+        'hide' => '不显示章节目录'
+    ), 'first-title', _t('章节目录'), _t('这里可以统一设置章节目录的显示和位置，您也可以在文章编辑页单独给文章设置章节目录的显示和位置。章节目录会根据文章内插入的标题生成，如果文章内没有插入标题就不会生成章节目录。')));
 
     //  显示最后编辑时间
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('modified', array(
@@ -494,8 +503,8 @@ function getPostListHeaderImageStyle($postStyle, $optionsStyle) {
     return 'max';
 }
 
-//  根据文章内的标题生成目录
-function catalog($content) {
+// 根据文章内的标题生成目录
+function articleDirectory($content, $options) {
     $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
     preg_match_all($re, $content, $result);
     if (!is_array($result) or count($result[0]) < 1) {
@@ -550,13 +559,21 @@ function catalog($content) {
         }
     }
 
-    $htmlStr = '<h2>目录</h2>' . renderArticleDirectory($tree);
-    echo $htmlStr;
+    $GLOBALS['directoryList'] = '<div id="directory-box" class="border p-3 mb-3 rounded"><h2>目录</h2>' . renderArticleDirectory($tree, '') . '</div>';
+    if ($options == 'first') {
+        echo $GLOBALS['directoryList'];
+    }
+
+    $GLOBALS['directoryOptions'] = $options;
     $GLOBALS['directory'] = $treeList;
     $GLOBALS['directoryIndex'] = 1;
     $content = preg_replace_callback($re, function ($matches) {
         $name = urlencode(strip_tags($matches[3]));
-        $span = '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
+        if ($GLOBALS['directoryOptions'] == 'first-title' && $GLOBALS['directoryIndex'] == 1) {
+            $span = $GLOBALS['directoryList'] . '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
+        }else {
+            $span = '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
+        }
         $GLOBALS['directoryIndex'] ++;
         return $span;
     }, $content);
@@ -564,16 +581,28 @@ function catalog($content) {
 }
 
 //  生成目录 HTML
-function renderArticleDirectory($tree) {
-    $htmlStr = '<ul class="article-directory mb-2">';
+function renderArticleDirectory($tree, $parent = '') {
+    $index = 1;
+    $ariaLabel = $tree[0]['parent_id'] == 0?'aria-label="目录"':'';
+    $htmlStr = '<ul class="article-directory mb-0"' . $ariaLabel . '>';
     foreach ($tree as $item) {
-        $htmlStr .= sprintf('<li><a data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], $item['name']);
+        $num = $parent == ''?$index:$parent . '.' . $index;
+        $htmlStr .= sprintf('<li><a rel="nofollow" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
         if (isset($item['children']) && count($item['children']) > 0) {
-            $htmlStr .= renderArticleDirectory($item['children']);
+            $htmlStr .= renderArticleDirectory($item['children'], $num);
         }
+        $index ++;
     }
     $htmlStr .= '</ul>';
     return $htmlStr;
+}
+
+// 获取章节目录设置
+function getDirectoryOptions($post, $options) {
+    if ($post == 'hide') return false;
+    if ($post == 'first' or $post == 'first-title') return $post;
+    if ($options == 'first' or $options == 'first-title') return $options;
+    return false;
 }
 
 //  获取颜色配置

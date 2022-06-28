@@ -50,7 +50,12 @@ $this->need('components/header.php');
                 </div>
                 <article>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-color="<?php echo $color['link']; ?>" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
-                        <?php $this->content(); ?>
+                        <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
+                        <?php if (!$directoryOptions): ?>
+                            <?php $this->content(); ?>
+                        <?php else: ?>
+                            <?php articleDirectory($this->content, $directoryOptions); ?>
+                        <?php endif; ?>
                     </div>
                 </article>
                 <?php $this->need('components/comments.php'); ?>

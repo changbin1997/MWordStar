@@ -930,6 +930,23 @@ footer .container span {
   white-space: nowrap;
 }
 
+#directory-box {
+  background: #F8F9FA;
+  display: inline-block;
+}
+#directory-box ul {
+  list-style: none;
+}
+#directory-box ul .directory-num {
+  color: #444444;
+}
+#directory-box > ul {
+  padding-left: 0;
+}
+#directory-box > ul ul {
+  padding-left: 32px;
+}
+
 #max-img .mask-layer {
   width: 100%;
   height: 100%;

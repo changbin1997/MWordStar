@@ -782,6 +782,24 @@ footer {
   }
 }
 
+//  文章目录
+#directory-box {
+  background: #F8F9FA;
+  display: inline-block;
+  ul {
+    list-style: none;
+    .directory-num {
+      color: #444444;
+    }
+  }
+  > ul {
+    padding-left: 0;
+    ul {
+      padding-left: 32px;
+    }
+  }
+}
+
 //  图片灯箱
 #max-img {
   .mask-layer {

@@ -86,7 +86,12 @@ $this->need('components/header.php');
                         <div class="alert alert-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                     <?php endif; ?>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" data-color="<?php echo $color['link']; ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
-                        <?php $this->options->atalog == 'show'?catalog($this->content):$this->content(); ?>
+                        <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
+                        <?php if (!$directoryOptions): ?>
+                            <?php $this->content(); ?>
+                        <?php else: ?>
+                            <?php articleDirectory($this->content, $directoryOptions); ?>
+                        <?php endif; ?>
                     </div>
                     <div class="clearfix">
                         <?php if ($this->options->modified == 'show'): ?>
