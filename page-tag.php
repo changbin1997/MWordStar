@@ -5,7 +5,6 @@
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $GLOBALS['page'] = 'page-tag';
 $this->need('components/header.php');
@@ -16,9 +15,9 @@ $this->need('components/header.php');
         <nav aria-label="路径" class="breadcrumb-nav">
             <ol class="breadcrumb m-0 p-0">
                 <li class="breadcrumb-item">
-                    <a href="<?php $this->options->siteUrl(); ?>" class="<?php echo $color['link']; ?>">首页</a>
+                    <a href="<?php $this->options->siteUrl(); ?>">首页</a>
                 </li>
-                <li class="breadcrumb-item <?php echo $color['link']; ?>">
+                <li class="breadcrumb-item">
                     <?php $this->category(' '); ?>
                 </li>
                 <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
@@ -40,7 +39,7 @@ $this->need('components/header.php');
                             <div class="row">
                                 <?php while ($tags->next()): ?>
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 my-1">
-                                        <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="<?php echo $color['link']; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?> (<?php $tags->count(); ?>)</a>
+                                        <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?> (<?php $tags->count(); ?>)</a>
                                     </div>
                                 <?php endwhile; ?>
                             </div>

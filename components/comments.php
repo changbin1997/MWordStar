@@ -1,5 +1,4 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$GLOBALS['color'] = color($this->options->color);
 $GLOBALS['commentDateFormat'] = $this->options->commentDateFormat;
 $GLOBALS['QQAvatar'] = $this->options->QQAvatar;
 ?>
@@ -52,7 +51,7 @@ function threadedComments($comments, $options) {
                     </a>
                 </div>
                 <span class="comment-reply float-right">
-                    <span class="<?php echo $GLOBALS['color']['name']; ?>" data-id="<?php $comments->theId(); ?>">
+                    <span data-id="<?php $comments->theId(); ?>">
                         <?php $comments->reply(); ?>
                     </span>
                 </span>
@@ -80,7 +79,7 @@ function threadedComments($comments, $options) {
             <?php $comments->listComments(); ?>
 
             <nav aria-label="评论分页导航区" class="pagination-nav">
-                <?php $comments->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' . $GLOBALS['color']['name'], 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+                <?php $comments->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' , 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>
     <?php endif; ?>

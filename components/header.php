@@ -1,6 +1,5 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$color = color($this->options->color);  //  获取颜色设置
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 ?>
 <!doctype html>
@@ -23,7 +22,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
         <?php echo $this->is('index')?'- ' . $this->options->tagline:''; ?>
     </title>
     <link rel="icon" href="<?php echo $this->options->logoUrl?$this->options->logoUrl:$this->options->siteUrl . 'favicon.ico'; ?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.min.css'); ?>" type="text/css">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/bootstrap.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
     <?php if ($this->is('post') && $this->fields->keywords): ?>
@@ -40,9 +39,9 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body data-rounded="<?php echo $rounded; ?>" class="<?php $this->options->codeThemeColor(); ?>">
+<body data-rounded="<?php echo $rounded; ?>" class="<?php $this->options->codeThemeColor(); ?> <?php $this->options->color(); ?>">
 <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg <?php echo $color['bar'] ?>">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
             <button class="navbar-toggler border-0 px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
@@ -76,7 +75,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                         <div class="input-group">
                             <input data-url="<?php $this->options->siteUrl(); ?>" class="border-right-0 form-control form-control-md search-input <?php echo $rounded; ?>" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
                             <div class="input-group-append">
-                                <button class="btn my-sm-0 search-btn-light <?php echo $rounded; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
+                                <button class="btn my-sm-0 <?php echo $rounded; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
                                     <i class="icon-search"></i>
                                 </button>
                             </div>

@@ -1,5 +1,4 @@
 <?php
-$color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 ?>
 <?php if($this->allow('comment')): ?>
@@ -19,10 +18,10 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                 <!--Emoji表情面板-->
                 <?php if ($this->options->emojiPanel == 'on'): ?>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
-                        <button aria-expanded="false" type="button" class="btn btn-sm <?php echo $color['btnOutline']; ?>" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 Emoji表情</button>
+                        <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 Emoji表情</button>
                         <div id="emoji-panel" class="bg-white border shadow rounded" role="dialog" aria-label="Emoji表情面板（按 ESC 可关闭表情面板并转到评论内容输入框。）">
                             <div class="card card-body p-0 m-0 border-bottom">
-                                <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="表情类型" data-color="<?php echo $color['btn']; ?>">
+                                <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="表情类型"">
                                     <button role="radio" aria-checked="true" aria-label="面部表情" title="面部表情" type="button" class="btn btn btn-sm selected" data-classification="smileys">😀</button>
                                     <button role="radio" aria-checked="false" aria-label="人物/手势" title="人物/手势" type="button" class="btn btn btn-sm" data-classification="character">👦</button>
                                     <button role="radio" aria-checked="false" aria-label="服装/配饰" title="服装/配饰" type="button" class="btn btn btn-sm" data-classification="clothing">👕</button>
@@ -42,8 +41,8 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                 <?php if($this->user->hasLogin()): ?>
                     <div class="col-lg-12 comment-user">
                         <?php _e('登录身份: '); ?>
-                        <a data-toggle="tooltip" data-placement="top" class="<?php echo $color['link']; ?>" href="<?php $this->options->profileUrl(); ?>" title="当前登录身份：<?php $this->user->screenName(); ?>"><?php $this->user->screenName(); ?></a>.
-                        <a data-toggle="tooltip" data-placement="top" class="<?php echo $color['link']; ?>" href="<?php $this->options->logoutUrl(); ?>" title="退出"><?php _e('退出'); ?> &raquo;</a>
+                        <a data-toggle="tooltip" data-placement="top" href="<?php $this->options->profileUrl(); ?>" title="当前登录身份：<?php $this->user->screenName(); ?>"><?php $this->user->screenName(); ?></a>.
+                        <a data-toggle="tooltip" data-placement="top" href="<?php $this->options->logoutUrl(); ?>" title="退出"><?php _e('退出'); ?> &raquo;</a>
                     </div>
                 <?php else: ?>
                     <!--姓名输入-->
@@ -64,7 +63,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                 <?php endif; ?>
                 <!--提交按钮-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
-                    <button type="submit" class="submit btn <?php echo $color['btn']; ?> <?php echo $rounded; ?>"><?php _e('提交评论'); ?></button>
+                    <button type="submit" class="submit btn"><?php _e('提交评论'); ?></button>
                 </div>
             </div>
         </form>

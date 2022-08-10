@@ -30,7 +30,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   a,
   span {
-    color: #707281;
     font-size: 12px;
     line-height: 29px;
   }
@@ -39,7 +38,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   .icon {
     margin-right: 4px;
-    color: #707281;
     font-size: 12px;
     line-height: 29px;
   }
@@ -261,9 +259,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     color: #444444;
     line-height: 25px;
   }
-  a {
-    color: #6c757d;
-  }
   li {
     color: #444444;
     padding: 2px 0;
@@ -276,45 +271,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     padding: 0 4px;
   }
 }
-
-//  标签云和平路回复链接的配色
-//  dark
-@mixin dark {
-  border: 1px solid #6c757d;
-  color: #6c757d;
-}
-@mixin darkHover {
-  background: #6c757d;
-  color: #ffffff;
-}
-//  success
-@mixin success {
-  border: 1px solid #28a745;
-  color: #28a745;
-}
-@mixin successHover {
-  background: #28a745;
-  color: #ffffff;
-}
-//  primary
-@mixin primary {
-  border: 1px solid #007bff;
-  color: #007bff;
-}
-@mixin primaryHover {
-  background: #007bff;
-  color: #ffffff;
-}
-//  info
-@mixin info {
-  border: 1px solid #17a2b8;
-  color: #17a2b8;
-}
-@mixin infoHover {
-  background: #17a2b8;
-  color: #ffffff;
-}
-
 
 //  代码高亮的主题样式
 //  stackoverflow-light 样式
@@ -390,16 +346,18 @@ header {
   z-index: 999;
   .navbar {
     box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-    //  亮色的搜索按钮
-    .search-btn-light {
-      background: #f8f8f8;
-      border: 1px solid #d3d3d3;
-    }
-    .search-btn-light:hover {
-      background: #f0f0f0;
-    }
-    .search-btn-light:focus {
-      background: #f0f0f0;
+    .search-form {
+      //  亮色的搜索按钮
+      button {
+        background: #f8f8f8;
+        border: 1px solid #d3d3d3;
+      }
+      button:hover {
+        background: #f0f0f0;
+      }
+      button:focus {
+        background: #f0f0f0;
+      }
     }
   }
 }
@@ -415,19 +373,6 @@ header {
 //  面包屑导航
 .breadcrumb {
   background: none;
-  //  面包屑导航的链接配色
-  .text-primary a {
-    color: #007bff;
-  }
-  .text-secondary a {
-    color: #6c757d;
-  }
-  .text-success a {
-    color: #28a745;
-  }
-  .text-info a {
-    color: #17a2b8;
-  }
 }
 
 //  内容区域
@@ -526,51 +471,10 @@ header {
     .tag-list {
       padding: 0 18px 18px 18px;
       .tag-link {
-        color: #333333;
         margin: 0 4px 4px 0;
         font-size: 12px;
         border-radius: 4px;
         font-weight: 500;
-      }
-      //  dark
-      .tag-dark {
-        @include dark;
-      }
-      .tag-dark:hover {
-        @include darkHover;
-      }
-      .tag-dark:focus {
-        @include darkHover;
-      }
-      //  primary
-      .tag-primary {
-        @include primary;
-      }
-      .tag-primary:hover {
-        @include primaryHover;
-      }
-      .tag-primary:focus {
-        @include primaryHover;
-      }
-      //  info
-      .tag-info {
-        @include info;
-      }
-      .tag-info:hover {
-        @include infoHover;
-      }
-      .tag-info:focus {
-        @include infoHover;
-      }
-      //  success
-      .tag-success {
-        @include success;
-      }
-      .tag-success:hover {
-        @include successHover;
-      }
-      .tag-success:focus {
-        @include successHover;
       }
     }
   }
@@ -671,44 +575,6 @@ header {
     a {
       border-radius: unset;
     }
-  }
-  //  dark 和 light 配色
-  .dark a,
-  .light a {
-    color: #6c757d !important;
-  }
-  .dark .active a:hover,
-  .light .active a:hover {
-    background: #5a6268;
-  }
-  .dark .active a,
-  .light .active a {
-    background: #6c757d;
-  }
-  //  info 配色
-  .info a {
-    color: #17a2b8 !important;
-  }
-  .info .active a {
-    background: #17a2b8;
-  }
-  .info .active a:hover {
-    background: #138496;
-  }
-  //  success 配色
-  .success a {
-    color: #28a745 !important;
-  }
-  .success .active a {
-    background: #28a745;
-  }
-  .success .active a:hover {
-    background: #218838;
-  }
-  //  当前页的文字颜色
-  .active a {
-    color: #ffffff !important;
-    border: 0 !important;
   }
 }
 
@@ -966,39 +832,6 @@ footer {
             display: block;
             text-align: center;
             border-radius: 4px;
-          }
-          a:hover {
-            color: #ffffff;
-          }
-          //  dark 和 light
-          .dark a,
-          .light a {
-            @include dark;
-          }
-          .dark a:hover,
-          .light a:hover {
-            @include darkHover;
-          }
-          //  primary
-          .primary a {
-            @include primary;
-          }
-          .primary a:hover {
-            @include primaryHover;
-          }
-          //  info
-          .info a {
-            @include info;
-          }
-          .info a:hover {
-            @include infoHover;
-          }
-          //  success
-          .success a {
-            @include success;
-          }
-          .success a:hover {
-            @include successHover;
           }
         }
         //  评论内容
@@ -1402,3 +1235,8 @@ footer {
     }
   }
 }
+
+@import "light-color";
+@import "primary-color";
+@import "info-color";
+@import "success-color";

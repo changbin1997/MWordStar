@@ -307,26 +307,6 @@ $(function () {
     return false;
   });
 
-  //  给文章中的链接添加颜色类
-  if ($('.post-content a').length) {
-    $('.post-content a').addClass($('.post-content').attr('data-color'));
-  }
-
-  //  给上一篇和下一篇文章的导航链接添加颜色类
-  if ($('.post-navigation a').length) {
-    $('.post-navigation a').addClass($('.post-content').attr('data-color'));
-  }
-
-  //  给评论区的评论者昵称添加颜色类
-  if ($('.comment-info .author a').length) {
-    $('.comment-info .author a').addClass($('.post-content').attr('data-color'));
-  }
-
-  //  给评论区的取消回复链接添加颜色类
-  if ($('#cancel-comment-reply-link').length) {
-    $('#cancel-comment-reply-link').addClass($('.post-content').attr('data-color'));
-  }
-
   //  给翻页链接和评论区的回复按钮添加元素风格类
   if ($('body').attr('data-rounded') === 'rounded-0') {
     if ($('.pagination-nav .pagination a').length) {

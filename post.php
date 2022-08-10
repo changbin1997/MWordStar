@@ -1,5 +1,4 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $GLOBALS['page'] = 'post';
 
@@ -19,9 +18,9 @@ $this->need('components/header.php');
         <nav aria-label="路径" class="breadcrumb-nav">
             <ol class="breadcrumb m-0 p-0">
                 <li class="breadcrumb-item">
-                    <a href="<?php $this->options->siteUrl(); ?>" class="<?php echo $color['link']; ?>">首页</a>
+                    <a href="<?php $this->options->siteUrl(); ?>">首页</a>
                 </li>
-                <li class="breadcrumb-item <?php echo $color['link']; ?>">
+                <li class="breadcrumb-item">
                     <?php $this->category(' '); ?>
                 </li>
                 <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
@@ -45,38 +44,38 @@ $this->need('components/header.php');
                 <div class="article-info clearfix border-bottom border-top" role="group" aria-label="文章信息">
                     <!--时间-->
                     <div class="info">
-                        <i class="icon-calendar icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
+                        <i class="icon-calendar icon" aria-hidden="true"></i>
+                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
                     </div>
                     <!--作者-->
                     <div class="info">
-                        <i class="icon-user icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <a class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
+                        <i class="icon-user icon" aria-hidden="true"></i>
+                        <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
                     </div>
                     <!--阅读量-->
                     <div class="info">
-                        <i class="icon-eye icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="阅读量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
+                        <i class="icon-eye icon" aria-hidden="true"></i>
+                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="阅读量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
                     </div>
                     <!--评论-->
                     <div class="info">
-                        <i class="icon-bubbles2 icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <a class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" title="评论" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('%d 评论'); ?></a>
+                        <i class="icon-bubbles2 icon" aria-hidden="true"></i>
+                        <a data-toggle="tooltip" data-placement="top" title="评论" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('%d 评论'); ?></a>
                     </div>
                     <!--分类-->
                     <div class="info category">
-                        <i class="icon-folder-open icon <?php echo $color['link']; ?>" aria-hidden="true" data-color="<?php echo $color['link']; ?>"></i>
+                        <i class="icon-folder-open icon" aria-hidden="true"></i>
                         <?php $this->category(''); ?>
                     </div>
                     <!--标签-->
-                    <div class="info tags" data-color="<?php echo $color['link']; ?>">
-                        <i class="icon-price-tags icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
+                    <div class="info tags">
+                        <i class="icon-price-tags icon" aria-hidden="true"></i>
                         <?php $this->tags(' ', true, '暂无标签'); ?>
                     </div>
                     <?php if ($this->user->hasLogin()): ?>
                         <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">
-                            <i class="icon icon-pencil <?php echo $color['link']; ?>"></i>
-                            <a class="<?php echo $color['link']; ?>" href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" >编辑</a>
+                            <i class="icon icon-pencil"></i>
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" >编辑</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -85,7 +84,7 @@ $this->need('components/header.php');
                     <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
                         <div class="alert alert-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                     <?php endif; ?>
-                    <div data-target="<?php $this->options->postLinkOpen(); ?>" data-color="<?php echo $color['link']; ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                    <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
                         <?php if (!$directoryOptions): ?>
                             <?php $this->content(); ?>
@@ -101,14 +100,14 @@ $this->need('components/header.php');
                             <span tabindex="0" data-toggle="tooltip" data-placement="top" title="本文为原创文章，版权归 <?php $this->options->title(); ?> 所有，转载请联系博主获得授权。" class="mt-1 mt-sm-1 mt-md-0 mt-lg-0 mt-lg-0 mt-xl-0 float-xl-right float-lg-right float-md-right d-block">©著作权归作者所有</span>
                         <?php endif; ?>
                     </div>
-                    <div class="pt-3 text-center">
+                    <div class="pt-3 text-center agree-and-share">
                         <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
-                        <button <?php echo $agree['recording']?'disabled':''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn mr-2 <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>">
+                        <button <?php echo $agree['recording']?'disabled':''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn mr-2 <?php echo $rounded; ?>">
                             <i class="icon-thumbs-up"></i>
                             <span>赞</span>
                             <span class="agree-num"><?php echo $agree['agree']; ?></span>
                         </button>
-                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn <?php echo $color['btnOutline']; ?> <?php echo $rounded; ?>" data-toggle="modal" data-target="#share-box">
+                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn <?php echo $rounded; ?>" data-toggle="modal" data-target="#share-box">
                             <i class="icon-share2"></i>
                             <span>分享</span>
                         </button>

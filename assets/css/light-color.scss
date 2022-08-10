@@ -1,0 +1,270 @@
+// 常用按钮配色
+@mixin btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  &:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  &:focus {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  }
+  &:disabled {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+}
+// 常用按钮透明版
+@mixin btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+  &:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+  }
+  &:disabled {
+    color: #6c757d;
+    background-color: transparent;
+  }
+}
+// 链接配色
+@mixin link-secondary {
+  color: #6c757d !important;
+  &:hover {
+    color: #494f54 !important;
+  }
+}
+// 文字配色
+$text-secondary: #6c757d;
+
+.light-color1 {
+  // 顶部导航栏配色
+  header .navbar {
+    background-color: #343a40;
+    .navbar-brand {
+      color: #fff;
+    }
+    .navbar-brand:hover,.navbar-brand:focus {
+      color: #fff;
+    }
+    .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .navbar-nav .nav-link:hover,.navbar-nav .nav-link:focus {
+      color: rgba(255, 255, 255, 0.75);
+    }
+    .navbar-nav .nav-link.disabled {
+      color: rgba(255, 255, 255, 0.25);
+    }
+    .navbar-nav .show > .nav-link,
+    .navbar-nav .active > .nav-link,
+    .navbar-nav .nav-link.show,
+    .navbar-nav .nav-link.active {
+      color: #fff;
+    }
+    .navbar-toggler {
+      color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .navbar-text {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .navbar-text a {
+      color: #fff;
+    }
+    .navbar-text a:hover,.navbar-text a:focus {
+      color: #fff;
+    }
+  }
+}
+
+.light-color2 {
+  // 顶部导航栏配色
+  header .navbar {
+    background-color: #fff !important;
+    .navbar-brand {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-brand:hover,.navbar-brand:focus {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-nav .nav-link {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .navbar-nav .nav-link:hover,.navbar-nav .nav-link:focus {
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .navbar-nav .nav-link.disabled {
+      color: rgba(0, 0, 0, 0.3);
+    }
+    .navbar-nav .show > .nav-link,
+    .navbar-nav .active > .nav-link,
+    .navbar-nav .nav-link.show,
+    .navbar-nav .nav-link.active {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-toggler {
+      color: rgba(0, 0, 0, 0.5);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .navbar-text {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .navbar-text a {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-text a:hover, .navbar-light .navbar-text a:focus {
+      color: rgba(0, 0, 0, 0.9);
+    }
+  }
+}
+
+.light-color1,.light-color2 {
+  // 文章列表配色
+  .article-list .post {
+    .article-info {
+      i,span {
+        color: $text-secondary;
+      }
+      a {
+        @include link-secondary;
+      }
+    }
+  }
+
+  // 分页导航区配色
+  .pagination-nav ul {
+    li a {
+      color: $text-secondary;
+    }
+    .active a {
+      color: #ffffff;
+      background-color: $text-secondary;
+      border: none;
+    }
+  }
+
+  // 侧边栏配色
+  .sidebar {
+    // 通用列表链接、最新评论链接、博客信息区域链接、日历链接配色
+    section ul > li > a,.latest-comment a,.user-name,.calendar a {
+      @include link-secondary;
+    }
+    // 列表的徽章配色
+    section ul li .badge {
+      background-color: $text-secondary;
+      color: #ffffff;
+    }
+    // 标签云配色
+    .tag-cloud a {
+      border: 1px solid $text-secondary;
+      color: $text-secondary;
+      &:hover {
+        background-color: $text-secondary;
+        color: #ffffff;
+      }
+      &:focus {
+        background-color: $text-secondary;
+        color: #ffffff;
+      }
+    }
+  }
+
+  // 文章页配色
+  .content-area {
+    // 文章信息区域
+    .article-info .info {
+      span,i {
+        color: $text-secondary;
+      }
+      a {
+        @include link-secondary;
+      }
+    }
+    // 文章内容区域
+    .post-content {
+      // 链接
+      a {
+        @include link-secondary;
+      }
+    }
+    // 分享和点赞区域
+    .agree-and-share {
+      button {
+        @include btn-outline-secondary;
+      }
+    }
+    // 上一篇文章和下一篇文章的导航区域
+    .post-navigation a {
+      @include link-secondary;
+    }
+  }
+
+  // 评论区配色
+  #comments {
+    // 发表评论区
+    #comment-form {
+      // 打开表情面板按钮
+      #show-emoji-btn {
+        @include btn-outline-secondary;
+      }
+      // 表情面板
+      #emoji-classification {
+        button[aria-checked="true"] {
+          background-color: $text-secondary;
+        }
+      }
+      // 当前登录用户链接
+      .comment-user a {
+        @include link-secondary;
+      }
+      // 提交评论按钮
+      .submit {
+        @include btn-secondary;
+      }
+    }
+    // 评论列表区
+    .comment-box {
+      // 评论者昵称
+      .comment-info {
+        .author a {
+          @include link-secondary;
+        }
+      }
+      // 回复链接
+      .comment-reply a {
+        border: 1px solid $text-secondary;
+        color: $text-secondary;
+        &:hover {
+          background-color: $text-secondary;
+          color: #ffffff;
+        }
+      }
+      // 评论内容区的链接
+      .comment-content a {
+        @include link-secondary;
+      }
+    }
+  }
+
+  // 返回顶部按钮
+  .to-top {
+    color: $text-secondary;
+  }
+}

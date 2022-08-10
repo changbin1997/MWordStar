@@ -5,7 +5,6 @@
  * @package custom
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $GLOBALS['page'] = 'page-archive';
 $this->need('components/header.php');
@@ -16,7 +15,7 @@ $this->need('components/header.php');
             <nav aria-label="路径" class="breadcrumb-nav">
                 <ol class="breadcrumb m-0 p-0">
                     <li class="breadcrumb-item">
-                        <a href="<?php $this->options->siteUrl(); ?>" class="<?php echo $color['link']; ?>">首页</a>
+                        <a href="<?php $this->options->siteUrl(); ?>">首页</a>
                     </li>
                     <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
                 </ol>
@@ -31,7 +30,7 @@ $this->need('components/header.php');
                         </h2>
                     </header>
                     <article>
-                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" itemprop="articleBody" data-color="<?php echo $color['link']; ?>">
+                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" itemprop="articleBody">
                             <?php Typecho_Widget::widget('Widget_Stat')->to($quantity); ?>
                             <p>共包含 <?php $quantity->publishedPostsNum(); ?> 篇文章</p>
                             <?php

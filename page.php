@@ -1,7 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $GLOBALS['page'] = 'page';
-$color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $this->need('components/header.php');
 ?>
@@ -11,7 +10,7 @@ $this->need('components/header.php');
         <nav aria-label="路径" class="breadcrumb-nav">
             <ol class="breadcrumb m-0 p-0">
                 <li class="breadcrumb-item">
-                    <a href="<?php $this->options->siteUrl(); ?>" class="<?php echo $color['link']; ?>">首页</a>
+                    <a href="<?php $this->options->siteUrl(); ?>">首页</a>
                 </li>
                 <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
             </ol>
@@ -34,22 +33,22 @@ $this->need('components/header.php');
                 <div class="article-info clearfix border-bottom border-top" role="group" aria-label="页面信息">
                     <!--时间-->
                     <div class="info">
-                        <i class="icon-calendar icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
+                        <i class="icon-calendar icon" aria-hidden="true"></i>
+                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
                     </div>
                     <!--作者-->
                     <div class="info">
-                        <i class="icon-user icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <a class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
+                        <i class="icon-user icon" aria-hidden="true"></i>
+                        <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
                     </div>
                     <!--阅读量-->
                     <div class="info">
-                        <i class="icon-eye icon <?php echo $color['link']; ?>" aria-hidden="true"></i>
-                        <span class="<?php echo $color['link']; ?>" data-toggle="tooltip" data-placement="top" tabindex="0" title="访问量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
+                        <i class="icon-eye icon" aria-hidden="true"></i>
+                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="访问量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
                     </div>
                 </div>
                 <article>
-                    <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-color="<?php echo $color['link']; ?>" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                    <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
                         <?php if (!$directoryOptions): ?>
                             <?php $this->content(); ?>

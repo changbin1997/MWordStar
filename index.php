@@ -8,7 +8,6 @@
  * @link https://www.misterma.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$color = color($this->options->color);
 $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $GLOBALS['page'] = 'index';
 $this->need('components/header.php');  //  头文件
@@ -18,7 +17,7 @@ $this->need('components/header.php');  //  头文件
         <div class="article-list col-md-12 col-lg-8 col-sm-12 content-area">
             <?php $this->need('components/post-list.php'); ?>
             <nav aria-label="分页导航区" class="pagination-nav">
-                <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' . $color['name'], 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+                <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>
     <?php $this->need('components/sidebar.php'); ?>

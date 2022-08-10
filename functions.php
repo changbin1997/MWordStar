@@ -70,12 +70,12 @@ EOT;
 
     //  主题配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('color', array(
-        'dark' => 'Dark',
-        'primary' => 'Primary',
-        'info' => 'Info',
-        'success' => 'Success',
-        'light' => 'Light'
-    ), 'light', _t('主题配色'), _t('主题配色包含了 导航栏、链接、按钮、标签 的颜色。')));
+        'light-color1' => '配色1',
+        'light-color2' => '配色2',
+        'primary-color' => '配色3',
+        'info-color' => '配色4',
+        'success-color' => '配色5'
+    ), 'light-color', _t('主题配色'), _t('主题配色包含了 导航栏、链接、按钮、标签 的颜色。')));
 
     //  主题元素风格设置
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('rounded', array(
@@ -605,62 +605,6 @@ function getDirectoryOptions($post, $options) {
     return false;
 }
 
-//  获取颜色配置
-function color($cfg) {
-    $color = array(
-        'dark' => array(
-            'bar' => 'navbar-dark bg-dark',
-            'btn' => 'btn-secondary',
-            'link' => 'text-secondary',
-            'listTag' => 'badge-secondary',
-            'tag' => 'tag-dark',
-            'name' => 'dark',
-            'btnOutline' => 'btn-outline-secondary'
-        ),
-        'primary' => array(
-            'bar' => 'navbar-dark bg-primary',
-            'btn' => 'btn-primary',
-            'link' => 'text-primary',
-            'listTag' => 'badge-primary',
-            'tag' => 'tag-primary',
-            'name' => 'primary',
-            'btnOutline' => 'btn-outline-primary'
-        ),
-        'info' => array(
-            'bar' => 'navbar-dark bg-info',
-            'btn' => 'btn-info',
-            'link' => 'text-info',
-            'listTag' => 'badge-info',
-            'tag' => 'tag-info',
-            'name' => 'info',
-            'btnOutline' => 'btn-outline-info'
-        ),
-        'success' => array(
-            'bar' => 'navbar-dark bg-success',
-            'btn' => 'btn-success',
-            'link' => 'text-success',
-            'listTag' => 'badge-success',
-            'tag' => 'tag-success',
-            'name' => 'success',
-            'btnOutline' => 'btn-outline-success'
-        ),
-        'light' => array(
-            'bar' => 'navbar-light bg-light',
-            'btn' => 'btn-secondary',
-            'link' => 'text-secondary',
-            'listTag' => 'badge-secondary',
-            'tag' => 'tag-dark',
-            'name' => 'light',
-            'btnOutline' => 'btn-outline-secondary'
-        )
-    );
-
-    if ($cfg == null) {
-        return $color['light'];
-    }
-    return $color[$cfg];
-}
-
 //  获取月份
 function getMonth() {
     $path = $_SERVER['PHP_SELF'];  //  获取路劲
@@ -710,7 +654,7 @@ function getMonthPost() {
 }
 
 //  生成日历
-function calendar($month, $url, $rewrite, $linkColor) {
+function calendar($month, $url, $rewrite) {
     $monthArr = getMonth();  //  获取月份
     $post = getMonthPost();  //  获取文章日期
 
@@ -768,7 +712,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
                 if($row == 1){
                     if($week >= $this_month_one_n){
                         if (in_array($number, $post['post'])) {
-                            $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                            $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                         }else {
                             $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                         }
@@ -778,7 +722,7 @@ function calendar($month, $url, $rewrite, $linkColor) {
                     }
                 }else{
                     if (in_array($number, $post['post'])) {
-                        $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0 ' . $linkColor . '" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                        $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                     }else {
                         $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                     }
