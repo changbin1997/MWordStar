@@ -138,6 +138,12 @@ $text-success: #28a745;
         color: #ffffff;
       }
     }
+    // 搜索组件配色
+    .search {
+      button {
+        @include btn-success;
+      }
+    }
   }
 
   // 文章页配色

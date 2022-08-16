@@ -138,6 +138,12 @@ $text-primary: #007bff;
         color: #ffffff;
       }
     }
+    // 搜索组件配色
+    .search {
+      button {
+        @include btn-primary;
+      }
+    }
   }
 
   // 文章页配色

@@ -184,6 +184,12 @@ $text-secondary: #6c757d;
         color: #ffffff;
       }
     }
+    // 搜索组件配色
+    .search {
+      button {
+        @include btn-secondary;
+      }
+    }
   }
 
   // 文章页配色
