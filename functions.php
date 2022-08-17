@@ -68,6 +68,10 @@ EOT;
     require_once 'assets/js/options-panel.js';
     echo '</script>';
 
+    echo '<style type="text/css">';
+    require_once 'assets/css/options-panel.css';
+    echo '</style>';
+
     //  主题配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('color', array(
         'light-color1' => '配色1',
