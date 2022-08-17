@@ -3,6 +3,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 // 检测是否包含主题配色 cookie
 if (isset($_COOKIE['themeColor'])) {
+    // 如果 cookie 存储的浅色和默认浅色不一样
+    if ($_COOKIE['themeColor'] != 'dark-color' && $_COOKIE['themeColor'] != $this->options->defaultLightColor) {
+        // 重新设置 cookie
+        setcookie('themeColor', $this->options->defaultLightColor, time() + 15552000, '/');
+    }
     // 根据主题配色 cookie 设置配色
     $themeColor = $_COOKIE['themeColor'];
 }else {

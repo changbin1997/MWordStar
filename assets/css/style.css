@@ -280,11 +280,11 @@ header .navbar {
 header .navbar #change-color-btn {
   width: 34px;
   height: 34px;
-  color: rgba(0, 0, 0, 0.5);
-  background-color: #E5E6EB;
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 header .navbar #change-color-btn i {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 34px;
 }
 header .navbar #change-color-text {
@@ -1664,6 +1664,10 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 }
 .light-color2 header .navbar .navbar-text a:hover, .light-color2 header .navbar .navbar-light .navbar-text a:focus {
   color: rgba(0, 0, 0, 0.9);
+}
+.light-color2 header .navbar #change-color-btn {
+  background-color: #E5E6EB;
+  color: rgba(0, 0, 0, 0.5);
 }
 .light-color2 header .navbar #change-color-text {
   color: #212529;

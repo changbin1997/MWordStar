@@ -132,6 +132,11 @@ $text-secondary: #6c757d;
     .navbar-text a:hover, .navbar-light .navbar-text a:focus {
       color: rgba(0, 0, 0, 0.9);
     }
+    // 切换配色的按钮
+    #change-color-btn {
+      background-color: #E5E6EB;
+      color: rgba(0, 0, 0, 0.5);
+    }
     // 切换配色的提示配色
     #change-color-text {
       color: #212529;
