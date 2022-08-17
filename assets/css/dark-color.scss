@@ -1,0 +1,457 @@
+$body-bg-color: #121212;
+$dark-bg-color: #1E1E1E;
+$dark-bg-color2: #2D2D2D;
+$dark-text-color: rgba(255, 255, 255, 0.87);
+$dark-text-color2: rgba(255, 255, 255, 0.6);
+$dark-text-color3: rgba(255, 255, 255, 0.38);
+$dark-border-color: rgba(255, 255, 255, 0.2);
+$dark-border-color2: rgba(255, 255, 255, 0.1);
+
+// 普通按钮配色
+@mixin btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  &:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  &:focus {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+  }
+  &:disabled {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+}
+
+// 透明按钮配色
+@mixin btn-outline-light {
+  color: #f8f9fa;
+  border-color: #f8f9fa;
+  &:hover {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+  }
+  &:disabled {
+    color: #f8f9fa;
+    background-color: transparent;
+  }
+}
+
+$text-primary: #007bff;
+
+// 链接配色
+@mixin dark-link {
+  color: $dark-text-color !important;
+  &:hover {
+    color: $dark-text-color2 !important;
+  }
+}
+
+// 文章内容配色
+@mixin post-content {
+  // 目录
+  #directory-box {
+    background-color: $dark-bg-color2;
+    span {
+      color: $dark-text-color;
+    }
+  }
+  // 文章内容
+  p {
+    color: $dark-text-color !important;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    color: $dark-text-color;
+  }
+  li {
+    color: $dark-text-color;
+  }
+  p > code,td code,li code,h1 code,h2 code,h3 code,h4 code,th code {
+    background-color: #000000;
+    color: $dark-text-color;
+  }
+  blockquote {
+    border-color: $dark-text-color2;
+    p {
+      color: $dark-text-color2;
+    }
+  }
+  table {
+    td,th {
+      color: $dark-text-color;
+    }
+    tbody tr:nth-child(odd) {
+      background-color: $dark-bg-color2;
+    }
+    tbody tr:hover {
+      background-color: $dark-bg-color2;
+    }
+  }
+  hr {
+    background-color: $dark-text-color2;
+    color: $dark-text-color2;
+  }
+}
+
+@mixin dark-color {
+  background-color: $body-bg-color;
+
+  // 默认边框颜色
+  .border,.border-top,.border-bottom,.border-left,.border-right {
+    border-color: $dark-border-color !important;
+  }
+
+  // 区块默认配色
+  .mwordstar-block {
+    border-color: $dark-border-color2 !important;
+    background-color: $dark-bg-color;
+  }
+
+  // 顶部导航区
+  header .navbar {
+    background-color: #1F1F1F;
+    border-bottom: 0.5px solid $dark-border-color2;
+    .navbar-brand {
+      color: #fff;
+    }
+    .navbar-brand:hover,.navbar-brand:focus {
+      color: #fff;
+    }
+    .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .navbar-nav .nav-link:hover,.navbar-nav .nav-link:focus {
+      color: rgba(255, 255, 255, 0.75);
+    }
+    .navbar-nav .nav-link.disabled {
+      color: rgba(255, 255, 255, 0.25);
+    }
+    .navbar-nav .show > .nav-link,
+    .navbar-nav .active > .nav-link,
+    .navbar-nav .nav-link.show,
+    .navbar-nav .nav-link.active {
+      color: #fff;
+    }
+    .navbar-toggler {
+      color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .navbar-text {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .navbar-text a {
+      color: #fff;
+    }
+    .navbar-text a:hover,.navbar-text a:focus {
+      color: #fff;
+    }
+
+    // 搜索区域
+    .search-form {
+      input {
+        background-color: $body-bg-color;
+        border: none;
+        color: $dark-text-color;
+      }
+      button {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: $dark-text-color;
+        border: none;
+      }
+    }
+
+    // 切换配色的按钮
+    #change-color-btn {
+      background-color: #373737;
+      color: $dark-text-color;
+    }
+    // 切换配色的文字提示
+    #change-color-text {
+      color: $dark-text-color;
+    }
+  }
+
+  // 文章列表配色
+  .article-list .post,.archives-list .archives .post {
+    background-color: $dark-bg-color;
+    border-color: $dark-border-color2;
+    // 标题
+    .entry-title a {
+      color: $dark-text-color !important;
+    }
+    // 摘要内容
+    .entry-summary p {
+      color: $dark-text-color;
+    }
+    // 文章信息
+    .article-info {
+      i,span {
+        color: $dark-text-color2;
+      }
+      a {
+        @include dark-link;
+      }
+    }
+  }
+
+  // 分页导航区配色
+  .pagination-nav ul {
+    li a {
+      color: $dark-text-color;
+      background-color: $dark-bg-color;
+      border: none;
+    }
+  }
+
+  // 侧边栏配色
+  .sidebar {
+    // 通用列表链接、最新评论链接、博客信息区域链接、日历链接配色
+    section ul > li > a,.latest-comment a,.user-name,.calendar a {
+      @include dark-link;
+    }
+    // 基本配色
+    section {
+      h4 {
+        color: $dark-text-color;
+        border-color: $dark-text-color2;
+      }
+    }
+    // 博客信息
+    .personal-information {
+      .introduction {
+        color: $dark-text-color;
+      }
+      .info {
+        color: $dark-text-color;
+      }
+    }
+    // 日历配色
+    .calendar table {
+      th,td {
+        color: $dark-text-color;
+      }
+      .active {
+        background-color: #353535;
+      }
+    }
+    // 评论配色
+    .latest-comment {
+      .comment-content {
+        color: $dark-text-color;
+      }
+    }
+    // 标签云配色
+    .tag-cloud a {
+      border: 1px solid $dark-text-color;
+      color: $dark-text-color;
+      &:hover {
+        background-color: $dark-text-color;
+        color: $dark-bg-color;
+      }
+      &:focus {
+        background-color: $dark-text-color;
+        color: $dark-bg-color;
+      }
+    }
+    // 列表徽章配色
+    li .badge {
+      background-color: $dark-text-color2;
+    }
+    // 搜索配色
+    .search {
+      input {
+        background-color: $body-bg-color;
+        color: $dark-text-color;
+        border-color: $text-primary;
+      }
+      button {
+        @include btn-primary;
+      }
+    }
+  }
+
+  // 文章页配色
+  .content-area {
+    // 标题
+    .entry-title a {
+      color: $dark-text-color !important;
+    }
+    // 文章信息区域
+    .article-info .info {
+      span,i {
+        color: $dark-text-color;
+      }
+      a {
+        @include dark-link;
+      }
+    }
+    // 文章内容区域
+    .post-content {
+      @include post-content;
+    }
+    // 分享和点赞区域
+    .agree-and-share {
+      button {
+        @include btn-outline-light;
+      }
+    }
+    // 上一篇文章和下一篇文章的导航区域
+    .post-navigation {
+      div {
+        color: $dark-text-color;
+      }
+    }
+  }
+
+  // 评论区配色
+  #comments {
+    h2 {
+      color: $dark-text-color;
+    }
+    // 发表评论区
+    #comment-form {
+      label {
+        color: $dark-text-color;
+      }
+      input,textarea {
+        background-color: $body-bg-color;
+        color: $dark-text-color;
+      }
+      // 打开表情面板按钮
+      #show-emoji-btn {
+        @include btn-outline-light;
+      }
+      // 表情面板
+      #emoji-panel {
+        background-color: $dark-bg-color2;
+        // 表情选择区域
+        #emoji-classification {
+          button[aria-checked="true"] {
+            background-color: $text-primary;
+          }
+        }
+        #emoji-title {
+          color: $dark-text-color;
+        }
+      }
+      // 提交评论按钮
+      .submit {
+        @include btn-primary;
+      }
+      // 已登录的评论者信息
+      .comment-user {
+        color: $dark-text-color;
+      }
+    }
+    // 评论列表区
+    ol .comment-body {
+      border-color: $dark-border-color !important;
+    }
+    .comment-box {
+      // 评论者昵称
+      .comment-info {
+        .author {
+          color: $dark-text-color;
+        }
+        .comment-time {
+          color: $dark-text-color2 !important;
+        }
+      }
+      // 回复链接
+      .comment-reply a {
+        border: 1px solid $dark-text-color;
+        color: $dark-text-color;
+        background: none !important;
+        &:hover {
+          background-color: $dark-text-color !important;
+          color: $dark-bg-color;
+        }
+      }
+      // 评论内容区的配色
+      .comment-content {
+        @include post-content;
+      }
+      // 回复表单配色
+      .respond {
+        background-color: $dark-bg-color2 !important;
+      }
+    }
+  }
+
+  // 返回顶部按钮
+  .to-top {
+    @include btn-primary;
+  }
+
+  // 底部信息
+  footer .container {
+    span {
+      color: $dark-text-color2;
+    }
+    a {
+      color: $text-primary;
+    }
+  }
+
+  // 分类、标签、搜索、归档页的配色
+  .archives-list {
+    .page-header {
+      h1,span {
+        color: $dark-text-color;
+      }
+    }
+    .no-post {
+      h4,li,p {
+        color: $dark-text-color;
+      }
+    }
+  }
+
+  // 友情链接页面配色
+  .link-page .link-box {
+    background-color: #121212;
+    .link {
+      background-color: $dark-bg-color;
+    }
+  }
+
+  // 独立归档页配色
+  .archives .archives-item h2 {
+    background-color: $dark-bg-color;
+  }
+  
+  // 数据统计页配色
+  .data-page {
+    .statistics-card {
+      background-color: $dark-bg-color2;
+    }
+  }
+
+  // 404页
+  .container-404 {
+    h1, h2, h5 {
+      color: $dark-text-color;
+    }
+    .search-btn, .to-home-link {
+      @include btn-primary;
+    }
+  }
+}
+
+.dark-color {
+  @include dark-color;
+}

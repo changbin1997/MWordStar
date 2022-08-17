@@ -1,6 +1,3 @@
-<?php
-$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
-?>
 <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>" class="respond border-top">
         <div class="cancel-comment-reply">
@@ -13,14 +10,14 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                 <!--评论内容输入-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
                     <label for="textarea" class="required"><?php _e('评论内容'); ?></label>
-                    <textarea name="text" id="textarea" class="textarea form-control <?php echo $rounded; ?>" required placeholder="请在此处输入评论内容"><?php $this->remember('text'); ?></textarea>
+                    <textarea name="text" id="textarea" class="textarea form-control" required placeholder="请在此处输入评论内容"><?php $this->remember('text'); ?></textarea>
                 </div>
                 <!--Emoji表情面板-->
                 <?php if ($this->options->emojiPanel == 'on'): ?>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
                         <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 Emoji表情</button>
-                        <div id="emoji-panel" class="bg-white border shadow rounded" role="dialog" aria-label="Emoji表情面板（按 ESC 可关闭表情面板并转到评论内容输入框。）">
-                            <div class="card card-body p-0 m-0 border-bottom">
+                        <div id="emoji-panel" class="border shadow rounded" role="dialog" aria-label="Emoji表情面板（按 ESC 可关闭表情面板并转到评论内容输入框。）">
+                            <div class="p-0 m-0 border-bottom">
                                 <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="表情类型"">
                                     <button role="radio" aria-checked="true" aria-label="面部表情" title="面部表情" type="button" class="btn btn btn-sm selected" data-classification="smileys">😀</button>
                                     <button role="radio" aria-checked="false" aria-label="人物/手势" title="人物/手势" type="button" class="btn btn btn-sm" data-classification="character">👦</button>
@@ -47,18 +44,18 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                 <?php else: ?>
                     <!--姓名输入-->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 form-group">
-                        <label for="author" class="required"><?php _e('姓名'); ?></label>
-                        <input type="text" name="author" id="author" class="text form-control <?php echo $rounded; ?>" value="<?php $this->remember('author'); ?>" required="required" placeholder="请输入您的姓名或昵称" maxlength="20">
+                        <label for="author" class="required">姓名</label>
+                        <input type="text" name="author" id="author" class="text form-control" value="<?php $this->remember('author'); ?>" required="required" placeholder="请输入您的姓名或昵称" maxlength="20">
                     </div>
                     <!--Email输入-->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 form-group">
-                        <label for="mail"<?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?>><?php _e('电子邮件地址'); ?></label>
-                        <input type="email" name="mail" id="mail" class="text form-control <?php echo $rounded; ?>" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required="required" <?php endif; ?> placeholder="请输入您的电子邮件地址" maxlength="64">
+                        <label for="mail"<?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?>>电子邮件地址（不会公开）</label>
+                        <input type="email" name="mail" id="mail" class="text form-control" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required="required" <?php endif; ?> placeholder="请输入您的电子邮件地址" maxlength="64">
                     </div>
                     <!--URL输入-->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 form-group">
-                        <label for="url"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?>><?php _e('网站'); ?></label>
-                        <input type="url" maxlength="64" name="url" id="url" class="text form-control <?php echo $rounded; ?>" placeholder="<?php _e('请输入您的网站或博客地址'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?>>
+                        <label for="url"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?>>网站（选填）</label>
+                        <input type="url" maxlength="64" name="url" id="url" class="text form-control" placeholder="<?php _e('请输入您的网站或博客地址'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?>>
                     </div>
                 <?php endif; ?>
                 <!--提交按钮-->

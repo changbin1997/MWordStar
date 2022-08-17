@@ -1,6 +1,14 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
+
+// 检测是否包含主题配色 cookie
+if (isset($_COOKIE['themeColor'])) {
+    // 根据主题配色 cookie 设置配色
+    $themeColor = $_COOKIE['themeColor'];
+}else {
+    // 如果不包含主题配色 cookie 就使用后台设置的默认配色
+    $themeColor = $this->options->color;
+}
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -39,7 +47,7 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body data-rounded="<?php echo $rounded; ?>" class="<?php $this->options->codeThemeColor(); ?> <?php $this->options->color(); ?>">
+<body class="<?php $this->options->codeThemeColor(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>">
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -70,12 +78,20 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取�
                         </li>
                     <?php endwhile; ?>
                 </ul>
+                <?php if ($this->options->colorChangeBtn == 'show'): ?>
+                    <div class="form-inline mr-3 mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0">
+                        <div class="rounded-circle text-center" id="change-color-btn" role="button" tabindex="0" aria-label="切换主题配色" data-toggle="tooltip" data-placement="bottom" data-light="<?php $this->options->defaultLightColor(); ?>">
+                            <i></i>
+                        </div>
+                        <span id="change-color-text" class="ml-2 d-block d-sm-block d-sm-block d-lg-none d-xl-none"></span>
+                    </div>
+                <?php endif; ?>
                 <?php if (is_array($this->options->navbar) && in_array('showSearch', $this->options->navbar)): ?>
                     <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                         <div class="input-group">
-                            <input data-url="<?php $this->options->siteUrl(); ?>" class="border-right-0 form-control form-control-md search-input <?php echo $rounded; ?>" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
+                            <input data-url="<?php $this->options->siteUrl(); ?>" class="border-right-0 form-control form-control-md search-input" type="text" placeholder="搜索" aria-label="搜索" required="required" name="s">
                             <div class="input-group-append">
-                                <button class="btn my-sm-0 <?php echo $rounded; ?>" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
+                                <button class="btn my-sm-0" type="submit" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="bottom">
                                     <i class="icon-search"></i>
                                 </button>
                             </div>

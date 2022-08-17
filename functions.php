@@ -74,8 +74,24 @@ EOT;
         'light-color2' => '配色2',
         'primary-color' => '配色3',
         'info-color' => '配色4',
+        'success-color' => '配色5',
+        'dark-color' => '配色6（深色模式）'
+    ), 'light-color2', _t('默认主题配色'), _t('访问者没有手动更改过配色的情况下默认使用的配色')));
+
+    // 主题配色切换按钮
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('colorChangeBtn', array(
+        'show' => '显示',
+        'hide' => '不显示'
+    ), 'show', _t('在顶部导航栏显示主题配色切换按钮'), _t('主题配色切换按钮可以让访问者手动切换深色模式和浅色模式')));
+
+    // 默认浅色
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('defaultLightColor', array(
+        'light-color1' => '配色1',
+        'light-color2' => '配色2',
+        'primary-color' => '配色3',
+        'info-color' => '配色4',
         'success-color' => '配色5'
-    ), 'light-color', _t('主题配色'), _t('主题配色包含了 导航栏、链接、按钮、标签 的颜色。')));
+    ), 'light-color2', _t('默认浅色'), _t('主题配色切换按钮可以在深色和浅色之间切换，主题有多个浅色配色，您需要设置一个浅色作为浅色模式的默认配色。')));
 
     //  主题元素风格设置
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('rounded', array(

@@ -5,7 +5,6 @@ if (!is_array($sidebarM)) {
     $sidebarM = array();
 }
 $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在移动设备上隐藏区块的class
-$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
 $components = $this->options->sidebarComponent;  //  读取侧边栏组件
 //  如果侧边栏组件为空就使用默认设置
 if ($components == null or $components == '') {
@@ -18,7 +17,7 @@ $components = explode(',', $components);
 <div class="col-md-12 col-lg-4 col-sm-12 sidebar">
     <?php foreach ($components as $component): ?>
         <?php if ($component == '博客信息'): ?>
-            <section class="border <?php echo in_array('HideBlogInfo', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="mwordstar-block <?php echo in_array('HideBlogInfo', $sidebarM)?$hideClass:''; ?>">
                 <h4>博客信息</h4>
                 <div class="personal-information pt-2">
                     <?php if (!$this->options->nickname or !$this->options->birthday or !$this->options->avatarUrl) $userInfo = getAdminInfo(); ?>
@@ -48,14 +47,14 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '搜索'): ?>
-            <section class="<?php echo $rounded; ?> <?php echo in_array('HideSearch', $sidebarM)?$hideClass:''; ?>">
+            <section class="search mwordstar-block <?php echo in_array('HideSearch', $sidebarM)?$hideClass:''; ?>">
                 <h4>搜索</h4>
                 <div class="tag-list pt-2">
                     <form action="<?php $this->options->siteUrl(); ?>" method="post" role="form">
                         <div class="input-group">
-                            <input type="search" class="form-control form-control-md <?php echo $rounded; ?>" placeholder="搜索" aria-label="搜索" aria-describedby="button-addon2" required="required" name="s">
+                            <input type="search" class="form-control form-control-md" placeholder="搜索" aria-label="搜索" aria-describedby="button-addon2" required="required" name="s">
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-md <?php echo $rounded; ?>" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="top">
+                                <button type="submit" class="btn btn-md" aria-label="搜索" title="搜索" data-toggle="tooltip" data-placement="top">
                                     <span class="icon-search"></span>
                                 </button>
                             </div>
@@ -65,7 +64,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '日历'): ?>
-            <section class="border calendar <?php echo $rounded; ?> <?php echo in_array('HideCalendar', $sidebarM)?$hideClass:''; ?>">
+            <section class="calendar mwordstar-block <?php echo in_array('HideCalendar', $sidebarM)?$hideClass:''; ?>">
                 <?php $date = getMonth(); ?>
                 <h4><?php echo $date[0] . '年' . $date[1] . '月'; ?></h4>
                 <div class="tag-list pt-2">
@@ -83,7 +82,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '最新文章'): ?>
-            <section class="border latest-articles<?php echo in_array('HideRecentPosts', $sidebarM)?' ' . $hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="latest-articles mwordstar-block <?php echo in_array('HideRecentPosts', $sidebarM)?' ' . $hideClass:''; ?>">
                 <h4>最新文章</h4>
                 <ul class="list-group" aria-label="最新文章">
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
@@ -111,7 +110,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '最新回复'): ?>
-            <section class="latest-comment border <?php echo in_array('HideRecentComments', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="latest-comment mwordstar-block <?php echo in_array('HideRecentComments', $sidebarM)?$hideClass:''; ?>">
                 <h4>最新回复</h4>
                 <ul class="list-unstyled list-group" aria-label="最新回复">
                     <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
@@ -137,7 +136,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '文章分类'): ?>
-            <section class="category border <?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="category mwordstar-block <?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?>">
                 <h4>文章分类</h4>
                 <ul class="list-group list-group-flush" aria-label="文章分类">
                     <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
@@ -155,14 +154,14 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '标签云'): ?>
-            <section class="tag-cloud border <?php echo in_array('HideTag', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="tag-cloud mwordstar-block <?php echo in_array('HideTag', $sidebarM)?$hideClass:''; ?>">
                 <h4>标签云</h4>
                 <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
                 <?php if($tags->have()): ?>
                     <?php $tagCount = 0; ?>
                     <div class="tag-list pt-2" aria-label="标签云" role="list">
                         <?php while ($tags->next()): ?>
-                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link <?php echo $rounded; ?>" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
+                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                             <?php
                             $tagCount ++;
                             if ($this->options->tagCount != 0 && $this->options->tagCount == $tagCount) {
@@ -171,7 +170,7 @@ $components = explode(',', $components);
                             ?>
                         <?php endwhile; ?>
                         <?php if ($this->options->tagPage && $this->options->tagCount != 0 && $this->options->tagCount == $tagCount): ?>
-                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->options->tagPage(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link <?php echo $rounded; ?>" title="点击查看更多标签">查看更多</a>
+                            <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->options->tagPage(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link" title="点击查看更多标签">查看更多</a>
                         <?php endif; ?>
                     </div>
                 <?php else: ?>
@@ -180,7 +179,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '文章归档'): ?>
-            <section class="border <?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="mwordstar-block <?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?>">
                 <h4>文章归档</h4>
                 <ul class="list-group list-group-flush" aria-label="文章归档">
                     <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
@@ -207,7 +206,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '其它功能'): ?>
-            <section class="border <?php echo in_array('HideOther', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+            <section class="mwordstar-block <?php echo in_array('HideOther', $sidebarM)?$hideClass:''; ?>">
                 <h4>其它功能</h4>
                 <ul class="list-group" aria-label="其它功能">
                     <?php if ($this->options->loginLink == 'show'): ?>
@@ -225,7 +224,7 @@ $components = explode(',', $components);
         <?php endif; ?>
         <?php if ($component == '友情链接'): ?>
             <?php if ($this->options->links or $this->options->homeLinks && $this->is('index')): ?>
-                <section class="border <?php echo in_array('HideLinks', $sidebarM)?$hideClass:''; ?> <?php echo $rounded; ?>">
+                <section class="mwordstar-block <?php echo in_array('HideLinks', $sidebarM)?$hideClass:''; ?>">
                     <h4>友情链接</h4>
                     <ul class="list-group" aria-label="友情链接">
                         <?php if ($this->options->homeLinks && $this->is('index')): ?>

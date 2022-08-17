@@ -1,5 +1,5 @@
-<?php while ($this->next()):  //  开始循环  ?>
-    <div class="post <?php echo $rounded; ?>">
+<?php while ($this->next()):  ?>
+    <div class="post post-list-item mwordstar-block">
         <?php $headerImg = headerImageDisplay($this, $this->options->headerImage, $this->options->headerImageUrl); ?>
         <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'max' && $headerImg): ?>
             <div class="header-img border-top">
