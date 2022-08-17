@@ -196,6 +196,11 @@ $text-secondary: #6c757d;
     }
   }
 
+  // 面包屑导航配色
+  .breadcrumb-nav a {
+    @include link-secondary;
+  }
+
   // 文章页配色
   .content-area {
     // 文章信息区域

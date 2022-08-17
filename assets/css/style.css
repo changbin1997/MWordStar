@@ -1729,6 +1729,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   background-color: #6c757d;
   border-color: #6c757d;
 }
+.light-color1 .breadcrumb-nav a, .light-color2 .breadcrumb-nav a {
+  color: #6c757d !important;
+}
+.light-color1 .breadcrumb-nav a:hover, .light-color2 .breadcrumb-nav a:hover {
+  color: #494f54 !important;
+}
 .light-color1 .content-area .article-info .info span, .light-color1 .content-area .article-info .info i, .light-color2 .content-area .article-info .info span, .light-color2 .content-area .article-info .info i {
   color: #6c757d;
 }
@@ -1935,6 +1941,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+.primary-color .breadcrumb-nav a {
+  color: #007bff !important;
+}
+.primary-color .breadcrumb-nav a:hover {
+  color: #0056b3 !important;
 }
 .primary-color .content-area .article-info .info span, .primary-color .content-area .article-info .info i {
   color: #007bff;
@@ -2143,6 +2155,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   background-color: #17a2b8;
   border-color: #17a2b8;
 }
+.info-color .breadcrumb-nav a {
+  color: #17a2b8 !important;
+}
+.info-color .breadcrumb-nav a:hover {
+  color: #0f6674 !important;
+}
 .info-color .content-area .article-info .info span, .info-color .content-area .article-info .info i {
   color: #17a2b8;
 }
@@ -2349,6 +2367,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: #fff;
   background-color: #28a745;
   border-color: #28a745;
+}
+.success-color .breadcrumb-nav a {
+  color: #28a745 !important;
+}
+.success-color .breadcrumb-nav a:hover {
+  color: #19692c !important;
 }
 .success-color .content-area .article-info .info span, .success-color .content-area .article-info .info i {
   color: #28a745;
@@ -2614,6 +2638,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+.dark-color .breadcrumb-nav .breadcrumb-item {
+  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .content-area .entry-title a {
   color: rgba(255, 255, 255, 0.87) !important;
