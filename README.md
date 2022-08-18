@@ -25,7 +25,7 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 
 下面是主题首页截图：
 
-![MWordStar主题首页截图1](screenshot/16043686604695.png)
+![MWordStar主题首页截图1](screenshot/home.png)
 
 主题元素包含圆角和直角两种风格，您可以根据喜好在主题外观设置中切换，下面是直角风格的首页截图：
 
@@ -39,15 +39,19 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 
 ![MWordStar大头图和小头图搭配使用的截图](screenshot/mini-header-image2.png)
 
-不同配色的截图：
+深色模式：
 
-![MWordStar不同配色的截图](screenshot/16043687256363.jpg)
+![MWordStar深色模式截图](screenshot/dark-color.png)
+
+主题目前包含 6 种配色：
+
+![MWordStar 6种不同配色的截图](screenshot/all-color.png)
 
 ## 特点和功能
 
 * 响应式设计
 * 无障碍适配（Accessibility）
-* 5 种不同风格的配色
+* 6 种不同风格的配色
 * 两种不同风格的元素
 * 多套自定义页面模板
 * 代码高亮
@@ -197,10 +201,18 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 如果您在使用这个主题时遇到 Bug 或有任何问题和建议都可以在 [博客评论区](https://www.misterma.com/archives/812/#comments) 留言，也可以在 Github 的 [issues](https://github.com/changbin1997/MWordStar/issues) 反馈。
 
-## 赞助
+## 打赏支持
 
-如果感觉主题用着还可以的话，也可以扫描下方的二维码来赞助本项目，金额随意：
+如果感觉主题用着还可以的话，也可以扫描下方的二维码打赏，金额随意：
 
 ![支付宝和微信的收款码](screenshot/qr-code.jpeg)
 
 非常感谢 ❤️
+
+下面是打赏记录：
+
+| 打赏者 | 金额   | 时间              |
+|-----|------|-----------------|
+| *伟  | 1.00 | 2022 年 8 月 12 日 |
+
+如果打赏者不希望出现在打赏记录可以发邮件到 email@misterma.com 要求删除。
