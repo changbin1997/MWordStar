@@ -145,23 +145,6 @@ EOT;
         'hide' => '隐藏'
     ), 'show', _t('登录入口'), _t('隐藏登录入口后在前台就不会显示登录入口，只能通过 域名/admin/login.php 进入登录页面')));
 
-    //  侧边栏（移动端）
-    $sidebarBlockM = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlockM',
-        array(
-            'HideBlogInfo' => _t('在移动设备上隐藏博客信息'),
-            'HideCalendar' => _t('在移动设备上隐藏日历'),
-            'HideSearch' => _t('在移动设备上隐藏搜索'),
-            'HideRecentPosts' => _t('在移动设备上隐藏最新文章'),
-            'HideRecentComments' => _t('在移动设备上隐藏最新回复'),
-            'HideCategory' => _t('在移动设备上隐藏分类'),
-            'HideTag' => _t('在移动设备上隐藏标签云'),
-            'HideArchive' => _t('在移动设备上隐藏文章归档'),
-            'HideOther' => _t('在移动设备上隐藏其它功能区域'),
-            'HideLinks' => _t('隐藏首页和全站友情链接')
-        ), null, _t('侧边栏显示（移动设备）'), _t('在移动设备上，侧边栏会显示在文章的下方。您可以在这里设置需要在移动设备上隐藏的侧边栏内容，这里设置的内容不会影响到 PC版 的显示。这里的移动设备包括平板电脑和手机。这里的隐藏只是看不到内容，HTML代码还是在的。')
-    );
-    $form->addInput($sidebarBlockM->multiMode());
-
     //  侧边栏博客信息博主头像地址
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', null, null, _t('博主头像地址'), _t('博主头像会显示在侧边栏的博客信息区域，如果省略会使用管理员的 Gravatar 头像。')));
 

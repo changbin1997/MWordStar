@@ -1,9 +1,5 @@
 <?php
 // 获取侧边栏组件配置
-$sidebarM = $this->options->sidebarBlockM;  //  获取侧边栏的移动设备显示设置
-if (!is_array($sidebarM)) {
-    $sidebarM = array();
-}
 $hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在移动设备上隐藏区块的class
 $components = $this->options->sidebarComponent;  //  读取侧边栏组件
 //  如果侧边栏组件为空就使用默认设置
@@ -17,7 +13,7 @@ $components = explode(',', $components);
 <div class="col-md-12 col-lg-4 col-sm-12 sidebar">
     <?php foreach ($components as $component): ?>
         <?php if ($component == '博客信息'): ?>
-            <section class="mwordstar-block <?php echo in_array('HideBlogInfo', $sidebarM)?$hideClass:''; ?>">
+            <section class="mwordstar-block">
                 <h4>博客信息</h4>
                 <div class="personal-information pt-2">
                     <?php if (!$this->options->nickname or !$this->options->birthday or !$this->options->avatarUrl) $userInfo = getAdminInfo(); ?>
@@ -47,7 +43,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '搜索'): ?>
-            <section class="search mwordstar-block <?php echo in_array('HideSearch', $sidebarM)?$hideClass:''; ?>">
+            <section class="search mwordstar-block">
                 <h4>搜索</h4>
                 <div class="tag-list pt-2">
                     <form action="<?php $this->options->siteUrl(); ?>" method="post" role="form">
@@ -64,7 +60,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '日历'): ?>
-            <section class="calendar mwordstar-block <?php echo in_array('HideCalendar', $sidebarM)?$hideClass:''; ?>">
+            <section class="calendar mwordstar-block">
                 <?php $date = getMonth(); ?>
                 <h4><?php echo $date[0] . '年' . $date[1] . '月'; ?></h4>
                 <div class="tag-list pt-2">
@@ -82,7 +78,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '最新文章'): ?>
-            <section class="latest-articles mwordstar-block <?php echo in_array('HideRecentPosts', $sidebarM)?' ' . $hideClass:''; ?>">
+            <section class="latest-articles mwordstar-block">
                 <h4>最新文章</h4>
                 <ul class="list-group" aria-label="最新文章">
                     <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
@@ -110,7 +106,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '最新回复'): ?>
-            <section class="latest-comment mwordstar-block <?php echo in_array('HideRecentComments', $sidebarM)?$hideClass:''; ?>">
+            <section class="latest-comment mwordstar-block">
                 <h4>最新回复</h4>
                 <ul class="list-unstyled list-group" aria-label="最新回复">
                     <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
@@ -136,7 +132,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '文章分类'): ?>
-            <section class="category mwordstar-block <?php echo in_array('HideCategory', $sidebarM)?$hideClass:''; ?>">
+            <section class="category mwordstar-block">
                 <h4>文章分类</h4>
                 <ul class="list-group list-group-flush" aria-label="文章分类">
                     <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
@@ -154,7 +150,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '标签云'): ?>
-            <section class="tag-cloud mwordstar-block <?php echo in_array('HideTag', $sidebarM)?$hideClass:''; ?>">
+            <section class="tag-cloud mwordstar-block">
                 <h4>标签云</h4>
                 <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
                 <?php if($tags->have()): ?>
@@ -179,7 +175,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '文章归档'): ?>
-            <section class="mwordstar-block <?php echo in_array('HideArchive', $sidebarM)?$hideClass:''; ?>">
+            <section class="mwordstar-block">
                 <h4>文章归档</h4>
                 <ul class="list-group list-group-flush" aria-label="文章归档">
                     <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
@@ -206,7 +202,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
         <?php if ($component == '其它功能'): ?>
-            <section class="mwordstar-block <?php echo in_array('HideOther', $sidebarM)?$hideClass:''; ?>">
+            <section class="mwordstar-block">
                 <h4>其它功能</h4>
                 <ul class="list-group" aria-label="其它功能">
                     <?php if ($this->options->loginLink == 'show'): ?>
@@ -224,7 +220,7 @@ $components = explode(',', $components);
         <?php endif; ?>
         <?php if ($component == '友情链接'): ?>
             <?php if ($this->options->links or $this->options->homeLinks && $this->is('index')): ?>
-                <section class="mwordstar-block <?php echo in_array('HideLinks', $sidebarM)?$hideClass:''; ?>">
+                <section class="mwordstar-block">
                     <h4>友情链接</h4>
                     <ul class="list-group" aria-label="友情链接">
                         <?php if ($this->options->homeLinks && $this->is('index')): ?>
