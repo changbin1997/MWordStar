@@ -499,18 +499,19 @@ $(function () {
   });
 
   // 是否是文章页
-  if ($('#qrcode').length) {
+  if ($('#qr').length) {
     // 生成文章二维码
-    $('#qrcode').qrcode({
-      width: 235,
-      height: 235,
+    $('#qr').qrcode({
+      width: 150,
+      height: 150,
       text: $('#share-btn').attr('data-url')
     });
 
     // 给二维码图片添加 alt 属性
-    if ($('#qrcode img').length > 0) {
-      $('#qrcode img').attr('alt', '文章二维码');
-    }
+    $('#qr canvas').attr({
+      role: 'img',
+      'aria-label': '文章二维码'
+    });
   }
 
   // 点赞

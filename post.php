@@ -99,19 +99,40 @@ $this->need('components/header.php');
                             <span tabindex="0" data-toggle="tooltip" data-placement="top" title="本文为原创文章，版权归 <?php $this->options->title(); ?> 所有，转载请联系博主获得授权。" class="mt-1 mt-sm-1 mt-md-0 mt-lg-0 mt-lg-0 mt-xl-0 float-xl-right float-lg-right float-md-right d-block">©著作权归作者所有</span>
                         <?php endif; ?>
                     </div>
-                    <div class="pt-3 text-center agree-and-share">
+                </article>
+                <div class="mb-3 agree-and-share">
+                    <div class="text-center">
                         <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
                         <button <?php echo $agree['recording']?'disabled':''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn mr-2">
                             <i class="icon-thumbs-up"></i>
                             <span>赞</span>
                             <span class="agree-num"><?php echo $agree['agree']; ?></span>
                         </button>
-                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn" data-toggle="modal" data-target="#share-box">
+                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn" data-toggle="collapse" data-target="#qr-link" aria-expanded="false" aria-controls="collapseExample">
                             <i class="icon-share2"></i>
                             <span>分享</span>
                         </button>
                     </div>
-                </article>
+                    <div class="collapse" id="qr-link">
+                        <div class="mt-4 qr-link">
+                            <p class="text-center mb-2">用手机扫描下方二维码可在手机上浏览和分享</p>
+                            <div class="text-center">
+                                <div id="qr" class="mb-1"></div>
+                                <div class="link-box">
+                                    <a class="text-danger" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到新浪微博" title="分享到新浪微博" data-toggle="tooltip" data-placement="top">
+                                        <i class="icon-sina-weibo mr-1"></i>
+                                    </a>
+                                    <a class="text-info" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" target="_blank" rel="external nofollow" aria-label="分享到QQ空间" title="分享到QQ空间" data-toggle="tooltip" data-placement="top">
+                                        <i class="icon-qzone-logo mr-1"></i>
+                                    </a>
+                                    <a class="text-info" href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到Twitter" title="分享到Twitter" data-toggle="tooltip" data-placement="top">
+                                        <i class="icon-twitter mr-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!--上一篇和下一篇文章的导航-->
                 <nav class="post-navigation border-top">
                     <div class="row">
@@ -129,32 +150,6 @@ $this->need('components/header.php');
             </main>
         </div>
         <?php $this->need('components/sidebar.php'); ?>
-    </div>
-</div>
-<div class="modal fade bd-example-modal-sm" id="share-box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">分享</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <div id="qrcode"></div>
-                <p>用微信扫一扫点击右上角分享</p>
-                <div>
-                    <a target="_blank" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" class="btn btn-danger btn-block">
-                        <i class="icon-sina-weibo"></i>
-                        <span>分享到新浪微博</span>
-                    </a>
-                    <a target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php echo $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" class="btn btn-primary btn-block">
-                        <i class="icon-qzone-logo"></i>
-                        <span>分享到QQ空间</span>
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <?php require_once 'components/max-img.php'; ?>

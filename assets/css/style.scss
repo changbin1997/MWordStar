@@ -630,6 +630,21 @@ footer {
       }
     }
   }
+  // 文章二维码和分享链接
+  #qr-link {
+    .link-box {
+      margin: 0 auto;
+      width: 96px;
+      display: flex;
+      justify-content: space-between;
+      a {
+        font-size: 20px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
 
 //  分享二维码区域

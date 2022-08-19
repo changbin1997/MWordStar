@@ -811,6 +811,18 @@ footer .container span {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.article-page #qr-link .link-box, .archive #qr-link .link-box, .page #qr-link .link-box {
+  margin: 0 auto;
+  width: 96px;
+  display: flex;
+  justify-content: space-between;
+}
+.article-page #qr-link .link-box a, .archive #qr-link .link-box a, .page #qr-link .link-box a {
+  font-size: 20px;
+}
+.article-page #qr-link .link-box a:hover, .archive #qr-link .link-box a:hover, .page #qr-link .link-box a:hover {
+  text-decoration: none;
+}
 
 #share-box #qrcode img {
   margin: 0 auto;

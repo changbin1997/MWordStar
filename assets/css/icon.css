@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?j26i2k');
-  src:  url('../fonts/icomoon.eot?j26i2k#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?j26i2k') format('truetype'),
-    url('../fonts/icomoon.woff?j26i2k') format('woff'),
-    url('../fonts/icomoon.svg?j26i2k#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?967s2g');
+  src:  url('../fonts/icomoon.eot?967s2g#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?967s2g') format('truetype'),
+    url('../fonts/icomoon.woff?967s2g') format('woff'),
+    url('../fonts/icomoon.svg?967s2g#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -34,13 +34,13 @@
 .icon-thumbs-up:before {
   content: "\e902";
 }
-.icon-moon:before {
+.icon-chevron-left:before {
   content: "\e903";
 }
-.icon-chevron-left:before {
+.icon-chevron-right:before {
   content: "\e904";
 }
-.icon-chevron-right:before {
+.icon-moon:before {
   content: "\e905";
 }
 .icon-pencil:before {
@@ -90,6 +90,12 @@
 }
 .icon-arrow-up:before {
   content: "\ea32";
+}
+.icon-share2:before {
+  content: "\ea82";
+}
+.icon-twitter:before {
+  content: "\ea96";
 }
 .icon-sina-weibo:before {
   content: "\ea9a";
