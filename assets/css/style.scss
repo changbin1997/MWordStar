@@ -603,6 +603,10 @@ footer {
     }
     article {
       padding: 20px;
+      // 失效警示信息
+      .warning-info {
+        background-color: #E5E6EB;
+      }
       //  文章页的文章内容
       .post-content {
         margin-top: 10px;

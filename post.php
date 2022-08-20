@@ -81,7 +81,7 @@ $this->need('components/header.php');
                 <!--文章内容-->
                 <article>
                     <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
-                        <div class="alert alert-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
+                        <div class="alert warning-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                     <?php endif; ?>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
@@ -91,7 +91,7 @@ $this->need('components/header.php');
                             <?php articleDirectory($this->content, $directoryOptions); ?>
                         <?php endif; ?>
                     </div>
-                    <div class="clearfix">
+                    <div class="clearfix" id="copyright-info">
                         <?php if ($this->options->modified == 'show'): ?>
                             <span class="float-xl-left float-lg-left float-md-left d-block" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>
                         <?php endif; ?>

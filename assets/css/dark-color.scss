@@ -306,9 +306,18 @@ $text-primary: #007bff;
         @include dark-link;
       }
     }
+    // 文章失效警示信息
+    .warning-info {
+      background-color: $dark-bg-color2;
+      color: $dark-text-color;
+    }
     // 文章内容区域
     .post-content {
       @include post-content;
+    }
+    // 修改时间和版权信息
+    #copyright-info span {
+      color: $dark-text-color2;
     }
     // 分享和点赞区域
     .agree-and-share {
@@ -321,6 +330,10 @@ $text-primary: #007bff;
       div {
         color: $dark-text-color;
       }
+    }
+    // 文章二维码区域
+    #qr-link p {
+      color: $dark-text-color;
     }
   }
 

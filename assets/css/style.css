@@ -655,6 +655,9 @@ footer .container span {
 .article-page main article, .archive main article, .page main article {
   padding: 20px;
 }
+.article-page main article .warning-info, .archive main article .warning-info, .page main article .warning-info {
+  background-color: #E5E6EB;
+}
 .article-page main article .post-content, .archive main article .post-content, .page main article .post-content {
   margin-top: 10px;
   width: 100%;
@@ -2670,6 +2673,10 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .content-area .article-info .info a:hover {
   color: rgba(255, 255, 255, 0.6) !important;
 }
+.dark-color .content-area .warning-info {
+  background-color: #2D2D2D;
+  color: rgba(255, 255, 255, 0.87);
+}
 .dark-color .content-area .post-content #directory-box {
   background-color: #2D2D2D;
 }
@@ -2708,6 +2715,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   background-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
 }
+.dark-color .content-area #copyright-info span {
+  color: rgba(255, 255, 255, 0.6);
+}
 .dark-color .content-area .agree-and-share button {
   color: #f8f9fa;
   border-color: #f8f9fa;
@@ -2725,6 +2735,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   background-color: transparent;
 }
 .dark-color .content-area .post-navigation div {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .content-area #qr-link p {
   color: rgba(255, 255, 255, 0.87);
 }
 .dark-color #comments h2 {
