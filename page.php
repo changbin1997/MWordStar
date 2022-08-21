@@ -50,9 +50,9 @@ $this->need('components/header.php');
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
                         <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
                         <?php if (!$directoryOptions): ?>
-                            <?php $this->content(); ?>
+                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
                         <?php else: ?>
-                            <?php articleDirectory($this->content, $directoryOptions); ?>
+                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc(articleDirectory($this->content, $directoryOptions)):articleDirectory($this->content, $directoryOptions); ?>
                         <?php endif; ?>
                     </div>
                 </article>

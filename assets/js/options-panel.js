@@ -25,10 +25,10 @@ window.onload = function (ev) {
   form.insertBefore(titleEl[4], ul[11]);  //  侧边栏
   form.insertBefore(titleEl[5], ul[22]);  //  文章头图
   form.insertBefore(titleEl[6], ul[26]);  //  文章内容相关
-  form.insertBefore(titleEl[7], ul[31]);  //  评论区
-  form.insertBefore(titleEl[8], ul[35]);  //  导航栏
-  form.insertBefore(titleEl[9], ul[37]);  //  友情链接
-  form.insertBefore(titleEl[10], ul[40]);  //  开发者
+  form.insertBefore(titleEl[7], ul[32]);  //  评论区
+  form.insertBefore(titleEl[8], ul[36]);  //  导航栏
+  form.insertBefore(titleEl[9], ul[38]);  //  友情链接
+  form.insertBefore(titleEl[10], ul[41]);  //  开发者
 
   var h2Title = document.querySelectorAll('form h2');
   h2Title.forEach(function (el) {

@@ -225,6 +225,12 @@ EOT;
         'sunburst' => 'Sunburst（高对比度）'
     ), 'vs2015', _t('代码块颜色主题')));
 
+    // 图片懒加载
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('imagelazyloading', array(
+        'on' => '启用',
+        'off' => '禁用'
+    ), 'off', _t('图片懒加载'), _t('开启后文章内的图片不会自动加载，只有图片进入页面可视区才会加载')));
+
     //  评论框位置
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
         'top' => '评论框在评论列表上方',
@@ -580,7 +586,7 @@ function articleDirectory($content, $options) {
         $GLOBALS['directoryIndex'] ++;
         return $span;
     }, $content);
-    echo $content;
+    return $content;
 }
 
 //  生成目录 HTML
@@ -893,4 +899,11 @@ function gravatarUrl($email, $size) {
 // 计算两个时间之间相差的天数
 function getDays($time1, $time2) {
     return floor(($time2 - $time1) / 86400);
+}
+
+// 把图片的 src 替换为 data-src，用于图片懒加载
+function replaceImgSrc($content) {
+    $pattern = '/<img(.*?)src(.*?)=(.*?)"(.*?)">/i';
+    $replacement = '<img$1data-src$3="$4"$5 class="load-img">';
+    return preg_replace($pattern, $replacement, $content);
 }

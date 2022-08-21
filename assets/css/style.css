@@ -794,6 +794,11 @@ footer .container span {
   color: #333333;
   padding: 0 4px;
 }
+.article-page main article .post-content .load-img, .archive main article .post-content .load-img, .page main article .post-content .load-img {
+  width: 100%;
+  display: block;
+  background-color: #F0F0F0;
+}
 .article-page main article .post-content .protected p, .archive main article .post-content .protected p, .page main article .post-content .protected p {
   text-align: center;
 }
@@ -1296,6 +1301,10 @@ footer .container span {
   #comments .comment-list .comment-children {
     margin-left: 52px;
   }
+
+  .load-img {
+    height: 350px;
+  }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .entry-summary[data-header-image-type=mini] .content-box p {
@@ -1310,6 +1319,10 @@ footer .container span {
   #comments .comment-list .comment-children {
     margin-left: 52px;
   }
+
+  .load-img {
+    height: 350px;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .entry-summary[data-header-image-type=mini] .content-box p {
@@ -1323,6 +1336,10 @@ footer .container span {
 
   #comments .comment-list .comment-children {
     margin-left: 52px;
+  }
+
+  .load-img {
+    height: 350px;
   }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
@@ -1341,6 +1358,10 @@ footer .container span {
 
   #comments .comment-list .comment-children {
     margin-left: 22px;
+  }
+
+  .load-img {
+    height: 300px;
   }
 }
 @media screen and (max-width: 575px) {
@@ -1397,6 +1418,10 @@ footer .container span {
 
   .container .col-md-12 {
     padding: 0 10px;
+  }
+
+  .load-img {
+    height: 200px;
   }
 
   .archives-list .archives .post .header-img {
@@ -2714,6 +2739,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .content-area .post-content hr {
   background-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
+}
+.dark-color .content-area .post-content .load-img {
+  background-color: #373737;
 }
 .dark-color .content-area #copyright-info span {
   color: rgba(255, 255, 255, 0.6);

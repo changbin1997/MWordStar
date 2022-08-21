@@ -314,6 +314,9 @@ $text-primary: #007bff;
     // 文章内容区域
     .post-content {
       @include post-content;
+      .load-img {
+        background-color: #373737;
+      }
     }
     // 修改时间和版权信息
     #copyright-info span {

@@ -612,6 +612,11 @@ footer {
         margin-top: 10px;
         width: 100%;
         @include postContent;
+        .load-img {
+          width: 100%;
+          display: block;
+          background-color: #F0F0F0;
+        }
         .protected {
           p {
             text-align: center;
@@ -992,6 +997,10 @@ footer {
       }
     }
   }
+  // 文章页图片的默认尺寸
+  .load-img {
+    height: 350px;
+  }
 }
 //  >= 992 且 <= 1199
 @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1014,6 +1023,10 @@ footer {
       }
     }
   }
+  // 文章页图片的默认尺寸
+  .load-img {
+    height: 350px;
+  }
 }
 //  >= 768 且 <=991
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -1035,6 +1048,10 @@ footer {
         margin-left: 52px;
       }
     }
+  }
+  // 文章页图片的默认尺寸
+  .load-img {
+    height: 350px;
   }
 }
 //  >= 576 且 <= 767
@@ -1061,6 +1078,10 @@ footer {
         margin-left: 22px;
       }
     }
+  }
+  // 文章页图片的默认尺寸
+  .load-img {
+    height: 300px;
   }
 }
 //  < 575
@@ -1097,6 +1118,12 @@ footer {
   .container .col-md-12 {
     padding: 0 10px;
   }
+
+  // 文章页图片的默认尺寸
+  .load-img {
+    height: 200px;
+  }
+
   //  文章搜索和分类页
   .archives-list {
     .archives {
