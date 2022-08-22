@@ -134,6 +134,10 @@ body[data-rounded="rightAngle"] {
     opacity: 0.8;
     z-index: 1033;
     display: none;
+    button {
+      background-color: #212529;
+      color: rgba(255, 255, 255, 0.87);
+    }
   }
   //  图片描述
   #img-info {

@@ -1604,6 +1604,10 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   z-index: 1033;
   display: none;
 }
+#max-img #img-control button {
+  background-color: #212529;
+  color: rgba(255, 255, 255, 0.87);
+}
 #max-img #img-info {
   position: fixed;
   bottom: 30px;
