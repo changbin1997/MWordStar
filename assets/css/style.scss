@@ -236,6 +236,15 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
         user-select: none;
       }
     }
+    code {
+      &::-webkit-scrollbar {
+        height: 12px;
+        background: #F1F1F1;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #A8A8A8;
+      }
+    }
   }
   table td {
     min-width: 90px;

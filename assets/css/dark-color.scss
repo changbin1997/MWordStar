@@ -78,8 +78,8 @@ $text-primary: #007bff;
     color: $dark-text-color;
   }
   p > code,td code,li code,h1 code,h2 code,h3 code,h4 code,th code {
-    background-color: #000000;
-    color: $dark-text-color;
+    background-color: #000000 !important;
+    color: $dark-text-color !important;
   }
   blockquote {
     border-color: $dark-text-color2;
@@ -101,6 +101,17 @@ $text-primary: #007bff;
   hr {
     background-color: $dark-text-color2;
     color: $dark-text-color2;
+  }
+  pre {
+    code {
+      &::-webkit-scrollbar {
+        background: $dark-bg-color2;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $dark-text-color3;
+      }
+    }
   }
 }
 
@@ -214,6 +225,9 @@ $text-primary: #007bff;
       color: $dark-text-color;
       background-color: $dark-bg-color;
       border: none;
+    }
+    li:not(.active) a:hover {
+      background-color: $dark-bg-color2;
     }
   }
 
@@ -412,6 +426,10 @@ $text-primary: #007bff;
       .respond {
         background-color: $dark-bg-color2 !important;
       }
+    }
+    // 评论分页导航区
+    .pagination-nav .pagination a {
+      border: 1px solid $dark-border-color;
     }
   }
 

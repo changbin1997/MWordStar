@@ -772,6 +772,13 @@ footer .container span {
   -ms-user-select: none;
   user-select: none;
 }
+.article-page main article .post-content pre code::-webkit-scrollbar, .archive main article .post-content pre code::-webkit-scrollbar, .page main article .post-content pre code::-webkit-scrollbar {
+  height: 12px;
+  background: #F1F1F1;
+}
+.article-page main article .post-content pre code::-webkit-scrollbar-thumb, .archive main article .post-content pre code::-webkit-scrollbar-thumb, .page main article .post-content pre code::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
+}
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
 }
@@ -1013,6 +1020,13 @@ footer .container span {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre code::-webkit-scrollbar {
+  height: 12px;
+  background: #F1F1F1;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre code::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content table td {
   min-width: 90px;
@@ -2617,6 +2631,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   background-color: #1E1E1E;
   border: none;
 }
+.dark-color .pagination-nav ul li:not(.active) a:hover {
+  background-color: #2D2D2D;
+}
 .dark-color .sidebar section ul > li > a, .dark-color .sidebar .latest-comment a, .dark-color .sidebar .user-name, .dark-color .sidebar .calendar a {
   color: rgba(255, 255, 255, 0.87) !important;
 }
@@ -2718,8 +2735,8 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .content-area .post-content p > code, .dark-color .content-area .post-content td code, .dark-color .content-area .post-content li code, .dark-color .content-area .post-content h1 code, .dark-color .content-area .post-content h2 code, .dark-color .content-area .post-content h3 code, .dark-color .content-area .post-content h4 code, .dark-color .content-area .post-content th code {
-  background-color: #000000;
-  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000 !important;
+  color: rgba(255, 255, 255, 0.87) !important;
 }
 .dark-color .content-area .post-content blockquote {
   border-color: rgba(255, 255, 255, 0.6);
@@ -2739,6 +2756,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .content-area .post-content hr {
   background-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
+}
+.dark-color .content-area .post-content pre code::-webkit-scrollbar {
+  background: #2D2D2D;
+}
+.dark-color .content-area .post-content pre code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.38);
 }
 .dark-color .content-area .post-content .load-img {
   background-color: #373737;
@@ -2861,8 +2884,8 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: rgba(255, 255, 255, 0.87);
 }
 .dark-color #comments .comment-box .comment-content p > code, .dark-color #comments .comment-box .comment-content td code, .dark-color #comments .comment-box .comment-content li code, .dark-color #comments .comment-box .comment-content h1 code, .dark-color #comments .comment-box .comment-content h2 code, .dark-color #comments .comment-box .comment-content h3 code, .dark-color #comments .comment-box .comment-content h4 code, .dark-color #comments .comment-box .comment-content th code {
-  background-color: #000000;
-  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000 !important;
+  color: rgba(255, 255, 255, 0.87) !important;
 }
 .dark-color #comments .comment-box .comment-content blockquote {
   border-color: rgba(255, 255, 255, 0.6);
@@ -2883,8 +2906,17 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   background-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
 }
+.dark-color #comments .comment-box .comment-content pre code::-webkit-scrollbar {
+  background: #2D2D2D;
+}
+.dark-color #comments .comment-box .comment-content pre code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.38);
+}
 .dark-color #comments .comment-box .respond {
   background-color: #2D2D2D !important;
+}
+.dark-color #comments .pagination-nav .pagination a {
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .dark-color .to-top {
   color: #fff;
