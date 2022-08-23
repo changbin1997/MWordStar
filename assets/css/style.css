@@ -1747,13 +1747,13 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: #212529;
 }
 
-.light-color1 .article-list .post .article-info i, .light-color1 .article-list .post .article-info span, .light-color2 .article-list .post .article-info i, .light-color2 .article-list .post .article-info span {
+.light-color1 .article-list .post .article-info i, .light-color1 .article-list .post .article-info span, .light-color1 .archives-list .post .article-info i, .light-color1 .archives-list .post .article-info span, .light-color2 .article-list .post .article-info i, .light-color2 .article-list .post .article-info span, .light-color2 .archives-list .post .article-info i, .light-color2 .archives-list .post .article-info span {
   color: #6c757d;
 }
-.light-color1 .article-list .post .article-info a, .light-color2 .article-list .post .article-info a {
+.light-color1 .article-list .post .article-info a, .light-color1 .archives-list .post .article-info a, .light-color2 .article-list .post .article-info a, .light-color2 .archives-list .post .article-info a {
   color: #6c757d !important;
 }
-.light-color1 .article-list .post .article-info a:hover, .light-color2 .article-list .post .article-info a:hover {
+.light-color1 .article-list .post .article-info a:hover, .light-color1 .archives-list .post .article-info a:hover, .light-color2 .article-list .post .article-info a:hover, .light-color2 .archives-list .post .article-info a:hover {
   color: #494f54 !important;
 }
 .light-color1 .pagination-nav ul li a, .light-color2 .pagination-nav ul li a {
@@ -1960,13 +1960,13 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .primary-color header .navbar .navbar-text a:hover, .primary-color header .navbar .navbar-text a:focus {
   color: #fff;
 }
-.primary-color .article-list .post .article-info i, .primary-color .article-list .post .article-info span {
+.primary-color .article-list .post .article-info i, .primary-color .article-list .post .article-info span, .primary-color .archives-list .post .article-info i, .primary-color .archives-list .post .article-info span {
   color: #007bff;
 }
-.primary-color .article-list .post .article-info a {
+.primary-color .article-list .post .article-info a, .primary-color .archives-list .post .article-info a {
   color: #007bff !important;
 }
-.primary-color .article-list .post .article-info a:hover {
+.primary-color .article-list .post .article-info a:hover, .primary-color .archives-list .post .article-info a:hover {
   color: #0056b3 !important;
 }
 .primary-color .pagination-nav ul li a {
@@ -2173,13 +2173,13 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .info-color header .navbar .navbar-text a:hover, .info-color header .navbar .navbar-text a:focus {
   color: #fff;
 }
-.info-color .article-list .post .article-info i, .info-color .article-list .post .article-info span {
+.info-color .article-list .post .article-info i, .info-color .article-list .post .article-info span, .info-color .archives-list .post .article-info i, .info-color .archives-list .post .article-info span {
   color: #17a2b8;
 }
-.info-color .article-list .post .article-info a {
+.info-color .article-list .post .article-info a, .info-color .archives-list .post .article-info a {
   color: #17a2b8 !important;
 }
-.info-color .article-list .post .article-info a:hover {
+.info-color .article-list .post .article-info a:hover, .info-color .archives-list .post .article-info a:hover {
   color: #0f6674 !important;
 }
 .info-color .pagination-nav ul li a {
@@ -2386,13 +2386,13 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .success-color header .navbar .navbar-text a:hover, .success-color header .navbar .navbar-text a:focus {
   color: #fff;
 }
-.success-color .article-list .post .article-info i, .success-color .article-list .post .article-info span {
+.success-color .article-list .post .article-info i, .success-color .article-list .post .article-info span, .success-color .archives-list .post .article-info i, .success-color .archives-list .post .article-info span {
   color: #28a745;
 }
-.success-color .article-list .post .article-info a {
+.success-color .article-list .post .article-info a, .success-color .archives-list .post .article-info a {
   color: #28a745 !important;
 }
-.success-color .article-list .post .article-info a:hover {
+.success-color .article-list .post .article-info a:hover, .success-color .archives-list .post .article-info a:hover {
   color: #19692c !important;
 }
 .success-color .pagination-nav ul li a {

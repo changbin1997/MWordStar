@@ -91,7 +91,7 @@ $text-primary: #007bff;
   }
 
   // 文章列表配色
-  .article-list .post {
+  .article-list .post, .archives-list .post {
     .article-info {
       i,span {
         color: $text-primary;

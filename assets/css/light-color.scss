@@ -146,7 +146,7 @@ $text-secondary: #6c757d;
 
 .light-color1,.light-color2 {
   // 文章列表配色
-  .article-list .post {
+  .article-list .post, .archives-list .post {
     .article-info {
       i,span {
         color: $text-secondary;
