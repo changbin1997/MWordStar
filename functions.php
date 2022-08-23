@@ -437,19 +437,29 @@ function headerImageDisplay($t, $options, $defaultImageUrl) {
         return postImg($t, $defaultImageUrl);
     }
     // 在文章列表显示文章头图
-    if ($t->fields->headerImgDisplay == 'post-list' && $t->is('index') or $t->is('archive')) {
+    if ($t->fields->headerImgDisplay == 'post-list' && $t->is('index') or $t->fields->headerImgDisplay == 'post-list' && $t->is('archive')) {
         return postImg($t, $defaultImageUrl);
     }
     // 在文章页显示文章头图
-    if ($t->fields->headerImgDisplay == 'post-page' && $t->is('post')) {
+    if ($t->fields->headerImgDisplay == 'post-page' && $t->is('post') or $t->fields->headerImgDisplay == 'post-page' && $t->is('page')) {
         return postImg($t, $defaultImageUrl);
     }
     // 使用系统文章头图设置
     if ($t->fields->headerImgDisplay == 'default' or $t->fields->headerImgDisplay == null) {
+        // 在文章列表显示头图
         if (is_array($options) && in_array('home', $options) && $t->is('index')) {
             return postImg($t, $defaultImageUrl);
         }
-        if (is_array($options) && in_array('post', $options) && $t->is('post') or $t->is('page')) {
+        // 在分类页、标签页、归档页的文章列表显示文章头图
+        if (is_array($options) && in_array('home', $options) && $t->is('archive')) {
+            return postImg($t, $defaultImageUrl);
+        }
+        // 在文章页显示头图
+        if (is_array($options) && in_array('post', $options) && $t->is('post')) {
+            return postImg($t, $defaultImageUrl);
+        }
+        // 在独立页显示文章头图
+        if (is_array($options) && in_array('post', $options) && $t->is('page')) {
             return postImg($t, $defaultImageUrl);
         }
     }
