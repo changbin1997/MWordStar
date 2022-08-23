@@ -208,9 +208,9 @@ $components = explode(',', $components);
                     <?php if ($this->options->loginLink == 'show'): ?>
                         <?php if($this->user->hasLogin()): ?>
                             <li class="last border-bottom"><a href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
-                            <li><a class="border-bottom" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
+                            <li class="list border-bottom"><a href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
                         <?php else: ?>
-                            <li class="last"><a href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
+                            <li class="last border-bottom"><a href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
                         <?php endif; ?>
                     <?php endif; ?>
                     <li class="border-bottom"><a target="_blank" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a></li>
