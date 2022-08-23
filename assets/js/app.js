@@ -83,7 +83,6 @@ $(function () {
         var btnEl = document.createElement('button');
         btnEl.className = 'copy-code-btn btn btn-sm';
         // 根据代码块的配色设置拷贝按钮的颜色
-        btnEl.className += $('.stackoverflow-light').length?' btn-outline-secondary':' btn-outline-light';
         btnEl.setAttribute('type', 'button');
         btnEl.innerHTML = '<i class="icon-copy"></i>';
         btnEl.setAttribute('data-clipboard-target', '#code-' + i);

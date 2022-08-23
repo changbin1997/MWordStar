@@ -245,6 +245,14 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
         background: #A8A8A8;
       }
     }
+    .copy-code-btn {
+      border-color: #BBBBBB;
+      color: #BBBBBB;
+      &:hover {
+        background-color: #BBBBBB;
+        color: #FFFFFF;
+      }
+    }
   }
   table td {
     min-width: 90px;

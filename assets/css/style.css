@@ -779,6 +779,14 @@ footer .container span {
 .article-page main article .post-content pre code::-webkit-scrollbar-thumb, .archive main article .post-content pre code::-webkit-scrollbar-thumb, .page main article .post-content pre code::-webkit-scrollbar-thumb {
   background: #A8A8A8;
 }
+.article-page main article .post-content pre .copy-code-btn, .archive main article .post-content pre .copy-code-btn, .page main article .post-content pre .copy-code-btn {
+  border-color: #BBBBBB;
+  color: #BBBBBB;
+}
+.article-page main article .post-content pre .copy-code-btn:hover, .archive main article .post-content pre .copy-code-btn:hover, .page main article .post-content pre .copy-code-btn:hover {
+  background-color: #BBBBBB;
+  color: #FFFFFF;
+}
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
 }
@@ -1027,6 +1035,14 @@ footer .container span {
 }
 #comments .comments-lists .comment-list .comment-body .comment-content pre code::-webkit-scrollbar-thumb {
   background: #A8A8A8;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre .copy-code-btn {
+  border-color: #BBBBBB;
+  color: #BBBBBB;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content pre .copy-code-btn:hover {
+  background-color: #BBBBBB;
+  color: #FFFFFF;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content table td {
   min-width: 90px;
