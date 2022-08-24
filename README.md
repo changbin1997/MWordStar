@@ -4,16 +4,9 @@
 
 我现在使用的主题是 [Facile](https://github.com/changbin1997/Facile) ，有兴趣的话也可以访问 [我的博客](https://www.misterma.com/) 或 [Github](https://github.com/changbin1997/Facile) 查看。
 
-主题演示地址：[https://changbin1997.github.io/MWordStar-Light/web/](https://changbin1997.github.io/MWordStar-Light/web/)
+主题演示地址：[https://changbin1997.github.io/MWordStar/web/](https://changbin1997.github.io/MWordStar/web/)
 
-主题包含几套不同风格的配色，您可以在主题设置中切换，下面是各种配色的演示地址：
-
-* [MWordStar-Light](https://changbin1997.github.io/MWordStar-Light/web/)
-* [MWordStar-info](https://changbin1997.github.io/MWordStar-info/web/)
-* [MWordStar-Primary](https://changbin1997.github.io/MWordStar-Primary/web/)
-* [MWordStar-Success](https://changbin1997.github.io/MWordStar-Success/web/)
-
-Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一样的，可以参考下面的截图。主题演示站只是静态页面，不能发评论和点赞。
+主题演示站只是静态页面，不能发评论和点赞。
 
 主题下载地址：[https://github.com/changbin1997/MWordStar/releases](https://github.com/changbin1997/MWordStar/releases)
 
@@ -57,10 +50,12 @@ Light 和 dark 配色只是顶部的导航栏不一样，其他地方都是一�
 * 代码高亮
 * 丰富的设置选项
 * 良好的 SEO 优化
+* 详细的图表统计
 * 自带点赞功能
 * 丰富的侧边栏组件
 * 评论区自带 Emoji 表情面板
 * 自动根据文章中的标题生成章节目录
+* 支持图片懒加载
 * 长期维护
 * 详细的 [使用说明](https://mwordstar.misterma.com/)（必看）
 
