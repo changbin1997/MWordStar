@@ -174,7 +174,7 @@ EOT;
 
     //  文章头图设置
     $headerImage = new Typecho_Widget_Helper_Form_Element_Checkbox('headerImage', array(
-        'home' => _t('在首页显示文章头图'),
+        'home' => _t('在文章列表显示文章头图'),
         'sidebarBlock' => _t('在侧边栏的最新文章区域显示文章头图'),
         'post' => _t('在文章页显示文章头图')
     ), array('home', 'post'), _t('文章头图设置'));
@@ -210,7 +210,7 @@ EOT;
     ), 'show', _t('在文章下方显示最后修改时间')));
 
     //  文章摘要字数
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '120', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：120个字。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '150', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：150个字。')));
 
     //  显示代码行号
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeLineNum', array(

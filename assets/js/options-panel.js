@@ -20,7 +20,7 @@ window.onload = function (ev) {
 
   form.insertBefore(titleEl[0], ul[0]);  //  外观
   form.insertBefore(titleEl[1], ul[4]);  //  站点信息
-  form.insertBefore(titleEl[2], ul[6]);  //  辅助功能
+  form.insertBefore(titleEl[2], ul[7]);  //  辅助功能
   form.insertBefore(titleEl[3], ul[8]);  //  链接跳转
   form.insertBefore(titleEl[4], ul[11]);  //  侧边栏
   form.insertBefore(titleEl[5], ul[22]);  //  文章头图
