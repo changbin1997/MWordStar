@@ -84,12 +84,8 @@ $this->need('components/header.php');
                         <div class="alert warning-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                     <?php endif; ?>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
-                        <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
-                        <?php if (!$directoryOptions): ?>
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
-                        <?php else: ?>
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc(articleDirectory($this->content, $directoryOptions)):articleDirectory($this->content, $directoryOptions); ?>
-                        <?php endif; ?>
+                        <?php $GLOBALS['post'] = articleDirectory($this->content); ?>
+                        <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($GLOBALS['post']['content']):$GLOBALS['post']['content']; ?>
                     </div>
                     <div class="clearfix" id="copyright-info">
                         <?php if ($this->options->modified == 'show'): ?>

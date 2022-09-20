@@ -568,6 +568,25 @@ header {
       line-height: 40px;
     }
   }
+  // 目录
+  .directory {
+    padding: 0 18px;
+    > .article-directory {
+      overflow-y: auto;
+      padding: 0;
+      &::-webkit-scrollbar {
+        width: 6px;
+        background: #F1F1F1;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #A8A8A8;
+      }
+      .article-directory {
+        margin-bottom: 0 !important;
+        padding-bottom: 0;
+      }
+    }
+  }
 }
 
 //  文章分页区域

@@ -1,7 +1,7 @@
 <?php
-// 获取侧边栏组件配置
-$hideClass = 'd-md-none d-sm-none d-none d-lg-block d-xl-block';  //  用于在移动设备上隐藏区块的class
-$components = $this->options->sidebarComponent;  //  读取侧边栏组件
+
+// 读取侧边栏组件
+$components = $GLOBALS['page'] == 'post'?$this->options->postPageSidebarComponent:$this->options->sidebarComponent;
 //  如果侧边栏组件为空就使用默认设置
 if ($components == null or $components == '') {
     $components = '博客信息,日历,搜索,最新文章,最新回复,文章分类,标签云,文章归档,其它功能,友情链接';
@@ -238,6 +238,12 @@ $components = explode(',', $components);
                     </ul>
                 </section>
             <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($component == '目录' && $GLOBALS['page'] == 'post' && $GLOBALS['post']['directory'] != null): ?>
+            <section class="mwordstar-block directory d-none d-sm-none d-md-none d-lg-block d-xl-block">
+                <h4 class="mx-0">目录</h4>
+                <?php echo $GLOBALS['post']['directory']; ?>
+            </section>
         <?php endif; ?>
     <?php endforeach;  ?>
 </div>

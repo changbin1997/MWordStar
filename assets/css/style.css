@@ -560,6 +560,24 @@ header .navbar .search-form button:focus {
 .sidebar .latest-comment .pingback {
   line-height: 40px;
 }
+.sidebar .directory {
+  padding: 0 18px;
+}
+.sidebar .directory > .article-directory {
+  overflow-y: auto;
+  padding: 0;
+}
+.sidebar .directory > .article-directory::-webkit-scrollbar {
+  width: 6px;
+  background: #F1F1F1;
+}
+.sidebar .directory > .article-directory::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
+}
+.sidebar .directory > .article-directory .article-directory {
+  margin-bottom: 0 !important;
+  padding-bottom: 0;
+}
 
 .pagination-nav {
   width: 100%;
