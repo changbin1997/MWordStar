@@ -152,20 +152,17 @@ $components = explode(',', $components);
         <?php if ($component == '标签云'): ?>
             <section class="tag-cloud mwordstar-block">
                 <h4>标签云</h4>
-                <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
+                <?php $limit = $this->options->tagCount == 0?1000:$this->options->tagCount; ?>
+                <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=' . $limit)->to($tags); ?>
                 <?php if($tags->have()): ?>
-                    <?php $tagCount = 0; ?>
+                    <?php $tagCount = tagCount(); ?>
                     <div class="tag-list pt-2" aria-label="标签云" role="list">
                         <?php while ($tags->next()): ?>
                             <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $tags->permalink(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link" title="<?php $tags->count(); ?> 篇文章"><?php $tags->name(); ?></a>
                             <?php
-                            $tagCount ++;
-                            if ($this->options->tagCount != 0 && $this->options->tagCount == $tagCount) {
-                                break;
-                            }
                             ?>
                         <?php endwhile; ?>
-                        <?php if ($this->options->tagPage && $this->options->tagCount != 0 && $this->options->tagCount == $tagCount): ?>
+                        <?php if ($this->options->tagPage && $tagCount > $limit): ?>
                             <a role="listitem" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $this->options->tagPage(); ?>" rel="tag" class="py-1 px-2 d-inline-block tag-link" title="点击查看更多标签">查看更多</a>
                         <?php endif; ?>
                     </div>

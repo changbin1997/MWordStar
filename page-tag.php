@@ -33,7 +33,7 @@ $this->need('components/header.php');
                 </header>
                 <article>
                     <div class="post-content">
-                        <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
+                        <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=1&desc=0')->to($tags); ?>
                         <?php if($tags->have()): ?>
                             <div class="row">
                                 <?php while ($tags->next()): ?>
