@@ -1013,6 +1013,14 @@ footer {
   }
 }
 
+// 独立页面 - 分类目录
+.category-page .category-list {
+  list-style: none;
+  li {
+    align-items: center;
+  }
+}
+
 .archive-page,
 .post-page,
 .link-page {

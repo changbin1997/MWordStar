@@ -232,4 +232,11 @@ $text-primary: #007bff;
   .to-top {
     color: $text-primary;
   }
+
+  // 独立页面 - 分类目录
+  .category-page .category-list {
+    .icon {
+      color: $text-primary;
+    }
+  }
 }

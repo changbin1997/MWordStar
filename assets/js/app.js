@@ -356,8 +356,8 @@ $(function () {
   }
 
   // 给文章信息的分类链接添加 title
-  if ($('.icon-folder-open').length) {
-    $('.icon-folder-open').nextAll().attr({
+  if ($('.article-info .icon-folder-open').length) {
+    $('.article-info .icon-folder-open').nextAll().attr({
       'title': '分类',
       'data-toggle': 'tooltip',
       'data-placement': 'top'

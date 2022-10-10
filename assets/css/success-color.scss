@@ -232,4 +232,11 @@ $text-success: #28a745;
   .to-top {
     color: $text-success;
   }
+
+  // 独立页面 - 分类目录
+  .category-page .category-list {
+    .icon {
+      color: $text-success;
+    }
+  }
 }

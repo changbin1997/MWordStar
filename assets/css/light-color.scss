@@ -287,4 +287,11 @@ $text-secondary: #6c757d;
   .to-top {
     color: $text-secondary;
   }
+
+  // 独立页面 - 分类目录
+  .category-page .category-list {
+    .icon {
+      color: #6C757D;
+    }
+  }
 }
