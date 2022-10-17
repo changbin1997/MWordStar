@@ -48,12 +48,7 @@ $this->need('components/header.php');
                 </div>
                 <article>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
-                        <?php $directoryOptions = getDirectoryOptions($this->fields->directory, $this->options->directory); ?>
-                        <?php if (!$directoryOptions): ?>
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
-                        <?php else: ?>
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc(articleDirectory($this->content, $directoryOptions)):articleDirectory($this->content, $directoryOptions); ?>
-                        <?php endif; ?>
+                        <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
                     </div>
                 </article>
                 <?php $this->need('components/comments.php'); ?>
