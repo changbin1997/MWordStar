@@ -172,6 +172,9 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   img {
     max-width: 100%;
     cursor: zoom-in;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
   //  文章标题
   h1,
