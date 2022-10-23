@@ -84,9 +84,37 @@ $this->need('components/header.php');
                         <div class="alert warning-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                     <?php endif; ?>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
-                        <?php $GLOBALS['post'] = articleDirectory($this->content); ?>
+                        <?php $GLOBALS['postPage'] = preg_split('/\[-page-]|<p>\[-page-]<\/p>/', $this->content); ?>
+                        <?php $postPageNum = isset($_GET['post-page'])?$_GET['post-page']:1; ?>
+                        <?php if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1; ?>
+                        <?php $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]); ?>
                         <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($GLOBALS['post']['content']):$GLOBALS['post']['content']; ?>
                     </div>
+                    <?php if (count($GLOBALS['postPage']) > 1): ?>
+                        <nav aria-label="文章分页" class="py-3 post-pagination">
+                            <ol class="pagination justify-content-center">
+                                <?php if ($postPageNum > 1): ?>
+                                    <li class="page-item">
+                                        <a href="<?php echo $this->permalink . '?post-page=' . ($postPageNum - 1); ?>" class="page-link previous-page" aria-label="上一页" title="上一页（左光标键）" data-toggle="tooltip" data-placement="top">
+                                            <i class="icon-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php for ($i = 0;$i < count($GLOBALS['postPage']);$i ++): ?>
+                                    <li class="page-item <?php if ($i == $postPageNum - 1) echo 'active'; ?>">
+                                        <a href="<?php echo $this->permalink . '?post-page=' . ($i + 1); ?>" class="page-link" <?php if ($i == $postPageNum - 1) echo 'aria-current="page"'; ?>><?php echo $i + 1; ?></a>
+                                    </li>
+                                <?php endfor; ?>
+                                <?php if ($postPageNum < count($GLOBALS['postPage'])): ?>
+                                    <li class="page-item">
+                                        <a href="<?php echo $this->permalink . '?post-page=' . ($postPageNum + 1); ?>" class="page-link next-page" aria-label="下一页" title="下一页（右光标键）" data-toggle="tooltip" data-placement="top">
+                                            <i class="icon-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ol>
+                        </nav>
+                    <?php endif; ?>
                     <div class="clearfix" id="copyright-info">
                         <?php if ($this->options->modified == 'show'): ?>
                             <span class="float-xl-left float-lg-left float-md-left d-block" data-toggle="tooltip" data-placement="top" tabindex="0" title="发布时间：<?php $this->date('Y年m月d日'); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></span>

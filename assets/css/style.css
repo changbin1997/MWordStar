@@ -1787,10 +1787,10 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .light-color1 .article-list .post .article-info a:hover, .light-color1 .archives-list .post .article-info a:hover, .light-color2 .article-list .post .article-info a:hover, .light-color2 .archives-list .post .article-info a:hover {
   color: #494f54 !important;
 }
-.light-color1 .pagination-nav ul li a, .light-color2 .pagination-nav ul li a {
+.light-color1 .pagination-nav ul li a, .light-color1 .post-pagination ol li a, .light-color2 .pagination-nav ul li a, .light-color2 .post-pagination ol li a {
   color: #6c757d;
 }
-.light-color1 .pagination-nav ul .active a, .light-color2 .pagination-nav ul .active a {
+.light-color1 .pagination-nav ul .active a, .light-color1 .post-pagination ol .active a, .light-color2 .pagination-nav ul .active a, .light-color2 .post-pagination ol .active a {
   color: #ffffff;
   background-color: #6c757d;
   border: none;
@@ -2003,10 +2003,10 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .primary-color .article-list .post .article-info a:hover, .primary-color .archives-list .post .article-info a:hover {
   color: #0056b3 !important;
 }
-.primary-color .pagination-nav ul li a {
+.primary-color .pagination-nav ul li a, .primary-color .post-pagination ol li a {
   color: #007bff;
 }
-.primary-color .pagination-nav ul .active a {
+.primary-color .pagination-nav ul .active a, .primary-color .post-pagination ol .active a {
   color: #ffffff;
   background-color: #007bff;
   border: none;
@@ -2219,10 +2219,10 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .info-color .article-list .post .article-info a:hover, .info-color .archives-list .post .article-info a:hover {
   color: #0f6674 !important;
 }
-.info-color .pagination-nav ul li a {
+.info-color .pagination-nav ul li a, .info-color .post-pagination ol li a {
   color: #17a2b8;
 }
-.info-color .pagination-nav ul .active a {
+.info-color .pagination-nav ul .active a, .info-color .post-pagination ol .active a {
   color: #ffffff;
   background-color: #17a2b8;
   border: none;
@@ -2435,10 +2435,10 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .success-color .article-list .post .article-info a:hover, .success-color .archives-list .post .article-info a:hover {
   color: #19692c !important;
 }
-.success-color .pagination-nav ul li a {
+.success-color .pagination-nav ul li a, .success-color .post-pagination ol li a {
   color: #28a745;
 }
-.success-color .pagination-nav ul .active a {
+.success-color .pagination-nav ul .active a, .success-color .post-pagination ol .active a {
   color: #ffffff;
   background-color: #28a745;
   border: none;
@@ -2689,12 +2689,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .article-list .post .article-info a:hover, .dark-color .archives-list .archives .post .article-info a:hover {
   color: rgba(255, 255, 255, 0.6) !important;
 }
-.dark-color .pagination-nav ul li a {
+.dark-color .pagination-nav ul li a, .dark-color .post-pagination ol li a {
   color: rgba(255, 255, 255, 0.87);
   background-color: #1E1E1E;
   border: none;
 }
-.dark-color .pagination-nav ul li:not(.active) a:hover {
+.dark-color .pagination-nav ul li:not(.active) a:hover, .dark-color .post-pagination ol li:not(.active) a:hover {
   background-color: #2D2D2D;
 }
 .dark-color .sidebar section ul > li > a, .dark-color .sidebar .latest-comment a, .dark-color .sidebar .user-name, .dark-color .sidebar .calendar a {

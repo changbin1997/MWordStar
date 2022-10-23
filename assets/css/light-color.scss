@@ -158,7 +158,7 @@ $text-secondary: #6c757d;
   }
 
   // 分页导航区配色
-  .pagination-nav ul {
+  .pagination-nav ul,.post-pagination ol {
     li a {
       color: $text-secondary;
     }

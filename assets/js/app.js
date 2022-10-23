@@ -531,21 +531,39 @@ $(function () {
     if (ev.keyCode === 27 && maxImg) {
       $('#max-img .hide-img').click();  // 关闭大图
     }
+
     // 如果按下的是 + 就放大图片
     if (ev.keyCode === 107 && maxImg) {
       $('#img-control .big').click();
     }
+
     // 如果按下的是 - 就缩小图片
     if (ev.keyCode === 109 && maxImg) {
       $('#img-control .small').click();
     }
-    // 如果按下的是右方向键就跳转到下一页
-    if (ev.keyCode === 39 && $('.next .page-link').length) {
-      location.href = $('.next .page-link').attr('href');
+
+    // 右光标键
+    if (ev.keyCode === 39) {
+      // 文章列表翻页
+      if ($('.next .page-link').length) {
+        location.href = $('.next .page-link').attr('href');
+      }
+      // 文章内容翻页
+      if ($('.post-pagination .next-page').length) {
+        location.href = $('.post-pagination .next-page').attr('href');
+      }
     }
-    // 如果按下的是左方向键就跳转到上一页
-    if (ev.keyCode === 37 && $('.prev .page-link').length) {
-      location.href = $('.prev .page-link').attr('href');
+
+    // 左光标键
+    if (ev.keyCode === 37) {
+      // 文章列表翻页
+      if ($('.prev .page-link').length) {
+        location.href = $('.prev .page-link').attr('href');
+      }
+      // 文章内容翻页
+      if ($('.post-pagination .previous-page').length) {
+        location.href = $('.post-pagination .previous-page').attr('href');
+      }
     }
   });
 
