@@ -350,9 +350,21 @@ $(function () {
     // 给分页链接添加符合 Bootstrap 样式标准的 class
     $('.pagination-nav ul li').addClass('page-item');
     $('.pagination-nav ul li a').addClass('page-link');
-    // 给上一页和下一页加入 aria-label 属性，兼容屏幕阅读器
-    $('.pagination-nav .prev a').attr('aria-label', '上一页');
-    $('.pagination-nav .next a').attr('aria-label', '下一页');
+    // 给上一页和下一页加入文字提示
+    $('.pagination-nav .prev a').attr({
+      'aria-label': '上一页',
+      'title': '上一页（左光标键）',
+      'data-toggle': 'tooltip',
+      'data-placement': 'top'
+    });
+    $('.pagination-nav .next a').attr({
+      'aria-label': '下一页',
+      'title': '下一页（右光标键）',
+      'data-toggle': 'tooltip',
+      'data-placement': 'top'
+    });
+    // 给当前页的链接加入一个标识
+    $('.pagination-nav .active a').attr('aria-current', 'page');
   }
 
   // 给文章信息的分类链接添加 title

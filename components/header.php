@@ -64,7 +64,7 @@ if (isset($_COOKIE['themeColor'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item <?php echo $this->is('index')?'active':''; ?>">
-                        <a class="nav-link" <?php if($this->is('index')): ?> <?php endif; ?> href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
+                        <a class="nav-link" href="<?php $this->options->siteUrl(); ?>" <?php if ($this->is('index')) echo 'aria-current="page"'; ?>><?php _e('首页'); ?></a>
                     </li>
                     <?php if ($this->options->navbar && in_array('showClassification', $this->options->navbar)): ?>
                         <li class="nav-item dropdown">
@@ -79,7 +79,7 @@ if (isset($_COOKIE['themeColor'])) {
                     <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                     <?php while($pages->next()): ?>
                         <li class="nav-item <?php echo $this->is('page', $pages->slug)?'active':''; ?>">
-                            <a class="nav-link" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+                            <a class="nav-link" href="<?php $pages->permalink(); ?>" <?php if ($this->is('page', $pages->slug)) echo 'aria-current="page"'; ?>><?php $pages->title(); ?></a>
                         </li>
                     <?php endwhile; ?>
                 </ul>
