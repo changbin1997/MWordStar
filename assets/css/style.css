@@ -781,6 +781,26 @@ footer .container span {
   font-weight: 700;
   color: #444444;
 }
+.article-page main article .post-content h1 > code, .archive main article .post-content h1 > code, .page main article .post-content h1 > code,
+.article-page main article .post-content h2 > code,
+.archive main article .post-content h2 > code,
+.page main article .post-content h2 > code,
+.article-page main article .post-content h3 > code,
+.archive main article .post-content h3 > code,
+.page main article .post-content h3 > code,
+.article-page main article .post-content h4 > code,
+.archive main article .post-content h4 > code,
+.page main article .post-content h4 > code,
+.article-page main article .post-content h5 > code,
+.archive main article .post-content h5 > code,
+.page main article .post-content h5 > code,
+.article-page main article .post-content h6 > code,
+.archive main article .post-content h6 > code,
+.page main article .post-content h6 > code {
+  background: #ededed;
+  color: #333333;
+  padding: 0 4px;
+}
 .article-page main article .post-content h1, .archive main article .post-content h1, .page main article .post-content h1 {
   font-size: 30px;
   margin: 50px 0 20px 0;
@@ -822,6 +842,9 @@ footer .container span {
 .article-page main article .post-content li > code,
 .archive main article .post-content li > code,
 .page main article .post-content li > code,
+.article-page main article .post-content th > code,
+.archive main article .post-content th > code,
+.page main article .post-content th > code,
 .article-page main article .post-content td > code,
 .archive main article .post-content td > code,
 .page main article .post-content td > code {
@@ -1000,6 +1023,16 @@ footer .container span {
   font-weight: 700;
   color: #444444;
 }
+#comments .comments-lists .comment-list .comment-body .comment-content h1 > code,
+#comments .comments-lists .comment-list .comment-body .comment-content h2 > code,
+#comments .comments-lists .comment-list .comment-body .comment-content h3 > code,
+#comments .comments-lists .comment-list .comment-body .comment-content h4 > code,
+#comments .comments-lists .comment-list .comment-body .comment-content h5 > code,
+#comments .comments-lists .comment-list .comment-body .comment-content h6 > code {
+  background: #ededed;
+  color: #333333;
+  padding: 0 4px;
+}
 #comments .comments-lists .comment-list .comment-body .comment-content h1 {
   font-size: 30px;
   margin: 50px 0 20px 0;
@@ -1039,6 +1072,7 @@ footer .container span {
 }
 #comments .comments-lists .comment-list .comment-body .comment-content p > code,
 #comments .comments-lists .comment-list .comment-body .comment-content li > code,
+#comments .comments-lists .comment-list .comment-body .comment-content th > code,
 #comments .comments-lists .comment-list .comment-body .comment-content td > code {
   background: #ededed;
   color: #333333;

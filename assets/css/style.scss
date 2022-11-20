@@ -185,6 +185,11 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   h6 {
     font-weight: 700;
     color: #444444;
+    > code {
+      background: #ededed;
+      color: #333333;
+      padding: 0 4px;
+    }
   }
   h1 {
     font-size: 30px;
@@ -226,6 +231,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   p > code,
   li > code,
+  th > code,
   td > code {
     background: #ededed;
     color: #333333;
