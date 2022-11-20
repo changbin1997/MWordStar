@@ -64,7 +64,7 @@ $(function () {
   }
 
   // 给文章中的代码块添加拷贝按钮和拷贝事件
-  if ($('pre').length) {
+  if ($('.enable-highlight').length && $('pre').length) {
     for (var i = 0;i < $('pre').length;i ++) {
       // 是否是代码块
       if ($('pre').eq(i).children('code').length) {
@@ -810,7 +810,10 @@ $(function () {
   });
 });
 
-hljs.initHighlightingOnLoad();  // 代码高亮初始化
+// 如果开启了代码高亮就初始化代码高亮
+if (document.querySelectorAll('.enable-highlight').length) {
+  hljs.initHighlightingOnLoad();
+}
 
 // 根据当前使用的主题配色来设置主题配色切换按钮的图标
 function changeColorBtnIcon() {

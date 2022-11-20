@@ -14,6 +14,13 @@ if (isset($_COOKIE['themeColor'])) {
     // 如果不包含主题配色 cookie 就使用后台设置的默认配色
     $themeColor = $this->options->color;
 }
+
+// 设置代码高亮主题
+$codeThemeColor = $this->options->codeThemeColor;
+// 如果代码高亮被禁用就不输出代码高亮主题设置
+if ($this->options->codeHighlight != 'enable-highlight') {
+    $codeThemeColor = 'code-theme-none';
+}
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -52,7 +59,7 @@ if (isset($_COOKIE['themeColor'])) {
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body class="<?php $this->options->codeThemeColor(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>">
+<body class="<?php echo $codeThemeColor; ?> <?php $this->options->codeHighlight(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>">
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container">

@@ -254,11 +254,51 @@
   font-weight: 700;
 }
 
-.post-content[data-code-line-num=show] pre code {
+.enable-highlight pre {
+  position: relative;
+}
+.enable-highlight pre:hover .copy-code-btn {
+  display: block;
+}
+.enable-highlight pre .line-box {
+  width: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+}
+.enable-highlight pre .line-box div {
+  line-height: 22.5px;
+  height: 22.5px;
+  padding-right: 9px;
+  font-size: 14px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.enable-highlight pre code {
+  font-size: 15px;
+}
+.enable-highlight pre code::-webkit-scrollbar {
+  height: 12px;
+  background: #F1F1F1;
+}
+.enable-highlight pre code::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
+}
+.enable-highlight pre .copy-code-btn {
+  border-color: #BBBBBB;
+  color: #BBBBBB;
+}
+.enable-highlight pre .copy-code-btn:hover {
+  background-color: #BBBBBB;
+  color: #FFFFFF;
+}
+.enable-highlight .post-content[data-code-line-num=show] pre code {
   padding: 12px 10px;
 }
-
-.post-content[data-code-line-num=hide] pre code {
+.enable-highlight .post-content[data-code-line-num=hide] pre code {
   padding: 12px 16px;
 }
 
@@ -767,47 +807,6 @@ footer .container span {
   color: #686868;
   font-style: italic;
 }
-.article-page main article .post-content code, .archive main article .post-content code, .page main article .post-content code {
-  font-size: 15px;
-}
-.article-page main article .post-content pre, .archive main article .post-content pre, .page main article .post-content pre {
-  position: relative;
-}
-.article-page main article .post-content pre:hover .copy-code-btn, .archive main article .post-content pre:hover .copy-code-btn, .page main article .post-content pre:hover .copy-code-btn {
-  display: block;
-}
-.article-page main article .post-content pre .line-box, .archive main article .post-content pre .line-box, .page main article .post-content pre .line-box {
-  width: 40px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 12px;
-}
-.article-page main article .post-content pre .line-box div, .archive main article .post-content pre .line-box div, .page main article .post-content pre .line-box div {
-  line-height: 22.5px;
-  height: 22.5px;
-  padding-right: 9px;
-  font-size: 14px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.article-page main article .post-content pre code::-webkit-scrollbar, .archive main article .post-content pre code::-webkit-scrollbar, .page main article .post-content pre code::-webkit-scrollbar {
-  height: 12px;
-  background: #F1F1F1;
-}
-.article-page main article .post-content pre code::-webkit-scrollbar-thumb, .archive main article .post-content pre code::-webkit-scrollbar-thumb, .page main article .post-content pre code::-webkit-scrollbar-thumb {
-  background: #A8A8A8;
-}
-.article-page main article .post-content pre .copy-code-btn, .archive main article .post-content pre .copy-code-btn, .page main article .post-content pre .copy-code-btn {
-  border-color: #BBBBBB;
-  color: #BBBBBB;
-}
-.article-page main article .post-content pre .copy-code-btn:hover, .archive main article .post-content pre .copy-code-btn:hover, .page main article .post-content pre .copy-code-btn:hover {
-  background-color: #BBBBBB;
-  color: #FFFFFF;
-}
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
 }
@@ -1026,47 +1025,6 @@ footer .container span {
   font-size: 17px;
   color: #686868;
   font-style: italic;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content code {
-  font-size: 15px;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre {
-  position: relative;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre:hover .copy-code-btn {
-  display: block;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre .line-box {
-  width: 40px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 12px;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre .line-box div {
-  line-height: 22.5px;
-  height: 22.5px;
-  padding-right: 9px;
-  font-size: 14px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre code::-webkit-scrollbar {
-  height: 12px;
-  background: #F1F1F1;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre code::-webkit-scrollbar-thumb {
-  background: #A8A8A8;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre .copy-code-btn {
-  border-color: #BBBBBB;
-  color: #BBBBBB;
-}
-#comments .comments-lists .comment-list .comment-body .comment-content pre .copy-code-btn:hover {
-  background-color: #BBBBBB;
-  color: #FFFFFF;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content table td {
   min-width: 90px;

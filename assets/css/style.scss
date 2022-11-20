@@ -213,50 +213,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     color: #686868;
     font-style: italic;
   }
-  //  代码高亮区域
-  code {
-    font-size: $articleFontSize;
-  }
-  pre {
-    position: relative;
-    &:hover .copy-code-btn {
-      display: block;
-    }
-    .line-box {
-      width: 40px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding-top: 12px;
-      div {
-        line-height: 22.5px;
-        height: 22.5px;
-        padding-right: 9px;
-        font-size: 14px;
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-    }
-    code {
-      &::-webkit-scrollbar {
-        height: 12px;
-        background: #F1F1F1;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #A8A8A8;
-      }
-    }
-    .copy-code-btn {
-      border-color: #BBBBBB;
-      color: #BBBBBB;
-      &:hover {
-        background-color: #BBBBBB;
-        color: #FFFFFF;
-      }
-    }
-  }
   table td {
     min-width: 90px;
   }
@@ -320,23 +276,66 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   @import "sunburst.min";
 }
-//  包含行号的样式
-.post-content[data-code-line-num="show"] {
+.enable-highlight {
+  // 通用的代码高亮样式
   pre {
+    position: relative;
+    &:hover .copy-code-btn {
+      display: block;
+    }
+    .line-box {
+      width: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding-top: 12px;
+      div {
+        line-height: 22.5px;
+        height: 22.5px;
+        padding-right: 9px;
+        font-size: 14px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
     code {
-      padding: 12px 10px;
+      font-size: $articleFontSize;
+      &::-webkit-scrollbar {
+        height: 12px;
+        background: #F1F1F1;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #A8A8A8;
+      }
+    }
+    .copy-code-btn {
+      border-color: #BBBBBB;
+      color: #BBBBBB;
+      &:hover {
+        background-color: #BBBBBB;
+        color: #FFFFFF;
+      }
+    }
+  }
+  //  包含行号的样式
+  .post-content[data-code-line-num="show"] {
+    pre {
+      code {
+        padding: 12px 10px;
+      }
+    }
+  }
+  //  不包含行号的样式
+  .post-content[data-code-line-num="hide"] {
+    pre {
+      code {
+        padding: 12px 16px;
+      }
     }
   }
 }
-//  不包含行号的样式
-.post-content[data-code-line-num="hide"] {
-  pre {
-    code {
-      padding: 12px 16px;
-    }
-  }
-}
-
 
 body {
   background: #e4e4e4;
