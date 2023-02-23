@@ -176,3 +176,59 @@ body[data-rounded="rightAngle"] {
   border: 1px solid #d3d3d3;
   opacity: 0.7;
 }
+
+// 移动设备专用章节目录按钮开关
+#directory-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #d3d3d3;
+  opacity: 0.7;
+}
+// 移动设备专用章节目录
+#directory-mobile {;
+  position: fixed;
+  right: 60px;
+  bottom: 80px;
+  flex-direction: column;
+  display: flex;
+  max-height: 70%;
+  width: 300px;
+  background: #FFFFFF;
+  box-shadow: $shadow;
+  opacity: 0;
+  // 目录列表区域
+  .directory-list {
+    height: 100%;
+    overflow-y: auto;
+    ul {
+      list-style: none;
+      padding-left: 0;
+      ul {
+        padding-left: 15px;
+      }
+    }
+    a {
+      font-size: 14px;
+    }
+  }
+  // 目录的标题栏区域
+  .title-bar {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    i {
+      font-size: 15px;
+    }
+  }
+}
+@media screen and (max-height: 450px) {
+  #directory-mobile {
+    max-height: 60%;
+  }
+}

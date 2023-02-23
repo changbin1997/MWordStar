@@ -200,6 +200,12 @@ EOT;
     // 文章摘要字数
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '150', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：150个字。')));
 
+    // 移动设备章节目录
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('directoryMobile', array(
+        'enable' => '启用',
+        'disabled' => '禁用'
+    ), 'enable', _t('移动设备章节目录'), _t('开启后在没有侧边栏的小屏移动设备右下方会显示一个目录按钮，点击可以打开章节目录列表。')));
+
     // 启用代码高亮功能
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('codeHighlight', array(
         'enable-highlight' => '启用',

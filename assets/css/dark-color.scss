@@ -433,9 +433,22 @@ $text-primary: #007bff;
     }
   }
 
-  // 返回顶部按钮
-  .to-top {
+  // 返回顶部按钮和移动设备目录开关按钮
+  .to-top,#directory-btn {
     @include btn-primary;
+  }
+
+  // 移动设备专用目录
+  #directory-mobile {
+    background: $dark-bg-color2;
+    .title-bar {
+      h5,button {
+        color: $dark-text-color;
+      }
+    }
+    .directory-list a {
+      @include dark-link;
+    }
   }
 
   // 底部信息

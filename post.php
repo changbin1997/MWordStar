@@ -176,5 +176,21 @@ $this->need('components/header.php');
         <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
+<?php if ($this->options->directoryMobile == 'enable'): ?>
+    <button type="button" id="directory-btn" class="btn rounded-circle d-block d-sm-block d-md-block d-lg-none d-xl-none" aria-expanded="false" aria-label="目录" title="目录">
+        <i class="icon-list-ol"></i>
+    </button>
+    <div id="directory-mobile" class="border rounded" style="display: none;">
+        <div class="title-bar border-bottom">
+            <h5 class="m-0">目录</h5>
+            <button type="button" class="btn btn-sm close-btn" aria-label="关闭目录" title="关闭目录">
+                <i class="icon-cancel-circle"></i>
+            </button>
+        </div>
+        <div class="p-3 directory-list">
+            <?php echo $GLOBALS['post']['directory']; ?>
+        </div>
+    </div>
+<?php endif; ?>
 <?php require_once 'components/max-img.php'; ?>
 <?php $this->need('components/footer.php'); ?>

@@ -228,8 +228,8 @@ $text-success: #28a745;
     }
   }
 
-  // 返回顶部按钮
-  .to-top {
+  // 返回顶部按钮和移动设备目录开关按钮
+  .to-top,#directory-btn {
     color: $text-success;
   }
 
@@ -238,5 +238,10 @@ $text-success: #28a745;
     .icon {
       color: $text-success;
     }
+  }
+
+  // 移动设备专用目录
+  #directory-mobile .directory-list a {
+    @include link-success;
   }
 }
