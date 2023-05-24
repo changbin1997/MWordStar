@@ -306,29 +306,50 @@ function QQAvatar($email, $name, $size) {
     echo '<img src="' . $imgUrl . '" alt="' . $name . '" class="avatar">';
 }
 
-// 统计文章阅读量
-function getPostView($archive) {
-    $cid = $archive->cid;
+// 检查数据库字段
+function checkField() {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
+
+    // 检查阅读量字段是否存在
     if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
-        return 0;
+        // 在文章表中创建一个字段用来存储阅读量
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) NOT NULL DEFAULT 0;');
     }
+
+    // 检查点赞字段是否存在
+    if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
+        //  在文章表中创建一个字段用来存储点赞数量
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
+    }
+}
+
+// 设置文章阅读量
+function postViews($archive) {
+    // 获取文章的 cid
+    $cid = $archive->cid;
+    $db = Typecho_Db::get();
+    // 查询出阅读量
     $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
+    // 是否是内容页
     if ($archive->is('single')) {
+        // 获取阅读 cookie
         $views = Typecho_Cookie::get('extend_contents_views');
         if (empty($views)) {
             $views = array();
         } else {
             $views = explode(',', $views);
         }
+        // 如果 cookie 不存在
         if (!in_array($cid, $views)) {
-            // 如果cookie不存在才会加1
+            // 阅读量 +1
             $db->query($db->update('table.contents')->rows(array('views' => (int)$row['views'] + 1))->where('cid = ?', $cid));
-            array_push($views, $cid);
+            $views[] = $cid;
             $views = implode(',', $views);
-            Typecho_Cookie::set('extend_contents_views', $views);  // 记录查看cookie
+            // 写入阅读 cookie
+            Typecho_Cookie::set('extend_contents_views', $views);
+            // 返回的最终阅读量 +1
+            $row['views'] ++;
         }
     }
     return $row['views'];
@@ -377,9 +398,6 @@ function reply($parent) {
 function agreeNum($cid) {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
-    if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
-    }
 
     $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
     $AgreeRecording = Typecho_Cookie::get('typechoAgreeRecording');
@@ -388,7 +406,9 @@ function agreeNum($cid) {
     }
 
     return array(
+        //  点赞数量
         'agree' => $agree['agree'],
+        //  文章是否点赞过
         'recording' => in_array($cid, json_decode(Typecho_Cookie::get('typechoAgreeRecording')))?true:false
     );
 }
@@ -397,17 +417,17 @@ function agreeNum($cid) {
 function agree($cid) {
     $db = Typecho_Db::get();
     $agree = $db->fetchRow($db->select('table.contents.agree')->from('table.contents')->where('cid = ?', $cid));
-
     $agreeRecording = Typecho_Cookie::get('typechoAgreeRecording');
     if (empty($agreeRecording)) {
-        // 如果 cookie 不存在就创建 cookie
         Typecho_Cookie::set('typechoAgreeRecording', json_encode(array($cid)));
     }else {
         $agreeRecording = json_decode($agreeRecording);
+        //  判断文章是否点赞过
         if (in_array($cid, $agreeRecording)) {
-            return $agree['agree'];  // 如果当前文章的 cid 在 cookie 中就不再往下执行
+            //  如果当前文章的 cid 在 cookie 中就返回文章的赞数，不再往下执行
+            return $agree['agree'];
         }
-        array_push($agreeRecording, $cid);  // 添加点赞文章的 cid
+        array_push($agreeRecording, $cid);
         Typecho_Cookie::set('typechoAgreeRecording', json_encode($agreeRecording));
     }
 

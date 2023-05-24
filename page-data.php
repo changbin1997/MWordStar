@@ -46,7 +46,8 @@ $this->need('components/header.php');
                     <!--阅读量-->
                     <div class="info">
                         <i class="icon-eye icon" aria-hidden="true"></i>
-                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="访问量：<?php echo getPostView($this); ?>"><?php echo getPostView($this); ?></span>
+                        <?php $views = postViews($this); ?>
+                        <span data-toggle="tooltip" data-placement="top" tabindex="0" title="访问量：<?php echo $views; ?>"><?php echo $views; ?></span>
                     </div>
                 </div>
                 <article>

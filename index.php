@@ -8,9 +8,15 @@
  * @link https://www.misterma.com
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';  //  获取元素风格设置
+// 获取元素风格设置
+$rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';
+
 $GLOBALS['page'] = 'index';
-$this->need('components/header.php');  //  头文件
+
+// 检查数据库字段
+checkField();
+// 头文件
+$this->need('components/header.php');
 ?>
 <div class="container home main-content">
     <div class="row">
