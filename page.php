@@ -46,6 +46,12 @@ $this->need('components/header.php');
                         <?php $views = postViews($this); ?>
                         <span data-toggle="tooltip" data-placement="top" tabindex="0" title="访问量：<?php echo $views; ?>"><?php echo $views; ?></span>
                     </div>
+                    <?php if ($this->user->hasLogin()): ?>
+                        <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">
+                            <i class="icon icon-pencil"></i>
+                            <a href="<?php echo $this->options->siteUrl . 'admin/write-page.php?cid=' . $this->cid; ?>" >编辑</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <article>
                     <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
