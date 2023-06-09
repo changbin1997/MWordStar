@@ -296,6 +296,10 @@ $text-primary: #007bff;
         @include btn-primary;
       }
     }
+    // 自定义HTML的默认文字配色
+    .customize-html {
+      color: $dark-text-color;
+    }
   }
 
   // 面包屑导航配色

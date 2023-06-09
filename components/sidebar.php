@@ -42,6 +42,12 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
+        <?php if ($component == '自定义'): ?>
+            <section class="customize mwordstar-block">
+                <h4><?php $this->options->customizeTitle(); ?></h4>
+                <div class="customize-html pt-2"><?php $this->options->customizeHTML(); ?></div>
+            </section>
+        <?php endif; ?>
         <?php if ($component == '搜索'): ?>
             <section class="search mwordstar-block">
                 <h4>搜索</h4>

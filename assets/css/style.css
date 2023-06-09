@@ -618,6 +618,14 @@ header .navbar .search-form button:focus {
   margin-bottom: 0 !important;
   padding-bottom: 0;
 }
+.sidebar .customize-html {
+  font-size: 14px;
+  padding: 0 18px 18px 18px;
+  word-break: break-all;
+}
+.sidebar .customize-html img {
+  max-width: 100%;
+}
 
 .pagination-nav {
   width: 100%;
@@ -2831,6 +2839,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+.dark-color .sidebar .customize-html {
+  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .breadcrumb-nav .breadcrumb-item {
   color: rgba(255, 255, 255, 0.87);

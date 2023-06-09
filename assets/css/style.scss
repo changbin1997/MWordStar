@@ -595,6 +595,15 @@ header {
       }
     }
   }
+  // 自定义 HTML
+  .customize-html {
+    font-size: 14px;
+    padding: 0 18px 18px 18px;
+    word-break: break-all;
+    img {
+      max-width: 100%;
+    }
+  }
 }
 
 //  文章分页区域
