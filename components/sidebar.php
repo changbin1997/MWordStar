@@ -42,7 +42,7 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
-        <?php if ($component == '自定义'): ?>
+        <?php if ($component == '自定义' && $this->options->customizeHTML): ?>
             <section class="customize mwordstar-block">
                 <h4><?php $this->options->customizeTitle(); ?></h4>
                 <div class="customize-html pt-2"><?php $this->options->customizeHTML(); ?></div>

@@ -1,4 +1,4 @@
-window.onload = function (ev) {
+window.addEventListener('load', function() {
   var title = ['外观', '站点信息', '辅助功能', '链接调转', '侧边栏', '文章头图', '文章内容区域', '评论区', '导航', '友情链接', '开发者'];
   var ul = document.querySelectorAll('form ul');
   var form = document.querySelector('.typecho-page-main form');
@@ -169,4 +169,41 @@ window.onload = function (ev) {
       img.style.backgroundPositionY = '-' + this.index * 313 + 'px';
     });
   }
-};
+
+  // 创建选项列表
+  var optionsList = document.querySelector('#options-list');
+  var optionsListUl = optionsList.querySelector('ul');
+  // 创建选项列表项
+  for (var i = 0;i < title.length;i ++) {
+    var itemLi = document.createElement('li');
+    var itemLink = document.createElement('a');
+    itemLink.innerHTML = title[i];
+    itemLink.href = 'javascript:;';
+    itemLink.index = i;
+    // 给目录链接添加跳转事件
+    itemLink.addEventListener('click', function() {
+      titleEl[this.index].scrollIntoView({behavior: 'smooth'});
+    });
+
+    itemLi.appendChild(itemLink);
+    optionsListUl.appendChild(itemLi);
+  }
+
+
+
+  // 设置选项列表目录的位置
+  var left = document.querySelector('.col-tb-offset-2').offsetLeft;
+  optionsList.style.left = left - optionsList.offsetWidth + 'px';
+
+  // 窗口大小改变时调整选项目录的位置
+  window.addEventListener('resize', function() {
+    if (window.innerWidth < 768) return false;
+    var left = document.querySelector('.col-tb-offset-2').offsetLeft;
+    optionsList.style.left = left - optionsList.offsetWidth + 'px';
+  });
+
+  // 目录下方的保存选项按钮提交保存
+  document.querySelector('.submit-options').addEventListener('click', function() {
+    document.querySelector('.typecho-page-main form').submit();
+  });
+});

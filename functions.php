@@ -55,6 +55,11 @@ function themeConfig($form) {
     <input type="file" id="file-select" style="display: none;">
     <br/>
     <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，主要用来备份主题设置，<b>导入主题配置文件</b> 可以导入 <b>MWordStar</b> 主题的 JSON 配置文件。Typecho 切换主题的时候会清空主题设置，为了避免重复设置，在切换主题之前可以先导出主题设置配置。</p>
+    <div id="options-list">
+        <h3>选项目录</h3>
+        <ul aria-label="选项目录 - 点击可快速滚动到对应的选项分组"></ul>
+        <button class="btn primary submit-options" type="button">保存设置</button>
+    </div>
 EOT;
     echo '<script type="text/javascript">';
     require_once 'assets/js/options-panel.js';

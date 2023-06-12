@@ -1,3 +1,29 @@
+/*选项目录*/
+#options-list {
+  position: fixed;
+  right: 0;
+  top: 150px;
+  background: #F6F6F3;
+  padding: 16px;
+  width: 120px;
+}
+#options-list h3 {
+  margin: 0;
+}
+#options-list ul {
+  padding: 0;
+  margin-left: 20px;
+}
+#options-list ul a {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  #options-list {
+    display: none;
+  }
+}
+
 /*主题配色预览图*/
 #preview-img {
   width: 500px;
