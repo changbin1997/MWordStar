@@ -4,9 +4,9 @@
 
 我现在使用的主题是 [Facile](https://github.com/changbin1997/Facile) ，有兴趣的话也可以访问 [我的博客](https://www.misterma.com/) 或 [Github](https://github.com/changbin1997/Facile) 查看。
 
-主题演示地址：[https://changbin1997.github.io/MWordStar/web/](https://changbin1997.github.io/MWordStar/web/)
+主题在线演示地址：[https://changbin1997.github.io/MWordStar/web/](https://changbin1997.github.io/MWordStar/web/)
 
-主题演示站只是静态页面，不能发评论和点赞。
+主题演示站的页面都是静态页面，不能发评论和点赞。因为演示站不会随着主题一起更新，所以你在演示站看到的效果可能和最新版本的主题也会有些不一样。
 
 主题下载地址：[https://github.com/changbin1997/MWordStar/releases](https://github.com/changbin1997/MWordStar/releases)
 
@@ -119,6 +119,8 @@
 * 按月份的文章归档
 * 登录入口和 RSS
 * 友情链接
+* 文章章节目录
+* 自定义HTML
 
 侧边栏的每个组件您都可以选择开启或关闭，您还可以自定义侧边栏的组件排序顺序。
 
