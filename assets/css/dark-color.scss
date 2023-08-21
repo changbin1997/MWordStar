@@ -60,13 +60,6 @@ $text-primary: #007bff;
 
 // 文章内容配色
 @mixin post-content {
-  // 目录
-  #directory-box {
-    background-color: $dark-bg-color2;
-    span {
-      color: $dark-text-color;
-    }
-  }
   // 文章内容
   p {
     color: $dark-text-color !important;
@@ -205,6 +198,10 @@ $text-primary: #007bff;
     // 摘要内容
     .entry-summary p {
       color: $dark-text-color;
+    }
+    // 全文显示的内容
+    .post-content {
+      @include post-content;
     }
     // 文章信息
     .article-info {

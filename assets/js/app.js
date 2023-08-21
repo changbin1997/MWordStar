@@ -126,7 +126,7 @@ $(function () {
   }
 
   // 文章的图片点击
-  $('article .post-content img').on('click', function () {
+  $('.post-content img').on('click', function () {
     // 如果图片还没有加载出就直接返回
     if ($(this).attr('src') === undefined) return false;
     // 获取图片的真实尺寸
@@ -817,7 +817,7 @@ $(function () {
       $('#directory-mobile').animate({opacity: 1}, 250);
       directory = true;
     }else {
-      $('#directory-mobile').animate({opacity: 0}, 250, () => {
+      $('#directory-mobile').animate({opacity: 0}, 250, function() {
         $('#directory-mobile').hide();
       });
       directory = false;

@@ -394,6 +394,94 @@ header .navbar .search-form button:focus {
   font-size: 15px;
   line-height: 25px;
 }
+.container .article-list .post .post-content {
+  font-size: 15px;
+  word-break: break-all;
+}
+.container .article-list .post .post-content ul,
+.container .article-list .post .post-content ol,
+.container .article-list .post .post-content img,
+.container .article-list .post .post-content pre,
+.container .article-list .post .post-content blockquote,
+.container .article-list .post .post-content h1,
+.container .article-list .post .post-content h2,
+.container .article-list .post .post-content h3,
+.container .article-list .post .post-content h4,
+.container .article-list .post .post-content h5,
+.container .article-list .post .post-content p {
+  margin: 0 0 20px 0;
+}
+.container .article-list .post .post-content img {
+  max-width: 100%;
+  cursor: zoom-in;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.container .article-list .post .post-content h1,
+.container .article-list .post .post-content h2,
+.container .article-list .post .post-content h3,
+.container .article-list .post .post-content h4,
+.container .article-list .post .post-content h5,
+.container .article-list .post .post-content h6 {
+  font-weight: 700;
+  color: #444444;
+}
+.container .article-list .post .post-content h1 > code,
+.container .article-list .post .post-content h2 > code,
+.container .article-list .post .post-content h3 > code,
+.container .article-list .post .post-content h4 > code,
+.container .article-list .post .post-content h5 > code,
+.container .article-list .post .post-content h6 > code {
+  background: #ededed;
+  color: #333333;
+  padding: 0 4px;
+}
+.container .article-list .post .post-content h1 {
+  font-size: 30px;
+  margin: 50px 0 20px 0;
+}
+.container .article-list .post .post-content h2 {
+  font-size: 25px;
+}
+.container .article-list .post .post-content h3 {
+  font-size: 20px;
+}
+.container .article-list .post .post-content h4 {
+  font-size: 15px;
+}
+.container .article-list .post .post-content h5 {
+  font-size: 12.45px;
+}
+.container .article-list .post .post-content h6 {
+  font-size: 12px;
+}
+.container .article-list .post .post-content blockquote {
+  border-left: 4px solid #1a1a1a;
+  padding-left: 22.5px;
+  font-size: 17px;
+  color: #686868;
+  font-style: italic;
+}
+.container .article-list .post .post-content table td {
+  min-width: 90px;
+}
+.container .article-list .post .post-content p {
+  color: #444444;
+  line-height: 25px;
+}
+.container .article-list .post .post-content li {
+  color: #444444;
+  padding: 2px 0;
+}
+.container .article-list .post .post-content p > code,
+.container .article-list .post .post-content li > code,
+.container .article-list .post .post-content th > code,
+.container .article-list .post .post-content td > code {
+  background: #ededed;
+  color: #333333;
+  padding: 0 4px;
+}
 .container .article-list .post .article-info {
   padding: 10px 25px;
 }
@@ -1185,6 +1273,94 @@ footer .container span {
 .archives-list .archives .post .entry-summary p {
   font-size: 15px;
   line-height: 25px;
+}
+.archives-list .archives .post .post-content {
+  font-size: 15px;
+  word-break: break-all;
+}
+.archives-list .archives .post .post-content ul,
+.archives-list .archives .post .post-content ol,
+.archives-list .archives .post .post-content img,
+.archives-list .archives .post .post-content pre,
+.archives-list .archives .post .post-content blockquote,
+.archives-list .archives .post .post-content h1,
+.archives-list .archives .post .post-content h2,
+.archives-list .archives .post .post-content h3,
+.archives-list .archives .post .post-content h4,
+.archives-list .archives .post .post-content h5,
+.archives-list .archives .post .post-content p {
+  margin: 0 0 20px 0;
+}
+.archives-list .archives .post .post-content img {
+  max-width: 100%;
+  cursor: zoom-in;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.archives-list .archives .post .post-content h1,
+.archives-list .archives .post .post-content h2,
+.archives-list .archives .post .post-content h3,
+.archives-list .archives .post .post-content h4,
+.archives-list .archives .post .post-content h5,
+.archives-list .archives .post .post-content h6 {
+  font-weight: 700;
+  color: #444444;
+}
+.archives-list .archives .post .post-content h1 > code,
+.archives-list .archives .post .post-content h2 > code,
+.archives-list .archives .post .post-content h3 > code,
+.archives-list .archives .post .post-content h4 > code,
+.archives-list .archives .post .post-content h5 > code,
+.archives-list .archives .post .post-content h6 > code {
+  background: #ededed;
+  color: #333333;
+  padding: 0 4px;
+}
+.archives-list .archives .post .post-content h1 {
+  font-size: 30px;
+  margin: 50px 0 20px 0;
+}
+.archives-list .archives .post .post-content h2 {
+  font-size: 25px;
+}
+.archives-list .archives .post .post-content h3 {
+  font-size: 20px;
+}
+.archives-list .archives .post .post-content h4 {
+  font-size: 15px;
+}
+.archives-list .archives .post .post-content h5 {
+  font-size: 12.45px;
+}
+.archives-list .archives .post .post-content h6 {
+  font-size: 12px;
+}
+.archives-list .archives .post .post-content blockquote {
+  border-left: 4px solid #1a1a1a;
+  padding-left: 22.5px;
+  font-size: 17px;
+  color: #686868;
+  font-style: italic;
+}
+.archives-list .archives .post .post-content table td {
+  min-width: 90px;
+}
+.archives-list .archives .post .post-content p {
+  color: #444444;
+  line-height: 25px;
+}
+.archives-list .archives .post .post-content li {
+  color: #444444;
+  padding: 2px 0;
+}
+.archives-list .archives .post .post-content p > code,
+.archives-list .archives .post .post-content li > code,
+.archives-list .archives .post .post-content th > code,
+.archives-list .archives .post .post-content td > code {
+  background: #ededed;
+  color: #333333;
+  padding: 0 4px;
 }
 .archives-list .archives .post .article-info {
   padding: 10px 25px;
@@ -2757,6 +2933,42 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .article-list .post .entry-summary p, .dark-color .archives-list .archives .post .entry-summary p {
   color: rgba(255, 255, 255, 0.87);
 }
+.dark-color .article-list .post .post-content p, .dark-color .archives-list .archives .post .post-content p {
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+.dark-color .article-list .post .post-content h1, .dark-color .article-list .post .post-content h2, .dark-color .article-list .post .post-content h3, .dark-color .article-list .post .post-content h4, .dark-color .article-list .post .post-content h5, .dark-color .article-list .post .post-content h6, .dark-color .archives-list .archives .post .post-content h1, .dark-color .archives-list .archives .post .post-content h2, .dark-color .archives-list .archives .post .post-content h3, .dark-color .archives-list .archives .post .post-content h4, .dark-color .archives-list .archives .post .post-content h5, .dark-color .archives-list .archives .post .post-content h6 {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .article-list .post .post-content li, .dark-color .archives-list .archives .post .post-content li {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .article-list .post .post-content p > code, .dark-color .article-list .post .post-content td code, .dark-color .article-list .post .post-content li code, .dark-color .article-list .post .post-content h1 code, .dark-color .article-list .post .post-content h2 code, .dark-color .article-list .post .post-content h3 code, .dark-color .article-list .post .post-content h4 code, .dark-color .article-list .post .post-content th code, .dark-color .archives-list .archives .post .post-content p > code, .dark-color .archives-list .archives .post .post-content td code, .dark-color .archives-list .archives .post .post-content li code, .dark-color .archives-list .archives .post .post-content h1 code, .dark-color .archives-list .archives .post .post-content h2 code, .dark-color .archives-list .archives .post .post-content h3 code, .dark-color .archives-list .archives .post .post-content h4 code, .dark-color .archives-list .archives .post .post-content th code {
+  background-color: #000000 !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+.dark-color .article-list .post .post-content blockquote, .dark-color .archives-list .archives .post .post-content blockquote {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark-color .article-list .post .post-content table td, .dark-color .article-list .post .post-content table th, .dark-color .archives-list .archives .post .post-content table td, .dark-color .archives-list .archives .post .post-content table th {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .article-list .post .post-content table tbody tr:nth-child(odd), .dark-color .archives-list .archives .post .post-content table tbody tr:nth-child(odd) {
+  background-color: #2D2D2D;
+}
+.dark-color .article-list .post .post-content table tbody tr:hover, .dark-color .archives-list .archives .post .post-content table tbody tr:hover {
+  background-color: #2D2D2D;
+}
+.dark-color .article-list .post .post-content hr, .dark-color .archives-list .archives .post .post-content hr {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark-color .article-list .post .post-content pre code::-webkit-scrollbar, .dark-color .archives-list .archives .post .post-content pre code::-webkit-scrollbar {
+  background: #2D2D2D;
+}
+.dark-color .article-list .post .post-content pre code::-webkit-scrollbar-thumb, .dark-color .archives-list .archives .post .post-content pre code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.38);
+}
 .dark-color .article-list .post .article-info i, .dark-color .article-list .post .article-info span, .dark-color .archives-list .archives .post .article-info i, .dark-color .archives-list .archives .post .article-info span {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -2860,12 +3072,6 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 }
 .dark-color .content-area .warning-info {
   background-color: #2D2D2D;
-  color: rgba(255, 255, 255, 0.87);
-}
-.dark-color .content-area .post-content #directory-box {
-  background-color: #2D2D2D;
-}
-.dark-color .content-area .post-content #directory-box span {
   color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .content-area .post-content p {
@@ -3008,12 +3214,6 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color #comments .comment-box .comment-reply a:hover {
   background-color: rgba(255, 255, 255, 0.87) !important;
   color: #1E1E1E;
-}
-.dark-color #comments .comment-box .comment-content #directory-box {
-  background-color: #2D2D2D;
-}
-.dark-color #comments .comment-box .comment-content #directory-box span {
-  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color #comments .comment-box .comment-content p {
   color: rgba(255, 255, 255, 0.87) !important;

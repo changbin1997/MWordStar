@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-  var title = ['外观', '站点信息', '辅助功能', '链接调转', '侧边栏', '文章头图', '文章内容区域', '评论区', '导航', '友情链接', '开发者'];
+  var title = ['外观', '站点信息', '辅助功能', '链接调转', '侧边栏', '文章列表', '文章头图', '文章内容区域', '评论区', '导航', '友情链接', '开发者'];
   var ul = document.querySelectorAll('form ul');
   var form = document.querySelector('.typecho-page-main form');
   var titleEl = [];
@@ -23,12 +23,13 @@ window.addEventListener('load', function() {
   form.insertBefore(titleEl[2], ul[7]);  //  辅助功能
   form.insertBefore(titleEl[3], ul[8]);  //  链接跳转
   form.insertBefore(titleEl[4], ul[11]);  //  侧边栏
-  form.insertBefore(titleEl[5], ul[25]);  //  文章头图
-  form.insertBefore(titleEl[6], ul[29]);  //  文章内容相关
-  form.insertBefore(titleEl[7], ul[36]);  //  评论区
-  form.insertBefore(titleEl[8], ul[40]);  //  导航栏
-  form.insertBefore(titleEl[9], ul[42]);  //  友情链接
-  form.insertBefore(titleEl[10], ul[45]);  //  开发者
+  form.insertBefore(titleEl[5], ul[25]);  //  文章列表
+  form.insertBefore(titleEl[6], ul[27]);  //  文章头图
+  form.insertBefore(titleEl[7], ul[31]);  //  文章内容相关
+  form.insertBefore(titleEl[8], ul[37]);  //  评论区
+  form.insertBefore(titleEl[9], ul[41]);  //  导航栏
+  form.insertBefore(titleEl[10], ul[43]);  //  友情链接
+  form.insertBefore(titleEl[11], ul[46]);  //  开发者
 
   var h2Title = document.querySelectorAll('form h2');
   h2Title.forEach(function (el) {

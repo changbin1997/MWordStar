@@ -101,6 +101,10 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
       line-height: 25px;
     }
   }
+  //  全文显示
+  .post-content {
+    @include postContent;
+  }
   //  文章信息
   .article-info {
     @include articleInfo;
