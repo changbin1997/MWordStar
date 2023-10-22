@@ -258,19 +258,19 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   @import "stackoverflow-light.min";
 }
-//  vs2015样式
-.vs2015 {
+//  Github深色样式
+.github-dark {
   pre {
-    background: #1E1E1E;
+    background: #0D1116;
     .line-box {
-      background: #1E1E1E;
+      background: #0D1116;
       div {
         color: #9B9B9B;
         border-right: 1px solid #9B9B9B;
       }
     }
   }
-  @import "vs2015.min";
+  @import "github-dark.min";
 }
 //  Sunburst高对比度样式
 .sunburst {
