@@ -15,8 +15,13 @@ if (isset($_COOKIE['themeColor'])) {
     $themeColor = $this->options->color;
 }
 
-// 设置代码高亮主题
-$codeThemeColor = $this->options->codeThemeColor;
+// 获取代码高亮主题
+$codeThemeColorSelected = $this->options->codeThemeColor;
+$codeThemeColor = $codeThemeColorSelected;
+// 根据主题配色模式来设置代码高亮主题
+if ($codeThemeColor == 'auto') {
+    $codeThemeColor = $themeColor == 'dark-color'?'github-dark':'stackoverflow-light';
+}
 // 如果代码高亮被禁用就不输出代码高亮主题设置
 if ($this->options->codeHighlight != 'enable-highlight') {
     $codeThemeColor = 'code-theme-none';
@@ -68,7 +73,7 @@ if ($this->options->codeHighlight != 'enable-highlight') {
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body class="<?php echo $codeThemeColor; ?> <?php $this->options->codeHighlight(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>">
+<body class="<?php echo $codeThemeColor; ?> <?php $this->options->codeHighlight(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>" data-code-theme="<?php echo $codeThemeColorSelected; ?>">
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container">

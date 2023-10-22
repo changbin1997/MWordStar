@@ -31,12 +31,20 @@ $(function () {
       $('body').addClass($(this).attr('data-light'));
       $('body').attr('data-color', $(this).attr('data-light'));
       color = $(this).attr('data-light');
+      // 更改代码块配色
+      if ($('body').attr('data-code-theme') === 'auto') {
+        $('body').removeClass('github-dark').addClass('stackoverflow-light');
+      }
     }else {
       // 切换为深色
       $('body').removeClass($('body').attr('data-color'));
       $('body').addClass('dark-color');
       $('body').attr('data-color', 'dark-color');
       color = 'dark-color';
+      // 更改代码块配色
+      if ($('body').attr('data-code-theme') === 'auto') {
+        $('body').removeClass('stackoverflow-light').addClass('github-dark');
+      }
     }
     // 更改颜色切换按钮的图标和文字提示
     changeColorBtnIcon();
