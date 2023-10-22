@@ -249,4 +249,7 @@ $components = explode(',', $components);
             </section>
         <?php endif; ?>
     <?php endforeach;  ?>
+    <?php if ($GLOBALS['page'] == 'post'): ?>
+        <div class="reference-line"></div>
+    <?php endif; ?>
 </div>

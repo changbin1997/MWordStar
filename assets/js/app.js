@@ -17,6 +17,7 @@ $(function () {
   var showEmoji = false;  // Emoji 面板状态
   var codeLineNum = $('.post-content').attr('data-code-line-num');
   var directory = false;  // 移动设备章节目录状态
+  var directoryTop = 0;
 
   // 设置切换主题配色按钮的图标
   changeColorBtnIcon();
@@ -468,18 +469,25 @@ $(function () {
     return false;
   });
 
-  var directoryTop = 0;
-  if ($('.sidebar .directory').length) {
-    // 获取侧边栏章节目录的位置
-    directoryTop = $('.sidebar .directory').offset().top;
-    // 设置侧边栏章节目录的最大高度
+  // 调整侧边栏的章节目录尺寸
+  function directorySize() {
     if ($('.sidebar .directory').length) {
-      $('.sidebar .directory').css('width', $('.sidebar .directory').innerWidth());
+      // 获取侧边栏章节目录的位置
+      directoryTop = $('.sidebar .directory').offset().top;
+      $('.sidebar .directory').css('width', $('.sidebar .reference-line').innerWidth());
       $('.sidebar .directory > .article-directory').css({
         'max-height': window.innerHeight - 180
       });
     }
   }
+
+  // 页面加载完成后调整侧边栏的目录尺寸
+  directorySize();
+
+  // 窗口尺寸改变
+  window.addEventListener('resize', function () {
+    directorySize();
+  });
 
   // 监听滚动条
   $(document).on('scroll', function () {

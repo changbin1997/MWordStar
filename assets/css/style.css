@@ -714,6 +714,9 @@ header .navbar .search-form button:focus {
 .sidebar .customize-html img {
   max-width: 100%;
 }
+.sidebar .reference-line {
+  margin-left: 20px;
+}
 
 .pagination-nav {
   width: 100%;
