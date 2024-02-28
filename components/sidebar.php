@@ -144,7 +144,7 @@ $components = explode(',', $components);
                     <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
                     <?php while ($category->next()): ?>
                         <li class="d-flex justify-content-between align-items-center border-bottom indentation-<?php $category->parent(); ?>">
-                            <a target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $category->permalink(); ?>" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>">
+                            <a rel="index" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $category->permalink(); ?>" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>">
                                 <?php echo $category->name(); ?>
                             </a>
                             <span class="badge badge-pill">
@@ -185,7 +185,7 @@ $components = explode(',', $components);
                     <?php $archiveCount = 0; ?>
                     <?php while ($postArchive->next()): ?>
                     <li class="d-flex justify-content-between align-items-center border-bottom">
-                        <a target="<?php echo $this->options->sidebarLinkOpen; ?>" data-toggle="tooltip" data-placement="top" href="<?php $postArchive->permalink(); ?>" title="<?php $postArchive->count(); ?>篇文章"><?php $postArchive->date(); ?></a>
+                        <a rel="archives" target="<?php echo $this->options->sidebarLinkOpen; ?>" data-toggle="tooltip" data-placement="top" href="<?php $postArchive->permalink(); ?>" title="<?php $postArchive->count(); ?>篇文章"><?php $postArchive->date(); ?></a>
                         <span class="badge badge-pill"><?php $postArchive->count(); ?></span>
                     </li>
                     <?php

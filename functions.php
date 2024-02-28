@@ -661,7 +661,7 @@ function renderArticleDirectory($tree, $parent = '') {
     $htmlStr = '<ul class="article-directory"' . $ariaLabel . '>';
     foreach ($tree as $item) {
         $num = $parent == ''?$index:$parent . '.' . $index;
-        $htmlStr .= sprintf('<li class="border-bottom"><a rel="nofollow" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
+        $htmlStr .= sprintf('<li class="border-bottom"><a rel="bookmark" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
         if (isset($item['children']) && count($item['children']) > 0) {
             $htmlStr .= renderArticleDirectory($item['children'], $num);
         }
@@ -778,7 +778,7 @@ function calendar($month, $url, $rewrite) {
                 if($row == 1){
                     if($week >= $this_month_one_n){
                         if (in_array($number, $post['post'])) {
-                            $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                            $calendar .= '<td class="active text-center py-2">' . '<a rel="archives" href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                         }else {
                             $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                         }
@@ -788,7 +788,7 @@ function calendar($month, $url, $rewrite) {
                     }
                 }else{
                     if (in_array($number, $post['post'])) {
-                        $calendar .= '<td class="active text-center py-2">' . '<a href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                        $calendar .= '<td class="active text-center py-2">' . '<a rel="archives" href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                     }else {
                         $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                     }
