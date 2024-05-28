@@ -715,6 +715,17 @@ footer {
       }
     }
   }
+  // 打赏二维码区域
+  #reward-qr .qr {
+    padding: 0 20px;
+    img {
+      max-width: 100%;
+    }
+  }
+  // 文章底部的交互按钮区域
+  .agree-and-share > div button:last-child {
+    margin-right: 0 !important;
+  }
 }
 
 //  分享二维码区域

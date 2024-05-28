@@ -987,6 +987,15 @@ footer .container span {
 .article-page #qr-link .link-box a:hover, .archive #qr-link .link-box a:hover, .page #qr-link .link-box a:hover {
   text-decoration: none;
 }
+.article-page #reward-qr .qr, .archive #reward-qr .qr, .page #reward-qr .qr {
+  padding: 0 20px;
+}
+.article-page #reward-qr .qr img, .archive #reward-qr .qr img, .page #reward-qr .qr img {
+  max-width: 100%;
+}
+.article-page .agree-and-share > div button:last-child, .archive .agree-and-share > div button:last-child, .page .agree-and-share > div button:last-child {
+  margin-right: 0 !important;
+}
 
 #share-box #qrcode img {
   margin: 0 auto;
@@ -1536,11 +1545,9 @@ footer .container span {
   .sidebar {
     margin-top: 15px;
   }
-
   #comments .comment-list .comment-children {
     margin-left: 52px;
   }
-
   .load-img {
     height: 350px;
   }
@@ -1550,15 +1557,12 @@ footer .container span {
     overflow-y: hidden;
     max-height: 100px !important;
   }
-
   .sidebar {
     margin-top: 15px;
   }
-
   #comments .comment-list .comment-children {
     margin-left: 52px;
   }
-
   .load-img {
     height: 350px;
   }
@@ -1568,15 +1572,12 @@ footer .container span {
     overflow-y: hidden;
     max-height: 120px !important;
   }
-
   .sidebar section {
     margin-left: 0;
   }
-
   #comments .comment-list .comment-children {
     margin-left: 52px;
   }
-
   .load-img {
     height: 350px;
   }
@@ -1586,19 +1587,15 @@ footer .container span {
     overflow-y: hidden;
     max-height: 100px !important;
   }
-
   .latest-articles-active {
     height: 222px;
   }
-
   .sidebar section {
     margin-left: 0;
   }
-
   #comments .comment-list .comment-children {
     margin-left: 22px;
   }
-
   .load-img {
     height: 300px;
   }
@@ -1634,12 +1631,10 @@ footer .container span {
   .container .article-list .post .article-info {
     padding: 10px 20px;
   }
-
   .entry-summary[data-header-image-type=mini] .content-box p {
     overflow-y: hidden;
     max-height: 70px !important;
   }
-
   .article-page main, .page main, .archive main {
     /*文章标题*/
     /*文章页的文章信息*/
@@ -1654,15 +1649,12 @@ footer .container span {
   .article-page main article, .page main article, .archive main article {
     padding: 20px;
   }
-
   .container .col-md-12 {
     padding: 0 10px;
   }
-
   .load-img {
     height: 200px;
   }
-
   .archives-list .archives .post .header-img {
     width: 100%;
   }
@@ -1702,20 +1694,16 @@ footer .container span {
   .archives-list .archives .page-header .archive-title {
     font-size: 20px;
   }
-
   .sidebar section {
     margin-left: 0;
   }
-
   #emoji-panel {
     width: 93% !important;
   }
-
   .to-top {
     right: 10px;
     bottom: 30px;
   }
-
   #comments .comment-list .comment-children {
     margin-left: 22px;
   }

@@ -256,6 +256,12 @@ EOT;
         'off' => '禁用'
     ), 'off', _t('图片懒加载'), _t('开启后文章内的图片不会自动加载，只有图片进入页面可视区才会加载')));
 
+    // 文章底部的交互功能配置
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('engagementSection', null, '点赞,打赏,分享', _t('文章底部的交互功能'), _t('文章底部要使用的交互功能，支持 <b style="color: #C7254E;">点赞,打赏,分享</b>，功能名称之间用英文逗号分隔，逗号之间不需要空格，结尾不需要逗号，功能按钮的顺序会根据这里设置的名称顺序排序。')));
+
+    // 打赏二维码地址
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('rewardQr', null, '', _t('打赏二维码图片地址'), _t('文章下方的打赏按钮点击后可以显示一个二维码图片，你可以在这里设置图片地址，图片的最大宽度就是文章区域的宽度，高度不限制，图片会居中显示。')));
+
     // 评论框位置
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
         'top' => '评论框在评论列表上方',
