@@ -360,21 +360,6 @@ header {
   z-index: 999;
   .navbar {
     box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-    // 切换配色模式的按钮
-    #change-color-btn {
-      width: 34px;
-      height: 34px;
-      color: #FFFFFF;
-      background-color: rgba(255, 255, 255, 0.5);
-      i {
-        font-size: 18px;
-        line-height: 34px;
-      }
-    }
-    // 切换配色模式的提示
-    #change-color-text {
-      color: #FFFFFF;
-    }
     // 搜索区域
     .search-form {
       input:focus {
@@ -1230,11 +1215,6 @@ footer {
   //  Emoji面板
   #emoji-panel {
     width: 93% !important;
-  }
-  //  返回顶部的按钮
-  .to-top {
-    right: 10px;
-    bottom: 30px;
   }
   //  评论区
   #comments {

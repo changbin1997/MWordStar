@@ -90,7 +90,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('colorChangeBtn', array(
         'show' => '显示',
         'hide' => '不显示'
-    ), 'show', _t('在顶部导航栏显示主题配色切换按钮'), _t('主题配色切换按钮可以让访问者手动切换深色模式和浅色模式')));
+    ), 'show', _t('在网站右下方显示主题配色切换按钮'), _t('主题配色切换按钮可以让访问者手动切换深色模式和浅色模式')));
 
     // 默认浅色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('defaultLightColor', array(

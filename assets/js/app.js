@@ -863,7 +863,6 @@ function changeColorBtnIcon() {
     $('#change-color-btn i').addClass('icon-sun');
     $('#change-color-btn').attr('title', '当前为浅色模式，点击可切换为深色模式');
   }
-  $('#change-color-text').html($('#change-color-btn').attr('title'));
   $('#change-color-btn').attr('data-original-title', $('#change-color-btn').attr('title'));
   $('#change-color-btn').tooltip('update');
 }

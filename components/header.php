@@ -104,14 +104,6 @@ if ($this->options->codeHighlight != 'enable-highlight') {
                         </li>
                     <?php endwhile; ?>
                 </ul>
-                <?php if ($this->options->colorChangeBtn == 'show'): ?>
-                    <div class="form-inline mr-3 mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0">
-                        <div class="rounded-circle text-center" id="change-color-btn" role="button" tabindex="0" aria-label="切换主题配色" data-toggle="tooltip" data-placement="bottom" data-light="<?php $this->options->defaultLightColor(); ?>">
-                            <i></i>
-                        </div>
-                        <span id="change-color-text" class="ml-2 d-block d-sm-block d-sm-block d-lg-none d-xl-none"></span>
-                    </div>
-                <?php endif; ?>
                 <?php if (is_array($this->options->navbar) && in_array('showSearch', $this->options->navbar)): ?>
                     <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                         <div class="input-group">

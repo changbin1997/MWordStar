@@ -207,9 +207,6 @@ $this->need('components/header.php');
     </div>
 </div>
 <?php if ($this->options->directoryMobile == 'enable'): ?>
-    <button type="button" id="directory-btn" class="btn rounded-circle d-block d-sm-block d-md-block d-lg-none d-xl-none" aria-expanded="false" aria-label="目录" title="目录">
-        <i class="icon-list-ol"></i>
-    </button>
     <div id="directory-mobile" class="border rounded" style="display: none;">
         <div class="title-bar border-bottom">
             <h5 class="m-0">目录</h5>

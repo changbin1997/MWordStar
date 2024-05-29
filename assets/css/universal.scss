@@ -165,29 +165,22 @@ body[data-rounded="rightAngle"] {
   user-select: none;
 }
 
-// 返回顶部的按钮
-.to-top {
+// 页脚的功能按钮区域
+#footer-btn-box {
   width: 40px;
-  height: 40px;
-  background: #ffffff;
   position: fixed;
   right: 20px;
   bottom: 20px;
-  border: 1px solid #d3d3d3;
-  opacity: 0.7;
+  button {
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid #d3d3d3;
+    opacity: 0.7;
+    margin-top: 20px;
+  }
 }
 
-// 移动设备专用章节目录按钮开关
-#directory-btn {
-  position: fixed;
-  right: 20px;
-  bottom: 80px;
-  width: 40px;
-  height: 40px;
-  background: #ffffff;
-  border: 1px solid #d3d3d3;
-  opacity: 0.7;
-}
 // 移动设备专用章节目录
 #directory-mobile {;
   position: fixed;
