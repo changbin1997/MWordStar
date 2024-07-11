@@ -7,24 +7,23 @@
 */
 
 $(function () {
-  var maxImg = false;  // 大图的状态
-  var imgDirection = 0;  // 图片方向
-  var imgWH = '';  // 记录图片的宽高
-  var contentImgSize = null;  // 文章区域的图片尺寸
-  var avatarColor = [];  // 存储文字头像颜色
-  var avatarName = [];  // 存储文字头像名称
-  var emojiList = null;  // Emoji 列表
-  var showEmoji = false;  // Emoji 面板状态
-  var codeLineNum = $('.post-content').attr('data-code-line-num');
-  var directory = false;  // 移动设备章节目录状态
-  var directoryTop = 0;
+  let maxImg = false;  // 大图的状态
+  let imgDirection = 0;  // 图片方向
+  let contentImgSize = null;  // 文章区域的图片尺寸
+  const avatarColor = [];  // 存储文字头像颜色
+  const avatarName = [];  // 存储文字头像名称
+  let emojiList = null;  // Emoji 列表
+  let showEmoji = false;  // Emoji 面板状态
+  const codeLineNum = $('.post-content').attr('data-code-line-num');
+  let directory = false;  // 移动设备章节目录状态
+  let directoryTop = 0;
 
   // 设置切换主题配色按钮的图标
   changeColorBtnIcon();
 
   // 切换主题配色按钮点击
   $('#change-color-btn').on('click', function() {
-    var color = '';  // 颜色
+    let color = '';  // 颜色
     if ($('.dark-color').length) {
       // 切换为浅色
       $('body').removeClass('dark-color');
@@ -51,62 +50,69 @@ $(function () {
     $('#change-color-btn').tooltip('show');
 
     // 获取当前时间戳
-    var time = Date.parse(new Date());
+    let time = Date.parse(new Date());
     // 在当前的时间戳上 + 180天
     time += 15552000000;
     time = new Date(time);
     // 写入 cookie
-    document.cookie = 'themeColor=' + color + ';path=/;expires=Tue,' + time;
+    document.cookie = `themeColor=${color};path=/;expires=Tue,${time}`;
   });
 
   // 切换主题配色按钮键盘按下回车
-  $('#change-color-btn').on('keypress', function(ev) {
+  $('#change-color-btn').on('keypress', ev => {
     if (ev.keyCode === 13) $('#change-color-btn').click();
   });
 
   // 给文章表格添加样式
   if ($('.post-content table').length) {
-    for (var i = 0; i < $('.post-content table').length; i++) {
+    for (let i = 0; i < $('.post-content table').length; i++) {
       // 生成 Bootstrap 的响应式表格
-      var table = '<div class="table-responsive"><table class="table table-striped table-bordered table-hover">' + $('.post-content table').eq(i).html() + '</table></div>';
-      $('.post-content table').eq(i).replaceWith(table);  // 替换文章中的表格
+      const table = `
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          ${$('.post-content table').eq(i).html()}   
+        </table>
+      </div>
+      `;
+      // 替换文章中的表格
+      $('.post-content table').eq(i).replaceWith(table);
     }
   }
 
   // 给文章中的代码块添加拷贝按钮和拷贝事件
   if ($('.enable-highlight').length && $('pre').length) {
-    for (var i = 0;i < $('pre').length;i ++) {
+    for (let i = 0;i < $('pre').length;i ++) {
       // 是否是代码块
       if ($('pre').eq(i).children('code').length) {
         // 生成代码行号
         if (codeLineNum === 'show') {
           $('pre code').eq(i).css('padding-left', '54px');
-          var lineNumbers = Math.floor($('pre code').eq(i).height() / 22.5);
-          var lineNumbersEl = '';
-          for (var j = 0;j < lineNumbers;j ++) {
-            lineNumbersEl += '<div class="text-right">' + Number(j + 1) + '</div>';
+          const lineNumbers = Math.floor($('pre code').eq(i).height() / 22.5);
+          let lineNumbersEl = '';
+          for (let j = 0;j < lineNumbers;j ++) {
+            lineNumbersEl += `<div class="text-right">${Number(j + 1)}</div>`;
           }
-          $('pre').eq(i).prepend('<div class="line-box">' + lineNumbersEl + '</div>');
+          $('pre').eq(i).prepend(`<div class="line-box">${lineNumbersEl}</div>`);
         }
 
         // 创建和添加拷贝按钮
-        var btnEl = document.createElement('button');
+        const btnEl = document.createElement('button');
         btnEl.className = 'copy-code-btn btn btn-sm';
         // 根据代码块的配色设置拷贝按钮的颜色
         btnEl.setAttribute('type', 'button');
         btnEl.innerHTML = '<i class="icon-copy"></i>';
-        btnEl.setAttribute('data-clipboard-target', '#code-' + i);
+        btnEl.setAttribute('data-clipboard-target', `#code-${i}`);
         btnEl.setAttribute('title', '拷贝代码');
         btnEl.setAttribute('aria-label', '拷贝代码');
         btnEl.setAttribute('data-toggle', 'tooltip');
         btnEl.setAttribute('data-placement', 'left');
-        btnEl.setAttribute('id', 'copy-btn-' + i);
+        btnEl.setAttribute('id', `copy-btn-${i}`);
         $('pre').eq(i).prepend(btnEl);
         // 给代码块添加一个 id 方便拷贝
-        $('pre code').eq(i).attr('id', 'code-' + i);
+        $('pre code').eq(i).attr('id', `code-${i}`);
       }
       // 初始化拷贝模块
-      var clipboard = new ClipboardJS('.copy-code-btn');
+      const clipboard = new ClipboardJS('.copy-code-btn');
       // 拷贝成功
       clipboard.on('success', function(ev) {
         // 把工具提示更改为拷贝成功
@@ -115,13 +121,13 @@ $(function () {
         $(ev.trigger).tooltip('update');
         $(ev.trigger).tooltip('show');
         // 延迟 1 秒后把工具提示更改为拷贝代码
-        setTimeout(function() {
+        setTimeout(() => {
           $(ev.trigger).attr('title', '拷贝代码');
           $(ev.trigger).attr('data-original-title', '拷贝代码');
         }, 1000);
       });
       // 拷贝出错
-      clipboard.on('error', function(ev) {
+      clipboard.on('error', ev => {
         $(ev.trigger).attr('title', '拷贝失败');
         $(ev.trigger).attr('data-original-title', '拷贝失败');
         $(ev.trigger).tooltip('hide');
@@ -139,7 +145,7 @@ $(function () {
     // 如果图片还没有加载出就直接返回
     if ($(this).attr('src') === undefined) return false;
     // 获取图片的真实尺寸
-    var imgSize = {
+    const imgSize = {
       w: $(this).get(0).naturalWidth,
       h: $(this).get(0).naturalHeight
     };
@@ -199,7 +205,7 @@ $(function () {
     // 把图片角度设置为默认
     if (imgDirection !== 0) {
       imgDirection = 0;
-      $('#max-img img').css('transform', 'rotate(' + imgDirection + 'deg)');
+      $('#max-img img').css('transform', `rotate(${imgDirection}deg)`);
     }
 
     // 禁止滚动
@@ -216,63 +222,63 @@ $(function () {
   });
 
   // 大图手指拖拽
-  $('#max-img img').on('touchstart', function (ev) {
-    var X = ev.touches[0].pageX - $(ev.target).get(0).offsetLeft;
-    var Y = ev.touches[0].pageY - $(ev.target).get(0).offsetTop;
+  $('#max-img img').on('touchstart', ev => {
+    const X = ev.touches[0].pageX - $(ev.target).get(0).offsetLeft;
+    const Y = ev.touches[0].pageY - $(ev.target).get(0).offsetTop;
 
-    $(document).on('touchmove', function (ev) {
+    $(document).on('touchmove', ev => {
       $('#max-img img').css({
         left: ev.touches[0].pageX - X,
         top: ev.touches[0].pageY - Y
       });
     });
 
-    $(document).on('touchend', function () {
+    $(document).on('touchend', () => {
       $(document).off('touchmove');
     });
     return false;
   });
 
   // 大图拖拽
-  $('#max-img img').on('mousedown', function (ev) {
-    var X = ev.clientX - $(ev.target).get(0).offsetLeft;
-    var Y = ev.clientY - $(ev.target).get(0).offsetTop;
+  $('#max-img img').on('mousedown', ev => {
+    const X = ev.clientX - $(ev.target).get(0).offsetLeft;
+    const Y = ev.clientY - $(ev.target).get(0).offsetTop;
 
-    $(document).on('mousemove', function (ev) {
+    $(document).on('mousemove', ev => {
       $('#max-img img').css({
         left: ev.clientX - X,
         top: ev.clientY - Y
       });
     });
 
-    $(document).on('mouseup', function (ev) {
+    $(document).on('mouseup', () => {
       $(document).off('mousemove');
     });
     return false;
   });
 
   // 图片左旋转
-  $('#img-control .spin-left').on('click', function () {
+  $('#img-control .spin-left').on('click', () => {
     imgDirection -= 90;
     $('#max-img img').css('transition', '0.3s');
-    $('#max-img img').css('transform', 'rotate(' + imgDirection + 'deg)');
-    setTimeout(function () {
+    $('#max-img img').css('transform', `rotate(${imgDirection}deg)`);
+    setTimeout(() => {
       $('#max-img img').css('transition', '0s');
     }, 300);
   });
 
   // 图片右旋转
-  $('#img-control .spin-right').on('click', function () {
+  $('#img-control .spin-right').on('click', () => {
     imgDirection += 90;
     $('#max-img img').css('transition', '0.3s');
-    $('#max-img img').css('transform', 'rotate(' + imgDirection + 'deg)');
+    $('#max-img img').css('transform', `rotate(${imgDirection}deg)`);
     setTimeout(function () {
       $('#max-img img').css('transition', '0s');
     }, 300);
   });
 
   // 图片放大
-  $('#img-control .big').on('click', function () {
+  $('#img-control .big').on('click', () => {
     $('#max-img img').animate({
       width: $('#max-img img').width() + $('#max-img img').width() / 5,
       height: $('#max-img img').height() + $('#max-img img').height() / 5
@@ -280,7 +286,7 @@ $(function () {
   });
 
   // 图片缩小
-  $('#img-control .small').on('click', function () {
+  $('#img-control .small').on('click', () => {
     // 如果图片的宽度或高度 < 40px 将不再缩小
     if ($('#max-img img').width() <= 80 || $('#max-img img').height() <= 80) return false;
     $('#max-img img').animate({
@@ -290,7 +296,7 @@ $(function () {
   });
 
   // 大图鼠标滚动
-  $('#max-img img').on('mousewheel DOMMouseScroll', function (ev) {
+  $('#max-img img').on('mousewheel DOMMouseScroll', ev => {
     if (!maxImg) return false;
     if (ev.originalEvent.wheelDelta === undefined) return false;
     if (ev.originalEvent.wheelDelta >  0) {
@@ -303,7 +309,7 @@ $(function () {
   });
 
   // 大图的关闭按钮点击
-  $('#max-img .hide-img').on('click', function () {
+  $('#max-img .hide-img').on('click', () => {
     maxImg = false;
     $('#max-img .mask-layer').fadeOut(250);
     // 隐藏图片描述
@@ -316,7 +322,7 @@ $(function () {
       height: contentImgSize.h,
       top: contentImgSize.t,
       left: contentImgSize.l
-    }, 250, 'linear', function() {
+    }, 250, 'linear', () => {
       $('#max-img img').hide();
       $('#max-img img').attr({
         src: '',
@@ -326,7 +332,7 @@ $(function () {
   });
 
   // 关闭大图按钮按下 tab
-  $('#max-img .hide-img').on('keydown', function (ev) {
+  $('#max-img .hide-img').on('keydown', ev => {
     ev.preventDefault();
     if (ev.keyCode === 9) {
       $('#img-control .big').focus();  // 让放大图片按钮获取焦点
@@ -339,16 +345,12 @@ $(function () {
   // 给链接设置在新标签页打开
   if ($('.post-content').attr('data-target') === '_blank' && $('.post-content a').length) {
     // 给文章中的所有链接添加 target 属性，让文章中的链接在新标签页打开
-    for (var i = 0; i < $('.post-content a').length; i++) {
-      if ($('.post-content a').eq(i).attr('data-directory') === undefined) {
-        $('.post-content a').eq(i).attr('target', '_blank');
-      }
-    }
+    $('.post-content a').attr('target', '_blank');
   }
 
   // 章节目录跳转
-  $('.directory-link').on('click', function () {
-    var titleSelect = '[data-title="' + $(this).attr('data-directory') + '"]';
+  $('.directory-link').on('click', ev => {
+    const titleSelect = `[data-title="${$(ev.target).attr('data-directory')}"]`;
     $('html').animate({
       scrollTop: $(titleSelect).offset().top - 60
     }, 400);
@@ -408,30 +410,37 @@ $(function () {
   if ($('.comments-lists .page-navigator').length) {
     $('.comments-lists .page-navigator li').addClass('pagination');
     $('.comments-lists .page-navigator li a').addClass('page-link');
-    var pageNav = '<nav aria-label="分页导航区"><ol class="pagination justify-content-center page-navigator">' + $('.comments-lists .page-navigator').html() + '</ol></nav>';
+    const pageNav = `
+    <nav aria-label="分页导航区">
+      <ol class="pagination justify-content-center page-navigator">
+        ${$('.comments-lists .page-navigator').html()}
+      </ol>
+    </nav>
+    `;
     $('.comments-lists .page-navigator').replaceWith(pageNav);
   }
 
   // 回复按钮按下 tab
-  $(document).on('keydown', '.comments-lists .respond .submit', function (ev) {
+  $(document).on('keydown', '.comments-lists .respond .submit', ev => {
     ev.preventDefault();
     if (ev.keyCode === 9) {
-      $('#cancel-comment-reply-link').focus();  // 让取消回复的链接获取焦点
+      // 让取消回复的链接获取焦点
+      $('#cancel-comment-reply-link').focus();
     }
   });
 
   // 评论区的回复链接鼠标移入和移出
-  $('#comments .comment-reply a').hover(function () {
+  $('#comments .comment-reply a').hover(ev => {
     // 根据主题配色设置评论高亮颜色
-    var color = '#E4E4E4';
+    let color = '#E4E4E4';
     if ($('.dark-color').length) color = '#383838';
     // 获取回复评论的 cid
-    var cid = $(this).parent().attr('data-id');
+    const cid = $(ev.target).parent().attr('data-id');
     // 改变回复评论的内容样式
-    $('#c-' + cid).css('background', color);
-  }, function () {
-    var cid = $(this).parent().attr('data-id');
-    $('#c-' + cid).css('background', 'none');
+    $(`#c-${cid}`).css('background', color);
+  }, ev => {
+    const cid = $(ev.target).parent().attr('data-id');
+    $(`#c-${cid}`).css('background', 'none');
   });
 
   // 给侧边栏近期文章的第一篇文章设置头图
@@ -451,9 +460,14 @@ $(function () {
 
   // 最新文章区域鼠标移出
   $('.latest-articles').on('mouseout', function (ev) {
-    var x = ev.clientX;
-    var y = ev.clientY + $(document).scrollTop();
-    if (x < $(this).offset().left || x >= $(this).offset().left + $(this).width() || y < $(this).offset().top || y >= $(this).offset().top + $(this).height()) {
+    const x = ev.clientX;
+    const y = ev.clientY + $(document).scrollTop();
+    if (
+        x < $(this).offset().left ||
+        x >= $(this).offset().left + $(this).width() ||
+        y < $(this).offset().top ||
+        y >= $(this).offset().top + $(this).height()
+    ) {
       $('.latest-articles a').removeClass('latest-articles-active');
       if ($('.latest-articles a').eq(0).children('.article-img').length > 0) {
         $('.latest-articles a').eq(0).addClass('latest-articles-active');
@@ -469,7 +483,7 @@ $(function () {
   }
 
   // 返回顶部按钮点击
-  $('.to-top').on('click', function () {
+  $('.to-top').on('click', () => {
     $('html').animate({
       scrollTop: 0
     }, 400);
@@ -493,12 +507,12 @@ $(function () {
   directorySize();
 
   // 窗口尺寸改变
-  window.addEventListener('resize', function () {
+  window.addEventListener('resize', () => {
     directorySize();
   });
 
   // 监听滚动条
-  $(document).on('scroll', function () {
+  $(document).on('scroll', () => {
     // 返回顶部的按钮是否存在
     if ($('.to-top').length > 0) {
       // 如果滚动条高度 > 屏幕高度
@@ -543,19 +557,19 @@ $(function () {
   });
 
   // 文章图片加载完成后删除默认样式
-  $('.load-img').on('load', function() {
-    $(this).removeClass('load-img');
+  $('.load-img').on('load', ev => {
+    $(ev.target).removeClass('load-img');
   });
 
   // 大图的关闭按钮按下回车
-  $('.hide-img').on('keypress', function (ev) {
+  $('.hide-img').on('keypress', ev => {
     if (ev.keyCode == 13) {
       $('#max-img .hide-img').click();
     }
   });
 
   // 全局快捷键
-  $(document).on('keyup', function (ev) {
+  $(document).on('keyup', ev => {
     // 如果按下的是 ESC 就关闭大图
     if (ev.keyCode === 27 && maxImg) {
       $('#max-img .hide-img').click();  // 关闭大图
@@ -613,17 +627,17 @@ $(function () {
   }
 
   // 点赞
-  $('#agree-btn').on('click', function () {
-    $('#agree-btn').get(0).disabled = true;
+  $('#agree-btn').on('click', () => {
+    $('#agree-btn').prop('disabled', true);
     $.ajax({
       type: 'post',
       url: $('#agree-btn').attr('data-url'),
-      data: 'agree=' + $('#agree-btn').attr('data-cid'),
+      data: `agree=${$('#agree-btn').attr('data-cid')}`,
       async: true,
       timeout: 30000,
       cache: false,
-      success: function (data) {
-        var re = /\d/;
+      success: data => {
+        const re = /\d/;
         if (re.test(data)) {
           $('#agree-btn .agree-num').html(data);
           $('.post-page').append('<span id="agree-p" role="alert">赞 + 1</span>');
@@ -635,13 +649,13 @@ $(function () {
           $('#agree-p').animate({
             top: $('#agree-btn').offset().top - 70,
             opacity: 0
-          }, 400, function () {
+          }, 400, () => {
             $('#agree-p').remove();
           });
         }
       },
-      error: function () {
-        $('#agree-btn').get(0).disabled = false;
+      error: () => {
+        $('#agree-btn').prop('disabled', false);
       }
     });
   });
@@ -651,44 +665,48 @@ $(function () {
 
   // 把父评论的姓名加入到子评论中
   if ($('#comments .parent').length) {
-    var linkColor = $('.post-content').attr('data-color');
-    for (var i = 0; i < $('#comments .parent').length; i++) {
-      var parentLink = '<a class="mr-1 ' + linkColor + '" href="' + $('#comments .parent').eq(i).attr('href') + '">' + $('#comments .parent').eq(i).html() + '</a>';
+    const linkColor = $('.post-content').attr('data-color');
+    for (let i = 0; i < $('#comments .parent').length; i++) {
+      const parentLink = `
+      <a class="mr-1 ${linkColor}" href="${$('#comments .parent').eq(i).attr('href')}">
+        ${$('#comments .parent').eq(i).html()}
+      </a>
+      `;
       $('#comments .parent').eq(i).next().prepend(parentLink);
     }
     $('#comments .parent').remove();
   }
 
   // 头像图片加载完成后删除图片背景
-  $('.avatar').on('load', function () {
-    $(this).css('background', 'none');
+  $('.avatar').on('load', ev => {
+    $(ev.target).css('background', 'none');
   });
 
   // 独立页友链 Logo 加载完成
-  $('.link-box .link img').on('load', function() {
+  $('.link-box .link img').on('load', ev => {
     // 去除背景颜色
-    $(this).css('background', 'none');
+    $(ev.target).css('background', 'none');
   });
 
   // 独立页 Logo 加载出错
-  $('.link-box .link img').on('error', function () {
+  $('.link-box .link img').on('error', ev => {
     // 默认站点 Logo
-    var logoEl = '<i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo" role="img"></i>';
+    const logoEl = '<i class="link-logo float-left icon-link icon-logo rounded-circle" aria-label="站点Logo" role="img"></i>';
     // 把默认 Logo 插入到页面
-    $(this).before(logoEl);
+    $(ev.target).before(logoEl);
     // 移除加载失败的 Logo
-    $(this).remove();
+    $(ev.target).remove();
   });
 
   // 给评论者头像添加错误事件
-  for (var i = 0;i < $('.avatar').length;i ++) {
+  for (let i = 0;i < $('.avatar').length;i ++) {
     // 检测是否是图片
     if ($('.avatar').eq(i)[0].tagName === 'IMG') {
-      $('.avatar').eq(i).on('error', function(ev) {
+      $('.avatar').eq(i).on('error', ev => {
         // 获取头像昵称
-        var name = $(ev.target).attr('alt');
+        const name = $(ev.target).attr('alt');
         // 创建文字头像元素
-        var avatarEl = document.createElement('div');
+        const avatarEl = document.createElement('div');
         avatarEl.setAttribute('role', 'img');
         avatarEl.setAttribute('aria-label', name);
         // 设置文字头像的 class
@@ -697,18 +715,18 @@ $(function () {
         avatarEl.innerHTML = name.substring(0, 1);
 
         // 检测是否重复出现
-        var nameIndex = avatarName.indexOf(name);
+        const nameIndex = avatarName.indexOf(name);
         if (nameIndex === -1) {
           avatarName.push(name);
           // 生成随机颜色
-          var bgColor = {r: rand(250, 1), g: rand(250, 1), b: rand(250, 1)};
+          const bgColor = {r: rand(250, 1), g: rand(250, 1), b: rand(250, 1)};
           // 把颜色添加到数组，遇到同名的头像可以使用同一组颜色
           avatarColor.push(bgColor);
           // 设置文字头像的背景颜色
-          avatarEl.style.background = 'rgb(' + bgColor.r + ',' + bgColor.g + ',' + bgColor.b + ')';
+          avatarEl.style.background = `rgb(${bgColor.r}, ${bgColor.g}, ${bgColor.b})`;
         }else {
           // 设置文字头像的背景颜色
-          avatarEl.style.background = 'rgb(' + avatarColor[nameIndex].r + ',' + avatarColor[nameIndex].g + ',' + avatarColor[nameIndex].b + ')';
+          avatarEl.style.background = `rgb(${avatarColor[nameIndex].r}, ${avatarColor[nameIndex].g}, ${avatarColor[nameIndex].b})`;
         }
 
         // 把文字头像插入到页面
@@ -727,7 +745,7 @@ $(function () {
       data: 'emoji=emoji',
       timeout: 10000,
       global: false,
-      success: function (data) {
+      success: data => {
         data = JSON.parse(data);
         // 检查是否加载正确
         if (data.smileys === undefined) {
@@ -738,14 +756,14 @@ $(function () {
         // 调用面目表情按钮事件
         $('#emoji-classification button').eq(0).click();
       },
-      error: function (xhr, err, abnormal) {
-        $('#emoji-panel').append('<div>服务器请求出错！错误代码' + err + '</div>');
+      error: (xhr, err, abnormal) => {
+        $('#emoji-panel').append(`<div>服务器请求出错！错误代码 ${err}</div>`);
       }
     });
   }
 
   // Emoji 开关点击
-  $('#show-emoji-btn').on('click', function (ev) {
+  $('#show-emoji-btn').on('click', ev => {
     // 设置 Emoji 面板的显示和隐藏
     $('#emoji-panel').slideToggle(250);
     // 设置 Emoji 的显示和隐藏状态
@@ -756,27 +774,27 @@ $(function () {
   });
 
   // 页面空白区域点击
-  $('body').on('click', function () {
+  $('body').on('click', () => {
     // 如果表情面板处于开启状态就关闭表情面板
     if (showEmoji) $('#show-emoji-btn').click();
   });
 
   // Emoji 表情面板的空白区域点击
-  $('#emoji-panel').on('click', function () {
+  $('#emoji-panel').on('click', () => {
     return false;
   });
 
   // 评论内容输入框点击
-  $('#textarea').on('click', function () {
+  $('#textarea').on('click', () => {
     return false;
   });
 
   // 切换Emoji类型按钮点击
-  $('#emoji-classification button').on('click', function (ev) {
-    var emoji = emojiList[$(ev.target).attr('data-classification')];
-    var emojiEl = '';
+  $('#emoji-classification button').on('click', ev => {
+    const emoji = emojiList[$(ev.target).attr('data-classification')];
+    let emojiEl = '';
     // 获取主题配色
-    var btnColor = $('#emoji-classification').attr('data-color');
+    const btnColor = $('#emoji-classification').attr('data-color');
 
     // 清除之前选中的按钮的选中状态
     $('#emoji-classification .selected').attr('aria-checked', false);
@@ -786,8 +804,8 @@ $(function () {
     $(ev.target).addClass(['selected', btnColor]);
 
     // 生成 Emoji 元素
-    emoji.forEach(function (e) {
-      emojiEl += '<div class="emoji p-2" tabindex="0" role="listitem">' + e + '</div>';
+    emoji.forEach(e => {
+      emojiEl += `<div class="emoji p-2" tabindex="0" role="listitem">${e}</div>`;
     });
 
     // 清除之前的 Emoji
@@ -800,17 +818,17 @@ $(function () {
     // 设置类型标题
     $('#emoji-title').html($(ev.target).attr('title'));
     // 设置用于屏幕阅读器的表情列表标题
-    $('#emoji-list').attr('aria-label', $(ev.target).attr('title') + '（按回车可以把表情添加到评论内容输入框）');
+    $('#emoji-list').attr('aria-label', `${$(ev.target).attr('title')}（按回车可以把表情添加到评论内容输入框）`);
   });
 
   // Emoji 表情点击
-  $('#emoji-list').on('click', '.emoji', function (ev) {
+  $('#emoji-list').on('click', '.emoji', ev => {
     // 把表情添加到评论内容输入框
     $('#textarea').val($('#textarea').val() + $(ev.target).html());
   });
 
   // Emoji 表情按下回车键
-  $('#emoji-list').on('keypress', '.emoji',function (ev) {
+  $('#emoji-list').on('keypress', '.emoji', ev => {
     if (ev.keyCode === 13) {
       // 把表情添加到评论内容输入框
       $('#textarea').val($('#textarea').val() + $(ev.target).html());
@@ -818,7 +836,7 @@ $(function () {
   });
 
   // Emoji 表情面板按下 ESC
-  $('#emoji-panel').on('keydown', function (ev){
+  $('#emoji-panel').on('keydown', ev =>{
     if (ev.keyCode === 27) {
       // 调用 Emoji 开关事件
       $('#show-emoji-btn').click();
@@ -827,13 +845,13 @@ $(function () {
   });
 
   // 移动设备目录按钮点击
-  $('#directory-btn').on('click', function () {
+  $('#directory-btn').on('click', () => {
     if (!directory) {
       $('#directory-mobile').css('display', 'flex');
       $('#directory-mobile').animate({opacity: 1}, 250);
       directory = true;
     }else {
-      $('#directory-mobile').animate({opacity: 0}, 250, function() {
+      $('#directory-mobile').animate({opacity: 0}, 250, () => {
         $('#directory-mobile').hide();
       });
       directory = false;
@@ -842,7 +860,7 @@ $(function () {
   });
 
   // 移动设备的关闭目录按钮点击
-  $('#directory-mobile .close-btn').on('click', function () {
+  $('#directory-mobile .close-btn').on('click', () => {
     $('#directory-btn').click();
   });
 });
@@ -869,6 +887,6 @@ function changeColorBtnIcon() {
 
 // 生成随机数的函数
 function rand(max, min) {
-  var num = max - min;
+  const num = max - min;
   return Math.round(Math.random() * num + min);
 }
