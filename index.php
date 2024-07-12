@@ -29,5 +29,4 @@ $this->need('components/header.php');
     <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
-<?php require_once 'components/max-img.php'; ?>
 <?php $this->need('components/footer.php'); ?>
