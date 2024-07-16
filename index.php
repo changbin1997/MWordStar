@@ -18,15 +18,17 @@ checkField();
 // 头文件
 $this->need('components/header.php');
 ?>
-<div class="container home main-content">
-    <div class="row">
-        <div class="article-list col-md-12 col-lg-8 col-sm-12 content-area">
-            <?php $this->need('components/post-list.php'); ?>
-            <nav aria-label="分页导航区" class="pagination-nav">
-                <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
-            </nav>
+<div id="main">
+    <div class="container home main-content">
+        <div class="row">
+            <div class="article-list col-md-12 col-lg-8 col-sm-12 content-area">
+                <?php $this->need('components/post-list.php'); ?>
+                <nav aria-label="分页导航区" class="pagination-nav">
+                    <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+                </nav>
+            </div>
+        <?php $this->need('components/sidebar.php'); ?>
         </div>
-    <?php $this->need('components/sidebar.php'); ?>
     </div>
 </div>
 <?php $this->need('components/footer.php'); ?>

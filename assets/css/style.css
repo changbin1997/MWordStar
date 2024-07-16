@@ -330,6 +330,20 @@ header .navbar .search-form button:focus {
   background: #f0f0f0;
 }
 
+#progress-bar {
+  width: 100%;
+  height: 3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #E0E0E0;
+  z-index: 2000;
+}
+#progress-bar #progress {
+  height: 100%;
+  width: 0;
+}
+
 .container .article-list {
   margin-top: 15px;
 }

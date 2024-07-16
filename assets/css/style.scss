@@ -380,6 +380,21 @@ header {
   }
 }
 
+// pjax的进度条
+#progress-bar {
+  width: 100%;
+  height: 3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #E0E0E0;
+  z-index: 2000;
+  #progress {
+    height: 100%;
+    width: 0;
+  }
+}
+
 //  内容区域
 .container .article-list {
   margin-top: 15px;
@@ -1027,7 +1042,7 @@ footer {
 }
 
 //  独立页面 - 网站统计
-.data-page {
+.data-page a{
   //  卡片区域
   .statistics-card {
     background: #B3D8FF;

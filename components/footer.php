@@ -11,7 +11,7 @@
 
 <div id="footer-btn-box">
     <!--移动设备的目录按钮-->
-    <?php if ($this->options->directoryMobile == 'enable'): ?>
+    <?php if ($this->options->directoryMobile == 'enable' && $this->is('post')): ?>
         <button type="button" id="directory-btn" class="btn rounded-circle d-block d-sm-block d-md-block d-lg-none d-xl-none" aria-expanded="false" aria-label="目录" title="目录">
             <i class="icon-list-ol"></i>
         </button>
@@ -31,16 +31,21 @@
 </div>
 
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery-3.4.1.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.pjax.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/bootstrap.bundle.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.qrcode.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/clipboard.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
-<!--统计数据的图表js-->
-<?php if (isset($GLOBALS['page']) && $GLOBALS['page'] == 'page-data'): ?>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/chart.js'); ?>"></script>
+<!--PJAX更新完成后执行的JS-->
+<?php if ($this->options->pjax === 'on' && $this->options->pjaxEnd): ?>
+    <script type="text/javascript">
+      $(function() {
+        $(document).on('pjax:end', function() {<?php $this->options->pjaxEnd(); ?>});
+      });
+    </script>
 <?php endif; ?>
-
+<!--body底部的自定义JS-->
 <?php if ($this->options->bodyHTML): ?>
     <?php $this->options->bodyHTML(); ?>
 <?php endif; ?>

@@ -73,7 +73,12 @@ if ($this->options->codeHighlight != 'enable-highlight') {
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body class="<?php echo $codeThemeColor; ?> <?php $this->options->codeHighlight(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>" data-code-theme="<?php echo $codeThemeColorSelected; ?>">
+<body class="<?php echo $codeThemeColor; ?> <?php $this->options->codeHighlight(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>" data-code-theme="<?php echo $codeThemeColorSelected; ?>" data-pjax="<?php $this->options->pjax(); ?>">
+<?php if ($this->options->pjax == 'on' && $this->options->pjaxProgressBar == 'on'): ?>
+    <div id="progress-bar" style="display: none;">
+        <div id="progress" style="background: <?php $this->options->pjaxProgressBarColor(); ?>;" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+    </div>
+<?php endif; ?>
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container">

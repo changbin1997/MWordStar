@@ -9,6 +9,7 @@ $GLOBALS['page'] = 'page-archive';
 $this->need('components/header.php');
 ?>
 
+<div id="main">
     <div class="container archive-page main-content mb-0">
         <?php if ($this->options->breadcrumb == 'on'): ?>
             <nav aria-label="路径" class="breadcrumb-nav">
@@ -65,4 +66,5 @@ $this->need('components/header.php');
             <?php $this->need('components/sidebar.php'); ?>
         </div>
     </div>
+</div>
 <?php $this->need('components/footer.php'); ?>

@@ -310,6 +310,24 @@ EOT;
     // 独立页友链
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接页面创建和格式说明</a>')));
 
+    // PJAX
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('pjax', array(
+        'on' => '启用',
+        'off' => '禁用'
+    ), 'off', _t('启用PJAX'), _t('PJAX 在页面跳转时只会更新内容部分，不会刷新整个页面，可以实现类似于单页应用的使用体验。注意，目前 Typecho 主题的 PJAX 还无法做到和 Typecho 程序完美兼容，如果要启用 PJAX，需要在 Typecho 评论设置中关闭 <b style="color: #C7254E;">开启反垃圾保护</b> 和 <b style="color: #C7254E;">检查评论来源页 URL 是否与文章链接一致</b>，否则评论可能无法成功发送！')));
+
+    // PJAX进度条
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('pjaxProgressBar', array(
+        'on' => '启用',
+        'off' => '禁用'
+    ), 'on', _t('PJAX进度条'), _t('PJAX 进度条会显示在页面顶部，在 PJAX 页面内容更新时，进度条会显示更新进度，更新完成后进度条会隐藏。禁用 PJAX 进度条不会影响 PJAX 功能。')));
+
+    // PJAX进度条颜色
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('pjaxProgressBarColor', null, '#3F85ED', _t('PJAX进度条颜色'), _t('支持 CSS 的颜色值，例如 <b style="color: #C7254E;">#FF0000</b>、<b style="color: #C7254E;">red</b>、<b style="color: #C7254E;">rgb(255, 0, 0)</b>。')));
+
+    // PJAX更新完成后执行的代码
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('这里的 JS 代码会在页面内容更新完成后执行，你可以直接填写 JS 代码，不需要加 script 标签。')));
+
     // 自定义CSS
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', null, null, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。')));
 
