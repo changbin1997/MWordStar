@@ -225,6 +225,13 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   table td {
     min-width: 90px;
   }
+  // 响应式表格
+  .table-responsive {
+    margin-bottom: 20px;
+    table {
+      margin-bottom: 0;
+    }
+  }
   p {
     color: #444444;
     line-height: 25px;

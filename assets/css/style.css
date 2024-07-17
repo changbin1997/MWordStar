@@ -466,6 +466,12 @@ header .navbar .search-form button:focus {
 .container .article-list .post .post-content table td {
   min-width: 90px;
 }
+.container .article-list .post .post-content .table-responsive {
+  margin-bottom: 20px;
+}
+.container .article-list .post .post-content .table-responsive table {
+  margin-bottom: 0;
+}
 .container .article-list .post .post-content p {
   color: #444444;
   line-height: 25px;
@@ -929,6 +935,12 @@ footer .container span {
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
 }
+.article-page main article .post-content .table-responsive, .archive main article .post-content .table-responsive, .page main article .post-content .table-responsive {
+  margin-bottom: 20px;
+}
+.article-page main article .post-content .table-responsive table, .archive main article .post-content .table-responsive table, .page main article .post-content .table-responsive table {
+  margin-bottom: 0;
+}
 .article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p {
   color: #444444;
   line-height: 25px;
@@ -1170,6 +1182,12 @@ footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-content table td {
   min-width: 90px;
 }
+#comments .comments-lists .comment-list .comment-body .comment-content .table-responsive {
+  margin-bottom: 20px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content .table-responsive table {
+  margin-bottom: 0;
+}
 #comments .comments-lists .comment-list .comment-body .comment-content p {
   color: #444444;
   line-height: 25px;
@@ -1358,6 +1376,12 @@ footer .container span {
 .archives-list .archives .post .post-content table td {
   min-width: 90px;
 }
+.archives-list .archives .post .post-content .table-responsive {
+  margin-bottom: 20px;
+}
+.archives-list .archives .post .post-content .table-responsive table {
+  margin-bottom: 0;
+}
 .archives-list .archives .post .post-content p {
   color: #444444;
   line-height: 25px;
@@ -1525,7 +1549,7 @@ footer .container span {
   box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
 }
 
-.data-page .statistics-card {
+.data-page a .statistics-card {
   background: #B3D8FF;
 }
 
