@@ -79,8 +79,10 @@ $text-primary: #007bff;
     color: $dark-text-color2;
   }
   table {
+    border-color: #495057;
     td,th {
       color: $dark-text-color;
+      border-color: #495057;
     }
     tbody tr:nth-child(odd) {
       background-color: $dark-bg-color2;
@@ -250,8 +252,10 @@ $text-primary: #007bff;
     }
     // 日历配色
     .calendar table {
+      border-color: #495057;
       th,td {
         color: $dark-text-color;
+        border-color: #495057;
       }
       .active {
         background-color: #353535;

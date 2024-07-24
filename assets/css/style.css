@@ -488,6 +488,9 @@ header .navbar .search-form button:focus {
   color: #333333;
   padding: 0 4px;
 }
+.container .article-list .post .post-content video {
+  width: 100%;
+}
 .container .article-list .post .article-info {
   padding: 10px 25px;
 }
@@ -963,6 +966,9 @@ footer .container span {
   color: #333333;
   padding: 0 4px;
 }
+.article-page main article .post-content video, .archive main article .post-content video, .page main article .post-content video {
+  width: 100%;
+}
 .article-page main article .post-content .load-img, .archive main article .post-content .load-img, .page main article .post-content .load-img {
   width: 100%;
   display: block;
@@ -1204,6 +1210,9 @@ footer .container span {
   color: #333333;
   padding: 0 4px;
 }
+#comments .comments-lists .comment-list .comment-body .comment-content video {
+  width: 100%;
+}
 #comments .comments-lists .comment-list .comment-body .comment-children li {
   padding-bottom: 0;
 }
@@ -1397,6 +1406,9 @@ footer .container span {
   background: #ededed;
   color: #333333;
   padding: 0 4px;
+}
+.archives-list .archives .post .post-content video {
+  width: 100%;
 }
 .archives-list .archives .post .article-info {
   padding: 10px 25px;
@@ -2954,8 +2966,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   border-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
 }
+.dark-color .article-list .post .post-content table, .dark-color .archives-list .archives .post .post-content table {
+  border-color: #495057;
+}
 .dark-color .article-list .post .post-content table td, .dark-color .article-list .post .post-content table th, .dark-color .archives-list .archives .post .post-content table td, .dark-color .archives-list .archives .post .post-content table th {
   color: rgba(255, 255, 255, 0.87);
+  border-color: #495057;
 }
 .dark-color .article-list .post .post-content table tbody tr:nth-child(odd), .dark-color .archives-list .archives .post .post-content table tbody tr:nth-child(odd) {
   background-color: #2D2D2D;
@@ -3006,8 +3022,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .sidebar .personal-information .info {
   color: rgba(255, 255, 255, 0.87);
 }
+.dark-color .sidebar .calendar table {
+  border-color: #495057;
+}
 .dark-color .sidebar .calendar table th, .dark-color .sidebar .calendar table td {
   color: rgba(255, 255, 255, 0.87);
+  border-color: #495057;
 }
 .dark-color .sidebar .calendar table .active {
   background-color: #353535;
@@ -3095,8 +3115,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   border-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
 }
+.dark-color .content-area .post-content table {
+  border-color: #495057;
+}
 .dark-color .content-area .post-content table td, .dark-color .content-area .post-content table th {
   color: rgba(255, 255, 255, 0.87);
+  border-color: #495057;
 }
 .dark-color .content-area .post-content table tbody tr:nth-child(odd) {
   background-color: #2D2D2D;
@@ -3236,8 +3260,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   border-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
 }
+.dark-color #comments .comment-box .comment-content table {
+  border-color: #495057;
+}
 .dark-color #comments .comment-box .comment-content table td, .dark-color #comments .comment-box .comment-content table th {
   color: rgba(255, 255, 255, 0.87);
+  border-color: #495057;
 }
 .dark-color #comments .comment-box .comment-content table tbody tr:nth-child(odd) {
   background-color: #2D2D2D;
