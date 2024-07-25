@@ -580,6 +580,7 @@ header .navbar .search-form button:focus {
   display: block;
   margin: 0 auto;
   transition: 0.4s;
+  border-radius: 50%;
 }
 .sidebar section .personal-information .user .pingback {
   width: 72px;

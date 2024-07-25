@@ -18,7 +18,14 @@ $components = explode(',', $components);
                 <div class="personal-information pt-2">
                     <?php if (!$this->options->nickname or !$this->options->birthday or !$this->options->avatarUrl) $userInfo = getAdminInfo(); ?>
                     <div class="user">
-                        <img src="<?php $this->options->avatarUrl?$this->options->avatarUrl():gravatarUrl($userInfo['mail'], 72); ?>" alt="<?php echo $this->options->nickname?$this->options->nickname . '的头像':$this->options->title . '的头像'; ?>" class="rounded-circle avatar">
+                        <?php
+                            $avatarName = $this->options->nickname ? $this->options->nickname . '的头像' : $this->options->title . '的头像';
+                            if ($this->options->avatarUrl) {
+                                echo '<img src="' . $this->options->avatarUrl . '" alt="' . $avatarName . '" class="avatar" />';
+                            }else {
+                                gravatar($userInfo['mail'], 56, $this->options->gravatarUrl, $avatarName);
+                            }
+                        ?>
                         <div class="p-2">
                             <a class="user-name mt-2" target="_blank" href="<?php echo $this->options->nicknameUrl?$this->options->nicknameUrl:$this->options->siteUrl; ?>"><?php echo $this->options->nickname?$this->options->nickname:$userInfo['screenName']; ?></a>
                             <p class="introduction mt-1"><?php echo $this->options->Introduction?$this->options->Introduction:$this->options->description; ?></p>
@@ -122,7 +129,7 @@ $components = explode(',', $components);
                             if ($this->options->QQAvatar == 'on' && isQQEmail($comments->mail)) {
                                 QQAvatar($comments->mail, $comments->author, 40);
                             }else {
-                                $comments->gravatar('50', '');
+                                gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
                             }
                             if ($comments->type == 'pingback') {
                                 echo '<div class="pingback avatar">引用</div>';

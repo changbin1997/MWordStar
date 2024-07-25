@@ -282,6 +282,9 @@ EOT;
         'off' => '关闭'
     ), 'off', _t('使用QQ头像'), _t('开启后如果检测到评论者的邮箱为QQ邮箱就会显示对应的QQ头像，即便QQ邮箱注册了Gravatar也会显示QQ头像，QQ邮箱以外的邮箱会显示Gravatar头像。')));
 
+    // 自定义 Gravatar 地址
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('gravatarUrl', null, '', _t('自定义 Gravatar 源'), _t('Gravatar 头像服务在有些地区可能无法正常使用，如果你需要更换 Gravatar 源的话，可以在这里输入 URL，留空会使用官方源。')));
+    
     // Emoji面板
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
@@ -973,8 +976,12 @@ function getAdminInfo() {
 }
 
 // 获取 Gravatar 头像
-function gravatarUrl($email, $size) {
-    echo 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+function gravatar($email, $size, $gravatarUrl = '', $alt = '') {
+    $url = $gravatarUrl . md5(strtolower(trim($email))) . '?s=' . $size;
+    if ($gravatarUrl == '' or $gravatarUrl == null) {
+        $url = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?s=' . $size;
+    }
+    echo '<img src="' . $url . '" alt="' . $alt . '" class="avatar" />';
 }
 
 // 计算两个时间之间相差的天数

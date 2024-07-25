@@ -1,6 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $GLOBALS['commentDateFormat'] = $this->options->commentDateFormat;
 $GLOBALS['QQAvatar'] = $this->options->QQAvatar;
+$GLOBALS['gravatarUrl'] = $this->options->gravatarUrl;  // 获取自定义 gravatar
 ?>
 <?php
 function threadedComments($comments, $options) {
@@ -32,7 +33,7 @@ function threadedComments($comments, $options) {
                 if ($GLOBALS['QQAvatar'] == 'on' && isQQEmail($comments->mail)) {
                     QQAvatar($comments->mail, $comments->author, 40);
                 }else {
-                    $comments->gravatar('50', '');
+                    gravatar($comments->mail, 50, $GLOBALS['gravatarUrl'], $comments->author);
                 }
                 if ($comments->type == 'pingback') {
                     echo '<div class="pingback avatar">引用</div>';

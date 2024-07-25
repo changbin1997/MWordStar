@@ -27,10 +27,10 @@ window.addEventListener('load', function() {
   form.insertBefore(titleEl[6], ul[27]);  //  文章头图
   form.insertBefore(titleEl[7], ul[31]);  //  文章内容相关
   form.insertBefore(titleEl[8], ul[39]);  //  评论区
-  form.insertBefore(titleEl[9], ul[43]);  //  导航栏
-  form.insertBefore(titleEl[10], ul[45]);  //  友情链接
-  form.insertBefore(titleEl[11], ul[48]);  //  PJAX
-  form.insertBefore(titleEl[12], ul[52]);  //  开发者
+  form.insertBefore(titleEl[9], ul[44]);  //  导航栏
+  form.insertBefore(titleEl[10], ul[46]);  //  友情链接
+  form.insertBefore(titleEl[11], ul[49]);  //  PJAX
+  form.insertBefore(titleEl[12], ul[53]);  //  开发者
 
   var h2Title = document.querySelectorAll('form h2');
   h2Title.forEach(function (el) {
