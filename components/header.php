@@ -26,6 +26,10 @@ if ($codeThemeColor == 'auto') {
 if ($this->options->codeHighlight != 'enable-highlight') {
     $codeThemeColor = 'code-theme-none';
 }
+
+// 导航栏自定义链接
+$navLinks = null;
+if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks);
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -82,7 +86,13 @@ if ($this->options->codeHighlight != 'enable-highlight') {
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
+            <?php if ($this->options->navLogoUrl): ?>
+                <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?>">
+                    <img src="<?php $this->options->navLogoUrl(); ?>" alt="<?php $this->options->title(); ?>" height="<?php $this->options->navLogoHeight(); ?>">
+                </a>
+            <?php else: ?>
+                <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title(); ?> 首页"><?php $this->options->title(); ?></a>
+            <?php endif; ?>
             <button class="navbar-toggler border-0 px-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="导航菜单">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -108,6 +118,13 @@ if ($this->options->codeHighlight != 'enable-highlight') {
                             <a class="nav-link" href="<?php $pages->permalink(); ?>" <?php if ($this->is('page', $pages->slug)) echo 'aria-current="page"'; ?>><?php $pages->title(); ?></a>
                         </li>
                     <?php endwhile; ?>
+                    <?php if ($this->options->navLinks && is_array($navLinks)): ?>
+                        <?php foreach ($navLinks as $link): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo $link->url; ?>"><?php echo $link->name; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
                 <?php if (is_array($this->options->navbar) && in_array('showSearch', $this->options->navbar)): ?>
                     <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
