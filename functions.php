@@ -257,7 +257,7 @@ EOT;
     ), 'off', _t('图片懒加载'), _t('开启后文章内的图片不会自动加载，只有图片进入页面可视区才会加载')));
 
     // 文章底部的交互功能配置
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('engagementSection', null, '点赞,打赏,分享', _t('文章底部的交互功能'), _t('文章底部要使用的交互功能，支持 <b style="color: #C7254E;">点赞,打赏,分享</b>，功能名称之间用英文逗号分隔，逗号之间不需要空格，结尾不需要逗号，功能按钮的顺序会根据这里设置的名称顺序排序。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('engagementSection', null, '点赞,分享', _t('文章底部的交互功能'), _t('文章底部要使用的交互功能，支持 <b style="color: #C7254E;">点赞,打赏,分享</b>，功能名称之间用英文逗号分隔，逗号之间不需要空格，结尾不需要逗号，功能按钮的顺序会根据这里设置的名称顺序排序。')));
 
     // 打赏二维码地址
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('rewardQr', null, '', _t('打赏二维码图片地址'), _t('文章下方的打赏按钮点击后可以显示一个二维码图片，你可以在这里设置图片地址，图片的最大宽度就是文章区域的宽度，高度不限制，图片会居中显示。')));
@@ -299,7 +299,7 @@ EOT;
     $form->addInput($navBar->multiMode());
 
     // 自定义导航栏链接
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('navLinks', null, null, _t('自定义导航栏链接'), _t('您可以在导航栏添加自定义链接，链接的名称和 URL 都可以自定义，导航栏链接需要使用 JSON 配置，格式为 <b style="color: #C7254E;"><code>[{"name": "链接名称1", "url": "http"}, {"name": "链接名称2", "url": "http"}]</code></b> 。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('navLinks', null, null, _t('自定义导航栏链接'), _t('您可以在导航栏添加自定义链接，链接的名称和 URL 都可以自定义，导航栏链接需要使用 JSON 配置 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%AF%BC%E8%88%AA" target="_blank">点击查看配置说明</a>。')));
 
     // 导航栏图片 logo
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('navLogoUrl', null, null, _t('站点 Logo 图片地址'), _t('站点 Logo 图片会显示在顶部导航栏的左侧，支持常见的图片格式，包括 SVG，只要能在 img 标签显示的图片都可以，留空会使用站点名称作为 Logo。')));

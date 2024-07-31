@@ -30,14 +30,16 @@ function threadedComments($comments, $options) {
         <div id="<?php $comments->theId(); ?>" class="comment-box clearfix">
             <div class="comment-author clearfix">
                 <?php
-                if ($GLOBALS['QQAvatar'] == 'on' && isQQEmail($comments->mail)) {
-                    QQAvatar($comments->mail, $comments->author, 40);
-                }else {
-                    gravatar($comments->mail, 50, $GLOBALS['gravatarUrl'], $comments->author);
-                }
-                if ($comments->type == 'pingback') {
-                    echo '<div class="pingback avatar">引用</div>';
-                }
+                    if ($comments->type == 'comment') {
+                        if ($GLOBALS['QQAvatar'] == 'on' && isQQEmail($comments->mail)) {
+                            QQAvatar($comments->mail, $comments->author, 40);
+                        }else {
+                            gravatar($comments->mail, 50, $GLOBALS['gravatarUrl'], $comments->author);
+                        }
+                    }
+                    if ($comments->type == 'pingback') {
+                        echo '<div class="pingback avatar">引用</div>';
+                    }
                 ?>
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>

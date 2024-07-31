@@ -49,11 +49,14 @@
 * 丰富的设置选项
 * 良好的 SEO 优化
 * 详细的图表统计
-* 自带点赞功能
+* 自带文章浏览量统计和点赞功能
 * 丰富的侧边栏组件
 * 评论区自带 Emoji 表情面板
-* 自动根据文章中的标题生成章节目录
+* 支持自动根据文章中的标题生成章节目录
 * 支持图片懒加载
+* 文章支持分页显示
+* 文章列表支持多种排版组合
+* 支持 PJAX 无刷新跳转
 * 长期维护
 * 详细的 [使用说明](https://mwordstar.misterma.com/)（必看）
 
@@ -67,17 +70,21 @@
 
 主题主要用到了一下几个库和框架：
 
-- [Bootstrap](https://getbootstrap.com/)  外观和布局
-- [jQuery](https://jquery.com/)  Bootstrap 依赖
-- [jquery-qrcode](https://github.com/jeromeetienne/jquery-qrcode) 一个生成二维码的 jQuery 插件
-- [highlight.js](https://highlightjs.org/)  代码高亮
-- [IcoMoon](https://icomoon.io/)  字体图标
+* [Bootstrap](https://getbootstrap.com/)  外观和布局
+* [jQuery](https://jquery.com/)  Bootstrap 依赖
+* [jquery-qrcode](https://github.com/jeromeetienne/jquery-qrcode) 一个生成二维码的 jQuery 插件
+* [highlight.js](https://highlightjs.org/)  代码高亮
+* [IcoMoon](https://icomoon.io/)  字体图标
+* [ECharts](https://github.com/apache/echarts)  生成和展示统计图表
+* [jquery-pjax](https://github.com/defunkt/jquery-pjax) 用于页面无刷新跳转
 
-其中 IcoMoon 的字体图标是可定制的，所以只包含了主题中出现的图标，字体图标的文件体积也很小。
+其中 IcoMoon 的字体图标是可定制的，所以只包含了主题中出现的图标，字体图标的文件体积也很小。ECharts 也只包含饼图和日历图，而且只会在统计页面加载。
 
 主题的静态文件没有使用任何 CDN 地址，所有文件都放在主题的 `assets` 目录中。主题的生成目录、点赞、快速分享 之类的功能都是自己手动编写的，所以用到的 JS 库也比较少。
 
 使用 Webpack 打包的版本前台只需要加载一个 CSS 和 一个 JS 文件，所有 JS 库都打包到了 JS 中，所有 CSS 和字体图标都打包到了 CSS 中。因为用到的库比较少，而且字体图标和部分组件都是按需引入的，所以打包后的 CSS 和 JS 也比较小。
+
+如果您没有二次开发需求的话，建议下载 Webpack 打包的版本，也就是后缀包含 `bundle` 的 zip 文件。前台的 JavaScript 使用了 ES6 语法，IE 系列浏览器和一些较老的浏览器可能无法正常运行，Webpack 打包的版本使用 Babel 转换过代码，可以在 IE 和较老的浏览器上运行。
 
 本项目还需要感谢 [JetBrains](https://www.jetbrains.com/?from=MWordStar) 免费提供的开发工具。
 

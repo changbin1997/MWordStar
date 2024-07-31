@@ -126,14 +126,16 @@ $components = explode(',', $components);
                     <?php while($comments->next()): ?>
                         <li class="media border-bottom">
                             <?php
-                            if ($this->options->QQAvatar == 'on' && isQQEmail($comments->mail)) {
-                                QQAvatar($comments->mail, $comments->author, 40);
-                            }else {
-                                gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
-                            }
-                            if ($comments->type == 'pingback') {
-                                echo '<div class="pingback avatar">引用</div>';
-                            }
+                                if ($comments->type == 'comment') {
+                                    if ($this->options->QQAvatar == 'on' && isQQEmail($comments->mail)) {
+                                        QQAvatar($comments->mail, $comments->author, 40);
+                                    }else {
+                                        gravatar($comments->mail, 50, $this->options->gravatarUrl, $comments->author);
+                                    }
+                                }
+                                if ($comments->type == 'pingback') {
+                                    echo '<div class="pingback avatar">引用</div>';
+                                }
                             ?>
                             <div class="media-body ml-2">
                                 <a data-toggle="tooltip" data-placement="top" title="发表在 <?php $comments->title(); ?> 的评论" target="<?php $this->options->sidebarLinkOpen(); ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
