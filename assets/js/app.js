@@ -343,6 +343,8 @@ $(function () {
         </button>
         `;
         $('#footer-btn-box').prepend(directoryBtn);
+        // 重置目录状态
+        if (directory) directory = false;
       }
 
       // 如果移动设备目录按钮存在但文章目录不存在就删除按钮

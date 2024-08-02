@@ -338,7 +338,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('pjaxProgressBarColor', null, '#3F85ED', _t('PJAX进度条颜色'), _t('支持 CSS 的颜色值，例如 <b style="color: #C7254E;">#FF0000</b>、<b style="color: #C7254E;">red</b>、<b style="color: #C7254E;">rgb(255, 0, 0)</b>。')));
 
     // PJAX更新完成后执行的代码
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('这里的 JS 代码会在页面内容更新完成后执行，你可以直接填写 JS 代码，不需要加 script 标签。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('这里的 JS 代码会在页面内容更新完成后执行，你可以直接填写 JS 代码，不需要加 script 标签。<b style="color: #C7254E;">注意，使用 Webpack 打包的带 bundle 后缀的发行版不支持这个选项，只有 clone 项目和 Source code 支持！</b>')));
 
     // 自定义CSS
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', null, null, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。')));

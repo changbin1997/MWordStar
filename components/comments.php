@@ -38,7 +38,7 @@ function threadedComments($comments, $options) {
                         }
                     }
                     if ($comments->type == 'pingback') {
-                        echo '<div class="pingback avatar">引用</div>';
+                        echo '<div class="pingback avatar" role="img">引用</div>';
                     }
                 ?>
                 <div class="comment-info float-left">
