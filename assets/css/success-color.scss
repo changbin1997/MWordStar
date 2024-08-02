@@ -244,4 +244,11 @@ $text-success: #28a745;
   #directory-mobile .directory-list a {
     @include link-success;
   }
+
+  // 数据统计页配色
+  .data-page {
+    .statistics-card {
+      background-color: #B3D8FF;
+    }
+  }
 }

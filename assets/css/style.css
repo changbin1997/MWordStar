@@ -2205,6 +2205,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .light-color1 #directory-mobile .directory-list a:hover, .light-color2 #directory-mobile .directory-list a:hover {
   color: #494f54 !important;
 }
+.light-color1 .data-page .statistics-card, .light-color2 .data-page .statistics-card {
+  background-color: #B3D8FF;
+}
 
 .primary-color header .navbar {
   background-color: #007bff !important;
@@ -2426,6 +2429,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 }
 .primary-color #directory-mobile .directory-list a:hover {
   color: #0056b3 !important;
+}
+.primary-color .data-page .statistics-card {
+  background-color: #B3D8FF;
 }
 
 .info-color header .navbar {
@@ -2649,6 +2655,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .info-color #directory-mobile .directory-list a:hover {
   color: #0f6674 !important;
 }
+.info-color .data-page .statistics-card {
+  background-color: #B3D8FF;
+}
 
 .success-color header .navbar {
   background-color: #28a745 !important;
@@ -2870,6 +2879,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 }
 .success-color #directory-mobile .directory-list a:hover {
   color: #19692c !important;
+}
+.success-color .data-page .statistics-card {
+  background-color: #B3D8FF;
 }
 
 .dark-color {

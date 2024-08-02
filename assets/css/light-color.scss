@@ -299,4 +299,11 @@ $text-secondary: #6c757d;
   #directory-mobile .directory-list a {
     @include link-secondary;
   }
+
+  // 数据统计页配色
+  .data-page {
+    .statistics-card {
+      background-color: #B3D8FF;
+    }
+  }
 }
