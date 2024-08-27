@@ -75,6 +75,7 @@ EOT;
     echo '<style type="text/css">';
     require_once 'assets/css/options-panel.css';
     echo '</style>';
+    require_once 'components/link-editor.php';
 
     // 主题配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('color', array(
@@ -314,13 +315,13 @@ EOT;
     ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。')));
 
     // 首页友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接格式说明</a>')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接格式说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。。 <button data-title="首页友情链接" data-name="homeLinks" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 
     // 全站友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接格式说明</a>')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('links', null, null, _t('全站友情链接'), _t('全站友情链接会在每个页面的侧边栏显示，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接格式说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。 <button data-title="全站友情链接" data-name="links" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 
     // 独立页友链
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接页面创建和格式说明</a>')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接页面创建和格式说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。 <button data-title="独立页友情链接" data-name="pageLinks" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 
     // PJAX
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('pjax', array(
