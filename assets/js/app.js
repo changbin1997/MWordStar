@@ -649,6 +649,9 @@ $(function () {
         showEmoji = !showEmoji;
         // 设置用于屏幕阅读器的 Emoji 面板的显示和隐藏状态
         $(ev.target).attr('aria-expanded', showEmoji);
+        // 聚焦到 emoji 面板的第一个按钮
+        $('#emoji-panel button').eq(0).focus();
+        // 避免触发页面空白区域
         return false;
       });
 
@@ -695,11 +698,18 @@ $(function () {
         $('#textarea').val($('#textarea').val() + $(ev.target).html());
       });
 
-      // Emoji 表情按下回车键
-      $('#emoji-list').on('keypress', '.emoji', ev => {
+      // Emoji 表情按下回车或 Tab
+      $('#emoji-list').on('keydown', '.emoji', ev => {
+        // 按下回车键
         if (ev.keyCode === 13) {
           // 把表情添加到评论内容输入框
           $('#textarea').val($('#textarea').val() + $(ev.target).html());
+        }
+        // 按下 Tab
+        if (ev.keyCode === 9 && $(ev.target).is('#emoji-list .emoji:last-child')) {
+          ev.preventDefault();
+          // 聚焦到 emoji 面板的第一个按钮
+          $('#emoji-panel button').eq(0).focus();
         }
       });
 
