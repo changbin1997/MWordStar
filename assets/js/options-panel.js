@@ -16,10 +16,17 @@ window.addEventListener('load', () => {
     titleEl.push(h2El);
   });
 
-  // 给选项分组列表加入屏幕阅读器专用的标签
+  // 针对屏幕阅读器的优化
   optionUl.forEach(el => {
+    // 给选项分组列表加入屏幕阅读器专用的标签
     if (el.querySelector('label') !== null) {
       el.setAttribute('aria-label', el.querySelector('label').innerText);
+    }
+    // 给选项表单关联选项描述
+    if (el.querySelector('.description') !== null) {
+      const descriptionId = `description-${el.getAttribute('id')}`;
+      el.querySelector('.description').setAttribute('id', descriptionId);
+      el.setAttribute('aria-describedby', descriptionId);
     }
   });
 
@@ -244,34 +251,36 @@ window.addEventListener('load', () => {
       // 清空链接表格
       linkList.innerHTML = '';
       // 读取链接
-      if (linkJson === '') return false;
-      try {
-        linkJson = JSON.parse(linkJson);
-      }catch (error) {
-        alert(`无法解析链接 JSON ${error.message}`);
-        return false;
+      if (linkJson !== '') {
+        try {
+          linkJson = JSON.parse(linkJson);
+        }catch (error) {
+          alert(`无法解析链接 JSON ${error.message}`);
+          return false;
+        }
+
+        // 生成链接表格
+        linkJson.forEach(link => {
+          if (link.url === undefined) link.url = '';
+          if (link.name === undefined) link.name = '';
+          if (link.title === undefined) link.title = '';
+          if (link.logoUrl === undefined) link.logoUrl = '';
+
+          const trEl = document.createElement('tr');
+          trEl.innerHTML = `
+          <td class="url-td">${link.url}</td>
+          <td class="name-td">${link.name}</td>
+          <td class="logo-url-td">${link.logoUrl}</td>
+          <td class="title-td">${link.title}</td>
+          <td>
+            <a href="javascript:;" class="edit-item">编辑</a>  
+            <a href="javascript:;" class="remove-item">删除</a>
+          </td>
+          `;
+          linkList.appendChild(trEl);
+        });
       }
 
-      // 生成链接表格
-      linkJson.forEach(link => {
-        if (link.url === undefined) link.url = '';
-        if (link.name === undefined) link.name = '';
-        if (link.title === undefined) link.title = '';
-        if (link.logoUrl === undefined) link.logoUrl = '';
-
-        const trEl = document.createElement('tr');
-        trEl.innerHTML = `
-        <td class="url-td">${link.url}</td>
-        <td class="name-td">${link.name}</td>
-        <td class="logo-url-td">${link.logoUrl}</td>
-        <td class="title-td">${link.title}</td>
-        <td>
-          <a href="javascript:;" class="edit-item">编辑</a>  
-          <a href="javascript:;" class="remove-item">删除</a>
-        </td>
-        `;
-        linkList.appendChild(trEl);
-      });
       // 让第一个可聚焦的元素获取焦点
       const dialog = document.querySelector('#link-editor');
       const focusableElements = dialog.querySelectorAll('a, button, input');

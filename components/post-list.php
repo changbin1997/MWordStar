@@ -35,18 +35,20 @@
             <!--时间-->
             <div class="info">
                 <i class="icon-calendar icon" aria-hidden="true"></i>
-                <span data-toggle="tooltip" data-placement="top" tabindex="0" title="发布日期：<?php $this->date('Y年m月d日'); ?>"><?php $this->date('Y年m月d日'); ?></span>
+                <span data-toggle="tooltip" data-placement="top" title="发布日期">
+                    <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年m月d日'); ?></time>
+                </span>
             </div>
             <!--作者-->
             <div class="info">
                 <i class="icon-user icon" aria-hidden="true"></i>
-                <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者：<?php $this->author(); ?>"><?php $this->author(); ?></a>
+                <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者"><?php $this->author(); ?></a>
             </div>
             <!--阅读量-->
             <div class="info">
                 <i class="icon-eye icon" aria-hidden="true"></i>
                 <?php $views = postViews($this); ?>
-                <span data-toggle="tooltip" data-placement="top" tabindex="0" title="阅读量：<?php echo $views; ?>"><?php echo $views; ?></span>
+                <span data-toggle="tooltip" data-placement="top" title="阅读量"><?php echo $views; ?></span>
             </div>
             <!--评论-->
             <div class="info">

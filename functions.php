@@ -56,12 +56,12 @@ function themeConfig($form) {
     echo <<<EOT
     <p>您现在使用的是 MWordStar 的开发版，开发板暂无版本号。<a href="https://github.com/changbin1997/MWordStar/releases" target="_blank">点击查看发行版</a></p>
     <p>主题使用帮助 <a href="https://mwordstar.misterma.com/" target="_blank">点击查看帮助文档</a> ，在使用过程中有什么问题或疑问都可以到 <a href="https://www.misterma.com/msg.html" target="_blank">留言板</a> 或 <a target="_blank" href="https://www.misterma.com/archives/812/">主题介绍页</a> 留言，因为我有两个主题，为了更高效的解决问题，建议到 <a target="_blank" href="https://www.misterma.com/archives/812/">主题介绍页</a> 留言，</p>
-    <button id="export-btn" type="button" class="btn">导出主题配置文件</button>
-    <button id="import-btn" type="button" class="btn">导入主题配置文件</button>
+    <button aria-describedby="export-description" id="export-btn" type="button" class="btn">导出主题配置文件</button>
+    <button aria-describedby="export-description" id="import-btn" type="button" class="btn">导入主题配置文件</button>
     <a href="javascript:;" id="download-file" style="display: none;">下载</a>
     <input type="file" id="file-select" style="display: none;">
     <br/>
-    <p><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，主要用来备份主题设置，<b>导入主题配置文件</b> 可以导入 <b>MWordStar</b> 主题的 JSON 配置文件。Typecho 切换主题的时候会清空主题设置，为了避免重复设置，在切换主题之前可以先导出主题设置配置。</p>
+    <p id="export-description"><b>导出主题配置文件</b> 可以把主题外观设置导出为 JSON 文件，主要用来备份主题设置，<b>导入主题配置文件</b> 可以导入 <b>MWordStar</b> 主题的 JSON 配置文件。Typecho 切换主题的时候会清空主题设置，为了避免重复设置，在切换主题之前可以先导出主题设置配置。</p>
     <div id="options-list">
         <h3>选项目录</h3>
         <ul aria-label="选项目录 - 点击可快速滚动到对应的选项分组"></ul>
