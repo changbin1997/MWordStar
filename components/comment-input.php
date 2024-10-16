@@ -61,7 +61,7 @@
                                 <span class="required">*</span>
                             <?php endif; ?>
                         </label>
-                        <input type="email" name="mail" id="mail" class="text form-control" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail) echo 'required'; ?> placeholder="请输入您的电子邮件地址（不会公开）" maxlength="64">
+                        <input type="email" name="mail" id="mail" class="text form-control" value="<?php $this->remember('mail'); ?>" <?php if ($this->options->commentsRequireMail) echo 'required'; ?> placeholder="请输入您的电子邮件地址（不会公开）" maxlength="64">
                     </div>
                     <!--URL输入-->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 form-group">
@@ -71,7 +71,7 @@
                                 <span class="required">*</span>
                             <?php endif; ?>
                         </label>
-                        <input type="url" maxlength="64" name="url" id="url" class="text form-control" placeholder="<?php _e('请输入您的网站或博客地址'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL) echo 'required'; ?>>
+                        <input type="url" maxlength="64" name="url" id="url" class="text form-control" placeholder="<?php _e('请输入您的网站或博客地址'); ?>" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL) echo 'required'; ?>>
                     </div>
                 <?php endif; ?>
                 <!--提交按钮-->
