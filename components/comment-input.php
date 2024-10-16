@@ -9,7 +9,10 @@
             <div class="row">
                 <!--评论内容输入-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
-                    <label for="textarea" class="required"><?php _e('评论内容'); ?></label>
+                    <label for="textarea" class="required">
+                        <?php _e('评论内容'); ?>
+                        <span class="required">*</span>
+                    </label>
                     <textarea name="text" id="textarea" class="textarea form-control" required placeholder="请在此处输入评论内容"><?php $this->remember('text'); ?></textarea>
                 </div>
                 <!--Emoji表情面板-->
@@ -44,18 +47,31 @@
                 <?php else: ?>
                     <!--姓名输入-->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 form-group">
-                        <label for="author" class="required">姓名</label>
-                        <input type="text" name="author" id="author" class="text form-control" value="<?php $this->remember('author'); ?>" required="required" placeholder="请输入您的姓名或昵称" maxlength="20">
+                        <label for="author">
+                            <?php _e('称呼'); ?>
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" name="author" id="author" class="text form-control" value="<?php $this->remember('author'); ?>" placeholder="请输入您的姓名或昵称" maxlength="20" required>
                     </div>
                     <!--Email输入-->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 form-group">
-                        <label for="mail"<?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?>>电子邮件地址（不会公开）</label>
-                        <input type="email" name="mail" id="mail" class="text form-control" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required="required" <?php endif; ?> placeholder="请输入您的电子邮件地址" maxlength="64">
+                        <label for="mail">
+                            <?php _e('电子邮件地址'); ?>
+                            <?php if ($this->options->commentsRequireMail): ?>
+                                <span class="required">*</span>
+                            <?php endif; ?>
+                        </label>
+                        <input type="email" name="mail" id="mail" class="text form-control" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail) echo 'required'; ?> placeholder="请输入您的电子邮件地址（不会公开）" maxlength="64">
                     </div>
                     <!--URL输入-->
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 form-group">
-                        <label for="url"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?>>网站（选填）</label>
-                        <input type="url" maxlength="64" name="url" id="url" class="text form-control" placeholder="<?php _e('请输入您的网站或博客地址'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?>>
+                        <label for="url">
+                            <?php _e('网站'); ?>
+                            <?php if ($this->options->commentsRequireURL): ?>
+                                <span class="required">*</span>
+                            <?php endif; ?>
+                        </label>
+                        <input type="url" maxlength="64" name="url" id="url" class="text form-control" placeholder="<?php _e('请输入您的网站或博客地址'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL) echo 'required'; ?>>
                     </div>
                 <?php endif; ?>
                 <!--提交按钮-->
