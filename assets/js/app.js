@@ -40,11 +40,11 @@ $(function () {
   // Emoji面板初始化
   emojiInit();
 
-  // 一些 bootstrap 的样式初始化
-  bootstrapStyleInit();
-
   // 一些可访问性相关的功能初始化
   accessibilityInit();
+
+  // 一些 bootstrap 的样式初始化
+  bootstrapStyleInit();
 
   // 生成分享二维码
   shareQrCode();
@@ -570,6 +570,17 @@ $(function () {
       $('.comment-info b a').attr('target', '_blank');
     }
 
+    // 给回复链接添加回复对象名称的 title
+    $('.comment-reply').each(function() {
+      const authorName = $(this).closest('.comment-box').find('.author a').text() ||
+          $(this).closest('.comment-box').find('.author').text();
+      $(this).find('a').attr({
+        title: `回复 ${authorName}`,
+        'data-toggle': 'tooltip',
+        'data-placement': 'top'
+      });
+    });
+
     // 评论区的回复链接鼠标移入和移出
     $('#comments .comment-reply a').hover(ev => {
       // 根据主题配色设置评论高亮颜色
@@ -606,6 +617,10 @@ $(function () {
       }
       $('#comments .parent').remove();
     }
+
+    // 给上一篇文章和下一篇文章的链接添加文字描述
+    $('.previous a').attr('aria-description', '上一篇');
+    $('.next a').attr('aria-description', '下一篇');
   }
 
   // 一些 bootstrap 的样式初始化
