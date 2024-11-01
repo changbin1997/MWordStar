@@ -91,7 +91,7 @@ $this->need('components/header.php');
                         <?php if (is_numeric($this->fields->expired) && (int)$this->fields->expired > 0 && $this->created + (int)$this->fields->expired * 86400 < time()): ?>
                             <div class="alert warning-info" role="alert">这篇文章发布于 <?php echo getDays($this->created, time()); ?> 天前，其中的信息可能已经有所发展或是发生改变！</div>
                         <?php endif; ?>
-                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
                             <?php $GLOBALS['postPage'] = preg_split('/\[-page-]|<p>\[-page-]<\/p>/', $this->content); ?>
                             <?php $postPageNum = isset($_GET['post-page'])?$_GET['post-page']:1; ?>
                             <?php if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1; ?>

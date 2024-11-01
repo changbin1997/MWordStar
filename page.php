@@ -57,7 +57,7 @@ $this->need('components/header.php');
                         <?php endif; ?>
                     </div>
                     <article>
-                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
                             <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
                         </div>
                     </article>

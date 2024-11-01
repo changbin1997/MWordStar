@@ -30,6 +30,22 @@ if ($this->options->codeHighlight != 'enable-highlight') {
 // 导航栏自定义链接
 $navLinks = null;
 if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks);
+
+// body class
+$bodyClass = array(
+    // 代码高亮主题
+    $codeThemeColor,
+    // 是否开启代码高亮
+    $this->options->codeHighlight,
+    // 主题配色模式
+    $themeColor
+);
+// 如果开启了代码块高亮就把代码块行号设置添加到 body class
+if ($this->options->codeHighlight == 'enable-highlight') {
+    $bodyClass[] = 'line-num-' . $this->options->codeLineNum;
+}
+// 把 body class 数组转为字符串，方便直接输出
+$bodyClass = implode(' ', $bodyClass);
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -77,7 +93,7 @@ if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks);
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body class="<?php echo $codeThemeColor; ?> <?php $this->options->codeHighlight(); ?> <?php echo $themeColor; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>" data-code-theme="<?php echo $codeThemeColorSelected; ?>" data-pjax="<?php $this->options->pjax(); ?>">
+<body class="<?php echo $bodyClass; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>" data-code-theme="<?php echo $codeThemeColorSelected; ?>" data-pjax="<?php $this->options->pjax(); ?>">
 <?php if ($this->options->pjax == 'on' && $this->options->pjaxProgressBar == 'on'): ?>
     <div id="progress-bar" style="display: none;">
         <div id="progress" style="background: <?php $this->options->pjaxProgressBarColor(); ?>;" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>

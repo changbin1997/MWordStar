@@ -53,7 +53,7 @@ $this->need('components/header.php');  //  头文件
                         </h2>
                     </header>
                     <article>
-                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content" data-code-line-num="<?php $this->options->codeLineNum(); ?>">
+                        <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
                             <?php if (count($linkArr)): ?>
                                 <?php foreach ($linkArr as $link): ?>
                                     <h3><?php echo $link['title']; ?></h3>

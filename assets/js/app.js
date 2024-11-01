@@ -12,7 +12,6 @@ $(function () {
   const avatarName = [];  // 存储文字头像名称
   let emojiList = null;  // Emoji 列表
   let showEmoji = false;  // Emoji 面板状态
-  const codeLineNum = $('.post-content').attr('data-code-line-num');
   let directory = false;  // 移动设备章节目录状态
   let directoryTop = 0;
   let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
@@ -1147,11 +1146,11 @@ $(function () {
         // 是否是代码块
         if ($('pre').eq(i).children('code').length) {
           // 生成代码行号
-          if (codeLineNum === 'show') {
-            $('pre code').eq(i).css('padding-left', '54px');
-            const lineNumbers = Math.floor($('pre code').eq(i).height() / 22.5);
+          if ($('.line-num-show').length) {
+            // 获取代码行数
+            const lineCount = $('pre code').eq(i).html().split(/\r\n|\r|\n/).length;
             let lineNumbersEl = '';
-            for (let j = 0;j < lineNumbers;j ++) {
+            for (let j = 0;j < lineCount;j ++) {
               lineNumbersEl += `<div class="text-right">${Number(j + 1)}</div>`;
             }
             $('pre').eq(i).prepend(`<div class="line-box">${lineNumbersEl}</div>`);

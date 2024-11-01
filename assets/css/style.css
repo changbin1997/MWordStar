@@ -294,11 +294,13 @@
   background-color: #BBBBBB;
   color: #FFFFFF;
 }
-.enable-highlight .post-content[data-code-line-num=show] pre code {
-  padding: 12px 10px;
+
+.line-num-show pre code {
+  padding: 12px 10px 12px 54px !important;
 }
-.enable-highlight .post-content[data-code-line-num=hide] pre code {
-  padding: 12px 16px;
+
+.line-num-hide pre code {
+  padding: 12px 16px !important;
 }
 
 body {

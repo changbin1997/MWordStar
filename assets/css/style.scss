@@ -253,6 +253,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
 }
 
+
 //  代码高亮的主题样式
 //  stackoverflow-light 样式
 .stackoverflow-light {
@@ -296,8 +297,8 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   @import "sunburst.min";
 }
+// 通用的代码高亮样式
 .enable-highlight {
-  // 通用的代码高亮样式
   pre {
     position: relative;
     &:hover .copy-code-btn {
@@ -339,23 +340,24 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
       }
     }
   }
-  //  包含行号的样式
-  .post-content[data-code-line-num="show"] {
-    pre {
-      code {
-        padding: 12px 10px;
-      }
-    }
-  }
-  //  不包含行号的样式
-  .post-content[data-code-line-num="hide"] {
-    pre {
-      code {
-        padding: 12px 16px;
-      }
+}
+//  包含行号的样式
+.line-num-show {
+  pre {
+    code {
+      padding: 12px 10px 12px 54px !important;
     }
   }
 }
+//  不包含行号的样式
+.line-num-hide {
+  pre {
+    code {
+      padding: 12px 16px !important;
+    }
+  }
+}
+
 
 body {
   background: #e4e4e4;
