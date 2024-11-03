@@ -44,7 +44,7 @@ function threadedComments($comments, $options) {
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>
                     <?php if ($comments->authorId == $comments->ownerId): ?>
-                        <span class="author badge badge-secondary">作者</span>
+                        <span class="author-tag badge badge-secondary">作者</span>
                     <?php endif; ?>
                     <?php if ($comments->status != 'approved'): ?>
                         <span class="author badge badge-secondary" title="您的评论目前只有您自己能看到，审核通过后才会公开显示。" data-toggle="tooltip" data-placement="top">评论审核中</span>

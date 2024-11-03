@@ -82,7 +82,7 @@ $this->need('components/header.php');
                         <?php if ($this->user->hasLogin()): ?>
                             <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">
                                 <i class="icon icon-pencil"></i>
-                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>" >编辑</a>
+                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>">编辑</a>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -93,10 +93,10 @@ $this->need('components/header.php');
                         <?php endif; ?>
                         <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
                             <?php $GLOBALS['postPage'] = preg_split('/\[-page-]|<p>\[-page-]<\/p>/', $this->content); ?>
-                            <?php $postPageNum = isset($_GET['post-page'])?$_GET['post-page']:1; ?>
+                            <?php $postPageNum = isset($_GET['post-page']) ? $_GET['post-page'] : 1; ?>
                             <?php if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1; ?>
                             <?php $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]); ?>
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($GLOBALS['post']['content']):$GLOBALS['post']['content']; ?>
+                            <?php echo $this->options->imagelazyloading == 'on' ? replaceImgSrc($GLOBALS['post']['content']) : $GLOBALS['post']['content']; ?>
                         </div>
                         <?php if (count($GLOBALS['postPage']) > 1): ?>
                             <nav aria-label="文章分页" class="py-3 post-pagination">
@@ -108,7 +108,7 @@ $this->need('components/header.php');
                                             </a>
                                         </li>
                                     <?php endif; ?>
-                                    <?php for ($i = 0;$i < count($GLOBALS['postPage']);$i ++): ?>
+                                    <?php for ($i = 0; $i < count($GLOBALS['postPage']); $i++): ?>
                                         <li class="page-item <?php if ($i == $postPageNum - 1) echo 'active'; ?>">
                                             <a href="<?php echo $this->permalink . '?post-page=' . ($i + 1); ?>" class="page-link" <?php if ($i == $postPageNum - 1) echo 'aria-current="page"'; ?>><?php echo $i + 1; ?></a>
                                         </li>
@@ -126,7 +126,7 @@ $this->need('components/header.php');
                         <div class="clearfix" id="copyright-info">
                             <?php if ($this->options->modified == 'show'): ?>
                                 <span class="float-xl-left float-lg-left float-md-left d-block">
-                                    <time datetime="<?php echo date('c', $this->modified); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified);?></time>
+                                    <time datetime="<?php echo date('c', $this->modified); ?>">最后编辑：<?php echo date('Y年m月d日', $this->modified); ?></time>
                                 </span>
                             <?php endif; ?>
                             <?php if ($this->fields->articleCopyright != 'hide'): ?>
@@ -138,26 +138,26 @@ $this->need('components/header.php');
                         <div class="mb-3 agree-and-share">
                             <div class="text-center">
                                 <?php foreach ($engagementSection as $val): ?>
-                                <?php if ($val == '点赞'): ?>
-                                    <?php $agree = $this->hidden?array('agree' => 0, 'recording' => true):agreeNum($this->cid); ?>
-                                    <button <?php echo $agree['recording']?'disabled':''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn mr-2">
-                                        <i class="icon-thumbs-up"></i>
-                                        <span>赞</span>
-                                        <span class="agree-num"><?php echo $agree['agree']; ?></span>
-                                    </button>
-                                <?php endif; ?>
-                                <?php if ($val == '分享'): ?>
-                                    <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn mr-2" data-toggle="collapse" data-target="#qr-link" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="icon-share2"></i>
-                                        <span>分享</span>
-                                    </button>
-                                <?php endif; ?>
-                                <?php if ($val == '打赏'): ?>
-                                    <button type="button" class="btn mr-2" data-toggle="collapse" data-target="#reward-qr" aria-expanded="false">
-                                        <i class="icon-coffee"></i>
-                                        <span>打赏</span>
-                                    </button>
-                                <?php endif; ?>
+                                    <?php if ($val == '点赞'): ?>
+                                        <?php $agree = $this->hidden ? array('agree' => 0, 'recording' => true) : agreeNum($this->cid); ?>
+                                        <button <?php echo $agree['recording'] ? 'disabled' : ''; ?> data-cid="<?php echo $this->cid; ?>" data-url="<?php $this->permalink(); ?>" id="agree-btn" type="button" class="btn mr-2">
+                                            <i class="icon-thumbs-up"></i>
+                                            <span>赞</span>
+                                            <span class="agree-num"><?php echo $agree['agree']; ?></span>
+                                        </button>
+                                    <?php endif; ?>
+                                    <?php if ($val == '分享'): ?>
+                                        <button id="share-btn" data-url="<?php $this->permalink(); ?>" type="button" class="btn mr-2" data-toggle="collapse" data-target="#qr-link" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="icon-share2"></i>
+                                            <span>分享</span>
+                                        </button>
+                                    <?php endif; ?>
+                                    <?php if ($val == '打赏'): ?>
+                                        <button type="button" class="btn mr-2" data-toggle="collapse" data-target="#reward-qr" aria-expanded="false">
+                                            <i class="icon-coffee"></i>
+                                            <span>打赏</span>
+                                        </button>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
                             <?php if (in_array('打赏', $engagementSection)): ?>
@@ -179,7 +179,7 @@ $this->need('components/header.php');
                                                 <a class="text-danger" href="https://service.weibo.com/share/share.php?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到新浪微博" title="分享到新浪微博" data-toggle="tooltip" data-placement="top">
                                                     <i class="icon-sina-weibo mr-1"></i>
                                                 </a>
-                                                <a class="text-info" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...'); ?>" target="_blank" rel="external nofollow" aria-label="分享到QQ空间" title="分享到QQ空间" data-toggle="tooltip" data-placement="top">
+                                                <a class="text-info" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink(); ?>&title=<?php $this->title(); ?>&site=<?php $this->options->siteUrl(); ?>&summary=<?php $this->fields->summaryContent ? $this->fields->summaryContent() : $this->excerpt($this->options->summary, '...'); ?>" target="_blank" rel="external nofollow" aria-label="分享到QQ空间" title="分享到QQ空间" data-toggle="tooltip" data-placement="top">
                                                     <i class="icon-qzone-logo mr-1"></i>
                                                 </a>
                                                 <a class="text-info" href="https://twitter.com/intent/tweet?url=<?php $this->permalink(); ?>&text=<?php $this->title(); ?>" target="_blank" rel="external nofollow" aria-label="分享到Twitter" title="分享到Twitter" data-toggle="tooltip" data-placement="top">
@@ -196,12 +196,12 @@ $this->need('components/header.php');
                     <nav class="post-navigation border-top">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 previous">
-                                <div>上一篇</div>
-                                <?php $this->thePrev('%s','没有了'); ?>
+                                <div id="previous-post-text">上一篇</div>
+                                <?php $this->thePrev('%s', '没有了'); ?>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 next">
-                                <div class="text-lg-right text-xl-right text-md-right">下一篇</div class="text-lg-right text-xl-right text-md-right">
-                                <div class="text-lg-right text-xl-right text-md-right next-box"><?php $this->theNext('%s','没有了'); ?></div>
+                                <div id="next-post-text" class="text-lg-right text-xl-right text-md-right">下一篇</div class="text-lg-right text-xl-right text-md-right">
+                                <div class="text-lg-right text-xl-right text-md-right next-box"><?php $this->theNext('%s', '没有了'); ?></div>
                             </div>
                         </div>
                     </nav>

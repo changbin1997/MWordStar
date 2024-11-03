@@ -372,11 +372,11 @@ $(function () {
       // Emoji面板初始化
       emojiInit();
 
-      // 一些 bootstrap 的样式初始化
-      bootstrapStyleInit();
-
       // 一些可访问性相关的功能初始化
       accessibilityInit();
+
+      // 一些 bootstrap 的样式初始化
+      bootstrapStyleInit();
 
       // 生成分享二维码
       shareQrCode();
@@ -584,8 +584,7 @@ $(function () {
     // 评论区的回复链接鼠标移入和移出
     $('#comments .comment-reply a').hover(ev => {
       // 根据主题配色设置评论高亮颜色
-      let color = '#E4E4E4';
-      if ($('.dark-color').length) color = '#383838';
+      const color = $('.dark-color').length ? '#383838' : '#E4E4E4';
       // 获取回复评论的 cid
       const cid = $(ev.target).parent().attr('data-id');
       // 改变回复评论的内容样式
@@ -595,7 +594,7 @@ $(function () {
       $(`#c-${cid}`).css('background', 'none');
     });
 
-    // 回复按钮按下 tab
+    // 提交回复按钮按下 tab
     $(document).on('keydown', '.comments-lists .respond .submit', ev => {
       ev.preventDefault();
       if (ev.keyCode === 9) {
@@ -606,21 +605,25 @@ $(function () {
 
     // 把父评论的姓名加入到子评论中
     if ($('#comments .parent').length) {
-      const linkColor = $('.post-content').attr('data-color');
       for (let i = 0; i < $('#comments .parent').length; i++) {
         const parentLink = `
-      <a class="mr-1 ${linkColor}" href="${$('#comments .parent').eq(i).attr('href')}">
-        ${$('#comments .parent').eq(i).html()}
-      </a>
-      `;
+        <a class="mr-1 parent-link" href="${$('#comments .parent').eq(i).attr('href')}">
+          ${$('#comments .parent').eq(i).html()}
+        </a>
+        `;
         $('#comments .parent').eq(i).next().prepend(parentLink);
       }
       $('#comments .parent').remove();
     }
 
-    // 给上一篇文章和下一篇文章的链接添加文字描述
-    $('.previous a').attr('aria-description', '上一篇');
-    $('.next a').attr('aria-description', '下一篇');
+    // 给上一篇文章和下一篇文章的链接关联文字描述
+    $('.previous a').attr('aria-describedby', 'previous-post-text');
+    $('.next a').attr('aria-describedby', 'next-post-text');
+
+    // 给评论区的作者链接加入用于屏幕阅读器的描述
+    $('.author-tag').each(function() {
+      $(this).closest('.comment-info').find('.author a').attr('title', '作者');
+    });
   }
 
   // 一些 bootstrap 的样式初始化
