@@ -13,6 +13,7 @@ $components = explode(',', $components);
 <div class="col-md-12 col-lg-4 col-sm-12 sidebar">
     <?php foreach ($components as $component): ?>
         <?php if ($component == '博客信息'): ?>
+            <!--博客信息-->
             <section class="mwordstar-block">
                 <h4>博客信息</h4>
                 <div class="personal-information pt-2">
@@ -49,13 +50,17 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
+        
         <?php if ($component == '自定义' && $this->options->customizeHTML): ?>
+            <!--自定义HTML-->
             <section class="customize mwordstar-block">
                 <h4><?php $this->options->customizeTitle(); ?></h4>
                 <div class="customize-html pt-2"><?php $this->options->customizeHTML(); ?></div>
             </section>
         <?php endif; ?>
+        
         <?php if ($component == '搜索'): ?>
+            <!--搜索-->
             <section class="search mwordstar-block">
                 <h4>搜索</h4>
                 <div class="tag-list pt-2">
@@ -72,7 +77,9 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
+
         <?php if ($component == '日历'): ?>
+            <!--日历-->
             <section class="calendar mwordstar-block">
                 <?php $date = getMonth(); ?>
                 <h4><?php echo $date[0] . '年' . $date[1] . '月'; ?></h4>
@@ -90,11 +97,14 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
+
         <?php if ($component == '最新文章'): ?>
+            <!--最新文章-->
             <section class="latest-articles mwordstar-block">
                 <h4>最新文章</h4>
+                <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
+                <?php if ($latestArticles->have()): ?>
                 <ul class="list-group" aria-label="最新文章">
-                    <?php $latestArticles = $this->widget('Widget_Contents_Post_Recent'); ?>
                     <?php $postSize = 0; ?>
                     <?php while ($latestArticles->next()): ?>
                         <li class="border-bottom">
@@ -116,13 +126,19 @@ $components = explode(',', $components);
                         ?>
                     <?php endwhile; ?>
                 </ul>
+                <?php else: ?>
+                    <p class="message pb-0">没有可以显示的文章</p>
+                <?php endif; ?>    
             </section>
         <?php endif; ?>
+
         <?php if ($component == '最新回复'): ?>
+            <!--最新回复-->
             <section class="latest-comment mwordstar-block">
                 <h4>最新回复</h4>
+                <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
+                <?php if ($comments->have()): ?>
                 <ul class="list-unstyled list-group" aria-label="最新回复">
-                    <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
                     <?php while($comments->next()): ?>
                         <li class="media border-bottom">
                             <?php
@@ -144,13 +160,19 @@ $components = explode(',', $components);
                         </li>
                     <?php endwhile; ?>
                 </ul>
+                <?php else: ?>
+                    <p class="pb-0 message">没有可以显示的评论和回复</p>
+                <?php endif; ?>    
             </section>
         <?php endif; ?>
+
         <?php if ($component == '文章分类'): ?>
+            <!--分类-->
             <section class="category mwordstar-block">
                 <h4>文章分类</h4>
+                <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+                <?php if ($category->have()): ?>
                 <ul class="list-group list-group-flush" aria-label="文章分类">
-                    <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
                     <?php while ($category->next()): ?>
                         <li class="d-flex justify-content-between align-items-center border-bottom indentation-<?php $category->parent(); ?>">
                             <a rel="index" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $category->permalink(); ?>" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>">
@@ -162,9 +184,14 @@ $components = explode(',', $components);
                         </li>
                     <?php endwhile; ?>
                 </ul>
+                <?php else: ?>
+                    <p class="pb-0 message">没有可以显示的分类</p>
+                <?php endif; ?>    
             </section>
         <?php endif; ?>
+
         <?php if ($component == '标签云'): ?>
+            <!--标签云-->
             <section class="tag-cloud mwordstar-block">
                 <h4>标签云</h4>
                 <?php $limit = $this->options->tagCount == 0?1000:$this->options->tagCount; ?>
@@ -182,15 +209,18 @@ $components = explode(',', $components);
                         <?php endif; ?>
                     </div>
                 <?php else: ?>
-                    <p class="text-center pb-2"><?php _e('没有任何标签'); ?></p>
+                    <p class="pb-0 message">没有可以显示的标签</p>
                 <?php endif; ?>
             </section>
         <?php endif; ?>
+
         <?php if ($component == '文章归档'): ?>
+            <!--归档-->
             <section class="mwordstar-block">
                 <h4>文章归档</h4>
+                <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
+                <?php if ($postArchive->have()): ?>
                 <ul class="list-group list-group-flush" aria-label="文章归档">
-                    <?php $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月'); ?>
                     <?php $archiveCount = 0; ?>
                     <?php while ($postArchive->next()): ?>
                     <li class="d-flex justify-content-between align-items-center border-bottom">
@@ -211,9 +241,14 @@ $components = explode(',', $components);
                     </li>
                     <?php endif; ?>
                 </ul>
+                <?php else: ?>
+                    <p class="pb-0 message">没有文章，无法生成文章归档</p>
+                <?php endif; ?>    
             </section>
         <?php endif; ?>
+
         <?php if ($component == '其它功能'): ?>
+            <!--其它功能-->
             <section class="mwordstar-block">
                 <h4>其它功能</h4>
                 <ul class="list-group" aria-label="其它功能">
@@ -230,8 +265,10 @@ $components = explode(',', $components);
                 </ul>
             </section>
         <?php endif; ?>
+
         <?php if ($component == '友情链接'): ?>
             <?php if ($this->options->links or $this->options->homeLinks && $this->is('index')): ?>
+                <!--友情链接-->
                 <section class="mwordstar-block">
                     <h4>友情链接</h4>
                     <ul class="list-group" aria-label="友情链接">
@@ -251,7 +288,9 @@ $components = explode(',', $components);
                 </section>
             <?php endif; ?>
         <?php endif; ?>
+
         <?php if ($component == '目录' && $GLOBALS['page'] == 'post' && $GLOBALS['post']['directory'] != null): ?>
+            <!--目录-->
             <section class="mwordstar-block directory d-none d-sm-none d-md-none d-lg-block d-xl-block">
                 <h4 class="mx-0">目录</h4>
                 <?php echo $GLOBALS['post']['directory']; ?>

@@ -177,14 +177,11 @@ $text-primary: #007bff;
         border: none;
       }
     }
+  }
 
-    // 切换配色的按钮
-    #change-color-btn {
-      background-color: #373737;
-      color: $dark-text-color;
-    }
-    // 切换配色的文字提示
-    #change-color-text {
+  // 首页没有文章时的提示信息配色
+  .home .no-post-message {
+    .post-title {
       color: $dark-text-color;
     }
   }
@@ -239,6 +236,9 @@ $text-primary: #007bff;
       h4 {
         color: $dark-text-color;
         border-color: $dark-text-color2;
+      }
+      .message {
+        color: $dark-text-color;
       }
     }
     // 博客信息

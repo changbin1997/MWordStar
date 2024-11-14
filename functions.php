@@ -373,15 +373,15 @@ function checkField() {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
 
-    // 检查阅读量字段是否存在
-    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
-        // 在文章表中创建一个字段用来存储阅读量
+    // 获取文章表的字段
+    $postFields = $db->fetchAll($db->query('PRAGMA table_info(' . $prefix . 'contents)'));
+    // 如果阅读量的字段不存在就创建字段
+    if (array_search('views', array_column($postFields, 'name')) == false) {
         $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) NOT NULL DEFAULT 0;');
     }
 
-    // 检查点赞字段是否存在
-    if (!array_key_exists('agree', $db->fetchRow($db->select()->from('table.contents')))) {
-        //  在文章表中创建一个字段用来存储点赞数量
+    // 如果点赞字段不存在就创建字段
+    if (array_search('agree', array_column($postFields, 'name')) == false) {
         $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
     }
 }

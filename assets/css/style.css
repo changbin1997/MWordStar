@@ -543,6 +543,10 @@ header .navbar .search-form button:focus {
   margin-top: 15px;
 }
 
+.home .no-post-message {
+  padding: 20px;
+}
+
 .sidebar section {
   margin-left: 20px;
   margin-bottom: 30px;
@@ -569,6 +573,9 @@ header .navbar .search-form button:focus {
 }
 .sidebar section ul li .avatar {
   border-radius: 50%;
+}
+.sidebar section .message {
+  padding: 0 18px 18px 18px;
 }
 .sidebar section .personal-information {
   padding: 0 18px 18px 18px;
@@ -2947,11 +2954,7 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   color: rgba(255, 255, 255, 0.87);
   border: none;
 }
-.dark-color header .navbar #change-color-btn {
-  background-color: #373737;
-  color: rgba(255, 255, 255, 0.87);
-}
-.dark-color header .navbar #change-color-text {
+.dark-color .home .no-post-message .post-title {
   color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .article-list .post, .dark-color .archives-list .archives .post {
@@ -3030,6 +3033,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .sidebar section h4 {
   color: rgba(255, 255, 255, 0.87);
   border-color: rgba(255, 255, 255, 0.6);
+}
+.dark-color .sidebar section .message {
+  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .sidebar .personal-information .introduction {
   color: rgba(255, 255, 255, 0.87);

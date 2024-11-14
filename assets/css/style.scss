@@ -35,6 +35,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     margin-right: 3px;
   }
 }
+
 //  通用文章标题样式
 @mixin entryHeader {
   .entry-title {
@@ -46,6 +47,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     }
   }
 }
+
 //  通用文章标题样式手机版
 @mixin entryHeaderM {
   .entry-title {
@@ -53,6 +55,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     padding: 20px 20px 12px 20px;
   }
 }
+
 //  通用文章头图样式
 @mixin postThumbnail {
   width: 100%;
@@ -419,6 +422,14 @@ header {
   margin-top: 15px;
 }
 
+// 首页
+.home {
+  // 没有文章的提示信息
+  .no-post-message {
+    padding: 20px;
+  }
+}
+
 //  侧边栏区域
 .sidebar {
   section {
@@ -448,6 +459,10 @@ header {
           border-radius: 50%;
         }
       }
+    }
+    // 没有内容时的提示信息
+    .message {
+      padding: 0 18px 18px 18px;
     }
     //  个人资料卡
     .personal-information {
