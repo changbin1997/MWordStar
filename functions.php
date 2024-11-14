@@ -869,6 +869,7 @@ function tagCount() {
 function viewsCount() {
     $db = Typecho_Db::get();
     $count = $db->fetchRow($db->select('SUM(views) AS viewsCount')->from('table.contents'));
+    if ($count['viewsCount'] == null) $count['viewsCount'] = 0;
     return $count['viewsCount'];
 }
 
@@ -876,6 +877,7 @@ function viewsCount() {
 function agreeCount() {
     $db = Typecho_Db::get();
     $count = $db->fetchRow($db->select('SUM(agree) AS agreeCount')->from('table.contents'));
+    if ($count['agreeCount'] == null) $count['agreeCount'] = 0;
     return $count['agreeCount'];
 }
 

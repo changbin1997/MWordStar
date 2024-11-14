@@ -5,6 +5,14 @@
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
+// 文章更新日历数据
+$postCalendarData = postCalendar(time() - 20736000, time());
+// 评论更新日历数据
+$commentCalendarData = commentCalendar(time() - 20736000, time());
+// 获取分类数据
+$categoryPostCount = categoryPostCount();
+
 $GLOBALS['page'] = 'page-data';
 $this->need('components/header.php');
 ?>
@@ -98,8 +106,12 @@ $this->need('components/header.php');
                             </div>
                             <hr>
                             <h2>分类占比</h2>
-                            <p>下面是个分类的文章占比：</p>
-                            <div id="category-chart" style="height: 390px;"></div>
+                            <?php if (empty($categoryPostCount)): ?>
+                                <p>目前暂无分类数据</p>
+                            <?php else: ?>    
+                                <p>下面是个分类的文章占比：</p>
+                                <div id="category-chart" style="height: 390px;"></div>
+                            <?php endif; ?>
                             <hr>
                             <h2>文章更新</h2>
                             <p>下面是 <?php echo date('Y年m月d日', time() - 20736000); ?> 到 <?php echo date('Y年m月d日', time()); ?> 的文章更新情况</p>
@@ -111,51 +123,59 @@ $this->need('components/header.php');
                             <hr>
                             <h2>最多阅读的文章</h2>
                             <?php $top5Post = top5post(); ?>
-                            <p>下面是阅读量排名前 <?php echo count($top5Post); ?> 的 <?php echo count($top5Post); ?> 篇文章</p>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th>排名</th>
-                                    <th>文章</th>
-                                    <th>阅读量</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $top = 1; ?>
-                                <?php foreach ($top5Post as $post): ?>
+                            <?php if (count($top5Post)): ?>
+                                <p>下面是阅读量排名前 <?php echo count($top5Post); ?> 的 <?php echo count($top5Post); ?> 篇文章</p>
+                                <table>
+                                    <thead>
                                     <tr>
-                                        <td><?php echo $top; ?></td>
-                                        <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
-                                        <td><?php echo $post['views']; ?></td>
+                                        <th>排名</th>
+                                        <th>文章</th>
+                                        <th>阅读量</th>
                                     </tr>
-                                    <?php $top ++; ?>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    <?php $top = 1; ?>
+                                    <?php foreach ($top5Post as $post): ?>
+                                        <tr>
+                                            <td><?php echo $top; ?></td>
+                                            <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
+                                            <td><?php echo $post['views']; ?></td>
+                                        </tr>
+                                        <?php $top ++; ?>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            <?php else: ?>
+                                <p>目前没有任何文章</p>
+                            <?php endif; ?>    
                             <hr>
                             <h2>最多评论的文章</h2>
                             <?php $top5CommentPost = top5CommentPost(); ?>
-                            <p>下面是评论数排名前 <?php echo count($top5CommentPost); ?> 的 <?php echo count($top5CommentPost); ?> 篇文章：</p>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th>排名</th>
-                                    <th>文章</th>
-                                    <th>评论数</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $top = 1; ?>
-                                <?php foreach ($top5CommentPost as $post): ?>
+                            <?php if (count($top5CommentPost)): ?>
+                                <p>下面是评论数排名前 <?php echo count($top5CommentPost); ?> 的 <?php echo count($top5CommentPost); ?> 篇文章：</p>
+                                <table>
+                                    <thead>
                                     <tr>
-                                        <td><?php echo $top; ?></td>
-                                        <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
-                                        <td><?php echo $post['commentsNum']; ?></td>
+                                        <th>排名</th>
+                                        <th>文章</th>
+                                        <th>评论数</th>
                                     </tr>
-                                    <?php $top ++; ?>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    <?php $top = 1; ?>
+                                    <?php foreach ($top5CommentPost as $post): ?>
+                                        <tr>
+                                            <td><?php echo $top; ?></td>
+                                            <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
+                                            <td><?php echo $post['commentsNum']; ?></td>
+                                        </tr>
+                                        <?php $top ++; ?>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            <?php else: ?>
+                                <p>目前没有任何文章</p>
+                            <?php endif; ?>    
                         </div>
                     </article>
                     <?php $this->need('components/comments.php'); ?>
@@ -165,10 +185,11 @@ $this->need('components/header.php');
         </div>
         <script type="text/javascript">
           var data = {
-            post: <?php echo json_encode(postCalendar(time() - 20736000, time())); ?>,
-            comment: <?php echo json_encode(commentCalendar(time() - 20736000, time())); ?>,
-            category: <?php echo json_encode(categoryPostCount()); ?>
+            post: <?php echo json_encode($postCalendarData); ?>,
+            comment: <?php echo json_encode($commentCalendarData); ?>,
+            category: <?php echo json_encode($categoryPostCount); ?>
           };
+          if (data.category.length !== undefined && data.category.length < 1) data.category = undefined;
         </script>
         <?php $id = $this->options->pjax == 'on' ? '?id=' . mt_rand(1, 99999) : ''; ?>
         <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/chart.js'); ?><?php echo $id; ?>"></script>
