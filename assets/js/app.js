@@ -15,6 +15,7 @@ $(function () {
   let directory = false;  // 移动设备章节目录状态
   let directoryTop = 0;
   let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
+  let inputFocus = false;  // 表单焦点状态
 
   // 设置切换主题配色按钮的图标
   changeColorBtnIcon();
@@ -60,6 +61,9 @@ $(function () {
 
   // 页面加载完成后调整侧边栏的目录尺寸
   directorySize();
+
+  // 表单焦点事件初始化
+  inputFocusInit();
 
   // 切换主题配色按钮点击
   $('#change-color-btn').on('click', function() {
@@ -173,7 +177,7 @@ $(function () {
     }
 
     // 右光标键
-    if (ev.keyCode === 39) {
+    if (ev.keyCode === 39 && !inputFocus) {
       // 文章列表翻页
       if ($('.next .page-link').length) {
         location.href = $('.next .page-link').attr('href');
@@ -185,7 +189,7 @@ $(function () {
     }
 
     // 左光标键
-    if (ev.keyCode === 37) {
+    if (ev.keyCode === 37 && !inputFocus) {
       // 文章列表翻页
       if ($('.prev .page-link').length) {
         location.href = $('.prev .page-link').attr('href');
@@ -392,6 +396,9 @@ $(function () {
 
       // 图片懒加载
       lazyLoadImages();
+
+      // 表单焦点事件初始化
+      inputFocusInit();
 
       // PJAX 链接初始化
       pjaxLinkInit();
@@ -1218,6 +1225,18 @@ $(function () {
         });
       }
     }
+  }
+
+  // 表单焦点事件初始化
+  function inputFocusInit() {
+    // 输入框获取焦点
+    $('input[type="search"], input[type="text"], input[type="email"], input[type="url"], textarea').on('focus', () => {
+      inputFocus = true;
+    });
+    // 输入框失去焦点
+    $('input[type="search"], input[type="text"], input[type="email"], input[type="url"], textarea').on('blur', () => {
+      inputFocus = false;
+    });
   }
 
   // 根据当前使用的主题配色来设置主题配色切换按钮的图标
