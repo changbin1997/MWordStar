@@ -86,10 +86,6 @@
 
 如果您没有二次开发需求的话，建议下载 Webpack 打包的版本，也就是后缀包含 `bundle` 的 zip 文件。前台的 JavaScript 使用了 ES6 语法，IE 系列浏览器和一些较老的浏览器可能无法正常运行，Webpack 打包的版本使用 Babel 转换过代码，可以在 IE 和较老的浏览器上运行。
 
-本项目还需要感谢 [JetBrains](https://www.jetbrains.com/?from=MWordStar) 免费提供的开发工具。
-
-[![点击访问JetBrains官网](screenshot/JetBrains-logo.png)](https://www.jetbrains.com/?from=MWordStar)
-
 ### 主题安装
 
 把主题上传到 Typecho 的 `usr/themes/` 目录，然后解压，您也可以先解压在上传。
@@ -222,5 +218,4 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 | Y*a    | 10.00          | 2023 年 4 月 4 日   |
 | *行    | 8.88           | 2023 年 5 月 8 日   |
 | *华    | 8.88           | 2024 年 10 月 11 日 |
-
-如果打赏者不希望出现在打赏记录可以发邮件到 email@misterma.com 要求删除。
+| *王    | 6.66           | 2024 年 12 月 26 日 |
