@@ -7,25 +7,28 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 $GLOBALS['page'] = 'page-links';
 
+// 语言初始化
+languageInit($this->options->language);
+
 $linkArr = array();
 //  是否包含内页链接
 if ($this->options->pageLinks) {
     array_push($linkArr, array(
-        'title' => '内页链接',
+        'title' => $GLOBALS['t']['linkPage']['linksOnDedicatedPageOnly'],
         'links' => json_decode($this->options->pageLinks)
     ));
 }
 //  是否包含首页链接
 if ($this->options->homeLinks) {
     array_push($linkArr, array(
-        'title' => '首页链接',
+        'title' => $GLOBALS['t']['linkPage']['linksOnHomepage'],
         'links' => json_decode($this->options->homeLinks)
     ));
 }
 //  是否包含全站链接
 if ($this->options->links) {
     array_push($linkArr, array(
-        'title' => '全站链接',
+        'title' => $GLOBALS['t']['linkPage']['linksOnAllPages'],
         'links' => json_decode($this->options->links)
     ));
 }
@@ -35,10 +38,10 @@ $this->need('components/header.php');  //  头文件
 <div id="main">
     <div class="container link-page main-content mb-0">
         <?php if ($this->options->breadcrumb == 'on'): ?>
-            <nav aria-label="路径" class="breadcrumb-nav">
+            <nav aria-label="<?php echo $GLOBALS['t']['breadcrumb']; ?>" class="breadcrumb-nav">
                 <ol class="breadcrumb m-0 p-0">
                     <li class="breadcrumb-item">
-                        <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+                        <a href="<?php $this->options->siteUrl(); ?>"><?php echo $GLOBALS['t']['header']['home']; ?></a>
                     </li>
                     <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
                 </ol>

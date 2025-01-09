@@ -6,16 +6,19 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $GLOBALS['page'] = 'page-category';
+
+// 语言初始化
+languageInit($this->options->language);
 $this->need('components/header.php');
 ?>
 
 <div id="main">
     <div class="container category-page main-content mb-0">
         <?php if ($this->options->breadcrumb == 'on'): ?>
-            <nav aria-label="路径" class="breadcrumb-nav">
+            <nav aria-label="<?php echo $GLOBALS['t']['breadcrumb']; ?>" class="breadcrumb-nav">
                 <ol class="breadcrumb m-0 p-0">
                     <li class="breadcrumb-item">
-                        <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+                        <a href="<?php $this->options->siteUrl(); ?>"><?php echo $GLOBALS['t']['header']['home']; ?></a>
                     </li>
                     <li class="breadcrumb-item">
                         <?php $this->category(' '); ?>

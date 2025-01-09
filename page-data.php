@@ -14,6 +14,9 @@ $commentCalendarData = commentCalendar(time() - 20736000, time());
 $categoryPostCount = categoryPostCount();
 
 $GLOBALS['page'] = 'page-data';
+
+// 语言初始化
+languageInit($this->options->language);
 $this->need('components/header.php');
 ?>
 
@@ -21,10 +24,10 @@ $this->need('components/header.php');
     <div class="container data-page main-content mb-0">
         <?php if ($this->options->breadcrumb == 'on'): ?>
             <!--面包屑导航-->
-            <nav aria-label="路径" class="breadcrumb-nav">
+            <nav aria-label="<?php echo $GLOBALS['t']['breadcrumb']; ?>" class="breadcrumb-nav">
                 <ol class="breadcrumb m-0 p-0">
                     <li class="breadcrumb-item">
-                        <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+                        <a href="<?php $this->options->siteUrl(); ?>"><?php echo $GLOBALS['t']['header']['home']; ?></a>
                     </li>
                     <li class="breadcrumb-item">
                         <?php $this->category(' '); ?>
@@ -41,96 +44,96 @@ $this->need('components/header.php');
                             <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                         </h2>
                     </header>
-                    <div class="article-info clearfix border-bottom border-top" role="group" aria-label="页面信息">
+                    <div class="article-info clearfix border-bottom border-top" role="group">
                         <!--时间-->
                         <div class="info">
                             <i class="icon-calendar icon" aria-hidden="true"></i>
-                            <span data-toggle="tooltip" data-placement="top" title="发布日期">
-                                <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年m月d日'); ?></time>
+                            <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>">
+                                <time datetime="<?php $this->date('c'); ?>"><?php echo postDateFormat($this->created); ?></time>
                             </span>
                         </div>
                         <!--作者-->
                         <div class="info">
                             <i class="icon-user icon" aria-hidden="true"></i>
-                            <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="作者"><?php $this->author(); ?></a>
+                            <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="<?php echo $GLOBALS['t']['post']['author']; ?>"><?php $this->author(); ?></a>
                         </div>
                         <!--阅读量-->
                         <div class="info">
                             <i class="icon-eye icon" aria-hidden="true"></i>
                             <?php $views = postViews($this); ?>
-                            <span data-toggle="tooltip" data-placement="top" title="访问量"><?php echo $views; ?></span>
+                            <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['views']; ?>"><?php echo $views; ?></span>
                         </div>
                     </div>
                     <article>
                         <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
-                            <h2>基本统计</h2>
-                            <p>下面是网站的基本数据统计：</p>
+                            <h2><?php echo $GLOBALS['t']['dataPage']['basicStatistics']; ?></h2>
+                            <p><?php echo $GLOBALS['t']['dataPage']['basicStatisticsDescription']; ?></p>
                             <?php Typecho_Widget::widget('Widget_Stat')->to($quantity); ?>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                     <div class="py-3 statistics-card">
                                         <h3 class="text-center mb-2"><?php $quantity->publishedPostsNum(); ?></h3>
-                                        <h4 class="text-center mb-0">文章数</h4>
+                                        <h4 class="text-center mb-0"><?php echo $GLOBALS['t']['dataPage']['totalPosts']; ?></h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                     <div class="py-3 statistics-card">
                                         <h3 class="text-center mb-2"><?php $quantity->publishedCommentsNum(); ?></h3>
-                                        <h4 class="text-center mb-0">评论数</h4>
+                                        <h4 class="text-center mb-0"><?php echo $GLOBALS['t']['dataPage']['totalComments']; ?></h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                     <div class="py-3 statistics-card">
                                         <h3 class="text-center mb-2"><?php echo categoryCount(); ?></h3>
-                                        <h4 class="text-center mb-0">分类数</h4>
+                                        <h4 class="text-center mb-0"><?php echo $GLOBALS['t']['dataPage']['categories']; ?></h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                     <div class="py-3 statistics-card">
                                         <h3 class="text-center mb-2"><?php echo tagCount(); ?></h3>
-                                        <h4 class="text-center mb-0">标签数</h4>
+                                        <h4 class="text-center mb-0"><?php echo $GLOBALS['t']['dataPage']['tags']; ?></h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                     <div class="py-3 statistics-card">
                                         <h3 class="text-center mb-2"><?php echo viewsCount(); ?></h3>
-                                        <h4 class="text-center mb-0">文章阅读量</h4>
+                                        <h4 class="text-center mb-0"><?php echo $GLOBALS['t']['dataPage']['totalViews']; ?></h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 pb-3">
                                     <div class="py-3 statistics-card">
                                         <h3 class="text-center mb-2"><?php echo agreeCount(); ?></h3>
-                                        <h4 class="text-center mb-0">获赞数</h4>
+                                        <h4 class="text-center mb-0"><?php echo $GLOBALS['t']['dataPage']['totalLikes']; ?></h4>
                                     </div>
                                 </div>
                             </div>
                             <hr>
-                            <h2>分类占比</h2>
+                            <h2><?php echo $GLOBALS['t']['dataPage']['categoryDistribution']; ?></h2>
                             <?php if (empty($categoryPostCount)): ?>
-                                <p>目前暂无分类数据</p>
+                                <p><?php echo $GLOBALS['t']['dataPage']['NoCategoryDataAvailableAtTheMoment']; ?></p>
                             <?php else: ?>    
-                                <p>下面是个分类的文章占比：</p>
-                                <div id="category-chart" style="height: 390px;"></div>
+                                <p><?php echo $GLOBALS['t']['dataPage']['categoryDistributionDescription']; ?></p>
+                                <div id="category-chart" style="height: 320px;"></div>
                             <?php endif; ?>
                             <hr>
-                            <h2>文章更新</h2>
-                            <p>下面是 <?php echo date('Y年m月d日', time() - 20736000); ?> 到 <?php echo date('Y年m月d日', time()); ?> 的文章更新情况</p>
-                            <div id="post-chart" style="height: 250px;"></div>
+                            <h2><?php echo $GLOBALS['t']['dataPage']['postUpdates']; ?></h2>
+                            <p><?php printf($GLOBALS['t']['dataPage']['postUpdateDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
+                            <div id="post-chart" style="height: 180px;"></div>
                             <hr>
-                            <h2>评论动态</h2>
-                            <p>下面是 <?php echo date('Y年m月d日', time() - 20736000); ?> 到 <?php echo date('Y年m月d日', time()); ?> 的评论动态</p>
-                            <div id="comment-chart" style="height: 250px;"></div>
+                            <h2><?php echo $GLOBALS['t']['dataPage']['commentActivity']; ?></h2>
+                            <p><?php printf($GLOBALS['t']['dataPage']['commentActivityDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
+                            <div id="comment-chart" style="height: 180px;"></div>
                             <hr>
-                            <h2>最多阅读的文章</h2>
+                            <h2><?php echo $GLOBALS['t']['dataPage']['mostViewedPosts']; ?></h2>
                             <?php $top5Post = top5post(); ?>
                             <?php if (count($top5Post)): ?>
-                                <p>下面是阅读量排名前 <?php echo count($top5Post); ?> 的 <?php echo count($top5Post); ?> 篇文章</p>
+                                <p><?php printf($GLOBALS['t']['dataPage']['mostViewedPostDescription'], count($top5Post)); ?></p>
                                 <table>
                                     <thead>
                                     <tr>
-                                        <th>排名</th>
-                                        <th>文章</th>
-                                        <th>阅读量</th>
+                                        <th><?php echo $GLOBALS['t']['dataPage']['rank']; ?></th>
+                                        <th><?php echo $GLOBALS['t']['dataPage']['title']; ?></th>
+                                        <th><?php echo $GLOBALS['t']['dataPage']['views']; ?></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -146,19 +149,19 @@ $this->need('components/header.php');
                                     </tbody>
                                 </table>
                             <?php else: ?>
-                                <p>目前没有任何文章</p>
+                                <p><?php echo $GLOBALS['t']['dataPage']['NoPostsAvailableAtTheMoment']; ?></p>
                             <?php endif; ?>    
                             <hr>
-                            <h2>最多评论的文章</h2>
+                            <h2><?php echo $GLOBALS['t']['dataPage']['mostCommentedPosts']; ?></h2>
                             <?php $top5CommentPost = top5CommentPost(); ?>
                             <?php if (count($top5CommentPost)): ?>
-                                <p>下面是评论数排名前 <?php echo count($top5CommentPost); ?> 的 <?php echo count($top5CommentPost); ?> 篇文章：</p>
+                                <p><?php printf($GLOBALS['t']['dataPage']['mostCommentedPostDescription'], count($top5CommentPost)); ?></p>
                                 <table>
                                     <thead>
                                     <tr>
-                                        <th>排名</th>
-                                        <th>文章</th>
-                                        <th>评论数</th>
+                                        <th><?php echo $GLOBALS['t']['dataPage']['rank']; ?></th>
+                                        <th><?php echo $GLOBALS['t']['dataPage']['title']; ?></th>
+                                        <th><?php echo $GLOBALS['t']['dataPage']['comments']; ?></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -174,7 +177,7 @@ $this->need('components/header.php');
                                     </tbody>
                                 </table>
                             <?php else: ?>
-                                <p>目前没有任何文章</p>
+                                <p><?php echo $GLOBALS['t']['dataPage']['NoPostsAvailableAtTheMoment']; ?></p>
                             <?php endif; ?>    
                         </div>
                     </article>

@@ -13,6 +13,8 @@ $rounded = $this->options->rounded == 'rightAngle'?'rounded-0':'';
 
 $GLOBALS['page'] = 'index';
 
+// 语言初始化
+languageInit($this->options->language);
 // 检查数据库字段
 checkField();
 // 头文件
@@ -24,12 +26,12 @@ $this->need('components/header.php');
             <div class="article-list col-md-12 col-lg-8 col-sm-12 content-area">
                 <?php if ($this->have()): ?>
                     <?php $this->need('components/post-list.php'); ?>
-                    <nav aria-label="分页导航区" class="pagination-nav">
+                    <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav">
                         <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
                     </nav>
                 <?php else: ?>
                     <article class="post no-post-message mwordstar-block">
-                        <h4 class="post-title" role="alert">没有可以显示的文章</h4>
+                        <h4 class="post-title" role="alert"><?php echo $GLOBALS['t']['sidebar']['noPostsAvailableToDisplay']; ?></h4>
                     </article>
                 <?php endif; ?>    
             </div>

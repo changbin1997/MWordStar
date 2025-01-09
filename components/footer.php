@@ -12,19 +12,19 @@
 <div id="footer-btn-box">
     <!--移动设备的目录按钮-->
     <?php if ($this->options->directoryMobile == 'enable' && $this->is('post')): ?>
-        <button type="button" id="directory-btn" class="btn rounded-circle d-block d-sm-block d-md-block d-lg-none d-xl-none" aria-expanded="false" aria-label="目录" title="目录">
+        <button type="button" id="directory-btn" class="btn rounded-circle d-block d-sm-block d-md-block d-lg-none d-xl-none" aria-expanded="false" aria-label="<?php echo $GLOBALS['t']['sidebar']['tableOfContents']; ?>" title="<?php echo $GLOBALS['t']['sidebar']['tableOfContents']; ?>">
             <i class="icon-list-ol"></i>
         </button>
     <?php endif; ?>
     <!--切换主题配色按钮-->
     <?php if ($this->options->colorChangeBtn == 'show'): ?>
-        <button type="button" class="btn rounded-circle" id="change-color-btn" aria-label="切换主题配色" data-toggle="tooltip" data-placement="left" data-light="<?php $this->options->defaultLightColor(); ?>">
+        <button type="button" class="btn rounded-circle" id="change-color-btn" aria-label="<?php echo $GLOBALS['t']['themeColor']['themeColor']; ?>" data-toggle="tooltip" data-placement="left" data-light="<?php $this->options->defaultLightColor(); ?>">
             <i></i>
         </button>
     <?php endif; ?>
     <!--返回顶部按钮-->
     <?php if ($this->options->toTop == 'show'): ?>
-        <button type="button" class="btn to-top rounded-circle d-none" title="返回顶部" aria-label="返回顶部">
+        <button type="button" class="btn to-top rounded-circle d-none" title="<?php echo $GLOBALS['t']['scrollToTop']; ?>" aria-label="<?php echo $GLOBALS['t']['scrollToTop']; ?>">
             <i class="icon-arrow-up"></i>
         </button>
     <?php endif; ?>

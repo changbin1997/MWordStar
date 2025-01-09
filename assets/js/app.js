@@ -340,7 +340,7 @@ $(function () {
         id="directory-btn"
         class="btn rounded-circle d-block d-sm-block d-md-block d-lg-none d-xl-none"
         aria-expanded="false"
-        aria-label="目录" title="目录"
+        aria-label="${window.t.tableOfContents}" title="${window.t.tableOfContents}"
         >
           <i class="icon-list-ol"></i>
         </button>
@@ -546,15 +546,16 @@ $(function () {
 
     // 文章是否有密码
     if ($('.post-content .protected').length) {
-      $('.protected .word').attr('role', 'alert');  // 让读屏软件朗读输入密码的提示
-      $('.protected .text').attr('placeholder', '请在此处输入文章密码');
-      $('.protected .text').get(0).select();  // 让密码输入表单获取交点
+      $('input[name="protectPassword"]').attr('placeholder', window.t.enterYourPassword);
+      $('input[name="protectPassword"]').focus();
+      $('.protected .submit').val(window.t.submit);
+      $('.protected .word').html(window.t.enterThePasswordToViewIt);
     }
 
     // 给文章信息的分类链接添加 title
     if ($('.article-info .icon-folder-open').length) {
       $('.article-info .icon-folder-open').nextAll().attr({
-        'title': '分类',
+        'title': window.t.category,
         'data-toggle': 'tooltip',
         'data-placement': 'top'
       });
@@ -564,7 +565,7 @@ $(function () {
     // 给文章信息的标签链接添加 title
     if ($('.tags a').length) {
       $('.tags a').attr({
-        'title': '标签',
+        'title': window.t.tag,
         'data-toggle': 'tooltip',
         'data-placement': 'top'
       });
@@ -582,7 +583,7 @@ $(function () {
       const authorName = $(this).closest('.comment-box').find('.author a').text() ||
           $(this).closest('.comment-box').find('.author').text();
       $(this).find('a').attr({
-        title: `回复 ${authorName}`,
+        title: `${window.t.replyTo} ${authorName}`,
         'data-toggle': 'tooltip',
         'data-placement': 'top'
       });
@@ -610,6 +611,9 @@ $(function () {
       }
     });
 
+    // 设置取消回复链接的链接名称
+    $('#cancel-comment-reply-link').html(window.t.cancelReply);
+
     // 把父评论的姓名加入到子评论中
     if ($('#comments .parent').length) {
       for (let i = 0; i < $('#comments .parent').length; i++) {
@@ -629,7 +633,7 @@ $(function () {
 
     // 给评论区的作者链接加入用于屏幕阅读器的描述
     $('.author-tag').each(function() {
-      $(this).closest('.comment-info').find('.author a').attr('title', '作者');
+      $(this).closest('.comment-info').find('.author a').attr('title', window.t.author);
     });
   }
 
@@ -713,7 +717,7 @@ $(function () {
         // 设置类型标题
         $('#emoji-title').html($(ev.target).attr('title'));
         // 设置用于屏幕阅读器的表情列表标题
-        $('#emoji-list').attr('aria-label', `${$(ev.target).attr('title')}（按回车可以把表情添加到评论内容输入框）`);
+        $('#emoji-list').attr('aria-label', `${$(ev.target).attr('title')} ${window.t.pressEnterToAddTheEmojiToTheCommentInputField}`);
       });
 
       // Emoji 表情点击
@@ -770,7 +774,7 @@ $(function () {
             const re = /\d/;
             if (re.test(data)) {
               $('#agree-btn .agree-num').html(data);
-              $('.post-page').append('<span id="agree-p" role="alert">赞 + 1</span>');
+              $('.post-page').append(`<span id="agree-p" role="alert">${window.t.like} + 1</span>`);
               $('#agree-p').css({
                 top: $('#agree-btn').offset().top - 25,
                 left: $('#agree-btn').offset().left + $('#agree-btn').outerWidth() / 2 - $('#agree-p').outerWidth() / 2
@@ -864,14 +868,14 @@ $(function () {
       $('.pagination-nav ul li a').addClass('page-link');
       // 给上一页和下一页加入文字提示
       $('.pagination-nav .prev a').attr({
-        'aria-label': '上一页',
-        'title': '上一页（左光标键）',
+        'aria-label': window.t.previousPage,
+        'title': window.t.previousPage,
         'data-toggle': 'tooltip',
         'data-placement': 'top'
       });
       $('.pagination-nav .next a').attr({
-        'aria-label': '下一页',
-        'title': '下一页（右光标键）',
+        'aria-label': window.t.nextPage,
+        'title': window.t.nextPage,
         'data-toggle': 'tooltip',
         'data-placement': 'top'
       });
@@ -934,20 +938,20 @@ $(function () {
       <div class="mask-layer"></div>
       <img src="" alt="" class="shadow-lg">
       <p id="img-info" class="text-light text-center"></p>
-      <div class="btn-group" role="group" aria-label="图片工具栏" id="img-control">
-        <button type="button" class="btn big" title="放大" aria-label="放大">
+      <div class="btn-group" role="group" id="img-control">
+        <button type="button" class="btn big" title="${window.t.zoomIn}" aria-label="${window.t.zoomIn}">
           <i class="icon-zoom-in"></i>
         </button>
-        <button type="button" class="btn small" title="缩小" aria-label="缩小">
+        <button type="button" class="btn small" title="${window.t.zoomOut}" aria-label="${window.t.zoomOut}">
           <i class="icon-zoom-out"></i>
         </button>
-        <button type="button" class="btn spin-left" title="左旋转90度" aria-label="左旋转90度">
+        <button type="button" class="btn spin-left" title="${window.t.rotateLeft}" aria-label="${window.t.rotateLeft}">
           <i class="icon-undo"></i>
         </button>
-        <button type="button" class="btn spin-right" title="右旋转90度" aria-label="右旋转90度">
+        <button type="button" class="btn spin-right" title="${window.t.rotateRight}" aria-label="${window.t.rotateRight}">
           <i class="icon-redo"></i>
         </button>
-        <button type="button" class="btn hide-img" title="关闭大图（ESC）" aria-label="关闭大图（ESC）">
+        <button type="button" class="btn hide-img" title="${window.t.closeImage}" aria-label="${window.t.closeImage}">
           <i class="icon-cancel-circle"></i>
         </button>
       </div>
@@ -1188,8 +1192,8 @@ $(function () {
           btnEl.setAttribute('type', 'button');
           btnEl.innerHTML = '<i class="icon-copy"></i>';
           btnEl.setAttribute('data-clipboard-target', `#code-${i}`);
-          btnEl.setAttribute('title', '拷贝代码');
-          btnEl.setAttribute('aria-label', '拷贝代码');
+          btnEl.setAttribute('title', window.t.copyCode);
+          btnEl.setAttribute('aria-label', window.t.copyCode);
           btnEl.setAttribute('data-toggle', 'tooltip');
           btnEl.setAttribute('data-placement', 'left');
           btnEl.setAttribute('id', `copy-btn-${i}`);
@@ -1202,25 +1206,25 @@ $(function () {
         // 拷贝成功
         clipboard.on('success', function(ev) {
           // 把工具提示更改为拷贝成功
-          $(ev.trigger).attr('title', '拷贝成功');
-          $(ev.trigger).attr('data-original-title', '拷贝成功');
+          $(ev.trigger).attr('title', window.t.copySuccess);
+          $(ev.trigger).attr('data-original-title', window.t.copySuccess);
           $(ev.trigger).tooltip('update');
           $(ev.trigger).tooltip('show');
           // 延迟 1 秒后把工具提示更改为拷贝代码
           setTimeout(() => {
-            $(ev.trigger).attr('title', '拷贝代码');
-            $(ev.trigger).attr('data-original-title', '拷贝代码');
+            $(ev.trigger).attr('title', window.t.copyCode);
+            $(ev.trigger).attr('data-original-title', window.t.copyCode);
           }, 1000);
         });
         // 拷贝出错
         clipboard.on('error', ev => {
-          $(ev.trigger).attr('title', '拷贝失败');
-          $(ev.trigger).attr('data-original-title', '拷贝失败');
+          $(ev.trigger).attr('title', window.t.copyError);
+          $(ev.trigger).attr('data-original-title', window.t.copyError);
           $(ev.trigger).tooltip('hide');
           $(ev.trigger).tooltip('show');
           setTimeout(function() {
-            $(ev.trigger).attr('title', '拷贝代码');
-            $(ev.trigger).attr('data-original-title', '拷贝代码');
+            $(ev.trigger).attr('title', window.t.copyCode);
+            $(ev.trigger).attr('data-original-title', window.t.copyCode);
           }, 1000);
         });
       }
@@ -1244,11 +1248,11 @@ $(function () {
     if ($('.dark-color').length) {
       $('#change-color-btn i').removeClass('icon-sun');
       $('#change-color-btn i').addClass('icon-moon');
-      $('#change-color-btn').attr('title', '当前为深色模式，点击可切换为浅色模式');
+      $('#change-color-btn').attr('title', window.t.switchToLightMode);
     }else {
       $('#change-color-btn i').removeClass('icon-moon');
       $('#change-color-btn i').addClass('icon-sun');
-      $('#change-color-btn').attr('title', '当前为浅色模式，点击可切换为深色模式');
+      $('#change-color-btn').attr('title', window.t.switchToDarkMode);
     }
     $('#change-color-btn').attr('data-original-title', $('#change-color-btn').attr('title'));
     $('#change-color-btn').tooltip('update');

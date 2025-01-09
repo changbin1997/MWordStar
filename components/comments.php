@@ -44,18 +44,18 @@ function threadedComments($comments, $options) {
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>
                     <?php if ($comments->authorId == $comments->ownerId): ?>
-                        <span class="author-tag badge badge-secondary">作者</span>
+                        <span class="author-tag badge badge-secondary"><?php echo $GLOBALS['t']['post']['author']; ?></span>
                     <?php endif; ?>
                     <?php if ($comments->status != 'approved'): ?>
-                        <span class="author badge badge-secondary" title="您的评论目前只有您自己能看到，审核通过后才会公开显示。" data-toggle="tooltip" data-placement="top">评论审核中</span>
+                        <span class="author badge badge-secondary" title="<?php echo $GLOBALS['t']['comment']['pendingReviewDescription']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $GLOBALS['t']['comment']['pendingReview']; ?></span>
                     <?php endif; ?>
                     <time class="comment-time" datetime="<?php echo date('c', $comments->date->timeStamp); ?>">
-                        <?php echo dateFormat($comments->date->timeStamp, $GLOBALS['commentDateFormat']); ?>
+                        <?php echo commentDateFormat($comments->date->timeStamp, $GLOBALS['commentDateFormat']); ?>
                     </time>
                 </div>
                 <span class="comment-reply float-right">
                     <span data-id="<?php $comments->theId(); ?>">
-                        <?php $comments->reply(); ?>
+                        <?php $comments->reply($GLOBALS['t']['comment']['reply']); ?>
                     </span>
                 </span>
             </div>
@@ -77,11 +77,11 @@ function threadedComments($comments, $options) {
     <?php if ($this->options->commentInput == 'top') require_once 'comment-input.php'; ?>
     <?php if ($comments->have()): ?>
         <div class="comments-lists border-top">
-            <h2><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h2>
+            <h2><?php $this->commentsNum(_t('暂无评论'), $GLOBALS['t']['comment']['1Comment'], $GLOBALS['t']['comment']['thereAreNumComments']); ?></h2>
 
             <?php $comments->listComments(); ?>
 
-            <nav aria-label="评论分页导航区" class="pagination-nav">
+            <nav aria-label="<?php echo $GLOBALS['t']['pagination']['commentPagination']; ?>" class="pagination-nav">
                 <?php $comments->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' , 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
             </nav>
         </div>

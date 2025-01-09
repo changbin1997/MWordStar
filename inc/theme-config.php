@@ -26,6 +26,13 @@ EOT;
     echo '</style>';
     require_once __DIR__ . '/../components/link-editor.php';
 
+    // 语言
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('language', array(
+        'zh-CN' => '简体中文',
+        'en' => 'English',
+        'auto' => '自动选择语言'
+    ), 'zh-CN', _t('默认显示的语言'), _t('自动选择语言会根据 HTTP 发送的语言偏好来选择语言，如果用户的语言偏好不是主题支持的语言，或者 HTTP 请求不包含语言偏好，默认选择英文。你还可以开启顶部导航栏的语言切换按钮或侧边栏添加一个语言选择组件来让用户手动更改语言，用户选择的语言会通过 Cookie 保存到用户的浏览器，下次访问时就会使用用户设置的语言。')));
+
     // 主题配色
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('color', array(
         'light-color1' => '配色1',

@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
   const title = [
-    '外观', '站点信息', '辅助功能', '链接调转',
+    '语言', '外观', '站点信息', '辅助功能', '链接调转',
     '侧边栏', '文章列表', '文章头图', '文章内容区域',
     '评论区', '导航', '友情链接', 'PJAX', '开发者'
   ];
@@ -31,19 +31,20 @@ window.addEventListener('load', () => {
   });
 
   // 插入分组标题
-  optionForm.insertBefore(titleEl[0], optionUl[0]);  //  外观
-  optionForm.insertBefore(titleEl[1], optionUl[4]);  //  站点信息
-  optionForm.insertBefore(titleEl[2], optionUl[7]);  //  辅助功能
-  optionForm.insertBefore(titleEl[3], optionUl[8]);  //  链接跳转
-  optionForm.insertBefore(titleEl[4], optionUl[11]);  //  侧边栏
-  optionForm.insertBefore(titleEl[5], optionUl[25]);  //  文章列表
-  optionForm.insertBefore(titleEl[6], optionUl[27]);  //  文章头图
-  optionForm.insertBefore(titleEl[7], optionUl[31]);  //  文章内容相关
-  optionForm.insertBefore(titleEl[8], optionUl[39]);  //  评论区
-  optionForm.insertBefore(titleEl[9], optionUl[44]);  //  导航栏
-  optionForm.insertBefore(titleEl[10], optionUl[49]);  //  友情链接
-  optionForm.insertBefore(titleEl[11], optionUl[52]);  //  PJAX
-  optionForm.insertBefore(titleEl[12], optionUl[56]);  //  开发者
+  optionForm.insertBefore(titleEl[0], optionUl[0]);  // 语言
+  optionForm.insertBefore(titleEl[1], optionUl[1]);  // 外观
+  optionForm.insertBefore(titleEl[2], optionUl[5]);  // 站点信息
+  optionForm.insertBefore(titleEl[3], optionUl[8]);  // 辅助功能
+  optionForm.insertBefore(titleEl[4], optionUl[9]);  // 链接跳转
+  optionForm.insertBefore(titleEl[5], optionUl[12]);  // 侧边栏
+  optionForm.insertBefore(titleEl[6], optionUl[26]);  // 文章列表
+  optionForm.insertBefore(titleEl[7], optionUl[28]);  // 文章头图
+  optionForm.insertBefore(titleEl[8], optionUl[32]);  // 文章内容相关
+  optionForm.insertBefore(titleEl[9], optionUl[40]);  // 评论区
+  optionForm.insertBefore(titleEl[10], optionUl[45]);  // 导航栏
+  optionForm.insertBefore(titleEl[11], optionUl[50]);  // 友情链接
+  optionForm.insertBefore(titleEl[12], optionUl[53]);  // PJAX
+  optionForm.insertBefore(titleEl[13], optionUl[57]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {

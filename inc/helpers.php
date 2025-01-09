@@ -1,5 +1,93 @@
 <?php
 
+// 设置语言
+function languageInit($language) {
+    $languageList = array('zh', 'en');
+
+    // 自动选择
+    if ($language == 'auto') {
+        if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) or $_SERVER['HTTP_ACCEPT_LANGUAGE'] == null) {
+            $language = 'en';
+        }else {
+            $userLanguage = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+            $language = substr($userLanguage, 0, 2);
+            // 如果用户浏览器的语言是不支持的语言就使用英语
+            if (!in_array($language, $languageList)) $language = 'en';
+        }
+    }
+
+    // 选择中文
+    if ($language == 'zh-CN' or $language == 'zh' or $language == null) {
+        require_once __DIR__ . '/../languages/zh.php';
+        $GLOBALS['t'] = ZH;
+    }
+    // 选择英文
+    if ($language == 'en') {
+        require_once __DIR__ . '/../languages/en.php';
+        $GLOBALS['t'] = EN;
+    }
+
+    $GLOBALS['language'] = $language == null ? 'zh-CN' : $language;
+}
+
+// 把一些翻译内容传给 JS
+function localizeScript() {
+    // 需要传给 JS 的翻译内容
+    $t = array(
+        'pressEnterToAddTheEmojiToTheCommentInputField' => $GLOBALS['t']['emoji']['pressEnterToAddTheEmojiToTheCommentInputField'],
+        'nextPage' => $GLOBALS['t']['pagination']['nextPage'],
+        'previousPage' => $GLOBALS['t']['pagination']['previousPage'],
+        'zoomIn' => $GLOBALS['t']['imageLightbox']['zoomIn'],
+        'zoomOut' => $GLOBALS['t']['imageLightbox']['zoomOut'],
+        'rotateLeft' => $GLOBALS['t']['imageLightbox']['rotateLeft'],
+        'rotateRight' => $GLOBALS['t']['imageLightbox']['rotateRight'],
+        'closeImage' => $GLOBALS['t']['imageLightbox']['closeImage'],
+        'copyCode' => $GLOBALS['t']['code']['copyCode'],
+        'copySuccess' => $GLOBALS['t']['code']['copySuccess'],
+        'copyError' => $GLOBALS['t']['code']['copyError'],
+        'cancelReply' => $GLOBALS['t']['comment']['cancelReply'],
+        'enterThePasswordToViewIt' => $GLOBALS['t']['post']['enterThePasswordToViewIt'],
+        'enterYourPassword' => $GLOBALS['t']['post']['enterYourPassword'],
+        'submit' => $GLOBALS['t']['post']['submit'],
+        'replyTo' => $GLOBALS['t']['comment']['replyTo'],
+        'like' => $GLOBALS['t']['post']['like'],
+        'categoryDistribution' => $GLOBALS['t']['dataPage']['categoryDistribution'],
+        'tableOfContents' => $GLOBALS['t']['sidebar']['tableOfContents'],
+        'category' => $GLOBALS['t']['post']['category'],
+        'tag' => $GLOBALS['t']['post']['tag'],
+        'author' => $GLOBALS['t']['post']['author'],
+        'switchToDarkMode' => $GLOBALS['t']['themeColor']['switchToDarkMode'],
+        'switchToLightMode' => $GLOBALS['t']['themeColor']['switchToLightMode']
+    );
+    $t = json_encode($t);
+    echo '<script type="text/javascript"> window.t = ' . $t . '; </script>';
+}
+
+// 根据语言格式化文章日期
+function postDateFormat($date) {
+    if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') {
+        $date = date('Y年m月d日', $date);
+    }else {
+        $date = date('j M Y', $date);
+    }
+    return $date;
+}
+
+// 获取英文的日序数后缀
+function getDayWithSuffix($timestamp) {
+    // 提取日期中的天
+    $day = date('j', $timestamp);
+    // 根据天数返回对应的后缀
+    if (!in_array(($day % 100), [11, 12, 13])) {
+        switch ($day % 10) {
+            case 1: return $day . 'st';
+            case 2: return $day . 'nd';
+            case 3: return $day . 'rd';
+        }
+    }
+    return $day . 'th';
+}
+
 // 检测是否是QQ邮箱
 function isQQEmail($email) {
     $re = '/^\d{6,11}\@qq\.com$/';
@@ -66,31 +154,68 @@ function postViews($archive) {
     return $row['views'];
 }
 
-// 日期格式化
-function dateFormat($date, $options = 'format1') {
+// 评论时间格式化
+function commentDateFormat($date, $options = 'format1') {
+    // 中文日期
     if ($options == 'format1') {
         return date('Y年m月d日 H:i', $date);
     }
+    // - 分隔的日期
     if ($options == 'format2') {
         return date('Y-m-d H:i', $date);
     }
+    // 英文日期
     if ($options == 'format3') {
         return date('F jS, Y \a\t h:i a', $date);
     }
+    // 时间间隔
     if ($options == 'format4') {
-        $time = time() - $date;
-        if ($time < 1) {
-            return '1秒前';
-        }else if ($time < 60) {
-            return $time . '秒前';
-        }else if ($time > 60 && $time < 3600) {
-            return round($time / 60, 0) . '分钟前';
-        }else if ($time > 3600 && $time < 86400) {
-            return round($time / 3600, 0) . '小时前';
+        if ($GLOBALS['language'] == 'en') {
+            // 英文
+            return formatTimeDifferenceEN($date);
         }else {
-            return round($time / 86400, 0) . '天前';
+            // 中文
+            return formatTimeDifferenceZH($date);
         }
     }
+}
+
+// 获取时间间隔（中文）
+function formatTimeDifferenceZH($timestamp) {
+    $timestamp = time() - $timestamp;
+    if ($timestamp < 1) {
+        return '1秒前';
+    }else if ($timestamp < 60) {
+        return $timestamp . '秒前';
+    }else if ($timestamp > 60 && $timestamp < 3600) {
+        return round($timestamp / 60, 0) . '分钟前';
+    }else if ($timestamp > 3600 && $timestamp < 86400) {
+        return round($timestamp / 3600, 0) . '小时前';
+    }else {
+        return round($timestamp / 86400, 0) . '天前';
+    }
+}
+
+// 获取时间间隔（英文）
+function formatTimeDifferenceEN($timestamp) {
+    $diff = time() - $timestamp;
+
+    if ($diff < 60) {
+        return $diff == 1 ? "1 second ago" : "$diff seconds ago";
+    }
+
+    $minutes = floor($diff / 60);
+    if ($minutes < 60) {
+        return $minutes == 1 ? "1 minute ago" : "$minutes minutes ago";
+    }
+
+    $hours = floor($minutes / 60);
+    if ($hours < 24) {
+        return $hours == 1 ? "1 hour ago" : "$hours hours ago";
+    }
+
+    $days = floor($hours / 24);
+    return $days == 1 ? "1 day ago" : "$days days ago";
 }
 
 // 获取父评论的姓名
@@ -343,7 +468,7 @@ function articleDirectory($content) {
 // 生成目录 HTML
 function renderArticleDirectory($tree, $parent = '') {
     $index = 1;
-    $ariaLabel = $tree[0]['parent_id'] == 0?'aria-label="目录"':'';
+    $ariaLabel = $tree[0]['parent_id'] == 0?'aria-label="' . $GLOBALS['t']['sidebar']['tableOfContents'] . '"':'';
     $htmlStr = '<ul class="article-directory"' . $ariaLabel . '>';
     foreach ($tree as $item) {
         $num = $parent == ''?$index:$parent . '.' . $index;
@@ -424,10 +549,23 @@ function calendar($month, $url, $rewrite) {
     $postCount = array_count_values($post['post']);  // 统计每天的文章数量
 
     $calendar = '';  // 初始化
-    $week_arr = ['日', '一', '二', '三', '四', '五', '六'];  // 表头
-    $this_month_days = (int)date('t', strtotime($month));  // 本月共多少天
-    $this_month_one_n = (int)date('w', strtotime($month));  // 本月1号星期几
-    $calendar .= '<table aria-label="' . $monthArr[0] . '年' . $monthArr[1] . '月日历" class="table table-bordered table-sm m-0"><thead><tr>';  // 表头
+    // 星期（表头）
+    $week_arr = array('S', 'M', 'T', 'W', 'T', 'F', 'S');
+    // 如果语言是中文就使用中文的星期
+    if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') {
+        $week_arr = array('日', '一', '二', '三', '四', '五', '六');
+    }
+    // 本月共多少天
+    $this_month_days = (int)date('t', strtotime($month));
+    // 本月1号星期几
+    $this_month_one_n = (int)date('w', strtotime($month));
+    // 设置日历组件的标题
+    $monthTimestamp = mktime(0, 0, 0, $monthArr[1], 1, $monthArr[0]);
+    // 根据语言使用不同的日期格式
+    $format = $GLOBALS['language'] == 'en' ? 'F Y' : 'Y年m月';
+
+    // 表头
+    $calendar .= '<table aria-label="' . sprintf($GLOBALS['t']['sidebar']['calendar'], date($format, $monthTimestamp)) . '" class="table table-bordered table-sm m-0"><thead><tr>';
 
     foreach ($week_arr as $k => $v){
         if($k == 0){
@@ -464,7 +602,7 @@ function calendar($month, $url, $rewrite) {
                 if($row == 1){
                     if($week >= $this_month_one_n){
                         if (in_array($number, $post['post'])) {
-                            $calendar .= '<td class="active text-center py-2">' . '<a rel="archives" href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                            $calendar .= '<td class="active text-center py-2">' . '<a rel="archives" href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . sprintf($GLOBALS['t']['sidebar']['tagPostCount'], $postCount[$number]) . '" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                         }else {
                             $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                         }
@@ -474,7 +612,7 @@ function calendar($month, $url, $rewrite) {
                     }
                 }else{
                     if (in_array($number, $post['post'])) {
-                        $calendar .= '<td class="active text-center py-2">' . '<a rel="archives" href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . $postCount[$number] . '篇文章" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
+                        $calendar .= '<td class="active text-center py-2">' . '<a rel="archives" href="' . $monthUrl . $zero . $number . '/' . '" class="p-0" title="' . sprintf($GLOBALS['t']['sidebar']['tagPostCount'], $postCount[$number]) . '" data-toggle="tooltip" data-placement="top"><b>' . $number . '</b></a>' . '</td>';
                     }else {
                         $calendar .= '<td class="text-center py-2">' . $number . '</td>';
                     }
