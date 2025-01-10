@@ -251,4 +251,11 @@ $text-success: #28a745;
       background-color: #B3D8FF;
     }
   }
+
+  // 404页面配色
+  .container-404 {
+    .to-home-link, .search-btn {
+      @include btn-success;
+    }
+  }
 }

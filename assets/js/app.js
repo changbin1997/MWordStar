@@ -44,9 +44,6 @@ $(function () {
   // 一些可访问性相关的功能初始化
   accessibilityInit();
 
-  // 一些 bootstrap 的样式初始化
-  bootstrapStyleInit();
-
   // 生成分享二维码
   shareQrCode();
 
@@ -64,6 +61,9 @@ $(function () {
 
   // 表单焦点事件初始化
   inputFocusInit();
+
+  // 一些 bootstrap 的样式初始化
+  bootstrapStyleInit();
 
   // 导航栏的切换语言点击
   $('header .change-language').on('click', changeLanguage);
@@ -522,7 +522,7 @@ $(function () {
       // 给二维码图片添加 alt 属性
       $('#qr canvas').attr({
         role: 'img',
-        'aria-label': '文章二维码'
+        'aria-label': window.t.QRCode
       });
     }
   }

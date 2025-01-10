@@ -2217,6 +2217,27 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .light-color1 .data-page .statistics-card, .light-color2 .data-page .statistics-card {
   background-color: #B3D8FF;
 }
+.light-color1 .container-404 .to-home-link, .light-color1 .container-404 .search-btn, .light-color2 .container-404 .to-home-link, .light-color2 .container-404 .search-btn {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.light-color1 .container-404 .to-home-link:hover, .light-color1 .container-404 .search-btn:hover, .light-color2 .container-404 .to-home-link:hover, .light-color2 .container-404 .search-btn:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+.light-color1 .container-404 .to-home-link:focus, .light-color1 .container-404 .search-btn:focus, .light-color2 .container-404 .to-home-link:focus, .light-color2 .container-404 .search-btn:focus {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+.light-color1 .container-404 .to-home-link:disabled, .light-color1 .container-404 .search-btn:disabled, .light-color2 .container-404 .to-home-link:disabled, .light-color2 .container-404 .search-btn:disabled {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
 
 .primary-color header .navbar {
   background-color: #007bff !important;
@@ -2441,6 +2462,27 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 }
 .primary-color .data-page .statistics-card {
   background-color: #B3D8FF;
+}
+.primary-color .container-404 .to-home-link, .primary-color .container-404 .search-btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.primary-color .container-404 .to-home-link:hover, .primary-color .container-404 .search-btn:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+.primary-color .container-404 .to-home-link:focus, .primary-color .container-404 .search-btn:focus {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+.primary-color .container-404 .to-home-link:disabled, .primary-color .container-404 .search-btn:disabled {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .info-color header .navbar {
@@ -2667,6 +2709,27 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .info-color .data-page .statistics-card {
   background-color: #B3D8FF;
 }
+.info-color .container-404 .to-home-link, .info-color .container-404 .search-btn {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+.info-color .container-404 .to-home-link:hover, .info-color .container-404 .search-btn:hover {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
+}
+.info-color .container-404 .to-home-link:focus, .info-color .container-404 .search-btn:focus {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
+  box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+}
+.info-color .container-404 .to-home-link:disabled, .info-color .container-404 .search-btn:disabled {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
 
 .success-color header .navbar {
   background-color: #28a745 !important;
@@ -2892,6 +2955,27 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .success-color .data-page .statistics-card {
   background-color: #B3D8FF;
 }
+.success-color .container-404 .to-home-link, .success-color .container-404 .search-btn {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.success-color .container-404 .to-home-link:hover, .success-color .container-404 .search-btn:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+.success-color .container-404 .to-home-link:focus, .success-color .container-404 .search-btn:focus {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+  box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
+}
+.success-color .container-404 .to-home-link:disabled, .success-color .container-404 .search-btn:disabled {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
 
 .dark-color {
   background-color: #121212;
@@ -2953,6 +3037,12 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   background-color: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.87);
   border: none;
+}
+.dark-color header .navbar .dropdown-menu {
+  background: #2D2D2D;
+}
+.dark-color header .navbar .dropdown-menu a {
+  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .home .no-post-message .post-title {
   color: rgba(255, 255, 255, 0.87);

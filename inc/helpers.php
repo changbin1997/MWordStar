@@ -60,7 +60,8 @@ function localizeScript() {
         'tag' => $GLOBALS['t']['post']['tag'],
         'author' => $GLOBALS['t']['post']['author'],
         'switchToDarkMode' => $GLOBALS['t']['themeColor']['switchToDarkMode'],
-        'switchToLightMode' => $GLOBALS['t']['themeColor']['switchToLightMode']
+        'switchToLightMode' => $GLOBALS['t']['themeColor']['switchToLightMode'],
+        'QRCode' => $GLOBALS['t']['post']['QRCode']
     );
     $t = json_encode($t);
     echo '<script type="text/javascript"> window.t = ' . $t . '; </script>';

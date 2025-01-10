@@ -57,6 +57,7 @@
 * 文章支持分页显示
 * 文章列表支持多种排版组合
 * 支持 PJAX 无刷新跳转
+* 支持多语言
 * 长期维护
 * 详细的 [使用说明](https://mwordstar.misterma.com/)（必看）
 
@@ -96,7 +97,7 @@
 
 ### 代码高亮
 
-代码高亮目前包含三套主题配色，分别是 Stack Overflow（浅色）、VS2015（深色）、Sunburst（高对比度）。主题支持 30 多种语言的代码高亮，详细的语言支持列表和说明可以查看 [使用说明](https://mwordstar.misterma.com/docs/doc13) 。
+代码高亮目前包含三套主题配色，分别是 Stack Overflow（浅色）、Github（深色）、Sunburst（高对比度）。主题支持 30 多种语言的代码高亮，详细的语言支持列表和说明可以查看 [使用说明](https://mwordstar.misterma.com/docs/doc13) 。
 
 ### 友情链接
 
@@ -124,6 +125,7 @@
 * 友情链接
 * 文章章节目录
 * 自定义HTML
+* 语言选择
 
 侧边栏的每个组件您都可以选择开启或关闭，您还可以自定义侧边栏的组件排序顺序。
 
@@ -133,7 +135,7 @@
 
 目前国内的很多网站都只注重外观，忽略了残障人士的可访问性。但是想要做好网站的用户体验，[无障碍](https://www.misterma.com/archives/264/) 适配肯定是少不了的。
 
-主题针对屏幕阅读器做了大量优化，并 在 [NVDA](http://www.nvda-project.org/) 和 [VoiceOver](https://www.apple.com/cn/accessibility/iphone/vision/) 这两款屏幕阅读器上做过测试，无论是 PC 还是移动设备都能完美朗读。主题能准确传达需要朗读的内容和信息，对于盲人来说，使用标准的屏幕阅读器基本可以无障碍操作。
+主题针对屏幕阅读器做了大量优化，并 在 [NVDA](http://www.nvda-project.org/) 和 [VoiceOver](https://www.apple.com/cn/accessibility/iphone/vision/) 这两款屏幕阅读器上做过测试，无论是 PC 还是移动设备都能完美朗读。主题能准确传达需要朗读的内容和信息，对于视障人群来说，使用标准的屏幕阅读器基本可以无障碍操作。
 
 主题可完美支持键盘访问，颜色对比度也符合标准。
 

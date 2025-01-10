@@ -306,4 +306,11 @@ $text-secondary: #6c757d;
       background-color: #B3D8FF;
     }
   }
+
+  // 404页面配色
+  .container-404 {
+    .to-home-link, .search-btn {
+      @include btn-secondary;
+    }
+  }
 }

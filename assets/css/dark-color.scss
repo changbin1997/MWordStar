@@ -177,6 +177,13 @@ $text-primary: #007bff;
         border: none;
       }
     }
+
+    .dropdown-menu {
+      background: $dark-bg-color2;
+      a {
+        color: $dark-text-color;
+      }
+    }
   }
 
   // 首页没有文章时的提示信息配色
