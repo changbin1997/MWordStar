@@ -32,19 +32,19 @@ window.addEventListener('load', () => {
 
   // 插入分组标题
   optionForm.insertBefore(titleEl[0], optionUl[0]);  // 语言
-  optionForm.insertBefore(titleEl[1], optionUl[1]);  // 外观
-  optionForm.insertBefore(titleEl[2], optionUl[5]);  // 站点信息
-  optionForm.insertBefore(titleEl[3], optionUl[8]);  // 辅助功能
-  optionForm.insertBefore(titleEl[4], optionUl[9]);  // 链接跳转
-  optionForm.insertBefore(titleEl[5], optionUl[12]);  // 侧边栏
-  optionForm.insertBefore(titleEl[6], optionUl[26]);  // 文章列表
-  optionForm.insertBefore(titleEl[7], optionUl[28]);  // 文章头图
-  optionForm.insertBefore(titleEl[8], optionUl[32]);  // 文章内容相关
-  optionForm.insertBefore(titleEl[9], optionUl[40]);  // 评论区
-  optionForm.insertBefore(titleEl[10], optionUl[45]);  // 导航栏
-  optionForm.insertBefore(titleEl[11], optionUl[50]);  // 友情链接
-  optionForm.insertBefore(titleEl[12], optionUl[53]);  // PJAX
-  optionForm.insertBefore(titleEl[13], optionUl[57]);  // 开发者
+  optionForm.insertBefore(titleEl[1], optionUl[2]);  // 外观
+  optionForm.insertBefore(titleEl[2], optionUl[6]);  // 站点信息
+  optionForm.insertBefore(titleEl[3], optionUl[9]);  // 辅助功能
+  optionForm.insertBefore(titleEl[4], optionUl[10]);  // 链接跳转
+  optionForm.insertBefore(titleEl[5], optionUl[13]);  // 侧边栏
+  optionForm.insertBefore(titleEl[6], optionUl[27]);  // 文章列表
+  optionForm.insertBefore(titleEl[7], optionUl[29]);  // 文章头图
+  optionForm.insertBefore(titleEl[8], optionUl[33]);  // 文章内容相关
+  optionForm.insertBefore(titleEl[9], optionUl[41]);  // 评论区
+  optionForm.insertBefore(titleEl[10], optionUl[46]);  // 导航栏
+  optionForm.insertBefore(titleEl[11], optionUl[51]);  // 友情链接
+  optionForm.insertBefore(titleEl[12], optionUl[54]);  // PJAX
+  optionForm.insertBefore(titleEl[13], optionUl[58]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {
@@ -171,7 +171,7 @@ window.addEventListener('load', () => {
   <p>配色预览：</p>
   <div role="img" aria-label="主题配色预览图" id="preview-img"></div>
   `;
-  optionUl[1].parentNode.insertBefore(imgBox, optionUl[1]);
+  optionUl[1].parentNode.insertBefore(imgBox, optionUl[3]);
 
   // 获取配色单选框
   const colorRadio = document.getElementsByName('color');

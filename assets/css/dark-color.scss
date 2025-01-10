@@ -299,6 +299,12 @@ $text-primary: #007bff;
     .customize-html {
       color: $dark-text-color;
     }
+    // 语言切换组件的文字配色
+    .language-select {
+      label {
+        color: $dark-text-color;
+      }
+    }
   }
 
   // 面包屑导航配色

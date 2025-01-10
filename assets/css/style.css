@@ -3100,6 +3100,9 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
 .dark-color .sidebar .customize-html {
   color: rgba(255, 255, 255, 0.87);
 }
+.dark-color .sidebar .language-select label {
+  color: rgba(255, 255, 255, 0.87);
+}
 .dark-color .breadcrumb-nav .breadcrumb-item {
   color: rgba(255, 255, 255, 0.87);
 }

@@ -51,6 +51,26 @@ $components = explode(',', $components);
                 </div>
             </section>
         <?php endif; ?>
+
+        <?php if ($component == '语言选择'): ?>
+            <section class="language-select mwordstar-block">
+                <h4>语言（Language）</h4>
+                <ul class="list-group" aria-label="语言（Language）">
+                    <li class="border-bottom">
+                        <div class="custom-control custom-radio">
+                            <input <?php if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') echo 'checked'; ?> type="radio" class="custom-control-input change-language" name="language" id="zh-CN" data-language="zh-CN">
+                            <label class="custom-control-label" for="zh-CN">简体中文</label>
+                        </div>
+                    </li>
+                    <li class="border-bottom">
+                        <div class="custom-control custom-radio">
+                            <input <?php if ($GLOBALS['language'] == 'en') echo 'checked'; ?> type="radio" class="custom-control-input change-language" name="language" id="en" data-language="en">
+                            <label class="custom-control-label" for="en">English</label>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        <?php endif; ?>
         
         <?php if ($component == '自定义' && $this->options->customizeHTML): ?>
             <!--自定义HTML-->

@@ -65,6 +65,12 @@ $(function () {
   // 表单焦点事件初始化
   inputFocusInit();
 
+  // 导航栏的切换语言点击
+  $('header .change-language').on('click', changeLanguage);
+
+  // 侧边栏的语言更改
+  $('.sidebar .change-language').on('change', changeLanguage);
+
   // 切换主题配色按钮点击
   $('#change-color-btn').on('click', function() {
     let color = '';  // 颜色
@@ -1262,5 +1268,18 @@ $(function () {
   function rand(max, min) {
     const num = max - min;
     return Math.round(Math.random() * num + min);
+  }
+
+  // 更改语言
+  function changeLanguage(ev) {
+    const language = $(ev.target).attr('data-language');
+    // 获取当前的时间戳
+    let time = Date.parse(new Date());
+    // 在当前的时间戳上 + 180天
+    time += 15552000000;
+    time = new Date(time);
+    // 写入 cookie
+    document.cookie = `language=${language};path=/;expires=Tue,${time}`;
+    location.reload();
   }
 });

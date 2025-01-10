@@ -143,6 +143,22 @@ $bodyClass = implode(' ', $bodyClass);
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </ul>
+
+                <?php if ($this->options->changeLanguageBtn == 'show'): ?>
+                    <div class="navbar-nav mr-1">
+                        <div class="nav-item dropdown">
+                            <a href="javascript:;" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-label="语言（Language）" title="语言（Language）" role="button">
+                                <i class="icon-languages"></i>
+                                <span class="ml-1 d-xl-none d-lg-none d-md-inline d-sm-inline d-inline">语言（Language）</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="javascript:;" data-language="zh-CN" class="change-language dropdown-item <?php if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') echo 'active'; ?>" aria-checked="<?php echo $GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN'; ?>" role="checkbox">简体中文</a>
+                                <a href="javascript:;" data-language="en" class="change-language dropdown-item <?php if ($GLOBALS['language'] == 'en') echo 'active'; ?>" aria-checked="<?php echo $GLOBALS['language'] == 'en'; ?>" role="checkbox">English</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
                 <?php if (is_array($this->options->navbar) && in_array('showSearch', $this->options->navbar)): ?>
                     <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                         <div class="input-group">

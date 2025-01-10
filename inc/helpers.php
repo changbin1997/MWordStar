@@ -4,6 +4,9 @@
 function languageInit($language) {
     $languageList = array('zh', 'en');
 
+    // 如果有语言设置 Cookie 就优先使用 Cookie 存储的语言
+    if (isset($_COOKIE['language']) && $_COOKIE['language'] != '') $language = $_COOKIE['language'];
+
     // 自动选择
     if ($language == 'auto') {
         if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) or $_SERVER['HTTP_ACCEPT_LANGUAGE'] == null) {
