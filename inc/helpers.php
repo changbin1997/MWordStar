@@ -114,16 +114,16 @@ function checkField() {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
 
-    // 获取文章表的字段
-    $postFields = $db->fetchAll($db->query('PRAGMA table_info(' . $prefix . 'contents)'));
-    // 如果阅读量的字段不存在就创建字段
-    if (array_search('views', array_column($postFields, 'name')) == false) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) NOT NULL DEFAULT 0;');
+    try {
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0 NOT NULL;');
+    } catch (Typecho_Db_Exception $e) {
+        // 忽略异常
     }
 
-    // 如果点赞字段不存在就创建字段
-    if (array_search('agree', array_column($postFields, 'name')) == false) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) NOT NULL DEFAULT 0;');
+    try {
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) DEFAULT 0 NOT NULL;');
+    } catch (Typecho_Db_Exception $e) {
+        // 忽略异常
     }
 }
 
