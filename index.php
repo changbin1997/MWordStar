@@ -3,7 +3,7 @@
  * 这是一套简洁的博客主题 <a href="https://mwordstar.misterma.com/" target="_blank">点击查看使用说明</a>
  *
  * @package MWordStar
- * @author Mr. Ma
+ * @author Changbin
  * @version 开发板（暂无版本号）
  * @link https://www.misterma.com
  */

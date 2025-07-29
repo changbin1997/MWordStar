@@ -2,7 +2,7 @@
 * HomePage: https://www.misterma.com
 * GithubPage: https://github.com/changbin1997
 * ProjectPage: https://github.com/changbin1997/MWordStar
-* author: Mr. Ma
+* author: Changbin (changbin1997)
 * Licensed under MIT
 */
 
