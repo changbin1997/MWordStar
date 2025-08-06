@@ -401,10 +401,7 @@ function articleDirectory($content) {
     $re = '#<h(\d)(.*?)>(.*?)</h\d>#im';
     preg_match_all($re, $content, $result);
     if (!is_array($result) or count($result[0]) < 1) {
-        return array(
-            'content' => $content,
-            'directory' => null
-        );
+        return array('content' => $content, 'directory' => null);
     }
 
     $treeList = array();
@@ -458,7 +455,7 @@ function articleDirectory($content) {
     $GLOBALS['directoryIndex'] = 1;
     $content = preg_replace_callback($re, function ($matches) {
         $name = urlencode(strip_tags($matches[3]));
-        $span = '<span data-title="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '" id="' . $name . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['rand'] . '"></span>' . $matches[0];
+        $span = '<span class="title-position" data-title="p-' . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['id'] . '" id="p-' . $GLOBALS['directory'][$GLOBALS['directoryIndex']]['id'] . '"></span>' . $matches[0];
         $GLOBALS['directoryIndex'] ++;
         return $span;
     }, $content);
@@ -476,7 +473,7 @@ function renderArticleDirectory($tree, $parent = '') {
     $htmlStr = '<ul class="article-directory"' . $ariaLabel . '>';
     foreach ($tree as $item) {
         $num = $parent == ''?$index:$parent . '.' . $index;
-        $htmlStr .= sprintf('<li class="border-bottom"><a rel="bookmark" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', urlencode($item['name']) . $item['rand'], urlencode($item['name']) . $item['rand'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
+        $htmlStr .= sprintf('<li><a rel="bookmark" data-directory="%s" class="directory-link" href="#%s">%s</a></li>', 'p-' . $item['id'], 'p-' . $item['id'], '<span class="mr-2 directory-num">' . $num . '</span>' . $item['name']);
         if (isset($item['children']) && count($item['children']) > 0) {
             $htmlStr .= renderArticleDirectory($item['children'], $num);
         }

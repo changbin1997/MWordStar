@@ -52,9 +52,9 @@ $text-primary: #007bff;
 
 // 链接配色
 @mixin dark-link {
-  color: $dark-text-color !important;
+  color: $dark-text-color;
   &:hover {
-    color: $dark-text-color2 !important;
+    color: $dark-text-color2;
   }
 }
 
@@ -519,6 +519,11 @@ $text-primary: #007bff;
     .search-btn, .to-home-link {
       @include btn-primary;
     }
+  }
+
+  // 目录高亮
+  .directory-active {
+    color: $text-primary !important;
   }
 }
 

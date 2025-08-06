@@ -17,6 +17,9 @@ $(function () {
   let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
   let inputFocus = false;  // 表单焦点状态
 
+  // 目录高亮初始化
+  directoryHighlightInit();
+
   // 设置切换主题配色按钮的图标
   changeColorBtnIcon();
 
@@ -360,6 +363,9 @@ $(function () {
       if ($('#directory-btn').length && $('#directory-mobile').length < 1) {
         $('#directory-btn').remove();
       }
+
+      // 目录高亮初始化
+      directoryHighlightInit();
 
       // 文章表格初始化
       tableInit();
@@ -1281,5 +1287,120 @@ $(function () {
     // 写入 cookie
     document.cookie = `language=${language};path=/;expires=Tue,${time}`;
     location.reload();
+  }
+
+  // 侧边栏章节目录高亮初始化
+  function directoryHighlightInit() {
+    // 定义常量和进行一次性元素选择 ---
+    const MOBILE_BREAKPOINT = 992; // Bootstrap 4 的 'lg' 断点，小于此值为移动端
+    const $targets = $('.title-position');
+
+    // 明确选择桌面端和移动端的链接，并缓存
+    const $desktopLinks = $('.sidebar .directory-link');
+    const $mobileLinks = $('#directory-mobile .directory-link');
+
+    // 为两套链接分别构建高效的查找 Map
+    const desktopLinkMap = new Map();
+    $desktopLinks.each(function() {
+      desktopLinkMap.set($(this).attr('href'), $(this));
+    });
+
+    const mobileLinkMap = new Map();
+    $mobileLinks.each(function() {
+      mobileLinkMap.set($(this).attr('href'), $(this));
+    });
+
+    // 如果页面上没有任何标题，直接退出
+    if (!$targets.length) {
+      return;
+    }
+
+    // 计算动态偏移量 ---
+    const $stickyHeader = $('.sticky-top');
+    const headerHeight = $stickyHeader.length ? $stickyHeader.outerHeight() : 0;
+    const activationOffset = headerHeight + 30;
+
+    // 核心更新函数
+    const updateActiveLink = (linksToUpdate, linkMap) => {
+      // 如果被告知要更新的链接集不存在，则不执行
+      if (!linksToUpdate || !linksToUpdate.length) {
+        return;
+      }
+
+      const scrollTop = $(window).scrollTop();
+      const activationPoint = scrollTop + activationOffset;
+      let activeTargetId = null;
+
+      $targets.each(function() {
+        if ($(this).offset().top < activationPoint) {
+          activeTargetId = `#${$(this).attr('id')}`;
+        } else {
+          return false;
+        }
+      });
+
+      const windowHeight = $(window).height();
+      const docHeight = $(document).height();
+      if (scrollTop + windowHeight >= docHeight - 5) {
+        const $lastTarget = $targets.last();
+        if ($lastTarget.length) {
+          activeTargetId = `#${$lastTarget.attr('id')}`;
+        }
+      }
+
+      // 更新 Class
+      linksToUpdate.removeClass('directory-active');
+      if (activeTargetId) {
+        const $activeLink = linkMap.get(activeTargetId);
+        if ($activeLink) {
+          $activeLink.addClass('directory-active');
+        }
+      }
+    };
+
+    // 这个函数负责判断环境并调用执行者
+    const scrollspyController = () => {
+      // 清理工作：在判断前，先移除所有链接的高亮，以防窗口切换时残留
+      $desktopLinks.removeClass('directory-active');
+      $mobileLinks.removeClass('directory-active');
+
+      // 根据窗口宽度决定使用哪一套链接和 Map
+      if (window.innerWidth >= MOBILE_BREAKPOINT) {
+        // 桌面模式
+        updateActiveLink($desktopLinks, desktopLinkMap);
+      } else {
+        // 移动模式
+        updateActiveLink($mobileLinks, mobileLinkMap);
+      }
+    };
+
+    // 辅助函数：防抖和节流 ---
+    const debounce = (func, delay) => {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+      };
+    };
+    const throttle = (func, delay) => {
+      let inProgress = false;
+      return (...args) => {
+        if (inProgress) return;
+        inProgress = true;
+        setTimeout(() => {
+          func.apply(this, args);
+          inProgress = false;
+        }, delay);
+      };
+    };
+
+    const throttledController = throttle(scrollspyController, 100);
+    const debouncedController = debounce(scrollspyController, 250);
+
+    $(window).on('scroll', throttledController);
+    $(window).on('resize', debouncedController);
+
+    // 页面加载完成后，立即执行一次“总指挥”，以设置正确的初始状态
+    scrollspyController();
   }
 });

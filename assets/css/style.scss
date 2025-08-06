@@ -642,6 +642,11 @@ header {
   }
 }
 
+//  章节目录高亮效果
+.directory-active {
+  font-weight: 600 !important;
+}
+
 //  文章分页区域
 .pagination-nav {
   width: 100%;

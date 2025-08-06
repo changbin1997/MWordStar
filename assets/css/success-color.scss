@@ -39,9 +39,9 @@
 }
 // 链接配色
 @mixin link-success {
-  color: #28a745 !important;
+  color: #28a745;
   &:hover {
-    color: #19692c !important;
+    color: #19692c;
   }
 }
 // 文字配色
@@ -257,5 +257,10 @@ $text-success: #28a745;
     .to-home-link, .search-btn {
       @include btn-success;
     }
+  }
+
+  // 目录高亮
+  .directory-active {
+    color: #19692c !important;
   }
 }

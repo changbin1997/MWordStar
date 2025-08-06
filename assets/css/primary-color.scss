@@ -39,9 +39,9 @@
 }
 // 链接配色
 @mixin link-primary {
-  color: #007bff !important;
+  color: #007bff;
   &:hover {
-    color: #0056b3 !important;
+    color: #0056b3;
   }
 }
 // 文字配色
@@ -257,5 +257,10 @@ $text-primary: #007bff;
     .to-home-link, .search-btn {
       @include btn-primary;
     }
+  }
+
+  // 目录高亮
+  .directory-active {
+    color: #0056b3 !important;
   }
 }
