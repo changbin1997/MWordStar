@@ -29,7 +29,7 @@ if ($this->options->codeHighlight != 'enable-highlight') {
 
 // 导航栏自定义链接
 $navLinks = null;
-if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks);
+if ($this->options->navLinks) $navLinks = json_decode($this->options->navLinks, true);
 
 // body class
 $bodyClass = array(
@@ -135,11 +135,24 @@ $bodyClass = implode(' ', $bodyClass);
                             <a class="nav-link" href="<?php $pages->permalink(); ?>" <?php if ($this->is('page', $pages->slug)) echo 'aria-current="page"'; ?>><?php $pages->title(); ?></a>
                         </li>
                     <?php endwhile; ?>
+
                     <?php if ($this->options->navLinks && is_array($navLinks)): ?>
+                        <!--自定义导航链接-->
                         <?php foreach ($navLinks as $link): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo $link->url; ?>"><?php echo $link->name; ?></a>
-                            </li>
+                            <?php if (isset($link['menu']) && count($link['menu'])): ?>
+                                <li class="nav-item dropdown">
+                                    <a href="javascript:;" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $link['name']; ?></a>
+                                    <div class="dropdown-menu">
+                                        <?php foreach ($link['menu'] as $menuItem): ?>
+                                            <a class="dropdown-item" href="<?php echo $menuItem['url']; ?>"><?php echo $menuItem['name']; ?></a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </li>
+                            <?php else: ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo $link['url']; ?>"><?php echo $link['name']; ?></a>
+                                </li>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </ul>
