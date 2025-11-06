@@ -54,6 +54,9 @@ $bodyClass = implode(' ', $bodyClass);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php if ($this->is('search') && $this->options->searchPageNoindex == 'show'): ?>
+        <meta name="robots" content="noindex, follow">
+    <?php endif; ?>
     <title>
         <?php
         $this->archiveTitle(array(

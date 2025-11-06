@@ -276,6 +276,12 @@ EOT;
         'off' => '关闭'
     ), 'off', _t('面包屑导航'), _t('开启后会在导航栏下方显示路劲导航。')));
 
+    // 搜索页添加 noindex
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('searchPageNoindex', array(
+        'show' => '启用',
+        'hide' => '禁用'
+    ), 'hide', _t('搜索结果页添加 noindex 标签'), _t('开启后会在搜索结果页的 head 区域添加 noindex，告诉搜索引擎不要收录搜索结果页。这可以有效避免网站因被垃圾广告机器人频繁搜索而在 Google 等搜索结果中出现大量无效广告页面。')));
+
     // 首页友链
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接格式说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。。 <button data-title="首页友情链接" data-name="homeLinks" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 

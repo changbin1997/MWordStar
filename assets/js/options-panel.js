@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
   const title = [
     '语言', '外观', '站点信息', '辅助功能', '链接调转',
     '侧边栏', '文章列表', '文章头图', '文章内容区域',
-    '评论区', '导航', '友情链接', 'PJAX', '开发者'
+    '评论区', '导航', '搜索页面', '友情链接', 'PJAX', '开发者'
   ];
   const optionUl = document.querySelectorAll('form .typecho-option');  // 列表
   const optionForm = document.querySelector('.typecho-page-main form');  // 选项表单
@@ -42,9 +42,10 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[8], optionUl[33]);  // 文章内容相关
   optionForm.insertBefore(titleEl[9], optionUl[41]);  // 评论区
   optionForm.insertBefore(titleEl[10], optionUl[46]);  // 导航栏
-  optionForm.insertBefore(titleEl[11], optionUl[51]);  // 友情链接
-  optionForm.insertBefore(titleEl[12], optionUl[54]);  // PJAX
-  optionForm.insertBefore(titleEl[13], optionUl[58]);  // 开发者
+  optionForm.insertBefore(titleEl[11], optionUl[51]);  // 搜索页面
+  optionForm.insertBefore(titleEl[12], optionUl[52]);  // 友情链接
+  optionForm.insertBefore(titleEl[13], optionUl[55]);  // PJAX
+  optionForm.insertBefore(titleEl[14], optionUl[59]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {
