@@ -92,7 +92,7 @@ $this->need('components/header.php');
                         <?php if ($this->user->hasLogin()): ?>
                             <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">
                                 <i class="icon icon-pencil"></i>
-                                <a href="<?php echo $this->options->siteUrl . 'admin/write-post.php?cid=' . $this->cid; ?>"><?php  echo $GLOBALS['t']['post']['edit']; ?></a>
+                                <a href="<?php echo $this->options->adminUrl . 'write-post.php?cid=' . $this->cid; ?>"><?php  echo $GLOBALS['t']['post']['edit']; ?></a>
                             </div>
                         <?php endif; ?>
                     </div>
