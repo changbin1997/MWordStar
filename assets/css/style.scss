@@ -6,10 +6,10 @@
 * Licensed under MIT
 */
 
-$articleFontSize: 15px; //  文章字体大小
-$shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
+$articleFontSize: 15px; // 文章字体大小
+$shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
 
-//  通用的文章信息样式
+// 通用的文章信息样式
 @mixin articleInfo {
   padding: 10px 25px;
   .info {
@@ -36,7 +36,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
 }
 
-//  通用文章标题样式
+// 通用文章标题样式
 @mixin entryHeader {
   .entry-title {
     font-size: 28px;
@@ -48,7 +48,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
 }
 
-//  通用文章标题样式手机版
+// 通用文章标题样式手机版
 @mixin entryHeaderM {
   .entry-title {
     font-size: 20px;
@@ -56,7 +56,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
 }
 
-//  通用文章头图样式
+// 通用文章头图样式
 @mixin postThumbnail {
   width: 100%;
   .fixed {
@@ -78,15 +78,15 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
 }
 
-//  通用的文章列表样式
+// 通用的文章列表样式
 @mixin post {
   margin-bottom: 30px;
   overflow: hidden;;
-  //  文章头图
+  // 文章头图
   .header-img {
     @include postThumbnail;
   }
-  //  文章标题
+  // 文章标题
   .entry-header {
     overflow: hidden;
     @include entryHeader;
@@ -96,7 +96,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
       white-space: nowrap;
     }
   }
-  //  文章摘要
+  // 文章摘要
   .entry-summary {
     padding: 20px;
     p {
@@ -104,17 +104,17 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
       line-height: 25px;
     }
   }
-  //  全文显示
+  // 全文显示
   .post-content {
     @include postContent;
   }
-  //  文章信息
+  // 文章信息
   .article-info {
     @include articleInfo;
   }
-  //  小头图模式
+  // 小头图模式
   .entry-summary[data-header-image-type="mini"] {
-    //  图片区域
+    // 图片区域
     .mini-header-image a {
       display: block;
       width: 100%;
@@ -130,7 +130,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
         display: block;
       }
     }
-    //  文字区域
+    // 文字区域
     .content-box p {
       max-height: 120px;
       overflow-y: hidden;
@@ -139,27 +139,27 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
 }
 
-//  通用的文章列表样式手机版
+// 通用的文章列表样式手机版
 @mixin postM {
-  //  文章头图
+  // 文章头图
   .header-img {
     @include postThumbnail;
   }
-  //  文章标题
+  // 文章标题
   .entry-header {
     @include entryHeaderM;
   }
-  //  文章摘要
+  // 文章摘要
   .entry-summary {
     padding: 20px;
   }
-  //  文章信息
+  // 文章信息
   .article-info {
     padding: 10px 20px;
   }
 }
 
-//  通用的文章内容样式
+// 通用的文章内容样式
 @mixin postContent {
   font-size: $articleFontSize;
   word-break: break-all;
@@ -183,7 +183,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     margin-right: auto;
     display: block;
   }
-  //  文章标题
+  // 文章标题
   h1,
   h2,
   h3,
@@ -217,7 +217,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   h6 {
     font-size: 12px;
   }
-  //  文章引用
+  // 文章引用
   blockquote {
     border-left: 4px solid #1a1a1a;
     padding-left: 22.5px;
@@ -257,8 +257,8 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
 }
 
 
-//  代码高亮的主题样式
-//  stackoverflow-light 样式
+// 代码高亮的主题样式
+// stackoverflow-light 样式
 .stackoverflow-light {
   pre {
     background: #F6F6F6;
@@ -272,7 +272,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   @import "stackoverflow-light.min";
 }
-//  Github深色样式
+// Github深色样式
 .github-dark {
   pre {
     background: #0D1116;
@@ -286,7 +286,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
   }
   @import "github-dark.min";
 }
-//  Sunburst高对比度样式
+// Sunburst高对比度样式
 .sunburst {
   pre {
     background: #000000;
@@ -344,7 +344,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     }
   }
 }
-//  包含行号的样式
+// 包含行号的样式
 .line-num-show {
   pre {
     code {
@@ -352,11 +352,285 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); //  区块阴影
     }
   }
 }
-//  不包含行号的样式
+// 不包含行号的样式
 .line-num-hide {
   pre {
     code {
       padding: 12px 16px !important;
+    }
+  }
+}
+
+
+$shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
+// 区块通用样式
+.mwordstar-block {
+  box-shadow: $shadow;
+  border-radius: 4px;
+  border: 1px solid #dedede !important;
+  background-color: #FFFFFF;
+}
+
+// 主题直角风格
+body[data-rounded="rightAngle"] {
+  // 区块
+  .mwordstar-block {
+    border-radius: 0;
+  }
+  // 顶部导航区的搜索框和按钮
+  header .navbar .search-form {
+    input,button {
+      border-radius: 0;
+    }
+  }
+  // 翻页导航区
+  .pagination-nav li > a {
+    border-radius: 0 !important;
+  }
+  // 侧边栏标签云
+  .tag-cloud .tag-link {
+    border-radius: 0;
+  }
+  // 侧边栏的搜索组件
+  .sidebar .search {
+    input, button {
+      border-radius: 0;
+    }
+  }
+  // 文章页的分享和点赞按钮
+  .post-page .agree-and-share button {
+    border-radius: 0;
+  }
+  // 评论区
+  #comments {
+    // 评论表单
+    #comment-form {
+      input, textarea, button {
+        border-radius: 0;
+      }
+    }
+    // 表情面板
+    #emoji-panel {
+      border-radius: 0 !important;
+    }
+    // 评论列表的回复链接
+    .comment-reply a {
+      border-radius: 0 !important;
+    }
+  }
+  // 404页
+  .container-404 {
+    .search-box {
+      input, button {
+        border-radius: 0;
+      }
+    }
+    .to-home-link {
+      border-radius: 0;
+    }
+  }
+}
+
+// 禁止滚动
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+// 通用的头像样式
+.avatar {
+  background: #E0E0E0;
+}
+
+// 代码拷贝按钮
+.copy-code-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
+}
+
+// 面包屑导航
+.breadcrumb {
+  background: none;
+}
+
+// 文章目录
+#directory-box {
+  background: #F8F9FA;
+  display: inline-block;
+  ul {
+    list-style: none;
+    .directory-num {
+      color: #444444;
+    }
+  }
+  > ul {
+    padding-left: 0;
+    ul {
+      padding-left: 32px;
+    }
+  }
+}
+
+// 图片灯箱
+#max-img-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 2000;
+  // 图片数量显示
+  #img-counter {
+    text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+    color: #FFFFFF;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    z-index: 2002;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    line-height: 38px;
+  }
+  // 按钮区域
+  .btn-bar {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2002;
+    button {
+      color: #FFFFFF;
+      text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+      font-size: 16px;
+      &:hover {
+        color: #F7E6D2;
+      }
+    }
+  }
+  // 图片翻页按钮
+  .previous-image, .next-image {
+    padding: 2px 14px;
+    font-size: 40px;
+    position: absolute;
+    z-index: 2002;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFFFFF;
+    text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  // 上一张
+  .previous-image {
+    left: 20px;
+
+  }
+  // 下一张
+  .next-image {
+    right: 20px;
+  }
+  // 图片 alt 文字
+  #img-alt {
+    text-shadow: 0 1px #333333, 1px 0 #333333, -1px 0 #333333, 0 -1px #333333;
+    color: #FFFFFF;
+    font-size: 16px;
+    position: absolute;
+    bottom: 30px;
+    z-index: 2002;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+  }
+  // 更换图片的动画
+  .change-img-animation {
+    animation: fadeIn 0.25s ease-in-out;
+    transition: width 0.25s, height 0.25s, left 0.25s, top 0.25s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+// 图片
+#max-img {
+  position: absolute;
+  z-index: 2001;
+}
+
+// 评论区引用头像
+.pingback {
+  background: #488CB8;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 700;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// 页脚的功能按钮区域
+#footer-btn-box {
+  width: 40px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  button {
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid #d3d3d3;
+    opacity: 0.7;
+    margin-top: 20px;
+  }
+}
+
+// 移动设备专用章节目录
+#directory-mobile {;
+  position: fixed;
+  right: 60px;
+  bottom: 80px;
+  flex-direction: column;
+  display: flex;
+  max-height: 70%;
+  width: 300px;
+  background: #FFFFFF;
+  box-shadow: $shadow;
+  opacity: 0;
+  // 目录列表区域
+  .directory-list {
+    height: 100%;
+    overflow-y: auto;
+    ul {
+      list-style: none;
+      padding-left: 0;
+      ul {
+        padding-left: 15px;
+      }
+    }
+    a {
+      font-size: 14px;
+    }
+  }
+  // 目录的标题栏区域
+  .title-bar {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    i {
+      font-size: 15px;
     }
   }
 }
@@ -369,7 +643,7 @@ a {
   transition: 0.3s;
 }
 
-//  顶部导航条
+// 顶部导航条
 header {
   width: 100%;
   z-index: 999;
@@ -380,7 +654,7 @@ header {
       input:focus {
         box-shadow: none;
       }
-      //  亮色的搜索按钮
+      // 亮色的搜索按钮
       button {
         background: #f8f8f8;
         border: 1px solid #d3d3d3;
@@ -410,10 +684,10 @@ header {
   }
 }
 
-//  内容区域
+// 内容区域
 .container .article-list {
   margin-top: 15px;
-  //  文章列表
+  // 文章列表
   .post {
     @include post;
   }
@@ -430,12 +704,12 @@ header {
   }
 }
 
-//  侧边栏区域
+// 侧边栏区域
 .sidebar {
   section {
     margin-left: 20px;
     margin-bottom: 30px;
-    //  侧边栏个区域的标题
+    // 侧边栏个区域的标题
     h4 {
       line-height: 22px;
       padding: 12px 2px;
@@ -444,7 +718,7 @@ header {
       margin: 0 18px 10px 18px;
       font-weight: 700;
     }
-    //  侧边栏的列表
+    // 侧边栏的列表
     ul {
       list-style: none;
       padding: 0 18px 18px 18px;
@@ -464,7 +738,7 @@ header {
     .message {
       padding: 0 18px 18px 18px;
     }
-    //  个人资料卡
+    // 个人资料卡
     .personal-information {
       padding: 0 18px 18px 18px;
       .user {
@@ -512,7 +786,7 @@ header {
         }
       }
     }
-    //  标签云
+    // 标签云
     .tag-list {
       padding: 0 18px 18px 18px;
       .tag-link {
@@ -523,7 +797,7 @@ header {
       }
     }
   }
-  //  日历
+  // 日历
   .calendar {
     table {
       width: 100%;
@@ -538,7 +812,7 @@ header {
       font-size: 14px;
     }
   }
-  //  最新文章区域
+  // 最新文章区域
   .latest-articles {
     li a {
       transition: 0.4s;
@@ -592,7 +866,7 @@ header {
       padding-left: 0;
     }
   }
-  //  最新回复
+  // 最新回复
   .latest-comment {
     .media-body,
     .comment-content {
@@ -642,12 +916,12 @@ header {
   }
 }
 
-//  章节目录高亮效果
+// 章节目录高亮效果
 .directory-active {
   font-weight: 600 !important;
 }
 
-//  文章分页区域
+// 文章分页区域
 .pagination-nav {
   width: 100%;
   text-align: center;
@@ -660,7 +934,7 @@ header {
   }
 }
 
-//  底部
+// 底部
 footer {
   .container {
     padding: 20px 20px;
@@ -674,7 +948,7 @@ footer {
   }
 }
 
-//  文章页
+// 文章页
 .article-page {
   margin-top: 15px;
   main {
@@ -682,7 +956,7 @@ footer {
     .entry-header {
       @include entryHeader;
     }
-    //  文章头图
+    // 文章头图
     .header-img {
       @include postThumbnail;
       .fixed:after {
@@ -691,7 +965,7 @@ footer {
         padding-bottom: 44%;
       }
     }
-    //  文章页的文章信息
+    // 文章页的文章信息
     .article-info {
       @include articleInfo;
     }
@@ -701,7 +975,7 @@ footer {
       .warning-info {
         background-color: #E5E6EB;
       }
-      //  文章页的文章内容
+      // 文章页的文章内容
       .post-content {
         margin-top: 10px;
         width: 100%;
@@ -719,7 +993,7 @@ footer {
       }
     }
   }
-  //  上一篇文章和下一篇文章的导航
+  // 上一篇文章和下一篇文章的导航
   .post-navigation {
     overflow-x: hidden;
     > div {
@@ -761,7 +1035,7 @@ footer {
   }
 }
 
-//  分享二维码区域
+// 分享二维码区域
 #share-box {
   #qrcode {
     img {
@@ -770,7 +1044,7 @@ footer {
   }
 }
 
-//  点赞的效果样式
+// 点赞的效果样式
 #agree-p {
   font-weight: 700;
   font-size: 18px;
@@ -778,7 +1052,7 @@ footer {
   position: absolute;
 }
 
-//  Emoji表情区域
+// Emoji表情区域
 #emoji-panel {
   width: 400px;
   height: 300px;
@@ -786,7 +1060,7 @@ footer {
   z-index: 100;
   display: none;
   background-color: #ffffff;
-  //  表情选择区
+  // 表情选择区
   #emoji-classification {
     overflow-x: auto;
     button {
@@ -796,11 +1070,11 @@ footer {
       background: #E4E4E4;
     }
   }
-  //  表情列表
+  // 表情列表
   #emoji-list {
     max-height: 217px;
     overflow-y: auto;
-    //  表情
+    // 表情
     .emoji {
       float: left;
       font-size: 16px;
@@ -816,7 +1090,7 @@ footer {
   }
 }
 
-//  评论区
+// 评论区
 #comments {
   h2 {
     font-size: 25px;
@@ -826,7 +1100,7 @@ footer {
   .comments-off {
     padding: 0 20px;
   }
-  //  评论列表
+  // 评论列表
   .comments-lists {
     padding: 40px 20px 0 20px;
     .comment-list {
@@ -841,7 +1115,7 @@ footer {
         .comment-author {
           width: 100%;
         }
-        //  头像
+        // 头像
         .avatar {
           width: 42px;
           height: 42px;
@@ -849,11 +1123,11 @@ footer {
           float: left;
           border-radius: 50%;
         }
-        //  引用的头像
+        // 引用的头像
         .pingback {
           line-height: 42px;
         }
-        //  评论者名字和发表时间
+        // 评论者名字和发表时间
         .comment-info {
           a {
             line-height: 22px;
@@ -865,7 +1139,7 @@ footer {
             display: block;
           }
         }
-        //  回复评论的链接
+        // 回复评论的链接
         .comment-reply {
           a {
             line-height: 30px;
@@ -878,12 +1152,12 @@ footer {
             border-radius: 4px;
           }
         }
-        //  评论内容
+        // 评论内容
         .comment-content {
           margin-left: 52px;
           @include postContent;
         }
-        //  评论的子内容，也就是回复的内容
+        // 评论的子内容，也就是回复的内容
         .comment-children {
           li {
             padding-bottom: 0;
@@ -892,30 +1166,30 @@ footer {
             }
           }
         }
-        //  回复表单区域
+        // 回复表单区域
         .respond {
           background: #eeeeee;
         }
       }
     }
   }
-  //  发表评论区
+  // 发表评论区
   .respond {
     padding: 20px;
-    //  评论内容输入框
+    // 评论内容输入框
     #textarea {
       width: 100%;
       height: 150px;
       display: block;
     }
-    //  发表评论的用户
+    // 发表评论的用户
     .comment-user {
       margin-bottom: 20px;
     }
   }
 }
 
-//  404页
+// 404页
 .container-404 {
   h1 {
     margin-top: 20px;
@@ -935,7 +1209,7 @@ footer {
   }
 }
 
-//  文章搜索和分类页
+// 文章搜索和分类页
 .archives-list {
   margin-top: 15px;
   .archives {
@@ -960,7 +1234,7 @@ footer {
   }
 }
 
-//  独立页面
+// 独立页面
 .page {
   @extend .article-page;
 }
@@ -1027,7 +1301,7 @@ footer {
   }
 }
 
-//  独立页面-友情链接
+// 独立页面-友情链接
 .link-page {
   .link-box {
     background: #f9f9f9;
@@ -1074,9 +1348,9 @@ footer {
   }
 }
 
-//  独立页面 - 网站统计
+// 独立页面 - 网站统计
 .data-page a{
-  //  卡片区域
+  // 卡片区域
   .statistics-card {
     background: #B3D8FF;
   }
@@ -1096,13 +1370,13 @@ footer {
   margin-bottom: 20px;
 }
 
-//  >= 1200
+// >= 1200
 @media screen and (min-width: 1200px) {
-  //  侧边栏
+  // 侧边栏
   .sidebar {
     margin-top: 15px;
   }
-  //  评论区
+  // 评论区
   #comments {
     .comment-list {
       .comment-children {
@@ -1115,20 +1389,20 @@ footer {
     height: 350px;
   }
 }
-//  >= 992 且 <= 1199
+// >= 992 且 <= 1199
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-  //  小头图模式的文章列表
+  // 小头图模式的文章列表
   .entry-summary[data-header-image-type="mini"] {
     .content-box p {
       overflow-y: hidden;
       max-height: 100px !important;
     }
   }
-  //  侧边栏
+  // 侧边栏
   .sidebar {
     margin-top: 15px;
   }
-  //  评论区
+  // 评论区
   #comments {
     .comment-list {
       .comment-children {
@@ -1141,20 +1415,20 @@ footer {
     height: 350px;
   }
 }
-//  >= 768 且 <=991
+// >= 768 且 <=991
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  //  小头图模式的文章列表
+  // 小头图模式的文章列表
   .entry-summary[data-header-image-type="mini"] {
     .content-box p {
       overflow-y: hidden;
       max-height: 120px !important;
     }
   }
-  //  侧边栏
+  // 侧边栏
   .sidebar section {
     margin-left: 0;
   }
-  //  评论区
+  // 评论区
   #comments {
     .comment-list {
       .comment-children {
@@ -1167,24 +1441,24 @@ footer {
     height: 350px;
   }
 }
-//  >= 576 且 <= 767
+// >= 576 且 <= 767
 @media screen and (min-width: 576px) and (max-width: 767px) {
-  //  小头图模式的文章列表
+  // 小头图模式的文章列表
   .entry-summary[data-header-image-type="mini"] {
     .content-box p {
       overflow-y: hidden;
       max-height: 100px !important;
     }
   }
-  //  侧边栏的文章头图
+  // 侧边栏的文章头图
   .latest-articles-active {
     height: 222px;
   }
-  //  侧边栏
+  // 侧边栏
   .sidebar section {
     margin-left: 0;
   }
-  //  评论区
+  // 评论区
   #comments {
     .comment-list {
       .comment-children {
@@ -1197,22 +1471,22 @@ footer {
     height: 300px;
   }
 }
-//  < 575
+// < 575
 @media screen and (max-width: 575px) {
-  //  文章列表
+  // 文章列表
   .container .article-list {
     .post {
       @include postM;
     }
   }
-  //  小头图模式的文章列表
+  // 小头图模式的文章列表
   .entry-summary[data-header-image-type="mini"] {
     .content-box p {
       overflow-y: hidden;
       max-height: 70px !important;
     }
   }
-  //  文章页
+  // 文章页
   .article-page {
     main {
       /*文章标题*/
@@ -1237,7 +1511,7 @@ footer {
     height: 200px;
   }
 
-  //  文章搜索和分类页
+  // 文章搜索和分类页
   .archives-list {
     .archives {
       .post {
@@ -1256,15 +1530,15 @@ footer {
       }
     }
   }
-  //  侧边栏
+  // 侧边栏
   .sidebar section {
     margin-left: 0;
   }
-  //  Emoji面板
+  // Emoji面板
   #emoji-panel {
     width: 93% !important;
   }
-  //  评论区
+  // 评论区
   #comments {
     .comment-list {
       .comment-children {
@@ -1272,10 +1546,31 @@ footer {
       }
     }
   }
-}
+  // 移动设备的目录
+  #directory-mobile {
+    max-height: 60%;
+  }
+  // 图片灯箱
+  #max-img-box {
+    #img-counter {
+      margin: 0;
+      left: 15px;
+      transform: translateX(0);
+    }
+    // 上一张
+    .previous-image {
+      left: 0;
 
+    }
+    // 下一张
+    .next-image {
+      right: 0;
+    }
+  }
+}
+// <= 374px
 @media screen and (max-width: 374px) {
-  //  评论区
+  // 评论区
   #comments {
     .comment-list {
       .comment-reply {
@@ -1289,7 +1584,6 @@ footer {
   }
 }
 
-@import "universal";
 @import "light-color";
 @import "primary-color";
 @import "info-color";

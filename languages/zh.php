@@ -166,7 +166,9 @@ const ZH = array(
         'zoomOut' => '缩小',
         'rotateLeft' => '左旋转90度',
         'rotateRight' => '右旋转90度',
-        'closeImage' => '关闭大图'
+        'closeImage' => '关闭大图',
+        'nextImage' => '下一张图片（右方向键）',
+        'previousImage' => '上一张图片（左方向键）'
     ),
     'code' => array(
         'copyCode' => '拷贝代码',

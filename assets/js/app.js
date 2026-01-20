@@ -6,8 +6,9 @@
 * Licensed under MIT
 */
 
+import Lightbox from './modules/Lightbox.js';
+
 $(function () {
-  let maxImg = false;  // 大图的状态
   const avatarColor = [];  // 存储文字头像颜色
   const avatarName = [];  // 存储文字头像名称
   let emojiList = null;  // Emoji 列表
@@ -16,6 +17,10 @@ $(function () {
   let directoryTop = 0;
   let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
   let inputFocus = false;  // 表单焦点状态
+
+  // 图片灯箱初始化
+  const lightbox = new Lightbox();
+  lightbox.init();
 
   // 目录高亮初始化
   directoryHighlightInit();
@@ -28,9 +33,6 @@ $(function () {
 
   // 代码高亮初始化
   codeHighlightInit();
-
-  // 图片灯箱初始化
-  imageLightboxInit();
 
   // 分页链接初始化
   paginationLinkInit();
@@ -170,23 +172,8 @@ $(function () {
 
   // 全局快捷键
   $(document).on('keyup', ev => {
-    // 如果按下的是 ESC 就关闭大图
-    if (ev.keyCode === 27 && maxImg) {
-      $('#max-img .hide-img').click();  // 关闭大图
-    }
-
-    // 如果按下的是 + 就放大图片
-    if (ev.keyCode === 107 && maxImg) {
-      $('#img-control .big').click();
-    }
-
-    // 如果按下的是 - 就缩小图片
-    if (ev.keyCode === 109 && maxImg) {
-      $('#img-control .small').click();
-    }
-
     // 右光标键
-    if (ev.keyCode === 39 && !inputFocus) {
+    if (ev.keyCode === 39 && !inputFocus && !lightbox.isShow) {
       // 文章列表翻页
       if ($('.next .page-link').length) {
         location.href = $('.next .page-link').attr('href');
@@ -198,7 +185,7 @@ $(function () {
     }
 
     // 左光标键
-    if (ev.keyCode === 37 && !inputFocus) {
+    if (ev.keyCode === 37 && !inputFocus && !lightbox.isShow) {
       // 文章列表翻页
       if ($('.prev .page-link').length) {
         location.href = $('.prev .page-link').attr('href');
@@ -326,7 +313,7 @@ $(function () {
       }
 
       // 如果是评论提交就滚动到评论区
-      if (ev.relatedTarget.id === 'comment-form') {
+      if (ev.relatedTarget?.id === 'comment-form') {
         if (commentParentId !== null && $(`#comment-${commentParentId}`).length) {
           // 如果是回复评论就滚动到父评论的区域
           $('html, body').animate({
@@ -373,9 +360,6 @@ $(function () {
       // 代码高亮初始化
       codeHighlightInit();
 
-      // 图片灯箱初始化
-      imageLightboxInit();
-
       // 分页链接初始化
       paginationLinkInit();
 
@@ -414,6 +398,9 @@ $(function () {
 
       // PJAX 链接初始化
       pjaxLinkInit();
+
+      // 图片灯箱初始化
+      lightbox.init();
     });
   }
 
@@ -908,254 +895,6 @@ $(function () {
     `;
       $('.comments-lists .page-navigator').replaceWith(pageNav);
     }
-  }
-
-  // 图片灯箱初始化
-  function imageLightboxInit() {
-    let imgDirection = 0;  // 图片方向
-    let contentImgSize = null;  // 文章区域的图片尺寸
-
-    // 文章的图片点击
-    $('.post-content img').on('click', function () {
-      // 如果图片还没有加载出就直接返回
-      if ($(this).attr('src') === undefined) return false;
-      // 获取图片的真实尺寸
-      const imgSize = {
-        w: $(this).get(0).naturalWidth,
-        h: $(this).get(0).naturalHeight
-      };
-      // 获取文章内的图片尺寸
-      contentImgSize = {
-        w: $(this).width(),
-        h: $(this).height(),
-        l: $(this).offset().left,
-        t: $(this).offset().top
-      };
-
-      // 如果图片的真实尺寸超出屏幕尺寸就重新设置大图的尺寸
-      if (imgSize.w > window.innerWidth) {
-        imgSize.p = imgSize.h / imgSize.w * 100;
-        imgSize.w = window.innerWidth;
-        imgSize.h = imgSize.w * imgSize.p / 100;
-      }
-      if (imgSize.h > window.innerHeight) {
-        imgSize.p = imgSize.w / imgSize.h * 100;
-        imgSize.h = window.innerHeight;
-        imgSize.w = imgSize.h * imgSize.p / 100;
-      }
-
-      // 图片灯箱的HTML
-      const maxImgTemplate = `
-    <div id="max-img" role="dialog">
-      <div class="mask-layer"></div>
-      <img src="" alt="" class="shadow-lg">
-      <p id="img-info" class="text-light text-center"></p>
-      <div class="btn-group" role="group" id="img-control">
-        <button type="button" class="btn big" title="${window.t.zoomIn}" aria-label="${window.t.zoomIn}">
-          <i class="icon-zoom-in"></i>
-        </button>
-        <button type="button" class="btn small" title="${window.t.zoomOut}" aria-label="${window.t.zoomOut}">
-          <i class="icon-zoom-out"></i>
-        </button>
-        <button type="button" class="btn spin-left" title="${window.t.rotateLeft}" aria-label="${window.t.rotateLeft}">
-          <i class="icon-undo"></i>
-        </button>
-        <button type="button" class="btn spin-right" title="${window.t.rotateRight}" aria-label="${window.t.rotateRight}">
-          <i class="icon-redo"></i>
-        </button>
-        <button type="button" class="btn hide-img" title="${window.t.closeImage}" aria-label="${window.t.closeImage}">
-          <i class="icon-cancel-circle"></i>
-        </button>
-      </div>
-    </div>
-    `;
-
-      // 把图片灯箱插入到页面
-      $('body').append(maxImgTemplate);
-
-      // 显示遮罩层
-      $('#max-img .mask-layer').fadeIn(250);
-      // 设置大图的初始尺寸和位置
-      $('#max-img img').css({
-        display: 'inline',
-        width: contentImgSize.w,
-        height: contentImgSize.h,
-        top: contentImgSize.t,
-        left: contentImgSize.l
-      });
-      // 把大图移动到屏幕中心
-      $('#max-img img').animate({
-        width: imgSize.w,
-        height: imgSize.h,
-        left: window.innerWidth / 2 - imgSize.w / 2,
-        top: $(document).scrollTop() + window.innerHeight / 2 - imgSize.h / 2
-      }, 250, 'linear', function() {
-        // 显示图片操作按钮
-        $('#img-control').css('display', 'flex');
-        // 让关闭图片的按钮获取焦点
-        $('.hide-img').focus();
-        // 显示和设置图片描述
-        $('#img-info').show();
-        $('#img-info').html($(this).attr('alt'));
-        // 把图片灯箱的状态设置为开启
-        maxImg = true;
-      });
-
-      // 设置大图的 src 和 alt
-      $('#max-img img').attr({
-        "src": $(this).attr('src'),
-        "alt": $(this).attr('alt')
-      });
-
-      // 把图片角度设置为默认
-      if (imgDirection !== 0) {
-        imgDirection = 0;
-        $('#max-img img').css('transform', `rotate(${imgDirection}deg)`);
-      }
-
-      // 禁止滚动
-      $('html').addClass('stop-scrolling');
-
-      // 给图片灯箱添加事件
-      // 在图片灯箱开启的情况下滑动屏幕禁止页面滚动
-      $('#max-img .mask-layer, #img-info, #img-control').on('touchmove', function(ev) {
-        if (maxImg) {
-          ev.preventDefault();
-          return false;
-        }
-      });
-
-      // 大图手指拖拽
-      $('#max-img img').on('touchstart', ev => {
-        const X = ev.touches[0].pageX - $(ev.target).get(0).offsetLeft;
-        const Y = ev.touches[0].pageY - $(ev.target).get(0).offsetTop;
-
-        $(document).on('touchmove', ev => {
-          $('#max-img img').css({
-            left: ev.touches[0].pageX - X,
-            top: ev.touches[0].pageY - Y
-          });
-        });
-
-        $(document).on('touchend', () => {
-          $(document).off('touchmove');
-        });
-        return false;
-      });
-
-      // 大图拖拽
-      $('#max-img img').on('mousedown', ev => {
-        const X = ev.clientX - $(ev.target).get(0).offsetLeft;
-        const Y = ev.clientY - $(ev.target).get(0).offsetTop;
-
-        $(document).on('mousemove', ev => {
-          $('#max-img img').css({
-            left: ev.clientX - X,
-            top: ev.clientY - Y
-          });
-        });
-
-        $(document).on('mouseup', () => {
-          $(document).off('mousemove');
-        });
-        return false;
-      });
-
-      // 图片左旋转
-      $('#img-control .spin-left').on('click', () => {
-        imgDirection -= 90;
-        $('#max-img img').css('transition', '0.3s');
-        $('#max-img img').css('transform', `rotate(${imgDirection}deg)`);
-        setTimeout(() => {
-          $('#max-img img').css('transition', '0s');
-        }, 300);
-      });
-
-      // 图片右旋转
-      $('#img-control .spin-right').on('click', () => {
-        imgDirection += 90;
-        $('#max-img img').css('transition', '0.3s');
-        $('#max-img img').css('transform', `rotate(${imgDirection}deg)`);
-        setTimeout(function () {
-          $('#max-img img').css('transition', '0s');
-        }, 300);
-      });
-
-      // 图片放大
-      $('#img-control .big').on('click', () => {
-        $('#max-img img').animate({
-          width: $('#max-img img').width() + $('#max-img img').width() / 5,
-          height: $('#max-img img').height() + $('#max-img img').height() / 5
-        }, 250);
-      });
-
-      // 图片缩小
-      $('#img-control .small').on('click', () => {
-        // 如果图片的宽度或高度 < 40px 将不再缩小
-        if ($('#max-img img').width() <= 80 || $('#max-img img').height() <= 80) return false;
-        $('#max-img img').animate({
-          width: $('#max-img img').width() - $('#max-img img').width() / 5,
-          height: $('#max-img img').height() - $('#max-img img').height() / 5
-        }, 250);
-      });
-
-      // 大图鼠标滚动
-      $('#max-img img').on('mousewheel DOMMouseScroll', ev => {
-        if (!maxImg) return false;
-        if (ev.originalEvent.wheelDelta === undefined) return false;
-        if (ev.originalEvent.wheelDelta >  0) {
-          // 放大图片
-          $('#img-control .big').click();
-        }else {
-          // 缩小图片
-          $('#img-control .small').click();
-        }
-      });
-
-      // 大图的关闭按钮点击
-      $('#max-img .hide-img').on('click', () => {
-        maxImg = false;
-        // 隐藏半透明背景
-        $('#max-img .mask-layer').fadeOut(250);
-        // 隐藏图片描述
-        $('#img-info').hide();
-        // 隐藏图片功能区按钮
-        $('#img-control').hide();
-        $('html').removeClass('stop-scrolling');
-        // 让图片回到文章图片的位置
-        $('#max-img img').animate({
-          width: contentImgSize.w,
-          height: contentImgSize.h,
-          top: contentImgSize.t,
-          left: contentImgSize.l
-        }, 250, 'linear', () => {
-          $('#max-img img').hide();
-          $('#max-img img').attr({
-            src: '',
-            alt: ''
-          });
-          $('#max-img').remove();
-        });
-      });
-
-      // 关闭大图按钮按下 tab
-      $('#max-img .hide-img').on('keydown', ev => {
-        ev.preventDefault();
-        if (ev.keyCode === 9) {
-          $('#img-control .big').focus();  // 让放大图片按钮获取焦点
-        }
-        if (ev.keyCode === 13) {
-          $('#max-img .hide-img').click();
-        }
-      });
-
-      // 大图的关闭按钮按下回车
-      $('.hide-img').on('keypress', ev => {
-        if (ev.keyCode == 13) {
-          $('#max-img .hide-img').click();
-        }
-      });
-    });
   }
 
   // 文章表格初始化

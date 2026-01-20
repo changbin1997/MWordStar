@@ -36,7 +36,7 @@
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.qrcode.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/clipboard.min.js'); ?>"></script>
-<script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
+<script type="module" src="<?php $this->options->themeUrl('assets/js/app.js'); ?>"></script>
 <!--PJAX更新完成后执行的JS-->
 <?php if ($this->options->pjax === 'on' && $this->options->pjaxEnd): ?>
     <script type="text/javascript">

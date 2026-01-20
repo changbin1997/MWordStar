@@ -166,7 +166,9 @@ const EN = array(
         'zoomOut' => 'Zoom Out',
         'rotateLeft' => 'Rotate Left 90 Degrees',
         'rotateRight' => 'Rotate Right 90 Degrees',
-        'closeImage' => 'Close Image'
+        'closeImage' => 'Close Image',
+        'nextImage' => 'Next image (Right arrow key)',
+        'previousImage' => 'Previous image (Left arrow key)'
     ),
     'code' => array(
         'copyCode' => 'Copy Code',

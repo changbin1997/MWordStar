@@ -54,6 +54,8 @@ function localizeScript() {
         'rotateLeft' => $GLOBALS['t']['imageLightbox']['rotateLeft'],
         'rotateRight' => $GLOBALS['t']['imageLightbox']['rotateRight'],
         'closeImage' => $GLOBALS['t']['imageLightbox']['closeImage'],
+        'nextImage' => $GLOBALS['t']['imageLightbox']['nextImage'],
+        'previousImage' => $GLOBALS['t']['imageLightbox']['previousImage'],
         'copyCode' => $GLOBALS['t']['code']['copyCode'],
         'copySuccess' => $GLOBALS['t']['code']['copySuccess'],
         'copyError' => $GLOBALS['t']['code']['copyError'],
