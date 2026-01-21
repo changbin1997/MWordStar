@@ -7,12 +7,11 @@
 */
 
 import Lightbox from './modules/Lightbox.js';
+import Emoji from './modules/Emoji.js';
 
 $(function () {
   const avatarColor = [];  // 存储文字头像颜色
   const avatarName = [];  // 存储文字头像名称
-  let emojiList = null;  // Emoji 列表
-  let showEmoji = false;  // Emoji 面板状态
   let directory = false;  // 移动设备章节目录状态
   let directoryTop = 0;
   let commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
@@ -21,6 +20,10 @@ $(function () {
   // 图片灯箱初始化
   const lightbox = new Lightbox();
   lightbox.init();
+
+  // Emoji面板初始化
+  const emoji = new Emoji();
+  emoji.init();
 
   // 目录高亮初始化
   directoryHighlightInit();
@@ -42,9 +45,6 @@ $(function () {
 
   // 点赞初始化
   likeInit();
-
-  // Emoji面板初始化
-  emojiInit();
 
   // 一些可访问性相关的功能初始化
   accessibilityInit();
@@ -75,6 +75,12 @@ $(function () {
 
   // 侧边栏的语言更改
   $('.sidebar .change-language').on('change', changeLanguage);
+
+  // 页面空白区域点击
+  $('body').on('click', () => {
+    // 如果表情面板处于开启状态就关闭表情面板
+    if (emoji.isShow) $('#show-emoji-btn').click();
+  });
 
   // 切换主题配色按钮点击
   $('#change-color-btn').on('click', function() {
@@ -369,9 +375,6 @@ $(function () {
       // 点赞初始化
       likeInit();
 
-      // Emoji面板初始化
-      emojiInit();
-
       // 一些可访问性相关的功能初始化
       accessibilityInit();
 
@@ -401,6 +404,9 @@ $(function () {
 
       // 图片灯箱初始化
       lightbox.init();
+
+      // Emoji初始化
+      emoji.init();
     });
   }
 
@@ -640,121 +646,6 @@ $(function () {
   function bootstrapStyleInit() {
     // 初始化工具提示
     $('[data-toggle="tooltip"]').tooltip();
-  }
-
-  // Emoji 面板初始化
-  function emojiInit() {
-    // 加载 Emoji
-    if ($('#emoji-panel').length) {
-      $.ajax({
-        type: 'post',
-        url: $('#show-emoji-btn').attr('data-url'),
-        data: 'emoji=emoji',
-        timeout: 10000,
-        global: false,
-        success: data => {
-          data = JSON.parse(data);
-          // 检查是否加载正确
-          if (data.smileys === undefined) {
-            $('#emoji-panel').append('<div>未知错误！</div>');
-            return false;
-          }
-          emojiList = data;
-          // 调用面目表情按钮事件
-          $('#emoji-classification button').eq(0).click();
-        },
-        error: (xhr, err, abnormal) => {
-          $('#emoji-panel').append(`<div>服务器请求出错！错误代码 ${err}</div>`);
-        }
-      });
-
-      // Emoji 开关点击
-      $('#show-emoji-btn').on('click', ev => {
-        // 设置 Emoji 面板的显示和隐藏
-        $('#emoji-panel').slideToggle(250);
-        // 设置 Emoji 的显示和隐藏状态
-        showEmoji = !showEmoji;
-        // 设置用于屏幕阅读器的 Emoji 面板的显示和隐藏状态
-        $(ev.target).attr('aria-expanded', showEmoji);
-        // 聚焦到 emoji 面板的第一个按钮
-        $('#emoji-panel button').eq(0).focus();
-        // 避免触发页面空白区域
-        return false;
-      });
-
-      // Emoji 表情面板的空白区域点击
-      $('#emoji-panel').on('click', () => {
-        return false;
-      });
-
-      // 切换Emoji类型按钮点击
-      $('#emoji-classification button').on('click', ev => {
-        const emoji = emojiList[$(ev.target).attr('data-classification')];
-        let emojiEl = '';
-        // 获取主题配色
-        const btnColor = $('#emoji-classification').attr('data-color');
-
-        // 清除之前选中的按钮的选中状态
-        $('#emoji-classification .selected').attr('aria-checked', false);
-        $('#emoji-classification .selected').removeClass([btnColor, 'selected']);
-        // 设置点击按钮的选中状态
-        $(ev.target).attr('aria-checked', true);
-        $(ev.target).addClass(['selected', btnColor]);
-
-        // 生成 Emoji 元素
-        emoji.forEach(e => {
-          emojiEl += `<div class="emoji p-2" tabindex="0" role="listitem">${e}</div>`;
-        });
-
-        // 清除之前的 Emoji
-        if ($('#emoji-list .emoji').length) {
-          $('#emoji-list .emoji').remove();
-        }
-
-        // 把 Emoji 插入到页面
-        $('#emoji-list').append(emojiEl);
-        // 设置类型标题
-        $('#emoji-title').html($(ev.target).attr('title'));
-        // 设置用于屏幕阅读器的表情列表标题
-        $('#emoji-list').attr('aria-label', `${$(ev.target).attr('title')} ${window.t.pressEnterToAddTheEmojiToTheCommentInputField}`);
-      });
-
-      // Emoji 表情点击
-      $('#emoji-list').on('click', '.emoji', ev => {
-        // 把表情添加到评论内容输入框
-        $('#textarea').val($('#textarea').val() + $(ev.target).html());
-      });
-
-      // Emoji 表情按下回车或 Tab
-      $('#emoji-list').on('keydown', '.emoji', ev => {
-        // 按下回车键
-        if (ev.keyCode === 13) {
-          // 把表情添加到评论内容输入框
-          $('#textarea').val($('#textarea').val() + $(ev.target).html());
-        }
-        // 按下 Tab
-        if (ev.keyCode === 9 && $(ev.target).is('#emoji-list .emoji:last-child')) {
-          ev.preventDefault();
-          // 聚焦到 emoji 面板的第一个按钮
-          $('#emoji-panel button').eq(0).focus();
-        }
-      });
-
-      // Emoji 表情面板按下 ESC
-      $('#emoji-panel').on('keydown', ev =>{
-        if (ev.keyCode === 27) {
-          // 调用 Emoji 开关事件
-          $('#show-emoji-btn').click();
-          $('#textarea').focus();
-        }
-      });
-    }
-
-    // 页面空白区域点击
-    $('body').on('click', () => {
-      // 如果表情面板处于开启状态就关闭表情面板
-      if (showEmoji) $('#show-emoji-btn').click();
-    });
   }
 
   // 点赞初始化
