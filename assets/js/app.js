@@ -165,7 +165,7 @@ $(function () {
   // 全局快捷键
   $(document).on('keyup', ev => {
     // 右光标键
-    if (ev.keyCode === 39 && !inputFocus && !lightbox.isShow) {
+    if (ev.key === 'ArrowRight' || ev.keyCode === 39 && !inputFocus && !lightbox.isShow) {
       // 文章列表翻页
       if ($('.next .page-link').length) {
         location.href = $('.next .page-link').attr('href');
@@ -177,7 +177,7 @@ $(function () {
     }
 
     // 左光标键
-    if (ev.keyCode === 37 && !inputFocus && !lightbox.isShow) {
+    if (ev.key === 'ArrowLeft' || ev.keyCode === 37 && !inputFocus && !lightbox.isShow) {
       // 文章列表翻页
       if ($('.prev .page-link').length) {
         location.href = $('.prev .page-link').attr('href');

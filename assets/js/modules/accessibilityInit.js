@@ -74,7 +74,7 @@ export default () => {
   // 提交回复按钮按下 tab
   $(document).on('keydown', '.comments-lists .respond .submit', ev => {
     ev.preventDefault();
-    if (ev.keyCode === 9) {
+    if (ev.key === 'Tab' || ev.keyCode === 9) {
       // 让取消回复的链接获取焦点
       $('#cancel-comment-reply-link').focus();
     }
