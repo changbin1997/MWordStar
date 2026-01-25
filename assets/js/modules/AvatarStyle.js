@@ -40,7 +40,7 @@ export default class AvatarStyle {
           if (nameIndex === -1) {
             this.avatarName.push(name);
             // 生成随机颜色
-            const bgColor = {r: this.rand(250, 1), g: rand(250, 1), b: rand(250, 1)};
+            const bgColor = {r: this.rand(250, 1), g: this.rand(250, 1), b: this.rand(250, 1)};
             // 把颜色添加到数组，遇到同名的头像可以使用同一组颜色
             this.avatarColor.push(bgColor);
             // 设置文字头像的背景颜色

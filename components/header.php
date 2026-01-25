@@ -176,7 +176,7 @@ $bodyClass = implode(' ', $bodyClass);
                 <?php endif; ?>
 
                 <?php if (is_array($this->options->navbar) && in_array('showSearch', $this->options->navbar)): ?>
-                    <form class="form-inline search-form" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
+                    <form class="form-inline search-form my-2 m-lg-0 m-xl-0" action="<?php $this->options->siteUrl(); ?>" method="post" role="search">
                         <div class="input-group">
                             <input data-url="<?php $this->options->siteUrl(); ?>" class="border-right-0 form-control form-control-md search-input" type="text" placeholder="<?php echo $GLOBALS['t']['header']['search']; ?>" aria-label="<?php echo $GLOBALS['t']['header']['search']; ?>" required="required" name="s">
                             <div class="input-group-append">
