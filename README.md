@@ -16,23 +16,23 @@
 
 下面是主题首页截图：
 
-![MWordStar主题首页截图1](screenshot/home.png)
+![MWordStar主题首页截图1](screenshot/home-page.png)
 
 主题元素包含圆角和直角两种风格，您可以根据喜好在主题外观设置中切换，下面是直角风格的首页截图：
 
-![MWordStar直角风格首页截图](screenshot/16043686924621.jpg)
+![MWordStar直角风格首页截图](screenshot/right-angle.png)
 
 小头图模式：
 
-![MWordStar小头图模式截图](screenshot/mini-header-image.png)
+![MWordStar小头图模式截图](screenshot/small.png)
 
 也可以给文章设置单独的头图样式：
 
-![MWordStar大头图和小头图搭配使用的截图](screenshot/mini-header-image2.png)
+![MWordStar大头图和小头图搭配使用的截图](screenshot/large-and-small.png)
 
 深色模式：
 
-![MWordStar深色模式截图](screenshot/dark-color.png)
+![MWordStar深色模式截图](screenshot/dark-mode.png)
 
 主题目前包含 6 种配色：
 
@@ -163,11 +163,11 @@ Emoji 表情面板也进行了无障碍适配，可支持键盘访问和屏幕�
 
 分类占比统计图如下：
 
-![MWordStar 分类统计图](screenshot/category-statistics.jpeg)
+![MWordStar 分类统计图](screenshot/category-distribution.png)
 
 下面是评论动态日历图：
 
-![MWordStar 评论动态日历图](screenshot/comment-calendar.jpeg)
+![MWordStar 评论动态日历图](screenshot/comment-activity.png)
 
 文章动态日历图和评论动态的日历图是差不多的，屏幕尺寸不同显示的月份数量也不同。
 
