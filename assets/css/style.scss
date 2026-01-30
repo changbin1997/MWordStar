@@ -566,8 +566,8 @@ body[data-rounded="rightAngle"] {
   z-index: 2001;
 }
 
-// 评论区引用头像
-.pingback {
+// 评论区引用头像和文字头像
+.pingback, .text-avatar {
   background: #488CB8;
   text-align: center;
   font-size: 14px;
@@ -596,7 +596,7 @@ body[data-rounded="rightAngle"] {
 }
 
 // 移动设备专用章节目录
-#directory-mobile {;
+#directory-mobile {
   position: fixed;
   right: 60px;
   bottom: 80px;
@@ -743,6 +743,7 @@ header {
       padding: 0 18px 18px 18px;
       .user {
         width: 100%;
+        // 图片头像
         .avatar {
           width: 72px;
           height: 72px;
@@ -751,7 +752,8 @@ header {
           transition: 0.4s;
           border-radius: 50%;
         }
-        .pingback {
+        // 文字头像
+        .text-avatar {
           width: 72px;
           height: 72px;
           line-height: 72px;
@@ -858,6 +860,7 @@ header {
       padding-bottom: 44%;
     }
   }
+  // 分类
   .category {
     li {
       padding-left: 24px;
@@ -874,11 +877,13 @@ header {
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    // 图片头像
     .avatar {
       width: 40px;
       height: 40px;
     }
-    .pingback {
+    // 文字头像和引用头像
+    .pingback, .text-avatar {
       line-height: 40px;
     }
   }
@@ -1124,7 +1129,7 @@ footer {
           border-radius: 50%;
         }
         // 引用的头像
-        .pingback {
+        .pingback, .text-avatar {
           line-height: 42px;
         }
         // 评论者名字和发表时间

@@ -12,11 +12,11 @@ import codeHighlightInit from './modules/codeHighlightInit.js';
 import accessibilityInit from './modules/accessibilityInit.js';
 import ColorAndLanguage from './modules/ColorAndLanguage.js';
 import BootstrapStyle from './modules/BootstrapStyle.js';
-import AvatarStyle from './modules/AvatarStyle.js';
 import ArticleEngagement from './modules/ArticleEngagement.js';
 import Directory from './modules/Directory.js';
 import PJAX from './modules/PJAX.js';
 import sidebarCoverImageInit from './modules/sidebarCoverImageInit.js';
+import AvatarGenerator from './modules/AvatarGenerator.js';
 
 $(function () {
   let inputFocus = false;  // 表单焦点状态
@@ -37,9 +37,8 @@ $(function () {
   const bootstrapStyle = new BootstrapStyle();
   bootstrapStyle.init();
 
-  // 头像样式初始化
-  const avatarStyle = new AvatarStyle();
-  avatarStyle.init();
+  // 文字头像初始化
+  const avatarGenerator = new AvatarGenerator();
 
   // 点赞初始化
   ArticleEngagement.likeInit();
@@ -97,8 +96,8 @@ $(function () {
     // bootstrap样式初始化
     bootstrapStyle.init();
 
-    // 头像样式初始化
-    avatarStyle.init();
+    // 重新生成文字头像
+    avatarGenerator.refresh();
 
     // 点赞初始化
     ArticleEngagement.likeInit();

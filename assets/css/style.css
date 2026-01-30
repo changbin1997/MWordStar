@@ -465,7 +465,7 @@ body[data-rounded=rightAngle] .container-404 .to-home-link {
   z-index: 2001;
 }
 
-.pingback {
+.pingback, .text-avatar {
   background: #488CB8;
   text-align: center;
   font-size: 14px;
@@ -817,7 +817,7 @@ header .navbar .search-form button:focus {
   transition: 0.4s;
   border-radius: 50%;
 }
-.sidebar section .personal-information .user .pingback {
+.sidebar section .personal-information .user .text-avatar {
   width: 72px;
   height: 72px;
   line-height: 72px;
@@ -930,7 +930,7 @@ header .navbar .search-form button:focus {
   width: 40px;
   height: 40px;
 }
-.sidebar .latest-comment .pingback {
+.sidebar .latest-comment .pingback, .sidebar .latest-comment .text-avatar {
   line-height: 40px;
 }
 .sidebar .directory {
@@ -1333,7 +1333,7 @@ footer .container span {
   float: left;
   border-radius: 50%;
 }
-#comments .comments-lists .comment-list .comment-body .pingback {
+#comments .comments-lists .comment-list .comment-body .pingback, #comments .comments-lists .comment-list .comment-body .text-avatar {
   line-height: 42px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-info a {
