@@ -49,8 +49,8 @@ function threadedComments($comments, $options) {
                     <?php if ($comments->status != 'approved'): ?>
                         <span class="author badge badge-secondary" title="<?php echo $GLOBALS['t']['comment']['pendingReviewDescription']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $GLOBALS['t']['comment']['pendingReview']; ?></span>
                     <?php endif; ?>
-                    <time class="comment-time" datetime="<?php echo date('c', $comments->date->timeStamp); ?>">
-                        <?php echo commentDateFormat($comments->date->timeStamp, $GLOBALS['commentDateFormat']); ?>
+                    <time class="comment-time" datetime="<?php echo date('c', $comments->created); ?>">
+                        <?php echo commentDateFormat($comments->created, $GLOBALS['commentDateFormat']); ?>
                     </time>
                 </div>
                 <span class="comment-reply float-right">

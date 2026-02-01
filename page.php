@@ -38,7 +38,7 @@ $this->need('components/header.php');
                         <div class="info">
                             <i class="icon-calendar icon" aria-hidden="true"></i>
                             <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>">
-                                <time datetime="<?php $this->date('c'); ?>"><?php echo postDateFormat($this->created); ?></time>
+                                <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
                             </span>
                         </div>
                         <!--作者-->

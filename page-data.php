@@ -6,6 +6,8 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+// 让主题使用的时区跟随 Typecho 设置的时区
+setTimezoneByOffset($this->options->timezone);
 // 文章更新日历数据
 $postCalendarData = postCalendar(time() - 20736000, time());
 // 评论更新日历数据
@@ -49,7 +51,7 @@ $this->need('components/header.php');
                         <div class="info">
                             <i class="icon-calendar icon" aria-hidden="true"></i>
                             <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>">
-                                <time datetime="<?php $this->date('c'); ?>"><?php echo postDateFormat($this->created); ?></time>
+                                <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
                             </span>
                         </div>
                         <!--作者-->
