@@ -189,6 +189,8 @@ export default class Lightbox {
     $('#max-img-box').focus();
     // 把图片灯箱状态设置为开启
     this.isShow = true;
+    // 开启图片懒加载的情况下，加载文章内的下一张图片
+    if (this.imgIndex < this.imgCount - 1) this.loadImg(this.imgIndex + 1);
   }
 
   /**
@@ -362,6 +364,18 @@ export default class Lightbox {
   }
 
   /**
+   * 开启图片懒加载时，提前加载文章内的下一张图片
+   * @param index 图片索引
+   */
+  loadImg(index) {
+    const jqueryImgEl = $('.post-content img').eq(index);
+    // 如果图片还没有加载
+    if (jqueryImgEl.hasClass('load-img')) {
+      jqueryImgEl.attr('src', jqueryImgEl.attr('data-src'));
+    }
+  }
+
+  /**
    * 更换图片初始化
    */
   changeImg() {
@@ -405,6 +419,8 @@ export default class Lightbox {
         this.imgIndex ++;
         // 重新设置当前图片的序号和总数量
         $('#max-img-box #img-counter').html(`${this.imgIndex + 1}/${this.imgCount}`);
+        // 开启图片懒加载的情况下，加载文章内的下一张图片
+        if (this.imgIndex < this.imgCount - 1) this.loadImg(this.imgIndex + 1);
       });
     });
 
