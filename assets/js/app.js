@@ -33,10 +33,6 @@ $(function () {
   const colorAndLanguage = new ColorAndLanguage();
   colorAndLanguage.init();
 
-  // bootstrap样式初始化
-  const bootstrapStyle = new BootstrapStyle();
-  bootstrapStyle.init();
-
   // 文字头像初始化
   const avatarGenerator = new AvatarGenerator();
 
@@ -58,6 +54,10 @@ $(function () {
 
   // 侧边栏文章头图初始化
   sidebarCoverImageInit();
+
+  // bootstrap样式初始化
+  const bootstrapStyle = new BootstrapStyle();
+  bootstrapStyle.init();
 
   // 图片懒加载
   lazyLoadImages();

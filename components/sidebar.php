@@ -205,6 +205,7 @@ $components = explode(',', $components);
                         <li class="d-flex justify-content-between align-items-center border-bottom indentation-<?php $category->parent(); ?>">
                             <a rel="index" target="<?php $this->options->sidebarLinkOpen(); ?>" data-toggle="tooltip" data-placement="top" href="<?php $category->permalink(); ?>" title="<?php if ($category->parent > 0) echo getParentCategory($category->parent) . ' 下的子分类 ' ?><?php $category->description(); ?>">
                                 <?php echo $category->name(); ?>
+                                <span class="sr-only"><?php printf($GLOBALS['t']['sidebar']['tagPostCount'], $category->count); ?></span>
                             </a>
                             <span class="badge badge-pill">
                                 <?php $category->count(); ?>

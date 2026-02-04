@@ -33,7 +33,7 @@ $this->need('components/header.php');
                             <a tabindex="-1" aria-hidden="true" href="<?php $this->permalink() ?>" aria-label="<?php echo $GLOBALS['t']['post']['featuredImage']; ?>" style="background-image: url(<?php echo $headerImg; ?>);background-color: <?php echo headerImageBgColor($this->options->headerImageBg); ?>;" class="fixed"></a>
                         </div>
                     <?php endif; ?>
-                    <div class="article-info clearfix border-bottom border-top" role="group">
+                    <div class="article-info clearfix border-bottom border-top" role="group"" aria-label="<?php echo $GLOBALS['t']['post']['postInfo']; ?>">
                         <!--时间-->
                         <div class="info">
                             <i class="icon-calendar icon" aria-hidden="true"></i>

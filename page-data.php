@@ -46,7 +46,7 @@ $this->need('components/header.php');
                             <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                         </h2>
                     </header>
-                    <div class="article-info clearfix border-bottom border-top" role="group">
+                    <div class="article-info clearfix border-bottom border-top" role="group" aria-label="<?php echo $GLOBALS['t']['post']['postInfo']; ?>">
                         <!--时间-->
                         <div class="info">
                             <i class="icon-calendar icon" aria-hidden="true"></i>
