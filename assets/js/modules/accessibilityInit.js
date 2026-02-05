@@ -83,19 +83,6 @@ export default () => {
   // 设置取消回复链接的链接名称
   $('#cancel-comment-reply-link').html(window.t.cancelReply);
 
-  // 把父评论的姓名加入到子评论中
-  if ($('#comments .parent').length) {
-    for (let i = 0; i < $('#comments .parent').length; i++) {
-      const parentLink = `
-        <a class="mr-1 parent-link" href="${$('#comments .parent').eq(i).attr('href')}">
-          ${$('#comments .parent').eq(i).html()}
-        </a>
-        `;
-      $('#comments .parent').eq(i).next().prepend(parentLink);
-    }
-    $('#comments .parent').remove();
-  }
-
   // 给上一篇文章和下一篇文章的链接关联文字描述
   $('.previous a').attr('aria-describedby', 'previous-post-text');
   $('.next a').attr('aria-describedby', 'next-post-text');

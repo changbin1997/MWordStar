@@ -11,12 +11,12 @@ export default class BootstrapStyle {
    * 一些 bootstrap 样式初始化
    */
   init() {
-    // 初始化工具提示
-    $('[data-toggle="tooltip"]').tooltip();
     // 表格样式初始化
     this.tableInit();
     // 分页链接样式初始化
     this.paginationLinkInit();
+    // 初始化工具提示
+    $('[data-toggle="tooltip"]').tooltip();
   }
 
   /**

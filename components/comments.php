@@ -60,8 +60,10 @@ function threadedComments($comments, $options) {
                 </span>
             </div>
             <div class="comment-content" id="c-<?php $comments->theId(); ?>">
-                <?php echo reply($comments->parent); ?>
-                <?php $comments->content(); ?>
+                <?php if ($comments->parent != 0): ?>
+                    <b class="parent-name float-left mr-1"><?php echo reply($comments->parent); ?></b>
+                <?php endif; ?>
+                <div><?php $comments->content(); ?></div>
             </div>
         </div>
         <?php if ($comments->children) { ?>
