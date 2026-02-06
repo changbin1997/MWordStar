@@ -71,6 +71,18 @@ export default () => {
     $(`#c-${cid}`).css('background', 'none');
   });
 
+  // @回复对象鼠标移入就高亮回复对象的评论内容
+  $('#comments .parent-link').hover(ev => {
+    // 根据主题配色设置评论高亮颜色
+    const color = $('.dark-color').length ? '#383838' : '#E4E4E4';
+    // 获取回复对象评论的 cid
+    const cid = $(ev.target).attr('data-parent');
+    $(`#c-comment-${cid}`).css('background', color);
+  }, ev => {
+    const cid = $(ev.target).attr('data-parent');
+    $(`#c-comment-${cid}`).css('background', 'none');
+  });
+
   // 提交回复按钮按下 tab
   $(document).on('keydown', '.comments-lists .respond .submit', ev => {
     ev.preventDefault();

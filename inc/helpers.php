@@ -284,16 +284,12 @@ function formatTimeDifferenceEN($timestamp) {
  * 获取父评论的姓名
  *
  * @param int $parent 评论的 coid
- * @return string 返回父评论的姓名
+ * @return string 返回父评论的姓名链接
  */
 function reply($parent) {
-    if ($parent == 0) {
-        return '';
-    }
-
     $db = Typecho_Db::get();
     $commentInfo = $db->fetchRow($db->select('author,status,mail')->from('table.comments')->where('coid = ?', $parent));
-    $link = '<a class="parent" href="#comment-' . $parent . '">@' . $commentInfo['author'] .  '</a>';
+    $link = '<a class="parent-link" data-parent="' . $parent . '" href="#comment-' . $parent . '">@' . $commentInfo['author'] .  '</a>';
     return $link;
 }
 
