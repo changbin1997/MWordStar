@@ -227,9 +227,9 @@ EOT;
 
     // 评论框位置
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentInput', array(
-        'top' => '评论框在评论列表上方',
-        'bottom' => '评论框在评论列表下方'
-    ), 'bottom', _t('评论框位置'), _t('评论框就是发表评论的区域，评论列表就是已发表的评论区域')));
+        'top' => '评论表单在评论列表上方',
+        'bottom' => '评论表单在评论列表下方'
+    ), 'bottom', _t('评论表单位置'), _t('评论表单就是发表评论的区域，评论列表就是已发表的评论区域')));
 
     // 评论日期时间格式
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentDateFormat', array(
@@ -290,6 +290,13 @@ EOT;
 
     // 独立页友链
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pageLinks', null, null, _t('独立页友情链接'), _t('独立页友情链接只会在友情链接的页面显示，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接页面创建和格式说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。 <button data-title="独立页友情链接" data-name="pageLinks" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
+
+    // 在链接页面显示首页和全站链接
+    $linkPageOptions = new Typecho_Widget_Helper_Form_Element_Checkbox('linkPageOptions', array(
+        'showSitewideOnLinkPage' => _t('同时在链接页面展示全站链接'),
+        'showHomepageOnLinkPage' => _t('同时在链接页面展示首页链接')
+    ), array('showSitewideOnLinkPage', 'showHomepageOnLinkPage'), _t('友情链接页面展示设置'), _t('友情链接页面除了能展示内页链接外，也能展示首页和全站链接。链接页面效果可以查看 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">MWordStar主题帮助文档-友链设置</a>，也可以查看我的博客的 <a href="https://www.misterma.com/links.html" target="_blank">友情链接页面</a>。'));
+    $form->addInput($linkPageOptions->multiMode());
 
     // PJAX
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('pjax', array(

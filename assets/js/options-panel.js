@@ -44,8 +44,8 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[10], optionUl[46]);  // 导航栏
   optionForm.insertBefore(titleEl[11], optionUl[51]);  // 搜索页面
   optionForm.insertBefore(titleEl[12], optionUl[52]);  // 友情链接
-  optionForm.insertBefore(titleEl[13], optionUl[55]);  // PJAX
-  optionForm.insertBefore(titleEl[14], optionUl[59]);  // 开发者
+  optionForm.insertBefore(titleEl[13], optionUl[56]);  // PJAX
+  optionForm.insertBefore(titleEl[14], optionUl[60]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {

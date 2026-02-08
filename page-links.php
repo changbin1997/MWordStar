@@ -13,24 +13,32 @@ languageInit($this->options->language);
 $linkArr = array();
 //  是否包含内页链接
 if ($this->options->pageLinks) {
-    array_push($linkArr, array(
+    $linkArr[] = array(
         'title' => $GLOBALS['t']['linkPage']['linksOnDedicatedPageOnly'],
         'links' => json_decode($this->options->pageLinks)
-    ));
+    );
 }
 //  是否包含首页链接
-if ($this->options->homeLinks) {
-    array_push($linkArr, array(
+if (
+    is_array($this->options->linkPageOptions) &&
+    in_array('showHomepageOnLinkPage', $this->options->linkPageOptions) &&
+    $this->options->homeLinks
+) {
+    $linkArr[] = array(
         'title' => $GLOBALS['t']['linkPage']['linksOnHomepage'],
         'links' => json_decode($this->options->homeLinks)
-    ));
+    );
 }
 //  是否包含全站链接
-if ($this->options->links) {
-    array_push($linkArr, array(
+if (
+    is_array($this->options->linkPageOptions) &&
+    in_array('showSitewideOnLinkPage', $this->options->linkPageOptions) &&
+    $this->options->links
+) {
+    $linkArr[] = array(
         'title' => $GLOBALS['t']['linkPage']['linksOnAllPages'],
         'links' => json_decode($this->options->links)
-    ));
+    );
 }
 $this->need('components/header.php');  //  头文件
 ?>
