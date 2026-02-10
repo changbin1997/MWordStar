@@ -150,17 +150,41 @@ function QQAvatar($email, $name, $size) {
 function checkField() {
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
+    $adapter = $db->getAdapterName(); // 获取数据库驱动名称
+    // 要检查的字段
+    $fields = [
+        'views' => 'INT DEFAULT 0 NOT NULL',
+        'agree' => 'INT DEFAULT 0 NOT NULL'
+    ];
 
-    try {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0 NOT NULL;');
-    } catch (Typecho_Db_Exception $e) {
-        // 忽略异常
-    }
+    foreach ($fields as $colName => $colAttr) {
+        $needAdd = true;
+        // 针对 PostgreSQL 的特殊处理
+        if (strpos($adapter, 'Pgsql') !== false) {
+            // 查询 information_schema 检查字段是否存在
+            $check = $db->fetchRow($db->select()->from('information_schema.columns')->where('table_name = ?', $prefix . 'contents')->where('column_name = ?', $colName));
+            if (!empty($check)) {
+                $needAdd = false; // 字段已存在，无需添加
+            }
+        }
 
-    try {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `agree` INT(10) DEFAULT 0 NOT NULL;');
-    } catch (Typecho_Db_Exception $e) {
-        // 忽略异常
+        if ($needAdd) {
+            try {
+                // 根据数据库类型调整 SQL 语法
+                if (strpos($adapter, 'Pgsql') !== false) {
+                    // PostgreSQL: 使用双引号，移除 INT(10) 的长度限制（PgSQL不支持）
+                    $pgAttr = str_replace('INT(10)', 'INTEGER', $colAttr);
+                    $sql = 'ALTER TABLE "' . $prefix . 'contents" ADD COLUMN "' . $colName . '" ' . $pgAttr . ';';
+                } else {
+                    // MySQL / SQLite: 保持原有语法 (使用反引号)
+                    $sql = 'ALTER TABLE `' . $prefix . 'contents` ADD `' . $colName . '` ' . $colAttr . ';';
+                }
+
+                $db->query($sql);
+            } catch (Typecho_Db_Exception $e) {
+                // 忽略错误
+            }
+        }
     }
 }
 
@@ -781,8 +805,12 @@ function calendar($month, $url, $rewrite) {
  */
 function categoryCount() {
     $db = Typecho_Db::get();
-    $count = $db->fetchRow($db->select('COUNT(*)')->from('table.metas')->where('type = ?', 'category'));
-    return $count['COUNT(*)'];
+    $row = $db->fetchRow(
+        $db->select('COUNT(*) AS cnt')->from('table.metas')->where('type = ?', 'category')
+    );
+
+    if (!$row) return 0;
+    return (int) ($row['cnt'] ?? $row['COUNT(*)'] ?? $row['count'] ?? 0);
 }
 
 /**
@@ -792,8 +820,12 @@ function categoryCount() {
  */
 function tagCount() {
     $db = Typecho_Db::get();
-    $count = $db->fetchRow($db->select('COUNT(*)')->from('table.metas')->where('type = ?', 'tag'));
-    return $count['COUNT(*)'];
+    $row = $db->fetchRow(
+        $db->select('COUNT(*) AS cnt')->from('table.metas')->where('type = ?', 'tag')
+    );
+
+    if (!$row) return 0;
+    return (int) ($row['cnt'] ?? $row['COUNT(*)'] ?? $row['count'] ?? 0);
 }
 
 /**
@@ -830,10 +862,11 @@ function top5post() {
     $top5Post = $db->fetchAll($db->select()->from('table.contents')->where('type = ?', 'post')->where('status = ?', 'publish')->order('views', Typecho_Db::SORT_DESC)->offset(0)->limit(5));
     $postList =array();
     foreach ($top5Post as $post) {
-        $post = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($post);
+        // 生成文章链接
+        $permalink = Typecho_Common::url(Typecho_Router::url('post', $post), Helper::options()->index);
         $postList[] = array(
             'title' => $post['title'],
-            'link' => $post['permalink'],
+            'link' => $permalink,
             'views' => $post['views']
         );
     }
@@ -850,10 +883,11 @@ function top5CommentPost() {
     $top5Post = $db->fetchAll($db->select()->from('table.contents')->where('type = ?', 'post')->where('status = ?', 'publish')->order('commentsNum', Typecho_Db::SORT_DESC)->offset(0)->limit(5));
     $postList = array();
     foreach ($top5Post as $post) {
-        $post = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($post);
+        // 生成文章链接
+        $permalink = Typecho_Common::url(Typecho_Router::url('post', $post), Helper::options()->index);
         $postList[] = array(
             'title' => $post['title'],
-            'link' => $post['permalink'],
+            'link' => $permalink,
             'commentsNum' => $post['commentsNum']
         );
     }
