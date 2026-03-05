@@ -1058,3 +1058,15 @@ function setTimezoneByOffset($offset) {
     // 设置全局时区
     @date_default_timezone_set($timezone_name);
 }
+
+/**
+ * 文章内容分页
+ *
+ * @param string $content 文章的 HTML 内容
+ * @return array 分页后的内容数组
+ */
+function splitArticleContent($content) {
+    $pattern = '/<(pre|code)\b[^>]*>.*?<\/\1>(*SKIP)(*FAIL)|<p>\s*\[-page-\]\s*<\/p>|\[-page-\]/is';
+    // 使用 preg_split 进行分割
+    return preg_split($pattern, $content);
+}

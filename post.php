@@ -104,7 +104,7 @@ $this->need('components/header.php');
                             </div>
                         <?php endif; ?>
                         <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
-                            <?php $GLOBALS['postPage'] = preg_split('/\[-page-]|<p>\[-page-]<\/p>/', $this->content); ?>
+                            <?php $GLOBALS['postPage'] = splitArticleContent($this->content); ?>
                             <?php $postPageNum = isset($_GET['post-page']) ? $_GET['post-page'] : 1; ?>
                             <?php if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1; ?>
                             <?php $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]); ?>
