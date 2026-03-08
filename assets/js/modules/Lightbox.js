@@ -15,6 +15,7 @@ export default class Lightbox {
   maxImgSize = {width: 0, height: 0};  // 图片灯箱内显示的图片大小
   allowMove = false;  // 图片是否可以拖动
   direction = 0;  // 图片旋转角度
+  imgEl = null;  // 图片元素，切换图片时用于加载图片
 
   /**
    * 计算图片灯箱内显示的图片尺寸
@@ -42,6 +43,7 @@ export default class Lightbox {
    * 初始化
    */
   init() {
+    // 如果文章内没有图片
     if ($('.post-content img').length < 1) return;
     // 获取图片总数量
     this.imgCount = $('.post-content img').length;
@@ -49,6 +51,8 @@ export default class Lightbox {
     for (let i = 0;i < this.imgCount;i ++) {
       $('.post-content img').eq(i).attr('data-index', i);
     }
+
+    this.imgEl = new Image();
 
     // 文章内的图片点击
     $('.post-content img').on('click', ev => {
@@ -67,12 +71,32 @@ export default class Lightbox {
       // 图片旋转初始化
       this.rotate();
 
-      // 更换图片初始化
-      this.changeImg();
-
       // 关闭图片灯箱点击
-      $('#max-img-box .close-img').on('click', () => {
+      $('#max-img-box .close-img').on('click', ev => {
+        ev.stopPropagation();
         this.hide();
+      });
+
+      // 更换下一张图片点击
+      $('#max-img-box .next-image').on('click', ev => {
+        ev.stopPropagation();
+        // 如果当前是最后一张图片就不再往后切换
+        if (this.imgIndex === this.imgCount - 1) return false;
+        // 当前图片索引+1
+        this.imgIndex ++;
+        // 切换图片
+        this.changeImg();
+      });
+
+      // 更换上一张图片点击
+      $('#max-img-box .previous-image').on('click', ev => {
+        ev.stopPropagation();
+        // 如果是第一张图片就不再往前切换
+        if (this.imgIndex === 0) return false;
+        // 当前图片索引-1
+        this.imgIndex --;
+        // 切换图片
+        this.changeImg();
       });
 
       // 键盘事件
@@ -89,6 +113,16 @@ export default class Lightbox {
         if (ev.keyCode === 37 || ev.key === 'ArrowLeft') {
           $('#max-img-box .previous-image').click();
         }
+      });
+
+      // 图片灯箱的背景区域点击
+      $('#max-img-box').on('click', () => {
+        $('#max-img-box .close-img').click();
+      });
+
+      // 避免点击图片冒泡
+      $('#max-img').on('click', ev => {
+        ev.stopPropagation();
       });
     });
   }
@@ -109,9 +143,21 @@ export default class Lightbox {
    * @param ev event 事件对象
    */
   show(ev) {
+    let newImgUrl = '';  // 存储要显示的图片的 URL
+    // 获取当前点击的图片的 URL
+    if ($(ev.target).hasClass('load-img')) {
+      newImgUrl = $(ev.target).attr('data-src');
+    }else {
+      newImgUrl = $(ev.target).attr('src');
+    }
+
+    // 加载图片
+    this.imgEl.src = newImgUrl;
+    this.imgEl.alt = $(ev.target).attr('alt');
+
     // 获取图片真实尺寸
-    this.srcImgSize.width = ev.target.naturalWidth;
-    this.srcImgSize.height = ev.target.naturalHeight;
+    this.srcImgSize.width = this.imgEl.naturalWidth;
+    this.srcImgSize.height = this.imgEl.naturalHeight;
     // 获取当前点击的图片尺寸和位置
     this.getImgElSize($(ev.target));
     // 获取当前点击的图片索引
@@ -143,7 +189,12 @@ export default class Lightbox {
       <a href="javascript:;" aria-label="${window.t.nextImage}" title="${window.t.nextImage}" class="next-image" role="button">
         <i class="icon-chevron-right"></i>
       </a>
-      <p id="img-alt" aria-live="polite">${$(ev.target).attr('alt')}</p>
+      <p id="img-alt" aria-live="polite">${this.imgEl.alt}</p>
+      <div class="loading-animation">
+        <div class="spinner-border text-light" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
     </div>
     `;
     // 把图片灯箱HTML插入到页面
@@ -151,8 +202,8 @@ export default class Lightbox {
 
     // 创建一张图片
     const imgEl = document.createElement('img');
-    imgEl.src = $(ev.target).attr('src');
-    imgEl.alt = $(ev.target).attr('alt');
+    imgEl.src = this.imgEl.src;
+    imgEl.alt = this.imgEl.alt;
     imgEl.setAttribute('id', 'max-img');
     imgEl.className = 'shadow';
     // 让图片的尺寸和位置和原图保持一致
@@ -189,8 +240,30 @@ export default class Lightbox {
     $('#max-img-box').focus();
     // 把图片灯箱状态设置为开启
     this.isShow = true;
-    // 开启图片懒加载的情况下，加载文章内的下一张图片
-    if (this.imgIndex < this.imgCount - 1) this.loadImg(this.imgIndex + 1);
+
+    // 图片加载完成后隐藏加载动画
+    this.imgEl.onload = () => {
+      $('#max-img-box .loading-animation').addClass('d-none');
+      // 如果当前点击的文章内的图片还没有加载就顺便加载
+      if ($(ev.target).hasClass('load-img')) {
+        $(ev.target).attr('src', this.imgEl.src);
+      }
+      // 如果灯箱内的图片尺寸不正确就重新设置尺寸和位置
+      if ($('#max-img').width() < 1 || $('#max-img').height() < 1) {
+        // 重新获取图片的真实尺寸
+        this.srcImgSize.width = this.imgEl.naturalWidth;
+        this.srcImgSize.height = this.imgEl.naturalHeight;
+        // 计算图片灯箱内的图片尺寸
+        const {targetHeight, targetWidth} = this.calculateImgSize();
+        // 重新设置尺寸和位置
+        $('#max-img').css({
+          width: targetWidth,
+          height: targetHeight,
+          top: window.innerHeight / 2 - targetHeight / 2,
+          left: window.innerWidth / 2 - targetWidth / 2
+        });
+      }
+    };
   }
 
   /**
@@ -242,7 +315,8 @@ export default class Lightbox {
    */
   rotate() {
     // 图片左旋转点击
-    $('#max-img-box .rotate-left-btn').on('click', () => {
+    $('#max-img-box .rotate-left-btn').on('click', ev => {
+      ev.stopPropagation();
       this.direction -= 90;
       // 设置过渡时间
       $('#max-img').css('transition', '0.25s');
@@ -254,7 +328,8 @@ export default class Lightbox {
     });
 
     // 图片右旋转点击
-    $('#max-img-box .rotate-right-btn').on('click', () => {
+    $('#max-img-box .rotate-right-btn').on('click', ev => {
+      ev.stopPropagation();
       this.direction += 90;
       // 设置过渡时间
       $('#max-img').css('transition', '0.25s');
@@ -271,7 +346,8 @@ export default class Lightbox {
    */
   zoom() {
     // 放大按钮点击
-    $('#max-img-box .zoom-in-btn').on('click', () => {
+    $('#max-img-box .zoom-in-btn').on('click', ev => {
+      ev.stopPropagation();
       // 每次放大 20%
       const targetWidth = $('#max-img-box #max-img').width() + this.maxImgSize.width / 5;
       const targetHeight = $('#max-img-box #max-img').height() + this.maxImgSize.height / 5;
@@ -293,7 +369,8 @@ export default class Lightbox {
     });
 
     // 缩小按钮点击
-    $('#max-img-box .zoom-out-btn').on('click', () => {
+    $('#max-img-box .zoom-out-btn').on('click', ev => {
+      ev.stopPropagation();
       // 如果当前图片尺寸是初始大小就不再缩小
       if (
           $('#max-img-box #max-img').width() === this.maxImgSize.width &&
@@ -319,6 +396,7 @@ export default class Lightbox {
   mouseMove() {
     $('#max-img').on('mousedown', ev => {
       ev.preventDefault();
+      ev.stopPropagation();
       // 是否允许拖动
       if (!this.allowMove) return false;
       const X = ev.clientX - ev.target.offsetLeft;
@@ -332,6 +410,7 @@ export default class Lightbox {
       });
       // 停止拖动
       $('#max-img-box').on('mouseup', ev => {
+        ev.stopPropagation();
         $('#max-img-box').off('mousemove');
       });
     });
@@ -343,6 +422,7 @@ export default class Lightbox {
   touchMove() {
     $('#max-img').on('touchstart', ev => {
       ev.preventDefault();
+      ev.stopPropagation();
       // 是否允许拖动
       if (!this.allowMove) return false;
       const X = ev.touches[0].pageX - ev.target.offsetLeft;
@@ -358,95 +438,69 @@ export default class Lightbox {
       });
       // 停止拖动
       $('#max-img-box').on('touchend', ev => {
+        ev.stopPropagation();
         $('#max-img-box').off('touchmove');
       });
     });
   }
 
   /**
-   * 开启图片懒加载时，提前加载文章内的下一张图片
-   * @param index 图片索引
-   */
-  loadImg(index) {
-    const jqueryImgEl = $('.post-content img').eq(index);
-    // 如果图片还没有加载
-    if (jqueryImgEl.hasClass('load-img')) {
-      jqueryImgEl.attr('src', jqueryImgEl.attr('data-src'));
-    }
-  }
-
-  /**
-   * 更换图片初始化
+   * 更换图片
    */
   changeImg() {
-    // 更换下一张图片点击
-    $('#max-img-box .next-image').on('click', () => {
-      // 如果当前是最后一张图片就不再往后切换
-      if (this.imgIndex === this.imgCount - 1) return false;
-      // 恢复图片的鼠标样式和禁止拖动
-      $('#max-img-box #max-img').css('cursor', 'default');
-      this.allowMove = false;
-      // 重置图片角度
-      this.resetDirection();
-      // 获取下一张图片的真实尺寸
-      this.srcImgSize.width = $('.post-content img').get(this.imgIndex + 1).naturalWidth;
-      this.srcImgSize.height = $('.post-content img').get(this.imgIndex + 1).naturalHeight;
-      // 重新获取当前显示的图片在文章内的尺寸和位置
-      this.getImgElSize($('.post-content img').eq(this.imgIndex + 1));
-      // 计算图片灯箱内的新图片的尺寸
-      const {targetHeight, targetWidth} = this.calculateImgSize();
-      // 添加动画
-      $('#max-img').addClass('change-img-animation');
-      // 在下一帧执行
-      requestAnimationFrame(() => {
-        // 设置图片 src 和 alt
-        $('#max-img').attr({
-          src: $('.post-content img').eq(this.imgIndex + 1).attr('src'),
-          alt: $('.post-content img').eq(this.imgIndex + 1).attr('alt')
-        });
-        $('#max-img').css({
-          width: targetWidth,
-          height: targetHeight,
-          left: window.innerWidth / 2 - targetWidth / 2,
-          top: window.innerHeight / 2 - targetHeight / 2
-        });
-        setTimeout(() => {
-          $('#max-img').removeClass('change-img-animation');
-        }, 250);
-        // 设置图片 alt 文字显示
-        $('#img-alt').html($('.post-content img').eq(this.imgIndex + 1).attr('alt'));
-        // 当前图片索引+1
-        this.imgIndex ++;
-        // 重新设置当前图片的序号和总数量
-        $('#max-img-box #img-counter').html(`${this.imgIndex + 1}/${this.imgCount}`);
-        // 开启图片懒加载的情况下，加载文章内的下一张图片
-        if (this.imgIndex < this.imgCount - 1) this.loadImg(this.imgIndex + 1);
-      });
-    });
+    // 恢复图片的鼠标样式和禁止拖动
+    $('#max-img-box #max-img').css('cursor', 'default');
+    this.allowMove = false;
+    // 重置图片角度
+    this.resetDirection();
+    // 隐藏灯箱内的图片
+    $('#max-img').hide();
+    // 显示动画
+    $('#max-img-box .loading-animation').removeClass('d-none');
 
-    // 更换上一张图片点击
-    $('#max-img-box .previous-image').on('click', () => {
-      if (this.imgIndex === 0) return false;
-      // 恢复图片的鼠标样式和禁止拖动
-      $('#max-img-box #max-img').css('cursor', 'default');
-      this.allowMove = false;
-      // 重置图片角度
-      this.resetDirection();
-      // 获取上一张图片的真实尺寸
-      this.srcImgSize.width = $('.post-content img').get(this.imgIndex - 1).naturalWidth;
-      this.srcImgSize.height = $('.post-content img').get(this.imgIndex - 1).naturalHeight;
+    let newImgUrl = '';  // 存储要显示的图片的 URL
+    // 获取要显示的图片的 URL
+    if ($('.post-content img').eq(this.imgIndex).hasClass('load-img')) {
+      newImgUrl = $('.post-content img').eq(this.imgIndex).attr('data-src');
+    }else {
+      newImgUrl = $('.post-content img').eq(this.imgIndex).attr('src');
+    }
+    // 加载图片
+    this.imgEl.src = newImgUrl;
+    this.imgEl.alt = $('.post-content img').eq(this.imgIndex).attr('alt');
+    // 设置图片 alt 文字显示
+    $('#img-alt').html(this.imgEl.alt);
+    // 重新设置当前图片的序号和总数量
+    $('#max-img-box #img-counter').html(`${this.imgIndex + 1}/${this.imgCount}`);
+
+    // 图片加载完成
+    this.imgEl.onload = () => {
+      // 获取图片的真实尺寸
+      this.srcImgSize.width = this.imgEl.naturalWidth;
+      this.srcImgSize.height = this.imgEl.naturalHeight;
+      // 如果文章内的图片还没有加载就顺便加载文章内的图片
+      if ($('.post-content img').eq(this.imgIndex).hasClass('load-img')) {
+        $('.post-content img').eq(this.imgIndex).attr('src', newImgUrl);
+      }
       // 重新获取当前显示的图片在文章内的尺寸和位置
-      this.getImgElSize($('.post-content img').eq(this.imgIndex - 1));
+      this.getImgElSize($('.post-content img').eq(this.imgIndex));
       // 计算图片灯箱内的新图片的尺寸
       const {targetHeight, targetWidth} = this.calculateImgSize();
-      // 添加动画
+      this.maxImgSize.width = targetWidth;
+      this.maxImgSize.height = targetHeight;
+      // 隐藏加载动画
+      $('#max-img-box .loading-animation').addClass('d-none');
+      // 显示灯箱内的图片
+      $('#max-img').show();
+      // 给图片添加动画
       $('#max-img').addClass('change-img-animation');
+
       // 在下一帧执行
       requestAnimationFrame(() => {
         // 设置图片 src 和 alt
         $('#max-img').attr({
-          src: $('.post-content img').eq(this.imgIndex - 1).attr('src'),
-          alt: $('.post-content img').eq(this.imgIndex - 1).attr('alt')
+          src: this.imgEl.src,
+          alt: this.imgEl.alt
         });
         $('#max-img').css({
           width: targetWidth,
@@ -457,13 +511,7 @@ export default class Lightbox {
         setTimeout(() => {
           $('#max-img').removeClass('change-img-animation');
         }, 250);
-        // 设置图片 alt 文字显示
-        $('#img-alt').html($('.post-content img').eq(this.imgIndex - 1).attr('alt'));
-        // 当前图片索引-1
-        this.imgIndex --;
-        // 重新设置当前图片的序号和总数量
-        $('#max-img-box #img-counter').html(`${this.imgIndex + 1}/${this.imgCount}`);
       });
-    });
+    }
   }
 }

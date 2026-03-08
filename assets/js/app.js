@@ -198,7 +198,7 @@ $(function () {
   function lazyLoadImages() {
     // 如果页面加载完成时有图片在可视区就直接加载图片
     $('.load-img').each(function() {
-      if ($(this).offset().top < window.innerHeight) {
+      if ($(this).offset().top < window.innerHeight && $(this).hasClass('load-img')) {
         $(this).attr('src', $(this).attr('data-src'));
       }
     });
