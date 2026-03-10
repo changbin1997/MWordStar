@@ -123,7 +123,9 @@ const ZH = array(
         'nextPage' => '下一页（右光标键）',
         'previousPage' => '上一页（左光标键）',
         'postContentPagination' => '文章内容分页',
-        'commentPagination' => '评论分页'
+        'commentPagination' => '评论分页',
+        'nextPageNoShortcutKey' => '下一页',
+        'previousPageNoShortcutKey' => '上一页'
     ),
     'archivePage' => array(
         'totalPosts' => '共包含 %d 篇文章'

@@ -123,7 +123,9 @@ const EN = array(
         'nextPage' => 'Next Page (Right Arrow Key)',
         'previousPage' => 'Previous Page (Left Arrow Key)',
         'postContentPagination' => 'Post Content Pagination',
-        'commentPagination' => 'Comment Pagination'
+        'commentPagination' => 'Comment Pagination',
+        'nextPageNoShortcutKey' => 'Next Page',
+        'previousPageNoShortcutKey' => 'Previous Page'
     ),
     'archivePage' => array(
         'totalPosts' => 'Total of %d Posts'

@@ -47,8 +47,6 @@ function localizeScript() {
     // 需要传给 JS 的翻译内容
     $t = array(
         'pressEnterToAddTheEmojiToTheCommentInputField' => $GLOBALS['t']['emoji']['pressEnterToAddTheEmojiToTheCommentInputField'],
-        'nextPage' => $GLOBALS['t']['pagination']['nextPage'],
-        'previousPage' => $GLOBALS['t']['pagination']['previousPage'],
         'zoomIn' => $GLOBALS['t']['imageLightbox']['zoomIn'],
         'zoomOut' => $GLOBALS['t']['imageLightbox']['zoomOut'],
         'rotateLeft' => $GLOBALS['t']['imageLightbox']['rotateLeft'],
@@ -1069,4 +1067,62 @@ function splitArticleContent($content) {
     $pattern = '/<(pre|code)\b[^>]*>.*?<\/\1>(*SKIP)(*FAIL)|<p>\s*\[-page-\]\s*<\/p>|\[-page-\]/is';
     // 使用 preg_split 进行分割
     return preg_split($pattern, $content);
+}
+
+/**
+ * 生成 Bootstrap4 分页
+ *
+ * @param object $archive 包含 pageNav 方法的 typecho 文章或评论对象
+ * @param string $previousPageTitle 用于上一页 title 的文字
+ * @param string $nextPageTitle 用于下一页 title 的文字
+ * @return void
+ */
+function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
+    ob_start();
+    // typecho 分页
+    $archive->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array(
+        'wrapTag' => 'ul',
+        'wrapClass' => 'pagination justify-content-center',
+        'itemTag' => 'li',
+        'textTag' => 'a',
+        'currentClass' => 'active',
+        'prevClass' => '',
+        'nextClass' => ''
+    ));
+    $content = ob_get_contents();
+    ob_end_clean();
+
+    // 如果没有分页则不输出
+    if (empty($content)) {
+        return;
+    }
+
+    // 给 li 加入 page-item
+    $content = preg_replace('/<li(\s+)class="/i', '<li$1class="page-item ', $content);
+    $content = preg_replace('/<li>/i', '<li class="page-item">', $content);
+
+    // 给 a 加入 page-link
+    $content = preg_replace('/<a href=/', '<a class="page-link" href=', $content);
+    $content = str_replace('<a>', '<a class="page-link">', $content);
+
+    // 为当前激活状态添加 aria-current="page"
+    $content = str_replace('<li class="page-item active"><a class="page-link"', '<li class="page-item active"><a aria-current="page" class="page-link"', $content);
+
+    // 给上一页和下一页的链接添加文本提示
+    $content = preg_replace_callback(
+        '/<a\s+(class="page-link"[^>]*href="[^"]*"[^>]*)><i\s+class="icon-chevron-left"><\/i><\/a>/i',
+        function($matches) use ($previousPageTitle) {
+            return '<a ' . $matches[1] . ' aria-label="' . $previousPageTitle . '" title="' . $previousPageTitle . '" data-toggle="tooltip" data-placement="top"><i class="icon-chevron-left"></i></a>';
+        },
+        $content
+    );
+    $content = preg_replace_callback(
+        '/<a\s+(class="page-link"[^>]*href="[^"]*"[^>]*)><i\s+class="icon-chevron-right"><\/i><\/a>/i',
+        function($matches) use ($nextPageTitle) {
+            return '<a ' . $matches[1] . ' aria-label="' . $nextPageTitle . '" title="' . $nextPageTitle . '" data-toggle="tooltip" data-placement="top"><i class="icon-chevron-right"></i></a>';
+        },
+        $content
+    );
+
+    echo $content;
 }

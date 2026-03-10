@@ -84,7 +84,7 @@ function threadedComments($comments, $options) {
             <?php $comments->listComments(); ?>
 
             <nav aria-label="<?php echo $GLOBALS['t']['pagination']['commentPagination']; ?>" class="pagination-nav">
-                <?php $comments->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center ' , 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+                <?php bootstrap4Pagination($comments, $GLOBALS['t']['pagination']['previousPageNoShortcutKey'], $GLOBALS['t']['pagination']['nextPageNoShortcutKey']); ?>
             </nav>
         </div>
     <?php endif; ?>

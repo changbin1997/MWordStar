@@ -27,7 +27,7 @@ $this->need('components/header.php');
                 <?php if ($this->have()): ?>
                     <?php $this->need('components/post-list.php'); ?>
                     <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav">
-                        <?php $this->pageNav('<i class="icon-chevron-left"></i>', '<i class="icon-chevron-right"></i>', 1, '...', array('wrapTag' => 'ul', 'wrapClass' => 'pagination justify-content-center', 'itemTag' => 'li',  'textTag' => 'a', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+                        <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
                     </nav>
                 <?php else: ?>
                     <article class="post no-post-message mwordstar-block">
