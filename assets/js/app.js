@@ -170,7 +170,7 @@ $(function () {
         location.href = $('.next .page-link').attr('href');
       }
       // 文章内容翻页
-      if ($('.post-pagination .next-page').length) {
+      if ($('.post-pagination .next-page').length && !lightbox.isShow) {
         location.href = $('.post-pagination .next-page').attr('href');
       }
     }
@@ -182,7 +182,7 @@ $(function () {
         location.href = $('.prev .page-link').attr('href');
       }
       // 文章内容翻页
-      if ($('.post-pagination .previous-page').length) {
+      if ($('.post-pagination .previous-page').length && !lightbox.isShow) {
         location.href = $('.post-pagination .previous-page').attr('href');
       }
     }
