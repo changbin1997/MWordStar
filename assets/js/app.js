@@ -11,7 +11,6 @@ import Emoji from './modules/Emoji.js';
 import codeHighlightInit from './modules/codeHighlightInit.js';
 import accessibilityInit from './modules/accessibilityInit.js';
 import ColorAndLanguage from './modules/ColorAndLanguage.js';
-import BootstrapStyle from './modules/BootstrapStyle.js';
 import ArticleEngagement from './modules/ArticleEngagement.js';
 import Directory from './modules/Directory.js';
 import PJAX from './modules/PJAX.js';
@@ -55,10 +54,6 @@ $(function () {
   // 侧边栏文章头图初始化
   sidebarCoverImageInit();
 
-  // bootstrap样式初始化
-  const bootstrapStyle = new BootstrapStyle();
-  bootstrapStyle.init();
-
   // 图片懒加载
   lazyLoadImages();
 
@@ -92,9 +87,6 @@ $(function () {
 
     // 侧边栏的语言切换初始化
     colorAndLanguage.sidebarChangeLanguageInit();
-
-    // bootstrap样式初始化
-    bootstrapStyle.init();
 
     // 重新生成文字头像
     avatarGenerator.refresh();

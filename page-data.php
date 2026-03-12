@@ -140,26 +140,28 @@ $this->need('components/header.php');
                             <?php $top5Post = top5post(); ?>
                             <?php if (count($top5Post)): ?>
                                 <p><?php printf($GLOBALS['t']['dataPage']['mostViewedPostDescription'], count($top5Post)); ?></p>
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th><?php echo $GLOBALS['t']['dataPage']['rank']; ?></th>
-                                        <th><?php echo $GLOBALS['t']['dataPage']['title']; ?></th>
-                                        <th><?php echo $GLOBALS['t']['dataPage']['views']; ?></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php $top = 1; ?>
-                                    <?php foreach ($top5Post as $post): ?>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
                                         <tr>
-                                            <td><?php echo $top; ?></td>
-                                            <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
-                                            <td><?php echo $post['views']; ?></td>
+                                            <th><?php echo $GLOBALS['t']['dataPage']['rank']; ?></th>
+                                            <th><?php echo $GLOBALS['t']['dataPage']['title']; ?></th>
+                                            <th><?php echo $GLOBALS['t']['dataPage']['views']; ?></th>
                                         </tr>
-                                        <?php $top ++; ?>
-                                    <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        <?php $top = 1; ?>
+                                        <?php foreach ($top5Post as $post): ?>
+                                            <tr>
+                                                <td><?php echo $top; ?></td>
+                                                <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
+                                                <td><?php echo $post['views']; ?></td>
+                                            </tr>
+                                            <?php $top ++; ?>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             <?php else: ?>
                                 <p><?php echo $GLOBALS['t']['dataPage']['NoPostsAvailableAtTheMoment']; ?></p>
                             <?php endif; ?>    
@@ -169,26 +171,28 @@ $this->need('components/header.php');
                             <?php $top5CommentPost = top5CommentPost(); ?>
                             <?php if (count($top5CommentPost)): ?>
                                 <p><?php printf($GLOBALS['t']['dataPage']['mostCommentedPostDescription'], count($top5CommentPost)); ?></p>
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th><?php echo $GLOBALS['t']['dataPage']['rank']; ?></th>
-                                        <th><?php echo $GLOBALS['t']['dataPage']['title']; ?></th>
-                                        <th><?php echo $GLOBALS['t']['dataPage']['comments']; ?></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php $top = 1; ?>
-                                    <?php foreach ($top5CommentPost as $post): ?>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
                                         <tr>
-                                            <td><?php echo $top; ?></td>
-                                            <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
-                                            <td><?php echo $post['commentsNum']; ?></td>
+                                            <th><?php echo $GLOBALS['t']['dataPage']['rank']; ?></th>
+                                            <th><?php echo $GLOBALS['t']['dataPage']['title']; ?></th>
+                                            <th><?php echo $GLOBALS['t']['dataPage']['comments']; ?></th>
                                         </tr>
-                                        <?php $top ++; ?>
-                                    <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        <?php $top = 1; ?>
+                                        <?php foreach ($top5CommentPost as $post): ?>
+                                            <tr>
+                                                <td><?php echo $top; ?></td>
+                                                <td><a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a></td>
+                                                <td><?php echo $post['commentsNum']; ?></td>
+                                            </tr>
+                                            <?php $top ++; ?>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             <?php else: ?>
                                 <p><?php echo $GLOBALS['t']['dataPage']['NoPostsAvailableAtTheMoment']; ?></p>
                             <?php endif; ?>    

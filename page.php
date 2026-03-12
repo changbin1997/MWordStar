@@ -61,7 +61,17 @@ $this->need('components/header.php');
                     </div>
                     <article>
                         <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
-                            <?php echo $this->options->imagelazyloading == 'on'?replaceImgSrc($this->content):$this->content; ?>
+                            <?php
+                            $postContent = $this->content;
+                            // 设置表格样式
+                            $postContent = addBootstrapTableClasses($postContent);
+                            // 如果启用了图片懒加载就把 img src 替换为 data-src
+                            if ($this->options->imagelazyloading == 'on') {
+                                $postContent = replaceImgSrc($postContent);
+                            }
+
+                            echo $postContent;
+                            ?>
                         </div>
                     </article>
                     <?php $this->need('components/comments.php'); ?>

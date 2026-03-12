@@ -22,6 +22,7 @@
             </h2>
         </header>
         <?php if ($postListStyle == 'summary'): ?>
+            <!--输出摘要-->
             <div class="entry-summary" data-header-image-type="<?php echo getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle); ?>">
                 <?php if (getPostListHeaderImageStyle($this->fields->postListHeaderImageStyle, $this->options->postListHeaderImageStyle) == 'mini' && $headerImg): ?>
                     <div class="row">
@@ -53,7 +54,8 @@
                 <?php endif; ?>
             </div>
         <?php else: ?>
-            <div class="entry-summary post-content"><?php $this->content(); ?></div>
+            <!--输出全文-->
+            <div class="entry-summary post-content"><?php echo addBootstrapTableClasses($this->content); ?></div>
         <?php endif; ?>
         <div class="article-info clearfix border-top" role="group" aria-label="<?php echo $GLOBALS['t']['post']['postInfo']; ?>">
             <!--时间-->

@@ -91,7 +91,7 @@ $this->need('components/header.php');  //  头文件
                                     </div>
                                 <?php endforeach; ?>
                             <?php endif; ?>
-                            <?php $this->content(); ?>
+                            <?php echo addBootstrapTableClasses($this->content); ?>
                         </div>
                     </article>
                     <?php $this->need('components/comments.php'); ?>

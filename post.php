@@ -104,11 +104,24 @@ $this->need('components/header.php');
                             </div>
                         <?php endif; ?>
                         <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
-                            <?php $GLOBALS['postPage'] = splitArticleContent($this->content); ?>
-                            <?php $postPageNum = isset($_GET['post-page']) ? $_GET['post-page'] : 1; ?>
-                            <?php if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1; ?>
-                            <?php $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]); ?>
-                            <?php echo $this->options->imagelazyloading == 'on' ? replaceImgSrc($GLOBALS['post']['content']) : $GLOBALS['post']['content']; ?>
+                            <?php
+                            // 使用分隔符对文章进行分页
+                            $GLOBALS['postPage'] = splitArticleContent($this->content);
+                            // 如果使用 url query 传入了页码就获取页码，否则就设置为第一页
+                            $postPageNum = isset($_GET['post-page']) ? $_GET['post-page'] : 1;
+                            // 如果传入的页码找不到对应的文章页面就把页码设置为第一页
+                            if (!isset($GLOBALS['postPage'][$postPageNum - 1])) $postPageNum = 1;
+                            // 生成章节目录
+                            $GLOBALS['post'] = articleDirectory($GLOBALS['postPage'][$postPageNum - 1]);
+                            // 设置表格样式
+                            $GLOBALS['post']['content'] = addBootstrapTableClasses($GLOBALS['post']['content']);
+                            // 如果启用了图片懒加载就把 img 的 src 替换为 data-src
+                            if ($this->options->imagelazyloading == 'on') {
+                                $GLOBALS['post']['content'] = replaceImgSrc($GLOBALS['post']['content']);
+                            }
+
+                            echo $GLOBALS['post']['content'];
+                            ?>
                         </div>
                         <?php if (count($GLOBALS['postPage']) > 1): ?>
                             <nav aria-label="<?php echo $GLOBALS['t']['pagination']['postContentPagination']; ?>" class="py-3 post-pagination">

@@ -103,4 +103,7 @@ export default () => {
   $('.author-tag').each(function() {
     $(this).closest('.comment-info').find('.author a').attr('title', window.t.author);
   });
+
+  // 初始化工具提示
+  $('[data-toggle="tooltip"]').tooltip();
 }

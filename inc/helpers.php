@@ -1126,3 +1126,52 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
 
     echo $content;
 }
+
+/**
+ * 为文章中的表格添加 Bootstrap 4 样式
+ *
+ * @param string $html 原始文章 HTML
+ * @return string 处理后的 HTML
+ */
+function addBootstrapTableClasses($html) {
+    // 没有表格直接返回原内容
+    if (empty($html) || strpos($html, '<table') === false) {
+        return $html;
+    }
+
+    // 创建 DOMDocument 并加载 HTML
+    $dom = new DOMDocument();
+    // 抑制因不标准 HTML 产生的警告
+    libxml_use_internal_errors(true);
+    // 添加 XML 声明确保 UTF-8 编码正确解析
+    $dom->loadHTML('<?xml encoding="UTF-8">' . $html);
+    libxml_clear_errors();
+
+    // 获取所有表格元素
+    $tables = $dom->getElementsByTagName('table');
+    foreach ($tables as $table) {
+        // 合并现有的 class 属性
+        $oldClass = $table->getAttribute('class');
+        $classes = array_filter(explode(' ', $oldClass));
+        $classes = array_merge($classes, ['table', 'table-striped', 'table-bordered', 'table-hover']);
+        $classes = array_unique($classes);
+        $table->setAttribute('class', implode(' ', $classes));
+
+        // 创建外层响应式容器 div
+        $div = $dom->createElement('div');
+        $div->setAttribute('class', 'table-responsive');
+
+        // 将表格替换为 div，并将表格移入 div
+        $table->parentNode->replaceChild($div, $table);
+        $div->appendChild($table);
+    }
+
+    // 提取 body 内的所有内容（去除自动添加的 doctype/html/body 标签）
+    $body = $dom->getElementsByTagName('body')->item(0);
+    $newHtml = '';
+    foreach ($body->childNodes as $child) {
+        $newHtml .= $dom->saveHTML($child);
+    }
+
+    return $newHtml;
+}
