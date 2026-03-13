@@ -60,24 +60,29 @@ $text-primary: #007bff;
 
 // 文章内容配色
 @mixin post-content {
-  // 文章内容
+  // 段落
   p {
     color: $dark-text-color !important;
   }
+  // 标题
   h1,h2,h3,h4,h5,h6 {
     color: $dark-text-color;
   }
+  // 列表项
   li {
     color: $dark-text-color;
   }
+  // 行内代码
   p > code,td code,li code,h1 code,h2 code,h3 code,h4 code,th code {
     background-color: #000000 !important;
     color: $dark-text-color !important;
   }
+  // 引用
   blockquote {
     border-color: $dark-text-color2;
     color: $dark-text-color2;
   }
+  // 表格
   table {
     border-color: #495057;
     td,th {
@@ -91,20 +96,39 @@ $text-primary: #007bff;
       background-color: $dark-bg-color2;
     }
   }
+  // 分隔线
   hr {
     background-color: $dark-text-color2;
     color: $dark-text-color2;
   }
+  // 代码块
   pre {
     code {
-      &::-webkit-scrollbar {
-        background: $dark-bg-color2;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: $dark-text-color3;
-      }
+      @include dark-horizontal-scrollbar;
     }
+  }
+  // 响应式表格滚动条
+  .table-responsive {
+    @include dark-horizontal-scrollbar;
+  }
+}
+
+// 横向滚动条配色
+@mixin dark-horizontal-scrollbar {
+  // Firefox
+  scrollbar-color: #777777 #222222;
+  // IE11
+  scrollbar-face-color: #777777;
+  scrollbar-track-color: #222222;
+  &::-webkit-scrollbar-track {
+    background: #222222;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #777777;
+    border: 3px solid #222222;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #999999;
   }
 }
 

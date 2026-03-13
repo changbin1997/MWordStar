@@ -159,11 +159,11 @@ $(function () {
     if (ev.key === 'ArrowRight' || ev.keyCode === 39 && !inputFocus && !lightbox.isShow) {
       // 文章列表翻页
       if ($('.next .page-link').length && $('.post-list-item').length) {
-        $('.next .page-link').click();
+        $('.next .page-link').get(0).click();
       }
       // 文章内容翻页
       if ($('.post-pagination .next-page').length && !lightbox.isShow) {
-        $('.post-pagination .next-page').click();
+        $('.post-pagination .next-page').get(0).click();
       }
     }
 
@@ -171,11 +171,11 @@ $(function () {
     if (ev.key === 'ArrowLeft' || ev.keyCode === 37 && !inputFocus && !lightbox.isShow) {
       // 文章列表翻页
       if ($('.prev .page-link').length && $('.post-list-item').length) {
-        $('.prev .page-link').click();
+        $('.prev .page-link').get(0).click();
       }
       // 文章内容翻页
       if ($('.post-pagination .previous-page').length && !lightbox.isShow) {
-        $('.post-pagination .previous-page').click();
+        $('.post-pagination .previous-page').get(0).click();
       }
     }
   });

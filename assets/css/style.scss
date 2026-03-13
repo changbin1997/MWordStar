@@ -254,6 +254,38 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
   video {
     width: 100%;
   }
+  .table-responsive {
+    @include light-horizontal-scrollbar;
+  }
+}
+
+// 横向滚动条样式，用于深色模式之外的配色
+@mixin light-horizontal-scrollbar {
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: #666666 #f0f0f0;
+  // IE11
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-face-color: #666666;
+  scrollbar-track-color: #f0f0f0;
+  scrollbar-arrow-color: #666666;
+  scrollbar-shadow-color: #f0f0f0;
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #666666;
+    border-radius: 8px;
+    border: 3px solid #f0f0f0;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #444444;
+  }
 }
 
 
@@ -326,13 +358,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
     }
     code {
       font-size: $articleFontSize;
-      &::-webkit-scrollbar {
-        height: 12px;
-        background: #F1F1F1;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #A8A8A8;
-      }
+      @include light-horizontal-scrollbar;
     }
     .copy-code-btn {
       border-color: #BBBBBB;
