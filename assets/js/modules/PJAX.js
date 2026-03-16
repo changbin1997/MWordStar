@@ -135,6 +135,11 @@ export default class PJAX {
       if (typeof pjaxEnd === 'function') {
         pjaxEnd(ev);
       }
+
+      // 如果设置了 PJAX 完成后执行自定义代码
+      if (typeof pjaxUpdateComplete === 'function') {
+        pjaxUpdateComplete();
+      }
     });
   }
 
