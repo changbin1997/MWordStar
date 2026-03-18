@@ -25,11 +25,10 @@
   background: #F6F6F6;
 }
 .stackoverflow-light pre .line-box {
-  background: #F6F6F6;
+  background: #EFF2F3;
 }
 .stackoverflow-light pre .line-box div {
   color: #777777;
-  border-right: 1px solid #777777;
 }
 .stackoverflow-light pre code.hljs {
   display: block;
@@ -105,11 +104,10 @@
   background: #0D1116;
 }
 .github-dark pre .line-box {
-  background: #0D1116;
+  background: #151B23;
 }
 .github-dark pre .line-box div {
   color: #9B9B9B;
-  border-right: 1px solid #9B9B9B;
 }
 .github-dark pre code.hljs {
   display: block;
@@ -175,11 +173,10 @@
   background: #000000;
 }
 .sunburst pre .line-box {
-  background: #000000;
+  background: #131314;
 }
 .sunburst pre .line-box div {
   color: #AEAEAE;
-  border-right: 1px solid #AEAEAE;
 }
 .sunburst pre code.hljs {
   display: block;
@@ -265,6 +262,7 @@
   top: 0;
   left: 0;
   padding-top: 12px;
+  padding-bottom: 12px;
 }
 .enable-highlight pre .line-box div {
   line-height: 22.5px;

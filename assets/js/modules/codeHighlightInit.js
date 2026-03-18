@@ -10,11 +10,18 @@ export default () => {
   // 给文章中的代码块添加拷贝按钮和拷贝事件
   if ($('.enable-highlight').length && $('pre').length) {
     for (let i = 0;i < $('pre').length;i ++) {
-      // 添加代码高亮样式
-      hljs.highlightBlock($('pre code').eq(i).get(0));
-
       // 是否是代码块
       if ($('pre').eq(i).children('code').length) {
+        let codeStr = $('pre code').eq(i).text();
+        // 检查代码末尾是否以换行符结尾
+        if (codeStr.endsWith('\n')) {
+          // 如果是，在末尾追加一个普通空格（或者零宽空格 '\u200b'）
+          $('pre code').eq(i).text(codeStr + ' ');
+        }
+
+        // 添加代码高亮样式
+        hljs.highlightBlock($('pre code').eq(i).get(0));
+
         // 生成代码行号
         if ($('.line-num-show').length) {
           // 获取代码行数

@@ -295,10 +295,9 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
   pre {
     background: #F6F6F6;
     .line-box {
-      background: #F6F6F6;
+      background: #EFF2F3;
       div {
         color: #777777;
-        border-right: 1px solid #777777;
       }
     }
   }
@@ -309,10 +308,9 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
   pre {
     background: #0D1116;
     .line-box {
-      background: #0D1116;
+      background: #151B23;
       div {
         color: #9B9B9B;
-        border-right: 1px solid #9B9B9B;
       }
     }
   }
@@ -323,10 +321,9 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
   pre {
     background: #000000;
     .line-box {
-      background: #000000;
+      background: #131314;
       div {
         color: #AEAEAE;
-        border-right: 1px solid #AEAEAE;
       }
     }
   }
@@ -345,6 +342,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
       top: 0;
       left: 0;
       padding-top: 12px;
+      padding-bottom: 12px;
       div {
         line-height: 22.5px;
         height: 22.5px;
