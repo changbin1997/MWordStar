@@ -8,29 +8,42 @@
  */
 function languageInit($language) {
     $languageList = array('zh', 'en');
-
     // 如果有语言设置 Cookie 就优先使用 Cookie 存储的语言
-    if (isset($_COOKIE['language']) && $_COOKIE['language'] != '') $language = $_COOKIE['language'];
+    if (isset($_COOKIE['language']) && $_COOKIE['language'] != '') {
+        $language = $_COOKIE['language'];
+    }
 
     // 自动选择
     if ($language == 'auto') {
-        if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) or $_SERVER['HTTP_ACCEPT_LANGUAGE'] == null) {
+        if (empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            // 浏览器没有发送语言信息就默认使用英文
             $language = 'en';
-        }else {
-            $userLanguage = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-            $language = substr($userLanguage, 0, 2);
+        } else {
+            $acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+            // 检查是否存在 intl 扩展中的函数
+            if (function_exists('locale_accept_from_http')) {
+                $userLanguage = locale_accept_from_http($acceptLang);
+                $language = substr($userLanguage, 0, 2);
+            } else {
+                // 降级方案：直接截取 HTTP_ACCEPT_LANGUAGE 的前两个字符
+                $language = strtolower(substr($acceptLang, 0, 2));
+            }
+
             // 如果用户浏览器的语言是不支持的语言就使用英语
-            if (!in_array($language, $languageList)) $language = 'en';
+            if (!in_array($language, $languageList)) {
+                $language = 'en';
+            }
         }
     }
 
     // 选择中文
-    if ($language == 'zh-CN' or $language == 'zh' or $language == null) {
+    if ($language == 'zh-CN' || $language == 'zh' || $language == null) {
         require_once __DIR__ . '/../languages/zh.php';
         $GLOBALS['t'] = ZH;
     }
     // 选择英文
-    if ($language == 'en') {
+    elseif ($language == 'en') {
         require_once __DIR__ . '/../languages/en.php';
         $GLOBALS['t'] = EN;
     }
