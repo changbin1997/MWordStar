@@ -288,6 +288,12 @@ EOT;
         'hide' => '禁用'
     ), 'hide', _t('日期归档页添加 noindex 标签'), _t('开启后会在日期归档页的 head 区域添加 noindex，告诉搜索引擎不要收录日期归档页。侧边栏的文章归档组件会按月份生成文章归档链接和页面，日历组件也会生成按日期的文章归档链接和页面，如果你的网站建站较早的话，可能会生成大量归档页面，在有分类和标签归档页的情况下，这些日期归档页对于搜索引擎来说属于重复页面。大量的日期归档页可能会影响到文章页面的权重，而且用户一般也不会在搜索引擎搜索文章归档页。')));
 
+    // 作者归档页添加 noindex
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('authorPageNoindex', array(
+        'show' => '启用',
+        'hide' => '禁用'
+    ), 'hide', _t('作者归档页添加 noindex 标签'), _t('开启后会在作者归档页的 head 区域添加 noindex，告诉搜索引擎不要收录作者归档页。如果你的 Typecho 没有开放作者注册，只有一个作者的情况下，作者归档页和首页的内容基本上是差不多的，对于搜索引擎来说，这也是重复页面。')));
+
     // 首页友链
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('homeLinks', null, null, _t('首页友情链接'), _t('首页友情链接只会显示在首页的侧边栏，需要 JSON 格式数据 <a href="https://mwordstar.misterma.com/docs/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5" target="_blank">点击查看友情链接格式说明</a>，你也可以使用链接编辑器编辑，无需手动输入 JSON。。 <button data-title="首页友情链接" data-name="homeLinks" type="button" class="btn show-link-editor">打开链接编辑器</button>')));
 

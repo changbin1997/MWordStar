@@ -1188,3 +1188,46 @@ function addBootstrapTableClasses($html) {
 
     return $newHtml;
 }
+
+/**
+ * 输出自定义的 SEO 标签 (Canonical & Noindex)
+ *
+ * @param object $obj 传入的 $this 对象
+ * @param array $seoOptions SEO 相关的设置
+ */
+function themeSeoTags($obj) {
+    $options = Helper::options();
+    // 搜索页添加 noindex
+    if ($obj->is('search') && $options->searchPageNoindex == 'show') {
+        echo '<meta name="robots" content="noindex, follow">';
+    }
+    // 日期归档页添加 noindex
+    if ($obj->is('date') && $options->dateArchivePageNoindex == 'show') {
+        echo '<meta name="robots" content="noindex, follow">';
+    }
+    // 作者归档页添加 noindex
+    if ($obj->is('author') && $options->authorPageNoindex == 'show') {
+        echo '<meta name="robots" content="noindex, follow">';
+    }
+
+    // 输出 canonical 链接
+    // 文章页和独立页面
+    if ($obj->is('post') || $obj->is('page')) {
+        echo '<link rel="canonical" href="' . $obj->permalink . '" />';
+    }
+    // 获取当前的路由路径信息
+    $path = Typecho_Request::getInstance()->getPathInfo();
+    $currentUrl = Typecho_Common::url($path, $options->index);
+    // 分类和标签归档页
+    if ($obj->is('tag') || $obj->is('category')) {
+        echo '<link rel="canonical" href="' . $currentUrl . '" />';
+    }
+    // 首页
+    if ($obj->is('index')) {
+        if ($path === '/' || empty($path)) {
+            echo '<link rel="canonical" href="' . rtrim($options->siteUrl, '/') . '/" />' . "\n";
+        } else {
+            echo '<link rel="canonical" href="' . $currentUrl . '" />' . "\n";
+        }
+    }
+}
