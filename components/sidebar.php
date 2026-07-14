@@ -40,7 +40,7 @@ $components = explode(',', $components);
                         </div>
                         <div class="info float-left border-right">
                             <p class="quantity"><?php $quantity->publishedCommentsNum(); ?></p>
-                            <?php echo $GLOBALS['t']['sidebar']['totalComments']; ?>
+                            <?php echo $GLOBALS['t']['dataPage']['totalComments']; ?>
                         </div>
                         <div class="info float-left">
                             <?php $runningSince = $this->options->birthday ? round((time() - strtotime($this->options->birthday)) / 86400, 0) : round((time() - $userInfo['created']) / 86400, 0); ?>
