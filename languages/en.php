@@ -77,9 +77,8 @@ const EN = array(
     ),
     'sidebar' => array(
         'blogInfo' => 'Blog Info',
-        'totalPosts' => 'Total Posts %d',
+        'totalPosts' => 'Total Posts',
         'totalComments' => 'Comments',
-        'totalViews' => 'Total Views %d',
         'runningSince' => array('Running Since', '%d days'),
         'latestPosts' => 'Latest Posts',
         'recentComments' => 'Recent Comments',

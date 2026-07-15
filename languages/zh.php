@@ -77,9 +77,8 @@ const ZH = array(
     ),
     'sidebar' => array(
         'blogInfo' => '博客信息',
-        'totalPosts' => '文章数 %d',
-        'totalComments' => '评论数 %d',
-        'totalViews' => '文章阅读量 %d',
+        'totalPosts' => '文章数',
+        'totalComments' => '评论数',
         'runningSince' => array('运行天数', '%d天'),
         'latestPosts' => '最新文章',
         'recentComments' => '最新回复',
