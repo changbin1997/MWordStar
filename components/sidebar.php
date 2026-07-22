@@ -104,22 +104,20 @@ $components = explode(',', $components);
             <section class="calendar mwordstar-block">
                 <?php
                 // 获取日历的月份
-                $date = getMonth();
+                $date = getMonth($this);
                 // 根据语言使用不同的日期格式
                 $format = $GLOBALS['language'] == 'en' ? 'F Y' : 'Y年m月';
-                // 设置日历组件的标题
-                $monthTimestamp = mktime(0, 0, 0, $date[1], 1, $date[0]);
                 ?>
-                <h4><?php echo date($format, $monthTimestamp); ?></h4>
+                <h4><?php echo mwordstarCalendarMonthLabel($date, $format); ?></h4>
                 <div class="tag-list pt-2">
-                    <?php $calendar = calendar($date[0] . '-' . $date[1] . '-01', $this->options->siteUrl, $this->options->rewrite); ?>
+                    <?php $calendar = calendar($date, null, null, $this); ?>
                     <?php echo $calendar['calendar']; ?>
                     <nav class="pt-2 clearfix" aria-label="<?php echo $GLOBALS['t']['sidebar']['previousAndNextMonths']; ?>">
                         <?php if ($calendar['previous']): ?>
-                            <a class="p-0 float-left" href="<?php echo $calendar['previousUrl']; ?>"><?php echo date($format, strtotime($calendar['previous'] . '01')); ?></a>
+                            <a class="p-0 float-left" href="<?php echo $calendar['previousUrl']; ?>"><?php echo mwordstarCalendarMonthLabel($calendar['previous'], $format); ?></a>
                         <?php endif; ?>
                         <?php if ($calendar['next']): ?>
-                            <a class="p-0 float-right"  href="<?php echo $calendar['nextUrl']; ?>"><?php echo date($format, strtotime($calendar['next'] . '01')); ?></a>
+                            <a class="p-0 float-right"  href="<?php echo $calendar['nextUrl']; ?>"><?php echo mwordstarCalendarMonthLabel($calendar['next'], $format); ?></a>
                         <?php endif; ?>
                     </nav>
                 </div>
