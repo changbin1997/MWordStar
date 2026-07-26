@@ -154,6 +154,12 @@ EOT;
         'summary' => '文章列表显示摘要和文章头图'
     ), 'summary', _t('文章列表显示'), _t('文章列表包括首页、搜索页、归档 左侧的文章列表。在显示全文的情况下，文章列表不会显示文章头图，显示全文也支持使用 <b style="color: #C7254E;">&lt!--more--&gt</b> 来手动分隔摘要。如果你想自定义单篇文章的列表显示，你也可以在文章编辑页单独设置列表显示。')));
 
+    // 文章列表分页方式
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('postPaginationType', array(
+        'links' => '数字分页链接',
+        'loadMore' => '点击加载更多'
+    ), 'links', _t('文章列表分页方式'), _t('设置首页和其它归档页的文章列表分页方式。<b style="color: red;">点击加载更多</b> 和 <b style="color: red;">文章列表直接显示全文</b> 不建议同时开启。')));
+    
     // 文章摘要字数
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '150', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：150个字。')));
 

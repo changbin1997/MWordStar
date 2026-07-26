@@ -26,9 +26,23 @@ $this->need('components/header.php');
             <div class="article-list col-md-12 col-lg-8 col-sm-12 content-area">
                 <?php if ($this->have()): ?>
                     <?php $this->need('components/post-list.php'); ?>
-                    <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav">
-                        <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
-                    </nav>
+
+                    <?php if ($this->options->postPaginationType == 'loadMore'): ?>
+                        <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav" style="display: none;">
+                            <?php $nextPageExists = bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                        </nav>
+                        <?php if ($nextPageExists): ?>
+                            <nav class="text-center pagination-nav">
+                                <button type="button" class="btn load-more-post-btn btn-block border">
+                                    <?php echo $GLOBALS['t']['loadMore']['oadMore']; ?>
+                                </button>
+                            </nav>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav">
+                            <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                        </nav>
+                    <?php endif; ?>
                 <?php else: ?>
                     <article class="post no-post-message mwordstar-block">
                         <h4 class="post-title" role="alert"><?php echo $GLOBALS['t']['sidebar']['noPostsAvailableToDisplay']; ?></h4>

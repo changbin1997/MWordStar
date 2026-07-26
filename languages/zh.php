@@ -126,6 +126,10 @@ const ZH = array(
         'nextPageNoShortcutKey' => '下一页',
         'previousPageNoShortcutKey' => '上一页'
     ),
+    'loadMore' => array(
+        'oadMore' => '加载更多',
+        'loading' => '正在加载...'
+    ),
     'archivePage' => array(
         'totalPosts' => '共包含 %d 篇文章'
     ),

@@ -83,7 +83,9 @@ function localizeScript() {
         'author' => $GLOBALS['t']['post']['author'],
         'switchToDarkMode' => $GLOBALS['t']['themeColor']['switchToDarkMode'],
         'switchToLightMode' => $GLOBALS['t']['themeColor']['switchToLightMode'],
-        'QRCode' => $GLOBALS['t']['post']['QRCode']
+        'QRCode' => $GLOBALS['t']['post']['QRCode'],
+        'loadMore' => $GLOBALS['t']['loadMore']['oadMore'],
+        'loading' => $GLOBALS['t']['loadMore']['loading']
     );
     $t = json_encode($t);
     echo '<script type="text/javascript"> window.t = ' . $t . '; </script>';
@@ -1213,12 +1215,12 @@ function splitArticleContent($content) {
 }
 
 /**
- * 生成 Bootstrap4 分页
+ * 生成 Bootstrap4 分页，并判断是否有下一页
  *
  * @param object $archive 包含 pageNav 方法的 typecho 文章或评论对象
  * @param string $previousPageTitle 用于上一页 title 的文字
  * @param string $nextPageTitle 用于下一页 title 的文字
- * @return void
+ * @return bool 有下一页返回 true，否则返回 false（包括没有分页的情况）
  */
 function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
     ob_start();
@@ -1227,7 +1229,7 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
         'wrapTag' => 'ul',
         'wrapClass' => 'pagination justify-content-center',
         'itemTag' => 'li',
-        'textTag' => 'a',
+        'textTag' => 'span',
         'currentClass' => 'active',
         'prevClass' => 'prev',
         'nextClass' => 'next'
@@ -1235,9 +1237,9 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
     $content = ob_get_contents();
     ob_end_clean();
 
-    // 如果没有分页则不输出
+    // 如果没有分页则不输出，并返回 false
     if (empty($content)) {
-        return;
+        return false;
     }
 
     // 给 li 加入 page-item
@@ -1246,7 +1248,9 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
 
     // 给 a 加入 page-link
     $content = preg_replace('/<a href=/', '<a class="page-link" href=', $content);
-    $content = str_replace('<a>', '<a class="page-link">', $content);
+
+    // 将 Typecho 默认的 <span> 替换为带类的 <span> (用于当前页高亮和省略号)
+    $content = preg_replace('/<span>/', '<span class="page-link">', $content);
 
     // 为当前激活状态添加 aria-current="page"
     $content = str_replace('<li class="page-item active"><a class="page-link"', '<li class="page-item active"><a aria-current="page" class="page-link"', $content);
@@ -1267,7 +1271,11 @@ function bootstrap4Pagination($archive, $previousPageTitle, $nextPageTitle) {
         $content
     );
 
+    // 检查是否存在下一页链接（通过查找最终生成的下一页图标）
+    $hasNext = (strpos($content, 'icon-chevron-right') !== false);
+
     echo $content;
+    return $hasNext;
 }
 
 /**

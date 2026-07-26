@@ -1025,6 +1025,10 @@ header .navbar .search-form button:focus {
   border-radius: unset;
 }
 
+.load-more-post-btn {
+  background-color: #FFFFFF;
+}
+
 footer .container {
   padding: 20px 20px;
   text-align: center;
@@ -2500,6 +2504,9 @@ footer .container span {
   background-color: #007bff;
   border: none;
 }
+.primary-color .load-more-post-btn {
+  color: #007bff;
+}
 .primary-color .sidebar section ul > li > a, .primary-color .sidebar .latest-comment a, .primary-color .sidebar .user-name, .primary-color .sidebar .calendar a {
   color: #007bff;
 }
@@ -2749,6 +2756,9 @@ footer .container span {
   background-color: #17a2b8;
   border: none;
 }
+.info-color .load-more-post-btn {
+  color: #17a2b8;
+}
 .info-color .sidebar section ul > li > a, .info-color .sidebar .latest-comment a, .info-color .sidebar .user-name, .info-color .sidebar .calendar a {
   color: #17a2b8;
 }
@@ -2997,6 +3007,9 @@ footer .container span {
   color: #ffffff;
   background-color: #28a745;
   border: none;
+}
+.success-color .load-more-post-btn {
+  color: #28a745;
 }
 .success-color .sidebar section ul > li > a, .success-color .sidebar .latest-comment a, .success-color .sidebar .user-name, .success-color .sidebar .calendar a {
   color: #28a745;
@@ -3350,6 +3363,10 @@ footer .container span {
 }
 .dark-color .pagination-nav ul li:not(.active) a:hover, .dark-color .post-pagination ol li:not(.active) a:hover {
   background-color: #2D2D2D;
+}
+.dark-color .load-more-post-btn {
+  background-color: #1E1E1E;
+  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .sidebar section ul > li > a, .dark-color .sidebar .latest-comment a, .dark-color .sidebar .user-name, .dark-color .sidebar .calendar a {
   color: rgba(255, 255, 255, 0.87);

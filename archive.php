@@ -20,7 +20,7 @@ $this->need('components/header.php');
         <?php endif; ?>
         <div class="row">
             <div class="col-md-12 col-lg-8 col-sm-12 archives-list content-area">
-                <div id="main" class="archives">
+                <div id="main" class="archives article-list">
                     <header class="page-header mwordstar-block">
                         <h1 class="archive-title">
                             <?php $this->archiveTitle(array(
@@ -45,10 +45,24 @@ $this->need('components/header.php');
                             </ol>
                         </article>
                     <?php endif; ?>
+
+                    <?php if ($this->options->postPaginationType == 'loadMore'): ?>
+                        <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav" style="display: none;">
+                            <?php $nextPageExists = bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                        </nav>
+                        <?php if ($nextPageExists): ?>
+                            <nav class="text-center pagination-nav">
+                                <button type="button" class="btn load-more-post-btn btn-block border">
+                                    <?php echo $GLOBALS['t']['loadMore']['oadMore']; ?>
+                                </button>
+                            </nav>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav">
+                            <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
+                        </nav>
+                    <?php endif; ?>
                 </div>
-                <nav aria-label="<?php echo $GLOBALS['t']['pagination']['pagination']; ?>" class="pagination-nav">
-                    <?php bootstrap4Pagination($this, $GLOBALS['t']['pagination']['previousPage'], $GLOBALS['t']['pagination']['nextPage']); ?>
-                </nav>
             </div>
             <?php $this->need('components/sidebar.php'); ?>
         </div>

@@ -114,6 +114,11 @@ $text-success: #28a745;
     }
   }
 
+  // 加载更多文章的按钮
+  .load-more-post-btn {
+    color: $text-success;
+  }
+
   // 侧边栏配色
   .sidebar {
     // 通用列表链接、最新评论链接、博客信息区域链接、日历链接配色
