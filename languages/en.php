@@ -127,7 +127,7 @@ const EN = array(
         'previousPageNoShortcutKey' => 'Previous Page'
     ),
     'loadMore' => array(
-        'oadMore' => 'Load More',
+        'loadMore' => 'Load More',
         'loading' => 'Loading...'
     ),
     'archivePage' => array(

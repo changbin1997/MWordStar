@@ -84,7 +84,7 @@ function localizeScript() {
         'switchToDarkMode' => $GLOBALS['t']['themeColor']['switchToDarkMode'],
         'switchToLightMode' => $GLOBALS['t']['themeColor']['switchToLightMode'],
         'QRCode' => $GLOBALS['t']['post']['QRCode'],
-        'loadMore' => $GLOBALS['t']['loadMore']['oadMore'],
+        'loadMore' => $GLOBALS['t']['loadMore']['loadMore'],
         'loading' => $GLOBALS['t']['loadMore']['loading']
     );
     $t = json_encode($t);

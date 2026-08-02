@@ -127,7 +127,7 @@ const ZH = array(
         'previousPageNoShortcutKey' => '上一页'
     ),
     'loadMore' => array(
-        'oadMore' => '加载更多',
+        'loadMore' => '加载更多',
         'loading' => '正在加载...'
     ),
     'archivePage' => array(
