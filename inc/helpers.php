@@ -85,7 +85,9 @@ function localizeScript() {
         'switchToLightMode' => $GLOBALS['t']['themeColor']['switchToLightMode'],
         'QRCode' => $GLOBALS['t']['post']['QRCode'],
         'loadMore' => $GLOBALS['t']['loadMore']['loadMore'],
-        'loading' => $GLOBALS['t']['loadMore']['loading']
+        'loading' => $GLOBALS['t']['loadMore']['loading'],
+        'noDescription' => $GLOBALS['t']['githubPage']['noDescription'],
+        'unknown' => $GLOBALS['t']['githubPage']['unknown']
     );
     $t = json_encode($t);
     echo '<script type="text/javascript"> window.t = ' . $t . '; </script>';

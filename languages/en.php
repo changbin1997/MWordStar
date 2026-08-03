@@ -189,5 +189,10 @@ const EN = array(
         'themeColor' => 'Theme Color',
         'switchToDarkMode' => 'Light Mode: Switch to Dark Mode',
         'switchToLightMode' => 'Dark Mode: Switch to Light Mode'
+    ),
+    'githubPage' => array(
+        'githubUsernameIsnotConfigured' => 'GitHub username is not configured. Please add it in the theme settings.',
+        'noDescription' => 'No description',
+        'unknown' => 'Unknown'
     )
 );

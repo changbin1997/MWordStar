@@ -189,5 +189,10 @@ const ZH = array(
         'themeColor' => '主题配色',
         'switchToDarkMode' => '当前为浅色模式，点击可切换为深色模式',
         'switchToLightMode' => '当前为深色模式，点击可切换为浅色模式'
+    ),
+    'githubPage' => array(
+        'githubUsernameIsnotConfigured' => '您还没有配置 GitHub 用户，请在后台主题设置页填写 GitHub 用户名。',
+        'noDescription' => '暂无描述',
+        'unknown' => '未知'
     )
 );

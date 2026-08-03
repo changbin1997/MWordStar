@@ -17,6 +17,7 @@ import PJAX from './modules/PJAX.js';
 import sidebarCoverImageInit from './modules/sidebarCoverImageInit.js';
 import AvatarGenerator from './modules/AvatarGenerator.js';
 import loadMore from './modules/loadMore.js';
+import GithubRepositoryShowcase from './modules/GithubRepositoryShowcase.js';
 
 $(function () {
   let inputFocus = false;  // 表单焦点状态
@@ -48,6 +49,10 @@ $(function () {
 
   // 加载更多文章初始化
   loadMore();
+
+  // github仓库展示初始化
+  const githubRepositoryShowcase = new GithubRepositoryShowcase();
+  githubRepositoryShowcase.init();
 
   // 代码高亮初始化
   codeHighlightInit();
@@ -107,6 +112,8 @@ $(function () {
     directory.init();
     // 加载更多文章初始化
     loadMore();
+    // github项目展示初始化
+    githubRepositoryShowcase.init();
   });
 
   // 页面空白区域点击

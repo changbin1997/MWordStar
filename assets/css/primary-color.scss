@@ -257,6 +257,14 @@ $text-primary: #007bff;
     }
   }
 
+  // github项目展示页配色
+  .github-page {
+    // 加载更多的按钮
+    .load-more-repository-btn {
+      @include btn-outline-primary;
+    }
+  }
+
   // 404页面配色
   .container-404 {
     .to-home-link, .search-btn {

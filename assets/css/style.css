@@ -1574,6 +1574,20 @@ footer .container span {
   margin-bottom: 20px;
 }
 
+.github-page #repository-list .alert {
+  background: #E5E6EB;
+}
+.github-page #repository-list .loading-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.github-page #repository-list .repository-item .card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .container-404 h1 {
   margin-top: 20px;
   font-size: 150px;
@@ -2422,6 +2436,22 @@ footer .container span {
 .light-color1 .data-page .statistics-card, .light-color2 .data-page .statistics-card {
   background-color: #B3D8FF;
 }
+.light-color1 .github-page .load-more-repository-btn, .light-color2 .github-page .load-more-repository-btn {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+.light-color1 .github-page .load-more-repository-btn:hover, .light-color2 .github-page .load-more-repository-btn:hover {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.light-color1 .github-page .load-more-repository-btn:focus, .light-color2 .github-page .load-more-repository-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
+.light-color1 .github-page .load-more-repository-btn:disabled, .light-color2 .github-page .load-more-repository-btn:disabled {
+  color: #6c757d;
+  background-color: transparent;
+}
 .light-color1 .container-404 .to-home-link, .light-color1 .container-404 .search-btn, .light-color2 .container-404 .to-home-link, .light-color2 .container-404 .search-btn {
   color: #fff;
   background-color: #6c757d;
@@ -2673,6 +2703,22 @@ footer .container span {
 }
 .primary-color .data-page .statistics-card {
   background-color: #B3D8FF;
+}
+.primary-color .github-page .load-more-repository-btn {
+  color: #007bff;
+  border-color: #007bff;
+}
+.primary-color .github-page .load-more-repository-btn:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.primary-color .github-page .load-more-repository-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+.primary-color .github-page .load-more-repository-btn:disabled {
+  color: #007bff;
+  background-color: transparent;
 }
 .primary-color .container-404 .to-home-link, .primary-color .container-404 .search-btn {
   color: #fff;
@@ -2926,6 +2972,22 @@ footer .container span {
 .info-color .data-page .statistics-card {
   background-color: #B3D8FF;
 }
+.info-color .github-page .load-more-repository-btn {
+  color: #17a2b8;
+  border-color: #17a2b8;
+}
+.info-color .github-page .load-more-repository-btn:hover {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+.info-color .github-page .load-more-repository-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
+}
+.info-color .github-page .load-more-repository-btn:disabled {
+  color: #17a2b8;
+  background-color: transparent;
+}
 .info-color .container-404 .to-home-link, .info-color .container-404 .search-btn {
   color: #fff;
   background-color: #17a2b8;
@@ -3177,6 +3239,22 @@ footer .container span {
 }
 .success-color .data-page .statistics-card {
   background-color: #B3D8FF;
+}
+.success-color .github-page .load-more-repository-btn {
+  color: #28a745;
+  border-color: #28a745;
+}
+.success-color .github-page .load-more-repository-btn:hover {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.success-color .github-page .load-more-repository-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
+.success-color .github-page .load-more-repository-btn:disabled {
+  color: #28a745;
+  background-color: transparent;
 }
 .success-color .container-404 .to-home-link, .success-color .container-404 .search-btn {
   color: #fff;
@@ -3761,6 +3839,37 @@ footer .container span {
 }
 .dark-color .data-page .statistics-card {
   background-color: #2D2D2D;
+}
+.dark-color .github-page #repository-list .repository-item .card {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: #1E1E1E;
+}
+.dark-color .github-page #repository-list .repository-item .card .card-footer {
+  background: #2D2D2D;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.dark-color .github-page #repository-list .alert {
+  background-color: #2D2D2D;
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .github-page #repository-list .loading-animation {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .github-page .load-more-repository-btn {
+  color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+.dark-color .github-page .load-more-repository-btn:hover {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+.dark-color .github-page .load-more-repository-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+}
+.dark-color .github-page .load-more-repository-btn:disabled {
+  color: #f8f9fa;
+  background-color: transparent;
 }
 .dark-color .container-404 h1, .dark-color .container-404 h2, .dark-color .container-404 h5 {
   color: rgba(255, 255, 255, 0.87);

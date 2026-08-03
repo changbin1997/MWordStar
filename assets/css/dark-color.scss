@@ -541,6 +541,34 @@ $text-primary: #007bff;
     }
   }
 
+  // github项目展示页配色
+  .github-page {
+    #repository-list {
+      // 仓库列表
+      .repository-item .card {
+        border-color: $dark-border-color;
+        background: $dark-bg-color;
+        .card-footer {
+          background: $dark-bg-color2;
+          color: $dark-text-color2 !important;
+        }
+      }
+      // 提示信息
+      .alert {
+        background-color: $dark-bg-color2;
+        color: $dark-text-color;
+      }
+      // 加载动画
+      .loading-animation {
+        color: $dark-text-color;
+      }
+    }
+    // 加载更多的按钮
+    .load-more-repository-btn {
+      @include btn-outline-light;
+    }
+  }
+
   // 404页
   .container-404 {
     h1, h2, h5 {

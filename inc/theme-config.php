@@ -158,7 +158,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('postPaginationType', array(
         'links' => '数字分页链接',
         'loadMore' => '点击加载更多'
-    ), 'links', _t('文章列表分页方式'), _t('设置首页和其它归档页的文章列表分页方式。<b style="color: red;">点击加载更多</b> 和 <b style="color: red;">文章列表直接显示全文</b> 不建议同时开启。')));
+    ), 'links', _t('文章列表分页方式'), _t('设置首页和其它归档页的文章列表分页方式。<b style="color: #C7254E;">点击加载更多</b> 和 <b style="color: #C7254E;">文章列表直接显示全文</b> 不建议同时开启。')));
     
     // 文章摘要字数
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('summary', null, '150', _t('文章摘要字数'), _t('首页、分类页、标签页、搜索页 的文章摘要字数，默认为：150个字。')));
@@ -333,6 +333,9 @@ EOT;
 
     // PJAX更新完成后执行的代码
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('pjaxEnd', null, null, _t('PJAX 更新完成后要执行的 JS 代码'), _t('PJAX 页面跳转时，不会刷新页面，如果你需要在页面加载完成后执行 JS 代码，可以在这里填写 JS 代码。这里的代码会在页面内容更新完成后执行，直接填写 JS 代码，不需要加 script 标签。')));
+
+    // GitHub 仓库展示
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('githubUserName', null, '', _t('GitHub用户名'), _t('您需要先创建一个独立页面，在顶部撰写菜单选择 <b style="color: #C7254E;">创建页面</b>，自定义模板选择 <b style="color: #C7254E;">GitHub项目展示</b>。主题使用的是 GitHub REST API ，目前只能显示公开仓库，无需登录和受权，无需 API Key，只需要在这里填写 GitHub用户名。')));
 
     // 自定义CSS
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('cssCode', null, null, _t('自定义 CSS'), _t('通过自定义 CSS 您可以很方便的设置页面样式，自定义 CSS 不会影响网站源代码。')));

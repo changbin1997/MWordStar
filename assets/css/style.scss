@@ -1231,6 +1231,30 @@ footer {
   }
 }
 
+// github项目展示页
+.github-page {
+  #repository-list {
+    // 提示信息
+    .alert {
+      background: #E5E6EB;
+    }
+    // 加载动画
+    .loading-animation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    // 列表卡片
+    .repository-item {
+      .card-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
 // 404页
 .container-404 {
   h1 {
