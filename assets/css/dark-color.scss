@@ -536,8 +536,13 @@ $text-primary: #007bff;
   
   // 数据统计页配色
   .data-page {
+    // 统计卡片
     .statistics-card {
       background-color: $dark-bg-color2;
+    }
+    // 加载动画
+    .loading {
+      color: $dark-text-color;
     }
   }
 

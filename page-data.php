@@ -46,26 +46,7 @@ $this->need('components/header.php');
                             <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
                         </h2>
                     </header>
-                    <div class="article-info clearfix border-bottom border-top" role="group" aria-label="<?php echo $GLOBALS['t']['post']['postInfo']; ?>">
-                        <!--时间-->
-                        <div class="info">
-                            <i class="icon-calendar icon" aria-hidden="true"></i>
-                            <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>">
-                                <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
-                            </span>
-                        </div>
-                        <!--作者-->
-                        <div class="info">
-                            <i class="icon-user icon" aria-hidden="true"></i>
-                            <a data-toggle="tooltip" data-placement="top" href="<?php $this->author->permalink(); ?>" title="<?php echo $GLOBALS['t']['post']['author']; ?>"><?php $this->author(); ?></a>
-                        </div>
-                        <!--阅读量-->
-                        <div class="info">
-                            <i class="icon-eye icon" aria-hidden="true"></i>
-                            <?php $views = postViews($this); ?>
-                            <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['views']; ?>"><?php echo $views; ?></span>
-                        </div>
-                    </div>
+
                     <article>
                         <div data-target="<?php $this->options->postLinkOpen(); ?>" class="post-content">
                             <h2><?php echo $GLOBALS['t']['dataPage']['basicStatistics']; ?></h2>
@@ -122,18 +103,39 @@ $this->need('components/header.php');
                                 <p><?php echo $GLOBALS['t']['dataPage']['NoCategoryDataAvailableAtTheMoment']; ?></p>
                             <?php else: ?>    
                                 <p><?php echo $GLOBALS['t']['dataPage']['categoryDistributionDescription']; ?></p>
-                                <div id="category-chart" style="height: 320px;"></div>
+                                <div id="category-chart" style="height: 320px;">
+                                    <div class="loading">
+                                        <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <span><?php echo $GLOBALS['t']['loadMore']['loading']; ?></span>
+                                    </div>
+                                </div>
                             <?php endif; ?>
                             <hr>
                             <!--文章更新日历图-->
                             <h2><?php echo $GLOBALS['t']['dataPage']['postUpdates']; ?></h2>
                             <p><?php printf($GLOBALS['t']['dataPage']['postUpdateDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
-                            <div id="post-chart" style="height: 180px;"></div>
+                            <div id="post-chart" style="height: 180px;">
+                                <div class="loading">
+                                    <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <span><?php echo $GLOBALS['t']['loadMore']['loading']; ?></span>
+                                </div>
+                            </div>
                             <hr>
                             <!--评论动态日历图-->
                             <h2><?php echo $GLOBALS['t']['dataPage']['commentActivity']; ?></h2>
                             <p><?php printf($GLOBALS['t']['dataPage']['commentActivityDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
-                            <div id="comment-chart" style="height: 180px;"></div>
+                            <div id="comment-chart" style="height: 180px;">
+                                <div class="loading">
+                                    <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <span><?php echo $GLOBALS['t']['loadMore']['loading']; ?></span>
+                                </div>
+                            </div>
                             <hr>
                             <!--最多阅读的文章表格-->
                             <h2><?php echo $GLOBALS['t']['dataPage']['mostViewedPosts']; ?></h2>

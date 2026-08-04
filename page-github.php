@@ -7,8 +7,6 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 $GLOBALS['page'] = 'page-github';
-// 让主题使用的时区跟随 Typecho 设置的时区
-setTimezoneByOffset($this->options->timezone);
 // 语言初始化
 languageInit($this->options->language);
 

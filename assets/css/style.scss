@@ -1415,10 +1415,17 @@ footer {
 }
 
 // 独立页面 - 网站统计
-.data-page a{
+.data-page {
   // 卡片区域
   .statistics-card {
     background: #B3D8FF;
+  }
+  // 图表加载动画
+  .loading {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

@@ -1940,8 +1940,14 @@ footer .container span {
   box-shadow: 1px 5px 1px rgba(170, 170, 170, 0.1);
 }
 
-.data-page a .statistics-card {
+.data-page .statistics-card {
   background: #B3D8FF;
+}
+.data-page .loading {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .category-page .category-list {
@@ -3839,6 +3845,9 @@ footer .container span {
 }
 .dark-color .data-page .statistics-card {
   background-color: #2D2D2D;
+}
+.dark-color .data-page .loading {
+  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .github-page #repository-list .repository-item .card {
   border-color: rgba(255, 255, 255, 0.2);
