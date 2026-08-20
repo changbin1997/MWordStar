@@ -119,6 +119,8 @@ $this->need('components/header.php');
                             if ($this->options->imagelazyloading == 'on') {
                                 $GLOBALS['post']['content'] = replaceImgSrc($GLOBALS['post']['content']);
                             }
+                            // 短代码解析
+                            $GLOBALS['post']['content'] = parseThemeShortcodes($GLOBALS['post']['content']);
 
                             echo $GLOBALS['post']['content'];
                             ?>

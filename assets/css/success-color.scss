@@ -170,7 +170,7 @@ $text-success: #28a745;
     // 文章内容区域
     .post-content {
       // 链接
-      a {
+      a:not(.btn) {
         @include link-success;
       }
     }

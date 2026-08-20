@@ -2333,10 +2333,10 @@ footer .container span {
 .light-color1 .content-area .article-info .info a:hover, .light-color2 .content-area .article-info .info a:hover {
   color: #494f54;
 }
-.light-color1 .content-area .post-content a, .light-color2 .content-area .post-content a {
+.light-color1 .content-area .post-content a:not(.btn), .light-color2 .content-area .post-content a:not(.btn) {
   color: #6c757d;
 }
-.light-color1 .content-area .post-content a:hover, .light-color2 .content-area .post-content a:hover {
+.light-color1 .content-area .post-content a:not(.btn):hover, .light-color2 .content-area .post-content a:not(.btn):hover {
   color: #494f54;
 }
 .light-color1 .content-area .agree-and-share button, .light-color2 .content-area .agree-and-share button {
@@ -2601,10 +2601,10 @@ footer .container span {
 .primary-color .content-area .article-info .info a:hover {
   color: #0056b3;
 }
-.primary-color .content-area .post-content a {
+.primary-color .content-area .post-content a:not(.btn) {
   color: #007bff;
 }
-.primary-color .content-area .post-content a:hover {
+.primary-color .content-area .post-content a:not(.btn):hover {
   color: #0056b3;
 }
 .primary-color .content-area .agree-and-share button {
@@ -2869,10 +2869,10 @@ footer .container span {
 .info-color .content-area .article-info .info a:hover {
   color: #0f6674;
 }
-.info-color .content-area .post-content a {
+.info-color .content-area .post-content a:not(.btn) {
   color: #17a2b8;
 }
-.info-color .content-area .post-content a:hover {
+.info-color .content-area .post-content a:not(.btn):hover {
   color: #0f6674;
 }
 .info-color .content-area .agree-and-share button {
@@ -3137,10 +3137,10 @@ footer .container span {
 .success-color .content-area .article-info .info a:hover {
   color: #19692c;
 }
-.success-color .content-area .post-content a {
+.success-color .content-area .post-content a:not(.btn) {
   color: #28a745;
 }
-.success-color .content-area .post-content a:hover {
+.success-color .content-area .post-content a:not(.btn):hover {
   color: #19692c;
 }
 .success-color .content-area .agree-and-share button {

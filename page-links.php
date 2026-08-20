@@ -91,7 +91,14 @@ $this->need('components/header.php');  //  头文件
                                     </div>
                                 <?php endforeach; ?>
                             <?php endif; ?>
-                            <?php echo addBootstrapTableClasses($this->content); ?>
+                            <?php
+                            // 设置 bootstrap 响应式表格
+                            $postContent = addBootstrapTableClasses($this->content);
+                            // 短代码解析
+                            $postContent = parseThemeShortcodes($postContent);
+
+                            echo $postContent;
+                            ?>
                         </div>
                     </article>
                     <?php $this->need('components/comments.php'); ?>

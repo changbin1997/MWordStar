@@ -1371,3 +1371,62 @@ function themeSeoTags($obj) {
         }
     }
 }
+
+/**
+ * 解析文章内容中的自定义短代码 (兼容 PHP 5.6)
+ *
+ * @param string $content 文章内容的 HTML 字符串
+ * @return string 转换后的 HTML 字符串
+ */
+function parseThemeShortcodes($content) {
+    // 定义支持的短代码标签，方便未来维护和添加新功能
+    $supported_tags = array('button', 'alert');
+    $tags_pattern = implode('|', $supported_tags);
+    // 构造正则表达式
+    // 前半部分匹配 <pre> 或 <code> 块（用于忽略）
+    // 后半部分匹配类似 [tag attr="value"]内容[/tag] 的短代码
+    $pattern = '/(<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>)|\[(' . $tags_pattern . ')\b([^\]]*?)\](.*?)\[\/\2\]/is';
+
+    // 使用正则回调函数进行替换
+    return preg_replace_callback($pattern, function($matches) {
+        // 如果匹配到的是代码块 ($matches[1] 不为空)，直接原样返回，不解析其中的短代码
+        if (!empty($matches[1])) {
+            return $matches[1];
+        }
+
+        // 提取短代码各部分内容
+        $tag = strtolower($matches[2]);
+        $attr_string = $matches[3];
+        $inner_content = $matches[4];
+
+        // 解析属性字符串 (支持双引号和单引号，例如 url="xxx" 或 type='xxx')
+        $atts = array();
+        if (preg_match_all('/(\w+)\s*=\s*(["\'])(.*?)\2/i', $attr_string, $attr_matches)) {
+            // $attr_matches[1] 是属性名，$attr_matches[3] 是属性值
+            foreach ($attr_matches[1] as $index => $key) {
+                $atts[strtolower($key)] = $attr_matches[3][$index];
+            }
+        }
+
+        // 根据不同的短代码标签进行处理
+        switch ($tag) {
+            case 'button':
+                // 获取属性，赋予默认值
+                $url = isset($atts['url']) ? $atts['url'] : '#';
+                $type = isset($atts['type']) ? $atts['type'] : 'primary';
+
+                // 为了安全，属性值使用 htmlspecialchars 过滤 XSS
+                return '<a href="' . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . '" class="btn btn-' . htmlspecialchars($type, ENT_QUOTES, 'UTF-8') . '">' . $inner_content . '</a>';
+
+            case 'alert':
+                $type = isset($atts['type']) ? $atts['type'] : 'primary';
+
+                // alert 内部可能包含其他排版 HTML (如链接)，因此 $inner_content 不做转义
+                return '<div class="alert alert-' . htmlspecialchars($type, ENT_QUOTES, 'UTF-8') . '">' . $inner_content . '</div>';
+
+            default:
+                // 如果没有对应的处理逻辑，返回原文本
+                return $matches[0];
+        }
+    }, $content);
+}

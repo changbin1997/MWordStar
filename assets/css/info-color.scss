@@ -170,7 +170,7 @@ $text-info: #17a2b8;
     // 文章内容区域
     .post-content {
       // 链接
-      a {
+      a:not(.btn) {
         @include link-info;
       }
     }

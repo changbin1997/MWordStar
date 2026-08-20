@@ -220,7 +220,7 @@ $text-secondary: #6c757d;
     // 文章内容区域
     .post-content {
       // 链接
-      a {
+      a:not(.btn) {
         @include link-secondary;
       }
     }

@@ -55,7 +55,15 @@
             </div>
         <?php else: ?>
             <!--输出全文-->
-            <div class="entry-summary post-content"><?php echo addBootstrapTableClasses($this->content); ?></div>
+            <div class="entry-summary post-content">
+                <?php
+                // 添加 bootstrap4 响应式表格
+                $postContent = addBootstrapTableClasses($this->content);
+                // 短代码解析
+                $postContent = parseThemeShortcodes($postContent);
+                echo $postContent;
+                ?>
+            </div>
         <?php endif; ?>
         <div class="article-info clearfix border-top" role="group" aria-label="<?php echo $GLOBALS['t']['post']['postInfo']; ?>">
             <!--时间-->

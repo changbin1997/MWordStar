@@ -69,6 +69,8 @@ $this->need('components/header.php');
                             if ($this->options->imagelazyloading == 'on') {
                                 $postContent = replaceImgSrc($postContent);
                             }
+                            // 短代码解析
+                            $postContent = parseThemeShortcodes($postContent);
 
                             echo $postContent;
                             ?>
