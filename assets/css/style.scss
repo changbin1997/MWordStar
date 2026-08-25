@@ -1102,11 +1102,14 @@ footer {
   z-index: 100;
   display: none;
   background-color: #ffffff;
-  // 表情选择区
+  // 表情类型选择区
   #emoji-classification {
-    overflow-x: auto;
+    display: flex;
+
     button {
-      font-size: 16px;
+      font-size: 18px;
+      flex: 1;
+      padding: 4px 0;
     }
     button:hover {
       background: #E4E4E4;
@@ -1119,7 +1122,8 @@ footer {
     // 表情
     .emoji {
       float: left;
-      font-size: 16px;
+      font-size: 18px;
+      padding: 4px !important;
       margin: 0;
       cursor: pointer;
       &:hover {

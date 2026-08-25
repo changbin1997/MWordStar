@@ -80,16 +80,16 @@ export default class Emoji {
 
     // Emoji 表情点击
     $('#emoji-list').on('click', '.emoji', ev => {
-      // 把表情添加到评论内容输入框
-      $('#textarea').val($('#textarea').val() + $(ev.target).html());
+      // 把表情添加到评论内容输入框的光标位置
+      this.insertAtCursor($(ev.target).html());
     });
 
     // Emoji 表情按下回车或 Tab
     $('#emoji-list').on('keydown', '.emoji', ev => {
       // 按下回车键
       if (ev.keyCode === 13 || ev.key === 'Enter') {
-        // 把表情添加到评论内容输入框
-        $('#textarea').val($('#textarea').val() + $(ev.target).html());
+        // 把表情添加到评论内容输入框的光标位置
+        this.insertAtCursor($(ev.target).html());
       }
       // 按下 Tab
       if ((ev.keyCode === 9 || ev.key === 'Tab') && $(ev.target).is('#emoji-list .emoji:last-child')) {
@@ -112,5 +112,23 @@ export default class Emoji {
     $('#emoji-panel').on('click', () => {
       return false;
     });
+  }
+
+  /**
+   * 把表情插入到评论输入框的光标位置
+   * @param {string} emoji 要插入的表情字符
+   */
+  insertAtCursor(emoji) {
+    const textarea = $('#textarea')[0];
+    // 获取当前光标位置
+    const startPos = textarea.selectionStart;
+    const endPos = textarea.selectionEnd;
+    // 在光标位置插入表情，如果存在选中文本则替换
+    textarea.value = textarea.value.substring(0, startPos) + emoji + textarea.value.substring(endPos);
+    // 把光标移动到插入的表情后面
+    const newPos = startPos + emoji.length;
+    textarea.selectionStart = textarea.selectionEnd = newPos;
+    // 聚焦到评论输入框
+    textarea.focus();
   }
 }

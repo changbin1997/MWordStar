@@ -1351,10 +1351,12 @@ footer .container span {
   background-color: #ffffff;
 }
 #emoji-panel #emoji-classification {
-  overflow-x: auto;
+  display: flex;
 }
 #emoji-panel #emoji-classification button {
-  font-size: 16px;
+  font-size: 18px;
+  flex: 1;
+  padding: 4px 0;
 }
 #emoji-panel #emoji-classification button:hover {
   background: #E4E4E4;
@@ -1365,7 +1367,8 @@ footer .container span {
 }
 #emoji-panel #emoji-list .emoji {
   float: left;
-  font-size: 16px;
+  font-size: 18px;
+  padding: 4px !important;
   margin: 0;
   cursor: pointer;
 }
