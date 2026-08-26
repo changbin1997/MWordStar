@@ -171,7 +171,24 @@ window.addEventListener('load', () => {
   const imgBox = document.createElement('div');
   imgBox.innerHTML = `
   <p>配色预览：</p>
-  <div role="img" aria-label="主题配色预览图" id="preview-img"></div>
+  <div role="img" aria-label="主题配色预览图" id="preview-img">
+    <div class="header"></div>
+    <div class="main">
+      <div class="post">
+        <div class="text"></div>
+        <div class="text"></div>
+        <div class="text"></div>
+        <div class="link"></div>
+        <div class="link"></div>
+      </div>
+      <div class="sidebar">
+        <div class="link"></div>
+        <div class="link"></div>
+        <div class="link"></div>
+        <div class="link"></div>
+      </div>
+    </div>
+  </div>
   `;
   optionUl[1].parentNode.insertBefore(imgBox, optionUl[3]);
 
@@ -180,15 +197,13 @@ window.addEventListener('load', () => {
   // 获取预览图
   const img = document.querySelector('#preview-img');
   for (let i = 0; i < colorRadio.length; i++) {
-    // 给配色单选框添加一个索引
-    colorRadio[i].index = i;
     // 根据选中的单选框设置图片
     if (colorRadio[i].checked) {
-      img.style.backgroundPositionY = `-${colorRadio[i].index * 313}px`;
+      img.className = colorRadio[i].value;
     }
     // 配色单选框改变
     colorRadio[i].addEventListener('change', ev => {
-      img.style.backgroundPositionY = `-${ev.target.index * 313}px`;
+      img.className = ev.target.value;
     });
   }
 

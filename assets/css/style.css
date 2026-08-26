@@ -3911,4 +3911,272 @@ footer .container span {
   color: #007bff !important;
 }
 
+.danger-color header .navbar {
+  background-color: #dc3545 !important;
+}
+.danger-color header .navbar .navbar-brand {
+  color: #fff;
+}
+.danger-color header .navbar .navbar-brand:hover, .danger-color header .navbar .navbar-brand:focus {
+  color: #fff;
+}
+.danger-color header .navbar .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+.danger-color header .navbar .navbar-nav .nav-link:hover, .danger-color header .navbar .navbar-nav .nav-link:focus {
+  color: rgba(255, 255, 255, 0.75);
+}
+.danger-color header .navbar .navbar-nav .nav-link.disabled {
+  color: rgba(255, 255, 255, 0.25);
+}
+.danger-color header .navbar .navbar-nav .show > .nav-link,
+.danger-color header .navbar .navbar-nav .active > .nav-link,
+.danger-color header .navbar .navbar-nav .nav-link.show,
+.danger-color header .navbar .navbar-nav .nav-link.active {
+  color: #fff;
+}
+.danger-color header .navbar .navbar-toggler {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.danger-color header .navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.danger-color header .navbar .navbar-text {
+  color: rgba(255, 255, 255, 0.5);
+}
+.danger-color header .navbar .navbar-text a {
+  color: #fff;
+}
+.danger-color header .navbar .navbar-text a:hover, .danger-color header .navbar .navbar-text a:focus {
+  color: #fff;
+}
+.danger-color .article-list .post .article-info i, .danger-color .article-list .post .article-info span, .danger-color .archives-list .post .article-info i, .danger-color .archives-list .post .article-info span {
+  color: #dc3545;
+}
+.danger-color .article-list .post .article-info a, .danger-color .archives-list .post .article-info a {
+  color: #dc3545;
+}
+.danger-color .article-list .post .article-info a:hover, .danger-color .archives-list .post .article-info a:hover {
+  color: #a71d2a;
+}
+.danger-color .pagination-nav ul li a, .danger-color .post-pagination ol li a {
+  color: #dc3545;
+}
+.danger-color .pagination-nav ul .active a, .danger-color .post-pagination ol .active a {
+  color: #ffffff;
+  background-color: #dc3545;
+  border: none;
+}
+.danger-color .load-more-post-btn {
+  color: #dc3545;
+}
+.danger-color .sidebar section ul > li > a, .danger-color .sidebar .latest-comment a, .danger-color .sidebar .user-name, .danger-color .sidebar .calendar a {
+  color: #dc3545;
+}
+.danger-color .sidebar section ul > li > a:hover, .danger-color .sidebar .latest-comment a:hover, .danger-color .sidebar .user-name:hover, .danger-color .sidebar .calendar a:hover {
+  color: #a71d2a;
+}
+.danger-color .sidebar section ul li .badge {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+.danger-color .sidebar .tag-cloud a {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+.danger-color .sidebar .tag-cloud a:hover {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+.danger-color .sidebar .tag-cloud a:focus {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+.danger-color .sidebar .search button {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .sidebar .search button:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+.danger-color .sidebar .search button:focus {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+  box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+.danger-color .sidebar .search button:disabled {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .breadcrumb-nav a {
+  color: #dc3545;
+}
+.danger-color .breadcrumb-nav a:hover {
+  color: #a71d2a;
+}
+.danger-color .content-area .article-info .info span, .danger-color .content-area .article-info .info i {
+  color: #dc3545;
+}
+.danger-color .content-area .article-info .info a {
+  color: #dc3545;
+}
+.danger-color .content-area .article-info .info a:hover {
+  color: #a71d2a;
+}
+.danger-color .content-area .post-content a:not(.btn) {
+  color: #dc3545;
+}
+.danger-color .content-area .post-content a:not(.btn):hover {
+  color: #a71d2a;
+}
+.danger-color .content-area .agree-and-share button {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .content-area .agree-and-share button:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .content-area .agree-and-share button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+.danger-color .content-area .agree-and-share button:disabled {
+  color: #dc3545;
+  background-color: transparent;
+}
+.danger-color .content-area .post-navigation a {
+  color: #dc3545;
+}
+.danger-color .content-area .post-navigation a:hover {
+  color: #a71d2a;
+}
+.danger-color #comments #comment-form #show-emoji-btn {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color #comments #comment-form #show-emoji-btn:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color #comments #comment-form #show-emoji-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+.danger-color #comments #comment-form #show-emoji-btn:disabled {
+  color: #dc3545;
+  background-color: transparent;
+}
+.danger-color #comments #comment-form #emoji-classification button[aria-checked=true] {
+  background-color: #dc3545;
+}
+.danger-color #comments #comment-form .comment-user a {
+  color: #dc3545;
+}
+.danger-color #comments #comment-form .comment-user a:hover {
+  color: #a71d2a;
+}
+.danger-color #comments #comment-form .submit {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color #comments #comment-form .submit:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+.danger-color #comments #comment-form .submit:focus {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+  box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+.danger-color #comments #comment-form .submit:disabled {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color #comments .comment-box .comment-info .author a {
+  color: #dc3545;
+}
+.danger-color #comments .comment-box .comment-info .author a:hover {
+  color: #a71d2a;
+}
+.danger-color #comments .comment-box .comment-reply a {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+.danger-color #comments .comment-box .comment-reply a:hover {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+.danger-color #comments .comment-box .comment-content a {
+  color: #dc3545;
+}
+.danger-color #comments .comment-box .comment-content a:hover {
+  color: #a71d2a;
+}
+.danger-color #footer-btn-box button {
+  color: #dc3545;
+}
+.danger-color .category-page .category-list .icon {
+  color: #dc3545;
+}
+.danger-color #directory-mobile .directory-list a {
+  color: #dc3545;
+}
+.danger-color #directory-mobile .directory-list a:hover {
+  color: #a71d2a;
+}
+.danger-color .data-page .statistics-card {
+  background-color: #B3D8FF;
+}
+.danger-color .github-page .load-more-repository-btn {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .github-page .load-more-repository-btn:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .github-page .load-more-repository-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+.danger-color .github-page .load-more-repository-btn:disabled {
+  color: #dc3545;
+  background-color: transparent;
+}
+.danger-color .container-404 .to-home-link, .danger-color .container-404 .search-btn {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .container-404 .to-home-link:hover, .danger-color .container-404 .search-btn:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+.danger-color .container-404 .to-home-link:focus, .danger-color .container-404 .search-btn:focus {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+  box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+.danger-color .container-404 .to-home-link:disabled, .danger-color .container-404 .search-btn:disabled {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.danger-color .directory-active {
+  color: #a71d2a !important;
+}
+
 /*# sourceMappingURL=style.css.map */

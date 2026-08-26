@@ -46,7 +46,8 @@ EOT;
         'primary-color' => '配色3',
         'info-color' => '配色4',
         'success-color' => '配色5',
-        'dark-color' => '配色6（深色模式）'
+        'danger-color' => '配色6',
+        'dark-color' => '配色7（深色模式）'
     ), 'light-color2', _t('默认主题配色'), _t('访问者没有手动更改过配色的情况下默认使用的配色')));
 
     // 主题配色切换按钮
@@ -61,7 +62,8 @@ EOT;
         'light-color2' => '配色2',
         'primary-color' => '配色3',
         'info-color' => '配色4',
-        'success-color' => '配色5'
+        'success-color' => '配色5',
+        'danger-color' => '配色6'
     ), 'light-color2', _t('默认浅色'), _t('主题配色切换按钮可以在深色和浅色之间切换，主题有多个浅色配色，您需要设置一个浅色作为浅色模式的默认配色。')));
 
     // 主题元素风格设置

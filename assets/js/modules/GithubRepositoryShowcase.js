@@ -100,9 +100,9 @@ export default class GithubRepositoryShowcase {
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 repository-item mb-3">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">
+                <h4 class="card-title">
                   <a href="${item.html_url}" target="_blank">${item.name}</a>
-                </h5>
+                </h4>
                 <p class="card-text my-2" title="${description}">${description}</p>
               </div>
               <div class="card-footer text-muted">
