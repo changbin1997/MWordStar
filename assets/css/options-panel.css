@@ -119,7 +119,14 @@
 #preview-img[class="danger-color"] .link {
   background: #dc3545;;
 }
-/*配色7（深色模式）*/
+/*配色7*/
+#preview-img[class="warning-color"] .header {
+  background: #ffc107;
+}
+#preview-img[class="warning-color"] .link {
+  background: #ffc107;;
+}
+/*配色8（深色模式）*/
 #preview-img[class="dark-color"] {
   background: #121212 !important;
 }

@@ -1,0 +1,279 @@
+// 常用按钮配色
+@mixin btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+  &:hover {
+    color: #212529;
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+  &:focus {
+    color: #212529;
+    background-color: #e0a800;
+    border-color: #d39e00;
+    box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+  }
+  &:disabled {
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+}
+// 常用按钮透明版
+@mixin btn-outline-warning {
+  color: #ffc107;
+  border-color: #ffc107;
+  &:hover {
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+  }
+  &:disabled {
+    color: #ffc107;
+    background-color: transparent;
+  }
+}
+// 链接配色
+@mixin link-warning {
+  color: #ffc107;
+  &:hover {
+    color: #b98b00;
+  }
+}
+// 文字配色
+$text-warning: #ffc107;
+
+.warning-color {
+  // 顶部导航栏配色（黄色背景使用 navbar-light 深色文字）
+  header .navbar {
+    background-color: $text-warning !important;
+    .navbar-brand {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-brand:hover,.navbar-brand:focus {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-nav .nav-link {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .navbar-nav .nav-link:hover,.navbar-nav .nav-link:focus {
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .navbar-nav .nav-link.disabled {
+      color: rgba(0, 0, 0, 0.3);
+    }
+    .navbar-nav .show > .nav-link,
+    .navbar-nav .active > .nav-link,
+    .navbar-nav .nav-link.show,
+    .navbar-nav .nav-link.active {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-toggler {
+      color: rgba(0, 0, 0, 0.5);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .navbar-text {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .navbar-text a {
+      color: rgba(0, 0, 0, 0.9);
+    }
+    .navbar-text a:hover,.navbar-text a:focus {
+      color: rgba(0, 0, 0, 0.9);
+    }
+  }
+
+  // 文章列表配色
+  .article-list .post, .archives-list .post {
+    .article-info {
+      i,span {
+        color: $text-warning;
+      }
+      a {
+        @include link-warning;
+      }
+    }
+  }
+
+  // 分页导航区配色
+  .pagination-nav ul,.post-pagination ol {
+    li a {
+      color: $text-warning;
+    }
+    .active a {
+      color: #212529;
+      background-color: $text-warning;
+      border: none;
+    }
+  }
+
+  // 加载更多文章的按钮
+  .load-more-post-btn {
+    color: $text-warning;
+  }
+
+  // 侧边栏配色
+  .sidebar {
+    // 通用列表链接、最新评论链接、博客信息区域链接、日历链接配色
+    section ul > li > a,.latest-comment a,.user-name,.calendar a {
+      @include link-warning;
+    }
+    // 列表的徽章配色
+    section ul li .badge {
+      background-color: $text-warning;
+      color: #212529;
+    }
+    // 标签云配色
+    .tag-cloud a {
+      border: 1px solid $text-warning;
+      color: $text-warning;
+      &:hover {
+        background-color: $text-warning;
+        color: #212529;
+      }
+      &:focus {
+        background-color: $text-warning;
+        color: #212529;
+      }
+    }
+    // 搜索组件配色
+    .search {
+      button {
+        @include btn-warning;
+      }
+    }
+  }
+
+  // 面包屑导航配色
+  .breadcrumb-nav a {
+    @include link-warning;
+  }
+
+  // 文章页配色
+  .content-area {
+    // 文章信息区域
+    .article-info .info {
+      span,i {
+        color: $text-warning;
+      }
+      a {
+        @include link-warning;
+      }
+    }
+    // 文章内容区域
+    .post-content {
+      // 链接
+      a:not(.btn) {
+        @include link-warning;
+      }
+    }
+    // 分享和点赞区域
+    .agree-and-share {
+      button {
+        @include btn-outline-warning;
+      }
+    }
+    // 上一篇文章和下一篇文章的导航区域
+    .post-navigation a {
+      @include link-warning;
+    }
+  }
+
+  // 评论区配色
+  #comments {
+    // 发表评论区
+    #comment-form {
+      // 打开表情面板按钮
+      #show-emoji-btn {
+        @include btn-outline-warning;
+      }
+      // 表情面板
+      #emoji-classification {
+        button[aria-checked="true"] {
+          background-color: $text-warning;
+        }
+      }
+      // 当前登录用户链接
+      .comment-user a {
+        @include link-warning;
+      }
+      // 提交评论按钮
+      .submit {
+        @include btn-warning;
+      }
+    }
+    // 评论列表区
+    .comment-box {
+      // 评论者昵称
+      .comment-info {
+        .author a {
+          @include link-warning;
+        }
+      }
+      // 回复链接
+      .comment-reply a {
+        border: 1px solid $text-warning;
+        color: $text-warning;
+        &:hover {
+          background-color: $text-warning;
+          color: #212529;
+        }
+      }
+      // 评论内容区的链接
+      .comment-content a {
+        @include link-warning;
+      }
+    }
+  }
+
+  // 页脚的功能按钮
+  #footer-btn-box button {
+    color: $text-warning;
+  }
+
+  // 独立页面 - 分类目录
+  .category-page .category-list {
+    .icon {
+      color: $text-warning;
+    }
+  }
+
+  // 移动设备专用目录
+  #directory-mobile .directory-list a {
+    @include link-warning;
+  }
+
+  // 数据统计页配色
+  .data-page {
+    .statistics-card {
+      background-color: #B3D8FF;
+    }
+  }
+
+  // github项目展示页配色
+  .github-page {
+    // 加载更多的按钮
+    .load-more-repository-btn {
+      @include btn-outline-warning;
+    }
+  }
+
+  // 404页面配色
+  .container-404 {
+    .to-home-link, .search-btn {
+      @include btn-warning;
+    }
+  }
+
+  // 目录高亮
+  .directory-active {
+    color: #b98b00 !important;
+  }
+}
