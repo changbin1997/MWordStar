@@ -88,12 +88,23 @@ $bodyClass = implode(' ', $bodyClass);
     <?php else: ?>
         <?php $this->header(); ?>
     <?php endif; ?>
+
+    <?php
+    // 自定义代码高亮主题 
+    if ($this->options->codeThemeColor === 'custom-code-theme' && $this->options->highlightJsCSS) {
+        outputCustomHighlightCSS($this->options->highlightJsCSS);
+    }
+    ?>
+
     <?php if ($this->options->cssCode): ?>
+        <!--自定义css-->
         <style type="text/css">
             <?php $this->options->cssCode(); ?>
         </style>
     <?php endif; ?>
+
     <?php if ($this->options->headHTML): ?>
+        <!--自定义 header html -->
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>

@@ -1430,3 +1430,27 @@ function parseThemeShortcodes($content) {
         }
     }, $content);
 }
+
+/**
+ * 解析并输出代码高亮自定义 CSS
+ * 
+ * @param string $input 用户在后台输入的 CSS 内容或 URL
+ */
+function outputCustomHighlightCSS($input) {
+    // 去除首尾的空白字符
+    $input = trim($input);
+    // 如果输入为空，则直接返回
+    if (empty($input)) {
+        return;
+    }
+    // 正则匹配判断是否为 URL：
+    if (preg_match('/^(https?:)?\/\/[^\s{}]+$/i', $input) || preg_match('/^\/[^\s{}]+$/i', $input)) {
+        // 输出引用的 <link> 标签，并使用 htmlspecialchars 防止 XSS 注入
+        echo '<link rel="stylesheet" href="' . htmlspecialchars($input, ENT_QUOTES, 'UTF-8') . '">' . "\n";
+    } else {
+        // 容错处理：去除可能会出现的 style 标签
+        $input = preg_replace('/<\/?style[^>]*>/i', '', $input);
+        // 输出 <style> 标签
+        echo "<style>\n" . trim($input) . "\n</style>\n";
+    }
+}

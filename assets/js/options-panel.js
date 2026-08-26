@@ -40,13 +40,13 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[6], optionUl[27]);  // 文章列表
   optionForm.insertBefore(titleEl[7], optionUl[30]);  // 文章头图
   optionForm.insertBefore(titleEl[8], optionUl[34]);  // 文章内容相关
-  optionForm.insertBefore(titleEl[9], optionUl[42]);  // 评论区
-  optionForm.insertBefore(titleEl[10], optionUl[47]);  // 导航栏
-  optionForm.insertBefore(titleEl[11], optionUl[52]);  // SEO相关
-  optionForm.insertBefore(titleEl[12], optionUl[55]);  // 友情链接
-  optionForm.insertBefore(titleEl[13], optionUl[59]);  // PJAX
-  optionForm.insertBefore(titleEl[14], optionUl[63]);  // github项目展示
-  optionForm.insertBefore(titleEl[15], optionUl[64]);  // 开发者
+  optionForm.insertBefore(titleEl[9], optionUl[43]);  // 评论区
+  optionForm.insertBefore(titleEl[10], optionUl[48]);  // 导航栏
+  optionForm.insertBefore(titleEl[11], optionUl[53]);  // SEO相关
+  optionForm.insertBefore(titleEl[12], optionUl[56]);  // 友情链接
+  optionForm.insertBefore(titleEl[13], optionUl[60]);  // PJAX
+  optionForm.insertBefore(titleEl[14], optionUl[64]);  // github项目展示
+  optionForm.insertBefore(titleEl[15], optionUl[65]);  // 开发者
 
   // 插入分隔线
   titleEl.forEach(el => {
