@@ -47,7 +47,8 @@
 // 文字配色
 $text-secondary: #6c757d;
 
-.light-color1 {
+// Light + Dark导航栏 导航栏配色
+.light-dark-color {
   // 顶部导航栏配色
   header .navbar {
     background-color: #343a40;
@@ -91,7 +92,8 @@ $text-secondary: #6c757d;
   }
 }
 
-.light-color2 {
+// Light 导航栏配色
+.light-color {
   // 顶部导航栏配色
   header .navbar {
     background-color: #fff !important;
@@ -132,19 +134,11 @@ $text-secondary: #6c757d;
     .navbar-text a:hover, .navbar-light .navbar-text a:focus {
       color: rgba(0, 0, 0, 0.9);
     }
-    // 切换配色的按钮
-    #change-color-btn {
-      background-color: #E5E6EB;
-      color: rgba(0, 0, 0, 0.5);
-    }
-    // 切换配色的提示配色
-    #change-color-text {
-      color: #212529;
-    }
   }
 }
 
-.light-color1,.light-color2 {
+// Light + Dark导航栏、Light 的通用内容配色
+.light-dark-color, .light-color {
   // 文章列表配色
   .article-list .post, .archives-list .post {
     .article-info {

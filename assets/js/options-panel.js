@@ -97,6 +97,15 @@ window.addEventListener('load', () => {
         type: el.tagName
       });
     });
+    // 获取 select 的内容
+    const select = optionForm.querySelectorAll('select');  // 获取所有 select
+    select.forEach(el => {
+      backup.push({
+        name: el.getAttribute('name'),
+        value: el.value,
+        type: el.tagName
+      });
+    });
 
     backup = JSON.stringify(backup, null, 2);
     const blob = new Blob([backup]);
@@ -124,6 +133,7 @@ window.addEventListener('load', () => {
         const config = JSON.parse(readerEv.target.result);
         const input = optionForm.querySelectorAll('input');  // 获取所有 input
         const textarea = optionForm.querySelectorAll('textarea');  // 获取所有 textarea
+        const select = optionForm.querySelectorAll('select');  // 获取所有 select
 
         config.forEach(function(val) {
           // 设置 input
@@ -152,6 +162,12 @@ window.addEventListener('load', () => {
               el.value = decodeURIComponent(val.value);
             }
           });
+          // 设置 select
+          select.forEach(el => {
+            if (el.getAttribute('name') === val.name && el.tagName === val.type) {
+              el.value = val.value;
+            }
+          });
         });
 
         if (confirm('主题配置信息已成功导入，您确定要保存设置吗？')) {
@@ -167,7 +183,7 @@ window.addEventListener('load', () => {
     });
   });
 
-  // 插入主题配色图片
+  // 插入主题配色预览元素
   const imgBox = document.createElement('div');
   imgBox.innerHTML = `
   <p>配色预览：</p>
@@ -192,17 +208,15 @@ window.addEventListener('load', () => {
   `;
   optionUl[1].parentNode.insertBefore(imgBox, optionUl[3]);
 
-  // 获取配色单选框
-  const colorRadio = document.getElementsByName('color');
+  // 获取配色下拉框
+  const colorSelect = document.querySelector('select[name="color"]');
   // 获取预览图
   const img = document.querySelector('#preview-img');
-  for (let i = 0; i < colorRadio.length; i++) {
-    // 根据选中的单选框设置图片
-    if (colorRadio[i].checked) {
-      img.className = colorRadio[i].value;
-    }
-    // 配色单选框改变
-    colorRadio[i].addEventListener('change', ev => {
+  // 根据配色下拉框选中的选项设置预览图
+  if (colorSelect) {
+    img.className = colorSelect.value;
+    // 配色下拉框改变
+    colorSelect.addEventListener('change', ev => {
       img.className = ev.target.value;
     });
   }

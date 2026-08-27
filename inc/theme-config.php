@@ -40,16 +40,26 @@ EOT;
     ), 'show', _t('语言切换按钮'), _t('语言切换按钮会显示在顶部导航栏的搜索区域左侧，用户可以手动更改语言。')));
 
     // 主题配色
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('color', array(
-        'light-color1' => '配色1',
-        'light-color2' => '配色2',
-        'primary-color' => '配色3',
-        'info-color' => '配色4',
-        'success-color' => '配色5',
-        'danger-color' => '配色6',
-        'warning-color' => '配色7',
-        'dark-color' => '配色8（深色模式）'
-    ), 'light-color2', _t('默认主题配色'), _t('访问者没有手动更改过配色的情况下默认使用的配色')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Select('color', array(
+        'light-dark-color' => '配色1 Light + Dark导航栏',
+        'light-color' => '配色2 Light',
+        'primary-color' => '配色3 Primary',
+        'info-color' => '配色4 Info',
+        'success-color' => '配色5 Success',
+        'danger-color' => '配色6 Danger',
+        'warning-color' => '配色7 Warning',
+        'dark-color' => '配色8 Dark（深色模式）',
+        'primary-dark-color' => '配色9 Primary + Dark导航栏',
+        'primary-light-color' => '配色10 Primary + Light导航栏',
+        'info-dark-color' => '配色11 Info + Dark导航栏',
+        'info-light-color' => '配色12 Info + Light导航栏',
+        'success-dark-color' => '配色13 Success + Dark导航栏',
+        'success-light-color' => '配色14 Success + Light导航栏',
+        'danger-dark-color' => '配色15 Danger + Dark导航栏',
+        'danger-light-color' => '配色16 Danger + Light导航栏',
+        'warning-dark-color' => '配色17 Warning + Dark导航栏',
+        'warning-light-color' => '配色18 Warning + Light导航栏'
+    ), 'light-color', _t('默认主题配色'), _t('访问者没有手动更改过配色的情况下默认使用的配色')));
 
     // 主题配色切换按钮
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('colorChangeBtn', array(
@@ -58,15 +68,25 @@ EOT;
     ), 'show', _t('在网站右下方显示主题配色切换按钮'), _t('主题配色切换按钮可以让访问者手动切换深色模式和浅色模式')));
 
     // 默认浅色
-    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('defaultLightColor', array(
-        'light-color1' => '配色1',
-        'light-color2' => '配色2',
-        'primary-color' => '配色3',
-        'info-color' => '配色4',
-        'success-color' => '配色5',
-        'danger-color' => '配色6',
-        'warning-color' => '配色7'
-    ), 'light-color2', _t('默认浅色'), _t('主题配色切换按钮可以在深色和浅色之间切换，主题有多个浅色配色，您需要设置一个浅色作为浅色模式的默认配色。')));
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Select('defaultLightColor', array(
+        'light-dark-color' => '配色1 Light + Dark导航栏',
+        'light-color' => '配色2 Light',
+        'primary-color' => '配色3 Primary',
+        'info-color' => '配色4 Info',
+        'success-color' => '配色5 Success',
+        'danger-color' => '配色6 Danger',
+        'warning-color' => '配色7 Warning',
+        'primary-dark-color' => '配色9 Primary + Dark导航栏',
+        'primary-light-color' => '配色10 Primary + Light导航栏',
+        'info-dark-color' => '配色11 Info + Dark导航栏',
+        'info-light-color' => '配色12 Info + Light导航栏',
+        'success-dark-color' => '配色13 Success + Dark导航栏',
+        'success-light-color' => '配色14 Success + Light导航栏',
+        'danger-dark-color' => '配色15 Danger + Dark导航栏',
+        'danger-light-color' => '配色16 Danger + Light导航栏',
+        'warning-dark-color' => '配色17 Warning + Dark导航栏',
+        'warning-light-color' => '配色18 Warning + Light导航栏'
+    ), 'light-color', _t('默认浅色'), _t('主题配色切换按钮可以在深色和浅色之间切换，主题有多个浅色配色，您需要设置一个浅色作为浅色模式的默认配色。')));
 
     // 主题元素风格设置
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('rounded', array(

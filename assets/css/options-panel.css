@@ -78,17 +78,17 @@
 
 /*下面是配色预览图的配色模式*/
 /*配色1*/
-#preview-img[class="light-color1"] .header {
+#preview-img[class="light-dark-color"] .header {
   background: #343a40;
 }
-#preview-img[class="light-color1"] .link {
+#preview-img[class="light-dark-color"] .link {
   background: #6c757d;;
 }
 /*配色2*/
-#preview-img[class="light-color2"] .header {
+#preview-img[class="light-color"] .header {
   background: #FFFFFF;
 }
-#preview-img[class="light-color2"] .link {
+#preview-img[class="light-color"] .link {
   background: #6c757d;;
 }
 /*配色3*/
@@ -141,6 +141,76 @@
 }
 #preview-img[class="dark-color"] .text {
   background: rgba(255, 255, 255, 0.6);
+}
+/*配色9*/
+#preview-img[class="primary-dark-color"] .header {
+  background: #343a40;
+}
+#preview-img[class="primary-dark-color"] .link {
+  background: #007bff;
+}
+/*配色10*/
+#preview-img[class="primary-light-color"] .header {
+  background: #FFFFFF;
+}
+#preview-img[class="primary-light-color"] .link {
+  background: #007bff;
+}
+/*配色11*/
+#preview-img[class="info-dark-color"] .header {
+  background: #343a40;
+}
+#preview-img[class="info-dark-color"] .link {
+  background: #17a2b8;
+}
+/*配色12*/
+#preview-img[class="info-light-color"] .header {
+  background: #FFFFFF;
+}
+#preview-img[class="info-light-color"] .link {
+  background: #17a2b8;
+}
+/*配色13*/
+#preview-img[class="success-dark-color"] .header {
+  background: #343a40;
+}
+#preview-img[class="success-dark-color"] .link {
+  background: #28a745;
+}
+/*配色14*/
+#preview-img[class="success-light-color"] .header {
+  background: #FFFFFF;
+}
+#preview-img[class="success-light-color"] .link {
+  background: #28a745;
+}
+/*配色15*/
+#preview-img[class="danger-dark-color"] .header {
+  background: #343a40;
+}
+#preview-img[class="danger-dark-color"] .link {
+  background: #dc3545;
+}
+/*配色16*/
+#preview-img[class="danger-light-color"] .header {
+  background: #FFFFFF;
+}
+#preview-img[class="danger-light-color"] .link {
+  background: #dc3545;
+}
+/*配色17*/
+#preview-img[class="warning-dark-color"] .header {
+  background: #343a40;
+}
+#preview-img[class="warning-dark-color"] .link {
+  background: #ffc107;
+}
+/*配色18*/
+#preview-img[class="warning-light-color"] .header {
+  background: #FFFFFF;
+}
+#preview-img[class="warning-light-color"] .link {
+  background: #ffc107;
 }
 
 
