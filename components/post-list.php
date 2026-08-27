@@ -92,7 +92,7 @@
             <!--分类-->
             <div class="info category">
                 <i class="icon-folder-open icon" aria-hidden="true"></i>
-                <?php $this->category(''); ?>
+                <?php $this->category('', true, '<span>' . $GLOBALS['t']['post']['uncategorized'] . '</span>'); ?>
             </div>
             <a href="<?php $this->permalink() ?>" target="<?php $this->options->listLinkOpen(); ?>" class="float-right d-sm-none d-none d-md-inline d-lg-inline d-xl-inline"><?php echo $GLOBALS['t']['post']['readMore']; ?></a>
             <?php if ($this->user->hasLogin()): ?>

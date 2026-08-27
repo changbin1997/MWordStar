@@ -82,12 +82,12 @@ $this->need('components/header.php');
                         <!--分类-->
                         <div class="info category">
                             <i class="icon-folder-open icon" aria-hidden="true"></i>
-                            <?php $this->category(''); ?>
+                            <?php $this->category('', true, '<span>' . $GLOBALS['t']['post']['uncategorized'] . '</span>'); ?>
                         </div>
                         <!--标签-->
                         <div class="info tags">
                             <i class="icon-price-tags icon" aria-hidden="true"></i>
-                            <?php $this->tags(' ', true, '暂无标签'); ?>
+                            <?php $this->tags(' ', true, '<span>' . $GLOBALS['t']['post']['noTags'] . '</span>'); ?>
                         </div>
                         <?php if ($this->user->hasLogin()): ?>
                             <div class="info d-sm-none d-none d-md-inline d-lg-inline d-xl-inline">

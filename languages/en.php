@@ -37,7 +37,9 @@ const EN = array(
         ),
         'postInfo' => 'Post Info',
         'updated' => 'Updated: %s',
-        'featuredImage' => 'Featured Image'
+        'featuredImage' => 'Featured Image',
+        'uncategorized' => 'Uncategorized',
+        'noTags' => 'No tags'
     ),
     'comment' => array(
         'leaveAComment' => 'Leave a Comment',
