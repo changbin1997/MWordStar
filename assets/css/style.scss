@@ -1660,6 +1660,9 @@ footer {
   }
 }
 
+// Light 和 Dark 的导航栏配色
+@import "navbar-color.scss";
+// 各种配色方案
 @import "light-color";
 @import "primary-color";
 @import "info-color";
