@@ -108,7 +108,7 @@ $bodyClass = implode(' ', $bodyClass);
         <?php $this->options->headHTML(); ?>
     <?php endif; ?>
 </head>
-<body class="<?php echo $bodyClass; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>" data-code-theme="<?php echo $codeThemeColorSelected; ?>" data-pjax="<?php $this->options->pjax(); ?>">
+<body class="<?php echo $bodyClass; ?>" data-rounded="<?php $this->options->rounded(); ?>" data-color="<?php echo $themeColor; ?>" data-code-theme="<?php echo $codeThemeColorSelected; ?>" data-pjax="<?php $this->options->pjax(); ?>" data-hljs-url="<?php $this->options->themeUrl('assets/js/highlight.pack.js'); ?>">
 <?php if ($this->options->pjax == 'on' && $this->options->pjaxProgressBar == 'on'): ?>
     <div id="progress-bar" style="display: none;">
         <div id="progress" style="background: <?php $this->options->pjaxProgressBarColor(); ?>;" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
