@@ -1203,6 +1203,12 @@ footer {
           margin-left: 52px;
           @include postContent;
         }
+        // 隐藏的私密评论内容
+        .hide-comment-content {
+          margin-bottom: 20px;
+          background-color: #FBFAF9;
+          color: rgba(0, 0, 0, 0.5);
+        }
         // 评论的子内容，也就是回复的内容
         .comment-children {
           li {
@@ -1231,6 +1237,12 @@ footer {
     // 发表评论的用户
     .comment-user {
       margin-bottom: 20px;
+    }
+    // emoji面板按钮和私密评论复选框区域
+    #emoji-btn-and-hide-comment {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }

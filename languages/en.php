@@ -59,6 +59,9 @@ const EN = array(
         'cancelReply' => 'Cancel reply',
         'pendingReview' => 'Pending Review',
         'pendingReviewDescription' => 'Only you can see this comment. It will be visible to others once approved.',
+        'secretComment' => 'Private Comment',
+        'secretCommentDescription' => 'Only you and the site administrator can see the comment content',
+        'secretCommentVisibility' => 'Private comment, visible only to the commenter and the administrator.',
         'loggedInAs' => 'Logged in as: '
     ),
     'emoji' => array(
@@ -96,6 +99,7 @@ const EN = array(
         'RSSforComments' => 'RSS for Comments',
         'dashboard' => 'Dashboard (%s)',
         'commentOn' => 'Comment on %s',
+        'secretCommentNotice' => 'Private comment. Please open the post page to view it.',
         'tableOfContents' => 'Table of Contents',
         'closeTableOfContents' => 'Close Table of Contents',
         'noPostsAvailableToDisplay' => 'No posts available to display.',

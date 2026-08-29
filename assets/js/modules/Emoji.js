@@ -31,6 +31,10 @@ export default class Emoji {
     this.isShow = false;
     // Emoji 开关点击
     $('#show-emoji-btn').on('click', ev => {
+      // 把 emoji 面板的位置固定在 emoji 按钮下方
+      $('#emoji-panel').css({
+        top: `${$(ev.target).offset().top + $('ev.target').height()}px`
+      });
       // 设置 Emoji 的显示和隐藏状态
       this.isShow = !this.isShow;
       // 设置 Emoji 面板的显示和隐藏

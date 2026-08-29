@@ -15,10 +15,21 @@
                     </label>
                     <textarea name="text" id="textarea" class="textarea form-control" required placeholder="<?php echo $GLOBALS['t']['comment']['enterYourCommentHere']; ?>"><?php $this->remember('text'); ?></textarea>
                 </div>
-                <!--Emoji表情面板-->
-                <?php if ($this->options->emojiPanel == 'on'): ?>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
-                        <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 <?php echo $GLOBALS['t']['emoji']['emoji']; ?></button>
+                <!--Emoji表情面板和私密评论复选框区域-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">
+                    <div id="emoji-btn-and-hide-comment">
+                        <!--emoji面板开关-->
+                        <?php if ($this->options->emojiPanel == 'on'): ?>
+                            <button aria-expanded="false" type="button" class="btn btn-sm" id="show-emoji-btn" data-url="<?php $this->options->themeUrl('emoji.php'); ?>">😀 <?php echo $GLOBALS['t']['emoji']['emoji']; ?></button>
+                        <?php  endif; ?>
+                        <!--私密评论选择-->
+                        <div class="form-check">
+                            <input data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['comment']['secretCommentDescription']; ?>" type="checkbox" class="form-check-input" id="hide-comment">
+                            <label class="form-check-label" for="hide-comment"><?php echo $GLOBALS['t']['comment']['secretComment']; ?></label>
+                        </div>
+                    </div>
+                    <!--emoji面板-->
+                    <?php if ($this->options->emojiPanel == 'on'): ?>
                         <div id="emoji-panel" class="border shadow rounded" role="dialog" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiPanel']; ?>">
                             <div class="p-0 m-0 border-bottom">
                                 <div id="emoji-classification" class="m-0 btn-group" role="group" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiCategories']; ?>"">
@@ -36,8 +47,8 @@
                             <h5 class="text-center py-2 m-0 border-bottom" id="emoji-title"><?php echo $GLOBALS['t']['emoji']['emojiCategories']; ?></h5>
                             <div id="emoji-list" class="clearfix" role="list" aria-label="<?php echo $GLOBALS['t']['emoji']['emojiList']; ?> <?php echo $GLOBALS['t']['emoji']['pressEnterToAddTheEmojiToTheCommentInputField']; ?>"></div>
                         </div>
-                    </div>
-                <?php  endif; ?>
+                    <?php endif; ?>
+                </div>
                 <?php if($this->user->hasLogin()): ?>
                     <div class="col-lg-12 comment-user">
                         <?php echo $GLOBALS['t']['comment']['loggedInAs']; ?>

@@ -1556,6 +1556,11 @@ footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #444444;
 }
+#comments .comments-lists .comment-list .comment-body .hide-comment-content {
+  margin-bottom: 20px;
+  background-color: #FBFAF9;
+  color: rgba(0, 0, 0, 0.5);
+}
 #comments .comments-lists .comment-list .comment-body .comment-children li {
   padding-bottom: 0;
 }
@@ -1575,6 +1580,11 @@ footer .container span {
 }
 #comments .respond .comment-user {
   margin-bottom: 20px;
+}
+#comments .respond #emoji-btn-and-hide-comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .github-page #repository-list .alert {
@@ -4053,6 +4063,10 @@ footer .container span {
 }
 .dark-color #comments .comment-box .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #999999;
+}
+.dark-color #comments .comment-box .hide-comment-content {
+  background: #2D2D2D !important;
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 .dark-color #comments .comment-box .respond {
   background-color: #2D2D2D !important;

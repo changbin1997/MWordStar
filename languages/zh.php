@@ -59,6 +59,9 @@ const ZH = array(
         'cancelReply' => '取消回复',
         'pendingReview' => '评论审核中',
         'pendingReviewDescription' => '您的评论目前只有您自己能看到，审核通过后才会公开显示。',
+        'secretComment' => '私密评论',
+        'secretCommentDescription' => '评论内容只有您自己和网站管理员可以看到',
+        'secretCommentVisibility' => '私密评论，仅评论者和管理员可见。',
         'loggedInAs' => '登录身份: '
     ),
     'emoji' => array(
@@ -96,6 +99,7 @@ const ZH = array(
         'RSSforComments' => '评论 RSS',
         'dashboard' => '进入后台 (%s)',
         'commentOn' => '发表在 %s 的评论',
+        'secretCommentNotice' => '私密评论，请进入评论页查看。',
         'tableOfContents' => '目录',
         'closeTableOfContents' => '关闭目录',
         'noPostsAvailableToDisplay' => '没有可以显示的文章。',

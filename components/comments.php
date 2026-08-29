@@ -43,16 +43,25 @@ function threadedComments($comments, $options) {
                 ?>
                 <div class="comment-info float-left">
                     <b class="author"><?php $comments->author(); ?></b>
+                    <!--作者评论-->
                     <?php if ($comments->authorId == $comments->ownerId): ?>
                         <span class="author-tag badge badge-secondary"><?php echo $GLOBALS['t']['post']['author']; ?></span>
                     <?php endif; ?>
+                    <!--审核中的评论-->
                     <?php if ($comments->status != 'approved'): ?>
                         <span class="author badge badge-secondary" title="<?php echo $GLOBALS['t']['comment']['pendingReviewDescription']; ?>" data-toggle="tooltip" data-placement="top"><?php echo $GLOBALS['t']['comment']['pendingReview']; ?></span>
                     <?php endif; ?>
+                    <!--私密评论-->
+                    <?php $commentContent = parseSecretComment($comments->content, $comments); ?>
+                    <?php if ($commentContent['hide']): ?>
+                        <span class="author-tag badge badge-secondary"><?php echo $GLOBALS['t']['comment']['secretComment']; ?></span>
+                    <?php endif; ?>
+                    <!--评论时间-->
                     <time class="comment-time" datetime="<?php echo date('c', $comments->created); ?>">
                         <?php echo commentDateFormat($comments->created, $GLOBALS['commentDateFormat']); ?>
                     </time>
                 </div>
+                <!--评论回复链接-->
                 <span class="comment-reply float-right">
                     <span data-id="<?php $comments->theId(); ?>">
                         <?php $comments->reply($GLOBALS['t']['comment']['reply']); ?>
@@ -60,10 +69,15 @@ function threadedComments($comments, $options) {
                 </span>
             </div>
             <div class="comment-content" id="c-<?php $comments->theId(); ?>">
-                <?php if ($comments->parent != 0): ?>
+                <?php if ($comments->parent != 0 && $commentContent['canView']): ?>
+                    <!--显示 @回复对象名称-->
                     <b class="parent-name float-left mr-1"><?php echo reply($comments->parent); ?></b>
                 <?php endif; ?>
-                <div><?php $comments->content(); ?></div>
+                <?php if (!$commentContent['canView']): ?>
+                    <div class="hide-comment-content p-1"><em><?php echo $GLOBALS['t']['comment']['secretCommentVisibility']; ?></em></div>
+                <?php else: ?>    
+                <div><?php echo $commentContent['content']; ?></div>
+                <?php endif; ?>
             </div>
         </div>
         <?php if ($comments->children) { ?>

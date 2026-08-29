@@ -468,6 +468,11 @@ $text-primary: #007bff;
       .comment-content {
         @include post-content;
       }
+      // 隐藏的私密评论提示配色
+      .hide-comment-content {
+        background: #2D2D2D !important;
+        color: $dark-text-color2 !important;
+      }
       // 回复表单配色
       .respond {
         background-color: $dark-bg-color2 !important;

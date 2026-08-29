@@ -181,7 +181,16 @@ $components = explode(',', $components);
                             ?>
                             <div class="media-body ml-2">
                                 <a data-toggle="tooltip" data-placement="top" title="<?php printf($GLOBALS['t']['sidebar']['commentOn'], $comments->title); ?>" target="<?php $this->options->sidebarLinkOpen(); ?>" href="<?php $comments->permalink(); ?>"><?php $comments->author(false); ?></a>
-                                <div class="comment-content"><?php $comments->excerpt(50, '...'); ?></div>
+                                <div class="comment-content">
+                                    <?php 
+                                    $commentContent = parseSecretComment($comments->content, $comments);
+                                    if ($commentContent['hide']) {
+                                        echo $GLOBALS['t']['sidebar']['secretCommentNotice'];
+                                    }else {
+                                        $comments->excerpt(50, '...');
+                                    }
+                                    ?>
+                                </div>
                             </div>
                         </li>
                     <?php endwhile; ?>
