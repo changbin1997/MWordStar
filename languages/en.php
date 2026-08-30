@@ -39,7 +39,8 @@ const EN = array(
         'updated' => 'Updated: %s',
         'featuredImage' => 'Featured Image',
         'uncategorized' => 'Uncategorized',
-        'noTags' => 'No tags'
+        'noTags' => 'No tags',
+        'pinned' => 'Pinned'
     ),
     'comment' => array(
         'leaveAComment' => 'Leave a Comment',

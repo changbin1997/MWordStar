@@ -1,6 +1,67 @@
 <?php
 
 /**
+ * 主题初始化钩子
+ *
+ * @param Widget_Archive $archive 归档对象
+ * @return void
+ */
+function themeInit($archive) {
+    // 在实际执行首页列表查询前触发。
+    if ($archive->is('index')) {
+        Typecho_Plugin::factory('Widget_Archive')->query = 'themePinnedPostHandle';
+    }
+}
+
+/**
+ * 处理文章置顶逻辑
+ *
+ * 从文章自定义字段中读取置顶文章，并将置顶文章优先压入输出栈。
+ *
+ * @param Widget_Archive $archive 归档对象
+ * @param Typecho_Db_Query $select 数据库查询对象
+ * @return void
+ */
+function themePinnedPostHandle($archive, $select) {
+    $db = Typecho_Db::get();
+    // 读取所有在文章编辑页标记为置顶的文章 CID。
+    // 未发布文章和非文章内容不会进入首页列表。
+    $pinnedPosts = $db->fetchAll(
+        $db->select('table.fields.cid')
+            ->from('table.fields')
+            ->join('table.contents', 'table.contents.cid = table.fields.cid')
+            ->where('name = ?', 'pinned')
+            ->where('str_value = ?', 'on')
+            ->order('table.contents.created', Typecho_Db::SORT_DESC)
+    );
+
+    $page = $archive->request->get('page', 1);
+
+    foreach ($pinnedPosts as $pinnedPost) {
+        if (empty($pinnedPost['cid']) || !is_numeric($pinnedPost['cid'])) {
+            continue;
+        }
+
+        $cid = intval($pinnedPost['cid']);
+        $post = $db->fetchRow($archive->select()->where('table.contents.cid = ?', $cid));
+
+        if ($post) {
+            // 仅在首页第一页追加置顶文章
+            if ($page == 1) {
+                // 注入置顶状态标识，供前端多语言判断使用
+                $post['is_pinned'] = true;
+                $archive->push($post);
+            }
+            // 从常规查询条件中排除该文章，避免列表重复输出
+            $select->where('table.contents.cid != ?', $cid);
+        }
+    }
+    // 挂载 query 钩子后，Typecho 会跳过默认的列表查询，
+    // 因此这里需要手动执行查询并把常规文章追加到输出栈。
+    $db->fetchAll($select, array($archive, 'push'));
+}
+
+/**
  * 设置语言
  *
  * @param string $language 语言设置选择的默认语言

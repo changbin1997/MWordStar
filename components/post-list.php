@@ -9,7 +9,9 @@
         <?php endif; ?>
         <header class="entry-header border-bottom">
             <h2 class="entry-title p-name">
-                <?php if ($this->sticky) $this->sticky(); ?>
+                <?php if ($this->is_pinned): ?>
+                    <span class="badge badge-danger"><?php echo $GLOBALS['t']['post']['pinned']; ?></span>
+                <?php endif; ?>
                 <a href="<?php $this->permalink() ?>" rel="bookmark" target="<?php $this->options->listLinkOpen(); ?>">
                     <?php
                     if ($this->hidden) {

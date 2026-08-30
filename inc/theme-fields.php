@@ -49,4 +49,10 @@ function themeFields($layout) {
 
     // 文章有效期
     $layout->addItem(new Typecho_Widget_Helper_Form_Element_Text('expired', null, '0', _t('文章有效期'), _t('有的文章可能只是在某个时间段内有用，发布后如果长时间不更新的话，可能会给读者带去错误的信息。文章有效期可以设置一个天数，过了指定天数后，在文章开头会显示一条警示信息。0 或留空不显示。')));
+
+    // 文章置顶
+    $layout->addItem(new Typecho_Widget_Helper_Form_Element_Radio('pinned', array(
+        'on' => '开启置顶',
+        'off' => '关闭置顶'
+    ), 'off', _t('文章置顶'), _t('文章置顶可以让文章显示在首页第一页的最前面。')));
 }

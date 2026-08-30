@@ -39,7 +39,8 @@ const ZH = array(
         'updated' => '最后编辑：%s',
         'featuredImage' => '文章头图',
         'uncategorized' => '未分类',
-        'noTags' => '暂无标签'
+        'noTags' => '暂无标签',
+        'pinned' => '置顶'
     ],
     'comment' => array(
         'leaveAComment' => '发表评论',
