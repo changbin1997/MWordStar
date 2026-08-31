@@ -16,14 +16,16 @@ export default () => {
 
     // 给文章中的代码块添加高亮、行号和拷贝按钮
     const highlightInit = () => {
-      for (let i = 0;i < $('pre').length;i ++) {
+      for (let i = 0; i < $('pre').length; i++) {
         // 是否是代码块
         if ($('pre').eq(i).children('code').length) {
           let codeStr = $('pre code').eq(i).text();
           // 检查代码末尾是否以换行符结尾
           if (codeStr.endsWith('\n')) {
             // 如果是，在末尾追加一个普通空格（或者零宽空格 '\u200b'）
-            $('pre code').eq(i).text(codeStr + ' ');
+            $('pre code')
+              .eq(i)
+              .text(codeStr + ' ');
           }
 
           // 添加代码高亮样式
@@ -32,12 +34,17 @@ export default () => {
           // 生成代码行号
           if ($('.line-num-show').length) {
             // 获取代码行数
-            const lineCount = $('pre code').eq(i).html().split(/\r\n|\r|\n/).length;
+            const lineCount = $('pre code')
+              .eq(i)
+              .html()
+              .split(/\r\n|\r|\n/).length;
             let lineNumbersEl = '';
-            for (let j = 0;j < lineCount;j ++) {
+            for (let j = 0; j < lineCount; j++) {
               lineNumbersEl += `<div class="text-right">${Number(j + 1)}</div>`;
             }
-            $('pre').eq(i).prepend(`<div class="line-box">${lineNumbersEl}</div>`);
+            $('pre')
+              .eq(i)
+              .prepend(`<div class="line-box">${lineNumbersEl}</div>`);
           }
 
           // 创建和添加拷贝按钮
@@ -47,7 +54,7 @@ export default () => {
           btnEl.setAttribute('type', 'button');
           btnEl.innerHTML = '<i class="icon-copy"></i>';
           btnEl.setAttribute('data-clipboard-target', `#code-${i}`);
-          btnEl.setAttribute('title', window.t.copyCode);
+          btnEl.setAttribute('data-original-title', window.t.copyCode);
           btnEl.setAttribute('aria-label', window.t.copyCode);
           btnEl.setAttribute('data-toggle', 'tooltip');
           btnEl.setAttribute('data-placement', 'left');
@@ -56,34 +63,37 @@ export default () => {
           // 给代码块添加一个 id 方便拷贝
           $('pre code').eq(i).attr('id', `code-${i}`);
         }
-        // 初始化拷贝模块
-        const clipboard = new ClipboardJS('.copy-code-btn');
-        // 拷贝成功
-        clipboard.on('success', function(ev) {
-          // 把工具提示更改为拷贝成功
-          $(ev.trigger).attr('title', window.t.copySuccess);
-          $(ev.trigger).attr('data-original-title', window.t.copySuccess);
-          $(ev.trigger).tooltip('update');
-          $(ev.trigger).tooltip('show');
-          // 延迟 1 秒后把工具提示更改为拷贝代码
-          setTimeout(() => {
-            $(ev.trigger).attr('title', window.t.copyCode);
-            $(ev.trigger).attr('data-original-title', window.t.copyCode);
-          }, 1000);
-        });
-        // 拷贝出错
-        clipboard.on('error', ev => {
-          $(ev.trigger).attr('title', window.t.copyError);
-          $(ev.trigger).attr('data-original-title', window.t.copyError);
-          $(ev.trigger).tooltip('hide');
-          $(ev.trigger).tooltip('show');
-          setTimeout(function() {
-            $(ev.trigger).attr('title', window.t.copyCode);
-            $(ev.trigger).attr('data-original-title', window.t.copyCode);
-          }, 1000);
-        });
       }
-    };
+
+      // 初始化拷贝模块
+      const clipboard = new ClipboardJS('.copy-code-btn');
+      // 拷贝成功
+      clipboard.on('success', function (ev) {
+        // 把工具提示更改为拷贝成功
+        $(ev.trigger).attr('title', window.t.copySuccess);
+        $(ev.trigger).attr('data-original-title', window.t.copySuccess);
+        $(ev.trigger).tooltip('update');
+        $(ev.trigger).tooltip('show');
+        // 延迟 1 秒后把工具提示更改为拷贝代码
+        setTimeout(() => {
+          $(ev.trigger).attr('title', window.t.copyCode);
+          $(ev.trigger).attr('data-original-title', window.t.copyCode);
+        }, 1000);
+      });
+      // 拷贝出错
+      clipboard.on('error', (ev) => {
+        $(ev.trigger).attr('title', window.t.copyError);
+        $(ev.trigger).attr('data-original-title', window.t.copyError);
+        $(ev.trigger).tooltip('hide');
+        $(ev.trigger).tooltip('show');
+        setTimeout(function () {
+          $(ev.trigger).attr('title', window.t.copyCode);
+          $(ev.trigger).attr('data-original-title', window.t.copyCode);
+        }, 1000);
+      });
+      // 初始化气球提示
+      $('[data-toggle="tooltip"]').tooltip();
+    };;
 
     // highlight.js 已经加载过就直接初始化，避免重复加载
     if (window.hljs) {
