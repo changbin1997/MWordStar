@@ -373,4 +373,10 @@ EOT;
 
     // 自定义 body 底部的 HTML
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('bodyHTML', null, null, _t('自定义 body 底部输出的 HTML'), _t('body 底部的 HTML 会在 footer 之后 body 尾部之前输出。')));
+
+    // Service Worker
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('serviceWorker', array(
+        'enable' => '启用',
+        'disable' => '禁用'
+    ), 'disable', _t('Service Worker'), _t('开启后会在访问者的浏览器中注册 Service Worker，用来缓存主题的 JavaScript 文件（bundle-数字.js 和 highlight.pack.js），访问者再次访问时可以直接读取浏览器缓存，减少网络请求，加快页面加载。Service Worker 只支持 HTTPS 网站（localhost 除外）。因为 Service Worker 的作用域受 sw.js 文件位置限制，只有网站根目录的 sw.js 才能拦截全站请求，所以开启前您需要把主题目录中的 <b style="color: #C7254E;">assets/js/sw.js</b> 上传或复制到网站根目录，主题会注册网站根目录的 sw.js。如果没有把 sw.js 放到网站根目录，Service Worker 将无法拦截页面请求，缓存也不会生效。')));
 }

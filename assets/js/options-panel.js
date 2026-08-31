@@ -2,7 +2,8 @@ window.addEventListener('load', () => {
   const title = [
     '语言', '外观', '站点信息', '辅助功能', '链接调转',
     '侧边栏', '文章列表', '文章头图', '文章内容区域',
-    '评论区', '导航', 'SEO相关', '友情链接', 'PJAX', 'GitHub项目展示', '开发者'
+    '评论区', '导航', 'SEO相关', '友情链接', 'PJAX', 'GitHub项目展示', '开发者',
+    'Service Worker'
   ];
   const optionUl = document.querySelectorAll('form .typecho-option');  // 列表
   const optionForm = document.querySelector('.typecho-page-main form');  // 选项表单
@@ -47,6 +48,7 @@ window.addEventListener('load', () => {
   optionForm.insertBefore(titleEl[13], optionUl[60]);  // PJAX
   optionForm.insertBefore(titleEl[14], optionUl[64]);  // github项目展示
   optionForm.insertBefore(titleEl[15], optionUl[65]);  // 开发者
+  optionForm.insertBefore(titleEl[16], optionUl[66]);  // Service Worker
 
   // 插入分隔线
   titleEl.forEach(el => {
