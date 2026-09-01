@@ -1228,12 +1228,27 @@ function getDays($time1, $time2) {
 }
 
 /**
- * 把图片的 src 替换为 data-src，用于图片懒加载
+ * 给文章内容中的图片应用懒加载
+ *
+ * 原生懒加载会给 img 标签添加 loading="lazy" 属性，由浏览器自行延迟加载图片；
+ * 兼容性懒加载会把图片的 src 替换为 data-src 并添加 load-img 类，由主题 JavaScript 在图片进入可视区时加载。
  *
  * @param string $content 文章内容
- * @return string 替换后的文章内容
+ * @param string $option  图片懒加载设置：native 为原生懒加载，compatible 为兼容性懒加载，其它值不处理
+ * @return string 处理后的文章内容
  */
-function replaceImgSrc($content) {
+function lazyLoadImages($content, $option) {
+    // 关闭图片懒加载时不处理
+    if ($option != 'native' && $option != 'compatible') {
+        return $content;
+    }
+
+    // 原生懒加载：给没有 loading 属性的 img 添加 loading="lazy"，由浏览器自行延迟加载图片
+    if ($option == 'native') {
+        return preg_replace('/<img\b(?![^>]*\bloading\s*=)/i', '<img loading="lazy"', $content);
+    }
+
+    // 兼容性懒加载：把 src 替换为 data-src 并添加 load-img 类，由主题 JavaScript 在图片进入可视区时加载
     $pattern = '/<img(.*?)src(.*?)=(.*?)"(.*?)">/i';
     $replacement = '<img$1data-src$3="$4"$5 class="load-img">';
     return preg_replace($pattern, $replacement, $content);

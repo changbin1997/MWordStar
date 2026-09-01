@@ -249,9 +249,10 @@ EOT;
     
     // 图片懒加载
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('imagelazyloading', array(
-        'on' => '启用',
-        'off' => '禁用'
-    ), 'off', _t('图片懒加载'), _t('开启后文章内的图片不会自动加载，只有图片进入页面可视区才会加载')));
+        'native' => '原生图片懒加载',
+        'compatible' => '兼容性图片懒加载',
+        'disable' => '关闭'
+    ), 'disable', _t('图片懒加载'), _t('开启后文章内的图片不会自动加载，只有图片进入页面可视区才会加载。<b>原生图片懒加载</b> 会给图片添加浏览器原生的 <code>loading="lazy"</code> 属性，由浏览器自行延迟加载图片，无需额外的 JavaScript，性能更好，但老版本浏览器可能不支持；<b>兼容性图片懒加载</b> 会把图片的 src 替换为 data-src，由主题的 JavaScript 在图片进入可视区时加载图片，可以兼容不支持原生懒加载的浏览器，但需要浏览器开启 JavaScript。')));
 
     // 文章底部的交互功能配置
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('engagementSection', null, '点赞,分享', _t('文章底部的交互功能'), _t('文章底部要使用的交互功能，支持 <b style="color: #C7254E;">点赞,打赏,分享</b>，功能名称之间用英文逗号分隔，逗号之间不需要空格，结尾不需要逗号，功能按钮的顺序会根据这里设置的名称顺序排序。')));

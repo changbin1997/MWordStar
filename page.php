@@ -65,10 +65,8 @@ $this->need('components/header.php');
                             $postContent = $this->content;
                             // 设置表格样式
                             $postContent = addBootstrapTableClasses($postContent);
-                            // 如果启用了图片懒加载就把 img src 替换为 data-src
-                            if ($this->options->imagelazyloading == 'on') {
-                                $postContent = replaceImgSrc($postContent);
-                            }
+                            // 图片懒加载
+                            $postContent = lazyLoadImages($postContent, $this->options->imagelazyloading);
                             // 短代码解析
                             $postContent = parseThemeShortcodes($postContent);
 
