@@ -289,6 +289,15 @@ EOT;
         'off' => '关闭'
     ), 'off', _t('评论区Emoji表情选择面板'), _t('开启后会在评论区的评论内容输入框下方显示一个 Emoji表情按钮，点击后会显示一个 Emoji表情面板。')));
 
+    //  评论算数验证码
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentCaptcha', array(
+        'enable' => '启用',
+        'disable' => '禁用'
+    ), 'disable', _t('评论算数验证码'), _t('开启后评论表单会显示一道简单的算数题（例如 3 + 5 = ？），访客需要输入正确的计算结果才能提交评论。注意，这个验证码只能挡住通用评论机器人脚本的评论，如果有人针对您的网站编写脚本，这个验证码很容易被破解。')));
+
+    //  评论验证码密钥
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('commentCaptchaSecret', null, '12345678', _t('评论验证码密钥'), _t('密钥会参与验证码的防伪运算，就像验证码的“暗号”，有了它别有用心的人就无法伪造或批量猜测验证码结果。建议填写一串不含空格的随机字母和数字，修改后刷新评论页面即可生效。如果留空，会默认使用 12345678。')));
+    
     // 导航栏
     $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(
         'showClassification' => _t('显示文章分类'),

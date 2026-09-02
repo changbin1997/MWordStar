@@ -7,6 +7,13 @@
  * @return void
  */
 function themeInit($archive) {
+    // 输出评论图片验证码
+    if ((isset($_GET['action']) && $_GET['action'] == 'captcha') || (isset($_POST['action']) && $_POST['action'] == 'captcha')) {
+        commentCaptchaImage();
+        // 输出 JSON 后立即终止执行，避免把整个页面内容附加到验证码响应里
+        exit;
+    }
+
     // 在实际执行首页列表查询前触发。
     if ($archive->is('index')) {
         Typecho_Plugin::factory('Widget_Archive')->query = 'themePinnedPostHandle';
@@ -148,7 +155,9 @@ function localizeScript() {
         'loadMore' => $GLOBALS['t']['loadMore']['loadMore'],
         'loading' => $GLOBALS['t']['loadMore']['loading'],
         'noDescription' => $GLOBALS['t']['githubPage']['noDescription'],
-        'unknown' => $GLOBALS['t']['githubPage']['unknown']
+        'unknown' => $GLOBALS['t']['githubPage']['unknown'],
+        'captchaImageAlt' => $GLOBALS['t']['comment']['captchaImageAlt'],
+        'captchaLoadError' => $GLOBALS['t']['comment']['captchaLoadError']
     );
     $t = json_encode($t);
     echo '<script type="text/javascript"> window.t = ' . $t . '; </script>';
@@ -1589,3 +1598,179 @@ function parseSecretComment($content, $comment) {
         'content' => $parsedContent
     );
 }
+
+/**
+ * 判断评论算数验证码是否启用
+ *
+ * @return bool 启用返回 true，禁用返回 false
+ */
+function commentCaptchaEnabled() {
+    return Helper::options()->commentCaptcha == 'enable';
+}
+
+/**
+ * 生成验证码校验值
+ *
+ * 把算数题答案和生成时间放在一起，用密钥运算出一个校验值，
+ * 校验值会随表单输出给访客，提交评论时再重新运算比对。
+ * 密钥取自后台设置，没有填写时使用默认密钥 12345678。
+ *
+ * @param int $answer 算数题答案
+ * @param int $time 生成验证码的时间戳
+ * @return string 校验值
+ */
+function commentCaptchaHash($answer, $time) {
+    $secret = trim(Helper::options()->commentCaptchaSecret);
+
+    if ($secret == '') {
+        $secret = '12345678';
+    }
+
+    return hash_hmac('sha256', $answer . '|' . $time, $secret);
+}
+
+/**
+ * 输出评论图片验证码
+ *
+ * 生成一道两位数以内的加法算数题，把算式绘制成图片并以 base64
+ * 的形式用 JSON 输出，验证码有效期为 5 分钟。生成前会先检查
+ * PHP 是否启用了 GD 图片处理库，未启用时不生成图片并输出错误信息。
+ *
+ * @return void
+ */
+function commentCaptchaImage() {
+    // 评论提交请求不会渲染主题模板，需要手动加载语言文件
+    if (!isset($GLOBALS['t'])) {
+        languageInit(Helper::options()->language);
+    }
+
+    // 未启用验证码时不输出
+    if (!commentCaptchaEnabled()) {
+        commentCaptchaJsonError($GLOBALS['t']['comment']['captchaDisabled']);
+        return;
+    }
+
+    // 检查 PHP 是否启用了 GD 图片处理库
+    if (!extension_loaded('gd') || !function_exists('imagecreatetruecolor') || !function_exists('imagestring')) {
+        commentCaptchaJsonError($GLOBALS['t']['comment']['captchaGdMissing']);
+        return;
+    }
+
+    $num1 = mt_rand(1, 10);
+    $num2 = mt_rand(1, 10);
+    $answer = $num1 + $num2;
+    $time = time();
+
+    // 创建验证码图片
+    $width = 100;
+    $height = 40;
+    $image = imagecreatetruecolor($width, $height);
+
+    // 背景色
+    $bgColor = imagecolorallocate($image, 246, 248, 250);
+    imagefilledrectangle($image, 0, 0, $width, $height, $bgColor);
+
+    // 添加干扰线
+    for ($i = 0; $i < 4; $i++) {
+        $lineColor = imagecolorallocate($image, mt_rand(150, 230), mt_rand(150, 230), mt_rand(150, 230));
+        imageline($image, mt_rand(0, $width), mt_rand(0, $height), mt_rand(0, $width), mt_rand(0, $height), $lineColor);
+    }
+
+    // 添加干扰点
+    for ($i = 0; $i < 40; $i++) {
+        $dotColor = imagecolorallocate($image, mt_rand(120, 235), mt_rand(120, 235), mt_rand(120, 235));
+        imagesetpixel($image, mt_rand(0, $width - 1), mt_rand(0, $height - 1), $dotColor);
+    }
+
+    // 绘制算式文字
+    $text = $num1 . ' + ' . $num2 . ' = ?';
+    $textColor = imagecolorallocate($image, 45, 55, 75);
+    $font = 5;
+    $textWidth = strlen($text) * imagefontwidth($font);
+    $textHeight = imagefontheight($font);
+    $x = intval(($width - $textWidth) / 2);
+    $y = intval(($height - $textHeight) / 2);
+    imagestring($image, $font, $x, $y, $text, $textColor);
+
+    // 把图片转换为 base64
+    ob_start();
+    imagepng($image);
+    $imageData = ob_get_clean();
+    imagedestroy($image);
+
+    if ($imageData === false || $imageData == '') {
+        commentCaptchaJsonError($GLOBALS['t']['comment']['captchaGenerateError']);
+        return;
+    }
+
+    // 生成校验 token，token 中包含生成时间和校验值
+    $hash = commentCaptchaHash($answer, $time);
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(array(
+        'result' => 'success',
+        'image' => base64_encode($imageData),
+        'token' => $time . '.' . $hash
+    ), JSON_UNESCAPED_UNICODE);
+}
+
+/**
+ * 输出评论图片验证码的错误信息
+ *
+ * @param string $message 错误信息
+ * @return void
+ */
+function commentCaptchaJsonError($message) {
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(array(
+        'result' => 'error',
+        'message' => $message
+    ), JSON_UNESCAPED_UNICODE);
+}
+
+/**
+ * 评论算数验证码校验
+ *
+ * 挂载到 Widget_Feedback 的 comment 钩子上，在评论写入前校验
+ * 访客提交的验证码。验证码错误或超过 5 分钟有效期时会抛出异常，
+ * 阻止评论提交。已登录用户不需要输入验证码。
+ *
+ * @param array $comment 评论数据
+ * @param Widget_Archive $post 评论所属的文章对象
+ * @return array 评论数据
+ * @throws Typecho_Widget_Exception 验证码错误或已过期时抛出异常
+ */
+function commentCaptchaFilter($comment, $post) {
+    // 已登录用户和禁用验证码时不校验
+    if (Typecho_Widget::widget('Widget_User')->hasLogin() || !commentCaptchaEnabled()) {
+        return $comment;
+    }
+
+    // 评论提交请求不会渲染主题模板，需要手动加载语言文件
+    if (!isset($GLOBALS['t'])) {
+        languageInit(Helper::options()->language);
+    }
+
+    $answer = isset($_POST['captcha_answer']) ? trim($_POST['captcha_answer']) : '';
+    $token = isset($_POST['captcha_token']) ? trim($_POST['captcha_token']) : '';
+
+    // 从 token 中解析生成时间和校验值
+    $tokenData = explode('.', $token, 2);
+    $time = isset($tokenData[0]) ? intval($tokenData[0]) : 0;
+    $hash = isset($tokenData[1]) ? $tokenData[1] : '';
+
+    // 检查验证码是否在 5 分钟有效期内
+    if ($time <= 0 || $time > time() || time() - $time > 300) {
+        throw new Typecho_Widget_Exception($GLOBALS['t']['comment']['captchaExpired']);
+    }
+
+    // 用提交上来的答案和时间重新运算校验值并比对
+    if ($answer == '' || $hash == '' || !ctype_digit($answer) || !hash_equals(commentCaptchaHash($answer, $time), $hash)) {
+        throw new Typecho_Widget_Exception($GLOBALS['t']['comment']['captchaError']);
+    }
+
+    return $comment;
+}
+
+// 注册评论算数验证码校验钩子
+Typecho_Plugin::factory('Widget_Feedback')->comment = 'commentCaptchaFilter';

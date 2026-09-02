@@ -18,6 +18,7 @@ import sidebarCoverImageInit from './modules/sidebarCoverImageInit.js';
 import AvatarGenerator from './modules/AvatarGenerator.js';
 import loadMore from './modules/loadMore.js';
 import GithubRepositoryShowcase from './modules/GithubRepositoryShowcase.js';
+import captchaInit from './modules/captcha.js';
 
 $(function () {
   let inputFocus = false;  // 表单焦点状态
@@ -72,6 +73,9 @@ $(function () {
   // 私密评论标记初始化
   hideCommentInit();
 
+  // 评论图片验证码初始化
+  captchaInit();
+
   // pjax 初始化
   const pjax = new PJAX();
   pjax.init(() => {
@@ -120,6 +124,8 @@ $(function () {
     loadMore();
     // github项目展示初始化
     githubRepositoryShowcase.init();
+    // 评论图片验证码初始化
+    captchaInit();
   });
 
   // 页面空白区域点击

@@ -84,6 +84,20 @@
                         </label>
                         <input type="url" maxlength="64" name="url" id="url" class="text form-control" placeholder="<?php echo $GLOBALS['t']['comment']['enterYourWebsiteOrBlogURL']; ?>" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL) echo 'required'; ?>>
                     </div>
+                    <?php if (commentCaptchaEnabled()): ?>
+                        <!--评论图片验证码-->
+                        <div class="col-12 form-group" id="img-captcha">
+                            <img src="" alt="<?php echo $GLOBALS['t']['comment']['captchaImageAlt']; ?>" title="<?php echo $GLOBALS['t']['comment']['captchaImageAlt']; ?>" id="captcha-img" data-url="<?php $this->options->siteUrl(); ?>">
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-8 form-group">
+                            <label for="captcha-answer">
+                                <?php echo $GLOBALS['t']['comment']['captchaImageLabel']; ?>
+                                <span class="required">*</span>
+                            </label>
+                            <input type="number" class="text form-control" name="captcha_answer" id="captcha-answer" placeholder="<?php echo $GLOBALS['t']['comment']['captchaImageLabel']; ?>" required>
+                            <input type="hidden" name="captcha_token" id="captcha-token" value="">
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
                 <!--提交按钮-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">

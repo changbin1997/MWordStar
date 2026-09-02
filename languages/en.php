@@ -63,7 +63,15 @@ const EN = array(
         'secretComment' => 'Private Comment',
         'secretCommentDescription' => 'Only you and the site administrator can see the comment content',
         'secretCommentVisibility' => 'Private comment, visible only to the commenter and the administrator.',
-        'loggedInAs' => 'Logged in as: '
+        'loggedInAs' => 'Logged in as: ',
+        'captchaImageLabel' => 'Enter the result shown in the image',
+        'captchaImageAlt' => 'Captcha image, click to refresh',
+        'captchaLoadError' => 'Failed to load the captcha. Click to retry.',
+        'captchaDisabled' => 'The comment captcha is disabled.',
+        'captchaGdMissing' => 'Failed to generate the captcha: the GD image library is not enabled in PHP.',
+        'captchaGenerateError' => 'Failed to generate the captcha. Please refresh the page and try again.',
+        'captchaExpired' => 'Comment failed: The captcha has expired. Please refresh the page and try again.',
+        'captchaError' => 'Comment failed: Incorrect captcha answer. Please recalculate.'
     ),
     'emoji' => array(
         'emoji' => 'Emoji',

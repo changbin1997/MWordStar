@@ -63,7 +63,15 @@ const ZH = array(
         'secretComment' => '私密评论',
         'secretCommentDescription' => '评论内容只有您自己和网站管理员可以看到',
         'secretCommentVisibility' => '私密评论，仅评论者和管理员可见。',
-        'loggedInAs' => '登录身份: '
+        'loggedInAs' => '登录身份: ',
+        'captchaImageLabel' => '请输入图片中的计算结果',
+        'captchaImageAlt' => '验证码图片，点击可更换',
+        'captchaLoadError' => '验证码加载失败，点击重试',
+        'captchaDisabled' => '评论验证码未启用。',
+        'captchaGdMissing' => '评论验证码生成失败：PHP 未启用 GD 图片处理库。',
+        'captchaGenerateError' => '评论验证码生成失败，请刷新页面重试。',
+        'captchaExpired' => '评论失败：验证码已过期，请刷新页面后重新提交。',
+        'captchaError' => '评论失败：验证码错误，请重新计算。'
     ),
     'emoji' => array(
         'emoji' => 'Emoji表情',
