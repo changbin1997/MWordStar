@@ -1605,7 +1605,7 @@ function parseSecretComment($content, $comment) {
  * @return bool 启用返回 true，禁用返回 false
  */
 function commentCaptchaEnabled() {
-    return Helper::options()->commentCaptcha == 'enable';
+    return Helper::options()->commentCaptcha == 'image';
 }
 
 /**
@@ -1729,11 +1729,69 @@ function commentCaptchaJsonError($message) {
 }
 
 /**
- * 评论算数验证码校验
+ * 校验 Cloudflare Turnstile 验证码
  *
- * 挂载到 Widget_Feedback 的 comment 钩子上，在评论写入前校验
- * 访客提交的验证码。验证码错误或超过 5 分钟有效期时会抛出异常，
- * 阻止评论提交。已登录用户不需要输入验证码。
+ * 把前端 Turnstile 组件生成的 token 和后台设置的 Secret key 一起
+ * 发送到 Cloudflare 官方接口校验，校验通过返回 true。token 只能
+ * 使用一次，校验失败时返回 false。
+ *
+ * @param string $token Turnstile 组件生成的 token
+ * @param string $secretKey 后台设置的 Cloudflare Turnstile Secret key
+ * @param string|null $userIp 访问者 IP，可省略，未指定时使用请求 IP
+ * @return bool 校验通过返回 true，否则返回 false
+ */
+function commentTurnstileVerify($token, $secretKey, $userIp = null) {
+    // token 或密钥为空时直接判定不通过
+    if (empty($token) || empty($secretKey)) {
+        return false;
+    }
+
+    $secretKey = trim($secretKey);
+    $token = trim($token);
+
+    // 未指定 IP 时使用请求的 IP
+    if (empty($userIp) && isset($_SERVER['REMOTE_ADDR'])) {
+        $userIp = $_SERVER['REMOTE_ADDR'];
+    }
+
+    $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+    $data = array(
+        'secret' => $secretKey,
+        'response' => $token
+    );
+
+    // remoteip 是可选参数，存在时才传递
+    if (!empty($userIp)) {
+        $data['remoteip'] = $userIp;
+    }
+
+    // 使用 cURL 发送 POST 请求
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    // 请求失败时判定不通过
+    if ($result === false) {
+        return false;
+    }
+
+    // 解析接口返回的 JSON
+    $response = json_decode($result, true);
+
+    // 只信任接口明确返回 success 为 true 的结果
+    return is_array($response) && isset($response['success']) && $response['success'] === true;
+}
+
+/**
+ * 评论验证码校验
+ *
+ * 挂载到 Widget_Feedback 的 comment 钩子上，在评论写入前根据后台
+ * 设置的验证码类型校验访客提交的验证码，校验失败时抛出异常阻止
+ * 评论提交。已登录用户不需要输入验证码。
  *
  * @param array $comment 评论数据
  * @param Widget_Archive $post 评论所属的文章对象
@@ -1741,8 +1799,8 @@ function commentCaptchaJsonError($message) {
  * @throws Typecho_Widget_Exception 验证码错误或已过期时抛出异常
  */
 function commentCaptchaFilter($comment, $post) {
-    // 已登录用户和禁用验证码时不校验
-    if (Typecho_Widget::widget('Widget_User')->hasLogin() || !commentCaptchaEnabled()) {
+    // 已登录用户不校验验证码
+    if (Typecho_Widget::widget('Widget_User')->hasLogin()) {
         return $comment;
     }
 
@@ -1751,6 +1809,26 @@ function commentCaptchaFilter($comment, $post) {
         languageInit(Helper::options()->language);
     }
 
+    // 根据后台设置选择验证方式
+    $captchaType = Helper::options()->commentCaptcha;
+
+    // 关闭验证码时不校验
+    if ($captchaType == 'disable') {
+        return $comment;
+    }
+
+    // Cloudflare Turnstile 验证
+    if ($captchaType == 'turnstile') {
+        $token = isset($_POST['cf-turnstile-response']) ? trim($_POST['cf-turnstile-response']) : '';
+
+        if (!commentTurnstileVerify($token, Helper::options()->commentTurnstileSecret)) {
+            throw new Typecho_Widget_Exception($GLOBALS['t']['comment']['turnstileError']);
+        }
+
+        return $comment;
+    }
+
+    // 图片算数验证码
     $answer = isset($_POST['captcha_answer']) ? trim($_POST['captcha_answer']) : '';
     $token = isset($_POST['captcha_token']) ? trim($_POST['captcha_token']) : '';
 
@@ -1772,5 +1850,5 @@ function commentCaptchaFilter($comment, $post) {
     return $comment;
 }
 
-// 注册评论算数验证码校验钩子
+// 注册评论验证码校验钩子
 Typecho_Plugin::factory('Widget_Feedback')->comment = 'commentCaptchaFilter';

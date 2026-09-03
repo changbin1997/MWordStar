@@ -71,7 +71,8 @@ const EN = array(
         'captchaGdMissing' => 'Failed to generate the captcha: the GD image library is not enabled in PHP.',
         'captchaGenerateError' => 'Failed to generate the captcha. Please refresh the page and try again.',
         'captchaExpired' => 'Comment failed: The captcha has expired. Please refresh the page and try again.',
-        'captchaError' => 'Comment failed: Incorrect captcha answer. Please recalculate.'
+        'captchaError' => 'Comment failed: Incorrect captcha answer. Please recalculate.',
+        'turnstileError' => 'Comment failed: Verification not passed. Please try again.'
     ),
     'emoji' => array(
         'emoji' => 'Emoji',

@@ -289,14 +289,21 @@ EOT;
         'off' => '关闭'
     ), 'off', _t('评论区Emoji表情选择面板'), _t('开启后会在评论区的评论内容输入框下方显示一个 Emoji表情按钮，点击后会显示一个 Emoji表情面板。')));
 
-    //  评论算数验证码
+    //  评论验证码
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentCaptcha', array(
-        'enable' => '启用',
-        'disable' => '禁用'
-    ), 'disable', _t('评论算数验证码'), _t('开启后评论表单会显示一道简单的算数题（例如 3 + 5 = ？），访客需要输入正确的计算结果才能提交评论。注意，这个验证码只能挡住通用评论机器人脚本的评论，如果有人针对您的网站编写脚本，这个验证码很容易被破解。')));
+        'image' => '图片算数验证码',
+        'turnstile' => 'Cloudflare Turnstile',
+        'disable' => '关闭'
+    ), 'disable', _t('评论验证码'), _t('这里用来选择评论时使用的验证码，防止垃圾评论。<b>图片算数验证码</b> 会在评论框显示一道简单的加法题（例如 3 + 5 = ？），访客算出结果填进去才能提交，不需要依赖第三方服务，但只能挡住简单的机器人。<b>Cloudflare Turnstile</b> 是 Cloudflare 提供的验证码服务，访客通常只需要点一下就能通过，体验更好、防护也更可靠，但需要先到 Cloudflare 官网申请 Sitekey 和 Secret key 并填写到下方。<b>关闭</b> 则不会在评论框显示任何验证码。')));
 
     //  评论验证码密钥
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('commentCaptchaSecret', null, '12345678', _t('评论验证码密钥'), _t('密钥会参与验证码的防伪运算，就像验证码的“暗号”，有了它别有用心的人就无法伪造或批量猜测验证码结果。建议填写一串不含空格的随机字母和数字，修改后刷新评论页面即可生效。如果留空，会默认使用 12345678。')));
+
+    //  Cloudflare Turnstile Sitekey
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('commentTurnstileSitekey', null, '', _t('Cloudflare Turnstile Sitekey'), _t('这是 Cloudflare 给您的网站分配的一串公开识别码，相当于验证码的“门牌号”，会被填写到评论表单的前端代码里，用来告诉 Cloudflare 在哪个网站加载验证码。只有选择 <b style="color: #C7254E;">Cloudflare Turnstile</b> 时才需要填写，可以登录 Cloudflare 官网的 Turnstile 页面获取。')));
+
+    //  Cloudflare Turnstile Secret key
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Text('commentTurnstileSecret', null, '', _t('Cloudflare Turnstile Secret key'), _t('这是验证码的“密钥”，网站服务器会用它来核对访客是否真的通过了验证，相当于一把钥匙，<b style="color: #C7254E;">千万不要泄露给别人</b>。只有选择 <b style="color: #C7254E;">Cloudflare Turnstile</b> 时才需要填写，同样可以登录 Cloudflare 官网的 Turnstile 页面获取。')));
     
     // 导航栏
     $navBar = new Typecho_Widget_Helper_Form_Element_Checkbox('navbar', array(

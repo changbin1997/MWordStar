@@ -14,7 +14,7 @@ export default class PJAX {
    * @param {function} pjaxEnd pjax 替换完成后的回调函数
    * @returns {boolean} pjax 功能没有开启就返回 false
    */
-  init(pjaxEnd = null) {
+  init(options = null) {
     // 没有开启 pjax 就直接返回
     if ($('body').attr('data-pjax') !== 'on') return false;
     // 给 pjax 链接添加 class
@@ -61,6 +61,11 @@ export default class PJAX {
       // 显示进度条
       if ($('#progress-bar').length) {
         $('#progress-bar').show();
+      }
+
+      // 执行开始请求前的回调函数
+      if (typeof options.start === 'function') {
+        options.start();
       }
     });
 
@@ -132,8 +137,8 @@ export default class PJAX {
       this.pjaxLinkInit();
 
       // 如果传入了回调函数就执行函数
-      if (typeof pjaxEnd === 'function') {
-        pjaxEnd(ev);
+      if (typeof options.end === 'function') {
+        options.end(ev);
       }
 
       // 如果设置了 PJAX 完成后执行自定义代码

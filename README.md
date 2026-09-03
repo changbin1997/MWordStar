@@ -1,4 +1,4 @@
-![MWordStar主题在各种设备的截图](screenshot/home-page.jpeg)
+![MWordStar主题在各种设备的截图](screenshot/mwordstar-img.png)
 
 这是一套简洁的 [Typecho](https://typecho.org/) 双栏博客主题，也是 [我的博客](https://www.misterma.com/) 之前使用的主题。
 
@@ -34,9 +34,13 @@
 
 ![MWordStar深色模式截图](screenshot/dark-mode.png)
 
-主题目前包含 6 种配色：
+主题目前包含 18 种配色组合：
 
-![MWordStar 6种不同配色的截图](screenshot/all-color.png)
+![MWordStar配色组合1](./screenshot/color1.png)
+
+![MWordStar配色组合2](./screenshot/color2.png)
+
+![MWordStar配色组合3](./screenshot/color3.png)
 
 ## 特点和功能
 
@@ -55,6 +59,7 @@
 * 丰富的侧边栏组件
 * 内置 Emoji 表情面板
 * 支持显示 QQ 头像和自定义 Gravatar 源
+* 评论支持图片验证码和 Cloudflare Turnstile
 * 支持自动根据文章中的标题生成章节目录
 * 支持图片懒加载
 * 文章支持分页显示

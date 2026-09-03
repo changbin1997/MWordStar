@@ -1,3 +1,11 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
+
 /**
  * GitHub 仓库列表展示模块
  * 负责从 GitHub API 异步拉取特定用户的公开仓库，并渲染到页面上

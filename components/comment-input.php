@@ -98,6 +98,13 @@
                             <input type="hidden" name="captcha_token" id="captcha-token" value="">
                         </div>
                     <?php endif; ?>
+
+                    <?php if ($this->options->commentCaptcha == 'turnstile' && $this->options->commentTurnstileSitekey && $this->options->commentTurnstileSecret): ?>
+                        <!--Cloudflare Turnstile-->
+                        <div id="turnstile-box" class="form-group col-12">
+                            <div id="turnstile-container" class="mt-1" data-sitekey="<?php $this->options->commentTurnstileSitekey(); ?>"></div>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
                 <!--提交按钮-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-group">

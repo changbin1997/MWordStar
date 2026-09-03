@@ -18,7 +18,7 @@ import sidebarCoverImageInit from './modules/sidebarCoverImageInit.js';
 import AvatarGenerator from './modules/AvatarGenerator.js';
 import loadMore from './modules/loadMore.js';
 import GithubRepositoryShowcase from './modules/GithubRepositoryShowcase.js';
-import captchaInit from './modules/captcha.js';
+import Captcha from './modules/Captcha.js';
 
 $(function () {
   let inputFocus = false;  // 表单焦点状态
@@ -73,59 +73,58 @@ $(function () {
   // 私密评论标记初始化
   hideCommentInit();
 
-  // 评论图片验证码初始化
-  captchaInit();
+  // 评论验证码初始化
+  const captcha = new Captcha();
+  // Typecho 回复/取消回复会移动评论表单，绑定 Turnstile 重渲染
+  captcha.bindCommentReply();
 
   // pjax 初始化
   const pjax = new PJAX();
-  pjax.init(() => {
-    // PJAX 替换完成
-    // 代码高亮初始化
-    codeHighlightInit();
-
-    // 一些可访问性相关的功能初始化
-    accessibilityInit();
-
-    // 侧边栏文章头图初始化
-    sidebarCoverImageInit();
-
-    // 图片懒加载
-    lazyLoadImages();
-
-    // 表单焦点事件初始化
-    inputFocusInit();
-
-    // 私密评论标记初始化
-    hideCommentInit();
-
-    // 图片灯箱初始化
-    lightbox.init();
-
-    // Emoji初始化
-    emoji.init();
-
-    // 侧边栏的语言切换初始化
-    colorAndLanguage.sidebarChangeLanguageInit();
-
-    // 重新生成文字头像
-    avatarGenerator.refresh();
-
-    // 点赞初始化
-    ArticleEngagement.likeInit();
-
-    // 生成二维码
-    ArticleEngagement.shareQrCode();
-
-    // 移动设备目录开关按钮初始化
-    directory.directoryBtnInit();
-    // 目录初始化
-    directory.init();
-    // 加载更多文章初始化
-    loadMore();
-    // github项目展示初始化
-    githubRepositoryShowcase.init();
-    // 评论图片验证码初始化
-    captchaInit();
+  pjax.init({
+    start: () => {
+      // PJAX 即将开始请求
+      // PJAX 替换 DOM 之前销毁旧的 Turnstile 实例，避免 Turnstile SDK 输出警告/报错
+      captcha.removeTurnstile();
+    },
+    end: () => {
+      // PJAX 替换完成
+      // 代码高亮初始化
+      codeHighlightInit();
+      // 一些可访问性相关的功能初始化
+      accessibilityInit();
+      // 侧边栏文章头图初始化
+      sidebarCoverImageInit();
+      // 图片懒加载
+      lazyLoadImages();
+      // 表单焦点事件初始化
+      inputFocusInit();
+      // 私密评论标记初始化
+      hideCommentInit();
+      // 图片灯箱初始化
+      lightbox.init();
+      // Emoji初始化
+      emoji.init();
+      // 侧边栏的语言切换初始化
+      colorAndLanguage.sidebarChangeLanguageInit();
+      // 重新生成文字头像
+      avatarGenerator.refresh();
+      // 点赞初始化
+      ArticleEngagement.likeInit();
+      // 生成二维码
+      ArticleEngagement.shareQrCode();
+      // 移动设备目录开关按钮初始化
+      directory.directoryBtnInit();
+      // 目录初始化
+      directory.init();
+      // 加载更多文章初始化
+      loadMore();
+      // github项目展示初始化
+      githubRepositoryShowcase.init();
+      // 重新渲染评论验证码
+      captcha.reRender();
+      // PJAX 会重置 TypechoComment，需要重新绑定回复/取消回复的 Turnstile 重渲染
+      captcha.bindCommentReply();
+    }
   });
 
   // 页面空白区域点击

@@ -36,6 +36,12 @@
       function pjaxUpdateComplete() {<?php $this->options->pjaxEnd(); ?>}
     </script>
 <?php endif; ?>
+
+<?php if ($this->options->commentCaptcha == 'turnstile' && $this->options->commentTurnstileSitekey && $this->options->commentTurnstileSecret && !$this->user->hasLogin()): ?>
+    <!--Cloudflare Turnstile-->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+<?php endif; ?>
+
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery-3.4.1.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/jquery.pjax.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/js/bootstrap.bundle.min.js'); ?>"></script>

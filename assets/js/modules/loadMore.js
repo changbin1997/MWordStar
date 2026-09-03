@@ -1,3 +1,11 @@
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
+
 import PJAX from './PJAX.js';
 
 export default () => {
