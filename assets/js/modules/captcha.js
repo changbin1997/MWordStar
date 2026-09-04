@@ -112,10 +112,6 @@ export default class Captcha {
       sitekey: container.getAttribute('data-sitekey'),
       theme: turnstileTheme,
       size: 'normal',
-      'before-interactive-callback': () => {
-        // 移除小组件容器的 class，避免下方间距问题
-        $('#turnstile-box').removeClass('mb-0');
-      },
       'expired-callback': () => {
         // token 过期后自动重置，避免提交评论时人机验证失败
         if (this.turnstileWidgetId !== null) {
