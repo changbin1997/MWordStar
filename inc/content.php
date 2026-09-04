@@ -10,6 +10,8 @@
  *  - splitArticleContent               按 [-page-] 分页文章内容
  *  - addBootstrapTableClasses          为表格加 Bootstrap 样式
  *  - parseThemeShortcodes              解析自定义短代码（button / alert）
+ *  - stripThemeShortcodes              去除短代码语法仅保留包裹内容（支持嵌套）
+ *  - postListSummary                   输出文章列表摘要（不含短代码语法）
  *  - outputCustomHighlightCSS          输出代码高亮自定义 CSS
  *  - addExternalLinkAttributes          为站外链接添加 target="_blank" 与 rel="noopener"
  *  - isInternalLink                     判断链接是否为本站链接
@@ -260,6 +262,65 @@ function parseThemeShortcodes($content) {
                 return $matches[0];
         }
     }, $content);
+}
+
+/**
+ * 去除文章内容中的短代码语法，仅保留其包裹的正文内容（支持嵌套）
+ *
+ * 与 parseThemeShortcodes 使用相同的标签白名单与代码块忽略规则，
+ * 用于文章列表摘要等不需要把短代码解析为 HTML 的场景。
+ *
+ * @param string $content 含短代码语法的文本
+ * @return string 去除短代码标记后的文本
+ */
+function stripThemeShortcodes($content) {
+    // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致
+    $supported_tags = array('button', 'alert');
+    $tags_pattern = implode('|', $supported_tags);
+    // 前半部分匹配 <pre> / <code> 块（忽略其中的短代码）
+    // 后半部分匹配 [tag ...]内容[/tag] 的短代码
+    $pattern = '/(<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>)|\[(' . $tags_pattern . ')\b[^\]]*\](.*?)\[\/\2\]/is';
+
+    // 自内向外反复替换，支持嵌套短代码；没有可替换内容时停止
+    while (true) {
+        $stripped = preg_replace_callback($pattern, function ($matches) {
+            // 代码块原样保留，不解析其中的短代码
+            if (!empty($matches[1])) {
+                return $matches[1];
+            }
+            // 仅保留短代码包裹的内容
+            return $matches[3];
+        }, $content);
+
+        if ($stripped === null || $stripped === $content) {
+            break;
+        }
+        $content = $stripped;
+    }
+
+    return $content;
+}
+
+/**
+ * 输出文章列表摘要
+ *
+ * 优先输出自定义摘要，否则自动截取文章内容；
+ * 两种情况都会先去除短代码语法，只保留短代码包裹的正文。
+ *
+ * @param object $archive 当前文章对象
+ * @param int    $length  摘要截取长度
+ * @param string $trim    摘要截断后缀
+ */
+function postListSummary($archive, $length, $trim = '...') {
+    // 自定义摘要：不受字数限制，去除短代码语法后原样输出
+    if ($archive->fields->summaryContent) {
+        echo stripThemeShortcodes($archive->fields->summaryContent);
+        return;
+    }
+
+    // 自动摘要：去除短代码语法后截取纯文本
+    $excerpt = stripThemeShortcodes($archive->excerpt);
+    echo \Typecho\Common::subStr(strip_tags($excerpt), 0, $length, $trim);
 }
 
 /**

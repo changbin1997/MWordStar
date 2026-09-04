@@ -37,7 +37,7 @@
                                 if ($this->hidden) {
                                     echo $GLOBALS['t']['post']['enterThePasswordToViewIt'];
                                 }else {
-                                    $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...');
+                                    postListSummary($this, $this->options->summary, '...');
                                 }
                                 ?>
                             </p>
@@ -49,7 +49,7 @@
                         if ($this->hidden) {
                             echo $GLOBALS['t']['post']['enterThePasswordToViewIt'];
                         }else {
-                            $this->fields->summaryContent?$this->fields->summaryContent():$this->excerpt($this->options->summary, '...');
+                            postListSummary($this, $this->options->summary, '...');
                         }
                         ?>
                     </p>
