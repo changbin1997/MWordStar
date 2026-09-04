@@ -11,6 +11,8 @@
  *  - addBootstrapTableClasses          为表格加 Bootstrap 样式
  *  - parseThemeShortcodes              解析自定义短代码（button / alert）
  *  - outputCustomHighlightCSS          输出代码高亮自定义 CSS
+ *  - addExternalLinkAttributes          为站外链接添加 target="_blank" 与 rel="noopener"
+ *  - isInternalLink                     判断链接是否为本站链接
  *
  * @package MWordStar
  */
@@ -282,4 +284,117 @@ function outputCustomHighlightCSS($input) {
         // 输出 <style> 标签
         echo "<style>\n" . trim($input) . "\n</style>\n";
     }
+}
+
+/**
+ * 为文章内容中的站外链接添加 target="_blank" 与 rel="noopener"
+ *
+ * 遍历文章内容中的 <a> 链接，当链接指向本站以外的站点时，
+ * 自动添加 target="_blank"（新窗口打开）与 rel="noopener"（防止新窗口劫持）；
+ * 本站链接（相对链接、锚点链接、同域名链接）以及 <pre> / <code> 代码块内的链接不处理。
+ *
+ * @param string $content 文章内容的 HTML 字符串
+ * @param string $siteUrl 本站地址，例如 https://example.com/，通常传入 $this->options->siteUrl
+ * @return string 处理后的 HTML 字符串
+ */
+function addExternalLinkAttributes($content, $siteUrl) {
+    // 没有链接时直接返回原内容
+    if (empty($content) || strpos($content, '<a') === false) {
+        return $content;
+    }
+
+    // 匹配 <pre> / <code> 代码块（原样保留，不处理其中的链接）或 <a> 开始标签
+    $pattern = '/(<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>)|<a\b([^>]*)>/is';
+
+    return preg_replace_callback($pattern, function ($matches) use ($siteUrl) {
+        // 命中代码块时直接返回，不处理其中的链接
+        if (!empty($matches[1])) {
+            return $matches[1];
+        }
+
+        $attrs = $matches[2];
+
+        // 提取 href 属性（优先匹配双引号 / 单引号，其次兼容无引号写法）
+        if (preg_match('/\bhref\s*=\s*(["\'])(.*?)\1/i', $attrs, $hrefMatches)) {
+            $href = trim($hrefMatches[2]);
+        } elseif (preg_match('/\bhref\s*=\s*([^\s>]+)/i', $attrs, $hrefMatches)) {
+            $href = trim($hrefMatches[1]);
+        } else {
+            // 没有 href 属性的链接不处理
+            return $matches[0];
+        }
+
+        // 本站链接不处理
+        if (isInternalLink($href, $siteUrl)) {
+            return $matches[0];
+        }
+
+        // 站外链接：添加 target="_blank"（已存在时不重复添加）
+        if (!preg_match('/\btarget\s*=/i', $attrs)) {
+            $attrs .= ' target="_blank"';
+        }
+
+        // 站外链接：添加 / 合并 rel="noopener"
+        if (preg_match('/\brel\s*=\s*(["\'])(.*?)\1/i', $attrs, $relMatches)) {
+            // 已有 rel 属性时，追加 noopener，避免覆盖原有值
+            $relParts = preg_split('/\s+/', trim($relMatches[2]));
+            if (!in_array('noopener', $relParts)) {
+                $relParts[] = 'noopener';
+                $attrs = str_replace($relMatches[0], 'rel=' . $relMatches[1] . implode(' ', $relParts) . $relMatches[1], $attrs);
+            }
+        } else {
+            $attrs .= ' rel="noopener"';
+        }
+
+        return '<a' . $attrs . '>';
+    }, $content);
+}
+
+/**
+ * 判断链接是否为本站链接
+ *
+ * 锚点链接、相对路径、非 http(s) 协议的链接（如 mailto、tel）均视为本站链接；
+ * http(s) 绝对链接与协议相对链接（//xxx.com）会与本站域名比较，
+ * 域名一致视为本站链接，指向其它域名的视为站外链接。
+ *
+ * @param string $href    链接地址
+ * @param string $siteUrl 本站地址
+ * @return bool 为本站链接时返回 true
+ */
+function isInternalLink($href, $siteUrl) {
+    // 空地址、锚点视为本站链接
+    if ($href === '' || $href[0] === '#') {
+        return true;
+    }
+
+    // 协议相对地址（//xxx.com）视为绝对地址，需要比较域名
+    if (strpos($href, '//') === 0) {
+        $href = 'http:' . $href;
+    } elseif (!preg_match('#^https?://#i', $href)) {
+        // 相对路径（/、./、../、直接路径）以及 mailto、tel 等非 http(s) 协议视为本站链接
+        return true;
+    }
+
+    // 解析本站域名
+    $siteHost = parse_url($siteUrl, PHP_URL_HOST);
+    if (empty($siteHost)) {
+        return true;
+    }
+    $siteHost = strtolower($siteHost);
+
+    // 解析链接域名
+    $linkHost = parse_url($href, PHP_URL_HOST);
+    if (empty($linkHost)) {
+        return true;
+    }
+    $linkHost = strtolower($linkHost);
+
+    // 比较域名，忽略 www 前缀差异
+    if (strpos($siteHost, 'www.') === 0) {
+        $siteHost = substr($siteHost, 4);
+    }
+    if (strpos($linkHost, 'www.') === 0) {
+        $linkHost = substr($linkHost, 4);
+    }
+    return $linkHost === $siteHost;
 }

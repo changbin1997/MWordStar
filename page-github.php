@@ -41,6 +41,8 @@ $this->need('components/header.php');
                             $postContent = addBootstrapTableClasses($this->content);
                             // 短代码解析
                             $postContent = parseThemeShortcodes($postContent);
+                            // 站外链接添加 target="_blank" 与 rel="noopener"
+                            $postContent = addExternalLinkAttributes($postContent, $this->options->siteUrl);
 
                             echo $postContent;
                             ?>

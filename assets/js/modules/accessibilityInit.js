@@ -7,12 +7,6 @@
 */
 
 export default () => {
-  // 给链接设置在新标签页打开
-  if ($('.post-content').attr('data-target') === '_blank' && $('.post-content a').length) {
-    // 给文章中的所有链接添加 target 属性，让文章中的链接在新标签页打开
-    $('.post-content a').attr('target', '_blank');
-  }
-
   // 文章是否有密码
   if ($('.post-content .protected').length) {
     $('input[name="protectPassword"]').attr('placeholder', window.t.enterYourPassword);

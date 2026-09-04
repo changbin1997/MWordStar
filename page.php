@@ -69,6 +69,8 @@ $this->need('components/header.php');
                             $postContent = lazyLoadImages($postContent, $this->options->imagelazyloading);
                             // 短代码解析
                             $postContent = parseThemeShortcodes($postContent);
+                            // 站外链接添加 target="_blank" 与 rel="noopener"
+                            $postContent = addExternalLinkAttributes($postContent, $this->options->siteUrl);
 
                             echo $postContent;
                             ?>
