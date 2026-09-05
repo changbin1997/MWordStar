@@ -257,6 +257,13 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
   .table-responsive {
     @include light-horizontal-scrollbar;
   }
+  // collapse 折叠内容
+  .collapse-box {
+    background: none;
+    .card-body {
+      background: none;
+    }
+  }
 }
 
 // 横向滚动条样式，用于深色模式之外的配色

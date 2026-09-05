@@ -119,6 +119,20 @@ $text-primary: #007bff;
   .table-responsive {
     @include dark-horizontal-scrollbar;
   }
+  // collapse 折叠内容
+  .collapse-box {
+    border: 1px solid $dark-text-color2;
+    .card-header {
+      background: $dark-bg-color2 !important;
+      border-bottom: 1px solid $dark-text-color2;
+      button {
+        color: $dark-text-color;
+      }
+    }
+    .card-body {
+      color: $dark-text-color;
+    }
+  }
 }
 
 // 横向滚动条配色
@@ -253,11 +267,13 @@ $text-primary: #007bff;
   }
 
   // 分页导航区配色
-  .pagination-nav ul,.post-pagination ol {
-    li a {
-      color: $dark-text-color;
-      background-color: $dark-bg-color;
-      border: none;
+  .pagination-nav,.post-pagination {
+    li {
+      a,span {
+        color: $dark-text-color;
+        background-color: $dark-bg-color;
+        border: 1px solid $dark-border-color;
+      }
     }
     li:not(.active) a:hover {
       background-color: $dark-bg-color2;

@@ -765,6 +765,12 @@ header .navbar .search-form button:focus {
 .container .article-list .post .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #444444;
 }
+.container .article-list .post .post-content .collapse-box {
+  background: none;
+}
+.container .article-list .post .post-content .collapse-box .card-body {
+  background: none;
+}
 .container .article-list .post .article-info {
   padding: 10px 25px;
 }
@@ -1284,6 +1290,12 @@ footer .container span {
 .article-page main article .post-content .table-responsive::-webkit-scrollbar-thumb:hover, .archive main article .post-content .table-responsive::-webkit-scrollbar-thumb:hover, .page main article .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #444444;
 }
+.article-page main article .post-content .collapse-box, .archive main article .post-content .collapse-box, .page main article .post-content .collapse-box {
+  background: none;
+}
+.article-page main article .post-content .collapse-box .card-body, .archive main article .post-content .collapse-box .card-body, .page main article .post-content .collapse-box .card-body {
+  background: none;
+}
 .article-page main article .post-content .load-img, .archive main article .post-content .load-img, .page main article .post-content .load-img {
   width: 100%;
   display: block;
@@ -1556,6 +1568,12 @@ footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #444444;
 }
+#comments .comments-lists .comment-list .comment-body .comment-content .collapse-box {
+  background: none;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content .collapse-box .card-body {
+  background: none;
+}
 #comments .comments-lists .comment-list .comment-body .hide-comment-content {
   margin-bottom: 20px;
   background-color: #FBFAF9;
@@ -1798,6 +1816,12 @@ footer .container span {
 }
 .archives-list .archives .post .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #444444;
+}
+.archives-list .archives .post .post-content .collapse-box {
+  background: none;
+}
+.archives-list .archives .post .post-content .collapse-box .card-body {
+  background: none;
 }
 .archives-list .archives .post .article-info {
   padding: 10px 25px;
@@ -2179,6 +2203,13 @@ footer .container span {
     font-size: 14px !important;
   }
 }
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .danger-dark-color header .navbar,
 .info-dark-color header .navbar,
 .light-dark-color header .navbar,
@@ -2447,6 +2478,13 @@ footer .container span {
   color: rgba(0, 0, 0, 0.9);
 }
 
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .light-dark-color header .navbar .search-form button,
 .light-color header .navbar .search-form button {
   background: #f8f8f8;
@@ -2683,6 +2721,13 @@ footer .container span {
   color: #444444 !important;
 }
 
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .primary-color header .navbar {
   background-color: #007bff !important;
 }
@@ -2978,6 +3023,13 @@ footer .container span {
   color: #0056b3 !important;
 }
 
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .info-color header .navbar {
   background-color: #17a2b8 !important;
 }
@@ -3273,6 +3325,13 @@ footer .container span {
   color: #0f6674 !important;
 }
 
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .success-color header .navbar {
   background-color: #28a745 !important;
 }
@@ -3568,6 +3627,13 @@ footer .container span {
   color: #19692c !important;
 }
 
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .dark-color {
   background-color: #121212;
 }
@@ -3712,6 +3778,19 @@ footer .container span {
 .dark-color .article-list .post .post-content .table-responsive::-webkit-scrollbar-thumb:hover, .dark-color .archives-list .archives .post .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #999999;
 }
+.dark-color .article-list .post .post-content .collapse-box, .dark-color .archives-list .archives .post .post-content .collapse-box {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.dark-color .article-list .post .post-content .collapse-box .card-header, .dark-color .archives-list .archives .post .post-content .collapse-box .card-header {
+  background: #2D2D2D !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+.dark-color .article-list .post .post-content .collapse-box .card-header button, .dark-color .archives-list .archives .post .post-content .collapse-box .card-header button {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .article-list .post .post-content .collapse-box .card-body, .dark-color .archives-list .archives .post .post-content .collapse-box .card-body {
+  color: rgba(255, 255, 255, 0.87);
+}
 .dark-color .article-list .post .article-info i, .dark-color .article-list .post .article-info span, .dark-color .archives-list .archives .post .article-info i, .dark-color .archives-list .archives .post .article-info span {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -3721,12 +3800,12 @@ footer .container span {
 .dark-color .article-list .post .article-info a:hover, .dark-color .archives-list .archives .post .article-info a:hover {
   color: rgba(255, 255, 255, 0.6);
 }
-.dark-color .pagination-nav ul li a, .dark-color .post-pagination ol li a {
+.dark-color .pagination-nav li a, .dark-color .pagination-nav li span, .dark-color .post-pagination li a, .dark-color .post-pagination li span {
   color: rgba(255, 255, 255, 0.87);
   background-color: #1E1E1E;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.dark-color .pagination-nav ul li:not(.active) a:hover, .dark-color .post-pagination ol li:not(.active) a:hover {
+.dark-color .pagination-nav li:not(.active) a:hover, .dark-color .post-pagination li:not(.active) a:hover {
   background-color: #2D2D2D;
 }
 .dark-color .load-more-post-btn {
@@ -3894,6 +3973,19 @@ footer .container span {
 }
 .dark-color .content-area .post-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #999999;
+}
+.dark-color .content-area .post-content .collapse-box {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.dark-color .content-area .post-content .collapse-box .card-header {
+  background: #2D2D2D !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+.dark-color .content-area .post-content .collapse-box .card-header button {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .content-area .post-content .collapse-box .card-body {
+  color: rgba(255, 255, 255, 0.87);
 }
 .dark-color .content-area .post-content .load-img {
   background-color: #373737;
@@ -4064,6 +4156,19 @@ footer .container span {
 .dark-color #comments .comment-box .comment-content .table-responsive::-webkit-scrollbar-thumb:hover {
   background-color: #999999;
 }
+.dark-color #comments .comment-box .comment-content .collapse-box {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.dark-color #comments .comment-box .comment-content .collapse-box .card-header {
+  background: #2D2D2D !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+.dark-color #comments .comment-box .comment-content .collapse-box .card-header button {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color #comments .comment-box .comment-content .collapse-box .card-body {
+  color: rgba(255, 255, 255, 0.87);
+}
 .dark-color #comments .comment-box .hide-comment-content {
   background: #2D2D2D !important;
   color: rgba(255, 255, 255, 0.6) !important;
@@ -4193,6 +4298,13 @@ footer .container span {
   color: #007bff !important;
 }
 
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .danger-color header .navbar {
   background-color: #dc3545 !important;
 }
@@ -4488,6 +4600,13 @@ footer .container span {
   color: #a71d2a !important;
 }
 
+/*!
+* HomePage: https://www.misterma.com
+* GithubPage: https://github.com/changbin1997
+* ProjectPage: https://github.com/changbin1997/MWordStar
+* author: Changbin (changbin1997)
+* Licensed under MIT
+*/
 .warning-color header .navbar {
   background-color: #ffc107 !important;
 }

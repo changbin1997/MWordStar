@@ -9,7 +9,7 @@
  *  - lazyLoadImages                    图片懒加载（原生 / 兼容）
  *  - splitArticleContent               按 [-page-] 分页文章内容
  *  - addBootstrapTableClasses          为表格加 Bootstrap 样式
- *  - parseThemeShortcodes              解析自定义短代码（button / alert）
+ *  - parseThemeShortcodes              解析自定义短代码（button / alert / collapse）
  *  - stripThemeShortcodes              去除短代码语法仅保留包裹内容（支持嵌套）
  *  - postListSummary                   输出文章列表摘要（不含短代码语法）
  *  - outputCustomHighlightCSS          输出代码高亮自定义 CSS
@@ -212,8 +212,10 @@ function addBootstrapTableClasses($html) {
  * @return string 转换后的 HTML 字符串
  */
 function parseThemeShortcodes($content) {
+    // 页面级自增计数器，保证同一页面内多个 collapse 短代码的 id 唯一
+    static $collapse_id = 0;
     // 定义支持的短代码标签，方便未来维护和添加新功能
-    $supported_tags = array('button', 'alert');
+    $supported_tags = array('button', 'alert', 'collapse');
     $tags_pattern = implode('|', $supported_tags);
     // 构造正则表达式
     // 前半部分匹配 <pre> 或 <code> 块（用于忽略）
@@ -221,7 +223,7 @@ function parseThemeShortcodes($content) {
     $pattern = '/(<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>)|\[(' . $tags_pattern . ')\b([^\]]*?)\](.*?)\[\/\2\]/is';
 
     // 使用正则回调函数进行替换
-    return preg_replace_callback($pattern, function($matches) {
+    return preg_replace_callback($pattern, function($matches) use (&$collapse_id) {
         // 如果匹配到的是代码块 ($matches[1] 不为空)，直接原样返回，不解析其中的短代码
         if (!empty($matches[1])) {
             return $matches[1];
@@ -257,6 +259,25 @@ function parseThemeShortcodes($content) {
                 // alert 内部可能包含其他排版 HTML (如链接)，因此 $inner_content 不做转义
                 return '<div class="alert alert-' . htmlspecialchars($type, ENT_QUOTES, 'UTF-8') . '">' . $inner_content . '</div>';
 
+            case 'collapse':
+                // 递增生成唯一 id，保证一篇/一页中多个 collapse 不重复
+                $collapse_id++;
+                $title = isset($atts['title']) ? $atts['title'] : '点击展开';
+
+                $id = 'collapse-' . $collapse_id;
+                // 标题作为属性值，使用 htmlspecialchars 过滤 XSS；正文保留原有排版 HTML
+                return '<div class="card collapse-box">'
+                    . '<div class="card-header p-0 bg-light">'
+                    . '<button class="btn btn-block text-left border-0 py-2 px-3 d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#' . $id . '">'
+                    . '<span class="font-weight-bold">' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '</span>'
+                    . '<small class="text-muted">▼</small>'
+                    . '</button>'
+                    . '</div>'
+                    . '<div class="collapse" id="' . $id . '">'
+                    . '<div class="card-body">' . preg_replace('/^\<br>/', '', $inner_content) . '</div>'
+                    . '</div>'
+                    . '</div>';
+
             default:
                 // 如果没有对应的处理逻辑，返回原文本
                 return $matches[0];
@@ -275,7 +296,7 @@ function parseThemeShortcodes($content) {
  */
 function stripThemeShortcodes($content) {
     // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致
-    $supported_tags = array('button', 'alert');
+    $supported_tags = array('button', 'alert', 'collapse');
     $tags_pattern = implode('|', $supported_tags);
     // 前半部分匹配 <pre> / <code> 块（忽略其中的短代码）
     // 后半部分匹配 [tag ...]内容[/tag] 的短代码
