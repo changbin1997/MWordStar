@@ -9,7 +9,7 @@
  *  - lazyLoadImages                    图片懒加载（原生 / 兼容）
  *  - splitArticleContent               按 [-page-] 分页文章内容
  *  - addBootstrapTableClasses          为表格加 Bootstrap 样式
- *  - parseThemeShortcodes              解析自定义短代码（button / alert / collapse）
+ *  - parseThemeShortcodes              解析自定义短代码（button / alert / collapse / badge）
  *  - stripThemeShortcodes              去除短代码语法仅保留包裹内容（支持嵌套）
  *  - postListSummary                   输出文章列表摘要（不含短代码语法）
  *  - outputCustomHighlightCSS          输出代码高亮自定义 CSS
@@ -215,7 +215,7 @@ function parseThemeShortcodes($content) {
     // 页面级自增计数器，保证同一页面内多个 collapse 短代码的 id 唯一
     static $collapse_id = 0;
     // 定义支持的短代码标签，方便未来维护和添加新功能
-    $supported_tags = array('button', 'alert', 'collapse');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge');
     $tags_pattern = implode('|', $supported_tags);
     // 构造正则表达式
     // 前半部分匹配 <pre> 或 <code> 块（用于忽略）
@@ -252,6 +252,17 @@ function parseThemeShortcodes($content) {
 
                 // 为了安全，属性值使用 htmlspecialchars 过滤 XSS
                 return '<a href="' . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . '" class="btn btn-' . htmlspecialchars($type, ENT_QUOTES, 'UTF-8') . '">' . $inner_content . '</a>';
+
+            case 'badge':
+                // 未指定 type 时默认使用 secondary，支持可选 url 渲染为链接
+                $type = isset($atts['type']) ? $atts['type'] : 'secondary';
+
+                $type_attr = htmlspecialchars($type, ENT_QUOTES, 'UTF-8');
+                // 传入 url 时渲染为链接，否则渲染为 span
+                if (isset($atts['url']) && $atts['url'] !== '') {
+                    return '<a href="' . htmlspecialchars($atts['url'], ENT_QUOTES, 'UTF-8') . '" class="badge badge-' . $type_attr . '">' . $inner_content . '</a>';
+                }
+                return '<span class="badge badge-' . $type_attr . '">' . $inner_content . '</span>';
 
             case 'alert':
                 $type = isset($atts['type']) ? $atts['type'] : 'primary';
@@ -296,7 +307,7 @@ function parseThemeShortcodes($content) {
  */
 function stripThemeShortcodes($content) {
     // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致
-    $supported_tags = array('button', 'alert', 'collapse');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge');
     $tags_pattern = implode('|', $supported_tags);
     // 前半部分匹配 <pre> / <code> 块（忽略其中的短代码）
     // 后半部分匹配 [tag ...]内容[/tag] 的短代码

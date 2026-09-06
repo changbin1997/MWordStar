@@ -161,7 +161,6 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
 
 // 通用的文章内容样式
 @mixin postContent {
-  font-size: $articleFontSize;
   word-break: break-all;
   ul,
   ol,
@@ -227,6 +226,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
   }
   table td {
     min-width: 90px;
+    font-size: $articleFontSize;
   }
   // 响应式表格
   .table-responsive {
@@ -238,10 +238,12 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
   p {
     color: #444444;
     line-height: 25px;
+    font-size: $articleFontSize;
   }
   li {
     color: #444444;
     padding: 2px 0;
+    font-size: $articleFontSize;
   }
   p > code,
   li > code,
@@ -250,6 +252,10 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
     background: #ededed;
     color: #333333;
     padding: 0 4px;
+    font-size: $articleFontSize;
+  }
+  b, em {
+    font-size: $articleFontSize;
   }
   video {
     width: 100%;

@@ -195,7 +195,7 @@ $text-warning: #ffc107;
     // 文章内容区域
     .post-content {
       // 链接
-      a:not(.btn) {
+      a:not(.btn, .badge) {
         @include link-warning;
       }
     }

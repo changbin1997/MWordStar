@@ -196,7 +196,7 @@ $text-primary: #007bff;
     // 文章内容区域
     .post-content {
       // 链接
-      a:not(.btn) {
+      a:not(.btn, .badge) {
         @include link-primary;
       }
     }

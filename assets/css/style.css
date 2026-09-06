@@ -644,7 +644,6 @@ header .navbar .search-form button:focus {
   line-height: 25px;
 }
 .container .article-list .post .post-content {
-  font-size: 15px;
   word-break: break-all;
 }
 .container .article-list .post .post-content ul,
@@ -714,6 +713,7 @@ header .navbar .search-form button:focus {
 }
 .container .article-list .post .post-content table td {
   min-width: 90px;
+  font-size: 15px;
 }
 .container .article-list .post .post-content .table-responsive {
   margin-bottom: 20px;
@@ -724,10 +724,12 @@ header .navbar .search-form button:focus {
 .container .article-list .post .post-content p {
   color: #444444;
   line-height: 25px;
+  font-size: 15px;
 }
 .container .article-list .post .post-content li {
   color: #444444;
   padding: 2px 0;
+  font-size: 15px;
 }
 .container .article-list .post .post-content p > code,
 .container .article-list .post .post-content li > code,
@@ -736,6 +738,10 @@ header .navbar .search-form button:focus {
   background: #ededed;
   color: #333333;
   padding: 0 4px;
+  font-size: 15px;
+}
+.container .article-list .post .post-content b, .container .article-list .post .post-content em {
+  font-size: 15px;
 }
 .container .article-list .post .post-content video {
   width: 100%;
@@ -1123,7 +1129,6 @@ footer .container span {
 .article-page main article .post-content, .archive main article .post-content, .page main article .post-content {
   margin-top: 10px;
   width: 100%;
-  font-size: 15px;
   word-break: break-all;
 }
 .article-page main article .post-content ul, .archive main article .post-content ul, .page main article .post-content ul,
@@ -1233,6 +1238,7 @@ footer .container span {
 }
 .article-page main article .post-content table td, .archive main article .post-content table td, .page main article .post-content table td {
   min-width: 90px;
+  font-size: 15px;
 }
 .article-page main article .post-content .table-responsive, .archive main article .post-content .table-responsive, .page main article .post-content .table-responsive {
   margin-bottom: 20px;
@@ -1243,10 +1249,12 @@ footer .container span {
 .article-page main article .post-content p, .archive main article .post-content p, .page main article .post-content p {
   color: #444444;
   line-height: 25px;
+  font-size: 15px;
 }
 .article-page main article .post-content li, .archive main article .post-content li, .page main article .post-content li {
   color: #444444;
   padding: 2px 0;
+  font-size: 15px;
 }
 .article-page main article .post-content p > code, .archive main article .post-content p > code, .page main article .post-content p > code,
 .article-page main article .post-content li > code,
@@ -1261,6 +1269,10 @@ footer .container span {
   background: #ededed;
   color: #333333;
   padding: 0 4px;
+  font-size: 15px;
+}
+.article-page main article .post-content b, .archive main article .post-content b, .page main article .post-content b, .article-page main article .post-content em, .archive main article .post-content em, .page main article .post-content em {
+  font-size: 15px;
 }
 .article-page main article .post-content video, .archive main article .post-content video, .page main article .post-content video {
   width: 100%;
@@ -1447,7 +1459,6 @@ footer .container span {
 }
 #comments .comments-lists .comment-list .comment-body .comment-content {
   margin-left: 52px;
-  font-size: 15px;
   word-break: break-all;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content ul,
@@ -1517,6 +1528,7 @@ footer .container span {
 }
 #comments .comments-lists .comment-list .comment-body .comment-content table td {
   min-width: 90px;
+  font-size: 15px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content .table-responsive {
   margin-bottom: 20px;
@@ -1527,10 +1539,12 @@ footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-content p {
   color: #444444;
   line-height: 25px;
+  font-size: 15px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content li {
   color: #444444;
   padding: 2px 0;
+  font-size: 15px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content p > code,
 #comments .comments-lists .comment-list .comment-body .comment-content li > code,
@@ -1539,6 +1553,10 @@ footer .container span {
   background: #ededed;
   color: #333333;
   padding: 0 4px;
+  font-size: 15px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content b, #comments .comments-lists .comment-list .comment-body .comment-content em {
+  font-size: 15px;
 }
 #comments .comments-lists .comment-list .comment-body .comment-content video {
   width: 100%;
@@ -1696,7 +1714,6 @@ footer .container span {
   line-height: 25px;
 }
 .archives-list .archives .post .post-content {
-  font-size: 15px;
   word-break: break-all;
 }
 .archives-list .archives .post .post-content ul,
@@ -1766,6 +1783,7 @@ footer .container span {
 }
 .archives-list .archives .post .post-content table td {
   min-width: 90px;
+  font-size: 15px;
 }
 .archives-list .archives .post .post-content .table-responsive {
   margin-bottom: 20px;
@@ -1776,10 +1794,12 @@ footer .container span {
 .archives-list .archives .post .post-content p {
   color: #444444;
   line-height: 25px;
+  font-size: 15px;
 }
 .archives-list .archives .post .post-content li {
   color: #444444;
   padding: 2px 0;
+  font-size: 15px;
 }
 .archives-list .archives .post .post-content p > code,
 .archives-list .archives .post .post-content li > code,
@@ -1788,6 +1808,10 @@ footer .container span {
   background: #ededed;
   color: #333333;
   padding: 0 4px;
+  font-size: 15px;
+}
+.archives-list .archives .post .post-content b, .archives-list .archives .post .post-content em {
+  font-size: 15px;
 }
 .archives-list .archives .post .post-content video {
   width: 100%;
@@ -2571,10 +2595,10 @@ footer .container span {
 .light-dark-color .content-area .article-info .info a:hover, .light-color .content-area .article-info .info a:hover {
   color: #494f54;
 }
-.light-dark-color .content-area .post-content a:not(.btn), .light-color .content-area .post-content a:not(.btn) {
+.light-dark-color .content-area .post-content a:not(.btn, .badge), .light-color .content-area .post-content a:not(.btn, .badge) {
   color: #6c757d;
 }
-.light-dark-color .content-area .post-content a:not(.btn):hover, .light-color .content-area .post-content a:not(.btn):hover {
+.light-dark-color .content-area .post-content a:not(.btn, .badge):hover, .light-color .content-area .post-content a:not(.btn, .badge):hover {
   color: #494f54;
 }
 .light-dark-color .content-area .agree-and-share button, .light-color .content-area .agree-and-share button {
@@ -2873,10 +2897,10 @@ footer .container span {
 .primary-color .content-area .article-info .info a:hover, .primary-dark-color .content-area .article-info .info a:hover, .primary-light-color .content-area .article-info .info a:hover {
   color: #0056b3;
 }
-.primary-color .content-area .post-content a:not(.btn), .primary-dark-color .content-area .post-content a:not(.btn), .primary-light-color .content-area .post-content a:not(.btn) {
+.primary-color .content-area .post-content a:not(.btn, .badge), .primary-dark-color .content-area .post-content a:not(.btn, .badge), .primary-light-color .content-area .post-content a:not(.btn, .badge) {
   color: #007bff;
 }
-.primary-color .content-area .post-content a:not(.btn):hover, .primary-dark-color .content-area .post-content a:not(.btn):hover, .primary-light-color .content-area .post-content a:not(.btn):hover {
+.primary-color .content-area .post-content a:not(.btn, .badge):hover, .primary-dark-color .content-area .post-content a:not(.btn, .badge):hover, .primary-light-color .content-area .post-content a:not(.btn, .badge):hover {
   color: #0056b3;
 }
 .primary-color .content-area .agree-and-share button, .primary-dark-color .content-area .agree-and-share button, .primary-light-color .content-area .agree-and-share button {
@@ -3175,10 +3199,10 @@ footer .container span {
 .info-color .content-area .article-info .info a:hover, .info-dark-color .content-area .article-info .info a:hover, .info-light-color .content-area .article-info .info a:hover {
   color: #0f6674;
 }
-.info-color .content-area .post-content a:not(.btn), .info-dark-color .content-area .post-content a:not(.btn), .info-light-color .content-area .post-content a:not(.btn) {
+.info-color .content-area .post-content a:not(.btn, .badge), .info-dark-color .content-area .post-content a:not(.btn, .badge), .info-light-color .content-area .post-content a:not(.btn, .badge) {
   color: #17a2b8;
 }
-.info-color .content-area .post-content a:not(.btn):hover, .info-dark-color .content-area .post-content a:not(.btn):hover, .info-light-color .content-area .post-content a:not(.btn):hover {
+.info-color .content-area .post-content a:not(.btn, .badge):hover, .info-dark-color .content-area .post-content a:not(.btn, .badge):hover, .info-light-color .content-area .post-content a:not(.btn, .badge):hover {
   color: #0f6674;
 }
 .info-color .content-area .agree-and-share button, .info-dark-color .content-area .agree-and-share button, .info-light-color .content-area .agree-and-share button {
@@ -3477,10 +3501,10 @@ footer .container span {
 .success-color .content-area .article-info .info a:hover, .success-dark-color .content-area .article-info .info a:hover, .success-light-color .content-area .article-info .info a:hover {
   color: #19692c;
 }
-.success-color .content-area .post-content a:not(.btn), .success-dark-color .content-area .post-content a:not(.btn), .success-light-color .content-area .post-content a:not(.btn) {
+.success-color .content-area .post-content a:not(.btn, .badge), .success-dark-color .content-area .post-content a:not(.btn, .badge), .success-light-color .content-area .post-content a:not(.btn, .badge) {
   color: #28a745;
 }
-.success-color .content-area .post-content a:not(.btn):hover, .success-dark-color .content-area .post-content a:not(.btn):hover, .success-light-color .content-area .post-content a:not(.btn):hover {
+.success-color .content-area .post-content a:not(.btn, .badge):hover, .success-dark-color .content-area .post-content a:not(.btn, .badge):hover, .success-light-color .content-area .post-content a:not(.btn, .badge):hover {
   color: #19692c;
 }
 .success-color .content-area .agree-and-share button, .success-dark-color .content-area .agree-and-share button, .success-light-color .content-area .agree-and-share button {
@@ -4450,10 +4474,10 @@ footer .container span {
 .danger-color .content-area .article-info .info a:hover, .danger-dark-color .content-area .article-info .info a:hover, .danger-light-color .content-area .article-info .info a:hover {
   color: #a71d2a;
 }
-.danger-color .content-area .post-content a:not(.btn), .danger-dark-color .content-area .post-content a:not(.btn), .danger-light-color .content-area .post-content a:not(.btn) {
+.danger-color .content-area .post-content a:not(.btn, .badge), .danger-dark-color .content-area .post-content a:not(.btn, .badge), .danger-light-color .content-area .post-content a:not(.btn, .badge) {
   color: #dc3545;
 }
-.danger-color .content-area .post-content a:not(.btn):hover, .danger-dark-color .content-area .post-content a:not(.btn):hover, .danger-light-color .content-area .post-content a:not(.btn):hover {
+.danger-color .content-area .post-content a:not(.btn, .badge):hover, .danger-dark-color .content-area .post-content a:not(.btn, .badge):hover, .danger-light-color .content-area .post-content a:not(.btn, .badge):hover {
   color: #a71d2a;
 }
 .danger-color .content-area .agree-and-share button, .danger-dark-color .content-area .agree-and-share button, .danger-light-color .content-area .agree-and-share button {
@@ -4752,10 +4776,10 @@ footer .container span {
 .warning-color .content-area .article-info .info a:hover, .warning-dark-color .content-area .article-info .info a:hover, .warning-light-color .content-area .article-info .info a:hover {
   color: #b98b00;
 }
-.warning-color .content-area .post-content a:not(.btn), .warning-dark-color .content-area .post-content a:not(.btn), .warning-light-color .content-area .post-content a:not(.btn) {
+.warning-color .content-area .post-content a:not(.btn, .badge), .warning-dark-color .content-area .post-content a:not(.btn, .badge), .warning-light-color .content-area .post-content a:not(.btn, .badge) {
   color: #ffc107;
 }
-.warning-color .content-area .post-content a:not(.btn):hover, .warning-dark-color .content-area .post-content a:not(.btn):hover, .warning-light-color .content-area .post-content a:not(.btn):hover {
+.warning-color .content-area .post-content a:not(.btn, .badge):hover, .warning-dark-color .content-area .post-content a:not(.btn, .badge):hover, .warning-light-color .content-area .post-content a:not(.btn, .badge):hover {
   color: #b98b00;
 }
 .warning-color .content-area .agree-and-share button, .warning-dark-color .content-area .agree-and-share button, .warning-light-color .content-area .agree-and-share button {
