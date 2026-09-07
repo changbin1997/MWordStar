@@ -118,7 +118,7 @@ $this->need('components/header.php');
                             // 图片懒加载
                             $GLOBALS['post']['content'] = lazyLoadImages($GLOBALS['post']['content'], $this->options->imagelazyloading);
                             // 短代码解析
-                            $GLOBALS['post']['content'] = parseThemeShortcodes($GLOBALS['post']['content']);
+                            $GLOBALS['post']['content'] = parseThemeShortcodes($GLOBALS['post']['content'], $this->cid);
                             // 站外链接添加 target="_blank" 与 rel="noopener"
                             $GLOBALS['post']['content'] = addExternalLinkAttributes($GLOBALS['post']['content'], $this->options->siteUrl);
 

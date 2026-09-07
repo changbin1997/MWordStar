@@ -9,7 +9,8 @@
  *  - lazyLoadImages                    图片懒加载（原生 / 兼容）
  *  - splitArticleContent               按 [-page-] 分页文章内容
  *  - addBootstrapTableClasses          为表格加 Bootstrap 样式
- *  - parseThemeShortcodes              解析自定义短代码（button / alert / collapse / badge）
+ *  - parseThemeShortcodes              解析自定义短代码（button / alert / collapse / badge / hide）
+ *  - canViewHideContent               判断 [hide] 隐藏内容的访问权限
  *  - stripThemeShortcodes              去除短代码语法仅保留包裹内容（支持嵌套）
  *  - postListSummary                   输出文章列表摘要（不含短代码语法）
  *  - outputCustomHighlightCSS          输出代码高亮自定义 CSS
@@ -209,13 +210,20 @@ function addBootstrapTableClasses($html) {
  * 解析文章内容中的自定义短代码 (兼容 PHP 5.6)
  *
  * @param string $content 文章内容的 HTML 字符串
+ * @param int    $cid     当前文章/页面 ID，用于 [hide] 短代码的评论权限判断
  * @return string 转换后的 HTML 字符串
  */
-function parseThemeShortcodes($content) {
+function parseThemeShortcodes($content, $cid = 0) {
+    // 短代码开关：关闭时不做任何解析，直接返回原文
+    $shortcodeOption = Helper::options()->shortcode;
+    if ($shortcodeOption !== null && $shortcodeOption != 'enable') {
+        return $content;
+    }
+
     // 页面级自增计数器，保证同一页面内多个 collapse 短代码的 id 唯一
     static $collapse_id = 0;
     // 定义支持的短代码标签，方便未来维护和添加新功能
-    $supported_tags = array('button', 'alert', 'collapse', 'badge');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide');
     $tags_pattern = implode('|', $supported_tags);
     // 构造正则表达式
     // 前半部分匹配 <pre> 或 <code> 块（用于忽略）
@@ -223,7 +231,7 @@ function parseThemeShortcodes($content) {
     $pattern = '/(<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>)|\[(' . $tags_pattern . ')\b([^\]]*?)\](.*?)\[\/\2\]/is';
 
     // 使用正则回调函数进行替换
-    return preg_replace_callback($pattern, function($matches) use (&$collapse_id) {
+    return preg_replace_callback($pattern, function($matches) use (&$collapse_id, $cid) {
         // 如果匹配到的是代码块 ($matches[1] 不为空)，直接原样返回，不解析其中的短代码
         if (!empty($matches[1])) {
             return $matches[1];
@@ -289,11 +297,83 @@ function parseThemeShortcodes($content) {
                     . '</div>'
                     . '</div>';
 
+            case 'hide':
+                // 未指定 type 时默认使用 comment
+                $type = isset($atts['type']) ? $atts['type'] : 'comment';
+                if ($type != 'login') {
+                    $type = 'comment';
+                }
+                // 无权限时显示的提示信息（支持多语言）
+                $hideTips = isset($GLOBALS['t']['shortcode']) ? $GLOBALS['t']['shortcode'] : array();
+                if ($type == 'login') {
+                    $tip = isset($hideTips['hideByLogin']) ? $hideTips['hideByLogin'] : '此处内容已被隐藏，仅登录用户可见。';
+                } else {
+                    $tip = isset($hideTips['hideByComment']) ? $hideTips['hideByComment'] : '此处内容已被隐藏，需要在本文下方发送评论，评论审核通过后才可阅读。';
+                }
+                // 有权限时返回隐藏内容本体，无权限时返回提示信息
+                return canViewHideContent($type, $cid)
+                    ? $inner_content
+                    : '<div class="alert warning-info">' . $tip . '</div>';
+
             default:
                 // 如果没有对应的处理逻辑，返回原文本
                 return $matches[0];
         }
     }, $content);
+}
+
+/**
+ * 判断当前访问者是否有权限查看 [hide] 隐藏内容
+ *
+ * 支持 comment / login 两种类型：
+ *  - comment：登录用户直接可见；未登录访客需要在本文章（cid）发表过
+ *    状态为 approved 的评论，且 Cookie 中的邮箱与该评论邮箱一致才可见。
+ *  - login：仅登录用户可见。
+ *
+ * @param string $type 隐藏内容类型（comment / login）
+ * @param int    $cid  当前文章/页面 ID
+ * @return bool 有权限时返回 true
+ */
+function canViewHideContent($type, $cid = 0) {
+    // 按 类型+文章ID 缓存判断结果，避免同一文章内多个 [hide] 重复查询数据库
+    static $permissionCache = array();
+    $cacheKey = $type . ':' . $cid;
+    if (array_key_exists($cacheKey, $permissionCache)) {
+        return $permissionCache[$cacheKey];
+    }
+
+    $user = Typecho_Widget::widget('Widget_User');
+
+    // login 类型：仅登录用户可见
+    if ($type == 'login') {
+        $permission = $user->hasLogin();
+        $permissionCache[$cacheKey] = $permission;
+        return $permission;
+    }
+
+    // comment 类型：登录用户直接可见
+    if ($user->hasLogin()) {
+        $permissionCache[$cacheKey] = true;
+        return true;
+    }
+
+    // 未登录：通过 Cookie 中的邮箱判断是否发表过已审核通过的评论
+    $mail = Typecho_Cookie::get('__typecho_remember_mail');
+    if (empty($mail) || empty($cid)) {
+        $permissionCache[$cacheKey] = false;
+        return false;
+    }
+
+    $db = Typecho_Db::get();
+    $comment = $db->fetchRow($db->select()->from('table.comments')
+        ->where('cid = ?', $cid)
+        ->where('mail = ?', $mail)
+        ->where('status = ?', 'approved')
+        ->limit(1));
+
+    $permission = !empty($comment);
+    $permissionCache[$cacheKey] = $permission;
+    return $permission;
 }
 
 /**
@@ -307,7 +387,7 @@ function parseThemeShortcodes($content) {
  */
 function stripThemeShortcodes($content) {
     // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致
-    $supported_tags = array('button', 'alert', 'collapse', 'badge');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide');
     $tags_pattern = implode('|', $supported_tags);
     // 前半部分匹配 <pre> / <code> 块（忽略其中的短代码）
     // 后半部分匹配 [tag ...]内容[/tag] 的短代码
@@ -319,6 +399,11 @@ function stripThemeShortcodes($content) {
             // 代码块原样保留，不解析其中的短代码
             if (!empty($matches[1])) {
                 return $matches[1];
+            }
+            // 隐藏内容不在摘要中输出，替换为提示文本
+            if (strtolower($matches[2]) == 'hide') {
+                $hideTips = isset($GLOBALS['t']['shortcode']) ? $GLOBALS['t']['shortcode'] : array();
+                return isset($hideTips['hiddenInSummary']) ? $hideTips['hiddenInSummary'] : '隐藏内容，需进入文章页查看。';
             }
             // 仅保留短代码包裹的内容
             return $matches[3];
@@ -344,6 +429,17 @@ function stripThemeShortcodes($content) {
  * @param string $trim    摘要截断后缀
  */
 function postListSummary($archive, $length, $trim = '...') {
+    // 短代码关闭时直接使用 Typecho 默认的摘要输出方式，不做短代码处理
+    $shortcodeOption = Helper::options()->shortcode;
+    if ($shortcodeOption !== null && $shortcodeOption != 'enable') {
+        if ($archive->fields->summaryContent) {
+            echo $archive->fields->summaryContent;
+        } else {
+            echo \Typecho\Common::subStr(strip_tags($archive->excerpt), 0, $length, $trim);
+        }
+        return;
+    }
+
     // 自定义摘要：不受字数限制，去除短代码语法后原样输出
     if ($archive->fields->summaryContent) {
         echo stripThemeShortcodes($archive->fields->summaryContent);

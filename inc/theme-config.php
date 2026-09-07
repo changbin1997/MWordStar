@@ -247,6 +247,12 @@ EOT;
     // 自定义代码高亮 CSS
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Textarea('highlightJsCSS', null, null, _t('自定义代码块颜色主题'), _t('如果代码块颜色主题选择了自定义，可以在这里输入 highlight.js 的配色 CSS URL，也可以直接粘贴 highlight.js 的 CSS 代码。highlight.js 的 CSS 可以到 <a target="_blank" href="https://cdnjs.com/libraries/highlight.js">https://cdnjs.com/libraries/highlight.js</a> 获取，要预览不同配色的效果可以访问 <a target="_blank" href="https://highlightjs.org/demo">https://highlightjs.org/demo</a>。使用自定义代码块配色建议关闭代码块行号，代码块行号只能适配内置的代码高亮主题。')));
     
+    // 短代码
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('shortcode', array(
+        'enable' => '启用',
+        'disable' => '禁用'
+    ), 'enable', _t('短代码'), _t('短代码是 MWordStar 主题提供的一种特殊语法，通过短代码可以插入一些特殊样式的内容和小组件，访问 <a href="https://mwordstar.misterma.com/docs/%E7%9F%AD%E4%BB%A3%E7%A0%81" target="_blank">帮助文档</a> 可以查看详细的短代码使用说明。如果您需要使用其它短代码插件，可以选择禁用主题的短代码功能。')));
+
     // 图片懒加载
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('imagelazyloading', array(
         'native' => '原生图片懒加载',

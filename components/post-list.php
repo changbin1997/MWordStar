@@ -62,7 +62,7 @@
                 // 添加 bootstrap4 响应式表格
                 $postContent = addBootstrapTableClasses($this->content);
                 // 短代码解析
-                $postContent = parseThemeShortcodes($postContent);
+                $postContent = parseThemeShortcodes($postContent, $this->cid);
                 // 站外链接添加 target="_blank" 与 rel="noopener"
                 $postContent = addExternalLinkAttributes($postContent, $this->options->siteUrl);
                 echo $postContent;

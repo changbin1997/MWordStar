@@ -210,5 +210,10 @@ const ZH = array(
         'githubUsernameIsnotConfigured' => '您还没有配置 GitHub 用户，请在后台主题设置页填写 GitHub 用户名。',
         'noDescription' => '暂无描述',
         'unknown' => '未知'
+    ),
+    'shortcode' => array(
+        'hideByComment' => '此处内容已被隐藏，需要在本文下方发送评论，评论审核通过后才可阅读。',
+        'hideByLogin' => '此处内容已被隐藏，仅登录用户可见。',
+        'hiddenInSummary' => '隐藏内容，需进入文章页查看。'
     )
 );

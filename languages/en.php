@@ -210,5 +210,10 @@ const EN = array(
         'githubUsernameIsnotConfigured' => 'GitHub username is not configured. Please add it in the theme settings.',
         'noDescription' => 'No description',
         'unknown' => 'Unknown'
+    ),
+    'shortcode' => array(
+        'hideByComment' => 'This content is hidden. Please leave a comment below, and it will be visible once your comment is approved.',
+        'hideByLogin' => 'This content is hidden. It is only visible to logged-in users.',
+        'hiddenInSummary' => 'Hidden content. Please visit the post to view it.'
     )
 );
