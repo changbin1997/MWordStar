@@ -8,6 +8,7 @@
 
 export default class PJAX {
   commentParentId = null;  // 存储父评论的id，用于PJAX评论提交后跳转
+  progressTimer = null;    // 模拟进度条的定时器
 
   /**
    * PJAX 初始化
@@ -61,6 +62,8 @@ export default class PJAX {
       // 显示进度条
       if ($('#progress-bar').length) {
         $('#progress-bar').show();
+        // 清除上一次的模拟进度定时器
+        window.cancelAnimationFrame(this.progressTimer);
       }
 
       // 执行开始请求前的回调函数
@@ -72,22 +75,43 @@ export default class PJAX {
     // pjax 开始请求
     $(document).on('pjax:send', () => {
       if ($('#progress-bar').length) {
-        // 更改进度条
-        $('#progress-bar #progress').animate({
-          width: '30%'
-        }, 100);
-        $('#progress-bar #progress').attr('aria-valuenow', '30');
+        // 重置进度条
+        $('#progress-bar #progress').stop(true);
+        $('#progress-bar #progress').css('width', '0%');
+        $('#progress-bar #progress').attr('aria-valuenow', '0');
+
+        // 启动模拟进度：每帧根据时间增量平滑逼近 89%，越接近目标增长越慢，但不会停顿
+        let progress = 0;
+        let lastTime = null;
+        const step = timestamp => {
+          if (lastTime !== null) {
+            // 限制单帧最大步长，避免页面从后台切回时进度条跳动
+            const dt = Math.min((timestamp - lastTime) / 1000, 0.1);
+            progress += (89 - progress) * 0.3 * dt;
+            if (progress >= 89) {
+              progress = 89;
+            }
+            $('#progress-bar #progress').css('width', `${progress}%`);
+            $('#progress-bar #progress').attr('aria-valuenow', Math.round(progress));
+          }
+          lastTime = timestamp;
+          this.progressTimer = window.requestAnimationFrame(step);
+        };
+        this.progressTimer = window.requestAnimationFrame(step);
       }
     });
 
     // pjax 请求完成
     $(document).on('pjax:complete', () => {
       if ($('#progress-bar').length) {
+        // 清除模拟进度定时器
+        window.cancelAnimationFrame(this.progressTimer);
+        $('#progress-bar #progress').stop(true);
         // 更改进度条
         $('#progress-bar #progress').animate({
-          width: '80%'
+          width: '90%'
         }, 200);
-        $('#progress-bar #progress').attr('aria-valuenow', '80');
+        $('#progress-bar #progress').attr('aria-valuenow', '90');
       }
     });
 
@@ -95,6 +119,9 @@ export default class PJAX {
     $(document).on('pjax:end', ev => {
       // 隐藏进度条
       if ($('#progress-bar').length) {
+        // 清除模拟进度定时器
+        window.cancelAnimationFrame(this.progressTimer);
+        $('#progress-bar #progress').stop(true);
         $('#progress-bar #progress').animate({
           width: '100%'
         }, 100, () => {

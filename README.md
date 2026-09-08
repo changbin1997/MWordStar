@@ -61,12 +61,15 @@
 * 支持显示 QQ 头像和自定义 Gravatar 源
 * 评论支持图片验证码和 Cloudflare Turnstile
 * 支持自动根据文章中的标题生成章节目录
+* 文章支持单独加密某一部分内容，评论后可查看
+* 评论支持私密评论，只有评论者和管理员可见
 * 支持图片懒加载
 * 文章支持分页显示
 * 文章列表支持多种排版组合
 * 支持 PJAX 无刷新跳转
 * 支持 Service Worker 缓存
 * SEO 友好
+* 支持添加自定义 CSS、head 区域 HTML、footer 底部 HTML，可以方便的修改主题样式和添加分析 JS
 * 长期维护
 * 详细的 [使用说明](https://mwordstar.misterma.com/)（必看）
 
