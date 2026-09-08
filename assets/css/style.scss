@@ -162,7 +162,7 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
 // 通用的文章内容样式
 @mixin postContent {
   word-break: break-all;
-  ul,
+  ul:not(.nav-tabs),
   ol,
   img,
   pre,
@@ -268,6 +268,20 @@ $shadow: 0 1px 3px rgba(26, 26, 26, 0.1); // 区块阴影
     background: none;
     .card-body {
       background: none;
+      & :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  // 选项卡
+  .tab-box {
+    margin-bottom: 20px;
+    // 内容区域
+    .tab-pane {
+      padding: 20px;
+      & :last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

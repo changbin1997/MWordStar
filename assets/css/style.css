@@ -646,7 +646,7 @@ header .navbar .search-form button:focus {
 .container .article-list .post .post-content {
   word-break: break-all;
 }
-.container .article-list .post .post-content ul,
+.container .article-list .post .post-content ul:not(.nav-tabs),
 .container .article-list .post .post-content ol,
 .container .article-list .post .post-content img,
 .container .article-list .post .post-content pre,
@@ -776,6 +776,18 @@ header .navbar .search-form button:focus {
 }
 .container .article-list .post .post-content .collapse-box .card-body {
   background: none;
+}
+.container .article-list .post .post-content .collapse-box .card-body :last-child {
+  margin-bottom: 0;
+}
+.container .article-list .post .post-content .tab-box {
+  margin-bottom: 20px;
+}
+.container .article-list .post .post-content .tab-box .tab-pane {
+  padding: 20px;
+}
+.container .article-list .post .post-content .tab-box .tab-pane :last-child {
+  margin-bottom: 0;
 }
 .container .article-list .post .article-info {
   padding: 10px 25px;
@@ -1131,7 +1143,7 @@ footer .container span {
   width: 100%;
   word-break: break-all;
 }
-.article-page main article .post-content ul, .archive main article .post-content ul, .page main article .post-content ul,
+.article-page main article .post-content ul:not(.nav-tabs), .archive main article .post-content ul:not(.nav-tabs), .page main article .post-content ul:not(.nav-tabs),
 .article-page main article .post-content ol,
 .archive main article .post-content ol,
 .page main article .post-content ol,
@@ -1308,6 +1320,18 @@ footer .container span {
 .article-page main article .post-content .collapse-box .card-body, .archive main article .post-content .collapse-box .card-body, .page main article .post-content .collapse-box .card-body {
   background: none;
 }
+.article-page main article .post-content .collapse-box .card-body :last-child, .archive main article .post-content .collapse-box .card-body :last-child, .page main article .post-content .collapse-box .card-body :last-child {
+  margin-bottom: 0;
+}
+.article-page main article .post-content .tab-box, .archive main article .post-content .tab-box, .page main article .post-content .tab-box {
+  margin-bottom: 20px;
+}
+.article-page main article .post-content .tab-box .tab-pane, .archive main article .post-content .tab-box .tab-pane, .page main article .post-content .tab-box .tab-pane {
+  padding: 20px;
+}
+.article-page main article .post-content .tab-box .tab-pane :last-child, .archive main article .post-content .tab-box .tab-pane :last-child, .page main article .post-content .tab-box .tab-pane :last-child {
+  margin-bottom: 0;
+}
 .article-page main article .post-content .load-img, .archive main article .post-content .load-img, .page main article .post-content .load-img {
   width: 100%;
   display: block;
@@ -1461,7 +1485,7 @@ footer .container span {
   margin-left: 52px;
   word-break: break-all;
 }
-#comments .comments-lists .comment-list .comment-body .comment-content ul,
+#comments .comments-lists .comment-list .comment-body .comment-content ul:not(.nav-tabs),
 #comments .comments-lists .comment-list .comment-body .comment-content ol,
 #comments .comments-lists .comment-list .comment-body .comment-content img,
 #comments .comments-lists .comment-list .comment-body .comment-content pre,
@@ -1592,6 +1616,18 @@ footer .container span {
 #comments .comments-lists .comment-list .comment-body .comment-content .collapse-box .card-body {
   background: none;
 }
+#comments .comments-lists .comment-list .comment-body .comment-content .collapse-box .card-body :last-child {
+  margin-bottom: 0;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content .tab-box {
+  margin-bottom: 20px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content .tab-box .tab-pane {
+  padding: 20px;
+}
+#comments .comments-lists .comment-list .comment-body .comment-content .tab-box .tab-pane :last-child {
+  margin-bottom: 0;
+}
 #comments .comments-lists .comment-list .comment-body .hide-comment-content {
   margin-bottom: 20px;
   background-color: #FBFAF9;
@@ -1716,7 +1752,7 @@ footer .container span {
 .archives-list .archives .post .post-content {
   word-break: break-all;
 }
-.archives-list .archives .post .post-content ul,
+.archives-list .archives .post .post-content ul:not(.nav-tabs),
 .archives-list .archives .post .post-content ol,
 .archives-list .archives .post .post-content img,
 .archives-list .archives .post .post-content pre,
@@ -1846,6 +1882,18 @@ footer .container span {
 }
 .archives-list .archives .post .post-content .collapse-box .card-body {
   background: none;
+}
+.archives-list .archives .post .post-content .collapse-box .card-body :last-child {
+  margin-bottom: 0;
+}
+.archives-list .archives .post .post-content .tab-box {
+  margin-bottom: 20px;
+}
+.archives-list .archives .post .post-content .tab-box .tab-pane {
+  padding: 20px;
+}
+.archives-list .archives .post .post-content .tab-box .tab-pane :last-child {
+  margin-bottom: 0;
 }
 .archives-list .archives .post .article-info {
   padding: 10px 25px;
@@ -3815,6 +3863,17 @@ footer .container span {
 .dark-color .article-list .post .post-content .collapse-box .card-body, .dark-color .archives-list .archives .post .post-content .collapse-box .card-body {
   color: rgba(255, 255, 255, 0.87);
 }
+.dark-color .article-list .post .post-content .tab-box .nav-tabs .nav-link, .dark-color .archives-list .archives .post .post-content .tab-box .nav-tabs .nav-link {
+  background: #1E1E1E;
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark-color .article-list .post .post-content .tab-box .nav-tabs .active, .dark-color .archives-list .archives .post .post-content .tab-box .nav-tabs .active {
+  background: #2D2D2D;
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .article-list .post .post-content .tab-box .tab-pane, .dark-color .archives-list .archives .post .post-content .tab-box .tab-pane {
+  color: rgba(255, 255, 255, 0.87);
+}
 .dark-color .article-list .post .article-info i, .dark-color .article-list .post .article-info span, .dark-color .archives-list .archives .post .article-info i, .dark-color .archives-list .archives .post .article-info span {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -4011,6 +4070,17 @@ footer .container span {
 .dark-color .content-area .post-content .collapse-box .card-body {
   color: rgba(255, 255, 255, 0.87);
 }
+.dark-color .content-area .post-content .tab-box .nav-tabs .nav-link {
+  background: #1E1E1E;
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark-color .content-area .post-content .tab-box .nav-tabs .active {
+  background: #2D2D2D;
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color .content-area .post-content .tab-box .tab-pane {
+  color: rgba(255, 255, 255, 0.87);
+}
 .dark-color .content-area .post-content .load-img {
   background-color: #373737;
 }
@@ -4191,6 +4261,17 @@ footer .container span {
   color: rgba(255, 255, 255, 0.87);
 }
 .dark-color #comments .comment-box .comment-content .collapse-box .card-body {
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color #comments .comment-box .comment-content .tab-box .nav-tabs .nav-link {
+  background: #1E1E1E;
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark-color #comments .comment-box .comment-content .tab-box .nav-tabs .active {
+  background: #2D2D2D;
+  color: rgba(255, 255, 255, 0.87);
+}
+.dark-color #comments .comment-box .comment-content .tab-box .tab-pane {
   color: rgba(255, 255, 255, 0.87);
 }
 .dark-color #comments .comment-box .hide-comment-content {

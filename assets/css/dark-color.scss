@@ -133,6 +133,24 @@ $text-primary: #007bff;
       color: $dark-text-color;
     }
   }
+  // 选项卡
+  .tab-box {
+    // 导航区域
+    .nav-tabs {
+      .nav-link {
+        background: $dark-bg-color;
+        color: $dark-text-color2;
+      }
+      .active {
+        background: $dark-bg-color2;
+        color: $dark-text-color;
+      }
+    }
+    // 内容区域
+    .tab-pane {
+      color: $dark-text-color;
+    }
+  }
 }
 
 // 横向滚动条配色

@@ -220,28 +220,15 @@ function parseThemeShortcodes($content, $cid = 0) {
         return $content;
     }
 
-    // 页面级自增计数器，保证同一页面内多个 collapse 短代码的 id 唯一
+    // 页面级自增计数器，保证同一页面内多个 collapse / tabs 短代码的 id 唯一
     static $collapse_id = 0;
+    static $tabs_id = 0;
     // 定义支持的短代码标签，方便未来维护和添加新功能
-    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress');
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress', 'tabs');
     $tags_pattern = implode('|', $supported_tags);
-    // 构造正则表达式
-    // 前半部分匹配 <pre> 或 <code> 块（用于忽略）
-    // 后半部分匹配类似 [tag attr="value"]内容[/tag] 的短代码
-    $pattern = '/(<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>)|\[(' . $tags_pattern . ')\b([^\]]*?)\](.*?)\[\/\2\]/is';
 
-    // 使用正则回调函数进行替换
-    return preg_replace_callback($pattern, function($matches) use (&$collapse_id, $cid) {
-        // 如果匹配到的是代码块 ($matches[1] 不为空)，直接原样返回，不解析其中的短代码
-        if (!empty($matches[1])) {
-            return $matches[1];
-        }
-
-        // 提取短代码各部分内容
-        $tag = strtolower($matches[2]);
-        $attr_string = $matches[3];
-        $inner_content = $matches[4];
-
+    // 渲染单个短代码为 HTML；$rawText 为短代码原始文本，用于无法解析时兜底原样返回
+    $renderTag = function ($tag, $attr_string, $inner_content, $rawText) use (&$collapse_id, &$tabs_id, $cid) {
         // 解析属性字符串 (支持双引号和单引号，例如 url="xxx" 或 type='xxx')
         $atts = array();
         if (preg_match_all('/(\w+)\s*=\s*(["\'])(.*?)\2/i', $attr_string, $attr_matches)) {
@@ -293,7 +280,7 @@ function parseThemeShortcodes($content, $cid = 0) {
                     . '</button>'
                     . '</div>'
                     . '<div class="collapse" id="' . $id . '">'
-                    . '<div class="card-body">' . preg_replace('/^\<br>/', '', $inner_content) . '</div>'
+                    . '<div class="card-body">' . preg_replace('/^\<br>|\<br>$/', '', $inner_content) . '</div>'
                     . '</div>'
                     . '</div>';
 
@@ -312,7 +299,7 @@ function parseThemeShortcodes($content, $cid = 0) {
                 }
                 // 有权限时返回隐藏内容本体，无权限时返回提示信息
                 return canViewHideContent($type, $cid)
-                    ? $inner_content
+                    ? preg_replace('/^\<br>|\<br>$/', '', $inner_content)
                     : '<div class="alert expiration-reminder">' . $tip . '</div>';
 
             case 'progress':
@@ -325,11 +312,144 @@ function parseThemeShortcodes($content, $cid = 0) {
                     . '<div class="progress-bar progress-bar-striped progress-bar-animated bg-' . $type_attr . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $value . '%;"></div>'
                     . '</div>';
 
+            case 'tabs':
+                // 匹配 tabs 内部的所有 [tab title="..."]内容[/tab]
+                if (preg_match_all('/\[tab\b([^\]]*?)\](.*?)\[\/tab\]/is', $inner_content, $tab_matches)) {
+                    $tabs_id++;
+                    $widgetId = 'tabs-' . $tabs_id;
+
+                    $nav_html = '';
+                    $pane_html = '';
+                    $tab_index = 0;
+                    foreach ($tab_matches[1] as $i => $tab_attr_string) {
+                        $tab_index++;
+                        // 解析 tab 属性，提取 title
+                        $tab_atts = array();
+                        if (preg_match_all('/(\w+)\s*=\s*(["\'])(.*?)\2/i', $tab_attr_string, $tab_attr_matches)) {
+                            foreach ($tab_attr_matches[1] as $attr_index => $key) {
+                                $tab_atts[strtolower($key)] = $tab_attr_matches[3][$attr_index];
+                            }
+                        }
+                        $tab_title = isset($tab_atts['title']) ? $tab_atts['title'] : 'Tab ' . $tab_index;
+
+                        $buttonId = $widgetId . '-tab-' . $tab_index;
+                        $paneId = $widgetId . '-pane-' . $tab_index;
+                        // 第一项默认选中
+                        $isActive = $tab_index === 1;
+
+                        $nav_html .= '<li class="nav-item">'
+                            . '<button class="nav-link' . ($isActive ? ' active' : '') . '" id="' . $buttonId . '"'
+                            . ' data-toggle="tab" data-target="#' . $paneId . '" role="tab"'
+                            . ' aria-controls="' . $paneId . '" aria-selected="' . ($isActive ? 'true' : 'false') . '">'
+                            . htmlspecialchars($tab_title, ENT_QUOTES, 'UTF-8')
+                            . '</button>'
+                            . '</li>';
+
+                        $pane_html .= '<div class="tab-pane fade' . ($isActive ? ' show active' : '') . '" id="' . $paneId . '"'
+                            . ' role="tabpanel" aria-labelledby="' . $buttonId . '">'
+                            . preg_replace('/^\<br>|\<br>$/', '', $tab_matches[2][$i])
+                            . '</div>';
+                    }
+
+                    return '<div class="tab-box">'
+                        . '<ul class="nav nav-tabs" role="tablist">' . $nav_html . '</ul>'
+                        . '<div class="tab-content border-left border-right border-bottom" id="' . $widgetId . '-content">' . $pane_html . '</div>'
+                        . '</div>';
+                }
+                // 没有解析到任何 tab 时返回原文本
+                return $rawText;
+
             default:
                 // 如果没有对应的处理逻辑，返回原文本
-                return $matches[0];
+                return $rawText;
         }
-    }, $content);
+    };
+
+    // 递归解析短代码：支持短代码内再嵌套短代码，代码块原样保留
+    $renderContent = null;
+    $renderContent = function ($text) use (&$renderContent, &$renderTag, $tags_pattern) {
+        // 前半部分匹配 <pre> 或 <code> 块（用于忽略），后半部分匹配短代码的开始 / 结束标签
+        $pattern = '/(<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>)|\[(\/)?(' . $tags_pattern . ')\b([^\]]*?)\]/is';
+
+        if (!preg_match_all($pattern, $text, $tokens, PREG_OFFSET_CAPTURE)) {
+            return $text;
+        }
+
+        $result = '';
+        $pos = 0;
+        $count = count($tokens[0]);
+        for ($i = 0; $i < $count; $i++) {
+            $token = $tokens[0][$i][0];
+            $offset = $tokens[0][$i][1];
+
+            // 追加当前 token 之前的普通文本
+            $result .= substr($text, $pos, $offset - $pos);
+
+            // 命中代码块时原样返回，不解析其中的短代码
+            if (!empty($tokens[1][$i][0])) {
+                $result .= $token;
+                $pos = $offset + strlen($token);
+                continue;
+            }
+
+            $tag = strtolower($tokens[3][$i][0]);
+            // 单独的结束标签（没有配对的开始标签）原样输出
+            if ($tokens[2][$i][0] === '/') {
+                $result .= $token;
+                $pos = $offset + strlen($token);
+                continue;
+            }
+
+            $attr_string = $tokens[4][$i][0];
+
+            // 向后查找配对的结束标签，记录同名标签的嵌套深度（支持同标签互相嵌套）
+            $depth = 1;
+            $innerStart = $offset + strlen($token);
+            $closeIndex = -1;
+            for ($j = $i + 1; $j < $count; $j++) {
+                // 代码块与其它标签不参与当前配对
+                if (!empty($tokens[1][$j][0])) {
+                    continue;
+                }
+                if (strtolower($tokens[3][$j][0]) !== $tag) {
+                    continue;
+                }
+                if ($tokens[2][$j][0] === '/') {
+                    $depth--;
+                    if ($depth === 0) {
+                        $closeIndex = $j;
+                        break;
+                    }
+                } else {
+                    $depth++;
+                }
+            }
+
+            // 找不到配对的结束标签时，原样输出开始标签后继续处理
+            if ($closeIndex === -1) {
+                $result .= $token;
+                $pos = $offset + strlen($token);
+                continue;
+            }
+
+            // 提取内部内容并递归解析，实现短代码嵌套
+            $inner_content = substr($text, $innerStart, $tokens[0][$closeIndex][1] - $innerStart);
+            $inner_content = $renderContent($inner_content);
+
+            // 渲染为 HTML；未识别的短代码按原始文本返回
+            $rawText = substr($text, $offset, $tokens[0][$closeIndex][1] + strlen($tokens[0][$closeIndex][0]) - $offset);
+            $result .= $renderTag($tag, $attr_string, $inner_content, $rawText);
+
+            // 从结束标签之后继续向后解析
+            $pos = $offset + strlen($rawText);
+            $i = $closeIndex;
+        }
+
+        $result .= substr($text, $pos);
+        return $result;
+    };
+
+    return $renderContent($content);
 }
 
 /**
@@ -396,8 +516,8 @@ function canViewHideContent($type, $cid = 0) {
  * @return string 去除短代码标记后的文本
  */
 function stripThemeShortcodes($content) {
-    // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致
-    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress');
+    // 定义支持的短代码标签，与 parseThemeShortcodes 保持一致；tab 附属于 tabs，单独列出以便摘要去除
+    $supported_tags = array('button', 'alert', 'collapse', 'badge', 'hide', 'progress', 'tabs', 'tab');
     $tags_pattern = implode('|', $supported_tags);
     // 前半部分匹配 <pre> / <code> 块（忽略其中的短代码）
     // 后半部分匹配 [tag ...]内容[/tag] 的短代码
