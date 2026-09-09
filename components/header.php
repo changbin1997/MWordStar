@@ -74,14 +74,29 @@ $bodyClass = implode(' ', $bodyClass);
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/icon.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>" type="text/css">
     <?php localizeScript(); ?>
-    <?php if ($this->is('post') && $this->fields->keywords or $this->fields->summaryContent): ?>
+    <?php if ($this->is('post') || $this->is('page')): ?>
         <?php
+        // 摘要优先使用自定义 summaryContent，否则使用文章内容自动生成的摘要
+        $metaDescription = $this->fields->summaryContent;
+        if (empty($metaDescription)) {
+            $metaDescription = $this->excerpt;
+        }
+        // 去除短代码语法（只保留短代码包裹的内容），再去除残留的 HTML 标签
+        $metaDescription = strip_tags(stripThemeShortcodes($metaDescription));
+        $metaDescription = trim(preg_replace('/\s+/u', ' ', $metaDescription));
+        // 自动摘要按 Typecho 默认长度截断，避免末尾残留未闭合的短代码片段
+        if (empty($this->fields->summaryContent)) {
+            $metaDescription = \Typecho\Common::subStr($metaDescription, 0, 100);
+        }
+        // 覆盖摘要，让 <meta name="description"> 与 og:description 都输出清理后的内容
+        if ('' !== $metaDescription) {
+            $this->setArchiveDescription($metaDescription);
+        }
+
         $metaContent = array();
         // 如果设置了自定义关键词就显示自定义关键词
         if ($this->fields->keywords) $metaContent['keywords'] = $this->fields->keywords;
-        // 如果设置了自定义摘要内容就显示自定义摘要
-        if ($this->fields->summaryContent) $metaContent['description'] = $this->fields->summaryContent;
-        // 把包含自定义关键词和摘要的数组转为 URL 查询格式
+        // 把自定义关键词数组转为 URL 查询格式
         $metaContent = urldecode(http_build_query($metaContent));
         $this->header($metaContent);
         ?>
