@@ -151,6 +151,12 @@ $text-primary: #007bff;
       color: $dark-text-color;
     }
   }
+  // 并排显示
+  .tc-row {
+    .tc-col {
+      color: $dark-text-color;
+    }
+  }
 }
 
 // 横向滚动条配色
