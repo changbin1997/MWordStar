@@ -252,6 +252,11 @@ EOT;
         'enable' => '启用',
         'disable' => '禁用'
     ), 'enable', _t('短代码'), _t('短代码是 MWordStar 主题提供的一种特殊语法，通过短代码可以插入一些特殊样式的内容和小组件，访问 <a href="https://mwordstar.misterma.com/docs/%E7%9F%AD%E4%BB%A3%E7%A0%81" target="_blank">帮助文档</a> 可以查看详细的短代码使用说明。如果您需要使用其它短代码插件，可以选择禁用主题的短代码功能。')));
+    // MathJax 支持
+    $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('mathJax', array(
+        'enable' => '启用',
+        'disable' => '禁用'
+    ), 'disable', _t('MathJax支持'), _t('MathJax 是一个数学公式渲染库，可支持 LaTeX、MathML、AsciiMath 的渲染。启用后如果检测到文章内有 MathJax 支持的语言就会通过在线 CDN 加载 MathJax 库渲染。')));
 
     // 图片懒加载
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('imagelazyloading', array(

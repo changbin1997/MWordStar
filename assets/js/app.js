@@ -8,7 +8,7 @@
 
 import Lightbox from './modules/Lightbox.js';
 import Emoji from './modules/Emoji.js';
-import codeHighlightInit from './modules/codeHighlightInit.js';
+import CodeAndMath from './modules/CodeAndMath.js';
 import accessibilityInit from './modules/accessibilityInit.js';
 import ColorAndLanguage from './modules/ColorAndLanguage.js';
 import ArticleEngagement from './modules/ArticleEngagement.js';
@@ -55,8 +55,9 @@ $(function () {
   const githubRepositoryShowcase = new GithubRepositoryShowcase();
   githubRepositoryShowcase.init();
 
-  // 代码高亮初始化
-  codeHighlightInit();
+  // 代码高亮和 MathJax 初始化
+  const codeAndMath = new CodeAndMath();
+  codeAndMath.init();
 
   // 一些可访问性相关的功能初始化
   accessibilityInit();
@@ -88,8 +89,8 @@ $(function () {
     },
     end: () => {
       // PJAX 替换完成
-      // 代码高亮初始化
-      codeHighlightInit();
+      // 代码高亮和 MathJax 初始化
+      codeAndMath.init();
       // 一些可访问性相关的功能初始化
       accessibilityInit();
       // 侧边栏文章头图初始化

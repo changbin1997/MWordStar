@@ -46,6 +46,10 @@ $bodyClass = array(
 if ($this->options->codeHighlight == 'enable-highlight') {
     $bodyClass[] = 'line-num-' . $this->options->codeLineNum;
 }
+// 如果启用了 MathJax 支持就添加 MathJax 标识，用于 JS 判断
+if ($this->options->mathJax == 'enable') {
+    $bodyClass[] = 'mathjax-enable';
+}
 // 把 body class 数组转为字符串，方便直接输出
 $bodyClass = implode(' ', $bodyClass);
 ?>
