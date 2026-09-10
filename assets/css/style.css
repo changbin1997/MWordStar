@@ -322,6 +322,7 @@
 }
 .post-content .collapse-box {
   background: none;
+  margin-bottom: 20px;
 }
 .post-content .collapse-box .card-body {
   background: none;

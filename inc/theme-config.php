@@ -298,7 +298,7 @@ EOT;
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('emojiPanel', array(
         'on' => '开启',
         'off' => '关闭'
-    ), 'off', _t('评论区Emoji表情选择面板'), _t('开启后会在评论区的评论内容输入框下方显示一个 Emoji表情按钮，点击后会显示一个 Emoji表情面板。')));
+    ), 'on', _t('评论区Emoji表情选择面板'), _t('开启后会在评论区的评论内容输入框下方显示一个 Emoji表情按钮，点击后会显示一个 Emoji表情面板。')));
 
     //  评论验证码
     $form->addInput(new Typecho_Widget_Helper_Form_Element_Radio('commentCaptcha', array(

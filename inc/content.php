@@ -300,7 +300,7 @@ function parseThemeShortcodes($content, $cid = 0) {
                 // 有权限时返回隐藏内容本体，无权限时返回提示信息
                 return canViewHideContent($type, $cid)
                     ? preg_replace('/^\<br>/', '', $inner_content)
-                    : '<div class="alert expiration-reminder">' . $tip . '</div>';
+                    : '<div class="alert warning-info">' . $tip . '</div>';
 
             case 'progress':
                 // 未指定 type 时默认使用 primary 样式，映射为 Bootstrap 的 bg-* 颜色类
