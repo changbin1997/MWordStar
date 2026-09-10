@@ -90,7 +90,7 @@ $bodyClass = implode(' ', $bodyClass);
         $metaDescription = trim(preg_replace('/\s+/u', ' ', $metaDescription));
         // 自动摘要按 Typecho 默认长度截断，避免末尾残留未闭合的短代码片段
         if (empty($this->fields->summaryContent)) {
-            $metaDescription = \Typecho\Common::subStr($metaDescription, 0, 100);
+            $metaDescription = themeCommonSubStr($metaDescription, 0, 100);
         }
         // 覆盖摘要，让 <meta name="description"> 与 og:description 都输出清理后的内容
         if ('' !== $metaDescription) {

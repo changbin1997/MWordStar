@@ -593,7 +593,7 @@ function postListSummary($archive, $length, $trim = '...') {
         if ($archive->fields->summaryContent) {
             echo $archive->fields->summaryContent;
         } else {
-            echo \Typecho\Common::subStr(strip_tags($archive->excerpt), 0, $length, $trim);
+            echo themeCommonSubStr(strip_tags($archive->excerpt), 0, $length, $trim);
         }
         return;
     }
@@ -606,7 +606,7 @@ function postListSummary($archive, $length, $trim = '...') {
 
     // 自动摘要：去除短代码语法后截取纯文本
     $excerpt = stripThemeShortcodes($archive->excerpt);
-    echo \Typecho\Common::subStr(strip_tags($excerpt), 0, $length, $trim);
+    echo themeCommonSubStr(strip_tags($excerpt), 0, $length, $trim);
 }
 
 /**

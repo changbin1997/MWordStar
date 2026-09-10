@@ -62,10 +62,8 @@ function threadedComments($comments, $options) {
                     </time>
                 </div>
                 <!--评论回复链接-->
-                <span class="comment-reply float-right">
-                    <span data-id="<?php $comments->theId(); ?>">
-                        <?php $comments->reply($GLOBALS['t']['comment']['reply']); ?>
-                    </span>
+                <span class="comment-reply float-right" data-id="<?php $comments->theId(); ?>">
+                    <a data-id="<?php $comments->theId(); ?>" href="javascript:;"><?php echo $GLOBALS['t']['comment']['reply']; ?></a>
                 </span>
             </div>
             <div class="comment-content" id="c-<?php $comments->theId(); ?>">
@@ -79,6 +77,7 @@ function threadedComments($comments, $options) {
                 <div><?php echo $commentContent['content']; ?></div>
                 <?php endif; ?>
             </div>
+            <span style="display: none;" id="reply-link-<?php $comments->theId(); ?>"><?php $comments->reply('reply'); ?></span>
         </div>
         <?php if ($comments->children) { ?>
             <div class="comment-children clearfix">

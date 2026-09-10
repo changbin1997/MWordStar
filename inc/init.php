@@ -151,3 +151,28 @@ function setTimezoneByOffset($offset) {
     // 设置全局时区
     @date_default_timezone_set($timezone_name);
 }
+
+/**
+ * 兼容 Typecho 1.1 ~ 1.3 的字符串截断函数
+ *
+ * Typecho 1.2 起将 Typecho_Common 重命名为 Typecho\Common，
+ * 此处根据当前运行版本动态选择可用的类，保证新旧版本都能正常调用。
+ *
+ * @param string $str 需要截取的字符串
+ * @param integer $start 开始截取的位置
+ * @param integer $length 需要截取的长度
+ * @param string $trim 截取后的截断标示符
+ * @return string
+ */
+function themeCommonSubStr($str, $start, $length, $trim = '...') {
+    // 摘要长度选项未配置时可能为 null，先归一化为正整数（与 theme-config 默认摘要字数一致）
+    $length = (int) $length;
+    if ($length <= 0) {
+        $length = 150;
+    }
+
+    if (class_exists('\\Typecho\\Common')) {
+        return \Typecho\Common::subStr((string) $str, (int) $start, $length, (string) $trim);
+    }
+    return Typecho_Common::subStr((string) $str, (int) $start, $length, (string) $trim);
+}
