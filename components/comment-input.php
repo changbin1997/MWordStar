@@ -114,5 +114,5 @@
         </form>
     </div>
 <?php else: ?>
-    <h2 class="comments-off pt-4 border-top"><?php _e('评论已关闭'); ?></h2>
+    <h2 class="comments-off pt-4 border-top"><?php echo $GLOBALS['t']['comment']['commentOff']; ?></h2>
 <?php endif; ?>
