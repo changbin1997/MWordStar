@@ -18,11 +18,11 @@ function themeConfig($form) {
     </div>
 EOT;
     echo '<script type="text/javascript">';
-    require_once __DIR__ . '/../assets/js/options-panel.js';
+    echo file_get_contents(__DIR__ . '/../assets/js/options-panel.js');
     echo '</script>';
 
     echo '<style type="text/css">';
-    require_once __DIR__ . '/../assets/css/options-panel.css';
+    echo file_get_contents(__DIR__ . '/../assets/css/options-panel.css');
     echo '</style>';
     require_once __DIR__ . '/../components/link-editor.php';
 

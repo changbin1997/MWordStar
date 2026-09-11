@@ -221,6 +221,8 @@ window.addEventListener('load', () => {
 
   // 获取配色下拉框
   const colorSelect = document.querySelector('select[name="color"]');
+  // 获取默认浅色下拉框
+  const defaultLightColorSelect = document.querySelector('select[name="defaultLightColor"]');
   // 获取预览图
   const img = document.querySelector('#preview-img');
   // 根据配色下拉框选中的选项设置预览图
@@ -229,6 +231,10 @@ window.addEventListener('load', () => {
     // 配色下拉框改变
     colorSelect.addEventListener('change', ev => {
       img.className = ev.target.value;
+      // 同步默认浅色配色，深色模式（dark-color）除外
+      if (defaultLightColorSelect && ev.target.value !== 'dark-color') {
+        defaultLightColorSelect.value = ev.target.value;
+      }
     });
   }
 
