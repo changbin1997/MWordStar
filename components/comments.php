@@ -62,8 +62,10 @@ function threadedComments($comments, $options) {
                     </time>
                 </div>
                 <!--评论回复链接-->
-                <span class="comment-reply float-right" data-id="<?php $comments->theId(); ?>">
-                    <a data-id="<?php $comments->theId(); ?>" href="javascript:;"><?php echo $GLOBALS['t']['comment']['reply']; ?></a>
+                <span class="comment-reply float-right">
+                    <span data-id="<?php $comments->theId(); ?>">
+                        <?php $comments->reply($GLOBALS['t']['comment']['reply']); ?>
+                    </span>
                 </span>
             </div>
             <div class="comment-content" id="c-<?php $comments->theId(); ?>">
@@ -77,7 +79,6 @@ function threadedComments($comments, $options) {
                 <div><?php echo $commentContent['content']; ?></div>
                 <?php endif; ?>
             </div>
-            <span style="display: none;" id="reply-link-<?php $comments->theId(); ?>"><?php $comments->reply('reply'); ?></span>
         </div>
         <?php if ($comments->children) { ?>
             <div class="comment-children clearfix">
@@ -165,3 +166,33 @@ function threadedComments($comments, $options) {
       })();
     </script>
 <?php endif; ?>
+
+<script type="text/javascript">
+(function () {
+    if (typeof window.TypechoComment === 'undefined' || typeof window.TypechoComment.reply !== 'function') {
+        return;
+    }
+    if (window.TypechoComment.reply.__facileReposition) {
+        return;
+    }
+    var originalReply = window.TypechoComment.reply;
+    var respondId = '<?php echo $this->respondId; ?>';
+
+    /* Typecho 1.3 会把回复表单插入到包含回复按钮的节点（comment-author）之后，
+       即 comment-content 上方；这里在核心逻辑执行后把表单移动到 comment-content 下方，
+       恢复 1.2 的插入位置，回复按钮仍保留在评论信息右侧。 */
+    window.TypechoComment.reply = function (htmlId, coid, btn) {
+        var result = originalReply.apply(this, arguments);
+        var comment = document.getElementById(htmlId);
+        var content = comment ? comment.querySelector('.comment-content') : null;
+        if (comment && content) {
+            var response = document.getElementById(respondId);
+            if (response) {
+                comment.insertBefore(response, content.nextSibling);
+            }
+        }
+        return result;
+    };
+    window.TypechoComment.reply.__facileReposition = true;
+})();
+</script>

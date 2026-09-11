@@ -41,14 +41,6 @@ export default () => {
     $('.comment-info b a').attr('target', '_blank');
   }
 
-  // 初始化回复评论链接
-  if ($('.comment-reply').length) {
-    $('.comment-reply').on('click', ev => {
-      const commentId = $(ev.target).attr('data-id');
-      $(`#reply-link-${commentId} a`).click();
-    });
-  }
-
   // 给回复链接添加回复对象名称的 title
   $('.comment-reply').each(function() {
     const authorName = $(this).closest('.comment-box').find('.author a').text() ||
