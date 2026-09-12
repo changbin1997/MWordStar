@@ -16,6 +16,9 @@ export default class Lightbox {
   allowMove = false;  // 图片是否可以拖动
   direction = 0;  // 图片旋转角度
   imgEl = null;  // 图片元素，切换图片时用于加载图片
+  pageUrl = '';  // 当前页面地址，用于检测页面跳转
+  pageUrlTimer = null;  // 检测页面地址变化的定时器
+  pageChangeHandler = null;  // 监听浏览器返回/前进的事件处理函数
 
   /**
    * 计算图片灯箱内显示的图片尺寸
@@ -53,6 +56,15 @@ export default class Lightbox {
     }
 
     this.imgEl = new Image();
+
+    // 浏览器返回/前进时关闭图片灯箱
+    if (this.pageChangeHandler) {
+      window.removeEventListener('popstate', this.pageChangeHandler);
+    }
+    this.pageChangeHandler = () => {
+      this.closeByPageChange();
+    };
+    window.addEventListener('popstate', this.pageChangeHandler);
 
     // 文章内的图片点击
     $('.post-content img').on('click', ev => {
@@ -240,6 +252,8 @@ export default class Lightbox {
     $('#max-img-box').focus();
     // 把图片灯箱状态设置为开启
     this.isShow = true;
+    // 开始检测页面地址变化，页面跳转时自动关闭图片灯箱
+    this.startPageUrlCheck();
 
     // 图片加载完成后隐藏加载动画
     this.imgEl.onload = () => {
@@ -276,38 +290,109 @@ export default class Lightbox {
 
   /**
    * 关闭图片灯箱
+   * @param {boolean} forceFade 是否直接淡出，页面跳转后文章内的图片可能已经不存在，需要直接淡出
    */
-  hide() {
-    // 灰度图片角度
+  hide(forceFade) {
+    // 如果图片灯箱没有开启就不处理
+    if (!this.isShow) return;
+    // 重置图片角度
     this.resetDirection();
     // 恢复图片的鼠标样式和禁止拖动
     $('#max-img-box #max-img').css('cursor', 'default');
     this.allowMove = false;
-    // 淡出图片灯箱背景
-    $('#max-img-box').fadeOut(250, () => {
-      // 隐藏完成后移除图片灯箱
-      $('#max-img-box').remove();
-      // 恢复页面滚动条
-      $('body').removeClass('stop-scrolling');
-    });
-    // 获取图片灯箱内的图片top
-    const targetTop = $('#max-img').offset().top;
-    // 把图片节点移出到 body
-    $('body').append($('#max-img'));
-    // 重新设置定位
-    $('#max-img').css('top',targetTop);
-    // 把图片还原到页面中的位置和大小
-    $('#max-img').animate({
-      width: this.imgElSize.width,
-      height: this.imgElSize.height,
-      top: this.imgElSize.top,
-      left: this.imgElSize.left
-    }, 250, () => {
-      // 完成后移除图片
-      $('#max-img').remove();
-    });
+    // 文章内的图片存在并且可见时让图片回到文章内的位置
+    if (!forceFade && this.canAnimateToImgEl()) {
+      // 淡出图片灯箱背景
+      $('#max-img-box').fadeOut(250, () => {
+        // 隐藏完成后移除图片灯箱
+        $('#max-img-box').remove();
+        // 恢复页面滚动条
+        $('body').removeClass('stop-scrolling');
+      });
+      // 获取图片灯箱内的图片top
+      const targetTop = $('#max-img').offset().top;
+      // 把图片节点移出到 body
+      $('body').append($('#max-img'));
+      // 重新设置定位
+      $('#max-img').css('top', targetTop);
+      // 把图片还原到页面中的位置和大小
+      $('#max-img').animate({
+        width: this.imgElSize.width,
+        height: this.imgElSize.height,
+        top: this.imgElSize.top,
+        left: this.imgElSize.left
+      }, 250, () => {
+        // 完成后移除图片
+        $('#max-img').remove();
+      });
+    }else {
+      // 文章内的图片不可见或者页面已经跳转时直接淡出
+      $('#max-img-box').fadeOut(250, () => {
+        // 隐藏完成后移除图片灯箱
+        $('#max-img-box').remove();
+        // 移除灯箱内的图片，避免图片残留
+        $('#max-img').remove();
+        // 恢复页面滚动条
+        $('body').removeClass('stop-scrolling');
+      });
+    }
     // 把图片灯箱状态设置为关闭
     this.isShow = false;
+    // 停止检测页面地址变化
+    this.stopPageUrlCheck();
+  }
+
+  /**
+   * 检测文章内对应的图片是否存在并且可见
+   * @returns {boolean} 图片存在并且可见就返回 true
+   */
+  canAnimateToImgEl() {
+    // 文章内没有图片就不能执行返回动画
+    if ($('.post-content img').length < 1) return false;
+    // 当前显示的图片在文章内不存在就不能执行返回动画
+    const imgEl = $('.post-content img').eq(this.imgIndex);
+    if (imgEl.length < 1) return false;
+    // 图片或它的父元素不可见（比如在选项卡、折叠框内）就不能执行返回动画
+    if (!imgEl.is(':visible')) return false;
+    // 图片没有尺寸和位置就不能执行返回动画
+    if (imgEl.width() < 1 || imgEl.height() < 1) return false;
+    return true;
+  }
+
+  /**
+   * 开始检测页面地址变化
+   */
+  startPageUrlCheck() {
+    // 记录当前页面地址
+    this.pageUrl = window.location.href;
+    // 移除上一次的定时器，避免重复创建
+    this.stopPageUrlCheck();
+    // 定时检测页面地址是否改变，PJAX 无刷新跳转会改变页面地址
+    this.pageUrlTimer = setInterval(() => {
+      this.closeByPageChange();
+    }, 500);
+  }
+
+  /**
+   * 停止检测页面地址变化
+   */
+  stopPageUrlCheck() {
+    if (this.pageUrlTimer) {
+      clearInterval(this.pageUrlTimer);
+      this.pageUrlTimer = null;
+    }
+  }
+
+  /**
+   * 页面地址改变时关闭图片灯箱
+   */
+  closeByPageChange() {
+    // 页面地址没有改变就不处理
+    if (window.location.href === this.pageUrl) return;
+    // 页面正在跳转，如果图片灯箱开启就直接淡出关闭
+    if (this.isShow) {
+      this.hide(true);
+    }
   }
 
   /**
