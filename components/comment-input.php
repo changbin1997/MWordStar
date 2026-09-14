@@ -24,7 +24,7 @@
                         <?php  endif; ?>
                         <!--私密评论选择-->
                         <div class="form-check">
-                            <input data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['comment']['secretCommentDescription']; ?>" type="checkbox" class="form-check-input" id="hide-comment">
+                            <input data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['comment']['secretCommentDescription']; ?>" type="checkbox" class="form-check-input" name="hide-comment" id="hide-comment">
                             <label class="form-check-label" for="hide-comment"><?php echo $GLOBALS['t']['comment']['secretComment']; ?></label>
                         </div>
                     </div>

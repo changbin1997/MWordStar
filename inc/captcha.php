@@ -9,6 +9,7 @@
  *  - commentCaptchaImage               生成并输出验证码图片
  *  - commentCaptchaJsonError           输出验证码错误 JSON
  *  - commentTurnstileVerify            校验 Cloudflare Turnstile
+ *  - commentSecretComment              根据私密评论复选框给评论内容添加 [hide] 标记（钩子回调）
  *  - commentCaptchaFilter              评论提交前验证码校验（钩子回调）
  *
  * @package MWordStar
@@ -264,6 +265,37 @@ function commentCaptchaFilter($comment, $post) {
 
     return $comment;
 }
+
+/**
+ * 给评论内容添加私密标记
+ *
+ * 挂载到 Widget_Feedback 的 comment 钩子上，在评论写入前根据
+ * 提交表单中私密评论复选框的选中状态，给评论内容包裹 [hide]
+ * 标记。已包含 [hide] 标记的内容不会重复包裹。
+ *
+ * @param array $comment 评论数据
+ * @param Widget_Archive $post 评论所属的文章对象
+ * @return array 评论数据
+ */
+function commentSecretComment($comment, $post) {
+    // 私密评论复选框未选中时不处理
+    if (empty($_POST['hide-comment'])) {
+        return $comment;
+    }
+
+    $content = isset($comment['text']) ? $comment['text'] : '';
+
+    // 评论内容为空或已包含私密标记时不重复包裹
+    if ($content === '' || substr($content, 0, 6) === '[hide]' || substr($content, -7) === '[/hide]') {
+        return $comment;
+    }
+
+    $comment['text'] = '[hide]' . $content . '[/hide]';
+    return $comment;
+}
+
+// 注册评论私密标记钩子
+Typecho_Plugin::factory('Widget_Feedback')->comment = 'commentSecretComment';
 
 // 注册评论验证码校验钩子
 Typecho_Plugin::factory('Widget_Feedback')->comment = 'commentCaptchaFilter';

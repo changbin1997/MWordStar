@@ -71,9 +71,6 @@ $(function () {
   // 表单焦点事件初始化
   inputFocusInit();
 
-  // 私密评论标记初始化
-  hideCommentInit();
-
   // 评论验证码初始化
   const captcha = new Captcha();
   // Typecho 回复/取消回复会移动评论表单，绑定 Turnstile 重渲染
@@ -99,8 +96,6 @@ $(function () {
       lazyLoadImages();
       // 表单焦点事件初始化
       inputFocusInit();
-      // 私密评论标记初始化
-      hideCommentInit();
       // 图片灯箱初始化
       lightbox.init();
       // Emoji初始化
@@ -246,24 +241,4 @@ $(function () {
     });
   }
 
-  // 私密评论提交处理
-  function hideCommentInit() {
-    // 绑定在表单元素上，会先于 document 上的 PJAX 委托 submit 事件执行，
-    // 这样 PJAX 序列化表单数据时就已经包含 [hide] 标记
-    $('#comment-form').on('submit', () => {
-      const textarea = $('#textarea');
-      const content = textarea.val().trim();
-
-      // 私密评论复选框选中时给评论内容包裹 [hide] 标记
-      // 已经包含标记的评论内容不会重复包裹
-      if (
-        $('#hide-comment').prop('checked') &&
-        content !== '' &&
-        !content.startsWith('[hide]') &&
-        !content.endsWith('[/hide]')
-      ) {
-        textarea.val(`[hide]${content}[/hide]`);
-      }
-    });
-  }
 });
