@@ -26,6 +26,26 @@ $this->need('components/header.php');
                     <li class="breadcrumb-item">
                         <a href="<?php $this->options->siteUrl(); ?>"><?php echo $GLOBALS['t']['header']['home']; ?></a>
                     </li>
+                    <?php
+                    // 获取文章所属分类的父级分类
+                    $parentCategories = array();
+                    $this->widget('Widget_Metas_Category_List')->to($categoryList);
+                    while ($categoryList->next()) {
+                        foreach ($this->categories as $category) {
+                            if ($category['mid'] == $categoryList->mid && $categoryList->parent > 0) {
+                                $parentCategory = $categoryList->getRow($categoryList->parent);
+                                if (!isset($parentCategories[$parentCategory['mid']])) {
+                                    $parentCategories[$parentCategory['mid']] = $parentCategory;
+                                }
+                            }
+                        }
+                    }
+                    ?>
+                    <?php foreach ($parentCategories as $parentCategory): ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo Typecho_Router::url('category', $parentCategory, $this->options->index); ?>"><?php echo $parentCategory['name']; ?></a>
+                        </li>
+                    <?php endforeach; ?>
                     <li class="breadcrumb-item">
                         <?php $this->category(' '); ?>
                     </li>

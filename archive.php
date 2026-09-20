@@ -14,6 +14,23 @@ $this->need('components/header.php');
                     <li class="breadcrumb-item">
                         <a href="<?php $this->options->siteUrl(); ?>"><?php echo $GLOBALS['t']['header']['home']; ?></a>
                     </li>
+                    <?php if ($this->is('category')): ?>
+                        <?php
+                        // 获取当前分类的父级分类
+                        $parentCategory = null;
+                        $this->widget('Widget_Metas_Category_List')->to($categoryList);
+                        while ($categoryList->next()) {
+                            if ($categoryList->slug == $this->getArchiveSlug() && $categoryList->parent > 0) {
+                                $parentCategory = $categoryList->getRow($categoryList->parent);
+                            }
+                        }
+                        ?>
+                        <?php if ($parentCategory !== null): ?>
+                            <li class="breadcrumb-item">
+                                <a href="<?php echo Typecho_Router::url('category', $parentCategory, $this->options->index); ?>"><?php echo $parentCategory['name']; ?></a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endif; ?>
                     <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->archiveTitle(' &raquo; ','',''); ?></li>
                 </ol>
             </nav>
