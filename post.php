@@ -46,9 +46,11 @@ $this->need('components/header.php');
                             <a href="<?php echo Typecho_Router::url('category', $parentCategory, $this->options->index); ?>"><?php echo $parentCategory['name']; ?></a>
                         </li>
                     <?php endforeach; ?>
+                    <?php if (!empty($this->categories)): ?>
                     <li class="breadcrumb-item">
                         <?php $this->category(' '); ?>
                     </li>
+                    <?php endif; ?>
                     <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
                 </ol>
             </nav>

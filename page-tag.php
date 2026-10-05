@@ -20,9 +20,6 @@ $this->need('components/header.php');
                     <li class="breadcrumb-item">
                         <a href="<?php $this->options->siteUrl(); ?>"><?php echo $GLOBALS['t']['header']['home']; ?></a>
                     </li>
-                    <li class="breadcrumb-item">
-                        <?php $this->category(' '); ?>
-                    </li>
                     <li tabindex="0" class="breadcrumb-item active" aria-current="page"><?php $this->title(); ?></li>
                 </ol>
             </nav>
