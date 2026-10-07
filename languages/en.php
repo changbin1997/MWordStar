@@ -130,7 +130,8 @@ const EN = array(
         'previousAndNextMonths' => 'Previous and next months',
         'calendar' => '%s calendar',
         'viewMore' => 'View More',
-        'viewMoreTags' => 'View More Tags'
+        'viewMoreTags' => 'View More Tags',
+        'calendarHeader' => array('S', 'M', 'T', 'W', 'T', 'F', 'S')
     ),
     'archive' => array(
         'postsUnderTheCategory' => 'Posts under the category %s',

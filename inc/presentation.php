@@ -285,10 +285,7 @@ function calendar($month = null, $url = null, $rewrite = null, $archive = null) 
     $monthNumber = (int)$monthArr['month'];
 
     $calendar = '';
-    $week_arr = array('S', 'M', 'T', 'W', 'T', 'F', 'S');
-    if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') {
-        $week_arr = array('日', '一', '二', '三', '四', '五', '六');
-    }
+    $week_arr = $GLOBALS['t']['sidebar']['calendarHeader'];
 
     $this_month_days = (int)gmdate('t', $monthArr['timestamp']);
     $this_month_one_n = (int)gmdate('w', $monthArr['timestamp']);

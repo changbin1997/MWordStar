@@ -130,7 +130,8 @@ const ZH = array(
         'previousAndNextMonths' => '上个月及下个月',
         'calendar' => '%s 的日历',
         'viewMore' => '查看更多',
-        'viewMoreTags' => '查看更多标签'
+        'viewMoreTags' => '查看更多标签',
+        'calendarHeader' => array('日', '一', '二', '三', '四', '五', '六')
     ),
     'archive' => array(
         'postsUnderTheCategory' => '分类 %s 下的文章',
