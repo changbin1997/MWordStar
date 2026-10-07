@@ -9,8 +9,7 @@
  *  - postDateFormat                    文章日期按语言格式化
  *  - getDayWithSuffix                  英文日序数后缀
  *  - commentDateFormat                 评论日期格式化
- *  - formatTimeDifferenceZH            中文相对时间
- *  - formatTimeDifferenceEN            英文相对时间
+ *  - formatTimeDifference              相对时间（文本取自语言包，便于扩展新语言）
  *  - getDays                           两个时间戳相差天数
  *
  * @package MWordStar
@@ -168,62 +167,44 @@ function commentDateFormat($date, $options = 'format1') {
     }
     // 时间间隔
     if ($options == 'format4') {
-        if ($GLOBALS['language'] == 'en') {
-            // 英文
-            return formatTimeDifferenceEN($date);
-        }else {
-            // 中文
-            return formatTimeDifferenceZH($date);
-        }
+        return formatTimeDifference($date);
     }
 }
 
 /**
- * 计算时间间隔（中文）
+ * 计算时间间隔
+ *
+ * 各单位的表述取自语言包中的 comment.timeDifference，
+ * 每个单位包含 [单数, 复数] 两个模板，模板里的 %d 会被替换为数量，
+ * 这样新增语言时只需要补充语言包，不需要再添加新的函数。
  *
  * @param int $timestamp 时间戳
- * @return string 返回中文的时间间隔
+ * @return string 返回格式化后的时间间隔
  */
-function formatTimeDifferenceZH($timestamp) {
-    $timestamp = time() - $timestamp;
-    if ($timestamp < 1) {
-        return '1秒前';
-    }else if ($timestamp < 60) {
-        return $timestamp . '秒前';
-    }else if ($timestamp > 60 && $timestamp < 3600) {
-        return round($timestamp / 60, 0) . '分钟前';
-    }else if ($timestamp > 3600 && $timestamp < 86400) {
-        return round($timestamp / 3600, 0) . '小时前';
-    }else {
-        return round($timestamp / 86400, 0) . '天前';
-    }
-}
-
-/**
- * 计算时间间隔（英文）
- *
- * @param int $timestamp 时间戳
- * @return string 返回英文的时间间隔
- */
-function formatTimeDifferenceEN($timestamp) {
+function formatTimeDifference($timestamp) {
+    $units = $GLOBALS['t']['comment']['timeDifference'];
     $diff = time() - $timestamp;
+    // 时间戳在当前时间之后或者相差不到 1 秒时都按 1 秒计算
+    if ($diff < 1) {
+        $diff = 1;
+    }
 
     if ($diff < 60) {
-        return $diff == 1 ? "1 second ago" : "$diff seconds ago";
+        return sprintf($diff == 1 ? $units['seconds'][0] : $units['seconds'][1], $diff);
     }
 
     $minutes = floor($diff / 60);
     if ($minutes < 60) {
-        return $minutes == 1 ? "1 minute ago" : "$minutes minutes ago";
+        return sprintf($minutes == 1 ? $units['minutes'][0] : $units['minutes'][1], $minutes);
     }
 
     $hours = floor($minutes / 60);
     if ($hours < 24) {
-        return $hours == 1 ? "1 hour ago" : "$hours hours ago";
+        return sprintf($hours == 1 ? $units['hours'][0] : $units['hours'][1], $hours);
     }
 
     $days = floor($hours / 24);
-    return $days == 1 ? "1 day ago" : "$days days ago";
+    return sprintf($days == 1 ? $units['days'][0] : $units['days'][1], $days);
 }
 
 /**

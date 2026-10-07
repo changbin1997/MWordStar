@@ -76,7 +76,13 @@ const ZH = array(
         'captchaGenerateError' => '评论验证码生成失败，请刷新页面重试。',
         'captchaExpired' => '评论失败：验证码已过期，请刷新页面后重新提交。',
         'captchaError' => '评论失败：验证码错误，请重新计算。',
-        'turnstileError' => '评论失败：人机验证未通过，请重新验证。'
+        'turnstileError' => '评论失败：人机验证未通过，请重新验证。',
+        'timeDifference' => array(
+            'seconds' => array('1秒前', '%d秒前'),
+            'minutes' => array('1分钟前', '%d分钟前'),
+            'hours' => array('1小时前', '%d小时前'),
+            'days' => array('1天前', '%d天前')
+        )
     ),
     'emoji' => array(
         'emoji' => 'Emoji表情',

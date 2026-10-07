@@ -76,7 +76,13 @@ const EN = array(
         'captchaGenerateError' => 'Failed to generate the captcha. Please refresh the page and try again.',
         'captchaExpired' => 'Comment failed: The captcha has expired. Please refresh the page and try again.',
         'captchaError' => 'Comment failed: Incorrect captcha answer. Please recalculate.',
-        'turnstileError' => 'Comment failed: Verification not passed. Please try again.'
+        'turnstileError' => 'Comment failed: Verification not passed. Please try again.',
+        'timeDifference' => array(
+            'seconds' => array('1 second ago', '%d seconds ago'),
+            'minutes' => array('1 minute ago', '%d minutes ago'),
+            'hours' => array('1 hour ago', '%d hours ago'),
+            'days' => array('1 day ago', '%d days ago')
+        )
     ),
     'emoji' => array(
         'emoji' => 'Emoji',
