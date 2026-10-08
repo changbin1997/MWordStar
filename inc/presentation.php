@@ -290,7 +290,7 @@ function calendar($month = null, $url = null, $rewrite = null, $archive = null) 
     $this_month_days = (int)gmdate('t', $monthArr['timestamp']);
     $this_month_one_n = (int)gmdate('w', $monthArr['timestamp']);
     $total_rows = (int)ceil(($this_month_days + $this_month_one_n) / 7);
-    $format = $GLOBALS['language'] == 'en' ? 'F Y' : 'Y年m月';
+    $format = $GLOBALS['t']['sidebar']['calendarMonthFormat'];
     $monthLabel = mwordstarCalendarMonthLabel($monthArr, $format);
 
     $calendar .= '<table aria-label="' . mwordstarCalendarAttr(sprintf($GLOBALS['t']['sidebar']['calendar'], $monthLabel)) . '" class="table table-bordered table-sm m-0"><thead><tr>';

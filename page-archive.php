@@ -57,7 +57,7 @@ $this->need('components/header.php');
                                         $year = $year_tmp;
                                         $mon = $mon_tmp;
                                         // 根据语言格式化年月
-                                        $format = $GLOBALS['language'] == 'en' ? 'M Y' : 'Y年m月';
+                                        $format = $GLOBALS['t']['sidebar']['calendarMonthFormat'];
                                         // 输出年和月
                                         $output .= '<div class="archives-item"><h2>' . date($format, $archives->created) . '</h2><ul class="archives_list" aria-label="' . date($format, $archives->created) . '">'; //输出年份
                                     }

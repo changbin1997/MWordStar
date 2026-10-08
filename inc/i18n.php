@@ -111,21 +111,6 @@ function localizeScript() {
 }
 
 /**
- * 根据语言格式化文章日期
- *
- * @param int $date 时间戳
- * @return string 格式化后的日期
- */
-function postDateFormat($date) {
-    if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') {
-        $date = date('Y年m月d日', $date);
-    }else {
-        $date = date('j M Y', $date);
-    }
-    return $date;
-}
-
-/**
  * 获取英文的日序数后缀
  *
  * @param int $timestamp 时间戳

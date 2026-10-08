@@ -74,7 +74,7 @@
             <div class="info">
                 <i class="icon-calendar icon" aria-hidden="true"></i>
                 <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>">
-                    <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
+                    <time datetime="<?php echo date('c', $this->created); ?>"><?php echo date($GLOBALS['t']['post']['dateFormat'], $this->created); ?></time>
                 </span>
             </div>
             <!--作者-->

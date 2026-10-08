@@ -82,7 +82,7 @@ $this->need('components/header.php');
                         <div class="info">
                             <i class="icon-calendar icon" aria-hidden="true"></i>
                             <span data-toggle="tooltip" data-placement="top" title="<?php echo $GLOBALS['t']['post']['publicationDate']; ?>">
-                                <time datetime="<?php echo date('c', $this->created); ?>"><?php echo postDateFormat($this->created); ?></time>
+                                <time datetime="<?php echo date('c', $this->created); ?>"><?php echo date($GLOBALS['t']['post']['dateFormat'], $this->created); ?></time>
                             </span>
                         </div>
                         <!--作者-->
@@ -176,7 +176,7 @@ $this->need('components/header.php');
                             <?php if ($this->options->modified == 'show'): ?>
                                 <span class="float-xl-left float-lg-left float-md-left d-block">
                                     <time datetime="<?php echo date('c', $this->modified); ?>">
-                                        <?php printf($GLOBALS['t']['post']['updated'], postDateFormat($this->modified)); ?>
+                                        <?php printf($GLOBALS['t']['post']['updated'], date($GLOBALS['t']['post']['dateFormat'], $this->modified)); ?>
                                     </time>
                                 </span>
                             <?php endif; ?>

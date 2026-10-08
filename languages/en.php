@@ -40,7 +40,8 @@ const EN = array(
         'featuredImage' => 'Featured Image',
         'uncategorized' => 'Uncategorized',
         'noTags' => 'No tags',
-        'pinned' => 'Pinned'
+        'pinned' => 'Pinned',
+        'dateFormat' => 'j M Y'
     ),
     'comment' => array(
         'leaveAComment' => 'Leave a Comment',
@@ -131,7 +132,8 @@ const EN = array(
         'calendar' => '%s calendar',
         'viewMore' => 'View More',
         'viewMoreTags' => 'View More Tags',
-        'calendarHeader' => array('S', 'M', 'T', 'W', 'T', 'F', 'S')
+        'calendarHeader' => array('S', 'M', 'T', 'W', 'T', 'F', 'S'),
+        'calendarMonthFormat' => 'F Y'
     ),
     'archive' => array(
         'postsUnderTheCategory' => 'Posts under the category %s',

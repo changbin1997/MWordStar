@@ -40,7 +40,8 @@ const ZH = array(
         'featuredImage' => '文章头图',
         'uncategorized' => '未分类',
         'noTags' => '暂无标签',
-        'pinned' => '置顶'
+        'pinned' => '置顶',
+        'dateFormat' => 'Y年m月d日'
     ],
     'comment' => array(
         'leaveAComment' => '发表评论',
@@ -131,7 +132,8 @@ const ZH = array(
         'calendar' => '%s 的日历',
         'viewMore' => '查看更多',
         'viewMoreTags' => '查看更多标签',
-        'calendarHeader' => array('日', '一', '二', '三', '四', '五', '六')
+        'calendarHeader' => array('日', '一', '二', '三', '四', '五', '六'),
+        'calendarMonthFormat' => 'Y年m月'
     ),
     'archive' => array(
         'postsUnderTheCategory' => '分类 %s 下的文章',

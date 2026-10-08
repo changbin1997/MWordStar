@@ -106,7 +106,7 @@ $components = explode(',', $components);
                 // 获取日历的月份
                 $date = getMonth($this);
                 // 根据语言使用不同的日期格式
-                $format = $GLOBALS['language'] == 'en' ? 'F Y' : 'Y年m月';
+                $format = $GLOBALS['t']['sidebar']['calendarMonthFormat'];
                 ?>
                 <h4><?php echo mwordstarCalendarMonthLabel($date, $format); ?></h4>
                 <div class="tag-list pt-2">
@@ -256,7 +256,7 @@ $components = explode(',', $components);
                 <h4><?php echo $GLOBALS['t']['sidebar']['archives']; ?></h4>
                 <?php
                 // 根据语言设置归档时间格式
-                $format = $GLOBALS['language'] == 'en' ? 'F Y' : 'Y年m月';
+                $format = $GLOBALS['t']['sidebar']['calendarMonthFormat'];
                 $postArchive = $this->widget('Widget_Contents_Post_Date', 'type=month&format=' . $format);
                 ?>
                 <?php if ($postArchive->have()): ?>

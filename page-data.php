@@ -112,7 +112,7 @@ $this->need('components/header.php');
                             <hr>
                             <!--文章更新日历图-->
                             <h2><?php echo $GLOBALS['t']['dataPage']['postUpdates']; ?></h2>
-                            <p><?php printf($GLOBALS['t']['dataPage']['postUpdateDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
+                            <p><?php printf($GLOBALS['t']['dataPage']['postUpdateDescription'], date($GLOBALS['t']['post']['dateFormat'], time() - 20736000), date($GLOBALS['t']['post']['dateFormat'], time())); ?></p>
                             <div id="post-chart" style="height: 180px;">
                                 <div class="loading">
                                     <div class="spinner-border spinner-border-sm mr-2" role="status">
@@ -124,7 +124,7 @@ $this->need('components/header.php');
                             <hr>
                             <!--评论动态日历图-->
                             <h2><?php echo $GLOBALS['t']['dataPage']['commentActivity']; ?></h2>
-                            <p><?php printf($GLOBALS['t']['dataPage']['commentActivityDescription'], postDateFormat(time() - 20736000), postDateFormat(time())); ?></p>
+                            <p><?php printf($GLOBALS['t']['dataPage']['commentActivityDescription'], date($GLOBALS['t']['post']['dateFormat'], time() - 20736000), date($GLOBALS['t']['post']['dateFormat'], time())); ?></p>
                             <div id="comment-chart" style="height: 180px;">
                                 <div class="loading">
                                     <div class="spinner-border spinner-border-sm mr-2" role="status">
