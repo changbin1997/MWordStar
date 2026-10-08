@@ -199,6 +199,7 @@ $bodyClass = implode(' ', $bodyClass);
                             </a>
                             <div class="dropdown-menu">
                                 <a href="javascript:;" data-language="zh-CN" class="change-language dropdown-item <?php if ($GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN') echo 'active'; ?>" aria-checked="<?php echo $GLOBALS['language'] == 'zh' or $GLOBALS['language'] == 'zh-CN'; ?>" role="checkbox">简体中文</a>
+                                <a href="javascript:;" data-language="zh-TW" class="change-language dropdown-item <?php if ($GLOBALS['language'] == 'zh-TW') echo 'active'; ?>" aria-checked="<?php echo $GLOBALS['language'] == 'zh-TW'; ?>" role="checkbox">繁體中文</a>
                                 <a href="javascript:;" data-language="en" class="change-language dropdown-item <?php if ($GLOBALS['language'] == 'en') echo 'active'; ?>" aria-checked="<?php echo $GLOBALS['language'] == 'en'; ?>" role="checkbox">English</a>
                             </div>
                         </div>

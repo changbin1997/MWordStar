@@ -5,6 +5,8 @@
  *
  * 包含函数：
  *  - languageInit                      按 Cookie / 浏览器 / 后台设置加载语言包
+ *  - getLanguageFromAcceptLanguage     解析 HTTP_ACCEPT_LANGUAGE 判断简体 / 繁体 / 英文
+ *  - isTraditionalChineseTag           判断中文语言标签是否为繁体（台湾 / 香港 / 澳门 / Hant）
  *  - localizeScript                    输出传给 JS 的多语言翻译
  *  - postDateFormat                    文章日期按语言格式化
  *  - getDayWithSuffix                  英文日序数后缀
@@ -22,7 +24,6 @@
  * @return void
  */
 function languageInit($language) {
-    $languageList = array('zh', 'en');
     // 如果有语言设置 Cookie 就优先使用 Cookie 存储的语言
     if (isset($_COOKIE['language']) && $_COOKIE['language'] != '') {
         $language = $_COOKIE['language'];
@@ -34,36 +35,110 @@ function languageInit($language) {
             // 浏览器没有发送语言信息就默认使用英文
             $language = 'en';
         } else {
-            $acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-
-            // 检查是否存在 intl 扩展中的函数
-            if (function_exists('locale_accept_from_http')) {
-                $userLanguage = locale_accept_from_http($acceptLang);
-                $language = substr($userLanguage, 0, 2);
-            } else {
-                // 降级方案：直接截取 HTTP_ACCEPT_LANGUAGE 的前两个字符
-                $language = strtolower(substr($acceptLang, 0, 2));
-            }
-
-            // 如果用户浏览器的语言是不支持的语言就使用英语
-            if (!in_array($language, $languageList)) {
-                $language = 'en';
-            }
+            $language = getLanguageFromAcceptLanguage($_SERVER['HTTP_ACCEPT_LANGUAGE']);
         }
     }
 
-    // 选择中文
-    if ($language == 'zh-CN' || $language == 'zh' || $language == null) {
-        require_once __DIR__ . '/../languages/zh.php';
-        $GLOBALS['t'] = ZH;
-    }
-    // 选择英文
-    elseif ($language == 'en') {
-        require_once __DIR__ . '/../languages/en.php';
-        $GLOBALS['t'] = EN;
+    // Cookie 和后台设置里可能保存的是完整的语言标签，这里统一成小写的连字符形式
+    if (is_string($language)) {
+        $language = str_replace('_', '-', strtolower($language));
     }
 
-    $GLOBALS['language'] = $language == null ? 'zh-CN' : $language;
+    // 选择繁体中文（台湾用语），台湾 / 香港 / 澳门 / Hant 都按繁体处理
+    if ($language != null && isTraditionalChineseTag($language)) {
+        require_once __DIR__ . '/../languages/zh-tw.php';
+        $GLOBALS['t'] = ZH_TW;
+        $GLOBALS['language'] = 'zh-TW';
+        return;
+    }
+
+    // 选择简体中文
+    // 没有语言设置以及没有标明简繁的中文（例如 zh）都使用简体
+    if ($language == null || $language == 'zh' || preg_match('/^zh(-|$)/', $language)) {
+        require_once __DIR__ . '/../languages/zh.php';
+        $GLOBALS['t'] = ZH;
+        $GLOBALS['language'] = 'zh-CN';
+        return;
+    }
+
+    // 选择英文
+    // 语言设置为 en 以及所有不支持的语言都使用英文
+    require_once __DIR__ . '/../languages/en.php';
+    $GLOBALS['t'] = EN;
+    $GLOBALS['language'] = 'en';
+}
+
+/**
+ * 解析浏览器发送的语言偏好，判断应该使用哪种语言
+ *
+ * 会先按 q 值对语言标签排序，再用优先级最高的标签判断：
+ *  - 标签属于中文时，台湾 / 香港 / 澳门或带 Hant 的按繁体处理，其余按简体处理；
+ *  - 标签和中文无关时（例如 es、fr）使用英文。
+ *
+ * 常见浏览器的语言偏好形式：
+ *  - Chrome / Edge：zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7
+ *  - Firefox：zh-TW,zh;q=0.8,en-US;q=0.5,en;q=0.3
+ *  - Safari：zh-TW（旧版本为小写的 zh-tw），也可能使用 zh-Hant-TW、zh-Hans-CN 这类字形标签
+ *  - 部分客户端会使用下划线，例如 zh_TW、zh_CN
+ *
+ * @param string $acceptLang HTTP_ACCEPT_LANGUAGE 的内容
+ * @return string 主题支持的语言代码（zh-CN / zh-TW / en）
+ */
+function getLanguageFromAcceptLanguage($acceptLang) {
+    // 统一成小写的连字符形式，方便处理 zh_TW 这类下划线写法
+    $acceptLang = str_replace('_', '-', strtolower($acceptLang));
+    $priorityList = array();
+    foreach (explode(',', $acceptLang) as $index => $item) {
+        $parts = explode(';', trim($item));
+        $tag = trim($parts[0]);
+        if ($tag == '') {
+            continue;
+        }
+        // 语言标签后面的 q 表示优先级，没有 q 值时按 1 处理
+        $q = 1.0;
+        if (isset($parts[1]) && preg_match('/q\s*=\s*([0-9.]+)/', $parts[1], $matches)) {
+            $q = (float)$matches[1];
+        }
+        $priorityList[] = array('tag' => $tag, 'q' => $q, 'index' => $index);
+    }
+
+    // 按 q 值从高到低排序，q 值相同时保持原来的先后顺序
+    usort($priorityList, function ($a, $b) {
+        if ($a['q'] == $b['q']) {
+            return $a['index'] - $b['index'];
+        }
+        return $a['q'] < $b['q'] ? 1 : -1;
+    });
+
+    // 只按优先级最高的语言标签判断
+    if (isset($priorityList[0])) {
+        $tag = $priorityList[0]['tag'];
+        if ($tag == 'zh' || strpos($tag, 'zh-') === 0) {
+            return isTraditionalChineseTag($tag) ? 'zh-TW' : 'zh-CN';
+        }
+    }
+
+    // 语言偏好和中文无关或者没有语言偏好时都使用英文
+    return 'en';
+}
+
+/**
+ * 判断中文语言标签是否使用繁体
+ *
+ * 台湾、香港、澳门默认使用繁体，标签中带 Hant（繁体字形）的同样按繁体处理；
+ * 带 Hans（简体字形）以及没有标明简繁的（例如 zh）都按简体处理。
+ *
+ * @param string $tag 已经转换为小写连字符形式的语言标签
+ * @return bool 使用繁体返回 true
+ */
+function isTraditionalChineseTag($tag) {
+    if (preg_match('/^zh-(tw|hk|mo)(-|$)/', $tag)) {
+        return true;
+    }
+    if (strpos($tag, 'hant') !== false) {
+        return true;
+    }
+    return false;
 }
 
 /**
